@@ -1,0 +1,108 @@
+.TH "magrathea::Step< Scalar, Array, Tuple >" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::Step< Scalar, Array, Tuple > \- 
+.PP
+Basic implementation of an evolution step\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <step\&.h>\fP
+.PP
+Inherits \fBmagrathea::AbstractStep< Step< Scalar, Array, Tuple >, Scalar, Array, Tuple >\fP\&.
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBLifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class\&.\&.\&. Misc> \fBStep\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIExplicit generic constructor\&. \fP"
+.in -1c
+.in -1c
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "using \fBoperator\fP = typedef"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class Scalar = unsigned int, class Array = std::array<double, 0>, class Tuple = std::tuple<>>exception magrathea::Step< Scalar, Array, Tuple >"
+Basic implementation of an evolution step\&. 
+
+This class is the direct derivation of \fBAbstractStep\fP\&. It provides the most basic and generic contents object without adding new functionalities to the abstract class\&. It can be used in most cases as a generic container for evolution data\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIScalar\fP Scalar type of id\&. 
+.br
+\fIArray\fP Array type of core quantities\&. 
+.br
+\fITuple\fP Tuple type of extra quantities\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class Scalar , class Array , class Tuple > template<class\&.\&.\&. Misc> \fBmagrathea::Step\fP< Scalar, Array, Tuple >::\fBStep\fP (Misc &&\&.\&.\&.misc)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit generic constructor\&. Provides a generic interface to all constructors of the base class\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class Scalar , class Array , class Tuple > int \fBmagrathea::Step\fP< Scalar, Array, Tuple >::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBStep\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<class Scalar = unsigned int, class Array = std::array<double, 0>, class Tuple = std::tuple<>> using \fBmagrathea::Step\fP< Scalar, Array, Tuple >::operator = "
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

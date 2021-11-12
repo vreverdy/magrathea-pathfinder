@@ -1,0 +1,556 @@
+.TH "magrathea::AboutPeople" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::AboutPeople \- 
+.PP
+Information about a developer, an author, or a contributor\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <aboutpeople\&.h>\fP
+.PP
+Inherits \fBmagrathea::AbstractAboutObject< AboutPeople, std::string, std::string, int, int, std::string, std::string, std::string, std::string >\fP\&.
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBLifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class\&.\&.\&. Misc> \fBAboutPeople\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIExplicit generic constructor\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBAccessors\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "std::string \fBname\fP (const std::string &separator=' ') const "
+.br
+.RI "\fIFull name accessor\&. \fP"
+.ti -1c
+.RI "std::string \fByears\fP (const std::string &separator='-') const "
+.br
+.RI "\fIYear range accessor\&. \fP"
+.ti -1c
+.RI "std::string \fBmails\fP (const std::string &separator=' - ') const "
+.br
+.RI "\fIMails accessor\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBMutators\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBAboutPeople\fP & \fBname\fP (const std::string &fname, const std::string &lname)"
+.br
+.RI "\fIFull name mutator\&. \fP"
+.ti -1c
+.RI "\fBAboutPeople\fP & \fByears\fP (const int fyear, const int lyear)"
+.br
+.RI "\fIYear range mutator\&. \fP"
+.ti -1c
+.RI "\fBAboutPeople\fP & \fBmails\fP (const std::string &fmail, const std::string &lmail)"
+.br
+.RI "\fIMails mutator\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBGetters\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "const std::string & \fBfirst\fP () const "
+.br
+.RI "\fIFirst name getter\&. \fP"
+.ti -1c
+.RI "const std::string & \fBlast\fP () const "
+.br
+.RI "\fILast name getter\&. \fP"
+.ti -1c
+.RI "int \fBbegin\fP () const "
+.br
+.RI "\fIFirst year of contribution getter\&. \fP"
+.ti -1c
+.RI "int \fBend\fP () const "
+.br
+.RI "\fILast year of contribution getter\&. \fP"
+.ti -1c
+.RI "const std::string & \fBmail\fP () const "
+.br
+.RI "\fIE-mail getter\&. \fP"
+.ti -1c
+.RI "const std::string & \fBaltmail\fP () const "
+.br
+.RI "\fIAlternative e-mail getter\&. \fP"
+.ti -1c
+.RI "const std::string & \fBlink\fP () const "
+.br
+.RI "\fIWeb link getter\&. \fP"
+.ti -1c
+.RI "const std::string & \fBcontact\fP () const "
+.br
+.RI "\fIAdditional contact information getter\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBSetters\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBAboutPeople\fP & \fBfirst\fP (const std::string &value)"
+.br
+.RI "\fIFirst name setter\&. \fP"
+.ti -1c
+.RI "\fBAboutPeople\fP & \fBlast\fP (const std::string &value)"
+.br
+.RI "\fILast name setter\&. \fP"
+.ti -1c
+.RI "\fBAboutPeople\fP & \fBbegin\fP (const int value)"
+.br
+.RI "\fIFirst year of contribution setter\&. \fP"
+.ti -1c
+.RI "\fBAboutPeople\fP & \fBend\fP (const int value)"
+.br
+.RI "\fILast year of contribution setter\&. \fP"
+.ti -1c
+.RI "\fBAboutPeople\fP & \fBmail\fP (const std::string &value)"
+.br
+.RI "\fIE-mail setter\&. \fP"
+.ti -1c
+.RI "\fBAboutPeople\fP & \fBaltmail\fP (const std::string &value)"
+.br
+.RI "\fIAlternative e-mail setter\&. \fP"
+.ti -1c
+.RI "\fBAboutPeople\fP & \fBlink\fP (const std::string &value)"
+.br
+.RI "\fIWeb link setter\&. \fP"
+.ti -1c
+.RI "\fBAboutPeople\fP & \fBcontact\fP (const std::string &value)"
+.br
+.RI "\fIAdditional contact information setter\&. \fP"
+.in -1c
+.in -1c
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBPredefined\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static const \fBAboutPeople\fP & \fBvreverdy\fP ()"
+.br
+.RI "\fIPredefined Vincent Reverdy\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "using \fBoperator\fP = typedef"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Information about a developer, an author, or a contributor\&. 
+
+Name, status, contact, link, dates of contributions\&.\&.\&. for authors and contributors\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class\&.\&.\&. Misc> magrathea::AboutPeople::AboutPeople (Misc &&\&.\&.\&.misc)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit generic constructor\&. Provides a generic interface to all constructors of the base class\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "const std::string & magrathea::AboutPeople::altmail () const\fC [inline]\fP"
+
+.PP
+Alternative e-mail getter\&. Gets the value of the altmail property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Altmail\&. 
+.RE
+.PP
+
+.SS "\fBAboutPeople\fP & magrathea::AboutPeople::altmail (const std::string &value)\fC [inline]\fP"
+
+.PP
+Alternative e-mail setter\&. Sets the value of the altmail property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Altmail\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "int magrathea::AboutPeople::begin () const\fC [inline]\fP"
+
+.PP
+First year of contribution getter\&. Gets the value of the begin property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Begin\&. 
+.RE
+.PP
+
+.SS "\fBAboutPeople\fP & magrathea::AboutPeople::begin (const intvalue)\fC [inline]\fP"
+
+.PP
+First year of contribution setter\&. Sets the value of the begin property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Begin\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "const std::string & magrathea::AboutPeople::contact () const\fC [inline]\fP"
+
+.PP
+Additional contact information getter\&. Gets the value of the contact property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Contact\&. 
+.RE
+.PP
+
+.SS "\fBAboutPeople\fP & magrathea::AboutPeople::contact (const std::string &value)\fC [inline]\fP"
+
+.PP
+Additional contact information setter\&. Sets the value of the contact property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Contact\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "int magrathea::AboutPeople::end () const\fC [inline]\fP"
+
+.PP
+Last year of contribution getter\&. Gets the value of the end property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+End\&. 
+.RE
+.PP
+
+.SS "\fBAboutPeople\fP & magrathea::AboutPeople::end (const intvalue)\fC [inline]\fP"
+
+.PP
+Last year of contribution setter\&. Sets the value of the end property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP End\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "int magrathea::AboutPeople::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBAboutPeople\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SS "const std::string & magrathea::AboutPeople::first () const\fC [inline]\fP"
+
+.PP
+First name getter\&. Gets the value of the first property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+First\&. 
+.RE
+.PP
+
+.SS "\fBAboutPeople\fP & magrathea::AboutPeople::first (const std::string &value)\fC [inline]\fP"
+
+.PP
+First name setter\&. Sets the value of the first property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP First\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "const std::string & magrathea::AboutPeople::last () const\fC [inline]\fP"
+
+.PP
+Last name getter\&. Gets the value of the last property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Last\&. 
+.RE
+.PP
+
+.SS "\fBAboutPeople\fP & magrathea::AboutPeople::last (const std::string &value)\fC [inline]\fP"
+
+.PP
+Last name setter\&. Sets the value of the last property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Last\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "const std::string & magrathea::AboutPeople::link () const\fC [inline]\fP"
+
+.PP
+Web link getter\&. Gets the value of the link property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Link\&. 
+.RE
+.PP
+
+.SS "\fBAboutPeople\fP & magrathea::AboutPeople::link (const std::string &value)\fC [inline]\fP"
+
+.PP
+Web link setter\&. Sets the value of the link property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Link\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "const std::string & magrathea::AboutPeople::mail () const\fC [inline]\fP"
+
+.PP
+E-mail getter\&. Gets the value of the mail property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Mail\&. 
+.RE
+.PP
+
+.SS "\fBAboutPeople\fP & magrathea::AboutPeople::mail (const std::string &value)\fC [inline]\fP"
+
+.PP
+E-mail setter\&. Sets the value of the mail property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Mail\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "std::string magrathea::AboutPeople::mails (const std::string &separator = \fC' - '\fP) const\fC [inline]\fP"
+
+.PP
+Mails accessor\&. Gets the value of the main and alternative mails properties\&. If one of the mails is empty, the separator is not used\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIseparator\fP String separator\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Mails\&. 
+.RE
+.PP
+
+.SS "\fBAboutPeople\fP & magrathea::AboutPeople::mails (const std::string &fmail, const std::string &lmail)\fC [inline]\fP"
+
+.PP
+Mails mutator\&. Sets the value of the main and alternative mails properties\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfmail\fP E-mail\&. 
+.br
+\fIlmail\fP Alternative e-mail\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Mails\&. 
+.RE
+.PP
+
+.SS "std::string magrathea::AboutPeople::name (const std::string &separator = \fC' '\fP) const\fC [inline]\fP"
+
+.PP
+Full name accessor\&. Gets the value of the first and last name properties\&. If one of the first or last name is empty, the separator is not used\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIseparator\fP String separator\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Name\&. 
+.RE
+.PP
+
+.SS "\fBAboutPeople\fP & magrathea::AboutPeople::name (const std::string &fname, const std::string &lname)\fC [inline]\fP"
+
+.PP
+Full name mutator\&. Sets the value of the first and last name properties\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfname\fP First name\&. 
+.br
+\fIlname\fP Last name\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "const \fBAboutPeople\fP & magrathea::AboutPeople::vreverdy ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined Vincent Reverdy\&. Vincent Reverdy details\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to people singleton\&. 
+.RE
+.PP
+
+.SS "std::string magrathea::AboutPeople::years (const std::string &separator = \fC'-'\fP) const\fC [inline]\fP"
+
+.PP
+Year range accessor\&. Gets the value of the begin and end year properties\&. If the end year is lower than the begin year, it is not displayed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIseparator\fP String separator\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Years\&. 
+.RE
+.PP
+
+.SS "\fBAboutPeople\fP & magrathea::AboutPeople::years (const intfyear, const intlyear)\fC [inline]\fP"
+
+.PP
+Year range mutator\&. Sets the value of the begin and end year properties\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfyear\fP First year of contribution\&. 
+.br
+\fIlyear\fP Last year of contribution\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "using magrathea::AboutPeople::operator = "
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

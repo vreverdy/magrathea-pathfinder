@@ -1,0 +1,660 @@
+\hypertarget{exceptionmagrathea_1_1Timer}{\section{magrathea\-:\-:Timer$<$ Type, Period, Clock $>$ Exception Template Reference}
+\label{exceptionmagrathea_1_1Timer}\index{magrathea\-::\-Timer$<$ Type, Period, Clock $>$@{magrathea\-::\-Timer$<$ Type, Period, Clock $>$}}
+}
+
+
+A timer to manage time measurements and benchmarks.  
+
+
+
+
+{\ttfamily \#include $<$timer.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Lifecycle}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Duration  = Type, class Reference\-Time\-Point  = std\-::true\-\_\-type, class Beginning\-Time\-Point  = std\-::true\-\_\-type, class Ending\-Time\-Point  = std\-::true\-\_\-type$>$ }\\\hyperlink{exceptionmagrathea_1_1Timer_a48652f7ff9a46b997f857375b83da6f5}{Timer} (const bool running0=false, const Duration \&record0=Duration(), const Reference\-Time\-Point \&reference0=Reference\-Time\-Point(), const Beginning\-Time\-Point \&beginning0=Beginning\-Time\-Point(), const Ending\-Time\-Point \&ending0=Ending\-Time\-Point())
+\begin{DoxyCompactList}\small\item\em Implicit contents constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , class Other\-Period $>$ }\\\hyperlink{exceptionmagrathea_1_1Timer_afd27dbe98da7c62058bf01f5a8b294b8}{Timer} (const \hyperlink{exceptionmagrathea_1_1Timer}{Timer}$<$ Other\-Type, Other\-Period, Clock $>$ \&source)
+\begin{DoxyCompactList}\small\item\em Implicit conversion constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Operators}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Other\-Type , class Other\-Period $>$ }\\\hyperlink{exceptionmagrathea_1_1Timer}{Timer}$<$ Type, Period, Clock $>$ \& \hyperlink{exceptionmagrathea_1_1Timer_ae30b45ad6c7970c4c32489463e83729a}{operator=} (const \hyperlink{exceptionmagrathea_1_1Timer}{Timer}$<$ Other\-Type, Other\-Period, Clock $>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em Conversion assignment operator. \end{DoxyCompactList}\item 
+Type \hyperlink{exceptionmagrathea_1_1Timer_aa31ac99d8da5b7d928ff6c451b9e1142}{operator()} () const 
+\begin{DoxyCompactList}\small\item\em Total duration extraction operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Assignment}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Duration  = Type, class Reference\-Time\-Point  = std\-::true\-\_\-type, class Beginning\-Time\-Point  = std\-::true\-\_\-type, class Ending\-Time\-Point  = std\-::true\-\_\-type$>$ }\\\hyperlink{exceptionmagrathea_1_1Timer}{Timer}$<$ Type, Period, Clock $>$ \& \hyperlink{exceptionmagrathea_1_1Timer_a02d55fbb8de54e4ec47ffd03eb077a64}{assign} (const bool running0=false, const Duration \&record0=Duration(), const Reference\-Time\-Point \&reference0=Reference\-Time\-Point(), const Beginning\-Time\-Point \&beginning0=Beginning\-Time\-Point(), const Ending\-Time\-Point \&ending0=Ending\-Time\-Point())
+\begin{DoxyCompactList}\small\item\em \hyperlink{exceptionmagrathea_1_1Contents}{Contents} assignment. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , class Other\-Period $>$ }\\\hyperlink{exceptionmagrathea_1_1Timer}{Timer}$<$ Type, Period, Clock $>$ \& \hyperlink{exceptionmagrathea_1_1Timer_a5a3a60dfcc1e2dc22dcbd2e9c0d49994}{assign} (const \hyperlink{exceptionmagrathea_1_1Timer}{Timer}$<$ Other\-Type, Other\-Period, Clock $>$ \&source)
+\begin{DoxyCompactList}\small\item\em Conversion assignment. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Management}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{exceptionmagrathea_1_1Timer}{Timer}$<$ Type, Period, Clock $>$ \hyperlink{exceptionmagrathea_1_1Timer_aaf4f6405126d6324cdbc4c67884c23bf}{copy} () const 
+\begin{DoxyCompactList}\small\item\em Copy. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type  = Type, class Other\-Period  = Period$>$ }\\\hyperlink{exceptionmagrathea_1_1Timer}{Timer}$<$ Other\-Type, Other\-Period, \\*
+Clock $>$ \hyperlink{exceptionmagrathea_1_1Timer_ac0c22623a1a2f0180781e67ba44f9988}{cast} () const 
+\begin{DoxyCompactList}\small\item\em Cast. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Getters}\par
+\begin{DoxyCompactItemize}
+\item 
+const bool \& \hyperlink{exceptionmagrathea_1_1Timer_a0b3f41a0ad4242f465f096a39d4d9009}{running} () const 
+\begin{DoxyCompactList}\small\item\em Get whether the timer is running. \end{DoxyCompactList}\item 
+const Clock\-::duration \& \hyperlink{exceptionmagrathea_1_1Timer_ae51eb0a72eff6505564120765f7f5a97}{record} () const 
+\begin{DoxyCompactList}\small\item\em Get the saved duration. \end{DoxyCompactList}\item 
+const Clock\-::time\-\_\-point \& \hyperlink{exceptionmagrathea_1_1Timer_a0da629c75fa145b8bd28b8e913b1561e}{reference} () const 
+\begin{DoxyCompactList}\small\item\em Get the reference time point. \end{DoxyCompactList}\item 
+const Clock\-::time\-\_\-point \& \hyperlink{exceptionmagrathea_1_1Timer_a2b761324b0c76873464a3f2e015c171f}{beginning} () const 
+\begin{DoxyCompactList}\small\item\em Get the beginning time point. \end{DoxyCompactList}\item 
+const Clock\-::time\-\_\-point \& \hyperlink{exceptionmagrathea_1_1Timer_affe899a3821a020dbef1ce2f3737c8ad}{ending} () const 
+\begin{DoxyCompactList}\small\item\em Get the ending time point. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Actions}\par
+\begin{DoxyCompactItemize}
+\item 
+std\-::chrono\-::duration$<$ Type, \\*
+Period $>$ \hyperlink{exceptionmagrathea_1_1Timer_a76a3e527e10929ce89ea8dce211ed5d3}{reset} ()
+\begin{DoxyCompactList}\small\item\em Reset timer. \end{DoxyCompactList}\item 
+std\-::chrono\-::duration$<$ Type, \\*
+Period $>$ \hyperlink{exceptionmagrathea_1_1Timer_aa5ff5a3ddd22202435d2bf149cf0c1de}{start} ()
+\begin{DoxyCompactList}\small\item\em Start timer. \end{DoxyCompactList}\item 
+std\-::chrono\-::duration$<$ Type, \\*
+Period $>$ \hyperlink{exceptionmagrathea_1_1Timer_a178fa98482e7240a799fc438a16e37ea}{stop} ()
+\begin{DoxyCompactList}\small\item\em Stop timer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Measurement}\par
+\begin{DoxyCompactItemize}
+\item 
+std\-::chrono\-::duration$<$ Type, \\*
+Period $>$ \hyperlink{exceptionmagrathea_1_1Timer_a774c96d0d0ffb1ccc02dac73d65f6709}{current} () const 
+\begin{DoxyCompactList}\small\item\em Duration since last start. \end{DoxyCompactList}\item 
+std\-::chrono\-::duration$<$ Type, \\*
+Period $>$ \hyperlink{exceptionmagrathea_1_1Timer_ab17dc88ef072205f472d387f4dea1033}{total} () const 
+\begin{DoxyCompactList}\small\item\em Total duration. \end{DoxyCompactList}\item 
+std\-::chrono\-::duration$<$ Type, \\*
+Period $>$ \hyperlink{exceptionmagrathea_1_1Timer_a6e4a9f49df93c2620c4703fad36b1678}{real} () const 
+\begin{DoxyCompactList}\small\item\em Real duration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Static Public Member Functions}
+\begin{Indent}{\bf Utilities}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Duration  = Type, typename Counter  = unsigned long long int$>$ }\\static std\-::chrono\-::duration\\*
+$<$ Type, Period $>$ \hyperlink{exceptionmagrathea_1_1Timer_a5636affbf45384af93ab036eb15ab274}{wait} (const Duration \&delay=Duration(1), Counter \&\&counter=Counter())
+\begin{DoxyCompactList}\small\item\em Wait a certain time. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Counter , class Function , class... Args$>$ }\\static std\-::chrono\-::duration\\*
+$<$ Type, Period $>$ \hyperlink{exceptionmagrathea_1_1Timer_a5ede3d60334682c611c64dadd218b225}{benchmark} (const Counter \&counter, Function \&\&f, Args \&\&...args)
+\begin{DoxyCompactList}\small\item\em Benchmark a function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Test}\par
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{exceptionmagrathea_1_1Timer_a3dcb379540e25030a60b48319d1448d7}{example} ()
+\begin{DoxyCompactList}\small\item\em Example function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Protected Attributes}
+\begin{Indent}{\bf Data members}\par
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{exceptionmagrathea_1_1Timer_a633b668aeba423f9d6229bce33267226}{\-\_\-running}
+\begin{DoxyCompactList}\small\item\em Flag to indicate whether a measurement is running or not. \end{DoxyCompactList}\item 
+Clock\-::duration \hyperlink{exceptionmagrathea_1_1Timer_a1fb0110e524e12e39685ef9e5312d3f4}{\-\_\-record}
+\begin{DoxyCompactList}\small\item\em Internal backup of duration. \end{DoxyCompactList}\item 
+Clock\-::time\-\_\-point \hyperlink{exceptionmagrathea_1_1Timer_ad08277afa11789b6ea4cb88ed9f7c28b}{\-\_\-reference}
+\begin{DoxyCompactList}\small\item\em Reference time point for measurements. \end{DoxyCompactList}\item 
+Clock\-::time\-\_\-point \hyperlink{exceptionmagrathea_1_1Timer_a6c71f8b0c5557836e48043ff6bad791d}{\-\_\-beginning}
+\begin{DoxyCompactList}\small\item\em Beginning time point for measurements. \end{DoxyCompactList}\item 
+Clock\-::time\-\_\-point \hyperlink{exceptionmagrathea_1_1Timer_a005c041aa6b61e1f6c365fa6c4d7151d}{\-\_\-ending}
+\begin{DoxyCompactList}\small\item\em Ending time point for measurements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Friends}
+\begin{Indent}{\bf Stream}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Self\-Type , class Self\-Period , class Self\-Clock $>$ }\\std\-::ostream \& \hyperlink{exceptionmagrathea_1_1Timer_a9b9e2a214358571c47b7159572accf67}{operator$<$$<$} (std\-::ostream \&lhs, const \hyperlink{exceptionmagrathea_1_1Timer}{Timer}$<$ Self\-Type, Self\-Period, Self\-Clock $>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em \hyperlink{exceptionOutput}{Output} stream operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Type = double, class Period = std\-::chrono\-::seconds\-::period, class Clock = std\-::chrono\-::steady\-\_\-clock$>$exception magrathea\-::\-Timer$<$ Type, Period, Clock $>$}
+
+A timer to manage time measurements and benchmarks. 
+
+Provides a wrapper of {\ttfamily std\-::chrono} for an easy use and basic operations needed by time execution management. It has two internal times points \-: one to mark the beginning of a measurement, and one to mark the end of the current measurement. It has also a reference time point to evaluate real elasped time. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Duration representation type. \\
+\hline
+{\em Period} & Standard ratio representing the tick period. \\
+\hline
+{\em Clock} & Internal clock type. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{exceptionmagrathea_1_1Timer_a48652f7ff9a46b997f857375b83da6f5}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!Timer@{Timer}}
+\index{Timer@{Timer}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{Timer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Period , class Clock $>$ template$<$class Duration , class Reference\-Time\-Point , class Beginning\-Time\-Point , class Ending\-Time\-Point $>$ {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::{\bf Timer} (
+\begin{DoxyParamCaption}
+\item[{const bool}]{running0 = {\ttfamily false}, }
+\item[{const Duration \&}]{record0 = {\ttfamily Duration()}, }
+\item[{const Reference\-Time\-Point \&}]{reference0 = {\ttfamily ReferenceTimePoint()}, }
+\item[{const Beginning\-Time\-Point \&}]{beginning0 = {\ttfamily BeginningTimePoint()}, }
+\item[{const Ending\-Time\-Point \&}]{ending0 = {\ttfamily EndingTimePoint()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Timer_a48652f7ff9a46b997f857375b83da6f5}
+
+
+Implicit contents constructor. 
+
+Provides a construction from every single parameter of the timer \-: the current record of duration, the time of reference, the time of the last start, the time of the last stop, and whether the timer is running. If no reference is provided, the current time is set. If no beginning time is provided, it is set to the reference time. If no ending time is provided, it is set to the beginning. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Duration} & (Standard duration type or arithmetic type.) \\
+\hline
+{\em Reference\-Time\-Point} & (Time point type of the reference.) \\
+\hline
+{\em Beginning\-Time\-Point} & (Time point type of the beginning time.) \\
+\hline
+{\em Ending\-Time\-Point} & (Time point type of the ending time.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em running0} & \hyperlink{exceptionInput}{Input} value of whether the timer is running. \\
+\hline
+\mbox{\tt in}  & {\em record0} & \hyperlink{exceptionInput}{Input} value of the backup of duration. \\
+\hline
+\mbox{\tt in}  & {\em reference0} & \hyperlink{exceptionInput}{Input} value of the reference time. \\
+\hline
+\mbox{\tt in}  & {\em beginning0} & \hyperlink{exceptionInput}{Input} value of the beginning time. \\
+\hline
+\mbox{\tt in}  & {\em ending0} & \hyperlink{exceptionInput}{Input} value of the ending time. \\
+\hline
+\end{DoxyParams}
+\hypertarget{exceptionmagrathea_1_1Timer_afd27dbe98da7c62058bf01f5a8b294b8}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!Timer@{Timer}}
+\index{Timer@{Timer}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{Timer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Period , class Clock $>$ template$<$typename Other\-Type , class Other\-Period $>$ {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::{\bf Timer} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Timer}$<$ Other\-Type, Other\-Period, Clock $>$ \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Timer_afd27dbe98da7c62058bf01f5a8b294b8}
+
+
+Implicit conversion constructor. 
+
+Provides a construction from a timer of another type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & (Other duration representation type.) \\
+\hline
+{\em Other\-Period} & (Other standard ratio representing the tick period.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{exceptionmagrathea_1_1Timer_a02d55fbb8de54e4ec47ffd03eb077a64}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!assign@{assign}}
+\index{assign@{assign}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Period , class Clock $>$ template$<$class Duration , class Reference\-Time\-Point , class Beginning\-Time\-Point , class Ending\-Time\-Point $>$ {\bf Timer}$<$ Type, Period, Clock $>$ \& {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::assign (
+\begin{DoxyParamCaption}
+\item[{const bool}]{running0 = {\ttfamily false}, }
+\item[{const Duration \&}]{record0 = {\ttfamily Duration()}, }
+\item[{const Reference\-Time\-Point \&}]{reference0 = {\ttfamily ReferenceTimePoint()}, }
+\item[{const Beginning\-Time\-Point \&}]{beginning0 = {\ttfamily BeginningTimePoint()}, }
+\item[{const Ending\-Time\-Point \&}]{ending0 = {\ttfamily EndingTimePoint()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Timer_a02d55fbb8de54e4ec47ffd03eb077a64}
+
+
+\hyperlink{exceptionmagrathea_1_1Contents}{Contents} assignment. 
+
+Assigns contents from every single parameter of the timer \-: the current record of duration, the time of reference, the time of the last start, the time of the last stop, and whether the timer is running. If no reference is provided, the current time is set. If no beginning time is provided, it is set to the reference time. If no ending time is provided, it is set to the beginning. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Duration} & (Standard duration type or arithmetic type.) \\
+\hline
+{\em Reference\-Time\-Point} & (Time point type of the reference.) \\
+\hline
+{\em Beginning\-Time\-Point} & (Time point type of the beginning time.) \\
+\hline
+{\em Ending\-Time\-Point} & (Time point type of the ending time.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em running0} & \hyperlink{exceptionInput}{Input} value of whether the timer is running. \\
+\hline
+\mbox{\tt in}  & {\em record0} & \hyperlink{exceptionInput}{Input} value of the backup of duration. \\
+\hline
+\mbox{\tt in}  & {\em reference0} & \hyperlink{exceptionInput}{Input} value of the reference time. \\
+\hline
+\mbox{\tt in}  & {\em beginning0} & \hyperlink{exceptionInput}{Input} value of the beginning time. \\
+\hline
+\mbox{\tt in}  & {\em ending0} & \hyperlink{exceptionInput}{Input} value of the ending time. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Timer_a5a3a60dfcc1e2dc22dcbd2e9c0d49994}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!assign@{assign}}
+\index{assign@{assign}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Period , class Clock $>$ template$<$typename Other\-Type , class Other\-Period $>$ {\bf Timer}$<$ Type, Period, Clock $>$ \& {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::assign (
+\begin{DoxyParamCaption}
+\item[{const {\bf Timer}$<$ Other\-Type, Other\-Period, Clock $>$ \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Timer_a5a3a60dfcc1e2dc22dcbd2e9c0d49994}
+
+
+Conversion assignment. 
+
+Assigns the contents from a timer of another type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & (Other duration representation type.) \\
+\hline
+{\em Other\-Period} & (Other standard ratio representing the tick period.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Timer_a2b761324b0c76873464a3f2e015c171f}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!beginning@{beginning}}
+\index{beginning@{beginning}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{beginning}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Period , class Clock $>$ const Clock\-::time\-\_\-point \& {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::beginning (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Timer_a2b761324b0c76873464a3f2e015c171f}
+
+
+Get the beginning time point. 
+
+Returns the beginning time point, which is generally the time point of the last start. \begin{DoxyReturn}{Returns}
+Beginning time point. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Timer_a5ede3d60334682c611c64dadd218b225}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!benchmark@{benchmark}}
+\index{benchmark@{benchmark}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{benchmark}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Period , class Clock $>$ template$<$typename Counter , class Function , class... Args$>$ std\-::chrono\-::duration$<$ Type, Period $>$ {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::benchmark (
+\begin{DoxyParamCaption}
+\item[{const Counter \&}]{counter, }
+\item[{Function \&\&}]{f, }
+\item[{Args \&\&...}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1Timer_a5ede3d60334682c611c64dadd218b225}
+
+
+Benchmark a function. 
+
+Executes the provided function in a loop and computes the total time needed to run it. The call uses a volatile temporary to prevent null statement optimization, but some compilers may manage to optimize that. The results are not guaranteed to be exact and should be checked with a real benchmarking suite. The returned time correspond to the time of function execution plus the time of the copy. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Counter} & (Type that can be incremented.) \\
+\hline
+{\em Function} & (Function type \-: {\ttfamily Something(Args...)}.) \\
+\hline
+{\em Args} & (Arguments types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em counter} & Number of loops to do. \\
+\hline
+\mbox{\tt in}  & {\em f} & Function object {\ttfamily Something(Args...)}. \\
+\hline
+\mbox{\tt in}  & {\em args} & Arguments of the function. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Total duration of loop execution. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Timer_ac0c22623a1a2f0180781e67ba44f9988}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!cast@{cast}}
+\index{cast@{cast}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{cast}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Period , class Clock $>$ template$<$typename Other\-Type , class Other\-Period $>$ {\bf Timer}$<$ Other\-Type, Other\-Period, Clock $>$ {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::cast (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Timer_ac0c22623a1a2f0180781e67ba44f9988}
+
+
+Cast. 
+
+Casts the timer to another timer type with another period. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & Other duration representation type. \\
+\hline
+{\em Other\-Period} & Other standard ratio representing the tick period. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Timer_aaf4f6405126d6324cdbc4c67884c23bf}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!copy@{copy}}
+\index{copy@{copy}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{copy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Period , class Clock $>$ {\bf Timer}$<$ Type, Period, Clock $>$ {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::copy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Timer_aaf4f6405126d6324cdbc4c67884c23bf}
+
+
+Copy. 
+
+Returns a copy of the timer. \begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Timer_a774c96d0d0ffb1ccc02dac73d65f6709}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!current@{current}}
+\index{current@{current}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{current}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Period , class Clock $>$ std\-::chrono\-::duration$<$ Type, Period $>$ {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::current (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Timer_a774c96d0d0ffb1ccc02dac73d65f6709}
+
+
+Duration since last start. 
+
+Computes the duration since last start \-: if the timer is still running, it computes the difference between the call time and the last start time and if the timer is not running it returns the difference between the last start and the last stop. \begin{DoxyReturn}{Returns}
+Current duration. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Timer_affe899a3821a020dbef1ce2f3737c8ad}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!ending@{ending}}
+\index{ending@{ending}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{ending}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Period , class Clock $>$ const Clock\-::time\-\_\-point \& {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::ending (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Timer_affe899a3821a020dbef1ce2f3737c8ad}
+
+
+Get the ending time point. 
+
+Returns the ending time point, which is generally the time point of the last stop. If the timer is running, then the ending time point is equal to the last start time point. \begin{DoxyReturn}{Returns}
+Ending time point. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Timer_a3dcb379540e25030a60b48319d1448d7}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!example@{example}}
+\index{example@{example}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{example}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Period , class Clock $>$ int {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::example (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1Timer_a3dcb379540e25030a60b48319d1448d7}
+
+
+Example function. 
+
+Tests and demonstrates the use of \hyperlink{exceptionmagrathea_1_1Timer}{Timer}. \begin{DoxyReturn}{Returns}
+0 if no error. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Timer_aa31ac99d8da5b7d928ff6c451b9e1142}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!operator()@{operator()}}
+\index{operator()@{operator()}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Period , class Clock $>$ Type {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::operator() (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Timer_aa31ac99d8da5b7d928ff6c451b9e1142}
+
+
+Total duration extraction operator. 
+
+Computes the total elapsed duration between all starts and stops since the last reset and convert it to an arithmetic type. \begin{DoxyReturn}{Returns}
+Total duration. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Timer_ae30b45ad6c7970c4c32489463e83729a}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!operator=@{operator=}}
+\index{operator=@{operator=}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Period , class Clock $>$ template$<$typename Other\-Type , class Other\-Period $>$ {\bf Timer}$<$ Type, Period, Clock $>$ \& {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Timer}$<$ Other\-Type, Other\-Period, Clock $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Timer_ae30b45ad6c7970c4c32489463e83729a}
+
+
+Conversion assignment operator. 
+
+Assigns the contents from a timer of another type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & (Other duration representation type.) \\
+\hline
+{\em Other\-Period} & (Other standard ratio representing the tick period.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Timer_a6e4a9f49df93c2620c4703fad36b1678}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!real@{real}}
+\index{real@{real}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{real}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Period , class Clock $>$ std\-::chrono\-::duration$<$ Type, Period $>$ {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::{\bf real} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Timer_a6e4a9f49df93c2620c4703fad36b1678}
+
+
+Real duration. 
+
+Computes the real duration since the last reset without considering any start and stop. \begin{DoxyReturn}{Returns}
+Real duration. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Timer_ae51eb0a72eff6505564120765f7f5a97}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!record@{record}}
+\index{record@{record}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{record}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Period , class Clock $>$ const Clock\-::duration \& {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::record (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Timer_ae51eb0a72eff6505564120765f7f5a97}
+
+
+Get the saved duration. 
+
+Returns the value of the saved duration which is the total duration saved during the last stop. \begin{DoxyReturn}{Returns}
+Duration. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Timer_a0da629c75fa145b8bd28b8e913b1561e}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!reference@{reference}}
+\index{reference@{reference}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{reference}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Period , class Clock $>$ const Clock\-::time\-\_\-point \& {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::reference (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Timer_a0da629c75fa145b8bd28b8e913b1561e}
+
+
+Get the reference time point. 
+
+Returns the reference time point, which is generally the time point of the last reset. \begin{DoxyReturn}{Returns}
+Reference time point. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Timer_a76a3e527e10929ce89ea8dce211ed5d3}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!reset@{reset}}
+\index{reset@{reset}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Period , class Clock $>$ std\-::chrono\-::duration$<$ Type, Period $>$ {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Timer_a76a3e527e10929ce89ea8dce211ed5d3}
+
+
+Reset timer. 
+
+Resets the timer \-: all time points are set to the current time, the duration is set to zero, and the timer is set off. \begin{DoxyReturn}{Returns}
+Current duration, which is equal to zero. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Timer_a0b3f41a0ad4242f465f096a39d4d9009}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!running@{running}}
+\index{running@{running}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{running}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Period , class Clock $>$ const bool \& {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::running (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Timer_a0b3f41a0ad4242f465f096a39d4d9009}
+
+
+Get whether the timer is running. 
+
+Returns true if the timer is running, false if it was stopped. \begin{DoxyReturn}{Returns}
+Running status. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Timer_aa5ff5a3ddd22202435d2bf149cf0c1de}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!start@{start}}
+\index{start@{start}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Period , class Clock $>$ std\-::chrono\-::duration$<$ Type, Period $>$ {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::start (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Timer_aa5ff5a3ddd22202435d2bf149cf0c1de}
+
+
+Start timer. 
+
+Starts the timer for a new measurement. If the timer is already running, the previous state is erased. \begin{DoxyReturn}{Returns}
+Current duration, which is equal to zero. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Timer_a178fa98482e7240a799fc438a16e37ea}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!stop@{stop}}
+\index{stop@{stop}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{stop}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Period , class Clock $>$ std\-::chrono\-::duration$<$ Type, Period $>$ {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::stop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Timer_a178fa98482e7240a799fc438a16e37ea}
+
+
+Stop timer. 
+
+Stops the timer, adds the duration to the total one, and returns the time since the previous start. If the timer is already not running, nothing is done. \begin{DoxyReturn}{Returns}
+Current duration. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Timer_ab17dc88ef072205f472d387f4dea1033}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!total@{total}}
+\index{total@{total}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{total}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Period , class Clock $>$ std\-::chrono\-::duration$<$ Type, Period $>$ {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::total (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Timer_ab17dc88ef072205f472d387f4dea1033}
+
+
+Total duration. 
+
+Computes the total elapsed duration between all starts and stops since the last reset. \begin{DoxyReturn}{Returns}
+Total duration. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Timer_a5636affbf45384af93ab036eb15ab274}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!wait@{wait}}
+\index{wait@{wait}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{wait}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Period , class Clock $>$ template$<$class Duration , typename Counter $>$ std\-::chrono\-::duration$<$ Type, Period $>$ {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::wait (
+\begin{DoxyParamCaption}
+\item[{const Duration \&}]{delay = {\ttfamily Duration(1)}, }
+\item[{Counter \&\&}]{counter = {\ttfamily Counter()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1Timer_a5636affbf45384af93ab036eb15ab274}
+
+
+Wait a certain time. 
+
+Loops over time in order to delay some operation. If a counter is passed, it is incremented at each loop. The loop ends when the elapsed time is greater or equal to the specified delay. This delay can be a number or a standard duration. Internally, it is casted to the timer type, and then to a high precision clock. At the end of the function the total duration is casted back from the high precision clock to the timer duration type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Duration} & (Standard duration type or arithmetic type.) \\
+\hline
+{\em Counter} & (Type that can be incremented.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em delay} & Duration to wait. \\
+\hline
+\mbox{\tt in,out}  & {\em counter} & Incremented counter at each loop step. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The real elapsed time in the function. 
+\end{DoxyReturn}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{exceptionmagrathea_1_1Timer_a9b9e2a214358571c47b7159572accf67}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type = double, class Period = std\-::chrono\-::seconds\-::period, class Clock = std\-::chrono\-::steady\-\_\-clock$>$ template$<$typename Self\-Type , class Self\-Period , class Self\-Clock $>$ std\-::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{lhs, }
+\item[{const {\bf Timer}$<$ Self\-Type, Self\-Period, Self\-Clock $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{exceptionmagrathea_1_1Timer_a9b9e2a214358571c47b7159572accf67}
+
+
+\hyperlink{exceptionOutput}{Output} stream operator. 
+
+Prints out the total duration. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Self\-Type} & (Duration representation type.) \\
+\hline
+{\em Self\-Period} & (Standard ratio representing the tick period.) \\
+\hline
+{\em Self\-Clock} & (Internal clock type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em lhs} & Left-\/hand side stream. \\
+\hline
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side timer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{exceptionOutput}{Output} stream. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{exceptionmagrathea_1_1Timer_a6c71f8b0c5557836e48043ff6bad791d}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!\-\_\-beginning@{\-\_\-beginning}}
+\index{\-\_\-beginning@{\-\_\-beginning}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{\-\_\-beginning}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type = double, class Period = std\-::chrono\-::seconds\-::period, class Clock = std\-::chrono\-::steady\-\_\-clock$>$ Clock\-::time\-\_\-point {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::\-\_\-beginning\hspace{0.3cm}{\ttfamily [protected]}}}\label{exceptionmagrathea_1_1Timer_a6c71f8b0c5557836e48043ff6bad791d}
+
+
+Beginning time point for measurements. 
+
+\hypertarget{exceptionmagrathea_1_1Timer_a005c041aa6b61e1f6c365fa6c4d7151d}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!\-\_\-ending@{\-\_\-ending}}
+\index{\-\_\-ending@{\-\_\-ending}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{\-\_\-ending}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type = double, class Period = std\-::chrono\-::seconds\-::period, class Clock = std\-::chrono\-::steady\-\_\-clock$>$ Clock\-::time\-\_\-point {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::\-\_\-ending\hspace{0.3cm}{\ttfamily [protected]}}}\label{exceptionmagrathea_1_1Timer_a005c041aa6b61e1f6c365fa6c4d7151d}
+
+
+Ending time point for measurements. 
+
+\hypertarget{exceptionmagrathea_1_1Timer_a1fb0110e524e12e39685ef9e5312d3f4}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!\-\_\-record@{\-\_\-record}}
+\index{\-\_\-record@{\-\_\-record}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{\-\_\-record}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type = double, class Period = std\-::chrono\-::seconds\-::period, class Clock = std\-::chrono\-::steady\-\_\-clock$>$ Clock\-::duration {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::\-\_\-record\hspace{0.3cm}{\ttfamily [protected]}}}\label{exceptionmagrathea_1_1Timer_a1fb0110e524e12e39685ef9e5312d3f4}
+
+
+Internal backup of duration. 
+
+\hypertarget{exceptionmagrathea_1_1Timer_ad08277afa11789b6ea4cb88ed9f7c28b}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!\-\_\-reference@{\-\_\-reference}}
+\index{\-\_\-reference@{\-\_\-reference}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{\-\_\-reference}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type = double, class Period = std\-::chrono\-::seconds\-::period, class Clock = std\-::chrono\-::steady\-\_\-clock$>$ Clock\-::time\-\_\-point {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::\-\_\-reference\hspace{0.3cm}{\ttfamily [protected]}}}\label{exceptionmagrathea_1_1Timer_ad08277afa11789b6ea4cb88ed9f7c28b}
+
+
+Reference time point for measurements. 
+
+\hypertarget{exceptionmagrathea_1_1Timer_a633b668aeba423f9d6229bce33267226}{\index{magrathea\-::\-Timer@{magrathea\-::\-Timer}!\-\_\-running@{\-\_\-running}}
+\index{\-\_\-running@{\-\_\-running}!magrathea::Timer@{magrathea\-::\-Timer}}
+\subsubsection[{\-\_\-running}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type = double, class Period = std\-::chrono\-::seconds\-::period, class Clock = std\-::chrono\-::steady\-\_\-clock$>$ bool {\bf magrathea\-::\-Timer}$<$ Type, Period, Clock $>$\-::\-\_\-running\hspace{0.3cm}{\ttfamily [protected]}}}\label{exceptionmagrathea_1_1Timer_a633b668aeba423f9d6229bce33267226}
+
+
+Flag to indicate whether a measurement is running or not. 
+
+
+
+The documentation for this exception was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/magrathea/\hyperlink{timer_8h}{timer.\-h}\end{DoxyCompactItemize}

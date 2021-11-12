@@ -1,0 +1,471 @@
+.TH "Create_octree" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Create_octree \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <create_octree\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<template< typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameter , class Cone , class FileList , class Sphere , typename Integer , typename Scalar > void \fBPreparationHDF5_from_particles\fP (Octree< Type, Index, Data, Dimension, Position, Extent, Element, Container > &octree, const Parameter &\fBparameters\fP, const Integer ntasks, const Integer rank, const std::vector< \fBCone\fP > &cone, const std::vector< \fBCone\fP > &coneIfRot, const Scalar thetay, const Scalar thetaz, \fBFileList\fP &conefile, const Sphere &microsphere)"
+.br
+.RI "\fICreate Octree binary files\&. \fP"
+.ti -1c
+.RI "template<template< typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameter , class Cone , class Sphere , class FileList , class Index2 , typename Integer , typename Scalar , class Cosmology > void \fBPreparationBinary\fP (Octree< Type, Index, Data, Dimension, Position, Extent, Element, Container > &octree, const Parameter &\fBparameters\fP, const Integer ntasks, const Integer rank, const std::vector< \fBCone\fP > &cone, \fBFileList\fP &conefile, const Sphere &microsphere, Index2 &filetree, const Scalar h, const Scalar omegam, const Scalar lboxmpch, Scalar &amin, const Cosmology &cosmology)"
+.br
+.RI "\fICreate Octree binary files\&. \fP"
+.ti -1c
+.RI "template<template< typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameter , class Cone , class FileList , class Sphere , typename Integer , typename Scalar , class Cosmology > void \fBPreparationASCII\fP (Octree< Type, Index, Data, Dimension, Position, Extent, Element, Container > &octree, const Parameter &\fBparameters\fP, const Integer ntasks, const Integer rank, const std::vector< \fBCone\fP > &cone, const std::vector< \fBCone\fP > &coneIfRot, const std::array< std::array< double, 3 >, 3 > &rotm1, \fBFileList\fP &conefile, const Sphere &microsphere, const Scalar h, const Scalar omegam, const Scalar lboxmpch, Scalar &amin, const Cosmology &cosmology)"
+.br
+.RI "\fICreate Octree binary files\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<class Parameters , class Map > static void \fBReadParamFile\fP (Parameters &\fBparameters\fP, Map &parameter)"
+.br
+.RI "\fIRead parameter file\&. \fP"
+.ti -1c
+.RI "template<template< typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameters , class Cone , class FileList , class Sphere , typename Integer , typename Scalar , class Cosmology > static void \fBPreparationHDF5_from_cells\fP (Octree< Type, Index, Data, Dimension, Position, Extent, Element, Container > &octree, const Parameters &\fBparameters\fP, const Integer ntasks, const Integer rank, const std::vector< \fBCone\fP > &cone, const std::vector< \fBCone\fP > &coneIfRot, const std::array< std::array< double, 3 >, 3 > &rotm1, const Scalar thetay, const Scalar thetaz, \fBFileList\fP &conefile, const Sphere &microsphere, const Scalar h, const Scalar omegam, const Scalar lboxmpch, Scalar &amin, const Cosmology &cosmology)"
+.br
+.RI "\fICreate Octree binary files\&. \fP"
+.ti -1c
+.RI "template<template< typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameters , class Cone , class FileList , class Sphere , typename Integer , typename Scalar > static void \fBPreparationHDF5_from_particles\fP (Octree< Type, Index, Data, Dimension, Position, Extent, Element, Container > &octree, const Parameters &\fBparameters\fP, const Integer ntasks, const Integer rank, const std::vector< \fBCone\fP > &cone, const std::vector< \fBCone\fP > &coneIfRot, const Scalar thetay, const Scalar thetaz, \fBFileList\fP &conefile, const Sphere &microsphere)"
+.br
+.ti -1c
+.RI "template<template< typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameters , class Cone , class Sphere , class FileList , class Index2 , typename Integer , typename Scalar , class Cosmology > static void \fBPreparationBinary\fP (Octree< Type, Index, Data, Dimension, Position, Extent, Element, Container > &octree, const Parameters &\fBparameters\fP, const Integer ntasks, const Integer rank, const std::vector< \fBCone\fP > &cone, \fBFileList\fP &conefile, const Sphere &microsphere, Index2 &filetree, const Scalar h, const Scalar omegam, const Scalar lboxmpch, Scalar &amin, const Cosmology &cosmology)"
+.br
+.ti -1c
+.RI "template<template< typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameters , class Cone , class FileList , class Sphere , typename Integer , typename Scalar , class Cosmology > static void \fBPreparationASCII\fP (Octree< Type, Index, Data, Dimension, Position, Extent, Element, Container > &octree, const Parameters &\fBparameters\fP, const Integer ntasks, const Integer rank, const std::vector< \fBCone\fP > &cone, const std::vector< \fBCone\fP > &coneIfRot, const std::array< std::array< double, 3 >, 3 > &rotm1, \fBFileList\fP &conefile, const Sphere &microsphere, const Scalar h, const Scalar omegam, const Scalar lboxmpch, Scalar &amin, const Cosmology &cosmology)"
+.br
+.ti -1c
+.RI "template<class Parameters , typename Type1 , template< typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > static void \fBCreateOctreeWithCIC\fP (bool &continue_refining, Octree< Type, Index, Data, Dimension, Position, Extent, Element, Container > &octree, const Parameters &\fBparameters\fP, std::vector< Type1 > &pos_part, std::vector< Type1 > &force_part, std::vector< Type1 > &potential_part, std::vector< Type1 > &a_part)"
+.br
+.RI "\fICreate Octree using CIC\&. \fP"
+.ti -1c
+.RI "template<class Parameters , typename Type1 , template< typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > static void \fBCreateOctreeWithTSC\fP (bool &continue_refining, Octree< Type, Index, Data, Dimension, Position, Extent, Element, Container > &octree, const Parameters &\fBparameters\fP, std::vector< Type1 > &pos_part, std::vector< Type1 > &force_part, std::vector< Type1 > &potential_part, std::vector< Type1 > &a_part)"
+.br
+.RI "\fICreate Octree using TSC\&. \fP"
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class Parameters , typename Type1 , template< typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > void Create_octree::CreateOctreeWithCIC (bool &continue_refining, Octree< Type, Index, Data, Dimension, Position, Extent, Element, Container > &octree, const Parameters &parameters, std::vector< Type1 > &pos_part, std::vector< Type1 > &force_part, std::vector< Type1 > &potential_part, std::vector< Type1 > &a_part)\fC [static]\fP"
+
+.PP
+Create Octree using CIC\&. Create Octree using CIC from particles 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIParameters\fP Parameters type 
+.br
+\fIType1\fP Type1 type 
+.br
+\fIOctree\fP octree type 
+.br
+\fIType\fP type type 
+.br
+\fIIndex\fP index type 
+.br
+\fIData\fP data type 
+.br
+\fIDimension\fP Number of dimensions 
+.br
+\fIPosition\fP position type 
+.br
+\fIExtent\fP extent type 
+.br
+\fIElement\fP element type 
+.br
+\fIContainer\fP container type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontinue_refining\fP Bolean which controls if we continue refinement 
+.br
+\fIoctree\fP Octree be to filled using particles 
+.br
+\fIparameters\fP Parameters structure 
+.br
+\fIpos_part\fP Position of particles 
+.br
+\fIforce_part\fP Force of particles 
+.br
+\fIpotential_part\fP Potential of particles 
+.br
+\fIa_part\fP Scale factor of particles 
+.RE
+.PP
+
+.SS "template<class Parameters , typename Type1 , template< typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > void Create_octree::CreateOctreeWithTSC (bool &continue_refining, Octree< Type, Index, Data, Dimension, Position, Extent, Element, Container > &octree, const Parameters &parameters, std::vector< Type1 > &pos_part, std::vector< Type1 > &force_part, std::vector< Type1 > &potential_part, std::vector< Type1 > &a_part)\fC [static]\fP"
+
+.PP
+Create Octree using TSC\&. Create Octree using TSC 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIParameters\fP Parameters type 
+.br
+\fIType1\fP Type1 type 
+.br
+\fIOctree\fP octree type 
+.br
+\fIType\fP type type 
+.br
+\fIIndex\fP index type 
+.br
+\fIData\fP data type 
+.br
+\fIDimension\fP Number of dimensions 
+.br
+\fIPosition\fP position type 
+.br
+\fIExtent\fP extent type 
+.br
+\fIElement\fP element type 
+.br
+\fIContainer\fP container type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontinue_refining\fP Bolean which controls if we continue refinement 
+.br
+\fIoctree\fP Octree be to filled using particles 
+.br
+\fIparameters\fP Parameters structure 
+.br
+\fIpos_part\fP Position of particles 
+.br
+\fIforce_part\fP Force of particles 
+.br
+\fIpotential_part\fP Potential of particles 
+.br
+\fIa_part\fP Scale factor of particles 
+.RE
+.PP
+
+.SS "template<template< typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameters , class Cone , class FileList , class Sphere , typename Integer , typename Scalar , class Cosmology > static void Create_octree::PreparationASCII (Octree< Type, Index, Data, Dimension, Position, Extent, Element, Container > &octree, const Parameters &parameters, const Integerntasks, const Integerrank, const std::vector< \fBCone\fP > &cone, const std::vector< \fBCone\fP > &coneIfRot, const std::array< std::array< double, 3 >, 3 > &rotm1, \fBFileList\fP &conefile, const Sphere &microsphere, const Scalarh, const Scalaromegam, const Scalarlboxmpch, Scalar &amin, const Cosmology &cosmology)\fC [static]\fP"
+
+.SS "template<template< typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameter , class Cone , class FileList , class Sphere , typename Integer , typename Scalar , class Cosmology > void Create_octree::PreparationASCII (Octree< Type, Index, Data, Dimension, Position, Extent, Element, Container > &octree, const Parameter &parameters, const Integerntasks, const Integerrank, const std::vector< \fBCone\fP > &cone, const std::vector< \fBCone\fP > &coneIfRot, const std::array< std::array< double, 3 >, 3 > &rotm1, \fBFileList\fP &conefile, const Sphere &microsphere, const Scalarh, const Scalaromegam, const Scalarlboxmpch, Scalar &amin, const Cosmology &cosmology)"
+
+.PP
+Create Octree binary files\&. Create Octree binary files from ASCII iles\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOctree\fP octree type 
+.br
+\fIType\fP type type 
+.br
+\fIIndex\fP index type 
+.br
+\fIData\fP data type 
+.br
+\fIDimension\fP Number of dimensions 
+.br
+\fIPosition\fP position type 
+.br
+\fIExtent\fP extent type 
+.br
+\fIElement\fP element type 
+.br
+\fIContainer\fP container type 
+.br
+\fIParameters\fP Parameters type 
+.br
+\fI\fBCone\fP\fP cone type 
+.br
+\fIFilelist\fP filelist type 
+.br
+\fISphere\fP sphere type 
+.br
+\fIInteger\fP Integer type 
+.br
+\fIScalar\fP scalar type 
+.br
+\fICosmology\fP cosmology type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoctree\fP Octree to be filled 
+.br
+\fIparameters\fP Parameters structure 
+.br
+\fIntasks\fP Number of tasks 
+.br
+\fIrank\fP Process rank 
+.br
+\fIcone\fP \fBCone\fP properties 
+.br
+\fIconeIfRot\fP \fBCone\fP with possibly rotation 
+.br
+\fIrotm1\fP Rotation matrix for narrow cells 
+.br
+\fIconefile\fP \fBCone\fP names in conedir 
+.br
+\fImicrosphere\fP Central buffer zone for Octree 
+.br
+\fIh\fP dimensionless Hubble parameter 
+.br
+\fIomegam\fP Matter density fraction 
+.br
+\fIlboxmpch\fP Size of simulation box 
+.br
+\fIamin\fP minimum value scale factor 
+.br
+\fIcosmology\fP Cosmological tables 
+.RE
+.PP
+
+.SS "template<template< typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameters , class Cone , class Sphere , class FileList , class Index2 , typename Integer , typename Scalar , class Cosmology > static void Create_octree::PreparationBinary (Octree< Type, Index, Data, Dimension, Position, Extent, Element, Container > &octree, const Parameters &parameters, const Integerntasks, const Integerrank, const std::vector< \fBCone\fP > &cone, \fBFileList\fP &conefile, const Sphere &microsphere, Index2 &filetree, const Scalarh, const Scalaromegam, const Scalarlboxmpch, Scalar &amin, const Cosmology &cosmology)\fC [static]\fP"
+
+.SS "template<template< typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameter , class Cone , class Sphere , class FileList , class Index2 , typename Integer , typename Scalar , class Cosmology > void Create_octree::PreparationBinary (Octree< Type, Index, Data, Dimension, Position, Extent, Element, Container > &octree, const Parameter &parameters, const Integerntasks, const Integerrank, const std::vector< \fBCone\fP > &cone, \fBFileList\fP &conefile, const Sphere &microsphere, Index2 &filetree, const Scalarh, const Scalaromegam, const Scalarlboxmpch, Scalar &amin, const Cosmology &cosmology)"
+
+.PP
+Create Octree binary files\&. Create Octree binary files from Binary\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOctree\fP octree type 
+.br
+\fIType\fP type type 
+.br
+\fIIndex\fP index type 
+.br
+\fIData\fP data type 
+.br
+\fIDimension\fP Number of dimensions 
+.br
+\fIPosition\fP position type 
+.br
+\fIExtent\fP extent type 
+.br
+\fIElement\fP element type 
+.br
+\fIContainer\fP container type 
+.br
+\fIParameters\fP Parameters type 
+.br
+\fI\fBCone\fP\fP cone type 
+.br
+\fIFilelist\fP filelist type 
+.br
+\fISphere\fP sphere type 
+.br
+\fIInteger\fP Integer type 
+.br
+\fIScalar\fP scalar type 
+.br
+\fICosmology\fP cosmology type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoctree\fP Octree to be filled 
+.br
+\fIparameters\fP Parameters structure 
+.br
+\fIntasks\fP Number of tasks 
+.br
+\fIrank\fP Process rank 
+.br
+\fIcone\fP \fBCone\fP properties 
+.br
+\fIconefile\fP \fBCone\fP names in conedir 
+.br
+\fImicrosphere\fP Central buffer zone for Octree 
+.br
+\fIfiletree\fP Type of Octree containing strings 
+.br
+\fIh\fP dimensionless Hubble parameter 
+.br
+\fIomegam\fP Matter density fraction 
+.br
+\fIlboxmpch\fP Size of simulation box 
+.br
+\fIamin\fP minimum value scale factor 
+.br
+\fIcosmology\fP Cosmological tables 
+.RE
+.PP
+
+.SS "template<template< typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameters , class Cone , class FileList , class Sphere , typename Integer , typename Scalar , class Cosmology > void Create_octree::PreparationHDF5_from_cells (Octree< Type, Index, Data, Dimension, Position, Extent, Element, Container > &octree, const Parameters &parameters, const Integerntasks, const Integerrank, const std::vector< \fBCone\fP > &cone, const std::vector< \fBCone\fP > &coneIfRot, const std::array< std::array< double, 3 >, 3 > &rotm1, const Scalarthetay, const Scalarthetaz, \fBFileList\fP &conefile, const Sphere &microsphere, const Scalarh, const Scalaromegam, const Scalarlboxmpch, Scalar &amin, const Cosmology &cosmology)\fC [static]\fP"
+
+.PP
+Create Octree binary files\&. Create Octree binary files from HDF5\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOctree\fP octree type 
+.br
+\fIType\fP type type 
+.br
+\fIIndex\fP index type 
+.br
+\fIData\fP data type 
+.br
+\fIDimension\fP Number of dimensions 
+.br
+\fIPosition\fP position type 
+.br
+\fIExtent\fP extent type 
+.br
+\fIElement\fP element type 
+.br
+\fIContainer\fP container type 
+.br
+\fIParameters\fP Parameters type 
+.br
+\fI\fBCone\fP\fP cone type 
+.br
+\fIFilelist\fP filelist type 
+.br
+\fISphere\fP sphere type 
+.br
+\fIInteger\fP Integer type 
+.br
+\fIScalar\fP scalar type 
+.br
+\fICosmology\fP cosmology type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoctree\fP Octree to be filled 
+.br
+\fIparameters\fP Parameters structure 
+.br
+\fIntasks\fP Number of tasks 
+.br
+\fIrank\fP Process rank 
+.br
+\fIcone\fP \fBCone\fP properties 
+.br
+\fIconeIfRot\fP \fBCone\fP with possibly rotation 
+.br
+\fIrotm1\fP Rotation matrix for narrow cells 
+.br
+\fIthetay\fP Semi-angle for solid angle in direction y 
+.br
+\fIthetaz\fP Semi-angle for solid angle in direction z 
+.br
+\fIconefile\fP \fBCone\fP names in conedir 
+.br
+\fImicrosphere\fP Central buffer zone for Octree 
+.br
+\fIh\fP Dimensionless Hubble parameter 
+.br
+\fIomegam\fP Matter density fraction 
+.br
+\fIlboxmpch\fP Size of simulation box 
+.br
+\fIamin\fP minimum value scale factor 
+.br
+\fIcosmology\fP Cosmological tables 
+.RE
+.PP
+
+.SS "template<template< typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameters , class Cone , class FileList , class Sphere , typename Integer , typename Scalar > static void Create_octree::PreparationHDF5_from_particles (Octree< Type, Index, Data, Dimension, Position, Extent, Element, Container > &octree, const Parameters &parameters, const Integerntasks, const Integerrank, const std::vector< \fBCone\fP > &cone, const std::vector< \fBCone\fP > &coneIfRot, const Scalarthetay, const Scalarthetaz, \fBFileList\fP &conefile, const Sphere &microsphere)\fC [static]\fP"
+
+.SS "template<template< typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameter , class Cone , class FileList , class Sphere , typename Integer , typename Scalar > void Create_octree::PreparationHDF5_from_particles (Octree< Type, Index, Data, Dimension, Position, Extent, Element, Container > &octree, const Parameter &parameters, const Integerntasks, const Integerrank, const std::vector< \fBCone\fP > &cone, const std::vector< \fBCone\fP > &coneIfRot, const Scalarthetay, const Scalarthetaz, \fBFileList\fP &conefile, const Sphere &microsphere)"
+
+.PP
+Create Octree binary files\&. Create Octree binary files from HDF5\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOctree\fP octree type 
+.br
+\fIType\fP type type 
+.br
+\fIIndex\fP index type 
+.br
+\fIData\fP data type 
+.br
+\fIDimension\fP Number of dimensions 
+.br
+\fIPosition\fP position type 
+.br
+\fIExtent\fP extent type 
+.br
+\fIElement\fP element type 
+.br
+\fIContainer\fP container type 
+.br
+\fIParameters\fP Parameters type 
+.br
+\fI\fBCone\fP\fP cone type 
+.br
+\fIFilelist\fP filelist type 
+.br
+\fISphere\fP sphere type 
+.br
+\fIInteger\fP Integer type 
+.br
+\fIScalar\fP scalar type 
+.br
+\fICosmology\fP cosmology type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoctree\fP Octree to be filled 
+.br
+\fIparameters\fP Parameters structure 
+.br
+\fIntasks\fP Number of tasks 
+.br
+\fIrank\fP Process rank 
+.br
+\fIcone\fP \fBCone\fP properties 
+.br
+\fIconeIfRot\fP \fBCone\fP with possibly rotation 
+.br
+\fIconefile\fP \fBCone\fP names in conedir 
+.br
+\fImicrosphere\fP Central buffer zone for Octree 
+.br
+\fIh\fP Dimensionless Hubble parameter 
+.br
+\fIomegam\fP Matter density fraction 
+.br
+\fIlboxmpch\fP Size of simulation box 
+.br
+\fIamin\fP minimum value scale factor 
+.br
+\fIcosmology\fP Cosmological tables 
+.RE
+.PP
+
+.SS "template<class Parameters , class Map > void Create_octree::ReadParamFile (Parameters &parameters, Map &parameter)\fC [static]\fP"
+
+.PP
+Read parameter file\&. Read and put in a structure the parameters\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIParameters\fP structure type 
+.br
+\fIMap\fP map type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Structure containing the parameters\&. 
+.br
+\fIparameter\fP Contains parameters to be rewritten 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

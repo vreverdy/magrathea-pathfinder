@@ -1,0 +1,1645 @@
+.TH "magrathea::AbstractNArray< Kind, Size, Crtp, Type, Parameters >" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::AbstractNArray< Kind, Size, Crtp, Type, Parameters > \- 
+.PP
+Abstract base class of n-dimensional mathematical arrays\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <abstractnarray\&.h>\fP
+.PP
+Inherits \fBmagrathea::StaticVectorizer< Kind, Size, Crtp, Type, Parameters\&.\&.\&.>\fP\&.
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBLifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBAbstractNArray\fP ()"
+.br
+.RI "\fIImplicit empty constructor\&. \fP"
+.ti -1c
+.RI "template<typename FundamentalType  = Type, class  = typename std::enable_if<std::is_fundamental<FundamentalType>::value>::type> \fBAbstractNArray\fP (const \fBAbstractNArray\fP< Kind, Size, Crtp, FundamentalType, Parameters\&.\&.\&.> &source)"
+.br
+.RI "\fIImplicit conversion constructor\&. \fP"
+.ti -1c
+.RI "template<typename OtherType  = Type, class\&.\&.\&. Misc, class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> \fBAbstractNArray\fP (const std::initializer_list< OtherType > &source, const Misc &\&.\&.\&.misc)"
+.br
+.RI "\fIImplicit initializer list constructor\&. \fP"
+.ti -1c
+.RI "template<class\&.\&.\&. Misc, class  = typename std::enable_if<sizeof\&.\&.\&.(Misc) != 0>::type> \fBAbstractNArray\fP (const Misc &\&.\&.\&.misc)"
+.br
+.RI "\fIExplicit generic constructor\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBVectorization\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "Type & \fBoperator[]\fP (const unsigned int i)"
+.br
+.RI "\fIDirect access to the element\&. \fP"
+.ti -1c
+.RI "const Type & \fBoperator[]\fP (const unsigned int i) const "
+.br
+.RI "\fIImmutable direct access to the element\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBAccess\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "Type * \fBdata\fP ()"
+.br
+.RI "\fIDirect access to the underlying storage\&. \fP"
+.ti -1c
+.RI "const Type * \fBdata\fP () const "
+.br
+.RI "\fIImmutable direct access to the underlying storage\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBIterators\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "Type * \fBbegin\fP ()"
+.br
+.RI "\fIIterator to the beginning\&. \fP"
+.ti -1c
+.RI "const Type * \fBbegin\fP () const "
+.br
+.RI "\fIImmutable iterator to the beginning\&. \fP"
+.ti -1c
+.RI "const Type * \fBcbegin\fP () const "
+.br
+.RI "\fIForced immutable iterator to the beginning\&. \fP"
+.ti -1c
+.RI "Type * \fBend\fP ()"
+.br
+.RI "\fIIterator to the end\&. \fP"
+.ti -1c
+.RI "const Type * \fBend\fP () const "
+.br
+.RI "\fIImmutable iterator to the end\&. \fP"
+.ti -1c
+.RI "const Type * \fBcend\fP () const "
+.br
+.RI "\fIForced immutable iterator to the end\&. \fP"
+.ti -1c
+.RI "std::reverse_iterator< Type * > \fBrbegin\fP ()"
+.br
+.RI "\fIReverse iterator to the beginning\&. \fP"
+.ti -1c
+.RI "std::reverse_iterator< const 
+.br
+Type * > \fBrbegin\fP () const "
+.br
+.RI "\fIImmutable reverse iterator to the beginning\&. \fP"
+.ti -1c
+.RI "std::reverse_iterator< const 
+.br
+Type * > \fBcrbegin\fP () const "
+.br
+.RI "\fIForced immutable reverse iterator to the beginning\&. \fP"
+.ti -1c
+.RI "std::reverse_iterator< Type * > \fBrend\fP ()"
+.br
+.RI "\fIReverse iterator to the end\&. \fP"
+.ti -1c
+.RI "std::reverse_iterator< const 
+.br
+Type * > \fBrend\fP () const "
+.br
+.RI "\fIImmutable reverse iterator to the end\&. \fP"
+.ti -1c
+.RI "std::reverse_iterator< const 
+.br
+Type * > \fBcrend\fP () const "
+.br
+.RI "\fIForced immutable reverse iterator to the end\&. \fP"
+.ti -1c
+.RI "template<typename IteratorType > unsigned int \fBindex\fP (const IteratorType &it, typename std::iterator_traits< IteratorType >::iterator_category *=nullptr) const "
+.br
+.RI "\fIIndex of an iterator in the array\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBComparison\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "bool \fBnull\fP (const Type &tolerance) const "
+.br
+.RI "\fICheck whether all elements are approximately null\&. \fP"
+.ti -1c
+.RI "template<class GenericType > bool \fBeq\fP (const GenericType &rhs, const Type &tolerance) const "
+.br
+.RI "\fICompare for approximate equality\&. \fP"
+.ti -1c
+.RI "template<class GenericType > bool \fBne\fP (const GenericType &rhs, const Type &tolerance) const "
+.br
+.RI "\fICompare for noticeable difference\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBStatistics\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class Mask  = std::true_type, class  = typename std::enable_if<(std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value)>::type> const Type & \fBamin\fP (const Mask &bitmask=Mask()) const "
+.br
+.RI "\fIAbsolute minimum element\&. \fP"
+.ti -1c
+.RI "template<class Mask  = std::true_type, class  = typename std::enable_if<(std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value)>::type> const Type & \fBamax\fP (const Mask &bitmask=Mask()) const "
+.br
+.RI "\fIMaximum element\&. \fP"
+.ti -1c
+.RI "template<typename Return  = typename std::conditional<std::is_floating_point<Type>::value, Type, double>::type, class Coefficient  = Type, class Mask  = std::true_type, class  = typename std::enable_if<(std::is_arithmetic<Return>::value) && ((std::is_base_of<Vectorizer, Coefficient>::value) || (std::is_convertible<Coefficient, Type>::value)) && ((std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value))>::type> Return \fBmean\fP (const Coefficient &coefficient=Coefficient(1), const Mask &bitmask=Mask()) const "
+.br
+.RI "\fIMean value\&. \fP"
+.ti -1c
+.RI "template<typename Return  = typename std::conditional<std::is_floating_point<Type>::value, Type, double>::type, typename Correction  = Return, class Coefficient  = Type, class Mask  = std::true_type, class  = typename std::enable_if<(std::is_arithmetic<Return>::value) && (std::is_arithmetic<Correction>::value) && ((std::is_base_of<Vectorizer, Coefficient>::value) || (std::is_convertible<Coefficient, Type>::value)) && ((std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value))>::type> Return \fBsigma\fP (const Correction &correction=Correction(0), const Coefficient &coefficient=Coefficient(1), const Mask &bitmask=Mask()) const "
+.br
+.RI "\fIStandard deviation\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBApplication\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename Return  = Type, typename First  = Type, class\&.\&.\&. Types, class\&.\&.\&. Args, class  = typename std::enable_if<(std::is_convertible<typename std::decay<First>::type, typename std::decay<Type>::type>::value) && (sizeof\&.\&.\&.(Types) == sizeof\&.\&.\&.(Args))>::type> Crtp< Type, Parameters\&.\&.\&.> & \fBmodify\fP (Return(*f)(First, Types\&.\&.\&.), Args &&\&.\&.\&.args)"
+.br
+.RI "\fIModification by a function pointer\&. \fP"
+.ti -1c
+.RI "template<typename Return  = Type, typename First  = Type, class\&.\&.\&. Types, class\&.\&.\&. Args, class Mask , class  = typename std::enable_if<(std::is_base_of<Vectorizer, Mask>::value) && (std::is_convertible<typename std::decay<First>::type, typename std::decay<Type>::type>::value) && (sizeof\&.\&.\&.(Types) == sizeof\&.\&.\&.(Args))>::type> Crtp< Type, Parameters\&.\&.\&.> & \fBmodify\fP (const Mask &bitmask, Return(*f)(First, Types\&.\&.\&.), Args &&\&.\&.\&.args)"
+.br
+.RI "\fIMasked modification by a function pointer\&. \fP"
+.ti -1c
+.RI "template<typename Return  = Type, typename First  = Type, class\&.\&.\&. Types, class\&.\&.\&. Args, class  = typename std::enable_if<(std::is_convertible<typename std::decay<First>::type, typename std::decay<Type>::type>::value) && (sizeof\&.\&.\&.(Types) == sizeof\&.\&.\&.(Args))>::type> Crtp< Return, Parameters\&.\&.\&.> \fBapply\fP (Return(*f)(First, Types\&.\&.\&.), Args &&\&.\&.\&.args) const "
+.br
+.RI "\fIApplication of a function pointer\&. \fP"
+.ti -1c
+.RI "template<typename Return  = Type, typename First  = Type, class\&.\&.\&. Types, class\&.\&.\&. Args, class Mask , class  = typename std::enable_if<(std::is_base_of<Vectorizer, Mask>::value) && (std::is_convertible<typename std::decay<First>::type, typename std::decay<Type>::type>::value) && (sizeof\&.\&.\&.(Types) == sizeof\&.\&.\&.(Args))>::type> Crtp< Return, Parameters\&.\&.\&.> \fBapply\fP (const Mask &bitmask, Return(*f)(First, Types\&.\&.\&.), Args &&\&.\&.\&.args) const "
+.br
+.RI "\fIMasked application of a function pointer\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBCount\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class Function  = std::equal_to<Type>, class Mask  = std::true_type, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, typename std::decay<Function>::type>::value) && ((std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value))>::type> bool \fBunicity\fP (Function &&f=Function(), const Mask &bitmask=Mask()) const "
+.br
+.RI "\fIUnicity of elements\&. \fP"
+.ti -1c
+.RI "template<class Function  = std::equal_to<Type>, class Mask  = std::true_type, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, typename std::decay<Function>::type>::value) && ((std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value))>::type> unsigned int \fBdistinct\fP (Function &&f=Function(), const Mask &bitmask=Mask()) const "
+.br
+.RI "\fINumber of distincts elements\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBSort\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class Function  = std::less<Type>, class Indexes  = Type, class Mask  = std::true_type, class Pair  = std::pair<Type, typename std::remove_const<typename std::remove_reference<decltype(Vectorizer::get(std::declval<Indexes>(), 0))>::type>::type>, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, typename std::decay<Function>::type>::value) && ((std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value))>::type> Crtp< Type, Parameters\&.\&.\&.> & \fBarrange\fP (Function &&f=Function(), Indexes &&indexes=Indexes(), const Mask &bitmask=Mask())"
+.br
+.RI "\fIArrange the container\&. \fP"
+.ti -1c
+.RI "template<class Function  = std::less<Type>, class Indexes  = Type, class Mask  = std::true_type, class Pair  = std::pair<Type, typename std::remove_const<typename std::remove_reference<decltype(Vectorizer::get(std::declval<Indexes>(), 0))>::type>::type>, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, typename std::decay<Function>::type>::value) && ((std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value))>::type> Crtp< Type, Parameters\&.\&.\&.> \fBsort\fP (Function &&f=Function(), Indexes &&indexes=Indexes(), const Mask &bitmask=Mask()) const "
+.br
+.RI "\fISort\&. \fP"
+.ti -1c
+.RI "template<class Function  = std::less<Type>, class Indexes  = Type, class Mask  = std::true_type, class Pair  = std::pair<Type, typename std::remove_const<typename std::remove_reference<decltype(Vectorizer::get(std::declval<Indexes>(), 0))>::type>::type>, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, typename std::decay<Function>::type>::value) && ((std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value))>::type> Crtp< Type, Parameters\&.\&.\&.> & \fBaarrange\fP (Function &&f=Function(), Indexes &&indexes=Indexes(), const Mask &bitmask=Mask())"
+.br
+.RI "\fIAbsolute arrange the container\&. \fP"
+.ti -1c
+.RI "template<class Function  = std::less<Type>, class Indexes  = Type, class Mask  = std::true_type, class Pair  = std::pair<Type, typename std::remove_const<typename std::remove_reference<decltype(Vectorizer::get(std::declval<Indexes>(), 0))>::type>::type>, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, typename std::decay<Function>::type>::value) && ((std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value))>::type> Crtp< Type, Parameters\&.\&.\&.> \fBasort\fP (Function &&f=Function(), Indexes &&indexes=Indexes(), const Mask &bitmask=Mask()) const "
+.br
+.RI "\fIAbsolute sort\&. \fP"
+.ti -1c
+.RI "template<class Indexes  = Type, class Pair  = std::pair<typename std::remove_const<typename std::remove_reference<decltype(Vectorizer::get(std::declval<Indexes>(), 0))>::type>::type, unsigned int>> Crtp< Type, Parameters\&.\&.\&.> & \fBrearrange\fP (const Indexes &indexes=Indexes())"
+.br
+.RI "\fIRe-arrange as a function of indexes\&. \fP"
+.ti -1c
+.RI "template<class Indexes  = Type, class Pair  = std::pair<typename std::remove_const<typename std::remove_reference<decltype(Vectorizer::get(std::declval<Indexes>(), 0))>::type>::type, unsigned int>> Crtp< Type, Parameters\&.\&.\&.> \fBresort\fP (const Indexes &indexes=Indexes()) const "
+.br
+.RI "\fIRe-sort as a function of indexes\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBMathematical functions\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class Mask  = std::true_type, class  = typename std::enable_if<(std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value)>::type> Crtp< Type, Parameters\&.\&.\&.> \fBabs\fP (const Mask &bitmask=Mask()) const "
+.br
+.RI "\fIAbsolute value\&. \fP"
+.ti -1c
+.RI "template<int Exponent = 1> Crtp< Type, Parameters\&.\&.\&.> \fBpow\fP () const "
+.br
+.RI "\fIPower metafunction\&. \fP"
+.ti -1c
+.RI "template<class GenericType , class Mask  = std::true_type, class  = typename std::enable_if<(std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value)>::type> Crtp< Type, Parameters\&.\&.\&.> \fBpow\fP (const GenericType &rhs, const Mask &bitmask=Mask()) const "
+.br
+.RI "\fIPower\&. \fP"
+.ti -1c
+.RI "template<int Degree = 1> Crtp< Type, Parameters\&.\&.\&.> \fBrt\fP () const "
+.br
+.RI "\fIRoot metafunction\&. \fP"
+.ti -1c
+.RI "template<class GenericType , class Mask  = std::true_type, class  = typename std::enable_if<(std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value)>::type> Crtp< Type, Parameters\&.\&.\&.> \fBrt\fP (const GenericType &rhs, const Mask &bitmask=Mask()) const "
+.br
+.RI "\fIRoot\&. \fP"
+.ti -1c
+.RI "template<unsigned int Base = 0> Crtp< Type, Parameters\&.\&.\&.> \fBlog\fP () const "
+.br
+.RI "\fILog metafunction\&. \fP"
+.ti -1c
+.RI "template<class GenericType , class Mask  = std::true_type, class  = typename std::enable_if<(std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value)>::type> Crtp< Type, Parameters\&.\&.\&.> \fBlog\fP (const GenericType &rhs, const Mask &bitmask=Mask()) const "
+.br
+.RI "\fILogarithm\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBNorm\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<unsigned int Degree = 2, typename NormType  = typename std::conditional<std::is_floating_point<Type>::value, Type, double>::type, class Mask  = std::true_type, class  = typename std::enable_if<(std::is_arithmetic<NormType>::value) && ((std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value))>::type> NormType \fBnorm\fP (const Mask &bitmask=Mask()) const "
+.br
+.RI "\fINorm\&. \fP"
+.ti -1c
+.RI "template<unsigned int Degree = 2, typename NormType  = typename std::conditional<std::is_floating_point<Type>::value, Type, double>::type, class Mask  = std::true_type, class  = typename std::enable_if<(std::is_arithmetic<NormType>::value) && ((std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value))>::type> Crtp< Type, Parameters\&.\&.\&.> & \fBrenormalize\fP (const Mask &bitmask=Mask())"
+.br
+.RI "\fIRenormalize\&. \fP"
+.ti -1c
+.RI "template<unsigned int Degree = 2, typename NormType  = typename std::conditional<std::is_floating_point<Type>::value, Type, double>::type, class Mask  = std::true_type, class  = typename std::enable_if<(std::is_arithmetic<NormType>::value) && ((std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value))>::type> Crtp< Type, Parameters\&.\&.\&.> \fBnormalize\fP (const Mask &bitmask=Mask()) const "
+.br
+.RI "\fINormalize\&. \fP"
+.in -1c
+.in -1c
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBPredefined\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static Crtp< Type, Parameters\&.\&.\&.> \fBzero\fP ()"
+.br
+.RI "\fIZero array\&. \fP"
+.ti -1c
+.RI "static Crtp< Type, Parameters\&.\&.\&.> \fBone\fP ()"
+.br
+.RI "\fIOne array\&. \fP"
+.ti -1c
+.RI "template<class Mask  = std::true_type, class  = typename std::enable_if<(std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value)>::type> static Crtp< Type, Parameters\&.\&.\&.> \fBvalue\fP (const Type &source=Type(), const Mask &bitmask=Mask())"
+.br
+.RI "\fIArray from value\&. \fP"
+.ti -1c
+.RI "template<class Mask  = std::true_type, class  = typename std::enable_if<(std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value)>::type> static Crtp< Type, Parameters\&.\&.\&.> \fBrandom\fP (const Type &lowest=0, const Type &highest=1, const Mask &bitmask=Mask())"
+.br
+.RI "\fIBasic random array creation\&. \fP"
+.ti -1c
+.RI "template<class Engine , class Distribution , class Mask  = std::true_type, class  = typename std::enable_if<(std::decay<Engine>::type::min() != std::decay<Engine>::type::max()) && (!std::is_void<typename std::decay<Distribution>::type::result_type>::value) && ((std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value))>::type> static Crtp< Type, Parameters\&.\&.\&.> \fBrandom\fP (Engine &&engine, Distribution &&distribution, const Mask &bitmask=Mask())"
+.br
+.RI "\fIGeneric random array creation\&. \fP"
+.ti -1c
+.RI "template<class Function  = unsigned int&& (*)(unsigned int&), class Mask  = std::true_type, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, typename std::decay<Function>::type>::value) && ((std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value))>::type> static Crtp< Type, Parameters\&.\&.\&.> \fBindexed\fP (Function &&f=std::forward< unsigned int >, const Mask &bitmask=Mask())"
+.br
+.RI "\fIIndexed array\&. \fP"
+.ti -1c
+.RI "template<class Function  = std::plus<Type>, class Mask  = std::true_type, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, typename std::decay<Function>::type>::value) && ((std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value))>::type> static Crtp< Type, Parameters\&.\&.\&.> \fBprogressive\fP (const Type &first=Type(0), const Type &step=Type(1), Function &&f=Function(), const Mask &bitmask=Mask())"
+.br
+.RI "\fIProgressive array\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "using \fBoperator\fP = typedef"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.PP
+.RI "\fBProtected lifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fB~AbstractNArray\fP ()"
+.br
+.RI "\fIProtected destructor\&. \fP"
+.in -1c
+.in -1c
+.SS "Protected Attributes"
+
+.PP
+.RI "\fBData members\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "Type \fB_data\fP [Size]"
+.br
+.RI "\fIData contents\&. \fP"
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters>class magrathea::AbstractNArray< Kind, Size, Crtp, Type, Parameters >"
+Abstract base class of n-dimensional mathematical arrays\&. 
+
+Provides common base for n-dimensional order 1 mathematical containers thanks to the curiously recurring template pattern (CRTP) trick\&. The class derives from \fBStaticVectorizer\fP, provides the storage and adds functions specific to arithmetic types\&. To use it, one has to derive from this class and pass the derived class itself as the CRTP parameter\&. The derived classes have to satisfy the conditions required by the \fBVectorizer\fP base class\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIKind\fP Kind of arguments\&. 
+.br
+\fISize\fP Number of elements\&. 
+.br
+\fICrtp\fP Derived CRTP class\&. 
+.br
+\fIType\fP Arithmetic data type\&. 
+.br
+\fIParameters\fP List of parameters\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::~\fBAbstractNArray\fP ()\fC [inline]\fP, \fC [protected]\fP, \fC [default]\fP"
+
+.PP
+Protected destructor\&. Does nothing\&. 
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::\fBAbstractNArray\fP ()\fC [inline]\fP"
+
+.PP
+Implicit empty constructor\&. Does nothing\&. 
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename FundamentalType , class > \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::\fBAbstractNArray\fP (const \fBAbstractNArray\fP< Kind, Size, Crtp, FundamentalType, Parameters\&.\&.\&.> &source)\fC [inline]\fP"
+
+.PP
+Implicit conversion constructor\&. Provides an implicit conversion from a fundamental type contents\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFundamentalType\fP (Fundamental data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class\&.\&.\&. Misc, class > \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::\fBAbstractNArray\fP (const std::initializer_list< OtherType > &source, const Misc &\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Implicit initializer list constructor\&. Provides an implicit conversion from an initializer list\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.br
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class\&.\&.\&. Misc, class > \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::\fBAbstractNArray\fP (const Misc &\&.\&.\&.misc)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit generic constructor\&. Provides a generic interface to all constructors of the base class\&. Before calling the associated constructor of the base class, the contents is initialized\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class Function , class Indexes , class Mask , class Pair , class > Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::aarrange (Function &&f = \fCFunction()\fP, Indexes &&indexes = \fCIndexes()\fP, const Mask &bitmask = \fCMask()\fP)\fC [inline]\fP"
+
+.PP
+Absolute arrange the container\&. Sorts the contents by its absolute value and returns a sorted reference using \fCstd::sort\fP\&. A comparison function, a list of indexes and a boolean mask can be passed\&. The list of indexes is a vectorized container which will be sorted in the same order as the array\&. If a scalar is passed, nothing is done on it\&. This is equivalent to the \fC\fBasort()\fP\fP function except that it works on the contents instead of a copy\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFunction\fP (Function type : \fCbool(Type, Type)\fP\&.) 
+.br
+\fIIndexes\fP (\fBVectorized\fP container type or dummy scalar\&.) 
+.br
+\fIMask\fP (Mask type\&.) 
+.br
+\fIPair\fP (Inner pair type for indexes\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Function object \fCbool(Type, Type)\fP\&. 
+.br
+\fIindexes\fP \fBVectorized\fP container or dummy scalar to be sorted\&. 
+.br
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class Mask , class > Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::abs (const Mask &bitmask = \fCMask()\fP) const\fC [inline]\fP"
+
+.PP
+Absolute value\&. Applies the \fCstd::abs()\fP function to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class Mask , class > const Type & \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::amax (const Mask &bitmask = \fCMask()\fP) const\fC [inline]\fP"
+
+.PP
+Maximum element\&. Returns a reference to the absolute maximum element of the container or masked container\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the element\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::runtime_error\fP Empty search\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class Mask , class > const Type & \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::amin (const Mask &bitmask = \fCMask()\fP) const\fC [inline]\fP"
+
+.PP
+Absolute minimum element\&. Returns a reference to the absolute minimum element of the container or masked container\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the element\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::runtime_error\fP Empty search\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename Return , typename First , class\&.\&.\&. Types, class\&.\&.\&. Args, class > Crtp< Return, Parameters\&.\&.\&.> \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::apply (Return(*)(First, Types\&.\&.\&.)f, Args &&\&.\&.\&.args) const\fC [inline]\fP"
+
+.PP
+Application of a function pointer\&. Applies a function pointer to each element of the container and returns a copy of the result\&. For a result \fCy\fP, an element \fCx\fP, a function \fCf\fP and for extra arguments \fCargs\&.\&.\&.\fP, an equivalent expression is : \fCy = f(x, args\&.\&.\&.)\fP\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIReturn\fP Return type\&.  
+.br
+\fIFirst\fP Type of the first argument of the function\&. 
+.br
+\fITypes\fP Extra types of the function\&. 
+.br
+\fIArgs\fP (Extra types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Function pointer \fCReturn(First, Types\&.\&.\&.)\fP\&. 
+.br
+\fIargs\fP Extra arguments of the function\&.  
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+\fBWarning:\fP
+.RS 4
+In case of implicit cast or extra arguments, types related to the function have to be specified manually as template parameters\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename Return , typename First , class\&.\&.\&. Types, class\&.\&.\&. Args, class Mask , class > Crtp< Return, Parameters\&.\&.\&.> \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::apply (const Mask &bitmask, Return(*)(First, Types\&.\&.\&.)f, Args &&\&.\&.\&.args) const\fC [inline]\fP"
+
+.PP
+Masked application of a function pointer\&. Applies a function pointer to each element of the container where the mask is true and returns a copy of the result\&. For a result \fCy\fP, an element \fCx\fP, a function \fCf\fP and for extra arguments \fCargs\&.\&.\&.\fP, an equivalent expression is : \fCy = f(x, args\&.\&.\&.)\fP\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIReturn\fP Return type\&.  
+.br
+\fIFirst\fP Type of the first argument of the function\&. 
+.br
+\fITypes\fP Extra types of the function\&. 
+.br
+\fIArgs\fP (Extra types\&.) 
+.br
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbitmask\fP Boolean mask\&. 
+.br
+\fIf\fP Function pointer \fCReturn(First, Types\&.\&.\&.)\fP\&. 
+.br
+\fIargs\fP Extra arguments of the function\&.  
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+\fBWarning:\fP
+.RS 4
+In case of implicit cast or extra arguments, types related to the function have to be specified manually as template parameters\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class Function , class Indexes , class Mask , class Pair , class > Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::arrange (Function &&f = \fCFunction()\fP, Indexes &&indexes = \fCIndexes()\fP, const Mask &bitmask = \fCMask()\fP)\fC [inline]\fP"
+
+.PP
+Arrange the container\&. Sorts the contents and returns a sorted reference using \fCstd::sort\fP\&. A comparison function, a list of indexes and a boolean mask can be passed\&. The list of indexes is a vectorized container which will be sorted in the same order as the array\&. If a scalar is passed, nothing is done on it\&. This is equivalent to the \fC\fBsort()\fP\fP function except that it works on the contents instead of a copy\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFunction\fP (Function type : \fCbool(Type, Type)\fP\&.) 
+.br
+\fIIndexes\fP (\fBVectorized\fP container type or dummy scalar\&.) 
+.br
+\fIMask\fP (Mask type\&.) 
+.br
+\fIPair\fP (Inner pair type for indexes\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Function object \fCbool(Type, Type)\fP\&. 
+.br
+\fIindexes\fP \fBVectorized\fP container or dummy scalar to be sorted\&. 
+.br
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class Function , class Indexes , class Mask , class Pair , class > Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::asort (Function &&f = \fCFunction()\fP, Indexes &&indexes = \fCIndexes()\fP, const Mask &bitmask = \fCMask()\fP) const\fC [inline]\fP"
+
+.PP
+Absolute sort\&. Sorts the contents by its absolute value and returns a sorted copy using \fCstd::sort\fP\&. A comparison function, a list of indexes and a boolean mask can be passed\&. The list of indexes is a vectorized container which will be sorted in the same order as the array\&. If a scalar is passed, nothing is done on it\&. This is equivalent to the \fC\fBaarrange()\fP\fP function except that it works on a copy instead of the contents\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFunction\fP (Function type : \fCbool(Type, Type)\fP\&.) 
+.br
+\fIIndexes\fP (\fBVectorized\fP container type or dummy scalar\&.) 
+.br
+\fIMask\fP (Mask type\&.) 
+.br
+\fIPair\fP (Inner pair type for indexes\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Function object \fCbool(Type, Type)\fP\&. 
+.br
+\fIindexes\fP \fBVectorized\fP container or dummy scalar to be sorted\&. 
+.br
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Type * \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::begin ()\fC [inline]\fP"
+
+.PP
+Iterator to the beginning\&. Returns a pointer to the first element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the beginning\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> const Type * \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::begin () const\fC [inline]\fP"
+
+.PP
+Immutable iterator to the beginning\&. Returns a pointer to the first element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the beginning\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> const Type * \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::cbegin () const\fC [inline]\fP"
+
+.PP
+Forced immutable iterator to the beginning\&. Returns a constant pointer to the first element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the beginning\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> const Type * \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::cend () const\fC [inline]\fP"
+
+.PP
+Forced immutable iterator to the end\&. Returns a constant pointer to the position after the last element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the end\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> std::reverse_iterator< const Type * > \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::crbegin () const\fC [inline]\fP"
+
+.PP
+Forced immutable reverse iterator to the beginning\&. Returns a constant reversed pointer to the position after the last element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the end\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> std::reverse_iterator< const Type * > \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::crend () const\fC [inline]\fP"
+
+.PP
+Forced immutable reverse iterator to the end\&. Returns a constant reversed pointer to the first element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the beginning\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Type * \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::data ()\fC [inline]\fP"
+
+.PP
+Direct access to the underlying storage\&. Returns a pointer to the first element of the underlying array\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the first element\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> const Type * \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::data () const\fC [inline]\fP"
+
+.PP
+Immutable direct access to the underlying storage\&. Returns a pointer to the first element of the underlying array\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the first element\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class Function , class Mask , class > unsigned int \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::distinct (Function &&f = \fCFunction()\fP, const Mask &bitmask = \fCMask()\fP) const\fC [inline]\fP"
+
+.PP
+Number of distincts elements\&. Counts the number of distincts elements using the provided function with the \fCstd::unique()\fP algorithm\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFunction\fP (Function type : \fCbool(Type, Type)\fP\&.) 
+.br
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Function object \fCbool(Type, Type)\fP\&. 
+.br
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the result\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Type * \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::end ()\fC [inline]\fP"
+
+.PP
+Iterator to the end\&. Returns a pointer to the position after the last element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the end\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> const Type * \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::end () const\fC [inline]\fP"
+
+.PP
+Immutable iterator to the end\&. Returns a pointer to the position after the last element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the end\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<class GenericType > bool \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::eq (const GenericType &rhs, const Type &tolerance) const\fC [inline]\fP"
+
+.PP
+Compare for approximate equality\&. Returns true if all elements of the containers are approximately equal, returns false otherwise\&. The condition is that the difference of all elements of the containers has to be less or equal the absolute value of the tolerance\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIGenericType\fP (Value or vectorized type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.br
+\fItolerance\fP Tolerance of approximation\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the result\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> int \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBAbstractNArray\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename IteratorType > unsigned int \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::index (const IteratorType &it, typename std::iterator_traits< IteratorType >::iterator_category * = \fCnullptr\fP) const\fC [inline]\fP"
+
+.PP
+Index of an iterator in the array\&. Returns the index of the element pointed by an iterator or a pointer\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIteratorType\fP (Pointer or iterator type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIit\fP Iterator to the element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the value of the index of the element\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::out_of_range\fP Out of range\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class Function , class Mask , class > Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::indexed (Function &&f = \fCstd::forward<unsigned int>\fP, const Mask &bitmask = \fCMask()\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Indexed array\&. Creates an array based on indexes\&. The passed function should take an index value and return the associated element value\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFunction\fP (Function type : \fCType(unsigned int)\fP\&.) 
+.br
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Function object \fCType(unsigned int)\fP\&. 
+.br
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<unsigned int Base> Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::log () const\fC [inline]\fP"
+
+.PP
+Log metafunction\&. Computes the logarithm with compile-time options\&. If the base is 0, then the natural base logarithm is called\&. If the data type is a floating point, and if the base is 2 or 10, then the \fCstd::log2()\fP or \fCstd::log10\fP function is called\&. For other bases, the division implying the logarithm of the base is used\&. If the data type is not a floating point, the exact integral part of the logarithm in the specified base is computed using loops\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIBase\fP Logarithm base\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::domain_error\fP Logarithm of a negative integer undefined\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class GenericType , class Mask , class > Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::log (const GenericType &rhs, const Mask &bitmask = \fCMask()\fP) const\fC [inline]\fP"
+
+.PP
+Logarithm\&. Computes the logarithm in the specified base of each element using the \fCstd::log()\fP function\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIGenericType\fP (Value or vectorized type\&.) 
+.br
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.br
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename Return , class Coefficient , class Mask , class > Return \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::mean (const Coefficient &coefficient = \fCCoefficient(1)\fP, const Mask &bitmask = \fCMask()\fP) const\fC [inline]\fP"
+
+.PP
+Mean value\&. Computes the mean value of the container or masked container\&. If a coefficient container is provided, the weighted mean is computed : $\bar{x}=\frac{\sum_{i=1}^{n} w_{i}x_{i}}{\sum_{i=1}^{n}w_{i}}$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIReturn\fP Return type\&. 
+.br
+\fICoefficient\fP (Coefficient type\&.) 
+.br
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcoefficient\fP Coefficients of weighted mean\&. 
+.br
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the mean value\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename Return , typename First , class\&.\&.\&. Types, class\&.\&.\&. Args, class > Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::modify (Return(*)(First, Types\&.\&.\&.)f, Args &&\&.\&.\&.args)\fC [inline]\fP"
+
+.PP
+Modification by a function pointer\&. Modifies the container by applying a function pointer to each element\&. For an element \fCx\fP, a function \fCf\fP and for extra arguments \fCargs\&.\&.\&.\fP, an equivalent expression is : \fCx = f(x, args\&.\&.\&.)\fP\&. The return type is used as an internal cast before affectation\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIReturn\fP Return type\&.  
+.br
+\fIFirst\fP Type of the first argument of the function\&. 
+.br
+\fITypes\fP Extra types of the function\&. 
+.br
+\fIArgs\fP (Extra types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Function pointer \fCReturn(First, Types\&.\&.\&.)\fP\&. 
+.br
+\fIargs\fP Extra arguments of the function\&.  
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+\fBWarning:\fP
+.RS 4
+In case of implicit cast or extra arguments, types related to the function have to be specified manually as template parameters\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename Return , typename First , class\&.\&.\&. Types, class\&.\&.\&. Args, class Mask , class > Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::modify (const Mask &bitmask, Return(*)(First, Types\&.\&.\&.)f, Args &&\&.\&.\&.args)\fC [inline]\fP"
+
+.PP
+Masked modification by a function pointer\&. Modifies the container by applying a function pointer to each element where the mask is true\&. For an element \fCx\fP, a function \fCf\fP and for extra arguments \fCargs\&.\&.\&.\fP, an equivalent expression is : \fCx = f(x, args\&.\&.\&.)\fP\&. The return type is used as an internal cast before affectation\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIReturn\fP Return type\&.  
+.br
+\fIFirst\fP Type of the first argument of the function\&. 
+.br
+\fITypes\fP Extra types of the function\&. 
+.br
+\fIArgs\fP (Extra types\&.) 
+.br
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbitmask\fP Boolean mask\&. 
+.br
+\fIf\fP Function pointer \fCReturn(First, Types\&.\&.\&.)\fP\&. 
+.br
+\fIargs\fP Extra arguments of the function\&.  
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+\fBWarning:\fP
+.RS 4
+In case of implicit cast or extra arguments, types related to the function have to be specified manually as template parameters\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<class GenericType > bool \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::ne (const GenericType &rhs, const Type &tolerance) const\fC [inline]\fP"
+
+.PP
+Compare for noticeable difference\&. Returns true if at least one element is noticeably different in the two containers, returns false otherwise\&. The condition is that at least one difference of two elements of the containers has to be strictly greater than the absolute value of the tolerance\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIGenericType\fP (Value or vectorized type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.br
+\fItolerance\fP Tolerance of approximation\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the result\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<unsigned int Degree, typename NormType , class Mask , class > NormType \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::norm (const Mask &bitmask = \fCMask()\fP) const\fC [inline]\fP"
+
+.PP
+Norm\&. Computes the p-norm of the array : $\|x\|_{p} = \left( \sum_{i=1}^n\left|x_{i}\right|^p\right)^{1/p}$ where $p$ is specified by the \fCNormType\fP template parameter\&. If it is equal to zero, then the infinite norm is taken\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDegree\fP Norm degree\&. 
+.br
+\fINormType\fP Norm type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the norm\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<unsigned int Degree, typename NormType , class Mask , class > Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::normalize (const Mask &bitmask = \fCMask()\fP) const\fC [inline]\fP"
+
+.PP
+Normalize\&. Normalizes the contents using the the p-norm of the array : $\|x\|_{p} = \left(\sum_{i=1}^n\left|x_{i}\right|^p \right)^{1/p}$ where $p$ is specified by the \fCNormType\fP template parameter\&. If it is equal to zero, then the infinite norm is taken\&. This is equivalent to the \fC\fBrenormalize()\fP\fP function except that it works on a copy instead of the contents\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDegree\fP Norm degree\&. 
+.br
+\fINormType\fP Norm type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::domain_error\fP The norm is not normal\&. 
+.br
+\fIstd::domain_error\fP The norm is not normal\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> bool \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::null (const Type &tolerance) const\fC [inline]\fP"
+
+.PP
+Check whether all elements are approximately null\&. Returns true if all elements are approximately set to their default value, returns false otherwise\&. The condition is that their absolute value is less or equal the absolute value of the tolerance\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItolerance\fP Tolerance of approximation\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the result of the test\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::one ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+One array\&. Creates an array filled with ones\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Type & \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::\fBoperator\fP[] (const unsigned inti)\fC [inline]\fP"
+
+.PP
+Direct access to the element\&. Provides a direct access to the specified element\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index of the element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> const Type & \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::\fBoperator\fP[] (const unsigned inti) const\fC [inline]\fP"
+
+.PP
+Immutable direct access to the element\&. Provides a constant direct access to the specified element\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index of the element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<int Exponent> Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::pow () const\fC [inline]\fP"
+
+.PP
+Power metafunction\&. Recursively calls the multiplication operator at compile-time computing the integer exponentiation of the array\&. Negative exponent inverses the result\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIExponent\fP Exponent of the power function\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class GenericType , class Mask , class > Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::pow (const GenericType &rhs, const Mask &bitmask = \fCMask()\fP) const\fC [inline]\fP"
+
+.PP
+Power\&. Computes the power for the specified exponent of each element using the \fCstd::pow()\fP function\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIGenericType\fP (Value or vectorized type\&.) 
+.br
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.br
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<class Function , class Mask , class > Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::progressive (const Type &init = \fCType(0)\fP, const Type &step = \fCType(1)\fP, Function &&f = \fCFunction()\fP, const Mask &bitmask = \fCMask()\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Progressive array\&. Creates an array filled with progressive values\&. The next non-masked element is equal to the result of the function applied to the previous non-masked element and the step\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFunction\fP (Function type : \fCType(Type, Type)\fP\&.) 
+.br
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinit\fP Initial value\&. 
+.br
+\fIstep\fP \fBStep\fP of progression\&. 
+.br
+\fIf\fP Function object \fCType(Type, Type)\fP\&. 
+.br
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<class Mask , class > Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::random (const Type &minimum = \fC0\fP, const Type &maximum = \fC1\fP, const Mask &bitmask = \fCMask()\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Basic random array creation\&. Creates a random array filled with random values generated with a uniform distribution over the provided interval\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIminimum\fP Minimum value of the distribution\&. 
+.br
+\fImaximum\fP Maximum value of the distribution\&. 
+.br
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+\fBWarning:\fP
+.RS 4
+As the internal engine is a static one, do not use this function in parallel\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<class Engine , class Distribution , class Mask , class > Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::random (Engine &&engine, Distribution &&distribution, const Mask &bitmask = \fCMask()\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Generic random array creation\&. Creates a random array filled with random values generated from the provided distribution and engine\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIEngine\fP (Random engine type\&.) 
+.br
+\fIDistribution\fP (Random distribution type\&.) 
+.br
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIengine\fP Random engine\&. 
+.br
+\fIdistribution\fP Random distribution\&. 
+.br
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> std::reverse_iterator< Type * > \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::rbegin ()\fC [inline]\fP"
+
+.PP
+Reverse iterator to the beginning\&. Returns a reversed pointer to the position after the last element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the end\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> std::reverse_iterator< const Type * > \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::rbegin () const\fC [inline]\fP"
+
+.PP
+Immutable reverse iterator to the beginning\&. Returns a reversed pointer to the position after the last element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the end\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class Indexes , class Pair > Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::rearrange (const Indexes &indexes = \fCIndexes()\fP)\fC [inline]\fP"
+
+.PP
+Re-arrange as a function of indexes\&. Sorts the contents by the provided indexes previously generated by an \fC\fBarrange()\fP\fP or a \fC\fBsort()\fP\fP function\&. It can be used to sort several arrays in the same order of a single one\&. If no indexes or a scalar is provided, the container is randomly shuffled\&. This is equivalent to the \fC\fBresort()\fP\fP function except that it works on the contents instead of a copy\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIndexes\fP (\fBVectorized\fP container type or dummy scalar\&.) 
+.br
+\fIPair\fP (Inner pair type for indexes\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindexes\fP \fBVectorized\fP container of indexes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> std::reverse_iterator< Type * > \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::rend ()\fC [inline]\fP"
+
+.PP
+Reverse iterator to the end\&. Returns a reversed pointer to the first element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the beginning\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> std::reverse_iterator< const Type * > \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::rend () const\fC [inline]\fP"
+
+.PP
+Immutable reverse iterator to the end\&. Returns a reversed pointer to the first element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the beginning\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<unsigned int Degree, typename NormType , class Mask , class > Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::renormalize (const Mask &bitmask = \fCMask()\fP)\fC [inline]\fP"
+
+.PP
+Renormalize\&. Renormalizes the contents using the the p-norm of the array : $\|x\|_{p} = \left(\sum_{i=1}^n\left|x_{i}\right|^p \right)^{1/p}$ where $p$ is specified by the \fCNormType\fP template parameter\&. If it is equal to zero, then the infinite norm is taken\&. This is equivalent to the \fC\fBnormalize()\fP\fP function except that it works on the contents instead of a copy\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDegree\fP Norm degree\&. 
+.br
+\fINormType\fP Norm type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::domain_error\fP The norm is not normal\&. 
+.br
+\fIstd::domain_error\fP The norm is not normal\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class Indexes , class Pair > Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::resort (const Indexes &indexes = \fCIndexes()\fP) const\fC [inline]\fP"
+
+.PP
+Re-sort as a function of indexes\&. Sorts a copy by the provided indexes previously generated by an \fC\fBarrange()\fP\fP or a \fC\fBsort()\fP\fP function\&. It can be used to sort several arrays in the same order of a single one\&. If no indexes or a scalar is provided, the container is randomly shuffled\&. This is equivalent to the \fC\fBrearrange()\fP\fP function except that it works on a copy instead of the contents\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIndexes\fP (\fBVectorized\fP container type or dummy scalar\&.) 
+.br
+\fIPair\fP (Inner pair type for indexes\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindexes\fP \fBVectorized\fP container of indexes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<int Degree> Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::rt () const\fC [inline]\fP"
+
+.PP
+Root metafunction\&. Calls the inverse of the power function for each element at compile-time\&. For 2 and 3 exponents, the \fCstd::sqrt()\fP and \fCstd::cbrt()\fP functions are called, otherwise \fCstd::pow()\fP with the inverse exponent is called\&. At the end, the result is casted to the array type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDegree\fP Root degree\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class GenericType , class Mask , class > Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::rt (const GenericType &rhs, const Mask &bitmask = \fCMask()\fP) const\fC [inline]\fP"
+
+.PP
+Root\&. Computes the root for the specified degree of each element using the \fCstd::pow()\fP function\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIGenericType\fP (Value or vectorized type\&.) 
+.br
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.br
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename Return , typename Correction , class Coefficient , class Mask , class > Return \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::sigma (const Correction &correction = \fCCorrection(0)\fP, const Coefficient &coefficient = \fCCoefficient(1)\fP, const Mask &bitmask = \fCMask()\fP) const\fC [inline]\fP"
+
+.PP
+Standard deviation\&. Computes the standard deviation of the container or masked container\&. The correction, oftenly equals to $0$ or $-1$, allows to correct the standard deviation from the bias\&. If a coefficient container is provided, the standard deviation of the weighted mean is computed : $\sigma=\sqrt {\frac{\sum_{i=1}^{n}w_{i}\left(x_{i}-\bar{x}\right)^{2}} {\sum_{i=1}^{n}w_{i}+c}}$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIReturn\fP Return type\&. 
+.br
+\fICorrection\fP (Correction arithmetic type\&.) 
+.br
+\fICoefficient\fP (Coefficient type\&.) 
+.br
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcorrection\fP Additive term at denominator for bias control\&. 
+.br
+\fIcoefficient\fP Coefficients of weighted mean\&. 
+.br
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the mean value\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class Function , class Indexes , class Mask , class Pair , class > Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::sort (Function &&f = \fCFunction()\fP, Indexes &&indexes = \fCIndexes()\fP, const Mask &bitmask = \fCMask()\fP) const\fC [inline]\fP"
+
+.PP
+Sort\&. Sorts the contents and returns a sorted copy using \fCstd::sort\fP\&. A comparison function, a list of indexes and a boolean mask can be passed\&. The list of indexes is a vectorized container which will be sorted in the same order as the array\&. If a scalar is passed, nothing is done on it\&. This is equivalent to the \fC\fBarrange()\fP\fP function except that it works on a copy instead of the contents\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFunction\fP (Function type : \fCbool(Type, Type)\fP\&.) 
+.br
+\fIIndexes\fP (\fBVectorized\fP container type or dummy scalar\&.) 
+.br
+\fIMask\fP (Mask type\&.) 
+.br
+\fIPair\fP (Inner pair type for indexes\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Function object \fCbool(Type, Type)\fP\&. 
+.br
+\fIindexes\fP \fBVectorized\fP container or dummy scalar to be sorted\&. 
+.br
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class Function , class Mask , class > bool \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::unicity (Function &&f = \fCFunction()\fP, const Mask &bitmask = \fCMask()\fP) const\fC [inline]\fP"
+
+.PP
+Unicity of elements\&. Checks for unicity of elements using the provided function with the \fCstd::unique()\fP algorithm\&. If two elements are equal, the function returns false, and true otherwise\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFunction\fP (Function type : \fCbool(Type, Type)\fP\&.) 
+.br
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Function object \fCbool(Type, Type)\fP\&. 
+.br
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the result\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<class Mask , class > Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::value (const Type &source = \fCType()\fP, const Mask &bitmask = \fCMask()\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Array from value\&. Creates an array filled with values\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source value\&. 
+.br
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::zero ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Zero array\&. Creates an array filled with zeroes\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> Type \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::_data[Size]\fC [protected]\fP"
+
+.PP
+Data contents\&. 
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> using \fBmagrathea::AbstractNArray\fP< Kind, Size, Crtp, Type, Parameters >::operator = "
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

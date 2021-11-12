@@ -1,0 +1,1104 @@
+\hypertarget{exceptionmagrathea_1_1FileSystem}{\section{magrathea\-:\-:File\-System Exception Reference}
+\label{exceptionmagrathea_1_1FileSystem}\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}}
+}
+
+
+Global file management.  
+
+
+
+
+{\ttfamily \#include $<$filesystem.\-h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{Indent}{\bf Utilities}\par
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{exceptionmagrathea_1_1FileSystem_ac5ee917157fa4b42e78d30c0da0bf133}{endianness} ()
+\begin{DoxyCompactList}\small\item\em Get system endianness. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap, typename Type , class  = typename std\-::enable\-\_\-if$<$!\-Byteswap$>$\-::type$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1FileSystem_a1d989cd366395e5ef84131f79134d7de}{byteswap} (const Type \&variable)
+\begin{DoxyCompactList}\small\item\em Do not swap bytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = true, typename Type , class  = typename std\-::enable\-\_\-if$<$\-Byteswap$>$\-::type$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1FileSystem_a64859ee869800ddcdc7c224a93703c59}{byteswap} (Type \&variable)
+\begin{DoxyCompactList}\small\item\em Swap bytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned int, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-integral$<$\-Type$>$\-::value$>$\-::type$>$ }\\static Type \hyperlink{exceptionmagrathea_1_1FileSystem_ad5eac053ec39dbb33200d5f3e3915484}{bom} ()
+\begin{DoxyCompactList}\small\item\em Byte order mark. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-integral$<$\-Type$>$\-::value$>$\-::type$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1FileSystem_a8bc7bab8ef392d0e64176fa9249f1f34}{bom} (const Type \&mark)
+\begin{DoxyCompactList}\small\item\em Byte order mark endianness. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Size}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Type  = char, class Stream $>$ }\\static long long int \hyperlink{exceptionmagrathea_1_1FileSystem_ae163e0811a033225b60eac354e4e4b79}{weight} (Stream \&stream)
+\begin{DoxyCompactList}\small\item\em Get the weight of a file in terms of a specific type. \end{DoxyCompactList}\item 
+static long long int \hyperlink{exceptionmagrathea_1_1FileSystem_a221bf898f3123b019033a104b54c545c}{size} (const std\-::string \&filename)
+\begin{DoxyCompactList}\small\item\em Get size of a file passed by name. \end{DoxyCompactList}\item 
+static long long int \hyperlink{exceptionmagrathea_1_1FileSystem_a2dda7047196f0a54857709a39e0f0159}{size} (std\-::istream \&stream)
+\begin{DoxyCompactList}\small\item\em Get size of a file passed by input stream. \end{DoxyCompactList}\item 
+static long long int \hyperlink{exceptionmagrathea_1_1FileSystem_a2ff3132806866f74d193f60bff56d6a9}{size} (std\-::ostream \&stream)
+\begin{DoxyCompactList}\small\item\em Get size of a file passed by output stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Management}\par
+\begin{DoxyCompactItemize}
+\item 
+static std\-::string \hyperlink{exceptionmagrathea_1_1FileSystem_ac8d575fbc1fbb3c49b96cfc80a3f19fa}{temporary} (const std\-::string \&prefix=\char`\"{}\textbackslash{}b\char`\"{}, const std\-::string \&suffix=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Temporary file name. \end{DoxyCompactList}\item 
+static std\-::string \hyperlink{exceptionmagrathea_1_1FileSystem_af89c2d6a918b7d7c0c17ca5b59f98bce}{dated} (const std\-::string \&prefix=\char`\"{}\char`\"{}, const std\-::string \&suffix=\char`\"{}\char`\"{}, const std\-::string \&format=\char`\"{}\%Y-\/\%m-\/\%d-\/\%H-\/\%M-\/\%S\char`\"{})
+\begin{DoxyCompactList}\small\item\em Dated file name. \end{DoxyCompactList}\item 
+static bool \hyperlink{exceptionmagrathea_1_1FileSystem_adb8dbf24aaa89c7a0509b675b5d71812}{remove} (const std\-::string \&filename)
+\begin{DoxyCompactList}\small\item\em Remove a file. \end{DoxyCompactList}\item 
+static bool \hyperlink{exceptionmagrathea_1_1FileSystem_a3b9d515761f4e5041c3eac9307d4d570}{rename} (const std\-::string \&oldname, const std\-::string \&newname, const std\-::ios\-::openmode \&mode=std\-::ios\-::out)
+\begin{DoxyCompactList}\small\item\em Rename a file. \end{DoxyCompactList}\item 
+static bool \hyperlink{exceptionmagrathea_1_1FileSystem_a5fb019d214bae39f7d75770908c9d025}{copy} (const std\-::string \&oldname, const std\-::string \&newname, const std\-::ios\-::openmode \&mode=std\-::ios\-::out, const long long int chunk=-\/1)
+\begin{DoxyCompactList}\small\item\em Copy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Split and join}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$bool Byteswap = false, typename Marker  = long long int, class Container $>$ }\\static unsigned int \hyperlink{exceptionmagrathea_1_1FileSystem_ab76df44fc991333abf9ff6f003a057f4}{split} (const std\-::string \&filename, const Container \&filenames, const std\-::ios\-::openmode \&mode=std\-::ios\-::out, const long long int chunk=-\/1, const unsigned long long int limit=0)
+\begin{DoxyCompactList}\small\item\em Split a file in several files. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, typename Marker  = long long int, class Container $>$ }\\static unsigned int \hyperlink{exceptionmagrathea_1_1FileSystem_ac9f237a31be083d0420877f7e50c0f8f}{unsplit} (const Container \&filenames, const std\-::string \&filename, const std\-::ios\-::openmode \&mode=std\-::ios\-::out, const long long int chunk=-\/1)
+\begin{DoxyCompactList}\small\item\em Unsplit several files in a file. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, typename Marker  = long long int, class Container $>$ }\\static unsigned int \hyperlink{exceptionmagrathea_1_1FileSystem_a546b2a27bbf077ab905c15ba3cfead65}{join} (const Container \&filenames, const std\-::string \&filename, const std\-::ios\-::openmode \&mode=std\-::ios\-::out, const long long int chunk=-\/1)
+\begin{DoxyCompactList}\small\item\em Join several files in a file. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, typename Marker  = long long int, class Container $>$ }\\static unsigned int \hyperlink{exceptionmagrathea_1_1FileSystem_a37b7681662209ad48ebef52c0f1a2e91}{unjoin} (const std\-::string \&filename, const Container \&filenames, const std\-::ios\-::openmode \&mode=std\-::ios\-::out, const long long int chunk=-\/1)
+\begin{DoxyCompactList}\small\item\em Unjoin a file in several files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Comparison}\par
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{exceptionmagrathea_1_1FileSystem_ac26eddde6c5fa22440c29b81e8967290}{compare} (const std\-::string \&first, const std\-::string \&second, const long long int chunk=-\/1)
+\begin{DoxyCompactList}\small\item\em Compare two files passed by names. \end{DoxyCompactList}\item 
+static bool \hyperlink{exceptionmagrathea_1_1FileSystem_acd721bd279d0095255b832f0e9032969}{compare} (std\-::istream \&first, std\-::istream \&second, const long long int chunk=-\/1)
+\begin{DoxyCompactList}\small\item\em Compare two files passed by input stream. \end{DoxyCompactList}\item 
+static bool \hyperlink{exceptionmagrathea_1_1FileSystem_af2a9323b17881fdddfe256bc2ade30e3}{compare} (std\-::ostream \&first, std\-::ostream \&second, const long long int chunk=-\/1)
+\begin{DoxyCompactList}\small\item\em Compare two files passed by output stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Existence and creation}\par
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{exceptionmagrathea_1_1FileSystem_ae75b7fb73e1a1c2cf21fad6da443fc9e}{exist} (const std\-::string \&filename)
+\begin{DoxyCompactList}\small\item\em Check file existence. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = char$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1FileSystem_aab0114471f9d98afd6e524b3dcf6ab4e}{check} (const std\-::string \&filename, const long long int min=-\/1, const long long int max=-\/1)
+\begin{DoxyCompactList}\small\item\em Check file consistency. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Contents  = std\-::true\-\_\-type$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1FileSystem_a03b9ba26d56d0d899b3b81521a54c9c2}{create} (const std\-::string \&filename, const \hyperlink{exceptionmagrathea_1_1Contents}{Contents} \&contents=\hyperlink{exceptionmagrathea_1_1Contents}{Contents}())
+\begin{DoxyCompactList}\small\item\em Create a file. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Contents  = std\-::true\-\_\-type$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1FileSystem_a1404089cc3cdb33aa4037db8a22448fc}{initialize} (const std\-::string \&filename, const \hyperlink{exceptionmagrathea_1_1Contents}{Contents} \&contents=\hyperlink{exceptionmagrathea_1_1Contents}{Contents}())
+\begin{DoxyCompactList}\small\item\em Initialize a new file. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Contents  = std\-::true\-\_\-type$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1FileSystem_a65e3c1fa21f46bf45f17dde1ed900fac}{reset} (const std\-::string \&filename, const \hyperlink{exceptionmagrathea_1_1Contents}{Contents} \&contents=\hyperlink{exceptionmagrathea_1_1Contents}{Contents}())
+\begin{DoxyCompactList}\small\item\em Reset an existing file. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Contents  = char, class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-convertible$<$\-Contents, std\-::string$>$\-::value$>$\-::type$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1FileSystem_adb0345d27cbaef759355440effaff913}{generate} (const std\-::string \&filename, const std\-::ios\-::openmode \&mode, const long long int amount, const long long int chunk=-\/1, const \hyperlink{exceptionmagrathea_1_1Contents}{Contents} \&contents=\hyperlink{exceptionmagrathea_1_1Contents}{Contents}())
+\begin{DoxyCompactList}\small\item\em Generate a binary file based on contents. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Contents , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Contents, std\-::string$>$\-::value$>$\-::type, class  = void$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1FileSystem_aff977ee70d9313ae9cb9e93ac92cde8d}{generate} (const std\-::string \&filename, const std\-::ios\-::openmode \&mode, const long long int amount, const long long int chunk, const \hyperlink{exceptionmagrathea_1_1Contents}{Contents} \&contents)
+\item 
+{\footnotesize template$<$class Engine , class Distribution , class Contents  = typename std\-::decay$<$\-Distribution$>$\-::type\-::result\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(std\-::decay$<$\-Engine$>$\-::type\-::min() != std\-::decay$<$\-Engine$>$\-::type\-::max()) \&\& (!std\-::is\-\_\-void$<$typename std\-::decay$<$\-Distribution$>$\-::type\-::result\-\_\-type$>$\-::value)$>$\-::type$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1FileSystem_abc0a5f524e5888a850c94b2404fef886}{generate} (const std\-::string \&filename, const std\-::ios\-::openmode \&mode, const long long int amount, const long long int chunk, Engine \&\&engine, Distribution \&\&distribution)
+\begin{DoxyCompactList}\small\item\em Generate a random binary file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Size control}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Type  = char, class Stream $>$ }\\static bool \hyperlink{exceptionmagrathea_1_1FileSystem_aa5ab15c43fde776dea907791626dd923}{empty} (Stream \&stream)
+\begin{DoxyCompactList}\small\item\em Empty file. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = char, class Stream $>$ }\\static bool \hyperlink{exceptionmagrathea_1_1FileSystem_a1cd28f91dc3b950c9e66842a57717b74}{exact} (Stream \&stream, const long long int amount)
+\begin{DoxyCompactList}\small\item\em File of exact specified size. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = char, class Stream $>$ }\\static bool \hyperlink{exceptionmagrathea_1_1FileSystem_aa6b8ebf32ffef006ddd544f27ebaaca5}{regular} (Stream \&stream, const long long int min=-\/1, const long long int max=-\/1)
+\begin{DoxyCompactList}\small\item\em Regular file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf File types}\par
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{exceptionmagrathea_1_1FileSystem_a1f15b71c69f7aa799b8012209e749fbd}{ascii} (const std\-::string \&filename, const long long int min=-\/1, const long long int max=-\/1, const long long int chunk=-\/1)
+\begin{DoxyCompactList}\small\item\em Ascii file. \end{DoxyCompactList}\item 
+static bool \hyperlink{exceptionmagrathea_1_1FileSystem_a3e62cc199cec0729e6d2516d5ba82f3c}{eascii} (const std\-::string \&filename, const long long int min=-\/1, const long long int max=-\/1, const long long int chunk=-\/1)
+\begin{DoxyCompactList}\small\item\em Extended ascii file. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = char$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1FileSystem_aa99f1baaaac4e91b2bfdb38798e20263}{binary} (const std\-::string \&filename, const long long int min=-\/1, const long long int max=-\/1, const long long int chunk=-\/1)
+\begin{DoxyCompactList}\small\item\em Binary file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Test}\par
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{exceptionmagrathea_1_1FileSystem_a36d84f3342bac68ef5b4c92bc3965041}{example} ()
+\begin{DoxyCompactList}\small\item\em Example function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+Global file management. 
+
+Provides general functions to manage files, retrieve some information and perform standard operations on files. All functions are standard-\/compliant, but use either C++ or C depending on performances. Most functions return whether the operation is a success and do not throw any exception. In the class, an unit means the size in bytes of a provided type. 
+
+\subsection{Member Function Documentation}
+\hypertarget{exceptionmagrathea_1_1FileSystem_a1f15b71c69f7aa799b8012209e749fbd}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!ascii@{ascii}}
+\index{ascii@{ascii}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{ascii}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-File\-System\-::ascii (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename, }
+\item[{const long long int}]{min = {\ttfamily -\/1}, }
+\item[{const long long int}]{max = {\ttfamily -\/1}, }
+\item[{const long long int}]{chunk = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_a1f15b71c69f7aa799b8012209e749fbd}
+
+
+Ascii file. 
+
+Tests whether the file is an ascii file containing between the minimum and maximum amount of bytes and using the chunk parameter to control the buffer size. A file is considered as ascii if all its bytes are in the ranges \mbox{[}9, 13\mbox{]} or \mbox{[}32, 126\mbox{]}. An empty file is considered as an ascii file. A value of -\/1 for the minimum or for the maximum means that this boundary is not tested. Finally, the chunk parameter allows to specify whether a buffer is used in binary mode \-: 0 corresponds to no buffer, a positive integer corresponds to the amount of contents that is put into the buffer, and a negative integer corresponds to a buffer of the total size of the file. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & File name. \\
+\hline
+\mbox{\tt in}  & {\em min} & Check if the file contains at least this amount of data. \\
+\hline
+\mbox{\tt in}  & {\em max} & Check if the file contains at most this amount of data. \\
+\hline
+\mbox{\tt in}  & {\em chunk} & Buffer size. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the file is an ascii file satisfying the provided conditions, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_aa99f1baaaac4e91b2bfdb38798e20263}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!binary@{binary}}
+\index{binary@{binary}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{binary}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ bool magrathea\-::\-File\-System\-::binary (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename, }
+\item[{const long long int}]{min = {\ttfamily -\/1}, }
+\item[{const long long int}]{max = {\ttfamily -\/1}, }
+\item[{const long long int}]{chunk = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_aa99f1baaaac4e91b2bfdb38798e20263}
+
+
+Binary file. 
+
+Tests whether the file is a binary file containing between the minimum and maximum amount of data and using the chunk parameter to control the buffer size. A file is considered as binary if it has a byte outside of the ranges \mbox{[}9, 13\mbox{]} or \mbox{[}32, 126\mbox{]}, or \mbox{[}128, 255\mbox{]}. An empty file is not considered as a binary file. If the file size is not divisible by the specified unit, the function returns false. A value of -\/1 for the minimum or for the maximum means that this boundary is not tested. Finally, the chunk parameter allows to specify whether a buffer is used in binary mode \-: 0 corresponds to no buffer, a positive integer corresponds to the amount of contents that is put into the buffer, and a negative integer corresponds to a buffer of the total size of the file. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & File name. \\
+\hline
+\mbox{\tt in}  & {\em min} & Check if the file contains at least this amount of data. \\
+\hline
+\mbox{\tt in}  & {\em max} & Check if the file contains at most this amount of data. \\
+\hline
+\mbox{\tt in}  & {\em chunk} & Buffer size. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the file is a binary file satisfying the provided conditions, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_ad5eac053ec39dbb33200d5f3e3915484}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!bom@{bom}}
+\index{bom@{bom}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{bom}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class $>$ Type magrathea\-::\-File\-System\-::bom (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_ad5eac053ec39dbb33200d5f3e3915484}
+
+
+Byte order mark. 
+
+Returns the byte order mark 0x\-F\-E\-F\-F casted to the provided type. It is used to detect the endianness \-: for example, for a 4-\/bytes integer \-: 00-\/00-\/\-F\-E-\/\-F\-F indicates big-\/endianness and F\-F-\/\-F\-E-\/00-\/00 indicates little-\/endianness. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Integral byte order mark type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Cast of 0x\-F\-E\-F\-F. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_a8bc7bab8ef392d0e64176fa9249f1f34}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!bom@{bom}}
+\index{bom@{bom}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{bom}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class $>$ bool magrathea\-::\-File\-System\-::bom (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{mark}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_a8bc7bab8ef392d0e64176fa9249f1f34}
+
+
+Byte order mark endianness. 
+
+Returns endianness from byte order mark passed as parameter \-: true for big-\/endian, false for little-\/endian. The byte order mark should be of the form F\-E-\/\-F\-F. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Integral byte order mark type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em mark} & Byte order mark. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True for big-\/endian, false for little-\/endian. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::invalid\-\_\-argument} & Unrecognized byte order mark. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{exceptionmagrathea_1_1FileSystem_a1d989cd366395e5ef84131f79134d7de}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!byteswap@{byteswap}}
+\index{byteswap@{byteswap}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{byteswap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type , class $>$ bool magrathea\-::\-File\-System\-::byteswap (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_a1d989cd366395e5ef84131f79134d7de}
+
+
+Do not swap bytes. 
+
+Does not invert the order of bytes of the passed variable to keep the endianness. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Do not swap endianness if false. \\
+\hline
+{\em Type} & (Variable type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em variable} & Variable. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+False if the variable has not been byteswapped. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_a64859ee869800ddcdc7c224a93703c59}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!byteswap@{byteswap}}
+\index{byteswap@{byteswap}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{byteswap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type , class $>$ bool magrathea\-::\-File\-System\-::byteswap (
+\begin{DoxyParamCaption}
+\item[{Type \&}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_a64859ee869800ddcdc7c224a93703c59}
+
+
+Swap bytes. 
+
+Inverts the order of bytes of the passed variable to change the endianness. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness if true. \\
+\hline
+{\em Type} & (Variable type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em variable} & Variable. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the variable has been byteswapped. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_aab0114471f9d98afd6e524b3dcf6ab4e}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!check@{check}}
+\index{check@{check}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ bool magrathea\-::\-File\-System\-::check (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename, }
+\item[{const long long int}]{min = {\ttfamily -\/1}, }
+\item[{const long long int}]{max = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_aab0114471f9d98afd6e524b3dcf6ab4e}
+
+
+Check file consistency. 
+
+Returns whether the file can be opened successfully and whether it contains between the minimum and the maximum data of the provided type. If the total size is not divisible by the size of the type, the function returns false. If the file is not empty, reading a byte is also tested. A value of -\/1 for the minimum or for the maximum means that this boundary is not tested. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Type representing the considered unit. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & File name. \\
+\hline
+\mbox{\tt in}  & {\em min} & Check if the file contains at least this amount of data. \\
+\hline
+\mbox{\tt in}  & {\em max} & Check if the file contains at most this amount of data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the file can be opened an is compliant to the provided parameters, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_ac26eddde6c5fa22440c29b81e8967290}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!compare@{compare}}
+\index{compare@{compare}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{compare}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-File\-System\-::compare (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{first, }
+\item[{const std\-::string \&}]{second, }
+\item[{const long long int}]{chunk = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_ac26eddde6c5fa22440c29b81e8967290}
+
+
+Compare two files passed by names. 
+
+Compares two files from their file names and return true if both can be tested without errors, have the same size, and have the same contents. A file compared to itself returns true whether it can be opened without errors. Finally, the chunk parameter allows to specify whether a buffer is used for the comparison \-: 0 corresponds to no buffer, a positive integer corresponds to the amount of bytes that is put into the buffer, and a negative integer corresponds to a buffer of the total size of the file. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & First file name. \\
+\hline
+\mbox{\tt in}  & {\em second} & Second file name. \\
+\hline
+\mbox{\tt in}  & {\em chunk} & Buffer size. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if both files compares equal without errors, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_acd721bd279d0095255b832f0e9032969}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!compare@{compare}}
+\index{compare@{compare}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{compare}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-File\-System\-::compare (
+\begin{DoxyParamCaption}
+\item[{std\-::istream \&}]{first, }
+\item[{std\-::istream \&}]{second, }
+\item[{const long long int}]{chunk = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_acd721bd279d0095255b832f0e9032969}
+
+
+Compare two files passed by input stream. 
+
+Compares two opened input streams and return true if both can be tested without errors, have the same size, and have the same contents. A stream compared to itself returns true whether it can be accessed without errors. Finally, the chunk parameter allows to specify whether a buffer is used for the comparison \-: 0 corresponds to no buffer, a positive integer corresponds to the amount of bytes that is put into the buffer, and a negative integer corresponds to a buffer of the total size of the file. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em first} & First input stream. \\
+\hline
+\mbox{\tt in,out}  & {\em second} & Second input stream. \\
+\hline
+\mbox{\tt in}  & {\em chunk} & Buffer size. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if both input streams compares equal without errors, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_af2a9323b17881fdddfe256bc2ade30e3}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!compare@{compare}}
+\index{compare@{compare}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{compare}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-File\-System\-::compare (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{first, }
+\item[{std\-::ostream \&}]{second, }
+\item[{const long long int}]{chunk = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_af2a9323b17881fdddfe256bc2ade30e3}
+
+
+Compare two files passed by output stream. 
+
+Compares two opened output streams and return true if both can be tested without errors and have the same size as no further comparison can be done with output streams. Finally, the chunk parameter allows to specify whether a buffer is used for the comparison \-: 0 corresponds to no buffer, a positive integer corresponds to the amount of bytes that is put into the buffer, and negative integer corresponds to a buffer of the total size of the file. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em first} & First output stream. \\
+\hline
+\mbox{\tt in,out}  & {\em second} & Second output stream. \\
+\hline
+\mbox{\tt in}  & {\em chunk} & Buffer size. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if both output streams compares equal without errors, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_a5fb019d214bae39f7d75770908c9d025}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!copy@{copy}}
+\index{copy@{copy}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{copy}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-File\-System\-::copy (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{oldname, }
+\item[{const std\-::string \&}]{newname, }
+\item[{const std\-::ios\-::openmode \&}]{mode = {\ttfamily std\-:\-:ios\-:\-:out}, }
+\item[{const long long int}]{chunk = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_a5fb019d214bae39f7d75770908c9d025}
+
+
+Copy. 
+
+Copy the provided file to a new location. If the old and new names are equal, the function returns false without further tests. By default, if a standard output open mode is specified, all existing files are protected and only a new one can be created. This protection can be removed by explicitely specifying the truncate open mode. Finally, the chunk parameter allows to specify whether a buffer is used for the copy \-: 0 corresponds to no buffer, a positive integer corresponds to the amount of bytes that is put into the buffer, and a negative integer corresponds to a buffer of the total size of the file. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em oldname} & Old file name. \\
+\hline
+\mbox{\tt in}  & {\em newname} & New file name. \\
+\hline
+\mbox{\tt in}  & {\em mode} & Open mode. \\
+\hline
+\mbox{\tt in}  & {\em chunk} & Buffer size. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the copy was done without errors, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_a03b9ba26d56d0d899b3b81521a54c9c2}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!create@{create}}
+\index{create@{create}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{create}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Contents $>$ bool magrathea\-::\-File\-System\-::create (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename, }
+\item[{const {\bf Contents} \&}]{contents = {\ttfamily {\bf Contents}()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_a03b9ba26d56d0d899b3b81521a54c9c2}
+
+
+Create a file. 
+
+Creates a file, overwriting any previous file if needed. This is equivalent to create a new file using an {\ttfamily std\-::ofstream} and the {\ttfamily std\-::ios\-::trunc} open mode. The extra parameter allows to initialize the file with contents \-: if this parameter is convertible to a string, the file is opened as a text file, otherwise it is considered as a binary file. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \hyperlink{exceptionmagrathea_1_1Contents}{Contents}} & \hyperlink{exceptionmagrathea_1_1Contents}{Contents} type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & File name. \\
+\hline
+\mbox{\tt in}  & {\em contents} & \hyperlink{exceptionmagrathea_1_1Contents}{Contents} to add to the file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the file was created without errors, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_af89c2d6a918b7d7c0c17ca5b59f98bce}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!dated@{dated}}
+\index{dated@{dated}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{dated}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string magrathea\-::\-File\-System\-::dated (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{prefix = {\ttfamily \char`\"{}\char`\"{}}, }
+\item[{const std\-::string \&}]{suffix = {\ttfamily \char`\"{}\char`\"{}}, }
+\item[{const std\-::string \&}]{format = {\ttfamily \char`\"{}\%Y-\/\%m-\/\%d-\/\%H-\/\%M-\/\%S\char`\"{}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_af89c2d6a918b7d7c0c17ca5b59f98bce}
+
+
+Dated file name. 
+
+Generates a file name from the current time. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em prefix} & File name prefix or path. \\
+\hline
+\mbox{\tt in}  & {\em suffix} & File name suffix or extension. \\
+\hline
+\mbox{\tt in}  & {\em format} & Date format compatible with {\ttfamily strftime()}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Generated dated file name. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_a3e62cc199cec0729e6d2516d5ba82f3c}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!eascii@{eascii}}
+\index{eascii@{eascii}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{eascii}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-File\-System\-::eascii (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename, }
+\item[{const long long int}]{min = {\ttfamily -\/1}, }
+\item[{const long long int}]{max = {\ttfamily -\/1}, }
+\item[{const long long int}]{chunk = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_a3e62cc199cec0729e6d2516d5ba82f3c}
+
+
+Extended ascii file. 
+
+Tests whether the file is an extended ascii file containing between the minimum and maximum amount of bytes and using the chunk parameter to control the buffer size. A file is considered as extended ascii if all its bytes are in the ranges \mbox{[}9, 13\mbox{]} or \mbox{[}32, 126\mbox{]}, or \mbox{[}128, 255\mbox{]}. An empty file is considered as an extended ascii file. A value of -\/1 for the minimum or for the maximum means that this boundary is not tested. Finally, the chunk parameter allows to specify whether a buffer is used in binary mode \-: 0 corresponds to no buffer, a positive integer corresponds to the amount of contents that is put into the buffer, and a negative integer corresponds to a buffer of the total size of the file. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & File name. \\
+\hline
+\mbox{\tt in}  & {\em min} & Check if the file contains at least this amount of data. \\
+\hline
+\mbox{\tt in}  & {\em max} & Check if the file contains at most this amount of data. \\
+\hline
+\mbox{\tt in}  & {\em chunk} & Buffer size. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the file is an extended ascii file satisfying the provided conditions, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_aa5ab15c43fde776dea907791626dd923}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!empty@{empty}}
+\index{empty@{empty}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{empty}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Stream $>$ bool magrathea\-::\-File\-System\-::empty (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{stream}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_aa5ab15c43fde776dea907791626dd923}
+
+
+Empty file. 
+
+Returns whether the file exists and is empty. The unit type is here for compatibility reasons with other size control functions. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Type representing the considered unit. \\
+\hline
+{\em Stream} & (String, input stream or output stream.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & Stream. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the file size is null, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_ac5ee917157fa4b42e78d30c0da0bf133}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!endianness@{endianness}}
+\index{endianness@{endianness}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{endianness}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-File\-System\-::endianness (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_ac5ee917157fa4b42e78d30c0da0bf133}
+
+
+Get system endianness. 
+
+Returns the system endianness tested with an integer. \begin{DoxyReturn}{Returns}
+True for big-\/endian, false for little-\/endian. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_a1cd28f91dc3b950c9e66842a57717b74}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!exact@{exact}}
+\index{exact@{exact}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{exact}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Stream $>$ bool magrathea\-::\-File\-System\-::exact (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{stream, }
+\item[{const long long int}]{amount}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_a1cd28f91dc3b950c9e66842a57717b74}
+
+
+File of exact specified size. 
+
+Returns whether the file size measured in the specified unit is exactly equals to the value. For example if the specified type is an integer, and the value is equal to 4, it returns true if the file contains exactly 4 integers. A value equals to -\/1 returns true if the file size cannot be computed. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Type representing the considered unit. \\
+\hline
+{\em Stream} & (String, input stream or output stream.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & Stream. \\
+\hline
+\mbox{\tt in}  & {\em amount} & Amount of contents to for comparison. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the file size corresponds to the provided value, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_a36d84f3342bac68ef5b4c92bc3965041}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!example@{example}}
+\index{example@{example}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{example}]{\setlength{\rightskip}{0pt plus 5cm}int magrathea\-::\-File\-System\-::example (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_a36d84f3342bac68ef5b4c92bc3965041}
+
+
+Example function. 
+
+Tests and demonstrates the use of \hyperlink{exceptionmagrathea_1_1FileSystem}{File\-System}. \begin{DoxyReturn}{Returns}
+0 if no error. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_ae75b7fb73e1a1c2cf21fad6da443fc9e}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!exist@{exist}}
+\index{exist@{exist}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{exist}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-File\-System\-::exist (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_ae75b7fb73e1a1c2cf21fad6da443fc9e}
+
+
+Check file existence. 
+
+Returns whether the file can be opened. The difference with the {\ttfamily \hyperlink{exceptionmagrathea_1_1FileSystem_aab0114471f9d98afd6e524b3dcf6ab4e}{check()}} function is that {\ttfamily exists()} use a C test without checking the C++ error bits. Consequently, it may be faster than the {\ttfamily \hyperlink{exceptionmagrathea_1_1FileSystem_aab0114471f9d98afd6e524b3dcf6ab4e}{check()}} implementation and therefore is well suited to check the existence of a large number of files. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & File name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the file exists, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_adb0345d27cbaef759355440effaff913}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!generate@{generate}}
+\index{generate@{generate}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{generate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Contents , class , class $>$ bool magrathea\-::\-File\-System\-::generate (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename, }
+\item[{const std\-::ios\-::openmode \&}]{mode, }
+\item[{const long long int}]{amount, }
+\item[{const long long int}]{chunk = {\ttfamily -\/1}, }
+\item[{const {\bf Contents} \&}]{contents = {\ttfamily {\bf Contents}()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_adb0345d27cbaef759355440effaff913}
+
+
+Generate a binary file based on contents. 
+
+Generate a text file based on contents.
+
+Creates a new file putting a repetition of the specified amount of contents in it. To use the binary mode, this contents should not be convertible to a string. By default, if a standard output open mode is specified, all existing files are protected and only a new one can be created. This protection can be removed by explicitely specifying the truncate open mode. Finally, the chunk parameter allows to specify whether a buffer is used in binary mode \-: 0 corresponds to no buffer, a positive integer corresponds to the amount of contents that is put into the buffer, and a negative integer corresponds to a buffer of the total size of the file. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \hyperlink{exceptionmagrathea_1_1Contents}{Contents}} & (\hyperlink{exceptionmagrathea_1_1Contents}{Contents} type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & File name. \\
+\hline
+\mbox{\tt in}  & {\em mode} & Open mode. \\
+\hline
+\mbox{\tt in}  & {\em amount} & Amount of contents to be put in the file. \\
+\hline
+\mbox{\tt in}  & {\em chunk} & Buffer size. \\
+\hline
+\mbox{\tt in}  & {\em contents} & \hyperlink{exceptionmagrathea_1_1Contents}{Contents} to add to the file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the file was created without errors, false otherwise.
+\end{DoxyReturn}
+Creates a new text file putting a repetition of the specified amount of contents in it. To use the text mode, this contents should be convertible to a string. By default, if a standard output open mode is specified, all existing files are protected and only a new one can be created. This protection can be removed by explicitely specifying the truncate open mode. Finally, the chunk parameter allows to specify whether a buffer string is used in text mode \-: 0 corresponds to no buffer, a positive integer corresponds to the amount of contents copies that are put into the buffer, and a negative integer corresponds to a buffer of the total size of the file. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \hyperlink{exceptionmagrathea_1_1Contents}{Contents}} & (\hyperlink{exceptionmagrathea_1_1Contents}{Contents} type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & File name. \\
+\hline
+\mbox{\tt in}  & {\em mode} & Open mode. \\
+\hline
+\mbox{\tt in}  & {\em amount} & Amount of contents to be put in the file. \\
+\hline
+\mbox{\tt in}  & {\em chunk} & Buffer size. \\
+\hline
+\mbox{\tt in}  & {\em contents} & \hyperlink{exceptionmagrathea_1_1Contents}{Contents} to add to the file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the file was created without errors, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_aff977ee70d9313ae9cb9e93ac92cde8d}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!generate@{generate}}
+\index{generate@{generate}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{generate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Contents , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Contents, std\-::string$>$\-::value$>$\-::type, class  = void$>$ static bool magrathea\-::\-File\-System\-::generate (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename, }
+\item[{const std\-::ios\-::openmode \&}]{mode, }
+\item[{const long long int}]{amount, }
+\item[{const long long int}]{chunk, }
+\item[{const {\bf Contents} \&}]{contents}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_aff977ee70d9313ae9cb9e93ac92cde8d}
+\hypertarget{exceptionmagrathea_1_1FileSystem_abc0a5f524e5888a850c94b2404fef886}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!generate@{generate}}
+\index{generate@{generate}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{generate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Engine , class Distribution , class Contents , class $>$ bool magrathea\-::\-File\-System\-::generate (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename, }
+\item[{const std\-::ios\-::openmode \&}]{mode, }
+\item[{const long long int}]{amount, }
+\item[{const long long int}]{chunk, }
+\item[{Engine \&\&}]{engine, }
+\item[{Distribution \&\&}]{distribution}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_abc0a5f524e5888a850c94b2404fef886}
+
+
+Generate a random binary file. 
+
+Creates a new random file putting a repetition of the random numbers generated thanks to the specified engine and distribution and using the distribution result type as the contents type. By default, if a standard output open mode is specified, all existing files are protected and only a new one can be created. This protection can be removed by explicitely specifying the truncate open mode. Finally, the chunk parameter allows to specify whether a buffer is used in binary mode \-: 0 corresponds to no buffer, a positive integer corresponds to the amount of contents that is put into the buffer, and a negative integer corresponds to a buffer of the total size of the file. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Engine} & (Random engine type.) \\
+\hline
+{\em Distribution} & (Random distribution type.) \\
+\hline
+{\em \hyperlink{exceptionmagrathea_1_1Contents}{Contents}} & (\hyperlink{exceptionmagrathea_1_1Contents}{Contents} type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & File name. \\
+\hline
+\mbox{\tt in}  & {\em mode} & Open mode. \\
+\hline
+\mbox{\tt in}  & {\em amount} & Amount of contents to be put in the file. \\
+\hline
+\mbox{\tt in}  & {\em chunk} & Buffer size. \\
+\hline
+\mbox{\tt in,out}  & {\em engine} & Random engine. \\
+\hline
+\mbox{\tt in,out}  & {\em distribution} & Random distribution. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the file was created without errors, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_a1404089cc3cdb33aa4037db8a22448fc}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!initialize@{initialize}}
+\index{initialize@{initialize}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{initialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Contents $>$ bool magrathea\-::\-File\-System\-::initialize (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename, }
+\item[{const {\bf Contents} \&}]{contents = {\ttfamily {\bf Contents}()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_a1404089cc3cdb33aa4037db8a22448fc}
+
+
+Initialize a new file. 
+
+Creates a new file, without overwriting any previous file. This function is well suited to create a file without risking to erase some important existing data. The extra parameter allows to initialize the file with contents \-: if this parameter is convertible to a string, the file is opened as a text file, otherwise it is considered as a binary file. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \hyperlink{exceptionmagrathea_1_1Contents}{Contents}} & \hyperlink{exceptionmagrathea_1_1Contents}{Contents} type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & File name. \\
+\hline
+\mbox{\tt in}  & {\em contents} & \hyperlink{exceptionmagrathea_1_1Contents}{Contents} to add to the file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the file was created without errors, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_a546b2a27bbf077ab905c15ba3cfead65}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!join@{join}}
+\index{join@{join}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{join}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Marker , class Container $>$ unsigned int magrathea\-::\-File\-System\-::join (
+\begin{DoxyParamCaption}
+\item[{const Container \&}]{filenames, }
+\item[{const std\-::string \&}]{filename, }
+\item[{const std\-::ios\-::openmode \&}]{mode = {\ttfamily std\-:\-:ios\-:\-:out}, }
+\item[{const long long int}]{chunk = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_a546b2a27bbf077ab905c15ba3cfead65}
+
+
+Join several files in a file. 
+
+Joins the provided list of file into a single file. At the beginning and the end of each file a record marker of the file size in bytes is added. By default, if a standard output open mode is specified, all existing files are protected and only a new one can be created. This protection can be removed by explicitely specifying the truncate open mode. Finally, the chunk parameter allows to specify whether a buffer is used for the copy \-: 0 corresponds to no buffer, a positive integer corresponds to the amount of bytes that is put into the buffer, and a negative integer corresponds to a buffer of the total size of the file. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness of markers. \\
+\hline
+{\em Marker} & Record marker type. \\
+\hline
+{\em Container} & (File container type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filenames} & \hyperlink{exceptionInput}{Input} file names to join. \\
+\hline
+\mbox{\tt in}  & {\em filename} & \hyperlink{exceptionOutput}{Output} file name. \\
+\hline
+\mbox{\tt in}  & {\em mode} & Open mode. \\
+\hline
+\mbox{\tt in}  & {\em chunk} & Buffer size. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of files written on success, zero on error. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_aa6b8ebf32ffef006ddd544f27ebaaca5}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!regular@{regular}}
+\index{regular@{regular}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{regular}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Stream $>$ bool magrathea\-::\-File\-System\-::regular (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{stream, }
+\item[{const long long int}]{min = {\ttfamily -\/1}, }
+\item[{const long long int}]{max = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_aa6b8ebf32ffef006ddd544f27ebaaca5}
+
+
+Regular file. 
+
+Tests if the file is regular regarding to the provided options. It returns true if the file can be read without problems, if its size in bytes can be divided by the size of the provided type, and if its size in the specified unit is between the minimum and maximum provided amount of data. A value of -\/1 for the minimum or for the maximum means that this boundary is not tested. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Type representing the considered unit. \\
+\hline
+{\em Stream} & (String, input stream or output stream.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & Stream. \\
+\hline
+\mbox{\tt in}  & {\em min} & Check if the file contains at least this amount of data. \\
+\hline
+\mbox{\tt in}  & {\em max} & Check if the file contains at most this amount of data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the file size is regular regarding the parameters, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_adb8dbf24aaa89c7a0509b675b5d71812}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!remove@{remove}}
+\index{remove@{remove}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-File\-System\-::remove (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_adb8dbf24aaa89c7a0509b675b5d71812}
+
+
+Remove a file. 
+
+Removes an existing file from the file system and returns true on success. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & File name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on error. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_a3b9d515761f4e5041c3eac9307d4d570}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!rename@{rename}}
+\index{rename@{rename}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{rename}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-File\-System\-::rename (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{oldname, }
+\item[{const std\-::string \&}]{newname, }
+\item[{const std\-::ios\-::openmode \&}]{mode = {\ttfamily std\-:\-:ios\-:\-:out}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_a3b9d515761f4e5041c3eac9307d4d570}
+
+
+Rename a file. 
+
+Renames an existing file and returns true on success. If the old and new names are equal, the function returns false without further tests. If the new file name already exists, nothing is done and the function fails except if the truncate open mode is specified \-: in that case, the existing file is erased. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em oldname} & Old name. \\
+\hline
+\mbox{\tt in}  & {\em newname} & New name. \\
+\hline
+\mbox{\tt in}  & {\em mode} & Open mode. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on error. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_a65e3c1fa21f46bf45f17dde1ed900fac}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!reset@{reset}}
+\index{reset@{reset}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Contents $>$ bool magrathea\-::\-File\-System\-::reset (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename, }
+\item[{const {\bf Contents} \&}]{contents = {\ttfamily {\bf Contents}()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_a65e3c1fa21f46bf45f17dde1ed900fac}
+
+
+Reset an existing file. 
+
+Erases the contents of an existing file without creating a new one if the specified name does not exist. This function is well suited to avoid the unexpected creation of new files. The extra parameter allows to initialize the file with contents \-: if this parameter is convertible to a string, the file is opened as a text file, otherwise it is considered as a binary file. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \hyperlink{exceptionmagrathea_1_1Contents}{Contents}} & \hyperlink{exceptionmagrathea_1_1Contents}{Contents} type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & File name. \\
+\hline
+\mbox{\tt in}  & {\em contents} & \hyperlink{exceptionmagrathea_1_1Contents}{Contents} to add to the file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the file was created without errors, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_a221bf898f3123b019033a104b54c545c}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!size@{size}}
+\index{size@{size}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}long long int magrathea\-::\-File\-System\-::size (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_a221bf898f3123b019033a104b54c545c}
+
+
+Get size of a file passed by name. 
+
+Opens the file, computes its size and closes it. If the file does not exist or if a stream error is detected, -\/1 is returned. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & File name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+File size in bytes or -\/1 if error. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_a2dda7047196f0a54857709a39e0f0159}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!size@{size}}
+\index{size@{size}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}long long int magrathea\-::\-File\-System\-::size (
+\begin{DoxyParamCaption}
+\item[{std\-::istream \&}]{stream}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_a2dda7047196f0a54857709a39e0f0159}
+
+
+Get size of a file passed by input stream. 
+
+Saves the current position, computes the size of the passed stream and returns to the original position. If the file does not exist or if a stream error is detected, -\/1 is returned. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionInput}{Input} stream. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+File size in bytes or -\/1 if error. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_a2ff3132806866f74d193f60bff56d6a9}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!size@{size}}
+\index{size@{size}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}long long int magrathea\-::\-File\-System\-::size (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_a2ff3132806866f74d193f60bff56d6a9}
+
+
+Get size of a file passed by output stream. 
+
+Saves the current position, computes the size of the passed stream and returns to the original position. If the file does not exist or if a stream error is detected, -\/1 is returned. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionOutput}{Output} stream. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+File size in bytes or -\/1 if error. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_ab76df44fc991333abf9ff6f003a057f4}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!split@{split}}
+\index{split@{split}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{split}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Marker , class Container $>$ unsigned int magrathea\-::\-File\-System\-::split (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename, }
+\item[{const Container \&}]{filenames, }
+\item[{const std\-::ios\-::openmode \&}]{mode = {\ttfamily std\-:\-:ios\-:\-:out}, }
+\item[{const long long int}]{chunk = {\ttfamily -\/1}, }
+\item[{const unsigned long long int}]{limit = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_ab76df44fc991333abf9ff6f003a057f4}
+
+
+Split a file in several files. 
+
+Splits the provided file into several ones of lower sizes. At the beginning and the end of each file, the current iterator byte position regarding the splitted file is saved as a marker. A beginning marker equals to zero corresponds to the first and an end marker equals to zero corresponds to the last file. The limit parameter allows to limit the size by file to an exact number of bytes. By default, if a standard output open mode is specified, all existing files are protected and only new ones can be created. This protection can be removed by explicitely specifying the truncate open mode. Finally, the chunk parameter allows to specify whether a buffer is used for the copy \-: 0 corresponds to no buffer, a positive integer corresponds to the amount of bytes that is put into the buffer, and a negative integer corresponds to a buffer of the total size of the file. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness of markers. \\
+\hline
+{\em Marker} & Record marker type. \\
+\hline
+{\em Container} & (File container type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & \hyperlink{exceptionInput}{Input} file name to split. \\
+\hline
+\mbox{\tt in}  & {\em filenames} & \hyperlink{exceptionOutput}{Output} file names. \\
+\hline
+\mbox{\tt in}  & {\em mode} & Open mode. \\
+\hline
+\mbox{\tt in}  & {\em chunk} & Buffer size. \\
+\hline
+\mbox{\tt in}  & {\em limit} & Size limit of each file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of files written on success, zero on error. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_ac8d575fbc1fbb3c49b96cfc80a3f19fa}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!temporary@{temporary}}
+\index{temporary@{temporary}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{temporary}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string magrathea\-::\-File\-System\-::temporary (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{prefix = {\ttfamily \char`\"{}\textbackslash{}b\char`\"{}}, }
+\item[{const std\-::string \&}]{suffix = {\ttfamily \char`\"{}\char`\"{}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_ac8d575fbc1fbb3c49b96cfc80a3f19fa}
+
+
+Temporary file name. 
+
+Generates a temporary file name. If no argument is used, then the default location is used. If an empty prefix is specified, the path is erased, and only the file name is kept. If a prefix or a suffix is specified, the default path is erased, the file name is kept and prefixed and suffixed by the arguments. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em prefix} & File name prefix or path. \\
+\hline
+\mbox{\tt in}  & {\em suffix} & File name suffix or extension. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Generated temporary file name. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_a37b7681662209ad48ebef52c0f1a2e91}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!unjoin@{unjoin}}
+\index{unjoin@{unjoin}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{unjoin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Marker , class Container $>$ unsigned int magrathea\-::\-File\-System\-::unjoin (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename, }
+\item[{const Container \&}]{filenames, }
+\item[{const std\-::ios\-::openmode \&}]{mode = {\ttfamily std\-:\-:ios\-:\-:out}, }
+\item[{const long long int}]{chunk = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_a37b7681662209ad48ebef52c0f1a2e91}
+
+
+Unjoin a file in several files. 
+
+Unjoins the provided file into the original ones. The original marker size should correspond to the provided one. If output file names are not unique, the previous file is truncated or not depending on the specified open mode. By default, if a standard output open mode is specified, all existing files are protected and only new ones can be created. This protection can be removed by explicitely specifying the truncate open mode. Finally, the chunk parameter allows to specify whether a buffer is used for the copy \-: 0 corresponds to no buffer, a positive integer corresponds to the amount of bytes that is put into the buffer, and a negative integer corresponds to a buffer of the total size of the file. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness of markers. \\
+\hline
+{\em Marker} & Record marker type. \\
+\hline
+{\em Container} & (File container type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & \hyperlink{exceptionInput}{Input} file name to unjoin. \\
+\hline
+\mbox{\tt in}  & {\em filenames} & \hyperlink{exceptionOutput}{Output} file names. \\
+\hline
+\mbox{\tt in}  & {\em mode} & Open mode. \\
+\hline
+\mbox{\tt in}  & {\em chunk} & Buffer size. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of files written on success, zero on error. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_ac9f237a31be083d0420877f7e50c0f8f}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!unsplit@{unsplit}}
+\index{unsplit@{unsplit}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{unsplit}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Marker , class Container $>$ unsigned int magrathea\-::\-File\-System\-::unsplit (
+\begin{DoxyParamCaption}
+\item[{const Container \&}]{filenames, }
+\item[{const std\-::string \&}]{filename, }
+\item[{const std\-::ios\-::openmode \&}]{mode = {\ttfamily std\-:\-:ios\-:\-:out}, }
+\item[{const long long int}]{chunk = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_ac9f237a31be083d0420877f7e50c0f8f}
+
+
+Unsplit several files in a file. 
+
+Unsplits the provided list of files into the original one. The original marker size should correspond to the provided one. By default, if a standard output open mode is specified, all existing files are protected and only a new one can be created. This protection can be removed by explicitely specifying the truncate open mode. Finally, the chunk parameter allows to specify whether a buffer is used for the copy \-: 0 corresponds to no buffer, a positive integer corresponds to the amount of bytes that is put into the buffer, and a negative integer corresponds to a buffer of the total size of the file. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness of markers. \\
+\hline
+{\em Marker} & Record marker type. \\
+\hline
+{\em Container} & (File container type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filenames} & \hyperlink{exceptionInput}{Input} file names to unsplit. \\
+\hline
+\mbox{\tt in}  & {\em filename} & \hyperlink{exceptionOutput}{Output} file name. \\
+\hline
+\mbox{\tt in}  & {\em mode} & Open mode. \\
+\hline
+\mbox{\tt in}  & {\em chunk} & Buffer size. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of files written on success, zero on error. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileSystem_ae163e0811a033225b60eac354e4e4b79}{\index{magrathea\-::\-File\-System@{magrathea\-::\-File\-System}!weight@{weight}}
+\index{weight@{weight}!magrathea::FileSystem@{magrathea\-::\-File\-System}}
+\subsubsection[{weight}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Stream $>$ long long int magrathea\-::\-File\-System\-::weight (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{stream}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileSystem_ae163e0811a033225b60eac354e4e4b79}
+
+
+Get the weight of a file in terms of a specific type. 
+
+Returns the amount of data of the specified type equivalent to the file size. This is just the file size divided by the size of the specified type rounded to the lower integer. If the file does not exist or if a stream error is detected, -\/1 is returned. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Type representing the considered unit. \\
+\hline
+{\em Stream} & (String, input stream or output stream.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & Stream. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+File weight in unit or -\/1 if error. 
+\end{DoxyReturn}
+
+
+The documentation for this exception was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/magrathea/\hyperlink{filesystem_8h}{filesystem.\-h}\end{DoxyCompactItemize}

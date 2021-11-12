@@ -1,0 +1,228 @@
+\hypertarget{exceptionmagrathea_1_1StaticVector}{\section{magrathea\-:\-:Static\-Vector$<$ Type, Size $>$ Exception Template Reference}
+\label{exceptionmagrathea_1_1StaticVector}\index{magrathea\-::\-Static\-Vector$<$ Type, Size $>$@{magrathea\-::\-Static\-Vector$<$ Type, Size $>$}}
+}
+
+
+Basic vectorized constant size container.  
+
+
+
+
+{\ttfamily \#include $<$staticvector.\-h$>$}
+
+Inheritance diagram for magrathea\-:\-:Static\-Vector$<$ Type, Size $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{exceptionmagrathea_1_1StaticVector}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Lifecycle}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{exceptionmagrathea_1_1StaticVector_a4f3abad5f9eae82085039fa10e7fa3da}{Static\-Vector} ()
+\begin{DoxyCompactList}\small\item\em Implicit empty constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Fundamental\-Type  = Type, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-fundamental$<$\-Fundamental\-Type$>$\-::value$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1StaticVector_a9a5d06849def3742579fea2bfe37b63d}{Static\-Vector} (const \hyperlink{exceptionmagrathea_1_1StaticVector}{Static\-Vector}$<$ Fundamental\-Type, Size $>$ \&source)
+\begin{DoxyCompactList}\small\item\em Implicit conversion constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type  = Type, class... Misc, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Other\-Type, Type$>$\-::value$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1StaticVector_a2dcd770d2c1fae3b22e43419deb417e1}{Static\-Vector} (const std\-::initializer\-\_\-list$<$ Other\-Type $>$ \&source, const Misc \&...misc)
+\begin{DoxyCompactList}\small\item\em Implicit initializer list constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class... Misc, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Misc) != 0$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1StaticVector_a4f9267144fc22cd84ee3918439cfd41e}{Static\-Vector} (const Misc \&...misc)
+\begin{DoxyCompactList}\small\item\em Explicit generic constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Vectorization}\par
+\begin{DoxyCompactItemize}
+\item 
+Type \& \hyperlink{exceptionmagrathea_1_1StaticVector_afc2a0d462b9b1dbb1641a486307c0fca}{operator\mbox{[}$\,$\mbox{]}} (const unsigned int i)
+\begin{DoxyCompactList}\small\item\em Direct access to the element. \end{DoxyCompactList}\item 
+const Type \& \hyperlink{exceptionmagrathea_1_1StaticVector_ac07d57a350e69858e14c33e41490abd9}{operator\mbox{[}$\,$\mbox{]}} (const unsigned int i) const 
+\begin{DoxyCompactList}\small\item\em Immutable direct access to the element. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Static Public Member Functions}
+\begin{Indent}{\bf Test}\par
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{exceptionmagrathea_1_1StaticVector_aa5f0e372184d56c61446b82416286e71}{example} ()
+\begin{DoxyCompactList}\small\item\em Example function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{exceptionmagrathea_1_1StaticVector_a08853f59ddbcf3b027c6cb60e38b0e03}{operator} = typedef
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{Indent}{\bf Data members}\par
+\begin{DoxyCompactItemize}
+\item 
+Type \hyperlink{exceptionmagrathea_1_1StaticVector_a5e3de461625ff77174f393eae0218599}{\-\_\-data} \mbox{[}Size\mbox{]}
+\begin{DoxyCompactList}\small\item\em Data contents. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Type = double, unsigned int Size = 1$>$exception magrathea\-::\-Static\-Vector$<$ Type, Size $>$}
+
+Basic vectorized constant size container. 
+
+This class is the direct derivation of \hyperlink{classmagrathea_1_1StaticVectorizer}{Static\-Vectorizer}. It provides the most basic vectorized constant size container without adding new functionalities to the abstract class. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+{\em Size} & Number of elements. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{exceptionmagrathea_1_1StaticVector_a4f3abad5f9eae82085039fa10e7fa3da}{\index{magrathea\-::\-Static\-Vector@{magrathea\-::\-Static\-Vector}!Static\-Vector@{Static\-Vector}}
+\index{Static\-Vector@{Static\-Vector}!magrathea::StaticVector@{magrathea\-::\-Static\-Vector}}
+\subsubsection[{Static\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ {\bf magrathea\-::\-Static\-Vector}$<$ Type, Size $>$\-::{\bf Static\-Vector} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1StaticVector_a4f3abad5f9eae82085039fa10e7fa3da}
+
+
+Implicit empty constructor. 
+
+Does nothing. \hypertarget{exceptionmagrathea_1_1StaticVector_a9a5d06849def3742579fea2bfe37b63d}{\index{magrathea\-::\-Static\-Vector@{magrathea\-::\-Static\-Vector}!Static\-Vector@{Static\-Vector}}
+\index{Static\-Vector@{Static\-Vector}!magrathea::StaticVector@{magrathea\-::\-Static\-Vector}}
+\subsubsection[{Static\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename Fundamental\-Type , class $>$ {\bf magrathea\-::\-Static\-Vector}$<$ Type, Size $>$\-::{\bf Static\-Vector} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Static\-Vector}$<$ Fundamental\-Type, Size $>$ \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1StaticVector_a9a5d06849def3742579fea2bfe37b63d}
+
+
+Implicit conversion constructor. 
+
+Provides an implicit conversion from a fundamental type contents. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Fundamental\-Type} & (Fundamental data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\hypertarget{exceptionmagrathea_1_1StaticVector_a2dcd770d2c1fae3b22e43419deb417e1}{\index{magrathea\-::\-Static\-Vector@{magrathea\-::\-Static\-Vector}!Static\-Vector@{Static\-Vector}}
+\index{Static\-Vector@{Static\-Vector}!magrathea::StaticVector@{magrathea\-::\-Static\-Vector}}
+\subsubsection[{Static\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename Other\-Type , class... Misc, class $>$ {\bf magrathea\-::\-Static\-Vector}$<$ Type, Size $>$\-::{\bf Static\-Vector} (
+\begin{DoxyParamCaption}
+\item[{const std\-::initializer\-\_\-list$<$ Other\-Type $>$ \&}]{source, }
+\item[{const Misc \&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1StaticVector_a2dcd770d2c1fae3b22e43419deb417e1}
+
+
+Implicit initializer list constructor. 
+
+Provides an implicit conversion from an initializer list. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & (Other data type.) \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\hypertarget{exceptionmagrathea_1_1StaticVector_a4f9267144fc22cd84ee3918439cfd41e}{\index{magrathea\-::\-Static\-Vector@{magrathea\-::\-Static\-Vector}!Static\-Vector@{Static\-Vector}}
+\index{Static\-Vector@{Static\-Vector}!magrathea::StaticVector@{magrathea\-::\-Static\-Vector}}
+\subsubsection[{Static\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$class... Misc, class $>$ {\bf magrathea\-::\-Static\-Vector}$<$ Type, Size $>$\-::{\bf Static\-Vector} (
+\begin{DoxyParamCaption}
+\item[{const Misc \&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{exceptionmagrathea_1_1StaticVector_a4f9267144fc22cd84ee3918439cfd41e}
+
+
+Explicit generic constructor. 
+
+Provides a generic interface to all constructors of the base class. Before calling the associated constructor of the base class, the contents is initialized. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{exceptionmagrathea_1_1StaticVector_aa5f0e372184d56c61446b82416286e71}{\index{magrathea\-::\-Static\-Vector@{magrathea\-::\-Static\-Vector}!example@{example}}
+\index{example@{example}!magrathea::StaticVector@{magrathea\-::\-Static\-Vector}}
+\subsubsection[{example}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ int {\bf magrathea\-::\-Static\-Vector}$<$ Type, Size $>$\-::example (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1StaticVector_aa5f0e372184d56c61446b82416286e71}
+
+
+Example function. 
+
+Tests and demonstrates the use of \hyperlink{exceptionmagrathea_1_1StaticVector}{Static\-Vector}. \begin{DoxyReturn}{Returns}
+0 if no error. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1StaticVector_afc2a0d462b9b1dbb1641a486307c0fca}{\index{magrathea\-::\-Static\-Vector@{magrathea\-::\-Static\-Vector}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!magrathea::StaticVector@{magrathea\-::\-Static\-Vector}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ Type \& {\bf magrathea\-::\-Static\-Vector}$<$ Type, Size $>$\-::{\bf operator}\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1StaticVector_afc2a0d462b9b1dbb1641a486307c0fca}
+
+
+Direct access to the element. 
+
+Provides a direct access to the specified element. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index of the element. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the element. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1StaticVector_ac07d57a350e69858e14c33e41490abd9}{\index{magrathea\-::\-Static\-Vector@{magrathea\-::\-Static\-Vector}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!magrathea::StaticVector@{magrathea\-::\-Static\-Vector}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ const Type \& {\bf magrathea\-::\-Static\-Vector}$<$ Type, Size $>$\-::{\bf operator}\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1StaticVector_ac07d57a350e69858e14c33e41490abd9}
+
+
+Immutable direct access to the element. 
+
+Provides a constant direct access to the specified element. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index of the element. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Const reference to the element. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{exceptionmagrathea_1_1StaticVector_a5e3de461625ff77174f393eae0218599}{\index{magrathea\-::\-Static\-Vector@{magrathea\-::\-Static\-Vector}!\-\_\-data@{\-\_\-data}}
+\index{\-\_\-data@{\-\_\-data}!magrathea::StaticVector@{magrathea\-::\-Static\-Vector}}
+\subsubsection[{\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type = double, unsigned int Size = 1$>$ Type {\bf magrathea\-::\-Static\-Vector}$<$ Type, Size $>$\-::\-\_\-data\mbox{[}Size\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}}\label{exceptionmagrathea_1_1StaticVector_a5e3de461625ff77174f393eae0218599}
+
+
+Data contents. 
+
+\hypertarget{exceptionmagrathea_1_1StaticVector_a08853f59ddbcf3b027c6cb60e38b0e03}{\index{magrathea\-::\-Static\-Vector@{magrathea\-::\-Static\-Vector}!operator@{operator}}
+\index{operator@{operator}!magrathea::StaticVector@{magrathea\-::\-Static\-Vector}}
+\subsubsection[{operator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type = double, unsigned int Size = 1$>$ using {\bf magrathea\-::\-Static\-Vector}$<$ Type, Size $>$\-::operator = }}\label{exceptionmagrathea_1_1StaticVector_a08853f59ddbcf3b027c6cb60e38b0e03}
+
+
+The documentation for this exception was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/magrathea/\hyperlink{staticvector_8h}{staticvector.\-h}\end{DoxyCompactItemize}

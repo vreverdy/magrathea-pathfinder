@@ -1,0 +1,224 @@
+.TH "magrathea::StaticVector< Type, Size >" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::StaticVector< Type, Size > \- 
+.PP
+Basic vectorized constant size container\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <staticvector\&.h>\fP
+.PP
+Inherits \fBmagrathea::StaticVectorizer< unsigned int, Size, StaticVector, Type, Size >\fP\&.
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBLifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBStaticVector\fP ()"
+.br
+.RI "\fIImplicit empty constructor\&. \fP"
+.ti -1c
+.RI "template<typename FundamentalType  = Type, class  = typename std::enable_if<std::is_fundamental<FundamentalType>::value>::type> \fBStaticVector\fP (const \fBStaticVector\fP< FundamentalType, Size > &source)"
+.br
+.RI "\fIImplicit conversion constructor\&. \fP"
+.ti -1c
+.RI "template<typename OtherType  = Type, class\&.\&.\&. Misc, class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> \fBStaticVector\fP (const std::initializer_list< OtherType > &source, const Misc &\&.\&.\&.misc)"
+.br
+.RI "\fIImplicit initializer list constructor\&. \fP"
+.ti -1c
+.RI "template<class\&.\&.\&. Misc, class  = typename std::enable_if<sizeof\&.\&.\&.(Misc) != 0>::type> \fBStaticVector\fP (const Misc &\&.\&.\&.misc)"
+.br
+.RI "\fIExplicit generic constructor\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBVectorization\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "Type & \fBoperator[]\fP (const unsigned int i)"
+.br
+.RI "\fIDirect access to the element\&. \fP"
+.ti -1c
+.RI "const Type & \fBoperator[]\fP (const unsigned int i) const "
+.br
+.RI "\fIImmutable direct access to the element\&. \fP"
+.in -1c
+.in -1c
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "using \fBoperator\fP = typedef"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.PP
+.RI "\fBData members\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "Type \fB_data\fP [Size]"
+.br
+.RI "\fIData contents\&. \fP"
+.in -1c
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename Type = double, unsigned int Size = 1>exception magrathea::StaticVector< Type, Size >"
+Basic vectorized constant size container\&. 
+
+This class is the direct derivation of \fBStaticVectorizer\fP\&. It provides the most basic vectorized constant size container without adding new functionalities to the abstract class\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Data type\&. 
+.br
+\fISize\fP Number of elements\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename Type , unsigned int Size> \fBmagrathea::StaticVector\fP< Type, Size >::\fBStaticVector\fP ()\fC [inline]\fP"
+
+.PP
+Implicit empty constructor\&. Does nothing\&. 
+.SS "template<typename Type , unsigned int Size> template<typename FundamentalType , class > \fBmagrathea::StaticVector\fP< Type, Size >::\fBStaticVector\fP (const \fBStaticVector\fP< FundamentalType, Size > &source)\fC [inline]\fP"
+
+.PP
+Implicit conversion constructor\&. Provides an implicit conversion from a fundamental type contents\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFundamentalType\fP (Fundamental data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename OtherType , class\&.\&.\&. Misc, class > \fBmagrathea::StaticVector\fP< Type, Size >::\fBStaticVector\fP (const std::initializer_list< OtherType > &source, const Misc &\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Implicit initializer list constructor\&. Provides an implicit conversion from an initializer list\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.br
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<class\&.\&.\&. Misc, class > \fBmagrathea::StaticVector\fP< Type, Size >::\fBStaticVector\fP (const Misc &\&.\&.\&.misc)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit generic constructor\&. Provides a generic interface to all constructors of the base class\&. Before calling the associated constructor of the base class, the contents is initialized\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename Type , unsigned int Size> int \fBmagrathea::StaticVector\fP< Type, Size >::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBStaticVector\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> Type & \fBmagrathea::StaticVector\fP< Type, Size >::\fBoperator\fP[] (const unsigned inti)\fC [inline]\fP"
+
+.PP
+Direct access to the element\&. Provides a direct access to the specified element\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index of the element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> const Type & \fBmagrathea::StaticVector\fP< Type, Size >::\fBoperator\fP[] (const unsigned inti) const\fC [inline]\fP"
+
+.PP
+Immutable direct access to the element\&. Provides a constant direct access to the specified element\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index of the element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Const reference to the element\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename Type = double, unsigned int Size = 1> Type \fBmagrathea::StaticVector\fP< Type, Size >::_data[Size]\fC [protected]\fP"
+
+.PP
+Data contents\&. 
+.SS "template<typename Type = double, unsigned int Size = 1> using \fBmagrathea::StaticVector\fP< Type, Size >::operator = "
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

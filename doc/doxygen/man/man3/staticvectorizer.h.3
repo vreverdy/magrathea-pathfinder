@@ -1,0 +1,208 @@
+.TH "/data/home/mbreton/magrathea_pathfinder/src/magrathea/staticvectorizer.h" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/data/home/mbreton/magrathea_pathfinder/src/magrathea/staticvectorizer.h \- 
+.PP
+Helper class for generic constant size vectorization\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <iostream>\fP
+.br
+\fC#include <iomanip>\fP
+.br
+\fC#include <type_traits>\fP
+.br
+\fC#include <stdexcept>\fP
+.br
+\fC#include <functional>\fP
+.br
+\fC#include <algorithm>\fP
+.br
+\fC#include <iterator>\fP
+.br
+\fC#include <initializer_list>\fP
+.br
+\fC#include <vector>\fP
+.br
+\fC#include <bitset>\fP
+.br
+\fC#include 'vectorizer\&.h'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBmagrathea::StaticVectorizer< Kind, Size, Crtp, Type, Parameters >\fP"
+.br
+.RI "\fIHelper class for generic constant size vectorization\&. \fP"
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBmagrathea\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< typename 
+.br
+std::common_type< SelfType, 
+.br
+OtherType >::type, 
+.br
+SelfParameters\&.\&.\&.> \fBmagrathea::operator+\fP (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIAddition with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< typename 
+.br
+std::common_type< SelfType, 
+.br
+OtherType >::type, 
+.br
+SelfParameters\&.\&.\&.> \fBmagrathea::operator-\fP (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fISubstraction with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< typename 
+.br
+std::common_type< SelfType, 
+.br
+OtherType >::type, 
+.br
+SelfParameters\&.\&.\&.> \fBmagrathea::operator*\fP (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIMultiplication with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< typename 
+.br
+std::common_type< SelfType, 
+.br
+OtherType >::type, 
+.br
+SelfParameters\&.\&.\&.> \fBmagrathea::operator/\fP (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIDivision with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< typename 
+.br
+std::common_type< SelfType, 
+.br
+OtherType >::type, 
+.br
+SelfParameters\&.\&.\&.> \fBmagrathea::operator%\fP (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIModulo with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< typename 
+.br
+std::common_type< SelfType, 
+.br
+OtherType >::type, 
+.br
+SelfParameters\&.\&.\&.> \fBmagrathea::operator&\fP (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIBitwise AND with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< typename 
+.br
+std::common_type< SelfType, 
+.br
+OtherType >::type, 
+.br
+SelfParameters\&.\&.\&.> \fBmagrathea::operator|\fP (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIBitwise OR with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< typename 
+.br
+std::common_type< SelfType, 
+.br
+OtherType >::type, 
+.br
+SelfParameters\&.\&.\&.> \fBmagrathea::operator^\fP (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIBitwise XOR with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< OtherType, 
+.br
+SelfParameters\&.\&.\&.> \fBmagrathea::operator<<\fP (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIBitwise left shift with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< OtherType, 
+.br
+SelfParameters\&.\&.\&.> \fBmagrathea::operator>>\fP (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIBitwise right shift with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< bool, SelfParameters\&.\&.\&.> \fBmagrathea::operator&&\fP (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fILogical AND with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< bool, SelfParameters\&.\&.\&.> \fBmagrathea::operator||\fP (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fILogical OR with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< bool, SelfParameters\&.\&.\&.> \fBmagrathea::operator==\fP (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIEqual to with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< bool, SelfParameters\&.\&.\&.> \fBmagrathea::operator!=\fP (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fINot equal to with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< bool, SelfParameters\&.\&.\&.> \fBmagrathea::operator>\fP (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIGreater than with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< bool, SelfParameters\&.\&.\&.> \fBmagrathea::operator<\fP (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fILess than with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< bool, SelfParameters\&.\&.\&.> \fBmagrathea::operator>=\fP (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIGreater than or equal to with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< bool, SelfParameters\&.\&.\&.> \fBmagrathea::operator<=\fP (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fILess than or equal to with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters> std::ostream & \fBmagrathea::operator<<\fP (std::ostream &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fI\fBOutput\fP stream operator\&. \fP"
+.ti -1c
+.RI "template<typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters> std::istream & \fBmagrathea::operator>>\fP (std::istream &lhs, StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fI\fBInput\fP stream operator\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Helper class for generic constant size vectorization\&. 
+
+\fBAuthor:\fP
+.RS 4
+Vincent Reverdy (vince.rev@gmail.com) 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+2012-2013 
+.RE
+.PP
+\fBCopyright:\fP
+.RS 4
+CECILL-B License 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

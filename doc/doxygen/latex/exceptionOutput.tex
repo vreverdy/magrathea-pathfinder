@@ -1,0 +1,311 @@
+\hypertarget{exceptionOutput}{\section{Output Exception Reference}
+\label{exceptionOutput}\index{Output@{Output}}
+}
+
+
+\hyperlink{exceptionOutput}{Output} utilities for raytracing.  
+
+
+
+
+{\ttfamily \#include $<$output.\-h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{Indent}{\bf Utilities}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Type  = std\-::string, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$\-Type$>$\-::type$>$\-::type, std\-::string$>$\-::value$>$\-::type$>$ }\\static std\-::string \hyperlink{exceptionOutput_a7ccbf3e24a36a73f64cd117ba6b8b904}{name} (Type \&\&value=Type())
+\begin{DoxyCompactList}\small\item\em File name from a string. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Type , class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-convertible$<$typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$\-Type$>$\-::type$>$\-::type, std\-::string$>$\-::value$>$\-::type$>$ }\\static std\-::string \hyperlink{exceptionOutput_a58f05b0b91d3739be64ba7c40577d5cb}{name} (const Type \&value)
+\begin{DoxyCompactList}\small\item\em File name from a number. \end{DoxyCompactList}\item 
+{\footnotesize template$<$template$<$ class, class $>$ class Type, class First , class Second , class  = typename std\-::enable\-\_\-if$<$(std\-::tuple\-\_\-size$<$\-Type$<$\-First, Second$>$ $>$\-::value == std\-::tuple\-\_\-size$<$std\-::pair$<$\-First, Second$>$ $>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-First, std\-::string$>$\-::value)$>$\-::type$>$ }\\static std\-::string \hyperlink{exceptionOutput_abe6f3af3439b365ae0edfec2ee8abfaf}{name} (const Type$<$ First, Second $>$ \&value)
+\begin{DoxyCompactList}\small\item\em File name from a format. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Type , class... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != 0$>$\-::type$>$ }\\static std\-::string \hyperlink{exceptionOutput_a4f4d3a620d93e4e661c62a04e14dd822}{name} (Type \&\&value, Types \&\&...values)
+\begin{DoxyCompactList}\small\item\em File name from a format. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Save}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Octree , class  = typename std\-::enable\-\_\-if$<$\-Octree\-::dimension() != 0$>$\-::type$>$ }\\static bool \hyperlink{exceptionOutput_af1e22abb9de803b477dbae6f79e6b379}{save} (std\-::ostream \&stream, const Octree \&octree, const int digits=0)
+\begin{DoxyCompactList}\small\item\em Save a octree. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Cosmology , class  = typename std\-::enable\-\_\-if$<$std\-::tuple\-\_\-size$<$\-Cosmology$>$\-::value != 0$>$\-::type$>$ }\\static bool \hyperlink{exceptionOutput_a8ef3075f905bf4672ec76a57f94b245d}{save} (std\-::ostream \&stream, const Cosmology \&cosmology, const unsigned int digits=0)
+\begin{DoxyCompactList}\small\item\em Save a cosmology. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Trajectory , class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Trajectory$>$()\mbox{[}0\mbox{]}.\-type())$>$\-::type$>$\-::type$>$\-::value$>$\-::type$>$ }\\static bool \hyperlink{exceptionOutput_a31718f382ea48cc4d7ea4ed360043163}{save} (std\-::ostream \&stream, const Trajectory \&trajectory, const unsigned int \&digits=0)
+\begin{DoxyCompactList}\small\item\em Save a trajectory. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Container , typename Type  = typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Container$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type, typename Integral  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Container$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type$>$\-::value$>$\-::type$>$ }\\static bool \hyperlink{exceptionOutput_a3600c5073abbe3899151cefd9e60ee1a}{save} (std\-::ostream \&stream, const Container \&x, const Container \&y, const Container \&ymean, const Container \&ystd, const unsigned int digits=0, const Integral count=Integral())
+\begin{DoxyCompactList}\small\item\em Save statistics. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Test}\par
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{exceptionOutput_ac8b80a2be067225109da37813bc371f5}{example} ()
+\begin{DoxyCompactList}\small\item\em Example function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+\hyperlink{exceptionOutput}{Output} utilities for raytracing. 
+
+Provides a list of exportation routines to save data for raytracing. 
+
+\subsection{Member Function Documentation}
+\hypertarget{exceptionOutput_ac8b80a2be067225109da37813bc371f5}{\index{Output@{Output}!example@{example}}
+\index{example@{example}!Output@{Output}}
+\subsubsection[{example}]{\setlength{\rightskip}{0pt plus 5cm}int Output\-::example (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionOutput_ac8b80a2be067225109da37813bc371f5}
+
+
+Example function. 
+
+Tests and demonstrates the use of \hyperlink{exceptionOutput}{Output}. \begin{DoxyReturn}{Returns}
+0 if no error. 
+\end{DoxyReturn}
+\hypertarget{exceptionOutput_a7ccbf3e24a36a73f64cd117ba6b8b904}{\index{Output@{Output}!name@{name}}
+\index{name@{name}!Output@{Output}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class $>$ std\-::string Output\-::name (
+\begin{DoxyParamCaption}
+\item[{Type \&\&}]{value = {\ttfamily Type()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionOutput_a7ccbf3e24a36a73f64cd117ba6b8b904}
+
+
+File name from a string. 
+
+Produces a file name from a string. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Type convertible to a string. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & Value of the string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Name corresponding to the string. 
+\end{DoxyReturn}
+\hypertarget{exceptionOutput_a58f05b0b91d3739be64ba7c40577d5cb}{\index{Output@{Output}!name@{name}}
+\index{name@{name}!Output@{Output}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class $>$ std\-::string Output\-::name (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionOutput_a58f05b0b91d3739be64ba7c40577d5cb}
+
+
+File name from a number. 
+
+Produces a file name from a number. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Number type convertible to a string. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & Value of the number. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Name corresponding to the number. 
+\end{DoxyReturn}
+\hypertarget{exceptionOutput_abe6f3af3439b365ae0edfec2ee8abfaf}{\index{Output@{Output}!name@{name}}
+\index{name@{name}!Output@{Output}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ class, class $>$ class Type, class First , class Second , class $>$ std\-::string Output\-::name (
+\begin{DoxyParamCaption}
+\item[{const Type$<$ First, Second $>$ \&}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionOutput_abe6f3af3439b365ae0edfec2ee8abfaf}
+
+
+File name from a format. 
+
+Produces a file name from a format. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Pair type. \\
+\hline
+{\em First} & Type convertible to a string. \\
+\hline
+{\em Second} & Second type associated to the format. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & Value of the pair. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Name corresponding to the format. 
+\end{DoxyReturn}
+\hypertarget{exceptionOutput_a4f4d3a620d93e4e661c62a04e14dd822}{\index{Output@{Output}!name@{name}}
+\index{name@{name}!Output@{Output}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type, class... Types, class $>$ std\-::string Output\-::name (
+\begin{DoxyParamCaption}
+\item[{Type \&\&}]{value, }
+\item[{Types \&\&...}]{values}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionOutput_a4f4d3a620d93e4e661c62a04e14dd822}
+
+
+File name from a format. 
+
+Produces a file name from a serie of components by recursively calling the name function. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & First type. \\
+\hline
+{\em Types} & Other types. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & First value. \\
+\hline
+\mbox{\tt in}  & {\em values} & Other values. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Name corresponding to the serie of components. 
+\end{DoxyReturn}
+\hypertarget{exceptionOutput_af1e22abb9de803b477dbae6f79e6b379}{\index{Output@{Output}!save@{save}}
+\index{save@{save}!Output@{Output}}
+\subsubsection[{save}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Octree , class $>$ bool Output\-::save (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{const Octree \&}]{octree, }
+\item[{const int}]{digits = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionOutput_af1e22abb9de803b477dbae6f79e6b379}
+
+
+Save a octree. 
+
+Writes an octree to a text file. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Octree} & Octree type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionOutput}{Output} stream. \\
+\hline
+\mbox{\tt in}  & {\em octree} & Octree. \\
+\hline
+\mbox{\tt in}  & {\em digits} & Optional precision.  \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionOutput_a8ef3075f905bf4672ec76a57f94b245d}{\index{Output@{Output}!save@{save}}
+\index{save@{save}!Output@{Output}}
+\subsubsection[{save}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Cosmology , class $>$ bool Output\-::save (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{const Cosmology \&}]{cosmology, }
+\item[{const unsigned int}]{digits = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionOutput_a8ef3075f905bf4672ec76a57f94b245d}
+
+
+Save a cosmology. 
+
+Writes each step of a cosmology to a text file. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Cosmology} & Cosmology type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionOutput}{Output} stream. \\
+\hline
+\mbox{\tt in}  & {\em cosmology} & Cosmology. \\
+\hline
+\mbox{\tt in}  & {\em digits} & Optional precision.  \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionOutput_a31718f382ea48cc4d7ea4ed360043163}{\index{Output@{Output}!save@{save}}
+\index{save@{save}!Output@{Output}}
+\subsubsection[{save}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Trajectory , class $>$ bool Output\-::save (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{const Trajectory \&}]{trajectory, }
+\item[{const unsigned int \&}]{digits = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionOutput_a31718f382ea48cc4d7ea4ed360043163}
+
+
+Save a trajectory. 
+
+Writes each step of the trajectory to a text file. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Trajectory} & Trajectory type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionOutput}{Output} stream. \\
+\hline
+\mbox{\tt in}  & {\em trajectory} & Trajectory. \\
+\hline
+\mbox{\tt in}  & {\em digits} & Optional precision.  \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionOutput_a3600c5073abbe3899151cefd9e60ee1a}{\index{Output@{Output}!save@{save}}
+\index{save@{save}!Output@{Output}}
+\subsubsection[{save}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Container , typename Type , typename Integral , class $>$ bool Output\-::save (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{const Container \&}]{x, }
+\item[{const Container \&}]{y, }
+\item[{const Container \&}]{ymean, }
+\item[{const Container \&}]{ystd, }
+\item[{const unsigned int}]{digits = {\ttfamily 0}, }
+\item[{const Integral}]{count = {\ttfamily Integral()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionOutput_a3600c5073abbe3899151cefd9e60ee1a}
+
+
+Save statistics. 
+
+Save photons statistics. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container} & Container type. \\
+\hline
+{\em Type} & Data type. \\
+\hline
+{\em Integral} & Integral type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionOutput}{Output} stream. \\
+\hline
+\mbox{\tt in}  & {\em x} & Abscissae. \\
+\hline
+\mbox{\tt in}  & {\em y} & Homogeneous ordinates. \\
+\hline
+\mbox{\tt in}  & {\em ymean} & Mean of values. \\
+\hline
+\mbox{\tt in}  & {\em ystd} & Standard deviation of values. \\
+\hline
+\mbox{\tt in}  & {\em digits} & Optional precision. \\
+\hline
+\mbox{\tt in}  & {\em count} & Optional count.  \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false otherwise. 
+\end{DoxyReturn}
+
+
+The documentation for this exception was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/\hyperlink{output_8h}{output.\-h}\end{DoxyCompactItemize}

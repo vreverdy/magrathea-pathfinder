@@ -1,0 +1,671 @@
+.TH "magrathea::Timer< Type, Period, Clock >" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::Timer< Type, Period, Clock > \- 
+.PP
+A timer to manage time measurements and benchmarks\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <timer\&.h>\fP
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBLifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class Duration  = Type, class ReferenceTimePoint  = std::true_type, class BeginningTimePoint  = std::true_type, class EndingTimePoint  = std::true_type> \fBTimer\fP (const bool running0=false, const Duration &record0=Duration(), const ReferenceTimePoint &reference0=ReferenceTimePoint(), const BeginningTimePoint &beginning0=BeginningTimePoint(), const EndingTimePoint &ending0=EndingTimePoint())"
+.br
+.RI "\fIImplicit contents constructor\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class OtherPeriod > \fBTimer\fP (const \fBTimer\fP< OtherType, OtherPeriod, Clock > &source)"
+.br
+.RI "\fIImplicit conversion constructor\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBOperators\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename OtherType , class OtherPeriod > \fBTimer\fP< Type, Period, Clock > & \fBoperator=\fP (const \fBTimer\fP< OtherType, OtherPeriod, Clock > &rhs)"
+.br
+.RI "\fIConversion assignment operator\&. \fP"
+.ti -1c
+.RI "Type \fBoperator()\fP () const "
+.br
+.RI "\fITotal duration extraction operator\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBAssignment\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class Duration  = Type, class ReferenceTimePoint  = std::true_type, class BeginningTimePoint  = std::true_type, class EndingTimePoint  = std::true_type> \fBTimer\fP< Type, Period, Clock > & \fBassign\fP (const bool running0=false, const Duration &record0=Duration(), const ReferenceTimePoint &reference0=ReferenceTimePoint(), const BeginningTimePoint &beginning0=BeginningTimePoint(), const EndingTimePoint &ending0=EndingTimePoint())"
+.br
+.RI "\fI\fBContents\fP assignment\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class OtherPeriod > \fBTimer\fP< Type, Period, Clock > & \fBassign\fP (const \fBTimer\fP< OtherType, OtherPeriod, Clock > &source)"
+.br
+.RI "\fIConversion assignment\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBManagement\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBTimer\fP< Type, Period, Clock > \fBcopy\fP () const "
+.br
+.RI "\fICopy\&. \fP"
+.ti -1c
+.RI "template<typename OtherType  = Type, class OtherPeriod  = Period> \fBTimer\fP< OtherType, OtherPeriod, 
+.br
+Clock > \fBcast\fP () const "
+.br
+.RI "\fICast\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBGetters\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "const bool & \fBrunning\fP () const "
+.br
+.RI "\fIGet whether the timer is running\&. \fP"
+.ti -1c
+.RI "const Clock::duration & \fBrecord\fP () const "
+.br
+.RI "\fIGet the saved duration\&. \fP"
+.ti -1c
+.RI "const Clock::time_point & \fBreference\fP () const "
+.br
+.RI "\fIGet the reference time point\&. \fP"
+.ti -1c
+.RI "const Clock::time_point & \fBbeginning\fP () const "
+.br
+.RI "\fIGet the beginning time point\&. \fP"
+.ti -1c
+.RI "const Clock::time_point & \fBending\fP () const "
+.br
+.RI "\fIGet the ending time point\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBActions\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "std::chrono::duration< Type, 
+.br
+Period > \fBreset\fP ()"
+.br
+.RI "\fIReset timer\&. \fP"
+.ti -1c
+.RI "std::chrono::duration< Type, 
+.br
+Period > \fBstart\fP ()"
+.br
+.RI "\fIStart timer\&. \fP"
+.ti -1c
+.RI "std::chrono::duration< Type, 
+.br
+Period > \fBstop\fP ()"
+.br
+.RI "\fIStop timer\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBMeasurement\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "std::chrono::duration< Type, 
+.br
+Period > \fBcurrent\fP () const "
+.br
+.RI "\fIDuration since last start\&. \fP"
+.ti -1c
+.RI "std::chrono::duration< Type, 
+.br
+Period > \fBtotal\fP () const "
+.br
+.RI "\fITotal duration\&. \fP"
+.ti -1c
+.RI "std::chrono::duration< Type, 
+.br
+Period > \fBreal\fP () const "
+.br
+.RI "\fIReal duration\&. \fP"
+.in -1c
+.in -1c
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBUtilities\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class Duration  = Type, typename Counter  = unsigned long long int> static std::chrono::duration
+.br
+< Type, Period > \fBwait\fP (const Duration &delay=Duration(1), Counter &&counter=Counter())"
+.br
+.RI "\fIWait a certain time\&. \fP"
+.ti -1c
+.RI "template<typename Counter , class Function , class\&.\&.\&. Args> static std::chrono::duration
+.br
+< Type, Period > \fBbenchmark\fP (const Counter &counter, Function &&f, Args &&\&.\&.\&.args)"
+.br
+.RI "\fIBenchmark a function\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SS "Protected Attributes"
+
+.PP
+.RI "\fBData members\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "bool \fB_running\fP"
+.br
+.RI "\fIFlag to indicate whether a measurement is running or not\&. \fP"
+.ti -1c
+.RI "Clock::duration \fB_record\fP"
+.br
+.RI "\fIInternal backup of duration\&. \fP"
+.ti -1c
+.RI "Clock::time_point \fB_reference\fP"
+.br
+.RI "\fIReference time point for measurements\&. \fP"
+.ti -1c
+.RI "Clock::time_point \fB_beginning\fP"
+.br
+.RI "\fIBeginning time point for measurements\&. \fP"
+.ti -1c
+.RI "Clock::time_point \fB_ending\fP"
+.br
+.RI "\fIEnding time point for measurements\&. \fP"
+.in -1c
+.in -1c
+.SS "Friends"
+
+.PP
+.RI "\fBStream\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename SelfType , class SelfPeriod , class SelfClock > std::ostream & \fBoperator<<\fP (std::ostream &lhs, const \fBTimer\fP< SelfType, SelfPeriod, SelfClock > &rhs)"
+.br
+.RI "\fI\fBOutput\fP stream operator\&. \fP"
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename Type = double, class Period = std::chrono::seconds::period, class Clock = std::chrono::steady_clock>exception magrathea::Timer< Type, Period, Clock >"
+A timer to manage time measurements and benchmarks\&. 
+
+Provides a wrapper of \fCstd::chrono\fP for an easy use and basic operations needed by time execution management\&. It has two internal times points : one to mark the beginning of a measurement, and one to mark the end of the current measurement\&. It has also a reference time point to evaluate real elasped time\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Duration representation type\&. 
+.br
+\fIPeriod\fP Standard ratio representing the tick period\&. 
+.br
+\fIClock\fP Internal clock type\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename Type , class Period , class Clock > template<class Duration , class ReferenceTimePoint , class BeginningTimePoint , class EndingTimePoint > \fBmagrathea::Timer\fP< Type, Period, Clock >::\fBTimer\fP (const boolrunning0 = \fCfalse\fP, const Duration &record0 = \fCDuration()\fP, const ReferenceTimePoint &reference0 = \fCReferenceTimePoint()\fP, const BeginningTimePoint &beginning0 = \fCBeginningTimePoint()\fP, const EndingTimePoint &ending0 = \fCEndingTimePoint()\fP)\fC [inline]\fP"
+
+.PP
+Implicit contents constructor\&. Provides a construction from every single parameter of the timer : the current record of duration, the time of reference, the time of the last start, the time of the last stop, and whether the timer is running\&. If no reference is provided, the current time is set\&. If no beginning time is provided, it is set to the reference time\&. If no ending time is provided, it is set to the beginning\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDuration\fP (Standard duration type or arithmetic type\&.) 
+.br
+\fIReferenceTimePoint\fP (Time point type of the reference\&.) 
+.br
+\fIBeginningTimePoint\fP (Time point type of the beginning time\&.) 
+.br
+\fIEndingTimePoint\fP (Time point type of the ending time\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrunning0\fP \fBInput\fP value of whether the timer is running\&. 
+.br
+\fIrecord0\fP \fBInput\fP value of the backup of duration\&. 
+.br
+\fIreference0\fP \fBInput\fP value of the reference time\&. 
+.br
+\fIbeginning0\fP \fBInput\fP value of the beginning time\&. 
+.br
+\fIending0\fP \fBInput\fP value of the ending time\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Period , class Clock > template<typename OtherType , class OtherPeriod > \fBmagrathea::Timer\fP< Type, Period, Clock >::\fBTimer\fP (const \fBTimer\fP< OtherType, OtherPeriod, Clock > &source)\fC [inline]\fP"
+
+.PP
+Implicit conversion constructor\&. Provides a construction from a timer of another type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other duration representation type\&.) 
+.br
+\fIOtherPeriod\fP (Other standard ratio representing the tick period\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename Type , class Period , class Clock > template<class Duration , class ReferenceTimePoint , class BeginningTimePoint , class EndingTimePoint > \fBTimer\fP< Type, Period, Clock > & \fBmagrathea::Timer\fP< Type, Period, Clock >::assign (const boolrunning0 = \fCfalse\fP, const Duration &record0 = \fCDuration()\fP, const ReferenceTimePoint &reference0 = \fCReferenceTimePoint()\fP, const BeginningTimePoint &beginning0 = \fCBeginningTimePoint()\fP, const EndingTimePoint &ending0 = \fCEndingTimePoint()\fP)\fC [inline]\fP"
+
+.PP
+\fBContents\fP assignment\&. Assigns contents from every single parameter of the timer : the current record of duration, the time of reference, the time of the last start, the time of the last stop, and whether the timer is running\&. If no reference is provided, the current time is set\&. If no beginning time is provided, it is set to the reference time\&. If no ending time is provided, it is set to the beginning\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDuration\fP (Standard duration type or arithmetic type\&.) 
+.br
+\fIReferenceTimePoint\fP (Time point type of the reference\&.) 
+.br
+\fIBeginningTimePoint\fP (Time point type of the beginning time\&.) 
+.br
+\fIEndingTimePoint\fP (Time point type of the ending time\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrunning0\fP \fBInput\fP value of whether the timer is running\&. 
+.br
+\fIrecord0\fP \fBInput\fP value of the backup of duration\&. 
+.br
+\fIreference0\fP \fBInput\fP value of the reference time\&. 
+.br
+\fIbeginning0\fP \fBInput\fP value of the beginning time\&. 
+.br
+\fIending0\fP \fBInput\fP value of the ending time\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Period , class Clock > template<typename OtherType , class OtherPeriod > \fBTimer\fP< Type, Period, Clock > & \fBmagrathea::Timer\fP< Type, Period, Clock >::assign (const \fBTimer\fP< OtherType, OtherPeriod, Clock > &source)\fC [inline]\fP"
+
+.PP
+Conversion assignment\&. Assigns the contents from a timer of another type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other duration representation type\&.) 
+.br
+\fIOtherPeriod\fP (Other standard ratio representing the tick period\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Period , class Clock > const Clock::time_point & \fBmagrathea::Timer\fP< Type, Period, Clock >::beginning () const\fC [inline]\fP"
+
+.PP
+Get the beginning time point\&. Returns the beginning time point, which is generally the time point of the last start\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Beginning time point\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Period , class Clock > template<typename Counter , class Function , class\&.\&.\&. Args> std::chrono::duration< Type, Period > \fBmagrathea::Timer\fP< Type, Period, Clock >::benchmark (const Counter &counter, Function &&f, Args &&\&.\&.\&.args)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Benchmark a function\&. Executes the provided function in a loop and computes the total time needed to run it\&. The call uses a volatile temporary to prevent null statement optimization, but some compilers may manage to optimize that\&. The results are not guaranteed to be exact and should be checked with a real benchmarking suite\&. The returned time correspond to the time of function execution plus the time of the copy\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fICounter\fP (Type that can be incremented\&.) 
+.br
+\fIFunction\fP (Function type : \fCSomething(Args\&.\&.\&.)\fP\&.) 
+.br
+\fIArgs\fP (Arguments types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcounter\fP Number of loops to do\&. 
+.br
+\fIf\fP Function object \fCSomething(Args\&.\&.\&.)\fP\&. 
+.br
+\fIargs\fP Arguments of the function\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Total duration of loop execution\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Period , class Clock > template<typename OtherType , class OtherPeriod > \fBTimer\fP< OtherType, OtherPeriod, Clock > \fBmagrathea::Timer\fP< Type, Period, Clock >::cast () const\fC [inline]\fP"
+
+.PP
+Cast\&. Casts the timer to another timer type with another period\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP Other duration representation type\&. 
+.br
+\fIOtherPeriod\fP Other standard ratio representing the tick period\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Period , class Clock > \fBTimer\fP< Type, Period, Clock > \fBmagrathea::Timer\fP< Type, Period, Clock >::copy () const\fC [inline]\fP"
+
+.PP
+Copy\&. Returns a copy of the timer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Period , class Clock > std::chrono::duration< Type, Period > \fBmagrathea::Timer\fP< Type, Period, Clock >::current () const\fC [inline]\fP"
+
+.PP
+Duration since last start\&. Computes the duration since last start : if the timer is still running, it computes the difference between the call time and the last start time and if the timer is not running it returns the difference between the last start and the last stop\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Current duration\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Period , class Clock > const Clock::time_point & \fBmagrathea::Timer\fP< Type, Period, Clock >::ending () const\fC [inline]\fP"
+
+.PP
+Get the ending time point\&. Returns the ending time point, which is generally the time point of the last stop\&. If the timer is running, then the ending time point is equal to the last start time point\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Ending time point\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Period , class Clock > int \fBmagrathea::Timer\fP< Type, Period, Clock >::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBTimer\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Period , class Clock > Type \fBmagrathea::Timer\fP< Type, Period, Clock >::operator() () const\fC [inline]\fP"
+
+.PP
+Total duration extraction operator\&. Computes the total elapsed duration between all starts and stops since the last reset and convert it to an arithmetic type\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Total duration\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Period , class Clock > template<typename OtherType , class OtherPeriod > \fBTimer\fP< Type, Period, Clock > & \fBmagrathea::Timer\fP< Type, Period, Clock >::operator= (const \fBTimer\fP< OtherType, OtherPeriod, Clock > &rhs)\fC [inline]\fP"
+
+.PP
+Conversion assignment operator\&. Assigns the contents from a timer of another type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other duration representation type\&.) 
+.br
+\fIOtherPeriod\fP (Other standard ratio representing the tick period\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Period , class Clock > std::chrono::duration< Type, Period > \fBmagrathea::Timer\fP< Type, Period, Clock >::\fBreal\fP () const\fC [inline]\fP"
+
+.PP
+Real duration\&. Computes the real duration since the last reset without considering any start and stop\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Real duration\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Period , class Clock > const Clock::duration & \fBmagrathea::Timer\fP< Type, Period, Clock >::record () const\fC [inline]\fP"
+
+.PP
+Get the saved duration\&. Returns the value of the saved duration which is the total duration saved during the last stop\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Duration\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Period , class Clock > const Clock::time_point & \fBmagrathea::Timer\fP< Type, Period, Clock >::reference () const\fC [inline]\fP"
+
+.PP
+Get the reference time point\&. Returns the reference time point, which is generally the time point of the last reset\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Reference time point\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Period , class Clock > std::chrono::duration< Type, Period > \fBmagrathea::Timer\fP< Type, Period, Clock >::reset ()\fC [inline]\fP"
+
+.PP
+Reset timer\&. Resets the timer : all time points are set to the current time, the duration is set to zero, and the timer is set off\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Current duration, which is equal to zero\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Period , class Clock > const bool & \fBmagrathea::Timer\fP< Type, Period, Clock >::running () const\fC [inline]\fP"
+
+.PP
+Get whether the timer is running\&. Returns true if the timer is running, false if it was stopped\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Running status\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Period , class Clock > std::chrono::duration< Type, Period > \fBmagrathea::Timer\fP< Type, Period, Clock >::start ()\fC [inline]\fP"
+
+.PP
+Start timer\&. Starts the timer for a new measurement\&. If the timer is already running, the previous state is erased\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Current duration, which is equal to zero\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Period , class Clock > std::chrono::duration< Type, Period > \fBmagrathea::Timer\fP< Type, Period, Clock >::stop ()\fC [inline]\fP"
+
+.PP
+Stop timer\&. Stops the timer, adds the duration to the total one, and returns the time since the previous start\&. If the timer is already not running, nothing is done\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Current duration\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Period , class Clock > std::chrono::duration< Type, Period > \fBmagrathea::Timer\fP< Type, Period, Clock >::total () const\fC [inline]\fP"
+
+.PP
+Total duration\&. Computes the total elapsed duration between all starts and stops since the last reset\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Total duration\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Period , class Clock > template<class Duration , typename Counter > std::chrono::duration< Type, Period > \fBmagrathea::Timer\fP< Type, Period, Clock >::wait (const Duration &delay = \fCDuration(1)\fP, Counter &&counter = \fCCounter()\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Wait a certain time\&. Loops over time in order to delay some operation\&. If a counter is passed, it is incremented at each loop\&. The loop ends when the elapsed time is greater or equal to the specified delay\&. This delay can be a number or a standard duration\&. Internally, it is casted to the timer type, and then to a high precision clock\&. At the end of the function the total duration is casted back from the high precision clock to the timer duration type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDuration\fP (Standard duration type or arithmetic type\&.) 
+.br
+\fICounter\fP (Type that can be incremented\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdelay\fP Duration to wait\&. 
+.br
+\fIcounter\fP Incremented counter at each loop step\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The real elapsed time in the function\&. 
+.RE
+.PP
+
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "template<typename Type = double, class Period = std::chrono::seconds::period, class Clock = std::chrono::steady_clock> template<typename SelfType , class SelfPeriod , class SelfClock > std::ostream& operator<< (std::ostream &lhs, const \fBTimer\fP< SelfType, SelfPeriod, SelfClock > &rhs)\fC [friend]\fP"
+
+.PP
+\fBOutput\fP stream operator\&. Prints out the total duration\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISelfType\fP (Duration representation type\&.) 
+.br
+\fISelfPeriod\fP (Standard ratio representing the tick period\&.) 
+.br
+\fISelfClock\fP (Internal clock type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side stream\&. 
+.br
+\fIrhs\fP Right-hand side timer\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBOutput\fP stream\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename Type = double, class Period = std::chrono::seconds::period, class Clock = std::chrono::steady_clock> Clock::time_point \fBmagrathea::Timer\fP< Type, Period, Clock >::_beginning\fC [protected]\fP"
+
+.PP
+Beginning time point for measurements\&. 
+.SS "template<typename Type = double, class Period = std::chrono::seconds::period, class Clock = std::chrono::steady_clock> Clock::time_point \fBmagrathea::Timer\fP< Type, Period, Clock >::_ending\fC [protected]\fP"
+
+.PP
+Ending time point for measurements\&. 
+.SS "template<typename Type = double, class Period = std::chrono::seconds::period, class Clock = std::chrono::steady_clock> Clock::duration \fBmagrathea::Timer\fP< Type, Period, Clock >::_record\fC [protected]\fP"
+
+.PP
+Internal backup of duration\&. 
+.SS "template<typename Type = double, class Period = std::chrono::seconds::period, class Clock = std::chrono::steady_clock> Clock::time_point \fBmagrathea::Timer\fP< Type, Period, Clock >::_reference\fC [protected]\fP"
+
+.PP
+Reference time point for measurements\&. 
+.SS "template<typename Type = double, class Period = std::chrono::seconds::period, class Clock = std::chrono::steady_clock> bool \fBmagrathea::Timer\fP< Type, Period, Clock >::_running\fC [protected]\fP"
+
+.PP
+Flag to indicate whether a measurement is running or not\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

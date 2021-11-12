@@ -1,0 +1,750 @@
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex}{\section{magrathea\-:\-:Simple\-Hyper\-Octree\-Index$<$ Type, Dimension, Bits $>$ Exception Template Reference}
+\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex}\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index$<$ Type, Dimension, Bits $>$@{magrathea\-::\-Simple\-Hyper\-Octree\-Index$<$ Type, Dimension, Bits $>$}}
+}
+
+
+A simple hyperoctree index based on an integer.  
+
+
+
+
+{\ttfamily \#include $<$simplehyperoctreeindex.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Lifecycle}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_af1008b3dfe3724ccbe970d4cec9463bf}{Simple\-Hyper\-Octree\-Index} ()
+\begin{DoxyCompactList}\small\item\em Implicit empty constructor. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_aacac508cbc1b3b3bd694d7a69c08b614}{Simple\-Hyper\-Octree\-Index} (const Type source)
+\begin{DoxyCompactList}\small\item\em Explicit value constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class String , class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-convertible$<$\-String, std\-::string$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$decltype(std\-::declval$<$\-String$>$()\mbox{[}0\mbox{]}), char$>$\-::value)$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_aeb4c20e736fa7ea33b2b43a7abf12f01}{Simple\-Hyper\-Octree\-Index} (const String \&source)
+\begin{DoxyCompactList}\small\item\em Explicit string constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Operators}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex}{Simple\-Hyper\-Octree\-Index}$<$ Type, \\*
+Dimension, Bits $>$ \& \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a09ede8d9348e4eb8d307738ea5c99a3a}{operator=} (const Type rhs)
+\begin{DoxyCompactList}\small\item\em Value assignment operator. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class String , class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-convertible$<$\-String, std\-::string$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$decltype(std\-::declval$<$\-String$>$()\mbox{[}0\mbox{]}), char$>$\-::value)$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex}{Simple\-Hyper\-Octree\-Index}$<$ Type, \\*
+Dimension, Bits $>$ \& \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_af5fb86d71abfbb2b6beb8323a09bb22a}{operator=} (const String \&rhs)
+\begin{DoxyCompactList}\small\item\em String assignment operator. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a4d04bfe698ca32ccbc6f1ed1755852cc}{operator Type} () const 
+\begin{DoxyCompactList}\small\item\em Implicit cast operator. \end{DoxyCompactList}\item 
+Type \& \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a4a18dbc6422e5a3e009fcd50f05459eb}{operator()} ()
+\begin{DoxyCompactList}\small\item\em Data access operator. \end{DoxyCompactList}\item 
+const Type \& \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a97119d726b0e344ace1f6b1b28c32f2b}{operator()} () const 
+\begin{DoxyCompactList}\small\item\em Immutable data access operator. \end{DoxyCompactList}\item 
+bool \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_adddbd10f4b988c54fb495b28e434874d}{operator\mbox{[}$\,$\mbox{]}} (const unsigned int ibit) const 
+\begin{DoxyCompactList}\small\item\em Immutable bit access. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Assignment}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex}{Simple\-Hyper\-Octree\-Index}$<$ Type, \\*
+Dimension, Bits $>$ \& \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_aa135ecc11227d9582643045125ecf553}{assign} ()
+\begin{DoxyCompactList}\small\item\em Empty assignment. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex}{Simple\-Hyper\-Octree\-Index}$<$ Type, \\*
+Dimension, Bits $>$ \& \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a9359722d69a259e325e62a6f540fe672}{assign} (const \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex}{Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$ \&source)
+\begin{DoxyCompactList}\small\item\em Copy assignment. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex}{Simple\-Hyper\-Octree\-Index}$<$ Type, \\*
+Dimension, Bits $>$ \& \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_acd39af20d66864438a4c9971ad4c10a6}{assign} (const Type source)
+\begin{DoxyCompactList}\small\item\em Value assignment. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class String , class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-convertible$<$\-String, std\-::string$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$decltype(std\-::declval$<$\-String$>$()\mbox{[}0\mbox{]}), char$>$\-::value)$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex}{Simple\-Hyper\-Octree\-Index}$<$ Type, \\*
+Dimension, Bits $>$ \& \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a5c6ee3d4d1352b5212d96ab904b2f0ec}{assign} (const String \&source)
+\begin{DoxyCompactList}\small\item\em String assignment. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Management}\par
+\begin{DoxyCompactItemize}
+\item 
+Type \& \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a0f07dc45b0c087dcf209cf4ef0a3ab1c}{data} ()
+\begin{DoxyCompactList}\small\item\em Data access. \end{DoxyCompactList}\item 
+const Type \& \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a6ec036259d3a272436e0643b36d6214c}{data} () const 
+\begin{DoxyCompactList}\small\item\em Immutable data access. \end{DoxyCompactList}\item 
+Type \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_ace325c08e417dadd2e53c324ff6c6b49}{get} () const 
+\begin{DoxyCompactList}\small\item\em Data getter. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex}{Simple\-Hyper\-Octree\-Index}$<$ Type, \\*
+Dimension, Bits $>$ \& \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a4f9c372446a3c9fc6bab2c758bda9d97}{set} (const Type value)
+\begin{DoxyCompactList}\small\item\em Data setter. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex}{Simple\-Hyper\-Octree\-Index}$<$ Type, \\*
+Dimension, Bits $>$ \& \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a0b965da38f454aa415e524f5ca70ff34}{nullify} ()
+\begin{DoxyCompactList}\small\item\em Nullify. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex}{Simple\-Hyper\-Octree\-Index}$<$ Type, \\*
+Dimension, Bits $>$ \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a6fcde37be45cc88f40f0f87592afb204}{copy} () const 
+\begin{DoxyCompactList}\small\item\em Copy. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Other\-Type  = Simple\-Hyper\-Octree\-Index$<$\-Type, Dimension, Bits$>$, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-constructible$<$\-Other\-Type, Type$>$\-::value$>$\-::type$>$ }\\Other\-Type \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_ab1ebd246e330787a2f506b8439c1a5dd}{cast} () const 
+\begin{DoxyCompactList}\small\item\em Cast. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Base  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$((std\-::is\-\_\-same$<$\-Base, std\-::true\-\_\-type$>$\-::value) $|$$|$ (std\-::is\-\_\-convertible$<$\-Base, int$>$\-::value)) \&\& (!std\-::is\-\_\-floating\-\_\-point$<$\-Base$>$\-::value)$>$\-::type$>$ }\\std\-::string \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_ac31fa5679ac77664c410182a3eb6aeff}{stringify} (const Base base=Base()) const 
+\begin{DoxyCompactList}\small\item\em Stringify. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Core}\par
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a64fd3a897eef3ab9d2795178cdac96f6}{level} () const 
+\begin{DoxyCompactList}\small\item\em Level. \end{DoxyCompactList}\item 
+bool \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_af82507e966585788c405c9ec7c1b66a4}{coarsest} () const 
+\begin{DoxyCompactList}\small\item\em Coarsest level. \end{DoxyCompactList}\item 
+bool \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a33bd336a04296967fd45dfeeaa2a4165}{finest} () const 
+\begin{DoxyCompactList}\small\item\em Finest level. \end{DoxyCompactList}\item 
+bool \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a4ebf328c6f2b015bc95957942d9adb26}{limited} () const 
+\begin{DoxyCompactList}\small\item\em Limited. \end{DoxyCompactList}\item 
+bool \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_ab9a5d6248a8c0628240d578a8b6809c1}{check} () const 
+\begin{DoxyCompactList}\small\item\em Check. \end{DoxyCompactList}\item 
+bool \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a887b03435cfa67cb86fe74b937275b94}{invalidated} () const 
+\begin{DoxyCompactList}\small\item\em Invalidated. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex}{Simple\-Hyper\-Octree\-Index}$<$ Type, \\*
+Dimension, Bits $>$ \& \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_af877956ad4d0ec43433a755174b9c067}{fix} ()
+\begin{DoxyCompactList}\small\item\em Fix. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex}{Simple\-Hyper\-Octree\-Index}$<$ Type, \\*
+Dimension, Bits $>$ \& \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_acde2e7cebd79ea55e7d81c8118751a02}{invalidate} ()
+\begin{DoxyCompactList}\small\item\em Invalidate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Tree}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex}{Simple\-Hyper\-Octree\-Index}$<$ Type, \\*
+Dimension, Bits $>$ \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a338afba057f94093512b83f70339b1d6}{parent} () const 
+\begin{DoxyCompactList}\small\item\em Parent index. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex}{Simple\-Hyper\-Octree\-Index}$<$ Type, \\*
+Dimension, Bits $>$ \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a728ba111e2c38181d8a00376498c3f2e}{child} (const unsigned int isite) const 
+\begin{DoxyCompactList}\small\item\em Child index. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex}{Simple\-Hyper\-Octree\-Index}$<$ Type, \\*
+Dimension, Bits $>$ \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_aa7294c3f55961074982c717a8452c6d0}{brother} (const unsigned int isite) const 
+\begin{DoxyCompactList}\small\item\em Brother index. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex}{Simple\-Hyper\-Octree\-Index}$<$ Type, \\*
+Dimension, Bits $>$ \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_ab31248321a42ee3863b4c1e83325033c}{preceding} () const 
+\begin{DoxyCompactList}\small\item\em Preceding brother index. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex}{Simple\-Hyper\-Octree\-Index}$<$ Type, \\*
+Dimension, Bits $>$ \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a4428edce812174cf4f1d876525a3293b}{following} () const 
+\begin{DoxyCompactList}\small\item\em Following brother index. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex}{Simple\-Hyper\-Octree\-Index}$<$ Type, \\*
+Dimension, Bits $>$ \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_add550d82a42c38fb89eb2ac0ccd45f82}{previous} (const unsigned int ilvl=0, const unsigned int nref=Bits/(Dimension+1)) const 
+\begin{DoxyCompactList}\small\item\em Previous index. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex}{Simple\-Hyper\-Octree\-Index}$<$ Type, \\*
+Dimension, Bits $>$ \hyperlink{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a813ce4269b76919feac0f614a844c992}{next} (const unsigned int ilvl=0, const unsigned int nref=Bits/(Dimension+1)) const 
+\begin{DoxyCompactList}\small\item\em Next index. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Type = unsigned long long int, unsigned int Dimension = 3, unsigned int Bits = sizeof(\-Type)$\ast$std\-::numeric\-\_\-limits$<$unsigned char$>$\-::digits$>$exception magrathea\-::\-Simple\-Hyper\-Octree\-Index$<$ Type, Dimension, Bits $>$}
+
+A simple hyperoctree index based on an integer. 
+
+Implements a simple hyperoctree index with no dependency using a single integer and providing all standard operations to easily recover level and position. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Unsigned integer type. \\
+\hline
+{\em Dimension} & Number of dimensions. \\
+\hline
+{\em Bits} & Size of the type in bits. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_af1008b3dfe3724ccbe970d4cec9463bf}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!Simple\-Hyper\-Octree\-Index@{Simple\-Hyper\-Octree\-Index}}
+\index{Simple\-Hyper\-Octree\-Index@{Simple\-Hyper\-Octree\-Index}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{Simple\-Hyper\-Octree\-Index}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::{\bf Simple\-Hyper\-Octree\-Index} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_af1008b3dfe3724ccbe970d4cec9463bf}
+
+
+Implicit empty constructor. 
+
+Provides an implicit construction of the index initialized to its default value. \hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_aacac508cbc1b3b3bd694d7a69c08b614}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!Simple\-Hyper\-Octree\-Index@{Simple\-Hyper\-Octree\-Index}}
+\index{Simple\-Hyper\-Octree\-Index@{Simple\-Hyper\-Octree\-Index}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{Simple\-Hyper\-Octree\-Index}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::{\bf Simple\-Hyper\-Octree\-Index} (
+\begin{DoxyParamCaption}
+\item[{const Type}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_aacac508cbc1b3b3bd694d7a69c08b614}
+
+
+Explicit value constructor. 
+
+Provides an explicit construction of the index initialized to a particular value. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_aeb4c20e736fa7ea33b2b43a7abf12f01}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!Simple\-Hyper\-Octree\-Index@{Simple\-Hyper\-Octree\-Index}}
+\index{Simple\-Hyper\-Octree\-Index@{Simple\-Hyper\-Octree\-Index}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{Simple\-Hyper\-Octree\-Index}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ template$<$class String , class $>$ {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::{\bf Simple\-Hyper\-Octree\-Index} (
+\begin{DoxyParamCaption}
+\item[{const String \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_aeb4c20e736fa7ea33b2b43a7abf12f01}
+
+
+Explicit string constructor. 
+
+Provide an explicit construction from a string of zeros and ones. The index is filled from the most significant bit. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em String} & String type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_aa135ecc11227d9582643045125ecf553}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!assign@{assign}}
+\index{assign@{assign}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ {\bf Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$ \& {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::assign (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_aa135ecc11227d9582643045125ecf553}
+
+
+Empty assignment. 
+
+Assigns contents from an index initialized to its default value. \begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a9359722d69a259e325e62a6f540fe672}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!assign@{assign}}
+\index{assign@{assign}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ {\bf Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$ \& {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::assign (
+\begin{DoxyParamCaption}
+\item[{const {\bf Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$ \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a9359722d69a259e325e62a6f540fe672}
+
+
+Copy assignment. 
+
+Assigns contents from the same type of index. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_acd39af20d66864438a4c9971ad4c10a6}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!assign@{assign}}
+\index{assign@{assign}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ {\bf Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$ \& {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::assign (
+\begin{DoxyParamCaption}
+\item[{const Type}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_acd39af20d66864438a4c9971ad4c10a6}
+
+
+Value assignment. 
+
+Assigns contents from an index value. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a5c6ee3d4d1352b5212d96ab904b2f0ec}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!assign@{assign}}
+\index{assign@{assign}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ template$<$class String , class $>$ {\bf Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$ \& {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::assign (
+\begin{DoxyParamCaption}
+\item[{const String \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a5c6ee3d4d1352b5212d96ab904b2f0ec}
+
+
+String assignment. 
+
+Assigns contents from a string of zeros and ones. The index is filled from the most significant bit. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em String} & String type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_aa7294c3f55961074982c717a8452c6d0}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!brother@{brother}}
+\index{brother@{brother}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{brother}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ {\bf Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$ {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::brother (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{isite}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_aa7294c3f55961074982c717a8452c6d0}
+
+
+Brother index. 
+
+Computes the brother index in the tree, which is an index with the same final parent. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em isite} & Site of the brother. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Index of the specified brother. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_ab1ebd246e330787a2f506b8439c1a5dd}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!cast@{cast}}
+\index{cast@{cast}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{cast}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ template$<$class Other\-Type , class $>$ Other\-Type {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::cast (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_ab1ebd246e330787a2f506b8439c1a5dd}
+
+
+Cast. 
+
+Casts the index to another object type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & Other data type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Casted copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_ab9a5d6248a8c0628240d578a8b6809c1}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!check@{check}}
+\index{check@{check}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ bool {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::check (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_ab9a5d6248a8c0628240d578a8b6809c1}
+
+
+Check. 
+
+Checks that the underlying integer represents an index with no error. \begin{DoxyReturn}{Returns}
+True if no error, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a728ba111e2c38181d8a00376498c3f2e}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!child@{child}}
+\index{child@{child}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{child}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ {\bf Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$ {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::child (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{isite}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a728ba111e2c38181d8a00376498c3f2e}
+
+
+Child index. 
+
+Computes the child index in the tree. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em isite} & Site of the child. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Index of the specified child. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_af82507e966585788c405c9ec7c1b66a4}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!coarsest@{coarsest}}
+\index{coarsest@{coarsest}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{coarsest}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ bool {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::coarsest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_af82507e966585788c405c9ec7c1b66a4}
+
+
+Coarsest level. 
+
+Checks whether the index corresponds to the coarsest, unrefined level. \begin{DoxyReturn}{Returns}
+True if coarsest level, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a6fcde37be45cc88f40f0f87592afb204}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!copy@{copy}}
+\index{copy@{copy}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{copy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ {\bf Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$ {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::copy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a6fcde37be45cc88f40f0f87592afb204}
+
+
+Copy. 
+
+Generates a copy of the index. \begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a0f07dc45b0c087dcf209cf4ef0a3ab1c}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!data@{data}}
+\index{data@{data}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ Type \& {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a0f07dc45b0c087dcf209cf4ef0a3ab1c}
+
+
+Data access. 
+
+Provides direct access to internal data. \begin{DoxyReturn}{Returns}
+Reference to underlying data. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a6ec036259d3a272436e0643b36d6214c}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!data@{data}}
+\index{data@{data}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ const Type \& {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a6ec036259d3a272436e0643b36d6214c}
+
+
+Immutable data access. 
+
+Provides an immutable direct access to internal data. \begin{DoxyReturn}{Returns}
+Immutable reference to underlying data. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a33bd336a04296967fd45dfeeaa2a4165}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!finest@{finest}}
+\index{finest@{finest}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{finest}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ bool {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::finest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a33bd336a04296967fd45dfeeaa2a4165}
+
+
+Finest level. 
+
+Checks whether the index corresponds to the finest, most refined level. \begin{DoxyReturn}{Returns}
+True if finest level, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_af877956ad4d0ec43433a755174b9c067}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!fix@{fix}}
+\index{fix@{fix}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{fix}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ {\bf Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$ \& {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::fix (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_af877956ad4d0ec43433a755174b9c067}
+
+
+Fix. 
+
+Fixes the underlying integer if it does not represents a correct index. To do so, every bit set after the last correct level is cleared. \begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a4428edce812174cf4f1d876525a3293b}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!following@{following}}
+\index{following@{following}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{following}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ {\bf Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$ {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::following (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a4428edce812174cf4f1d876525a3293b}
+
+
+Following brother index. 
+
+Computes the index of the following brother in the tree, which is an index with the same final parent. A cyclic operation is performed if the last brother of this final parent has already been reached. \begin{DoxyReturn}{Returns}
+Index of the following brother. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_ace325c08e417dadd2e53c324ff6c6b49}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!get@{get}}
+\index{get@{get}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ Type {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::get (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_ace325c08e417dadd2e53c324ff6c6b49}
+
+
+Data getter. 
+
+Returns a copy of the internal data. \begin{DoxyReturn}{Returns}
+Copy of the underlying data. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_acde2e7cebd79ea55e7d81c8118751a02}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!invalidate@{invalidate}}
+\index{invalidate@{invalidate}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{invalidate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ {\bf Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$ \& {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::invalidate (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_acde2e7cebd79ea55e7d81c8118751a02}
+
+
+Invalidate. 
+
+Invalidates the index. \begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a887b03435cfa67cb86fe74b937275b94}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!invalidated@{invalidated}}
+\index{invalidated@{invalidated}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{invalidated}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ bool {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::invalidated (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a887b03435cfa67cb86fe74b937275b94}
+
+
+Invalidated. 
+
+Checks whether the index is invalidated. \begin{DoxyReturn}{Returns}
+True if the index is invalidated, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a64fd3a897eef3ab9d2795178cdac96f6}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!level@{level}}
+\index{level@{level}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{level}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ unsigned int {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::level (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a64fd3a897eef3ab9d2795178cdac96f6}
+
+
+Level. 
+
+Computes the level of refinement according to the number of trailing zeros. \begin{DoxyReturn}{Returns}
+Refinement level. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a4ebf328c6f2b015bc95957942d9adb26}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!limited@{limited}}
+\index{limited@{limited}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{limited}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ bool {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::limited (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a4ebf328c6f2b015bc95957942d9adb26}
+
+
+Limited. 
+
+Checks whether the index corresponds to the coarsest or finest level of refinement. \begin{DoxyReturn}{Returns}
+True if coarsest or finest level, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a813ce4269b76919feac0f614a844c992}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!next@{next}}
+\index{next@{next}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{next}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ {\bf Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$ {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::next (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{ilvl = {\ttfamily 0}, }
+\item[{const unsigned int}]{nref = {\ttfamily Bits/(Dimension+1)}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a813ce4269b76919feac0f614a844c992}
+
+
+Next index. 
+
+Computes the next index in the tree from the specified level to the specified number of refinements. A cyclic operation is performed if the last index has been reached. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ilvl} & Index of the first level. \\
+\hline
+\mbox{\tt in}  & {\em nref} & Number of refinements of the first level. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Index of the next element. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a0b965da38f454aa415e524f5ca70ff34}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!nullify@{nullify}}
+\index{nullify@{nullify}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{nullify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ {\bf Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$ \& {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::nullify (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a0b965da38f454aa415e524f5ca70ff34}
+
+
+Nullify. 
+
+Resets the internal data to its default value. \begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a4d04bfe698ca32ccbc6f1ed1755852cc}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!operator Type@{operator Type}}
+\index{operator Type@{operator Type}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{operator Type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::operator Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a4d04bfe698ca32ccbc6f1ed1755852cc}
+
+
+Implicit cast operator. 
+
+Implicitely converts the index to an integer. \begin{DoxyReturn}{Returns}
+Copy of the underlying data. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a4a18dbc6422e5a3e009fcd50f05459eb}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!operator()@{operator()}}
+\index{operator()@{operator()}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ Type \& {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::operator() (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a4a18dbc6422e5a3e009fcd50f05459eb}
+
+
+Data access operator. 
+
+Provides direct access to internal data. \begin{DoxyReturn}{Returns}
+Reference to underlying data. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a97119d726b0e344ace1f6b1b28c32f2b}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!operator()@{operator()}}
+\index{operator()@{operator()}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ const Type \& {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::operator() (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a97119d726b0e344ace1f6b1b28c32f2b}
+
+
+Immutable data access operator. 
+
+Provides an immutable direct access to internal data. \begin{DoxyReturn}{Returns}
+Immutable reference to underlying data. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a09ede8d9348e4eb8d307738ea5c99a3a}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!operator=@{operator=}}
+\index{operator=@{operator=}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ {\bf Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$ \& {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const Type}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a09ede8d9348e4eb8d307738ea5c99a3a}
+
+
+Value assignment operator. 
+
+Assigns data from a value. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_af5fb86d71abfbb2b6beb8323a09bb22a}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!operator=@{operator=}}
+\index{operator=@{operator=}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ template$<$class String , class $>$ {\bf Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$ \& {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const String \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_af5fb86d71abfbb2b6beb8323a09bb22a}
+
+
+String assignment operator. 
+
+Assigns data from a string of zeros and ones. The index is filled from the most significant bit. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em String} & String type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_adddbd10f4b988c54fb495b28e434874d}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ bool {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{ibit}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_adddbd10f4b988c54fb495b28e434874d}
+
+
+Immutable bit access. 
+
+Provides an immutable access to the i-\/th bit. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ibit} & Bit index. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the i-\/th bit. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a338afba057f94093512b83f70339b1d6}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!parent@{parent}}
+\index{parent@{parent}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{parent}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ {\bf Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$ {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::parent (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a338afba057f94093512b83f70339b1d6}
+
+
+Parent index. 
+
+Computes the parent index in the tree. \begin{DoxyReturn}{Returns}
+Index of the parent. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_ab31248321a42ee3863b4c1e83325033c}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!preceding@{preceding}}
+\index{preceding@{preceding}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{preceding}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ {\bf Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$ {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::preceding (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_ab31248321a42ee3863b4c1e83325033c}
+
+
+Preceding brother index. 
+
+Computes the index of the preceding brother in the tree, which is an index with the same final parent. A cyclic operation is performed if the first brother of this final parent has already been reached. \begin{DoxyReturn}{Returns}
+Index of the preceding brother. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_add550d82a42c38fb89eb2ac0ccd45f82}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!previous@{previous}}
+\index{previous@{previous}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{previous}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ {\bf Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$ {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::previous (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{ilvl = {\ttfamily 0}, }
+\item[{const unsigned int}]{nref = {\ttfamily Bits/(Dimension+1)}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_add550d82a42c38fb89eb2ac0ccd45f82}
+
+
+Previous index. 
+
+Computes the previous index in the tree from the specified level to the specified number of refinements. A cyclic operation is performed if the first index has been reached. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ilvl} & Index of the first level. \\
+\hline
+\mbox{\tt in}  & {\em nref} & Number of refinements of the first level. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Index of the previous element. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a4f9c372446a3c9fc6bab2c758bda9d97}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!set@{set}}
+\index{set@{set}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ {\bf Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$ \& {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::set (
+\begin{DoxyParamCaption}
+\item[{const Type}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_a4f9c372446a3c9fc6bab2c758bda9d97}
+
+
+Data setter. 
+
+Sets the internal data to the provided value. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & \hyperlink{exceptionInput}{Input} value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1SimpleHyperOctreeIndex_ac31fa5679ac77664c410182a3eb6aeff}{\index{magrathea\-::\-Simple\-Hyper\-Octree\-Index@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}!stringify@{stringify}}
+\index{stringify@{stringify}!magrathea::SimpleHyperOctreeIndex@{magrathea\-::\-Simple\-Hyper\-Octree\-Index}}
+\subsubsection[{stringify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, unsigned int Bits$>$ template$<$typename Base , class $>$ std\-::string {\bf magrathea\-::\-Simple\-Hyper\-Octree\-Index}$<$ Type, Dimension, Bits $>$\-::stringify (
+\begin{DoxyParamCaption}
+\item[{const Base}]{base = {\ttfamily Base()}}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1SimpleHyperOctreeIndex_ac31fa5679ac77664c410182a3eb6aeff}
+
+
+Stringify. 
+
+Converts the index to a string. If no base is specified, the standard display is used. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Base} & Integral base type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em base} & Integral base value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String corresponding to the index. 
+\end{DoxyReturn}
+
+
+The documentation for this exception was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/magrathea/\hyperlink{simplehyperoctreeindex_8h}{simplehyperoctreeindex.\-h}\end{DoxyCompactItemize}

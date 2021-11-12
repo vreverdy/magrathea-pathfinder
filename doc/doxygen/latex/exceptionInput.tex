@@ -1,0 +1,1103 @@
+\hypertarget{exceptionInput}{\section{Input Exception Reference}
+\label{exceptionInput}\index{Input@{Input}}
+}
+
+
+\hyperlink{exceptionInput}{Input} utilities for raytracing.  
+
+
+
+
+{\ttfamily \#include $<$input.\-h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{Indent}{\bf Utilities}\par
+\begin{DoxyCompactItemize}
+\item 
+static std\-::string \hyperlink{exceptionInput_a8a98c85776bc73b49f4b3a4e30b243b7}{trim} (const std\-::string \&text, const std\-::string \&comment=\char`\"{}\#\char`\"{})
+\begin{DoxyCompactList}\small\item\em Trim string. \end{DoxyCompactList}\item 
+static std\-::pair$<$ std\-::string, \\*
+std\-::string $>$ \hyperlink{exceptionInput_a859c8e0b3921a0e8bbd79bc96272935e}{partition} (const std\-::string \&text, const std\-::string \&separator=\char`\"{}=\char`\"{})
+\begin{DoxyCompactList}\small\item\em Partition string. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Octree , class Source , class Data  = typename std\-::tuple\-\_\-element$<$1, decltype(\-Octree\-::element())$>$\-::type, class Element  = decltype(\-Source\-::element()), class  = typename std\-::enable\-\_\-if$<$(\-Octree\-::dimension() == Source\-::dimension()) \&\& (std\-::is\-\_\-integral$<$\-Data$>$\-::value)$>$\-::type$>$ }\\static unsigned int \hyperlink{exceptionInput_a1ec66a2edaab4da06525453503e9cc3c}{count} (Octree \&octree, const Source \&source)
+\begin{DoxyCompactList}\small\item\em Count tree. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Octree , class Sphere , class Conic , typename Type  = decltype(\-Octree\-::type()), class Element  = decltype(\-Octree\-::element()), class Index  = typename std\-::tuple\-\_\-element$<$0, Element$>$\-::type, unsigned int Dimension = Octree\-::dimension(), class Position  = decltype(\-Octree\-::position()), class Extent  = decltype(\-Octree\-::extent()), class  = typename std\-::enable\-\_\-if$<$(\-Dimension == 3) \&\& (\-Dimension == Sphere\-::dimension())$>$\-::type$>$ }\\static bool \hyperlink{exceptionInput_a5b0ea51603590e39e5ca9b9f33e1bf9e}{collide} (const Octree \&octree, const Index \&index, const Sphere \&sphere, const Conic \&conic)
+\begin{DoxyCompactList}\small\item\em Collision between an octree index and a sphere or a cone. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Selection = 0, class Octree , unsigned int Dimension = Octree\-::dimension(), class Element  = decltype(\-Octree\-::element()), class Index  = typename std\-::tuple\-\_\-element$<$0, Element$>$\-::type, class Data  = typename std\-::tuple\-\_\-element$<$1, Element$>$\-::type, class Type  = decltype(\-Data\-::template type$<$\-Selection$>$()), class  = typename std\-::enable\-\_\-if$<$(\-Dimension == 3)$>$\-::type$>$ }\\static Type \hyperlink{exceptionInput_a2378e5cd9538eb69c842ebd4575a6775}{mean} (const Octree \&octree, const Element \&element, int level=-\/1)
+\begin{DoxyCompactList}\small\item\em Mean value over cells. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Selection = 0, class Octree , unsigned int Dimension = Octree\-::dimension(), class Element  = decltype(\-Octree\-::element()), class Index  = typename std\-::tuple\-\_\-element$<$0, Element$>$\-::type, class Data  = typename std\-::tuple\-\_\-element$<$1, Element$>$\-::type, class Type  = decltype(\-Data\-::template type$<$\-Selection$>$()), class  = typename std\-::enable\-\_\-if$<$(\-Dimension == 3)$>$\-::type$>$ }\\static Data \hyperlink{exceptionInput_aa2bca846797d99859c639ee39c5622e3}{mean\-All} (const Octree \&octree, const Element \&element, int level=-\/1)
+\begin{DoxyCompactList}\small\item\em Mean value over cells. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , class Cosmology  = std\-::array$<$std\-::vector$<$double$>$, 4$>$, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Type, typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Cosmology$>$()\mbox{[}0\mbox{]}\mbox{[}0\mbox{]})$>$\-::type$>$\-::type$>$\-::value$>$\-::type$>$ }\\static Cosmology \hyperlink{exceptionInput_ad86e769634c817f09bcdde8c3958e54d}{constantify} (const unsigned int size, const Type tmin, const Type tmax, const Type a=Type(1), const Type dadt=Type(), const Type d2adt2=Type())
+\begin{DoxyCompactList}\small\item\em Constant cosmology. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Parameter , class Data , typename Type , class  = typename std\-::enable\-\_\-if$<$\-Data\-::types() != 0$>$\-::type$>$ }\\static Data \hyperlink{exceptionInput_abdcd382d232673326e4f759ffe67c58c}{sistemize} (const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, const Data \&data, const Type a, const Type h, const Type omegam, const Type lboxmpch)
+\begin{DoxyCompactList}\small\item\em Data conversion to S\-I units. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Parameter , class Octree , typename Type , class Element  = decltype(\-Octree\-::element()), class Data  = typename std\-::tuple\-\_\-element$<$1, Element$>$\-::type, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-void$<$\-Data$>$\-::value) \&\& (\-Octree\-::dimension() != 0)$>$\-::type$>$ }\\static unsigned int \hyperlink{exceptionInput_ad51758a7519270c34e5cc7a2c3e254cb}{sistemize} (const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, Octree \&octree, const Type h, const Type omegam, const Type lboxmpch)
+\begin{DoxyCompactList}\small\item\em Octree conversion to S\-I units. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Data , class  = typename std\-::enable\-\_\-if$<$\-Data\-::types() != 0$>$\-::type$>$ }\\static Data \hyperlink{exceptionInput_ad43fe70367197a64504b4fe2dae861a3}{homogenize} (const Data \&data)
+\begin{DoxyCompactList}\small\item\em Data homogenization. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Octree , class... Dummy, class Element  = decltype(\-Octree\-::element()), class Data  = typename std\-::tuple\-\_\-element$<$1, Element$>$\-::type, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-void$<$\-Data$>$\-::value) \&\& (\-Octree\-::dimension() != 0) \&\& (sizeof...(\-Dummy) == 0)$>$\-::type$>$ }\\static unsigned int \hyperlink{exceptionInput_ad9324e1d7cbb6ce11dae87e7805ab1f0}{homogenize} (Octree \&octree, Dummy...)
+\begin{DoxyCompactList}\small\item\em Octree homogenization. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Extent  = std\-::ratio$<$1$>$, class Data , class Vector , typename Type , unsigned int Dimension = 3, class  = typename std\-::enable\-\_\-if$<$(\-Data\-::types() != 0) \&\& (std\-::is\-\_\-convertible$<$\-Type, typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Vector$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type$>$\-::value)$>$\-::type$>$ }\\static Data \hyperlink{exceptionInput_aab3a37812389169923cbbbf922d9ca1c}{schwarzschildify} (const Data \&data, const Vector \&center, const Vector \&position, const Type mass, const Type length)
+\begin{DoxyCompactList}\small\item\em Data schwarzschild setup. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Octree , class Vector , typename Type , class Function , class... Dummy, class Element  = decltype(\-Octree\-::element()), unsigned int Dimension = Octree\-::dimension(), class Extent  = decltype(\-Octree\-::extent()), class  = typename std\-::enable\-\_\-if$<$(sizeof...(\-Dummy) == 0) \&\& (\-Dimension == 3)$>$\-::type$>$ }\\static unsigned int \hyperlink{exceptionInput_a881b5694e1b8defc21d34d35cbec74d4}{schwarzschildify} (Octree \&octree, const Vector \&position, const Type mass, const Type length, Function \&\&refiner, Dummy...)
+\begin{DoxyCompactList}\small\item\em Octree schwarzschild setup. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Files}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Octree , class Element  = decltype(\-Octree\-::element()), class Index  = typename std\-::tuple\-\_\-element$<$0, Element$>$\-::type, class Data  = typename std\-::tuple\-\_\-element$<$1, Element$>$\-::type, unsigned int Dimension = Octree\-::dimension(), class  = typename std\-::enable\-\_\-if$<$\-Dimension != 0$>$\-::type$>$ }\\static unsigned int \hyperlink{exceptionInput_a55ab9761312068b1da1f4498b82526a4}{filetree} (Octree \&octree, const std\-::string \&directory, const std\-::string \&format)
+\begin{DoxyCompactList}\small\item\em File tree. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class List , class Octree , class Sphere , class Conic , unsigned int Dimension = Octree\-::dimension(), class  = typename std\-::enable\-\_\-if$<$(\-Dimension == 3) \&\& (\-Dimension == Sphere\-::dimension())$>$\-::type$>$ }\\static bool \hyperlink{exceptionInput_ab975c15aeb6fbbaeef11586b4bb10282}{prepare} (List \&list, const Octree \&octree, const Sphere \&sphere, const Conic \&conic)
+\begin{DoxyCompactList}\small\item\em File list preparation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Data}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Integral  = unsigned int, typename Real  = float, class Parameter , class Octree , class Function , class Element  = decltype(\-Octree\-::element()), class Index  = typename std\-::tuple\-\_\-element$<$0, Element$>$\-::type, class Data  = typename std\-::tuple\-\_\-element$<$1, Element$>$\-::type, unsigned int Dimension = Octree\-::dimension(), class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$typename std\-::result\-\_\-of$<$\-Function(\-Element)$>$\-::type, bool$>$\-::value$>$\-::type$>$ }\\static bool \hyperlink{exceptionInput_adb0a86f9680f6f88311735513b20f1a8}{import} (const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, Octree \&octree, const std\-::string \&filename, Function \&\&filter)
+\begin{DoxyCompactList}\small\item\em Ramses importation. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , class Parameter , class Cosmology  = std\-::array$<$std\-::vector$<$\-Type$>$, 4$>$, class Element  = typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Cosmology$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Element, typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Cosmology$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type$>$\-::value$>$\-::type$>$ }\\static Cosmology \hyperlink{exceptionInput_a3070c31dd06673df4c9229219c4a1819}{acquire} (const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, Type \&h, Type \&omegam, Type \&lboxmpch, const std\-::string \&outfile=std\-::string())
+\begin{DoxyCompactList}\small\item\em Cosmology acquisition. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Container  = std\-::map$<$std\-::string, std\-::string$>$, class Element  = std\-::pair$<$std\-::string, std\-::string$>$, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-convertible$<$\-Container, std\-::map$<$std\-::string, std\-::string$>$ $>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Element, std\-::pair$<$std\-::string, std\-::string$>$ $>$\-::value)$>$\-::type$>$ }\\static Container \hyperlink{exceptionInput_a90f26f7b7be815de44151066b8cb669d}{parse} (const std\-::string \&filename, const std\-::string \&separator=\char`\"{}=\char`\"{}, const std\-::string \&comment=\char`\"{}\#\char`\"{})
+\begin{DoxyCompactList}\small\item\em Parameter file parsing. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Position , class Extent , typename Integral  = unsigned int, typename Real  = float, class Parameter , class Conic , class Octree , class Function , class Element  = decltype(\-Octree\-::element()), class Index  = typename std\-::tuple\-\_\-element$<$0, Element$>$\-::type, class Data  = typename std\-::tuple\-\_\-element$<$1, Element$>$\-::type, unsigned int Dimension = Octree\-::dimension(), class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$typename std\-::result\-\_\-of$<$\-Function(\-Element)$>$\-::type, bool$>$\-::value$>$\-::type$>$ }\\static bool \hyperlink{exceptionInput_ae15078f6d2ccb7195a060e6c92b409bd}{importhdf5} (const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, unsigned int \&rank, const std\-::array$<$ std\-::array$<$ double, 3 $>$, 3 $>$ \&rotm1, const double \&thetay, const double \&thetaz, const Conic \&conic, Octree \&octree, const std\-::string \&filename, Function \&\&filter)
+\begin{DoxyCompactList}\small\item\em Ramses importation. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Position , class Extent , typename Integral  = unsigned int, typename Real  = float, class Parameter , class Octree , class Function , class Element  = decltype(\-Octree\-::element()), class Index  = typename std\-::tuple\-\_\-element$<$0, Element$>$\-::type, class Data  = typename std\-::tuple\-\_\-element$<$1, Element$>$\-::type, unsigned int Dimension = Octree\-::dimension(), class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$typename std\-::result\-\_\-of$<$\-Function(\-Element)$>$\-::type, bool$>$\-::value$>$\-::type$>$ }\\static bool \hyperlink{exceptionInput_a771096a84a3d92b2f4ee9bc2a2ad097f}{importfullhdf5} (const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, Octree \&octree, const std\-::string \&filename, Function \&\&filter)
+\begin{DoxyCompactList}\small\item\em Ramses importation. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Position , class Extent , typename Integral  = unsigned int, typename Real  = float, class Parameter , class Octree , class Function , class Element  = decltype(\-Octree\-::element()), class Index  = typename std\-::tuple\-\_\-element$<$0, Element$>$\-::type, class Data  = typename std\-::tuple\-\_\-element$<$1, Element$>$\-::type, unsigned int Dimension = Octree\-::dimension(), class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$typename std\-::result\-\_\-of$<$\-Function(\-Element)$>$\-::type, bool$>$\-::value$>$\-::type$>$ }\\static bool \hyperlink{exceptionInput_abce9dd58852a179e153752fe605d9b1b}{importascii} (const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, const std\-::array$<$ std\-::array$<$ double, 3 $>$, 3 $>$ \&rotm1, Octree \&octree, const std\-::string \&filename, Function \&\&filter)
+\begin{DoxyCompactList}\small\item\em Ramses importation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Cones}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Octree , class  = typename std\-::enable\-\_\-if$<$\-Octree\-::dimension() != 0$>$\-::type$>$ }\\static bool \hyperlink{exceptionInput_abad0f0cf2cb2bd1b0365e294da2161a9}{save} (Octree \&octree, const std\-::string \&filename)
+\begin{DoxyCompactList}\small\item\em Save temporary cone file. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Octree , class  = typename std\-::enable\-\_\-if$<$\-Octree\-::dimension() != 0$>$\-::type$>$ }\\static bool \hyperlink{exceptionInput_a329ca4957faa31f920b84c82ac9a2a6d}{load} (Octree \&octree, const std\-::string \&filename)
+\begin{DoxyCompactList}\small\item\em Load temporary cone file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Correction}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Cosmology , class Trajectory , class Type  = typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$typename std\-::tuple\-\_\-element$<$0, Cosmology$>$\-::type$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Type, typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$typename std\-::tuple\-\_\-element$<$0, Cosmology$>$\-::type$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type$>$\-::value$>$\-::type$>$ }\\static Cosmology \hyperlink{exceptionInput_a8a4d7f0c08ed5566f38d3c5fe39ed1f2}{correct} (const Cosmology \&cosmology, const Trajectory \&trajectory)
+\begin{DoxyCompactList}\small\item\em Cosmology correction. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Parameter , int Check = 0, unsigned int Selection = Check$\ast$(\-Check $>$= 0), class Octree , typename Kind  = double, unsigned int Dimension = Octree\-::dimension(), class Element  = decltype(\-Octree\-::element()), class Index  = typename std\-::tuple\-\_\-element$<$0, Element$>$\-::type, class Data  = typename std\-::tuple\-\_\-element$<$1, Element$>$\-::type, class Type  = decltype(\-Data\-::template type$<$\-Selection$>$()), class Position  = decltype(\-Octree\-::position()), class Extent  = decltype(\-Octree\-::extent()), class  = typename std\-::enable\-\_\-if$<$(\-Dimension == 3)$>$\-::type$>$ }\\static Octree \& \hyperlink{exceptionInput_a19b129e06c227ee65c11577030f4ac36}{correct} (const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, Octree \&octree, Kind \&\&amin=Kind())
+\begin{DoxyCompactList}\small\item\em Octree correction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+\hyperlink{exceptionInput}{Input} utilities for raytracing. 
+
+Provides a list of importation routines to load data for raytracing. 
+
+\subsection{Member Function Documentation}
+\hypertarget{exceptionInput_a3070c31dd06673df4c9229219c4a1819}{\index{Input@{Input}!acquire@{acquire}}
+\index{acquire@{acquire}!Input@{Input}}
+\subsubsection[{acquire}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Parameter , class Cosmology , class Element , class $>$ Cosmology Input\-::acquire (
+\begin{DoxyParamCaption}
+\item[{const Parameter \&}]{parameters, }
+\item[{Type \&}]{h, }
+\item[{Type \&}]{omegam, }
+\item[{Type \&}]{lboxmpch, }
+\item[{const std\-::string \&}]{outfile = {\ttfamily std\-:\-:string()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionInput_a3070c31dd06673df4c9229219c4a1819}
+
+
+Cosmology acquisition. 
+
+Acquires cosmology parameters and cosmology from input files\-: the Hubble parameter, the density parameter of matter and the size of the box. It returns a container with t, a(t), its first and second derivatives (where t can be either the cosmic time or the conformal time eta). 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Arithmetic type. \\
+\hline
+{\em Cosmology} & Cosmology container type. \\
+\hline
+{\em Element} & Element type of the container. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em simfile} & Name of a simulation file or directory to extract the box size. \\
+\hline
+\mbox{\tt in}  & {\em paramfile} & Name of a file of cosmological parameters. \\
+\hline
+\mbox{\tt in}  & {\em evolfile} & Name of a file of cosmological evolution. \\
+\hline
+\mbox{\tt in}  & {\em h} & Hubble parameter. \\
+\hline
+\mbox{\tt in}  & {\em omegam} & Density parameter of matter. \\
+\hline
+\mbox{\tt in}  & {\em lboxmpch} & Box size in megaparsecs times h. \\
+\hline
+\mbox{\tt in}  & {\em mpc} & Value of one megaparsec in S\-I units. \\
+\hline
+\mbox{\tt in}  & {\em outfile} & Name of an output file for debugging purposes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Container of cosmology evolution and derivatives. Contains t, a, H, int Hdot, Hdot 
+\end{DoxyReturn}
+\hypertarget{exceptionInput_a5b0ea51603590e39e5ca9b9f33e1bf9e}{\index{Input@{Input}!collide@{collide}}
+\index{collide@{collide}!Input@{Input}}
+\subsubsection[{collide}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Octree , class Sphere , class Conic , typename Type , class Element , class Index , unsigned int Dimension, class Position , class Extent , class $>$ bool Input\-::collide (
+\begin{DoxyParamCaption}
+\item[{const Octree \&}]{octree, }
+\item[{const Index \&}]{index, }
+\item[{const Sphere \&}]{sphere, }
+\item[{const Conic \&}]{conic}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionInput_a5b0ea51603590e39e5ca9b9f33e1bf9e}
+
+
+Collision between an octree index and a sphere or a cone. 
+
+Detects collision between an index of an octree and a sphere or a cone. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Octree} & Octree type. \\
+\hline
+{\em Sphere} & Sphere type. \\
+\hline
+{\em Conic} & \hyperlink{exceptionCone}{Cone} type. \\
+\hline
+{\em Type} & Scalar position type. \\
+\hline
+{\em Element} & Underlying element type. \\
+\hline
+{\em Index} & Index type. \\
+\hline
+{\em Dimension} & Number of dimensions. \\
+\hline
+{\em Position} & Position of the hyperoctree center. \\
+\hline
+{\em Extent} & Extent of the hyperoctree. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em octree} & \hyperlink{exceptionInput}{Input} octree. \\
+\hline
+\mbox{\tt in}  & {\em index} & Index of one element. \\
+\hline
+\mbox{\tt in}  & {\em sphere} & Geometrical sphere. \\
+\hline
+\mbox{\tt in}  & {\em cone} & Three dimensional cone. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if collision, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionInput_ad86e769634c817f09bcdde8c3958e54d}{\index{Input@{Input}!constantify@{constantify}}
+\index{constantify@{constantify}!Input@{Input}}
+\subsubsection[{constantify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Cosmology , class $>$ Cosmology Input\-::constantify (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{size, }
+\item[{const Type}]{tmin, }
+\item[{const Type}]{tmax, }
+\item[{const Type}]{a = {\ttfamily Type(1)}, }
+\item[{const Type}]{dadt = {\ttfamily Type()}, }
+\item[{const Type}]{d2adt2 = {\ttfamily Type()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionInput_ad86e769634c817f09bcdde8c3958e54d}
+
+
+Constant cosmology. 
+
+Produces a constant cosmology of the provided size. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Cosmology} & Cosmology container type. \\
+\hline
+{\em Type} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em size} & Size of the cosmology tables. \\
+\hline
+\mbox{\tt in}  & {\em tmin} & First value of time. \\
+\hline
+\mbox{\tt in}  & {\em tmax} & Last value of time. \\
+\hline
+\mbox{\tt in}  & {\em a} & Scale factor. \\
+\hline
+\mbox{\tt in}  & {\em dadt} & Value of the first derivative of the scale factor. \\
+\hline
+\mbox{\tt in}  & {\em d2adt2} & Value of the second derivative of the scale factor. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Constant cosmology. 
+\end{DoxyReturn}
+\hypertarget{exceptionInput_a8a4d7f0c08ed5566f38d3c5fe39ed1f2}{\index{Input@{Input}!correct@{correct}}
+\index{correct@{correct}!Input@{Input}}
+\subsubsection[{correct}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Cosmology , class Trajectory , class Type , class $>$ Cosmology Input\-::correct (
+\begin{DoxyParamCaption}
+\item[{const Cosmology \&}]{cosmology, }
+\item[{const Trajectory \&}]{trajectory}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionInput_a8a4d7f0c08ed5566f38d3c5fe39ed1f2}
+
+
+Cosmology correction. 
+
+Produces another cosmology based on interpolation of an homogeneous trajectory. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Cosmology} & Cosmology container type. \\
+\hline
+{\em Trajectory} & Trajectory container. \\
+\hline
+{\em Type} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cosmology} & Cosmology. \\
+\hline
+\mbox{\tt in}  & {\em trajectory} & Homogeneous trajectory. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Corrected cosmology. 
+\end{DoxyReturn}
+\hypertarget{exceptionInput_a19b129e06c227ee65c11577030f4ac36}{\index{Input@{Input}!correct@{correct}}
+\index{correct@{correct}!Input@{Input}}
+\subsubsection[{correct}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Parameter , int Check, unsigned int Selection, class Octree , typename Kind , unsigned int Dimension, class Element , class Index , class Data , class Type , class Position , class Extent , class $>$ Octree \& Input\-::correct (
+\begin{DoxyParamCaption}
+\item[{const Parameter \&}]{parameters, }
+\item[{Octree \&}]{octree, }
+\item[{Kind \&\&}]{amin = {\ttfamily Kind()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionInput_a19b129e06c227ee65c11577030f4ac36}
+
+
+Octree correction. 
+
+Corrects uncomplete tree and zones with empty rho. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Parameter} & Parameter type. \\
+\hline
+{\em Check} & Check mode. \\
+\hline
+{\em Selection} & Index of the data to be corrected. \\
+\hline
+{\em Octree} & Octree type. \\
+\hline
+{\em Kind} & Kind of amin. \\
+\hline
+{\em Dimension} & Number of dimensions. \\
+\hline
+{\em Element} & Underlying element type. \\
+\hline
+{\em Index} & Index type. \\
+\hline
+{\em Data} & Data type. \\
+\hline
+{\em Type} & Selected data type. \\
+\hline
+{\em Position} & Position of the hyperoctree center. \\
+\hline
+{\em Extent} & Extent of the hyperoctree. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em parameters} & Parameter structure. \\
+\hline
+\mbox{\tt in,out}  & {\em octree} & \hyperlink{exceptionInput}{Input} octree. \\
+\hline
+\mbox{\tt out}  & {\em amin} & Outputs the lowest value of a. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the octree. 
+\end{DoxyReturn}
+\hypertarget{exceptionInput_a1ec66a2edaab4da06525453503e9cc3c}{\index{Input@{Input}!count@{count}}
+\index{count@{count}!Input@{Input}}
+\subsubsection[{count}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Octree , class Source , class Data , class Element , class $>$ unsigned int Input\-::count (
+\begin{DoxyParamCaption}
+\item[{Octree \&}]{octree, }
+\item[{const Source \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionInput_a1ec66a2edaab4da06525453503e9cc3c}
+
+
+Count tree. 
+
+Counts the number of input cells in each output cells. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Octree} & \hyperlink{exceptionOutput}{Output} octree type. \\
+\hline
+{\em Source} & \hyperlink{exceptionInput}{Input} octree type. \\
+\hline
+{\em Data} & \hyperlink{exceptionOutput}{Output} data type. \\
+\hline
+{\em Element} & Underlying input element type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em octree} & \hyperlink{exceptionOutput}{Output} octree. \\
+\hline
+\mbox{\tt in}  & {\em source} & \hyperlink{exceptionInput}{Input} octree. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Octree with count of input cells per output cell. 
+\end{DoxyReturn}
+\hypertarget{exceptionInput_a55ab9761312068b1da1f4498b82526a4}{\index{Input@{Input}!filetree@{filetree}}
+\index{filetree@{filetree}!Input@{Input}}
+\subsubsection[{filetree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Octree , class Element , class Index , class Data , unsigned int Dimension, class $>$ unsigned int Input\-::filetree (
+\begin{DoxyParamCaption}
+\item[{Octree \&}]{octree, }
+\item[{const std\-::string \&}]{directory, }
+\item[{const std\-::string \&}]{format}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionInput_a55ab9761312068b1da1f4498b82526a4}
+
+
+File tree. 
+
+Fills in an octree with the names of the existing ramses files. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Octree} & Octree type. \\
+\hline
+{\em Element} & Underlying element type. \\
+\hline
+{\em Index} & Index type. \\
+\hline
+{\em Data} & Data type. \\
+\hline
+{\em Dimension} & Number of dimensions. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em octree} & Octree of file names. \\
+\hline
+\mbox{\tt in}  & {\em directory} & \hyperlink{exceptionInput}{Input} directory. \\
+\hline
+\mbox{\tt in}  & {\em format} & \hyperlink{exceptionInput}{Input} file format. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of detected files. 
+\end{DoxyReturn}
+\hypertarget{exceptionInput_ad43fe70367197a64504b4fe2dae861a3}{\index{Input@{Input}!homogenize@{homogenize}}
+\index{homogenize@{homogenize}!Input@{Input}}
+\subsubsection[{homogenize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Data , class $>$ Data Input\-::homogenize (
+\begin{DoxyParamCaption}
+\item[{const Data \&}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionInput_ad43fe70367197a64504b4fe2dae861a3}
+
+
+Data homogenization. 
+
+Converts a data to one of a homogeneous empty Universe. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Data} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & \hyperlink{exceptionInput}{Input} data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Homogeneous empty data. 
+\end{DoxyReturn}
+\hypertarget{exceptionInput_ad9324e1d7cbb6ce11dae87e7805ab1f0}{\index{Input@{Input}!homogenize@{homogenize}}
+\index{homogenize@{homogenize}!Input@{Input}}
+\subsubsection[{homogenize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Octree , class... Dummy, class Element , class Data , class $>$ unsigned int Input\-::homogenize (
+\begin{DoxyParamCaption}
+\item[{Octree \&}]{octree, }
+\item[{Dummy...}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionInput_ad9324e1d7cbb6ce11dae87e7805ab1f0}
+
+
+Octree homogenization. 
+
+Converts each data of the octree to one of a homogeneous empty Universe. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Octree} & Octree type. \\
+\hline
+{\em Dummy} & Dummy type. \\
+\hline
+{\em Element} & Underlying element type. \\
+\hline
+{\em Data} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em octree} & Octree of data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Homogeneous empty octree. 
+\end{DoxyReturn}
+\hypertarget{exceptionInput_adb0a86f9680f6f88311735513b20f1a8}{\index{Input@{Input}!import@{import}}
+\index{import@{import}!Input@{Input}}
+\subsubsection[{import}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Integral , typename Real , class Parameter , class Octree , class Function , class Element , class Index , class Data , unsigned int Dimension, class $>$ bool Input\-::import (
+\begin{DoxyParamCaption}
+\item[{const Parameter \&}]{parameters, }
+\item[{Octree \&}]{octree, }
+\item[{const std\-::string \&}]{filename, }
+\item[{Function \&\&}]{filter}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionInput_adb0a86f9680f6f88311735513b20f1a8}
+
+
+Ramses importation. 
+
+Imports raw data from ramses gravity files. All cells selected by the provided filter are added to the octree. As there is no way to detect the coarse level, it should be specified as an argument. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Integral} & Integral type of the file. \\
+\hline
+{\em Real} & Real type of the file. \\
+\hline
+{\em Parameter} & Parameter type. \\
+\hline
+{\em Octree} & Octree type. \\
+\hline
+{\em Function} & Function type taking an element as argument and returning a boolean. \\
+\hline
+{\em Element} & Underlying element type. \\
+\hline
+{\em Index} & Index type. \\
+\hline
+{\em Data} & Data type. \\
+\hline
+{\em Dimension} & Number of dimensions. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em parameters} & Parameter structure. \\
+\hline
+\mbox{\tt in,out}  & {\em octree} & Octree of data. \\
+\hline
+\mbox{\tt in}  & {\em filename} & \hyperlink{exceptionInput}{Input} file name. \\
+\hline
+\mbox{\tt in}  & {\em filter} & Filtering algorithm of cells. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on error. 
+\end{DoxyReturn}
+\hypertarget{exceptionInput_abce9dd58852a179e153752fe605d9b1b}{\index{Input@{Input}!importascii@{importascii}}
+\index{importascii@{importascii}!Input@{Input}}
+\subsubsection[{importascii}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Position , class Extent , typename Integral , typename Real , class Parameter , class Octree , class Function , class Element , class Index , class Data , unsigned int Dimension, class $>$ bool Input\-::importascii (
+\begin{DoxyParamCaption}
+\item[{const Parameter \&}]{parameters, }
+\item[{const std\-::array$<$ std\-::array$<$ double, 3 $>$, 3 $>$ \&}]{rotm1, }
+\item[{Octree \&}]{octree, }
+\item[{const std\-::string \&}]{filename, }
+\item[{Function \&\&}]{filter}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionInput_abce9dd58852a179e153752fe605d9b1b}
+
+
+Ramses importation. 
+
+Imports A\-S\-C\-I\-I data from ramses gravity files. All cells selected by the provided filter are added to the octree. As there is no way to detect the coarse level, it should be specified as an argument. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Position} & Position type. \\
+\hline
+{\em Extent} & Extent type. \\
+\hline
+{\em Integral} & Integral type of the file. \\
+\hline
+{\em Real} & Real type of the file. \\
+\hline
+{\em Octree} & Octree type. \\
+\hline
+{\em Function} & Function type taking an element as argument and returning a boolean. \\
+\hline
+{\em Element} & Underlying element type. \\
+\hline
+{\em Index} & Index type. \\
+\hline
+{\em Data} & Data type. \\
+\hline
+{\em Dimension} & Number of dimensions. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em parameters} & Parameter structure \\
+\hline
+\mbox{\tt in}  & {\em rotm1} & rotation matrix for narrow cones \\
+\hline
+\mbox{\tt in,out}  & {\em octree} & Octree of data. \\
+\hline
+\mbox{\tt in}  & {\em filename} & \hyperlink{exceptionInput}{Input} file name. \\
+\hline
+\mbox{\tt in}  & {\em filter} & Filtering algorithm of cells. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on error. 
+\end{DoxyReturn}
+\hypertarget{exceptionInput_a771096a84a3d92b2f4ee9bc2a2ad097f}{\index{Input@{Input}!importfullhdf5@{importfullhdf5}}
+\index{importfullhdf5@{importfullhdf5}!Input@{Input}}
+\subsubsection[{importfullhdf5}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Position , class Extent , typename Integral , typename Real , class Parameter , class Octree , class Function , class Element , class Index , class Data , unsigned int Dimension, class $>$ bool Input\-::importfullhdf5 (
+\begin{DoxyParamCaption}
+\item[{const Parameter \&}]{parameters, }
+\item[{Octree \&}]{octree, }
+\item[{const std\-::string \&}]{filename, }
+\item[{Function \&\&}]{filter}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionInput_a771096a84a3d92b2f4ee9bc2a2ad097f}
+
+
+Ramses importation. 
+
+Imports H\-D\-F5 data from ramses gravity files. Used for small spherical buffer zone in narrow cones. All cells selected by the provided filter are added to the octree. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Position} & Position type. \\
+\hline
+{\em Extent} & Extent type. \\
+\hline
+{\em Integral} & Integral type of the file. \\
+\hline
+{\em Real} & Real type of the file. \\
+\hline
+{\em Parameter} & Parameter type. \\
+\hline
+{\em Octree} & Octree type. \\
+\hline
+{\em Function} & Function type taking an element as argument and returning a boolean. \\
+\hline
+{\em Element} & Underlying element type. \\
+\hline
+{\em Index} & Index type. \\
+\hline
+{\em Data} & Data type. \\
+\hline
+{\em Dimension} & Number of dimensions. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em parameters} & Parameter structure. \\
+\hline
+\mbox{\tt in,out}  & {\em octree} & Octree of data. \\
+\hline
+\mbox{\tt in}  & {\em filename} & \hyperlink{exceptionInput}{Input} file name. \\
+\hline
+\mbox{\tt in}  & {\em filter} & Filtering algorithm of cells. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on error. 
+\end{DoxyReturn}
+\hypertarget{exceptionInput_ae15078f6d2ccb7195a060e6c92b409bd}{\index{Input@{Input}!importhdf5@{importhdf5}}
+\index{importhdf5@{importhdf5}!Input@{Input}}
+\subsubsection[{importhdf5}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Position , class Extent , typename Integral , typename Real , class Parameter , class Conic , class Octree , class Function , class Element , class Index , class Data , unsigned int Dimension, class $>$ bool Input\-::importhdf5 (
+\begin{DoxyParamCaption}
+\item[{const Parameter \&}]{parameters, }
+\item[{unsigned int \&}]{rank, }
+\item[{const std\-::array$<$ std\-::array$<$ double, 3 $>$, 3 $>$ \&}]{rotm1, }
+\item[{const double \&}]{thetay, }
+\item[{const double \&}]{thetaz, }
+\item[{const Conic \&}]{conic, }
+\item[{Octree \&}]{octree, }
+\item[{const std\-::string \&}]{filename, }
+\item[{Function \&\&}]{filter}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionInput_ae15078f6d2ccb7195a060e6c92b409bd}
+
+
+Ramses importation. 
+
+Imports H\-D\-F5 data from ramses gravity files. All cells selected by the provided filter are added to the octree. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Position} & Position. \\
+\hline
+{\em Extent} & Extent type. \\
+\hline
+{\em Integral} & Integral type of the file. \\
+\hline
+{\em Real} & Real type of the file. \\
+\hline
+{\em Conic} & \hyperlink{exceptionCone}{Cone} type. \\
+\hline
+{\em Octree} & Octree type. \\
+\hline
+{\em Function} & Function type taking an element as argument and returning a boolean. \\
+\hline
+{\em Element} & Underlying element type. \\
+\hline
+{\em Index} & Index type. \\
+\hline
+{\em Data} & Data type. \\
+\hline
+{\em Dimension} & Number of dimensions. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em parameters} & Parameter structure. \\
+\hline
+\mbox{\tt in}  & {\em rank} & Rank. \\
+\hline
+\mbox{\tt in}  & {\em rotm1} & rotation matrix for narrow cones \\
+\hline
+\mbox{\tt in,out}  & {\em thetay} & Semi-\/angle for solid angle in direction y \\
+\hline
+\mbox{\tt in,out}  & {\em thetaz} & Semi-\/angle for solid angle in direction z \\
+\hline
+\mbox{\tt in}  & {\em conic} & \hyperlink{exceptionCone}{Cone} characteristics \\
+\hline
+\mbox{\tt in,out}  & {\em octree} & Octree of data. \\
+\hline
+\mbox{\tt in}  & {\em filename} & \hyperlink{exceptionInput}{Input} file name. \\
+\hline
+\mbox{\tt in}  & {\em filter} & Filtering algorithm of cells. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false on error. 
+\end{DoxyReturn}
+\hypertarget{exceptionInput_a329ca4957faa31f920b84c82ac9a2a6d}{\index{Input@{Input}!load@{load}}
+\index{load@{load}!Input@{Input}}
+\subsubsection[{load}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Octree , class $>$ bool Input\-::load (
+\begin{DoxyParamCaption}
+\item[{Octree \&}]{octree, }
+\item[{const std\-::string \&}]{filename}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionInput_a329ca4957faa31f920b84c82ac9a2a6d}
+
+
+Load temporary cone file. 
+
+Loads a temporary cone file into an octree. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Octree} & Octree type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em octree} & Destination octree. \\
+\hline
+\mbox{\tt in}  & {\em filename} & File name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionInput_a2378e5cd9538eb69c842ebd4575a6775}{\index{Input@{Input}!mean@{mean}}
+\index{mean@{mean}!Input@{Input}}
+\subsubsection[{mean}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Selection, class Octree , unsigned int Dimension, class Element , class Index , class Data , class Type , class $>$ Type Input\-::mean (
+\begin{DoxyParamCaption}
+\item[{const Octree \&}]{octree, }
+\item[{const Element \&}]{element, }
+\item[{int}]{level = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionInput_a2378e5cd9538eb69c842ebd4575a6775}
+
+
+Mean value over cells. 
+
+Computes the average of the provided data in all surrounding cells which are normal. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Selection} & Index of the data to be computed. \\
+\hline
+{\em Octree} & Octree type. \\
+\hline
+{\em Dimension} & Number of dimensions. \\
+\hline
+{\em Element} & Underlying element type. \\
+\hline
+{\em Index} & Index type. \\
+\hline
+{\em Data} & Data type. \\
+\hline
+{\em Type} & Selected data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em octree} & \hyperlink{exceptionInput}{Input} octree. \\
+\hline
+\mbox{\tt in}  & {\em element} & \hyperlink{exceptionInput}{Input} element. \\
+\hline
+\mbox{\tt in}  & {\em level} & Cell level for computation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Averaged value. 
+\end{DoxyReturn}
+\hypertarget{exceptionInput_aa2bca846797d99859c639ee39c5622e3}{\index{Input@{Input}!mean\-All@{mean\-All}}
+\index{mean\-All@{mean\-All}!Input@{Input}}
+\subsubsection[{mean\-All}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Selection, class Octree , unsigned int Dimension, class Element , class Index , class Data , class Type , class $>$ Data Input\-::mean\-All (
+\begin{DoxyParamCaption}
+\item[{const Octree \&}]{octree, }
+\item[{const Element \&}]{element, }
+\item[{int}]{level = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionInput_aa2bca846797d99859c639ee39c5622e3}
+
+
+Mean value over cells. 
+
+Computes the average of cell tuple information all surrounding cells which are normal. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Selection} & Index of the data to be computed. \\
+\hline
+{\em Octree} & Octree type. \\
+\hline
+{\em Dimension} & Number of dimensions. \\
+\hline
+{\em Element} & Underlying element type. \\
+\hline
+{\em Index} & Index type. \\
+\hline
+{\em Data} & Data type. \\
+\hline
+{\em Type} & Selected data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em octree} & \hyperlink{exceptionInput}{Input} octree. \\
+\hline
+\mbox{\tt in}  & {\em element} & \hyperlink{exceptionInput}{Input} element. \\
+\hline
+\mbox{\tt in}  & {\em level} & Cell level for computation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Averaged value of tuple. 
+\end{DoxyReturn}
+\hypertarget{exceptionInput_a90f26f7b7be815de44151066b8cb669d}{\index{Input@{Input}!parse@{parse}}
+\index{parse@{parse}!Input@{Input}}
+\subsubsection[{parse}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Container , class Element , class $>$ Container Input\-::parse (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename, }
+\item[{const std\-::string \&}]{separator = {\ttfamily \char`\"{}=\char`\"{}}, }
+\item[{const std\-::string \&}]{comment = {\ttfamily \char`\"{}\#\char`\"{}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionInput_a90f26f7b7be815de44151066b8cb669d}
+
+
+Parameter file parsing. 
+
+Parses the provided parameter file and returns a map of parameters. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container} & \hyperlink{exceptionOutput}{Output} map type. \\
+\hline
+{\em Element} & Element type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & File name. \\
+\hline
+\mbox{\tt in}  & {\em separator} & Separator string. \\
+\hline
+\mbox{\tt in}  & {\em comment} & Comment string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Map of parameters. 
+\end{DoxyReturn}
+\hypertarget{exceptionInput_a859c8e0b3921a0e8bbd79bc96272935e}{\index{Input@{Input}!partition@{partition}}
+\index{partition@{partition}!Input@{Input}}
+\subsubsection[{partition}]{\setlength{\rightskip}{0pt plus 5cm}std\-::pair$<$ std\-::string, std\-::string $>$ Input\-::partition (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{text, }
+\item[{const std\-::string \&}]{separator = {\ttfamily \char`\"{}=\char`\"{}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionInput_a859c8e0b3921a0e8bbd79bc96272935e}
+
+
+Partition string. 
+
+Splits the string in two parts before and after the provided separator. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em text} & \hyperlink{exceptionInput}{Input} text. \\
+\hline
+\mbox{\tt in}  & {\em separator} & Separator string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Partitioned string. 
+\end{DoxyReturn}
+\hypertarget{exceptionInput_ab975c15aeb6fbbaeef11586b4bb10282}{\index{Input@{Input}!prepare@{prepare}}
+\index{prepare@{prepare}!Input@{Input}}
+\subsubsection[{prepare}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class List , class Octree , class Sphere , class Conic , unsigned int Dimension, class $>$ bool Input\-::prepare (
+\begin{DoxyParamCaption}
+\item[{List \&}]{list, }
+\item[{const Octree \&}]{octree, }
+\item[{const Sphere \&}]{sphere, }
+\item[{const Conic \&}]{conic}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionInput_ab975c15aeb6fbbaeef11586b4bb10282}
+
+
+File list preparation. 
+
+Adds to the list, the octree files which intersects the provided sphere and cone. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em List} & File list type. \\
+\hline
+{\em Octree} & Octree type. \\
+\hline
+{\em Sphere} & Sphere type. \\
+\hline
+{\em Conic} & \hyperlink{exceptionCone}{Cone} type. \\
+\hline
+{\em Dimension} & Number of dimensions. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em list} & File list. \\
+\hline
+\mbox{\tt in}  & {\em octree} & \hyperlink{exceptionInput}{Input} octree. \\
+\hline
+\mbox{\tt in}  & {\em sphere} & Geometrical sphere. \\
+\hline
+\mbox{\tt in}  & {\em cone} & Three dimensional cone. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if some files have been added to the list, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionInput_abad0f0cf2cb2bd1b0365e294da2161a9}{\index{Input@{Input}!save@{save}}
+\index{save@{save}!Input@{Input}}
+\subsubsection[{save}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Octree , class $>$ bool Input\-::save (
+\begin{DoxyParamCaption}
+\item[{Octree \&}]{octree, }
+\item[{const std\-::string \&}]{filename}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionInput_abad0f0cf2cb2bd1b0365e294da2161a9}
+
+
+Save temporary cone file. 
+
+Saves the octree in a temporary cone file. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Octree} & Octree type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em octree} & Source octree. \\
+\hline
+\mbox{\tt in}  & {\em filename} & File name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionInput_aab3a37812389169923cbbbf922d9ca1c}{\index{Input@{Input}!schwarzschildify@{schwarzschildify}}
+\index{schwarzschildify@{schwarzschildify}!Input@{Input}}
+\subsubsection[{schwarzschildify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Extent , class Data , class Vector , typename Type , unsigned int Dimension, class $>$ Data Input\-::schwarzschildify (
+\begin{DoxyParamCaption}
+\item[{const Data \&}]{data, }
+\item[{const Vector \&}]{center, }
+\item[{const Vector \&}]{position, }
+\item[{const Type}]{mass, }
+\item[{const Type}]{length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionInput_aab3a37812389169923cbbbf922d9ca1c}
+
+
+Data schwarzschild setup. 
+
+Converts a data to one of a schwarzschild configuration. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Extent} & Extent of the hyperoctree. \\
+\hline
+{\em Data} & Data type. \\
+\hline
+{\em Vector} & Vector type. \\
+\hline
+{\em Type} & Arithmetic type. \\
+\hline
+{\em Dimension} & Number of dimensions. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & \hyperlink{exceptionInput}{Input} data. \\
+\hline
+\mbox{\tt in}  & {\em center} & Cell center. \\
+\hline
+\mbox{\tt in}  & {\em position} & Mass position. \\
+\hline
+\mbox{\tt in}  & {\em mass} & Mass in S\-I units. \\
+\hline
+\mbox{\tt in}  & {\em length} & Spatial length in S\-I units. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Schwarzschild data. 
+\end{DoxyReturn}
+\hypertarget{exceptionInput_a881b5694e1b8defc21d34d35cbec74d4}{\index{Input@{Input}!schwarzschildify@{schwarzschildify}}
+\index{schwarzschildify@{schwarzschildify}!Input@{Input}}
+\subsubsection[{schwarzschildify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Octree , class Vector , typename Type , class Function , class... Dummy, class Element , unsigned int Dimension, class Extent , class $>$ unsigned int Input\-::schwarzschildify (
+\begin{DoxyParamCaption}
+\item[{Octree \&}]{octree, }
+\item[{const Vector \&}]{position, }
+\item[{const Type}]{mass, }
+\item[{const Type}]{length, }
+\item[{Function \&\&}]{refiner, }
+\item[{Dummy...}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionInput_a881b5694e1b8defc21d34d35cbec74d4}
+
+
+Octree schwarzschild setup. 
+
+Converts each data of the octree to one of a schwarzschild configuration. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Octree} & Octree type. \\
+\hline
+{\em Vector} & Vector type. \\
+\hline
+{\em Type} & Arithmetic type. \\
+\hline
+{\em Function} & Function type. \\
+\hline
+{\em Dummy} & Dummy type. \\
+\hline
+{\em Element} & Underlying element type. \\
+\hline
+{\em Dimension} & Number of dimensions. \\
+\hline
+{\em Extent} & Extent of the hyperoctree. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em octree} & Octree of data. \\
+\hline
+\mbox{\tt in}  & {\em position} & Mass position in the octree. \\
+\hline
+\mbox{\tt in}  & {\em mass} & Mass in S\-I units. \\
+\hline
+\mbox{\tt in}  & {\em length} & Spatial length in S\-I units. \\
+\hline
+\mbox{\tt in}  & {\em refiner} & Refinement function taking a data and a level as arguments and returning true when a refinement should be triggered \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Schwarzschild octree. 
+\end{DoxyReturn}
+\hypertarget{exceptionInput_abdcd382d232673326e4f759ffe67c58c}{\index{Input@{Input}!sistemize@{sistemize}}
+\index{sistemize@{sistemize}!Input@{Input}}
+\subsubsection[{sistemize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Parameter , class Data , typename Type , class $>$ Data Input\-::sistemize (
+\begin{DoxyParamCaption}
+\item[{const Parameter \&}]{parameters, }
+\item[{const Data \&}]{data, }
+\item[{const Type}]{a, }
+\item[{const Type}]{h, }
+\item[{const Type}]{omegam, }
+\item[{const Type}]{lboxmpch}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionInput_abdcd382d232673326e4f759ffe67c58c}
+
+
+Data conversion to S\-I units. 
+
+Converts a data to one expressed in S\-I units. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Data} & Data type. \\
+\hline
+{\em Type} & Arithmetic type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & \hyperlink{exceptionInput}{Input} data. \\
+\hline
+\mbox{\tt in}  & {\em a} & Scale factor. \\
+\hline
+\mbox{\tt in}  & {\em h} & Hubble parameter. \\
+\hline
+\mbox{\tt in}  & {\em omegam} & Density parameter of matter. \\
+\hline
+\mbox{\tt in}  & {\em lboxmpch} & Box size in megaparsecs times h. \\
+\hline
+\mbox{\tt in}  & {\em mpc} & Value of one megaparsec in S\-I units. \\
+\hline
+\mbox{\tt in}  & {\em rhoch2} & Value of critical density times h squared in S\-I units. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Data in S\-I units. 
+\end{DoxyReturn}
+\hypertarget{exceptionInput_ad51758a7519270c34e5cc7a2c3e254cb}{\index{Input@{Input}!sistemize@{sistemize}}
+\index{sistemize@{sistemize}!Input@{Input}}
+\subsubsection[{sistemize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Parameter , class Octree , typename Type , class Element , class Data , class $>$ unsigned int Input\-::sistemize (
+\begin{DoxyParamCaption}
+\item[{const Parameter \&}]{parameters, }
+\item[{Octree \&}]{octree, }
+\item[{const Type}]{h, }
+\item[{const Type}]{omegam, }
+\item[{const Type}]{lboxmpch}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionInput_ad51758a7519270c34e5cc7a2c3e254cb}
+
+
+Octree conversion to S\-I units. 
+
+Converts each element of the octree to one based on data expressed in S\-I units. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Octree} & Octree type. \\
+\hline
+{\em Type} & Arithmetic type. \\
+\hline
+{\em Element} & Underlying element type. \\
+\hline
+{\em Data} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em octree} & Octree of data. \\
+\hline
+\mbox{\tt in}  & {\em h} & Hubble parameter. \\
+\hline
+\mbox{\tt in}  & {\em omegam} & Density parameter of matter. \\
+\hline
+\mbox{\tt in}  & {\em lboxmpch} & Box size in megaparsecs times h. \\
+\hline
+\mbox{\tt in}  & {\em mpc} & Value of one megaparsec in S\-I units. \\
+\hline
+\mbox{\tt in}  & {\em rhoch2} & Value of critical density times h squared in S\-I units. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Octree in S\-I units. 
+\end{DoxyReturn}
+\hypertarget{exceptionInput_a8a98c85776bc73b49f4b3a4e30b243b7}{\index{Input@{Input}!trim@{trim}}
+\index{trim@{trim}!Input@{Input}}
+\subsubsection[{trim}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Input\-::trim (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{text, }
+\item[{const std\-::string \&}]{comment = {\ttfamily \char`\"{}\#\char`\"{}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionInput_a8a98c85776bc73b49f4b3a4e30b243b7}
+
+
+Trim string. 
+
+Trims string from leading and trailing white spaces, from comments, and from inner multi white spaces. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em text} & \hyperlink{exceptionInput}{Input} text. \\
+\hline
+\mbox{\tt in}  & {\em comment} & Comment string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Trimmed string. 
+\end{DoxyReturn}
+
+
+The documentation for this exception was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/\hyperlink{input_8h}{input.\-h}\end{DoxyCompactItemize}

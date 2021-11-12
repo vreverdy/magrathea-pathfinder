@@ -1,0 +1,110 @@
+\hypertarget{staticvectorizer_8h}{\section{/data/home/mbreton/magrathea\-\_\-pathfinder/src/magrathea/staticvectorizer.h File Reference}
+\label{staticvectorizer_8h}\index{/data/home/mbreton/magrathea\-\_\-pathfinder/src/magrathea/staticvectorizer.\-h@{/data/home/mbreton/magrathea\-\_\-pathfinder/src/magrathea/staticvectorizer.\-h}}
+}
+
+
+Helper class for generic constant size vectorization.  
+
+
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$iomanip$>$}\\*
+{\ttfamily \#include $<$type\-\_\-traits$>$}\\*
+{\ttfamily \#include $<$stdexcept$>$}\\*
+{\ttfamily \#include $<$functional$>$}\\*
+{\ttfamily \#include $<$algorithm$>$}\\*
+{\ttfamily \#include $<$iterator$>$}\\*
+{\ttfamily \#include $<$initializer\-\_\-list$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$bitset$>$}\\*
+{\ttfamily \#include \char`\"{}vectorizer.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classmagrathea_1_1StaticVectorizer}{magrathea\-::\-Static\-Vectorizer$<$ Kind, Size, Crtp, Type, Parameters $>$}
+\begin{DoxyCompactList}\small\item\em Helper class for generic constant size vectorization. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacemagrathea}{magrathea}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Other\-Type , typename Self\-Kind , unsigned int Self\-Size, template$<$ typename, Self\-Kind...$>$ class Self\-Crtp, typename Self\-Type , Self\-Kind... Self\-Parameters, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Other\-Type$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Other\-Type, Self\-Type$>$\-::value)$>$\-::type$>$ }\\Self\-Crtp$<$ typename \\*
+std\-::common\-\_\-type$<$ Self\-Type, \\*
+Other\-Type $>$\-::type, \\*
+Self\-Parameters...$>$ \hyperlink{namespacemagrathea_a953954bed141f42a1bcd833198395f41}{magrathea\-::operator+} (const Other\-Type \&lhs, const Static\-Vectorizer$<$ Self\-Kind, Self\-Size, Self\-Crtp, Self\-Type, Self\-Parameters...$>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em Addition with lhs value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , typename Self\-Kind , unsigned int Self\-Size, template$<$ typename, Self\-Kind...$>$ class Self\-Crtp, typename Self\-Type , Self\-Kind... Self\-Parameters, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Other\-Type$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Other\-Type, Self\-Type$>$\-::value)$>$\-::type$>$ }\\Self\-Crtp$<$ typename \\*
+std\-::common\-\_\-type$<$ Self\-Type, \\*
+Other\-Type $>$\-::type, \\*
+Self\-Parameters...$>$ \hyperlink{namespacemagrathea_a56a366b62738a6fa7747b6144b1b3702}{magrathea\-::operator-\/} (const Other\-Type \&lhs, const Static\-Vectorizer$<$ Self\-Kind, Self\-Size, Self\-Crtp, Self\-Type, Self\-Parameters...$>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em Substraction with lhs value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , typename Self\-Kind , unsigned int Self\-Size, template$<$ typename, Self\-Kind...$>$ class Self\-Crtp, typename Self\-Type , Self\-Kind... Self\-Parameters, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Other\-Type$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Other\-Type, Self\-Type$>$\-::value)$>$\-::type$>$ }\\Self\-Crtp$<$ typename \\*
+std\-::common\-\_\-type$<$ Self\-Type, \\*
+Other\-Type $>$\-::type, \\*
+Self\-Parameters...$>$ \hyperlink{namespacemagrathea_ab6ac48b0d4f57eff39cd9e0053b98a47}{magrathea\-::operator$\ast$} (const Other\-Type \&lhs, const Static\-Vectorizer$<$ Self\-Kind, Self\-Size, Self\-Crtp, Self\-Type, Self\-Parameters...$>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em Multiplication with lhs value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , typename Self\-Kind , unsigned int Self\-Size, template$<$ typename, Self\-Kind...$>$ class Self\-Crtp, typename Self\-Type , Self\-Kind... Self\-Parameters, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Other\-Type$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Other\-Type, Self\-Type$>$\-::value)$>$\-::type$>$ }\\Self\-Crtp$<$ typename \\*
+std\-::common\-\_\-type$<$ Self\-Type, \\*
+Other\-Type $>$\-::type, \\*
+Self\-Parameters...$>$ \hyperlink{namespacemagrathea_ade4a187c4aa140e2690c28b2e00575cc}{magrathea\-::operator/} (const Other\-Type \&lhs, const Static\-Vectorizer$<$ Self\-Kind, Self\-Size, Self\-Crtp, Self\-Type, Self\-Parameters...$>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em Division with lhs value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , typename Self\-Kind , unsigned int Self\-Size, template$<$ typename, Self\-Kind...$>$ class Self\-Crtp, typename Self\-Type , Self\-Kind... Self\-Parameters, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Other\-Type$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Other\-Type, Self\-Type$>$\-::value)$>$\-::type$>$ }\\Self\-Crtp$<$ typename \\*
+std\-::common\-\_\-type$<$ Self\-Type, \\*
+Other\-Type $>$\-::type, \\*
+Self\-Parameters...$>$ \hyperlink{namespacemagrathea_aa101299f75a0597451ac95a02f5031e1}{magrathea\-::operator\%} (const Other\-Type \&lhs, const Static\-Vectorizer$<$ Self\-Kind, Self\-Size, Self\-Crtp, Self\-Type, Self\-Parameters...$>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em Modulo with lhs value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , typename Self\-Kind , unsigned int Self\-Size, template$<$ typename, Self\-Kind...$>$ class Self\-Crtp, typename Self\-Type , Self\-Kind... Self\-Parameters, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Other\-Type$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Other\-Type, Self\-Type$>$\-::value)$>$\-::type$>$ }\\Self\-Crtp$<$ typename \\*
+std\-::common\-\_\-type$<$ Self\-Type, \\*
+Other\-Type $>$\-::type, \\*
+Self\-Parameters...$>$ \hyperlink{namespacemagrathea_a4fd24aa869c1cae4d82bea7d72e79381}{magrathea\-::operator\&} (const Other\-Type \&lhs, const Static\-Vectorizer$<$ Self\-Kind, Self\-Size, Self\-Crtp, Self\-Type, Self\-Parameters...$>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em Bitwise A\-N\-D with lhs value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , typename Self\-Kind , unsigned int Self\-Size, template$<$ typename, Self\-Kind...$>$ class Self\-Crtp, typename Self\-Type , Self\-Kind... Self\-Parameters, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Other\-Type$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Other\-Type, Self\-Type$>$\-::value)$>$\-::type$>$ }\\Self\-Crtp$<$ typename \\*
+std\-::common\-\_\-type$<$ Self\-Type, \\*
+Other\-Type $>$\-::type, \\*
+Self\-Parameters...$>$ \hyperlink{namespacemagrathea_a509316d7acef6deb88f2ec89bdcc9d70}{magrathea\-::operator$|$} (const Other\-Type \&lhs, const Static\-Vectorizer$<$ Self\-Kind, Self\-Size, Self\-Crtp, Self\-Type, Self\-Parameters...$>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em Bitwise O\-R with lhs value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , typename Self\-Kind , unsigned int Self\-Size, template$<$ typename, Self\-Kind...$>$ class Self\-Crtp, typename Self\-Type , Self\-Kind... Self\-Parameters, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Other\-Type$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Other\-Type, Self\-Type$>$\-::value)$>$\-::type$>$ }\\Self\-Crtp$<$ typename \\*
+std\-::common\-\_\-type$<$ Self\-Type, \\*
+Other\-Type $>$\-::type, \\*
+Self\-Parameters...$>$ \hyperlink{namespacemagrathea_a722f2644135e162e6775db15c084bf00}{magrathea\-::operator$^\wedge$} (const Other\-Type \&lhs, const Static\-Vectorizer$<$ Self\-Kind, Self\-Size, Self\-Crtp, Self\-Type, Self\-Parameters...$>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em Bitwise X\-O\-R with lhs value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , typename Self\-Kind , unsigned int Self\-Size, template$<$ typename, Self\-Kind...$>$ class Self\-Crtp, typename Self\-Type , Self\-Kind... Self\-Parameters, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Other\-Type$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Other\-Type, Self\-Type$>$\-::value)$>$\-::type$>$ }\\Self\-Crtp$<$ Other\-Type, \\*
+Self\-Parameters...$>$ \hyperlink{namespacemagrathea_afe50847f844046c38c7530a7ae7ff7a8}{magrathea\-::operator$<$$<$} (const Other\-Type \&lhs, const Static\-Vectorizer$<$ Self\-Kind, Self\-Size, Self\-Crtp, Self\-Type, Self\-Parameters...$>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em Bitwise left shift with lhs value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , typename Self\-Kind , unsigned int Self\-Size, template$<$ typename, Self\-Kind...$>$ class Self\-Crtp, typename Self\-Type , Self\-Kind... Self\-Parameters, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Other\-Type$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Other\-Type, Self\-Type$>$\-::value)$>$\-::type$>$ }\\Self\-Crtp$<$ Other\-Type, \\*
+Self\-Parameters...$>$ \hyperlink{namespacemagrathea_a055bad44e7477b054c6756cfff0d7918}{magrathea\-::operator$>$$>$} (const Other\-Type \&lhs, const Static\-Vectorizer$<$ Self\-Kind, Self\-Size, Self\-Crtp, Self\-Type, Self\-Parameters...$>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em Bitwise right shift with lhs value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , typename Self\-Kind , unsigned int Self\-Size, template$<$ typename, Self\-Kind...$>$ class Self\-Crtp, typename Self\-Type , Self\-Kind... Self\-Parameters, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Other\-Type$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Other\-Type, Self\-Type$>$\-::value)$>$\-::type$>$ }\\Self\-Crtp$<$ bool, Self\-Parameters...$>$ \hyperlink{namespacemagrathea_a9461803b62888f1cee4f5391c2c3d01f}{magrathea\-::operator\&\&} (const Other\-Type \&lhs, const Static\-Vectorizer$<$ Self\-Kind, Self\-Size, Self\-Crtp, Self\-Type, Self\-Parameters...$>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em Logical A\-N\-D with lhs value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , typename Self\-Kind , unsigned int Self\-Size, template$<$ typename, Self\-Kind...$>$ class Self\-Crtp, typename Self\-Type , Self\-Kind... Self\-Parameters, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Other\-Type$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Other\-Type, Self\-Type$>$\-::value)$>$\-::type$>$ }\\Self\-Crtp$<$ bool, Self\-Parameters...$>$ \hyperlink{namespacemagrathea_a374ca607affe84170a9ce05bcb5c0bee}{magrathea\-::operator$|$$|$} (const Other\-Type \&lhs, const Static\-Vectorizer$<$ Self\-Kind, Self\-Size, Self\-Crtp, Self\-Type, Self\-Parameters...$>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em Logical O\-R with lhs value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , typename Self\-Kind , unsigned int Self\-Size, template$<$ typename, Self\-Kind...$>$ class Self\-Crtp, typename Self\-Type , Self\-Kind... Self\-Parameters, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Other\-Type$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Other\-Type, Self\-Type$>$\-::value)$>$\-::type$>$ }\\Self\-Crtp$<$ bool, Self\-Parameters...$>$ \hyperlink{namespacemagrathea_a60ce4ee32f8e91922a525e7cd21c0670}{magrathea\-::operator==} (const Other\-Type \&lhs, const Static\-Vectorizer$<$ Self\-Kind, Self\-Size, Self\-Crtp, Self\-Type, Self\-Parameters...$>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em Equal to with lhs value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , typename Self\-Kind , unsigned int Self\-Size, template$<$ typename, Self\-Kind...$>$ class Self\-Crtp, typename Self\-Type , Self\-Kind... Self\-Parameters, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Other\-Type$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Other\-Type, Self\-Type$>$\-::value)$>$\-::type$>$ }\\Self\-Crtp$<$ bool, Self\-Parameters...$>$ \hyperlink{namespacemagrathea_a42bbc042bee09e9a3e95f80e412029ca}{magrathea\-::operator!=} (const Other\-Type \&lhs, const Static\-Vectorizer$<$ Self\-Kind, Self\-Size, Self\-Crtp, Self\-Type, Self\-Parameters...$>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em Not equal to with lhs value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , typename Self\-Kind , unsigned int Self\-Size, template$<$ typename, Self\-Kind...$>$ class Self\-Crtp, typename Self\-Type , Self\-Kind... Self\-Parameters, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Other\-Type$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Other\-Type, Self\-Type$>$\-::value)$>$\-::type$>$ }\\Self\-Crtp$<$ bool, Self\-Parameters...$>$ \hyperlink{namespacemagrathea_a359833aecc50754be7c7b221283a2138}{magrathea\-::operator$>$} (const Other\-Type \&lhs, const Static\-Vectorizer$<$ Self\-Kind, Self\-Size, Self\-Crtp, Self\-Type, Self\-Parameters...$>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em Greater than with lhs value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , typename Self\-Kind , unsigned int Self\-Size, template$<$ typename, Self\-Kind...$>$ class Self\-Crtp, typename Self\-Type , Self\-Kind... Self\-Parameters, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Other\-Type$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Other\-Type, Self\-Type$>$\-::value)$>$\-::type$>$ }\\Self\-Crtp$<$ bool, Self\-Parameters...$>$ \hyperlink{namespacemagrathea_aedb6a548d2625b43ca0a0eda0a1fc6dd}{magrathea\-::operator$<$} (const Other\-Type \&lhs, const Static\-Vectorizer$<$ Self\-Kind, Self\-Size, Self\-Crtp, Self\-Type, Self\-Parameters...$>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em Less than with lhs value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , typename Self\-Kind , unsigned int Self\-Size, template$<$ typename, Self\-Kind...$>$ class Self\-Crtp, typename Self\-Type , Self\-Kind... Self\-Parameters, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Other\-Type$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Other\-Type, Self\-Type$>$\-::value)$>$\-::type$>$ }\\Self\-Crtp$<$ bool, Self\-Parameters...$>$ \hyperlink{namespacemagrathea_afc88a73a3d47bd5bce68ae97e4c12607}{magrathea\-::operator$>$=} (const Other\-Type \&lhs, const Static\-Vectorizer$<$ Self\-Kind, Self\-Size, Self\-Crtp, Self\-Type, Self\-Parameters...$>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em Greater than or equal to with lhs value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , typename Self\-Kind , unsigned int Self\-Size, template$<$ typename, Self\-Kind...$>$ class Self\-Crtp, typename Self\-Type , Self\-Kind... Self\-Parameters, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Other\-Type$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Other\-Type, Self\-Type$>$\-::value)$>$\-::type$>$ }\\Self\-Crtp$<$ bool, Self\-Parameters...$>$ \hyperlink{namespacemagrathea_a15482f99cfecbb2bb4fde496fb28b436}{magrathea\-::operator$<$=} (const Other\-Type \&lhs, const Static\-Vectorizer$<$ Self\-Kind, Self\-Size, Self\-Crtp, Self\-Type, Self\-Parameters...$>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em Less than or equal to with lhs value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Self\-Kind , unsigned int Self\-Size, template$<$ typename, Self\-Kind...$>$ class Self\-Crtp, typename Self\-Type , Self\-Kind... Self\-Parameters$>$ }\\std\-::ostream \& \hyperlink{namespacemagrathea_ac7963bfb5650026fb34b911f986aa8cc}{magrathea\-::operator$<$$<$} (std\-::ostream \&lhs, const Static\-Vectorizer$<$ Self\-Kind, Self\-Size, Self\-Crtp, Self\-Type, Self\-Parameters...$>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em \hyperlink{exceptionOutput}{Output} stream operator. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Self\-Kind , unsigned int Self\-Size, template$<$ typename, Self\-Kind...$>$ class Self\-Crtp, typename Self\-Type , Self\-Kind... Self\-Parameters$>$ }\\std\-::istream \& \hyperlink{namespacemagrathea_aac3f911d40a31500423871397fb4f8d7}{magrathea\-::operator$>$$>$} (std\-::istream \&lhs, Static\-Vectorizer$<$ Self\-Kind, Self\-Size, Self\-Crtp, Self\-Type, Self\-Parameters...$>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em \hyperlink{exceptionInput}{Input} stream operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Helper class for generic constant size vectorization. \begin{DoxyAuthor}{Author}
+Vincent Reverdy (\href{mailto:vince.rev@gmail.com}{\tt vince.\-rev@gmail.\-com}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2012-\/2013 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+C\-E\-C\-I\-L\-L-\/\-B License 
+\end{DoxyCopyright}

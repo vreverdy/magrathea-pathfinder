@@ -1,0 +1,602 @@
+\hypertarget{classmagrathea_1_1AbstractContents}{\section{magrathea\-:\-:Abstract\-Contents$<$ Crtp, Category, Types $>$ Class Template Reference}
+\label{classmagrathea_1_1AbstractContents}\index{magrathea\-::\-Abstract\-Contents$<$ Crtp, Category, Types $>$@{magrathea\-::\-Abstract\-Contents$<$ Crtp, Category, Types $>$}}
+}
+
+
+Tuple abstraction of numerical simulation contents.  
+
+
+
+
+{\ttfamily \#include $<$abstractcontents.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Lifecycle}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmagrathea_1_1AbstractContents_a061c19c81bf7973030302522512ebc59}{Abstract\-Contents} ()
+\begin{DoxyCompactList}\small\item\em Implicit empty constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Other\-Crtp , class Other\-Category , class... Other\-Types$>$ }\\\hyperlink{classmagrathea_1_1AbstractContents_a3bdd32188dac529ee74d09e16cdc438a}{Abstract\-Contents} (const \hyperlink{classmagrathea_1_1AbstractContents}{Abstract\-Contents}$<$ Other\-Crtp, Other\-Category, Other\-Types...$>$ \&source)
+\begin{DoxyCompactList}\small\item\em Explicit conversion constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class... Other\-Types$>$ }\\\hyperlink{classmagrathea_1_1AbstractContents_a8bdb7fc84d27f947a63209fdbde2ccdd}{Abstract\-Contents} (const std\-::tuple$<$ Other\-Types...$>$ \&source)
+\begin{DoxyCompactList}\small\item\em Explicit data constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class... Other\-Types, class  = typename std\-::enable\-\_\-if$<$(sizeof...(\-Other\-Types) != 0) \&\& (std\-::is\-\_\-constructible$<$typename std\-::tuple\-\_\-element$<$0, typename std\-::conditional$<$sizeof...(\-Types) != 0, std\-::tuple$<$\-Types...$>$, std\-::tuple$<$std\-::true\-\_\-type$>$ $>$\-::type$>$\-::type, typename std\-::tuple\-\_\-element$<$0, typename std\-::conditional$<$sizeof...(\-Other\-Types) != 0, std\-::tuple$<$\-Other\-Types...$>$, std\-::tuple$<$std\-::true\-\_\-type$>$ $>$\-::type$>$\-::type$>$\-::value)$>$\-::type$>$ }\\\hyperlink{classmagrathea_1_1AbstractContents_a9e67fc30b3e9fec4d15978dde4f4a1b4}{Abstract\-Contents} (const Other\-Types \&...source)
+\begin{DoxyCompactList}\small\item\em Explicit components constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Operators}\par
+\begin{DoxyCompactItemize}
+\item 
+Crtp \& \hyperlink{classmagrathea_1_1AbstractContents_ae0ecda2afd2f1c76d2223bf8505bc218}{operator=} (const \hyperlink{classmagrathea_1_1AbstractContents}{Abstract\-Contents}$<$ Crtp, Category, Types...$>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Other\-Crtp , class Other\-Category , class... Other\-Types$>$ }\\Crtp \& \hyperlink{classmagrathea_1_1AbstractContents_a508403432031243ce3ad42cfcf0908fa}{operator=} (const \hyperlink{classmagrathea_1_1AbstractContents}{Abstract\-Contents}$<$ Other\-Crtp, Other\-Category, Other\-Types...$>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em Conversion assignment operator. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class... Other\-Types$>$ }\\Crtp \& \hyperlink{classmagrathea_1_1AbstractContents_afbc02ebe68c5689d920b63790b9f4668}{operator=} (const std\-::tuple$<$ Other\-Types...$>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em Data assignment operator. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Other\-Crtp , class Other\-Category , class... Other\-Types$>$ }\\bool \hyperlink{classmagrathea_1_1AbstractContents_a1637c13af00b04984f3f0ff58081ef19}{operator==} (const \hyperlink{classmagrathea_1_1AbstractContents}{Abstract\-Contents}$<$ Other\-Crtp, Other\-Category, Other\-Types...$>$ \&rhs) const 
+\begin{DoxyCompactList}\small\item\em Equal to. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Other\-Crtp , class Other\-Category , class... Other\-Types$>$ }\\bool \hyperlink{classmagrathea_1_1AbstractContents_a941342687552e29ee1855c0d3f0dbd61}{operator!=} (const \hyperlink{classmagrathea_1_1AbstractContents}{Abstract\-Contents}$<$ Other\-Crtp, Other\-Category, Other\-Types...$>$ \&rhs) const 
+\begin{DoxyCompactList}\small\item\em Not equal to. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Assignment}\par
+\begin{DoxyCompactItemize}
+\item 
+Crtp \& \hyperlink{classmagrathea_1_1AbstractContents_a726f3b7b4025af3b557b83bd5d31657d}{assign} ()
+\begin{DoxyCompactList}\small\item\em Empty assignment. \end{DoxyCompactList}\item 
+Crtp \& \hyperlink{classmagrathea_1_1AbstractContents_a9c115877006445149c5036627bb8fa67}{assign} (const \hyperlink{classmagrathea_1_1AbstractContents}{Abstract\-Contents}$<$ Crtp, Category, Types...$>$ \&source)
+\begin{DoxyCompactList}\small\item\em Copy assignment. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Other\-Crtp , class Other\-Category , class... Other\-Types$>$ }\\Crtp \& \hyperlink{classmagrathea_1_1AbstractContents_a1b7ae498d73dea568cf0a21ddff2d888}{assign} (const \hyperlink{classmagrathea_1_1AbstractContents}{Abstract\-Contents}$<$ Other\-Crtp, Other\-Category, Other\-Types...$>$ \&source)
+\begin{DoxyCompactList}\small\item\em Conversion assignment. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class... Other\-Types$>$ }\\Crtp \& \hyperlink{classmagrathea_1_1AbstractContents_a100f454339d361f961746f29d13d2cc7}{assign} (const std\-::tuple$<$ Other\-Types...$>$ \&source)
+\begin{DoxyCompactList}\small\item\em Data assignment. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class... Other\-Types, class  = typename std\-::enable\-\_\-if$<$(sizeof...(\-Other\-Types) != 0) \&\& (std\-::is\-\_\-constructible$<$typename std\-::tuple\-\_\-element$<$0, typename std\-::conditional$<$sizeof...(\-Types) != 0, std\-::tuple$<$\-Types...$>$, std\-::tuple$<$std\-::true\-\_\-type$>$ $>$\-::type$>$\-::type, typename std\-::tuple\-\_\-element$<$0, typename std\-::conditional$<$sizeof...(\-Other\-Types) != 0, std\-::tuple$<$\-Other\-Types...$>$, std\-::tuple$<$std\-::true\-\_\-type$>$ $>$\-::type$>$\-::type$>$\-::value)$>$\-::type$>$ }\\Crtp \& \hyperlink{classmagrathea_1_1AbstractContents_a2b504c799ad89c73e77ec182a73f0811}{assign} (const Other\-Types \&...source)
+\begin{DoxyCompactList}\small\item\em Components assignment. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Management}\par
+\begin{DoxyCompactItemize}
+\item 
+Crtp \& \hyperlink{classmagrathea_1_1AbstractContents_ab8650830a3f713c71f6f392c824075cd}{nullify} ()
+\begin{DoxyCompactList}\small\item\em Nullify. \end{DoxyCompactList}\item 
+Crtp \hyperlink{classmagrathea_1_1AbstractContents_a2aceb6e99faf3bad92804511c71db250}{copy} () const 
+\begin{DoxyCompactList}\small\item\em Copy. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Other\-Crtp  = Crtp, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-constructible$<$\-Other\-Crtp, Crtp$>$\-::value$>$\-::type$>$ }\\Other\-Crtp \hyperlink{classmagrathea_1_1AbstractContents_a5eb1dcc0f8f49f2b1143b9903ebf6dba}{cast} () const 
+\begin{DoxyCompactList}\small\item\em Cast. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Data}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class... Dummy, class Type  = typename std\-::conditional$<$sizeof...(\-Dummy) == 0, std\-::tuple$<$\-Types...$>$, void$>$\-::type, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Dummy) == 0$>$\-::type, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Type, typename std\-::conditional$<$sizeof...(\-Dummy) == 0, std\-::tuple$<$\-Types...$>$, void$>$\-::type$>$\-::value$>$\-::type$>$ }\\Type \& \hyperlink{classmagrathea_1_1AbstractContents_a2bc618552567168f1aa05ac03a8a53f0}{data} (Dummy...)
+\begin{DoxyCompactList}\small\item\em Unified data access. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class... Dummy, class Type  = typename std\-::conditional$<$sizeof...(\-Dummy) == 0, std\-::tuple$<$\-Types...$>$, void$>$\-::type, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Dummy) == 0$>$\-::type, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Type, typename std\-::conditional$<$sizeof...(\-Dummy) == 0, std\-::tuple$<$\-Types...$>$, void$>$\-::type$>$\-::value$>$\-::type$>$ }\\const Type \& \hyperlink{classmagrathea_1_1AbstractContents_a770335152948fab830a9c0bd9a5a050e}{data} (Dummy...) const 
+\begin{DoxyCompactList}\small\item\em Unified data getter. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Type , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Type, typename std\-::conditional$<$!std\-::is\-\_\-void$<$\-Type$>$\-::value, std\-::tuple$<$\-Types...$>$, void$>$\-::type$>$\-::value$>$\-::type$>$ }\\Crtp \& \hyperlink{classmagrathea_1_1AbstractContents_aff3cea0333b646a5872aa04a7039db43}{data} (const Type \&value)
+\begin{DoxyCompactList}\small\item\em Unified data setter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Protected Member Functions}
+\begin{Indent}{\bf Protected lifecycle}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmagrathea_1_1AbstractContents_af690b34805dd148df568a14c61c752b9}{$\sim$\-Abstract\-Contents} ()
+\begin{DoxyCompactList}\small\item\em Protected destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Crtp, class Category, class... Types$>$class magrathea\-::\-Abstract\-Contents$<$ Crtp, Category, Types $>$}
+
+Tuple abstraction of numerical simulation contents. 
+
+This class is an abstraction of physical contents in a simulation. It can be a lagrangian, an eulerian or a grid quantity or even other non-\/traditional type. This abstraction provides standardized access to generic types of internal data that can represents an index, a position, a velocity vector, a temperature, a density or everything else... Mixed-\/types operations are provided for objects of the same category. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Crtp} & Derived C\-R\-T\-P class. \\
+\hline
+{\em Category} & \hyperlink{exceptionmagrathea_1_1Contents}{Contents} category (Lagrangian, Eulerian, Grid...). \\
+\hline
+{\em Types} & Variadic list of components types. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmagrathea_1_1AbstractContents_af690b34805dd148df568a14c61c752b9}{\index{magrathea\-::\-Abstract\-Contents@{magrathea\-::\-Abstract\-Contents}!$\sim$\-Abstract\-Contents@{$\sim$\-Abstract\-Contents}}
+\index{$\sim$\-Abstract\-Contents@{$\sim$\-Abstract\-Contents}!magrathea::AbstractContents@{magrathea\-::\-Abstract\-Contents}}
+\subsubsection[{$\sim$\-Abstract\-Contents}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Category , class... Types$>$ {\bf magrathea\-::\-Abstract\-Contents}$<$ Crtp, Category, Types $>$\-::$\sim${\bf Abstract\-Contents} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [default]}}}\label{classmagrathea_1_1AbstractContents_af690b34805dd148df568a14c61c752b9}
+
+
+Protected destructor. 
+
+Avoids direct instantiation of the class, and only allows it through its derived children. \hypertarget{classmagrathea_1_1AbstractContents_a061c19c81bf7973030302522512ebc59}{\index{magrathea\-::\-Abstract\-Contents@{magrathea\-::\-Abstract\-Contents}!Abstract\-Contents@{Abstract\-Contents}}
+\index{Abstract\-Contents@{Abstract\-Contents}!magrathea::AbstractContents@{magrathea\-::\-Abstract\-Contents}}
+\subsubsection[{Abstract\-Contents}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Category , class... Types$>$ {\bf magrathea\-::\-Abstract\-Contents}$<$ Crtp, Category, Types $>$\-::{\bf Abstract\-Contents} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractContents_a061c19c81bf7973030302522512ebc59}
+
+
+Implicit empty constructor. 
+
+Provides an implicit construction of an object initialized to its default value. \hypertarget{classmagrathea_1_1AbstractContents_a3bdd32188dac529ee74d09e16cdc438a}{\index{magrathea\-::\-Abstract\-Contents@{magrathea\-::\-Abstract\-Contents}!Abstract\-Contents@{Abstract\-Contents}}
+\index{Abstract\-Contents@{Abstract\-Contents}!magrathea::AbstractContents@{magrathea\-::\-Abstract\-Contents}}
+\subsubsection[{Abstract\-Contents}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Category , class... Types$>$ template$<$class Other\-Crtp , class Other\-Category , class... Other\-Types$>$ {\bf magrathea\-::\-Abstract\-Contents}$<$ Crtp, Category, Types $>$\-::{\bf Abstract\-Contents} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Abstract\-Contents}$<$ Other\-Crtp, Other\-Category, Other\-Types...$>$ \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{classmagrathea_1_1AbstractContents_a3bdd32188dac529ee74d09e16cdc438a}
+
+
+Explicit conversion constructor. 
+
+Provides an explicit construction from another type of object. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Crtp} & (Other derived C\-R\-T\-P class.) \\
+\hline
+{\em Other\-Category} & (Other contents category (Lagrangian, Eulerian, Grid...).) \\
+\hline
+{\em Other\-Types} & (Other variadic list of components types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classmagrathea_1_1AbstractContents_a8bdb7fc84d27f947a63209fdbde2ccdd}{\index{magrathea\-::\-Abstract\-Contents@{magrathea\-::\-Abstract\-Contents}!Abstract\-Contents@{Abstract\-Contents}}
+\index{Abstract\-Contents@{Abstract\-Contents}!magrathea::AbstractContents@{magrathea\-::\-Abstract\-Contents}}
+\subsubsection[{Abstract\-Contents}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Category , class... Types$>$ template$<$class... Other\-Types$>$ {\bf magrathea\-::\-Abstract\-Contents}$<$ Crtp, Category, Types $>$\-::{\bf Abstract\-Contents} (
+\begin{DoxyParamCaption}
+\item[{const std\-::tuple$<$ Other\-Types...$>$ \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{classmagrathea_1_1AbstractContents_a8bdb7fc84d27f947a63209fdbde2ccdd}
+
+
+Explicit data constructor. 
+
+Provides an explicit construction from data. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Types} & (Other variadic list of object property types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classmagrathea_1_1AbstractContents_a9e67fc30b3e9fec4d15978dde4f4a1b4}{\index{magrathea\-::\-Abstract\-Contents@{magrathea\-::\-Abstract\-Contents}!Abstract\-Contents@{Abstract\-Contents}}
+\index{Abstract\-Contents@{Abstract\-Contents}!magrathea::AbstractContents@{magrathea\-::\-Abstract\-Contents}}
+\subsubsection[{Abstract\-Contents}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Category , class... Types$>$ template$<$class... Other\-Types, class $>$ {\bf magrathea\-::\-Abstract\-Contents}$<$ Crtp, Category, Types $>$\-::{\bf Abstract\-Contents} (
+\begin{DoxyParamCaption}
+\item[{const Other\-Types \&...}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{classmagrathea_1_1AbstractContents_a9e67fc30b3e9fec4d15978dde4f4a1b4}
+
+
+Explicit components constructor. 
+
+Provides an explicit construction from components. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Types} & (Other variadic list of object property types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmagrathea_1_1AbstractContents_a726f3b7b4025af3b557b83bd5d31657d}{\index{magrathea\-::\-Abstract\-Contents@{magrathea\-::\-Abstract\-Contents}!assign@{assign}}
+\index{assign@{assign}!magrathea::AbstractContents@{magrathea\-::\-Abstract\-Contents}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Category , class... Types$>$ Crtp \& {\bf magrathea\-::\-Abstract\-Contents}$<$ Crtp, Category, Types $>$\-::assign (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractContents_a726f3b7b4025af3b557b83bd5d31657d}
+
+
+Empty assignment. 
+
+Assigns contents from an object initialized to its default value. \begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractContents_a9c115877006445149c5036627bb8fa67}{\index{magrathea\-::\-Abstract\-Contents@{magrathea\-::\-Abstract\-Contents}!assign@{assign}}
+\index{assign@{assign}!magrathea::AbstractContents@{magrathea\-::\-Abstract\-Contents}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp, class Category, class... Types$>$ Crtp \& {\bf magrathea\-::\-Abstract\-Contents}$<$ Crtp, Category, Types $>$\-::assign (
+\begin{DoxyParamCaption}
+\item[{const {\bf Abstract\-Contents}$<$ Crtp, Category, Types...$>$ \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractContents_a9c115877006445149c5036627bb8fa67}
+
+
+Copy assignment. 
+
+Assigns contents from the same type of object. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractContents_a1b7ae498d73dea568cf0a21ddff2d888}{\index{magrathea\-::\-Abstract\-Contents@{magrathea\-::\-Abstract\-Contents}!assign@{assign}}
+\index{assign@{assign}!magrathea::AbstractContents@{magrathea\-::\-Abstract\-Contents}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Category , class... Types$>$ template$<$class Other\-Crtp , class Other\-Category , class... Other\-Types$>$ Crtp \& {\bf magrathea\-::\-Abstract\-Contents}$<$ Crtp, Category, Types $>$\-::assign (
+\begin{DoxyParamCaption}
+\item[{const {\bf Abstract\-Contents}$<$ Other\-Crtp, Other\-Category, Other\-Types...$>$ \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractContents_a1b7ae498d73dea568cf0a21ddff2d888}
+
+
+Conversion assignment. 
+
+Assigns contents from another type of object. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Crtp} & (Other derived C\-R\-T\-P class.) \\
+\hline
+{\em Other\-Category} & (Other contents category (Lagrangian, Eulerian, Grid...).) \\
+\hline
+{\em Other\-Types} & (Other variadic list of components types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractContents_a100f454339d361f961746f29d13d2cc7}{\index{magrathea\-::\-Abstract\-Contents@{magrathea\-::\-Abstract\-Contents}!assign@{assign}}
+\index{assign@{assign}!magrathea::AbstractContents@{magrathea\-::\-Abstract\-Contents}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Category , class... Types$>$ template$<$class... Other\-Types$>$ Crtp \& {\bf magrathea\-::\-Abstract\-Contents}$<$ Crtp, Category, Types $>$\-::assign (
+\begin{DoxyParamCaption}
+\item[{const std\-::tuple$<$ Other\-Types...$>$ \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractContents_a100f454339d361f961746f29d13d2cc7}
+
+
+Data assignment. 
+
+Assigns contents from data. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Types} & (Other variadic list of object property types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractContents_a2b504c799ad89c73e77ec182a73f0811}{\index{magrathea\-::\-Abstract\-Contents@{magrathea\-::\-Abstract\-Contents}!assign@{assign}}
+\index{assign@{assign}!magrathea::AbstractContents@{magrathea\-::\-Abstract\-Contents}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Category , class... Types$>$ template$<$class... Other\-Types, class $>$ Crtp \& {\bf magrathea\-::\-Abstract\-Contents}$<$ Crtp, Category, Types $>$\-::assign (
+\begin{DoxyParamCaption}
+\item[{const Other\-Types \&...}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractContents_a2b504c799ad89c73e77ec182a73f0811}
+
+
+Components assignment. 
+
+Assigns contents from components. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Types} & (Other variadic list of object property types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractContents_a5eb1dcc0f8f49f2b1143b9903ebf6dba}{\index{magrathea\-::\-Abstract\-Contents@{magrathea\-::\-Abstract\-Contents}!cast@{cast}}
+\index{cast@{cast}!magrathea::AbstractContents@{magrathea\-::\-Abstract\-Contents}}
+\subsubsection[{cast}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Category , class... Types$>$ template$<$class Other\-Crtp , class $>$ Other\-Crtp {\bf magrathea\-::\-Abstract\-Contents}$<$ Crtp, Category, Types $>$\-::cast (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractContents_a5eb1dcc0f8f49f2b1143b9903ebf6dba}
+
+
+Cast. 
+
+Casts contents to another object type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Crtp} & Other derived C\-R\-T\-P class. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Casted copy. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractContents_a2aceb6e99faf3bad92804511c71db250}{\index{magrathea\-::\-Abstract\-Contents@{magrathea\-::\-Abstract\-Contents}!copy@{copy}}
+\index{copy@{copy}!magrathea::AbstractContents@{magrathea\-::\-Abstract\-Contents}}
+\subsubsection[{copy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Category , class... Types$>$ Crtp {\bf magrathea\-::\-Abstract\-Contents}$<$ Crtp, Category, Types $>$\-::copy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractContents_a2aceb6e99faf3bad92804511c71db250}
+
+
+Copy. 
+
+Generates a copy of the object. \begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractContents_a2bc618552567168f1aa05ac03a8a53f0}{\index{magrathea\-::\-Abstract\-Contents@{magrathea\-::\-Abstract\-Contents}!data@{data}}
+\index{data@{data}!magrathea::AbstractContents@{magrathea\-::\-Abstract\-Contents}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Category , class... Types$>$ template$<$class... Dummy, class Type , class , class $>$ Type \& {\bf magrathea\-::\-Abstract\-Contents}$<$ Crtp, Category, Types $>$\-::data (
+\begin{DoxyParamCaption}
+\item[{Dummy...}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractContents_a2bc618552567168f1aa05ac03a8a53f0}
+
+
+Unified data access. 
+
+Unified data inner component access.
+
+Unified data component access.
+
+Provides a direct access to the data. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Dummy} & (Dummy types.) \\
+\hline
+{\em Type} & (Data std\-::tuple$<$Types...$>$ type.) \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Reference to the data.
+\end{DoxyReturn}
+Provides a direct access to the specified component of the data. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Index} & Index of the component. \\
+\hline
+{\em Dummy} & (Dummy types.) \\
+\hline
+{\em Type} & (Component type.) \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Reference to the component of the data.
+\end{DoxyReturn}
+Provides a direct access to the specified inner component of the specified component of the data. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Index} & Index of the component. \\
+\hline
+{\em Subscript} & Subscript of the inner component. \\
+\hline
+{\em Dummy} & (Dummy types.) \\
+\hline
+{\em Type} & (Inner component type.) \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Reference to the inner component of the data. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractContents_a770335152948fab830a9c0bd9a5a050e}{\index{magrathea\-::\-Abstract\-Contents@{magrathea\-::\-Abstract\-Contents}!data@{data}}
+\index{data@{data}!magrathea::AbstractContents@{magrathea\-::\-Abstract\-Contents}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Category , class... Types$>$ template$<$class... Dummy, class Type , class , class $>$ const Type \& {\bf magrathea\-::\-Abstract\-Contents}$<$ Crtp, Category, Types $>$\-::data (
+\begin{DoxyParamCaption}
+\item[{Dummy...}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractContents_a770335152948fab830a9c0bd9a5a050e}
+
+
+Unified data getter. 
+
+Gets the data. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Dummy} & (Dummy types.) \\
+\hline
+{\em Type} & (Data std\-::tuple$<$Types...$>$ type.) \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Immutable reference to the data. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractContents_aff3cea0333b646a5872aa04a7039db43}{\index{magrathea\-::\-Abstract\-Contents@{magrathea\-::\-Abstract\-Contents}!data@{data}}
+\index{data@{data}!magrathea::AbstractContents@{magrathea\-::\-Abstract\-Contents}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Category , class... Types$>$ template$<$unsigned int Index, unsigned int Subscript, class Type , class , class , class $>$ Crtp \& {\bf magrathea\-::\-Abstract\-Contents}$<$ Crtp, Category, Types $>$\-::data (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractContents_aff3cea0333b646a5872aa04a7039db43}
+
+
+Unified data setter. 
+
+Unified data inner component setter.
+
+Unified data component setter.
+
+Sets the data. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & Data value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference.
+\end{DoxyReturn}
+Sets the specified component of the data. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Index} & Index of the component. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & Component value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference.
+\end{DoxyReturn}
+Sets the specified inner component of the specified component of the data. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Index} & Index of the component. \\
+\hline
+{\em Subscript} & Subscript of the inner component. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & Inner component value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractContents_ab8650830a3f713c71f6f392c824075cd}{\index{magrathea\-::\-Abstract\-Contents@{magrathea\-::\-Abstract\-Contents}!nullify@{nullify}}
+\index{nullify@{nullify}!magrathea::AbstractContents@{magrathea\-::\-Abstract\-Contents}}
+\subsubsection[{nullify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Category , class... Types$>$ Crtp \& {\bf magrathea\-::\-Abstract\-Contents}$<$ Crtp, Category, Types $>$\-::nullify (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractContents_ab8650830a3f713c71f6f392c824075cd}
+
+
+Nullify. 
+
+Resets all data members to their default values. \begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractContents_a941342687552e29ee1855c0d3f0dbd61}{\index{magrathea\-::\-Abstract\-Contents@{magrathea\-::\-Abstract\-Contents}!operator!=@{operator!=}}
+\index{operator!=@{operator!=}!magrathea::AbstractContents@{magrathea\-::\-Abstract\-Contents}}
+\subsubsection[{operator!=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Category , class... Types$>$ template$<$class Other\-Crtp , class Other\-Category , class... Other\-Types$>$ bool {\bf magrathea\-::\-Abstract\-Contents}$<$ Crtp, Category, Types $>$\-::operator!= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Abstract\-Contents}$<$ Other\-Crtp, Other\-Category, Other\-Types...$>$ \&}]{rhs}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractContents_a941342687552e29ee1855c0d3f0dbd61}
+
+
+Not equal to. 
+
+Compares for difference and returns true if the contents is different. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Crtp} & (Other derived C\-R\-T\-P class.) \\
+\hline
+{\em Other\-Category} & (Other contents category (Lagrangian, Eulerian, Grid...).) \\
+\hline
+{\em Other\-Types} & (Other variadic list of components types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if not equal, false if equal. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractContents_ae0ecda2afd2f1c76d2223bf8505bc218}{\index{magrathea\-::\-Abstract\-Contents@{magrathea\-::\-Abstract\-Contents}!operator=@{operator=}}
+\index{operator=@{operator=}!magrathea::AbstractContents@{magrathea\-::\-Abstract\-Contents}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp, class Category, class... Types$>$ Crtp \& {\bf magrathea\-::\-Abstract\-Contents}$<$ Crtp, Category, Types $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Abstract\-Contents}$<$ Crtp, Category, Types...$>$ \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractContents_ae0ecda2afd2f1c76d2223bf8505bc218}
+
+
+Copy assignment operator. 
+
+Assigns contents from the same type of object. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractContents_a508403432031243ce3ad42cfcf0908fa}{\index{magrathea\-::\-Abstract\-Contents@{magrathea\-::\-Abstract\-Contents}!operator=@{operator=}}
+\index{operator=@{operator=}!magrathea::AbstractContents@{magrathea\-::\-Abstract\-Contents}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Category , class... Types$>$ template$<$class Other\-Crtp , class Other\-Category , class... Other\-Types$>$ Crtp \& {\bf magrathea\-::\-Abstract\-Contents}$<$ Crtp, Category, Types $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Abstract\-Contents}$<$ Other\-Crtp, Other\-Category, Other\-Types...$>$ \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractContents_a508403432031243ce3ad42cfcf0908fa}
+
+
+Conversion assignment operator. 
+
+Assigns contents from another type of object. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Crtp} & (Other derived C\-R\-T\-P class.) \\
+\hline
+{\em Other\-Category} & (Other contents category (Lagrangian, Eulerian, Grid...).) \\
+\hline
+{\em Other\-Types} & (Other variadic list of components types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractContents_afbc02ebe68c5689d920b63790b9f4668}{\index{magrathea\-::\-Abstract\-Contents@{magrathea\-::\-Abstract\-Contents}!operator=@{operator=}}
+\index{operator=@{operator=}!magrathea::AbstractContents@{magrathea\-::\-Abstract\-Contents}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Category , class... Types$>$ template$<$class... Other\-Types$>$ Crtp \& {\bf magrathea\-::\-Abstract\-Contents}$<$ Crtp, Category, Types $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const std\-::tuple$<$ Other\-Types...$>$ \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractContents_afbc02ebe68c5689d920b63790b9f4668}
+
+
+Data assignment operator. 
+
+Assigns contents from data. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Types} & (Other variadic list of object property types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractContents_a1637c13af00b04984f3f0ff58081ef19}{\index{magrathea\-::\-Abstract\-Contents@{magrathea\-::\-Abstract\-Contents}!operator==@{operator==}}
+\index{operator==@{operator==}!magrathea::AbstractContents@{magrathea\-::\-Abstract\-Contents}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Category , class... Types$>$ template$<$class Other\-Crtp , class Other\-Category , class... Other\-Types$>$ bool {\bf magrathea\-::\-Abstract\-Contents}$<$ Crtp, Category, Types $>$\-::operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf Abstract\-Contents}$<$ Other\-Crtp, Other\-Category, Other\-Types...$>$ \&}]{rhs}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractContents_a1637c13af00b04984f3f0ff58081ef19}
+
+
+Equal to. 
+
+Compares for equality and returns true if the contents is equal. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Crtp} & (Other derived C\-R\-T\-P class.) \\
+\hline
+{\em Other\-Category} & (Other contents category (Lagrangian, Eulerian, Grid...).) \\
+\hline
+{\em Other\-Types} & (Other variadic list of components types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if equal, false if not equal. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/magrathea/\hyperlink{abstractcontents_8h}{abstractcontents.\-h}\end{DoxyCompactItemize}

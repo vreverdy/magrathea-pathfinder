@@ -1,0 +1,1283 @@
+\hypertarget{exceptionmagrathea_1_1Evolution}{\section{magrathea\-:\-:Evolution$<$ Type, Container $>$ Exception Template Reference}
+\label{exceptionmagrathea_1_1Evolution}\index{magrathea\-::\-Evolution$<$ Type, Container $>$@{magrathea\-::\-Evolution$<$ Type, Container $>$}}
+}
+
+
+Resizable container of steps dedicated to integration.  
+
+
+
+
+{\ttfamily \#include $<$evolution.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Lifecycle}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Other\-Type $>$ }\\\hyperlink{exceptionmagrathea_1_1Evolution_ac65701beda61f229f3c3571f65577cec}{Evolution} (const std\-::initializer\-\_\-list$<$ Other\-Type $>$ \&source)
+\begin{DoxyCompactList}\small\item\em Implicit initializer list constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Other\-Type , class Other\-Container $>$ }\\\hyperlink{exceptionmagrathea_1_1Evolution_ae4bca2889026beff6babdbca19295f36}{Evolution} (const \hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Other\-Type, Other\-Container $>$ \&source)
+\begin{DoxyCompactList}\small\item\em Explicit conversion constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class... Misc, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-constructible$<$\-Container, Misc...$>$\-::value$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1Evolution_afed56ad82b3c043a5633d1277dde0601}{Evolution} (Misc \&\&...misc)
+\begin{DoxyCompactList}\small\item\em Explicit generic constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Operators}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Other\-Type $>$ }\\\hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Type, Container $>$ \& \hyperlink{exceptionmagrathea_1_1Evolution_aa5ac3f60fed1df3a9ba4790e7482ba62}{operator=} (const std\-::initializer\-\_\-list$<$ Other\-Type $>$ \&source)
+\begin{DoxyCompactList}\small\item\em Initializer list assignment operator. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Other\-Type , class Other\-Container $>$ }\\\hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Type, Container $>$ \& \hyperlink{exceptionmagrathea_1_1Evolution_aaac98f596b9a3d289ed5366e73b45278}{operator=} (const \hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Other\-Type, Other\-Container $>$ \&source)
+\begin{DoxyCompactList}\small\item\em Conversion assignment operator. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Misc , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Container, typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$\-Misc$>$\-::type$>$\-::type$>$\-::value$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Type, Container $>$ \& \hyperlink{exceptionmagrathea_1_1Evolution_a6ba4d84bb531c1668725dd5655815b40}{operator=} (Misc \&\&misc)
+\begin{DoxyCompactList}\small\item\em Generic assignment operator. \end{DoxyCompactList}\item 
+bool \hyperlink{exceptionmagrathea_1_1Evolution_a10b244e64b2df5b2de426bcc1a37b6ce}{operator==} (const \hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Type, Container $>$ \&rhs) const 
+\begin{DoxyCompactList}\small\item\em Equal to. \end{DoxyCompactList}\item 
+bool \hyperlink{exceptionmagrathea_1_1Evolution_a9dfdce59ff9ece6b9a6e0477d7760ae7}{operator!=} (const \hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Type, Container $>$ \&rhs) const 
+\begin{DoxyCompactList}\small\item\em Not equal to. \end{DoxyCompactList}\item 
+bool \hyperlink{exceptionmagrathea_1_1Evolution_a72bd838254950df5359d7e58a17a8b31}{operator$>$} (const \hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Type, Container $>$ \&rhs) const 
+\begin{DoxyCompactList}\small\item\em Greater than. \end{DoxyCompactList}\item 
+bool \hyperlink{exceptionmagrathea_1_1Evolution_aaf6939f435b36f82e92e837bc83f8820}{operator$<$} (const \hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Type, Container $>$ \&rhs) const 
+\begin{DoxyCompactList}\small\item\em Less than. \end{DoxyCompactList}\item 
+bool \hyperlink{exceptionmagrathea_1_1Evolution_a56ebbdb9f2701da9e84f5cbf441006ac}{operator$>$=} (const \hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Type, Container $>$ \&rhs) const 
+\begin{DoxyCompactList}\small\item\em Greater than or equal to. \end{DoxyCompactList}\item 
+bool \hyperlink{exceptionmagrathea_1_1Evolution_a303325d7733eef22d483c8833b708b20}{operator$<$=} (const \hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Type, Container $>$ \&rhs) const 
+\begin{DoxyCompactList}\small\item\em Less than or equal to. \end{DoxyCompactList}\item 
+Type \& \hyperlink{exceptionmagrathea_1_1Evolution_af01ebd04cd6e83af3155278afcfce975}{operator\mbox{[}$\,$\mbox{]}} (const unsigned int i)
+\begin{DoxyCompactList}\small\item\em Direct access to the element. \end{DoxyCompactList}\item 
+const Type \& \hyperlink{exceptionmagrathea_1_1Evolution_a9a0ca349a592a47f6f6f0ac59d300963}{operator\mbox{[}$\,$\mbox{]}} (const unsigned int i) const 
+\begin{DoxyCompactList}\small\item\em Immutable direct access to the element. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Assignment}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Type, Container $>$ \& \hyperlink{exceptionmagrathea_1_1Evolution_a6e3ade30089258c613200447324daf66}{assign} (const \hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Type, Container $>$ \&source)
+\begin{DoxyCompactList}\small\item\em Copy assignment. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Other\-Type $>$ }\\\hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Type, Container $>$ \& \hyperlink{exceptionmagrathea_1_1Evolution_a93af5bbd6ae1d693932f5f0f38c6b8d1}{assign} (const std\-::initializer\-\_\-list$<$ Other\-Type $>$ \&source)
+\begin{DoxyCompactList}\small\item\em Initializer list assignment. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Other\-Type , class Other\-Container $>$ }\\\hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Type, Container $>$ \& \hyperlink{exceptionmagrathea_1_1Evolution_af19b358b9ae10a973d8c614ac7ac2bad}{assign} (const \hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Other\-Type, Other\-Container $>$ \&source)
+\begin{DoxyCompactList}\small\item\em Conversion assignment. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class... Misc, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-constructible$<$\-Container, Misc...$>$\-::value$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Type, Container $>$ \& \hyperlink{exceptionmagrathea_1_1Evolution_a0824809960d748136e61bfe186dbddd3}{assign} (Misc \&\&...misc)
+\begin{DoxyCompactList}\small\item\em Generic assignment. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Management}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Type, Container $>$ \& \hyperlink{exceptionmagrathea_1_1Evolution_ad91adfe2a3a30902c4e8a7ccd666d038}{nullify} ()
+\begin{DoxyCompactList}\small\item\em Nullify. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Type, Container $>$ \hyperlink{exceptionmagrathea_1_1Evolution_aab68c32b93a1cfc959a20624e82e7955}{copy} () const 
+\begin{DoxyCompactList}\small\item\em Copy. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Other\-Type  = Type, class Other\-Container  = std\-::vector$<$\-Other\-Type$>$$>$ }\\\hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Other\-Type, \\*
+Other\-Container $>$ \hyperlink{exceptionmagrathea_1_1Evolution_aceb8dcc079d955d728af45e8d2086995}{cast} () const 
+\begin{DoxyCompactList}\small\item\em Cast. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Access}\par
+\begin{DoxyCompactItemize}
+\item 
+Type \& \hyperlink{exceptionmagrathea_1_1Evolution_a4e211c75ef118a18fba646c3d5a802ee}{at} (const unsigned int i)
+\begin{DoxyCompactList}\small\item\em Access with range-\/check. \end{DoxyCompactList}\item 
+const Type \& \hyperlink{exceptionmagrathea_1_1Evolution_ae27da533bd1d819852794a00f68db764}{at} (const unsigned int i) const 
+\begin{DoxyCompactList}\small\item\em Immutable access with range-\/check. \end{DoxyCompactList}\item 
+Type \& \hyperlink{exceptionmagrathea_1_1Evolution_a61b94c64c5b1168536127cc46b38e34d}{front} (const unsigned int i=0)
+\begin{DoxyCompactList}\small\item\em Access to the i-\/th element from the beginning. \end{DoxyCompactList}\item 
+const Type \& \hyperlink{exceptionmagrathea_1_1Evolution_a05d57c038a17c1e231eb9b262c563170}{front} (const unsigned int i=0) const 
+\begin{DoxyCompactList}\small\item\em Immutable access to the i-\/th element from the beginning. \end{DoxyCompactList}\item 
+Type \& \hyperlink{exceptionmagrathea_1_1Evolution_ad6480feeca52a754178c8d22edd45f38}{back} (const unsigned int i=0)
+\begin{DoxyCompactList}\small\item\em Access to the i-\/th element from the end. \end{DoxyCompactList}\item 
+const Type \& \hyperlink{exceptionmagrathea_1_1Evolution_a737201f6eb8c6adb3f560aca14ff2e53}{back} (const unsigned int i=0) const 
+\begin{DoxyCompactList}\small\item\em Immutable access to the i-\/th element from the end. \end{DoxyCompactList}\item 
+Type \& \hyperlink{exceptionmagrathea_1_1Evolution_a9f708f9a57211588943dc1290b3fedb2}{cycle} (const int i)
+\begin{DoxyCompactList}\small\item\em Cyclic access to elements. \end{DoxyCompactList}\item 
+const Type \& \hyperlink{exceptionmagrathea_1_1Evolution_a0d85c514151bdea5cde2f356f1b5fced}{cycle} (const int i) const 
+\begin{DoxyCompactList}\small\item\em Immutable cyclic access to elements. \end{DoxyCompactList}\item 
+Container \& \hyperlink{exceptionmagrathea_1_1Evolution_a386a62b18d45914dc843d09b3d52a711}{container} ()
+\begin{DoxyCompactList}\small\item\em Direct access to the underlying container. \end{DoxyCompactList}\item 
+const Container \& \hyperlink{exceptionmagrathea_1_1Evolution_ade02e0a4d08e6e1e4ac198e0aedcffc8}{container} () const 
+\begin{DoxyCompactList}\small\item\em Direct access to the underlying container. \end{DoxyCompactList}\item 
+Type $\ast$ \hyperlink{exceptionmagrathea_1_1Evolution_addbc520a73910030f30b84dca749de5e}{data} ()
+\begin{DoxyCompactList}\small\item\em Direct access to the underlying array. \end{DoxyCompactList}\item 
+const Type $\ast$ \hyperlink{exceptionmagrathea_1_1Evolution_a183b4002b3505323e177bd44f6eb8301}{data} () const 
+\begin{DoxyCompactList}\small\item\em Immutable direct access to the underlying array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Iterators}\par
+\begin{DoxyCompactItemize}
+\item 
+Type $\ast$ \hyperlink{exceptionmagrathea_1_1Evolution_a92cc5477dadd6aedc1f3c66ef365c1fc}{begin} ()
+\begin{DoxyCompactList}\small\item\em Iterator to the beginning. \end{DoxyCompactList}\item 
+const Type $\ast$ \hyperlink{exceptionmagrathea_1_1Evolution_a0af2e87ea5d7ed075c40d6364ca6d94b}{begin} () const 
+\begin{DoxyCompactList}\small\item\em Immutable iterator to the beginning. \end{DoxyCompactList}\item 
+const Type $\ast$ \hyperlink{exceptionmagrathea_1_1Evolution_a42eba2a0e8a1eeb21a0ca575302b24d1}{cbegin} () const 
+\begin{DoxyCompactList}\small\item\em Forced immutable iterator to the beginning. \end{DoxyCompactList}\item 
+Type $\ast$ \hyperlink{exceptionmagrathea_1_1Evolution_a1e9540dd930884350270a119a954b193}{end} ()
+\begin{DoxyCompactList}\small\item\em Iterator to the end. \end{DoxyCompactList}\item 
+const Type $\ast$ \hyperlink{exceptionmagrathea_1_1Evolution_a56bcbda12ede80221cc44c485654c8c8}{end} () const 
+\begin{DoxyCompactList}\small\item\em Immutable iterator to the end. \end{DoxyCompactList}\item 
+const Type $\ast$ \hyperlink{exceptionmagrathea_1_1Evolution_aec669868c6c5fcd0a59391b0df16b634}{cend} () const 
+\begin{DoxyCompactList}\small\item\em Forced immutable iterator to the end. \end{DoxyCompactList}\item 
+std\-::reverse\-\_\-iterator$<$ Type $\ast$ $>$ \hyperlink{exceptionmagrathea_1_1Evolution_ad358e12921812a2ca40101540a02923d}{rbegin} ()
+\begin{DoxyCompactList}\small\item\em Reverse iterator to the beginning. \end{DoxyCompactList}\item 
+std\-::reverse\-\_\-iterator$<$ const \\*
+Type $\ast$ $>$ \hyperlink{exceptionmagrathea_1_1Evolution_a64ec69f7d731a05ece2be46bb265e175}{rbegin} () const 
+\begin{DoxyCompactList}\small\item\em Immutable reverse iterator to the beginning. \end{DoxyCompactList}\item 
+std\-::reverse\-\_\-iterator$<$ const \\*
+Type $\ast$ $>$ \hyperlink{exceptionmagrathea_1_1Evolution_aa00857398848a07170efd12ce424c681}{crbegin} () const 
+\begin{DoxyCompactList}\small\item\em Forced immutable reverse iterator to the beginning. \end{DoxyCompactList}\item 
+std\-::reverse\-\_\-iterator$<$ Type $\ast$ $>$ \hyperlink{exceptionmagrathea_1_1Evolution_a65f973f912546090ce6354fe60f211fa}{rend} ()
+\begin{DoxyCompactList}\small\item\em Reverse iterator to the end. \end{DoxyCompactList}\item 
+std\-::reverse\-\_\-iterator$<$ const \\*
+Type $\ast$ $>$ \hyperlink{exceptionmagrathea_1_1Evolution_aa4247d82c236c51a0b415568d676a51e}{rend} () const 
+\begin{DoxyCompactList}\small\item\em Immutable reverse iterator to the end. \end{DoxyCompactList}\item 
+std\-::reverse\-\_\-iterator$<$ const \\*
+Type $\ast$ $>$ \hyperlink{exceptionmagrathea_1_1Evolution_a24a5d43d7493ef2c03941e16a6b7eddf}{crend} () const 
+\begin{DoxyCompactList}\small\item\em Forced immutable reverse iterator to the end. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Iterator $>$ }\\unsigned int \hyperlink{exceptionmagrathea_1_1Evolution_a454765d7d65d539b771015fde7bd60bb}{index} (const Iterator \&it) const 
+\begin{DoxyCompactList}\small\item\em Index of an iterator in the container. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Capacity}\par
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{exceptionmagrathea_1_1Evolution_a8cd0c937688d5b6970c71c971327b191}{empty} () const 
+\begin{DoxyCompactList}\small\item\em Emptiness checking. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{exceptionmagrathea_1_1Evolution_a78e80655301aac59843bc93e24edd3ad}{size} () const 
+\begin{DoxyCompactList}\small\item\em Number of elements. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{exceptionmagrathea_1_1Evolution_a6d0d5f5d4d9637c1319a549bb721694d}{capacity} () const 
+\begin{DoxyCompactList}\small\item\em Capacity of the underlying storage. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Type, Container $>$ \& \hyperlink{exceptionmagrathea_1_1Evolution_a644d377b0a423d1dd8940fd032da7268}{reserve} (const unsigned int n)
+\begin{DoxyCompactList}\small\item\em Storage reservation. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Type, Container $>$ \& \hyperlink{exceptionmagrathea_1_1Evolution_a50fb995fd759899251abf02c085a5d1a}{shrink} ()
+\begin{DoxyCompactList}\small\item\em Storage shrinking. \end{DoxyCompactList}\item 
+unsigned long long int \hyperlink{exceptionmagrathea_1_1Evolution_ae5a39bd51ec819971dd23c4aca6a75d5}{space} () const 
+\begin{DoxyCompactList}\small\item\em Available space. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Modifiers}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Type, Container $>$ \& \hyperlink{exceptionmagrathea_1_1Evolution_a9318c84e14994a51a9a2d13051481b48}{fullclear} ()
+\begin{DoxyCompactList}\small\item\em Full clear the container. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Type, Container $>$ \& \hyperlink{exceptionmagrathea_1_1Evolution_a077a33fd71a07421ed68ed3b58f04675}{clear} ()
+\begin{DoxyCompactList}\small\item\em Clear the contents. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class... Misc$>$ }\\\hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Type, Container $>$ \& \hyperlink{exceptionmagrathea_1_1Evolution_ab69c31b8498817b771503b9775399fe4}{resize} (const Misc \&...misc)
+\begin{DoxyCompactList}\small\item\em Resize. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Type, Container $>$ \& \hyperlink{exceptionmagrathea_1_1Evolution_a764dce9ab9a8c44dbf4a35c9bae8b6b5}{pop} ()
+\begin{DoxyCompactList}\small\item\em Pop back. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Other\-Type , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Other\-Type, Type$>$\-::value$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Type, Container $>$ \& \hyperlink{exceptionmagrathea_1_1Evolution_a76fc41627007d1deb2777969593d3b63}{append} (const Other\-Type \&value)
+\begin{DoxyCompactList}\small\item\em Append an element. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Static Public Member Functions}
+\begin{Indent}{\bf Test}\par
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{exceptionmagrathea_1_1Evolution_afea9bf1e458395e18516cc1f28bf5fb6}{example} ()
+\begin{DoxyCompactList}\small\item\em Example function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Protected Attributes}
+\begin{Indent}{\bf Data members}\par
+\begin{DoxyCompactItemize}
+\item 
+Container \hyperlink{exceptionmagrathea_1_1Evolution_a0e5a30f6e53360808894c2b28a0b0acf}{\-\_\-container}
+\begin{DoxyCompactList}\small\item\em Internal container. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Friends}
+\begin{Indent}{\bf Stream}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Self\-Type , class Self\-Container $>$ }\\std\-::ostream \& \hyperlink{exceptionmagrathea_1_1Evolution_af542714eb03c50e30999005317e37e29}{operator$<$$<$} (std\-::ostream \&lhs, const \hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}$<$ Self\-Type, Self\-Container $>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em \hyperlink{exceptionOutput}{Output} stream operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Type = Step$<$$>$, class Container = std\-::vector$<$\-Type$>$$>$exception magrathea\-::\-Evolution$<$ Type, Container $>$}
+
+Resizable container of steps dedicated to integration. 
+
+An evolution container is an accumulator of integration steps. It has the standard functions of containers plus additional functions to interpolate and sort the results. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & \hyperlink{exceptionmagrathea_1_1Step}{Step} type. \\
+\hline
+{\em Container} & Container type. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{exceptionmagrathea_1_1Evolution_ac65701beda61f229f3c3571f65577cec}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!Evolution@{Evolution}}
+\index{Evolution@{Evolution}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{Evolution}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ template$<$class Other\-Type $>$ {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::{\bf Evolution} (
+\begin{DoxyParamCaption}
+\item[{const std\-::initializer\-\_\-list$<$ Other\-Type $>$ \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_ac65701beda61f229f3c3571f65577cec}
+
+
+Implicit initializer list constructor. 
+
+Provides an implicit conversion from an initializer list. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & (Other step type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\hypertarget{exceptionmagrathea_1_1Evolution_ae4bca2889026beff6babdbca19295f36}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!Evolution@{Evolution}}
+\index{Evolution@{Evolution}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{Evolution}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ template$<$class Other\-Type , class Other\-Container $>$ {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::{\bf Evolution} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Evolution}$<$ Other\-Type, Other\-Container $>$ \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{exceptionmagrathea_1_1Evolution_ae4bca2889026beff6babdbca19295f36}
+
+
+Explicit conversion constructor. 
+
+Provides an explicit construction from another type of evolution container. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & (Other step type.) \\
+\hline
+{\em Other\-Container} & (Other container type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\hypertarget{exceptionmagrathea_1_1Evolution_afed56ad82b3c043a5633d1277dde0601}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!Evolution@{Evolution}}
+\index{Evolution@{Evolution}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{Evolution}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ template$<$class... Misc, class $>$ {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::{\bf Evolution} (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{exceptionmagrathea_1_1Evolution_afed56ad82b3c043a5633d1277dde0601}
+
+
+Explicit generic constructor. 
+
+Provides a generic interface to all constructors of the container. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{exceptionmagrathea_1_1Evolution_a76fc41627007d1deb2777969593d3b63}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!append@{append}}
+\index{append@{append}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{append}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ template$<$class Other\-Type , class $>$ {\bf Evolution}$<$ Type, Container $>$ \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::append (
+\begin{DoxyParamCaption}
+\item[{const Other\-Type \&}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a76fc41627007d1deb2777969593d3b63}
+
+
+Append an element. 
+
+Appends an element to the end of the container. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & (Other step type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & Value of the element to be pushed back. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a6e3ade30089258c613200447324daf66}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!assign@{assign}}
+\index{assign@{assign}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ {\bf Evolution}$<$ Type, Container $>$ \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::assign (
+\begin{DoxyParamCaption}
+\item[{const {\bf Evolution}$<$ Type, Container $>$ \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a6e3ade30089258c613200447324daf66}
+
+
+Copy assignment. 
+
+Provides a copy assignment from another evolution container. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a93af5bbd6ae1d693932f5f0f38c6b8d1}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!assign@{assign}}
+\index{assign@{assign}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ template$<$class Other\-Type $>$ {\bf Evolution}$<$ Type, Container $>$ \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::assign (
+\begin{DoxyParamCaption}
+\item[{const std\-::initializer\-\_\-list$<$ Other\-Type $>$ \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a93af5bbd6ae1d693932f5f0f38c6b8d1}
+
+
+Initializer list assignment. 
+
+Provides an assignment from an initializer list equivalent to a call to the constructor. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & (Other step type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_af19b358b9ae10a973d8c614ac7ac2bad}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!assign@{assign}}
+\index{assign@{assign}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ template$<$class Other\-Type , class Other\-Container $>$ {\bf Evolution}$<$ Type, Container $>$ \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::assign (
+\begin{DoxyParamCaption}
+\item[{const {\bf Evolution}$<$ Other\-Type, Other\-Container $>$ \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_af19b358b9ae10a973d8c614ac7ac2bad}
+
+
+Conversion assignment. 
+
+Provides an assignment from another type of evolution container. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & (Other step type.) \\
+\hline
+{\em Other\-Container} & (Other container type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a0824809960d748136e61bfe186dbddd3}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!assign@{assign}}
+\index{assign@{assign}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ template$<$class... Misc, class $>$ {\bf Evolution}$<$ Type, Container $>$ \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::assign (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a0824809960d748136e61bfe186dbddd3}
+
+
+Generic assignment. 
+
+Provides a generic interface to all assignments of the container. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a4e211c75ef118a18fba646c3d5a802ee}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!at@{at}}
+\index{at@{at}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{at}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ Type \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::at (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a4e211c75ef118a18fba646c3d5a802ee}
+
+
+Access with range-\/check. 
+
+Provides an access to the element with a range-\/check. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index of the element. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the element. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_ae27da533bd1d819852794a00f68db764}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!at@{at}}
+\index{at@{at}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{at}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ const Type \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::at (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_ae27da533bd1d819852794a00f68db764}
+
+
+Immutable access with range-\/check. 
+
+Provides an access to the element with a range-\/check. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index of the element. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Immutable reference to the element. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_ad6480feeca52a754178c8d22edd45f38}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!back@{back}}
+\index{back@{back}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{back}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ Type \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::back (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_ad6480feeca52a754178c8d22edd45f38}
+
+
+Access to the i-\/th element from the end. 
+
+Returns a reference to the i-\/th last element in the container without doing any range check. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index of the element. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the element. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a737201f6eb8c6adb3f560aca14ff2e53}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!back@{back}}
+\index{back@{back}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{back}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ const Type \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::back (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a737201f6eb8c6adb3f560aca14ff2e53}
+
+
+Immutable access to the i-\/th element from the end. 
+
+Returns a reference to the i-\/th last element in the container without doing any range check. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index of the element. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Immutable reference to the element. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a92cc5477dadd6aedc1f3c66ef365c1fc}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!begin@{begin}}
+\index{begin@{begin}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{begin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ Type $\ast$ {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::begin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a92cc5477dadd6aedc1f3c66ef365c1fc}
+
+
+Iterator to the beginning. 
+
+Returns a pointer to the first element. \begin{DoxyReturn}{Returns}
+Pointer to the beginning. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a0af2e87ea5d7ed075c40d6364ca6d94b}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!begin@{begin}}
+\index{begin@{begin}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{begin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ const Type $\ast$ {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::begin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a0af2e87ea5d7ed075c40d6364ca6d94b}
+
+
+Immutable iterator to the beginning. 
+
+Returns a pointer to the first element. \begin{DoxyReturn}{Returns}
+Immutable pointer to the beginning. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a6d0d5f5d4d9637c1319a549bb721694d}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!capacity@{capacity}}
+\index{capacity@{capacity}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{capacity}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ unsigned int {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::capacity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a6d0d5f5d4d9637c1319a549bb721694d}
+
+
+Capacity of the underlying storage. 
+
+Returns the number of elements that the container has currently allocated space for. \begin{DoxyReturn}{Returns}
+Capacity of the currently allocated storage. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_aceb8dcc079d955d728af45e8d2086995}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!cast@{cast}}
+\index{cast@{cast}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{cast}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ template$<$class Other\-Type , class Other\-Container $>$ {\bf Evolution}$<$ Other\-Type, Other\-Container $>$ {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::cast (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_aceb8dcc079d955d728af45e8d2086995}
+
+
+Cast. 
+
+Casts contents to another object type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & Other step type. \\
+\hline
+{\em Other\-Container} & Other container type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Casted copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a42eba2a0e8a1eeb21a0ca575302b24d1}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!cbegin@{cbegin}}
+\index{cbegin@{cbegin}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{cbegin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ const Type $\ast$ {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::cbegin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a42eba2a0e8a1eeb21a0ca575302b24d1}
+
+
+Forced immutable iterator to the beginning. 
+
+Returns a constant pointer to the first element. \begin{DoxyReturn}{Returns}
+Immutable pointer to the beginning. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_aec669868c6c5fcd0a59391b0df16b634}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!cend@{cend}}
+\index{cend@{cend}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{cend}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ const Type $\ast$ {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::cend (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_aec669868c6c5fcd0a59391b0df16b634}
+
+
+Forced immutable iterator to the end. 
+
+Returns a constant pointer to the position after the last element. \begin{DoxyReturn}{Returns}
+Immutable pointer to the end. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a077a33fd71a07421ed68ed3b58f04675}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!clear@{clear}}
+\index{clear@{clear}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ {\bf Evolution}$<$ Type, Container $>$ \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a077a33fd71a07421ed68ed3b58f04675}
+
+
+Clear the contents. 
+
+Removes all elements from the container. \begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a386a62b18d45914dc843d09b3d52a711}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!container@{container}}
+\index{container@{container}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{container}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ Container \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::container (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a386a62b18d45914dc843d09b3d52a711}
+
+
+Direct access to the underlying container. 
+
+Provides a direct access to the underlying container by returning a reference to it. \begin{DoxyReturn}{Returns}
+Reference to the underlying container. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_ade02e0a4d08e6e1e4ac198e0aedcffc8}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!container@{container}}
+\index{container@{container}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{container}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ const Container \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::container (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_ade02e0a4d08e6e1e4ac198e0aedcffc8}
+
+
+Direct access to the underlying container. 
+
+Provides a direct access to the underlying container by returning a reference to it. \begin{DoxyReturn}{Returns}
+Immutable reference to the underlying container. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_aab68c32b93a1cfc959a20624e82e7955}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!copy@{copy}}
+\index{copy@{copy}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{copy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ {\bf Evolution}$<$ Type, Container $>$ {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::copy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_aab68c32b93a1cfc959a20624e82e7955}
+
+
+Copy. 
+
+Generates a copy of the object. \begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_aa00857398848a07170efd12ce424c681}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!crbegin@{crbegin}}
+\index{crbegin@{crbegin}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{crbegin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ std\-::reverse\-\_\-iterator$<$ const Type $\ast$ $>$ {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::crbegin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_aa00857398848a07170efd12ce424c681}
+
+
+Forced immutable reverse iterator to the beginning. 
+
+Returns a constant reversed pointer to the position after the last element. \begin{DoxyReturn}{Returns}
+Immutable pointer to the end. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a24a5d43d7493ef2c03941e16a6b7eddf}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!crend@{crend}}
+\index{crend@{crend}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{crend}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ std\-::reverse\-\_\-iterator$<$ const Type $\ast$ $>$ {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::crend (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a24a5d43d7493ef2c03941e16a6b7eddf}
+
+
+Forced immutable reverse iterator to the end. 
+
+Returns a constant reversed pointer to the first element. \begin{DoxyReturn}{Returns}
+Immutable pointer to the beginning. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a9f708f9a57211588943dc1290b3fedb2}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!cycle@{cycle}}
+\index{cycle@{cycle}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{cycle}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ Type \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::cycle (
+\begin{DoxyParamCaption}
+\item[{const int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a9f708f9a57211588943dc1290b3fedb2}
+
+
+Cyclic access to elements. 
+
+Provides a cyclic access to the elements, using the index modulo. Negative indexes are supported. It allows to iterate several times over the contents just by incrementing the provided index. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index of the element. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the element. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a0d85c514151bdea5cde2f356f1b5fced}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!cycle@{cycle}}
+\index{cycle@{cycle}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{cycle}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ const Type \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::cycle (
+\begin{DoxyParamCaption}
+\item[{const int}]{i}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a0d85c514151bdea5cde2f356f1b5fced}
+
+
+Immutable cyclic access to elements. 
+
+Provides a cyclic access to the elements, using the index modulo. Negative indexes are supported. It allows to iterate several times over the contents just by incrementing the provided index. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index of the element. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Immutable reference to the element. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_addbc520a73910030f30b84dca749de5e}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!data@{data}}
+\index{data@{data}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ Type $\ast$ {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_addbc520a73910030f30b84dca749de5e}
+
+
+Direct access to the underlying array. 
+
+Provides a direct access to the underlying array by returning a pointer to the first element of storage. \begin{DoxyReturn}{Returns}
+Pointer to the underlying element storage. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a183b4002b3505323e177bd44f6eb8301}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!data@{data}}
+\index{data@{data}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ const Type $\ast$ {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a183b4002b3505323e177bd44f6eb8301}
+
+
+Immutable direct access to the underlying array. 
+
+Provides a direct access to the underlying array by returning a pointer to the first element of storage. \begin{DoxyReturn}{Returns}
+Immutable pointer to the underlying element storage. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a8cd0c937688d5b6970c71c971327b191}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!empty@{empty}}
+\index{empty@{empty}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{empty}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ bool {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::empty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a8cd0c937688d5b6970c71c971327b191}
+
+
+Emptiness checking. 
+
+Checks if the container has no elements. \begin{DoxyReturn}{Returns}
+True if empty, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a1e9540dd930884350270a119a954b193}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!end@{end}}
+\index{end@{end}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{end}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ Type $\ast$ {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::end (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a1e9540dd930884350270a119a954b193}
+
+
+Iterator to the end. 
+
+Returns a pointer to the position after the last element. \begin{DoxyReturn}{Returns}
+Pointer to the end. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a56bcbda12ede80221cc44c485654c8c8}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!end@{end}}
+\index{end@{end}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{end}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ const Type $\ast$ {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::end (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a56bcbda12ede80221cc44c485654c8c8}
+
+
+Immutable iterator to the end. 
+
+Returns a pointer to the position after the last element. \begin{DoxyReturn}{Returns}
+Immutable pointer to the end. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_afea9bf1e458395e18516cc1f28bf5fb6}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!example@{example}}
+\index{example@{example}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{example}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ int {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::example (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1Evolution_afea9bf1e458395e18516cc1f28bf5fb6}
+
+
+Example function. 
+
+Tests and demonstrates the use of \hyperlink{exceptionmagrathea_1_1Evolution}{Evolution}. \begin{DoxyReturn}{Returns}
+0 if no error. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a61b94c64c5b1168536127cc46b38e34d}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!front@{front}}
+\index{front@{front}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{front}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ Type \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::front (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a61b94c64c5b1168536127cc46b38e34d}
+
+
+Access to the i-\/th element from the beginning. 
+
+Returns a reference to the i-\/th first element in the container without doing any range check. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index of the element. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the element. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a05d57c038a17c1e231eb9b262c563170}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!front@{front}}
+\index{front@{front}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{front}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ const Type \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::front (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a05d57c038a17c1e231eb9b262c563170}
+
+
+Immutable access to the i-\/th element from the beginning. 
+
+Returns a reference to the i-\/th first element in the container without doing any range check. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index of the element. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Immutable reference to the element. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a9318c84e14994a51a9a2d13051481b48}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!fullclear@{fullclear}}
+\index{fullclear@{fullclear}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{fullclear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ {\bf Evolution}$<$ Type, Container $>$ \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::fullclear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a9318c84e14994a51a9a2d13051481b48}
+
+
+Full clear the container. 
+
+Erase the container. \begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a454765d7d65d539b771015fde7bd60bb}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!index@{index}}
+\index{index@{index}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{index}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ template$<$typename Iterator $>$ unsigned int {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::index (
+\begin{DoxyParamCaption}
+\item[{const Iterator \&}]{it}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a454765d7d65d539b771015fde7bd60bb}
+
+
+Index of an iterator in the container. 
+
+Returns the index of the element pointed by an iterator or a pointer. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Iterator} & (Pointer or iterator type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em it} & Iterator to the element. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Index of the element. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::out\-\_\-of\-\_\-range} & Out of range. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{exceptionmagrathea_1_1Evolution_ad91adfe2a3a30902c4e8a7ccd666d038}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!nullify@{nullify}}
+\index{nullify@{nullify}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{nullify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ {\bf Evolution}$<$ Type, Container $>$ \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::nullify (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_ad91adfe2a3a30902c4e8a7ccd666d038}
+
+
+Nullify. 
+
+Resets all data members to their default values. \begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a9dfdce59ff9ece6b9a6e0477d7760ae7}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!operator!=@{operator!=}}
+\index{operator!=@{operator!=}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{operator!=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ bool {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::operator!= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Evolution}$<$ Type, Container $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a9dfdce59ff9ece6b9a6e0477d7760ae7}
+
+
+Not equal to. 
+
+Lexicographically compares the values in the container for difference. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if not equal, false if equal. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_aaf6939f435b36f82e92e837bc83f8820}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{operator$<$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ bool {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::operator$<$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Evolution}$<$ Type, Container $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_aaf6939f435b36f82e92e837bc83f8820}
+
+
+Less than. 
+
+Lexicographically compares the values in the container for the less than comparison operator. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if less than, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a303325d7733eef22d483c8833b708b20}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{operator$<$=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ bool {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::operator$<$= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Evolution}$<$ Type, Container $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a303325d7733eef22d483c8833b708b20}
+
+
+Less than or equal to. 
+
+Lexicographically compares the values in the container for the less than or equal to comparison operator. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if less than or equal to, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_aa5ac3f60fed1df3a9ba4790e7482ba62}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!operator=@{operator=}}
+\index{operator=@{operator=}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ template$<$class Other\-Type $>$ {\bf Evolution}$<$ Type, Container $>$ \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const std\-::initializer\-\_\-list$<$ Other\-Type $>$ \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_aa5ac3f60fed1df3a9ba4790e7482ba62}
+
+
+Initializer list assignment operator. 
+
+Provides an initializer list assignment. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & (Other step type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_aaac98f596b9a3d289ed5366e73b45278}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!operator=@{operator=}}
+\index{operator=@{operator=}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ template$<$class Other\-Type , class Other\-Container $>$ {\bf Evolution}$<$ Type, Container $>$ \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Evolution}$<$ Other\-Type, Other\-Container $>$ \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_aaac98f596b9a3d289ed5366e73b45278}
+
+
+Conversion assignment operator. 
+
+Provides an assignment from another type of evolution container. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & (Other step type.) \\
+\hline
+{\em Other\-Container} & (Other container type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a6ba4d84bb531c1668725dd5655815b40}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!operator=@{operator=}}
+\index{operator=@{operator=}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ template$<$class Misc , class $>$ {\bf Evolution}$<$ Type, Container $>$ \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a6ba4d84bb531c1668725dd5655815b40}
+
+
+Generic assignment operator. 
+
+Provides a generic interface to all assignment operators of the container 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} argument. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a10b244e64b2df5b2de426bcc1a37b6ce}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!operator==@{operator==}}
+\index{operator==@{operator==}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ bool {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf Evolution}$<$ Type, Container $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a10b244e64b2df5b2de426bcc1a37b6ce}
+
+
+Equal to. 
+
+Lexicographically compares the values in the container for equality. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if equal, false if not equal. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a72bd838254950df5359d7e58a17a8b31}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{operator$>$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ bool {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::operator$>$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Evolution}$<$ Type, Container $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a72bd838254950df5359d7e58a17a8b31}
+
+
+Greater than. 
+
+Lexicographically compares the values in the container for the greater than comparison operator. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if greater than, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a56ebbdb9f2701da9e84f5cbf441006ac}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{operator$>$=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ bool {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::operator$>$= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Evolution}$<$ Type, Container $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a56ebbdb9f2701da9e84f5cbf441006ac}
+
+
+Greater than or equal to. 
+
+Lexicographically compares the values in the container for the greater than or equal to comparison operator. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if greater than or equal to, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_af01ebd04cd6e83af3155278afcfce975}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ Type \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_af01ebd04cd6e83af3155278afcfce975}
+
+
+Direct access to the element. 
+
+Provides a direct access to the specified element. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index of the element. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the element. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a9a0ca349a592a47f6f6f0ac59d300963}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ const Type \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a9a0ca349a592a47f6f6f0ac59d300963}
+
+
+Immutable direct access to the element. 
+
+Provides a direct access to the specified element. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index of the element. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Immutable reference to the element. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a764dce9ab9a8c44dbf4a35c9bae8b6b5}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!pop@{pop}}
+\index{pop@{pop}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{pop}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ {\bf Evolution}$<$ Type, Container $>$ \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::pop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a764dce9ab9a8c44dbf4a35c9bae8b6b5}
+
+
+Pop back. 
+
+Removes the last element of the container. \begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_ad358e12921812a2ca40101540a02923d}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!rbegin@{rbegin}}
+\index{rbegin@{rbegin}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{rbegin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ std\-::reverse\-\_\-iterator$<$ Type $\ast$ $>$ {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::rbegin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_ad358e12921812a2ca40101540a02923d}
+
+
+Reverse iterator to the beginning. 
+
+Returns a reversed pointer to the position after the last element. \begin{DoxyReturn}{Returns}
+Pointer to the end. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a64ec69f7d731a05ece2be46bb265e175}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!rbegin@{rbegin}}
+\index{rbegin@{rbegin}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{rbegin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ std\-::reverse\-\_\-iterator$<$ const Type $\ast$ $>$ {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::rbegin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a64ec69f7d731a05ece2be46bb265e175}
+
+
+Immutable reverse iterator to the beginning. 
+
+Returns a reversed pointer to the position after the last element. \begin{DoxyReturn}{Returns}
+Immutable pointer to the end. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a65f973f912546090ce6354fe60f211fa}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!rend@{rend}}
+\index{rend@{rend}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{rend}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ std\-::reverse\-\_\-iterator$<$ Type $\ast$ $>$ {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::rend (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a65f973f912546090ce6354fe60f211fa}
+
+
+Reverse iterator to the end. 
+
+Returns a reversed pointer to the first element. \begin{DoxyReturn}{Returns}
+Pointer to the beginning. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_aa4247d82c236c51a0b415568d676a51e}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!rend@{rend}}
+\index{rend@{rend}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{rend}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ std\-::reverse\-\_\-iterator$<$ const Type $\ast$ $>$ {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::rend (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_aa4247d82c236c51a0b415568d676a51e}
+
+
+Immutable reverse iterator to the end. 
+
+Returns a reversed pointer to the first element. \begin{DoxyReturn}{Returns}
+Immutable pointer to the beginning. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a644d377b0a423d1dd8940fd032da7268}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!reserve@{reserve}}
+\index{reserve@{reserve}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{reserve}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ {\bf Evolution}$<$ Type, Container $>$ \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::reserve (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a644d377b0a423d1dd8940fd032da7268}
+
+
+Storage reservation. 
+
+Increases the capacity of the underlying storage. Existing elements are protected so it could not invalidate the actual contents. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em n} & New size. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_ab69c31b8498817b771503b9775399fe4}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!resize@{resize}}
+\index{resize@{resize}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{resize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ template$<$class... Misc$>$ {\bf Evolution}$<$ Type, Container $>$ \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::resize (
+\begin{DoxyParamCaption}
+\item[{const Misc \&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_ab69c31b8498817b771503b9775399fe4}
+
+
+Resize. 
+
+Resizes the container to contain a new number of elements. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a50fb995fd759899251abf02c085a5d1a}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!shrink@{shrink}}
+\index{shrink@{shrink}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{shrink}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ {\bf Evolution}$<$ Type, Container $>$ \& {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::shrink (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a50fb995fd759899251abf02c085a5d1a}
+
+
+Storage shrinking. 
+
+Reduces memory usage by freeing unused memory. \begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_a78e80655301aac59843bc93e24edd3ad}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!size@{size}}
+\index{size@{size}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ unsigned int {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_a78e80655301aac59843bc93e24edd3ad}
+
+
+Number of elements. 
+
+Returns the distance between the first and the last element. \begin{DoxyReturn}{Returns}
+The number of elements in the container. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Evolution_ae5a39bd51ec819971dd23c4aca6a75d5}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!space@{space}}
+\index{space@{space}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{space}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class Container $>$ unsigned long long int {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::space (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Evolution_ae5a39bd51ec819971dd23c4aca6a75d5}
+
+
+Available space. 
+
+Returns the maximum possible number of elements. \begin{DoxyReturn}{Returns}
+Maximum number of elements. 
+\end{DoxyReturn}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{exceptionmagrathea_1_1Evolution_af542714eb03c50e30999005317e37e29}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type = Step$<$$>$, class Container = std\-::vector$<$\-Type$>$$>$ template$<$class Self\-Type , class Self\-Container $>$ std\-::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{lhs, }
+\item[{const {\bf Evolution}$<$ Self\-Type, Self\-Container $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{exceptionmagrathea_1_1Evolution_af542714eb03c50e30999005317e37e29}
+
+
+\hyperlink{exceptionOutput}{Output} stream operator. 
+
+Adds each element to the stream using the {\ttfamily fill()} character as a separator. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Self\-Type} & (\hyperlink{exceptionmagrathea_1_1Step}{Step} type.) \\
+\hline
+{\em Self\-Container} & (Container type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em lhs} & Left-\/hand side stream. \\
+\hline
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{exceptionOutput}{Output} stream. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{exceptionmagrathea_1_1Evolution_a0e5a30f6e53360808894c2b28a0b0acf}{\index{magrathea\-::\-Evolution@{magrathea\-::\-Evolution}!\-\_\-container@{\-\_\-container}}
+\index{\-\_\-container@{\-\_\-container}!magrathea::Evolution@{magrathea\-::\-Evolution}}
+\subsubsection[{\-\_\-container}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type = Step$<$$>$, class Container = std\-::vector$<$\-Type$>$$>$ Container {\bf magrathea\-::\-Evolution}$<$ Type, Container $>$\-::\-\_\-container\hspace{0.3cm}{\ttfamily [protected]}}}\label{exceptionmagrathea_1_1Evolution_a0e5a30f6e53360808894c2b28a0b0acf}
+
+
+Internal container. 
+
+
+
+The documentation for this exception was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/magrathea/\hyperlink{evolution_8h}{evolution.\-h}\end{DoxyCompactItemize}

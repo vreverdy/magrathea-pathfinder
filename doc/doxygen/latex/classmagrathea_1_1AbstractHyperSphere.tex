@@ -1,0 +1,469 @@
+\hypertarget{classmagrathea_1_1AbstractHyperSphere}{\section{magrathea\-:\-:Abstract\-Hyper\-Sphere$<$ Crtp, Dimension, Vector, Scalar $>$ Class Template Reference}
+\label{classmagrathea_1_1AbstractHyperSphere}\index{magrathea\-::\-Abstract\-Hyper\-Sphere$<$ Crtp, Dimension, Vector, Scalar $>$@{magrathea\-::\-Abstract\-Hyper\-Sphere$<$ Crtp, Dimension, Vector, Scalar $>$}}
+}
+
+
+Abstract function provider for n-\/dimensional spheres.  
+
+
+
+
+{\ttfamily \#include $<$abstracthypersphere.\-h$>$}
+
+Inheritance diagram for magrathea\-:\-:Abstract\-Hyper\-Sphere$<$ Crtp, Dimension, Vector, Scalar $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmagrathea_1_1AbstractHyperSphere}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Position}\par
+\begin{DoxyCompactItemize}
+\item 
+constexpr Scalar \hyperlink{classmagrathea_1_1AbstractHyperSphere_a3dd8d25adc4df0a1aa1878f3b3f48835}{center} (const unsigned int idim) const 
+\begin{DoxyCompactList}\small\item\em Center coordinate. \end{DoxyCompactList}\item 
+Vector \hyperlink{classmagrathea_1_1AbstractHyperSphere_af16c5565a4d7819aa6db90f599a264fd}{center} () const 
+\begin{DoxyCompactList}\small\item\em Center vector. \end{DoxyCompactList}\item 
+constexpr Scalar \hyperlink{classmagrathea_1_1AbstractHyperSphere_a9c76e88eea428b595fe1ca44c43bb4e4}{minimum} (const unsigned int idim) const 
+\begin{DoxyCompactList}\small\item\em Minimum coordinate. \end{DoxyCompactList}\item 
+Vector \hyperlink{classmagrathea_1_1AbstractHyperSphere_a1aec8b8788f5b20154efd0b9fa6bc75a}{minimum} () const 
+\begin{DoxyCompactList}\small\item\em Minimum vector. \end{DoxyCompactList}\item 
+constexpr Scalar \hyperlink{classmagrathea_1_1AbstractHyperSphere_a6242aa789a4de16158050321c3603c60}{maximum} (const unsigned int idim) const 
+\begin{DoxyCompactList}\small\item\em Maximum coordinate. \end{DoxyCompactList}\item 
+Vector \hyperlink{classmagrathea_1_1AbstractHyperSphere_a64995340d907a66c2f9b52efbcf719fd}{maximum} () const 
+\begin{DoxyCompactList}\small\item\em Maximum vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Measures}\par
+\begin{DoxyCompactItemize}
+\item 
+constexpr Scalar \hyperlink{classmagrathea_1_1AbstractHyperSphere_adae4ee478c4da0e2476ed01bdeca772e}{radius} () const 
+\begin{DoxyCompactList}\small\item\em Radius. \end{DoxyCompactList}\item 
+constexpr Scalar \hyperlink{classmagrathea_1_1AbstractHyperSphere_a143afcadd29366a1f3f88bd6503579c4}{diameter} () const 
+\begin{DoxyCompactList}\small\item\em Diameter. \end{DoxyCompactList}\item 
+constexpr Scalar \hyperlink{classmagrathea_1_1AbstractHyperSphere_a8ffa4892227db147188d35f6a5076d7f}{volume} () const 
+\begin{DoxyCompactList}\small\item\em Volume. \end{DoxyCompactList}\item 
+constexpr Scalar \hyperlink{classmagrathea_1_1AbstractHyperSphere_a0ab167f1e2d23dc522fd7e09387a424e}{surface} () const 
+\begin{DoxyCompactList}\small\item\em Outer surface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Distribution}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$unsigned int Subdimension = Dimension, class  = typename std\-::enable\-\_\-if$<$(\-Subdimension+1 == Dimension) $|$$|$ (\-Subdimension == Dimension)$>$\-::type$>$ }\\Vector \hyperlink{classmagrathea_1_1AbstractHyperSphere_aaebbc45f113ae5a378fb3e66a6d6bd4b}{random} () const 
+\begin{DoxyCompactList}\small\item\em Basic random location in the hypersphere. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Subdimension = Dimension, class Engine , class Distribution , class  = typename std\-::enable\-\_\-if$<$((\-Subdimension+1 == Dimension) $|$$|$ (\-Subdimension == Dimension)) \&\& (std\-::decay$<$\-Engine$>$\-::type\-::min() != std\-::decay$<$\-Engine$>$\-::type\-::max()) \&\& (!std\-::is\-\_\-void$<$typename std\-::decay$<$\-Distribution$>$\-::type\-::result\-\_\-type$>$\-::value)$>$\-::type$>$ }\\Vector \hyperlink{classmagrathea_1_1AbstractHyperSphere_a0d9bbd4a3609ba5a1fe97cd3097a4fc3}{random} (Engine \&\&engine, Distribution \&\&distribution) const 
+\begin{DoxyCompactList}\small\item\em Generic random location in the hypersphere. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Subdimension = Dimension, typename Iterator , class  = typename std\-::enable\-\_\-if$<$(\-Subdimension+1 == Dimension) \&\& (\-Subdimension $>$= 1$>$ }\\\-::type std\-::pair$<$ Scalar, Scalar $>$ \hyperlink{classmagrathea_1_1AbstractHyperSphere_a98fd017fd23437d4ddcac5a2fbf30b60}{uniform} (const Iterator \&first, const Iterator \&last) const 
+\begin{DoxyCompactList}\small\item\em Uniform distribution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Collision}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Other\-Vector , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Other\-Vector$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type, Scalar$>$\-::value$>$\-::type$>$ }\\bool \hyperlink{classmagrathea_1_1AbstractHyperSphere_a2fdd902b048b0192b8102fb2c2d30ad3}{inside} (const Other\-Vector \&\hyperlink{miscellaneous_8h_af4785a592bbb7b2a8882c18bb0101192}{point}) const 
+\begin{DoxyCompactList}\small\item\em Point inside. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Other\-Vector , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Other\-Vector$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type, Scalar$>$\-::value$>$\-::type$>$ }\\bool \hyperlink{classmagrathea_1_1AbstractHyperSphere_ac9411f645094db51b69a3f4a5be5f05a}{outside} (const Other\-Vector \&\hyperlink{miscellaneous_8h_af4785a592bbb7b2a8882c18bb0101192}{point}) const 
+\begin{DoxyCompactList}\small\item\em Point outside. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Static Public Member Functions}
+\begin{Indent}{\bf Constants}\par
+\begin{DoxyCompactItemize}
+\item 
+static constexpr unsigned int \hyperlink{classmagrathea_1_1AbstractHyperSphere_a93e069229d61e08a6026000e21dedb2e}{dimension} ()
+\begin{DoxyCompactList}\small\item\em Number of space dimension. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Helpers}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$unsigned int Other\-Dimension = Dimension, typename Other\-Scalar  = Scalar$>$ }\\static constexpr Other\-Scalar \hyperlink{classmagrathea_1_1AbstractHyperSphere_ac636769913d527319bde86deb2f1863c}{sn} ()
+\begin{DoxyCompactList}\small\item\em Surface of a n-\/dimensional unit sphere. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Test}\par
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{classmagrathea_1_1AbstractHyperSphere_a0d1fb9a90aeb540754e9f5f2b13c407f}{example} ()
+\begin{DoxyCompactList}\small\item\em Example function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Protected Member Functions}
+\begin{Indent}{\bf Protected lifecycle}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmagrathea_1_1AbstractHyperSphere_a1fcfa26ef0a672e9deb79ca4040099c0}{$\sim$\-Abstract\-Hyper\-Sphere} ()
+\begin{DoxyCompactList}\small\item\em Protected destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Crtp, unsigned int Dimension, class Vector, typename Scalar$>$class magrathea\-::\-Abstract\-Hyper\-Sphere$<$ Crtp, Dimension, Vector, Scalar $>$}
+
+Abstract function provider for n-\/dimensional spheres. 
+
+Provides a common base for n-\/dimensional spheres thanks to C\-R\-T\-P. To use it, one has to derive from this class and pass the derived class itself as the C\-R\-T\-P parameter. The derived classes should provide two immutable functions \-: 
+\begin{DoxyItemize}
+\item position() 
+\item extent()
+\end{DoxyItemize}in order to get the position of the center along one coordinate and the radius length of the hypersphere. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Crtp} & Derived C\-R\-T\-P class. \\
+\hline
+{\em Dimension} & Number of space dimension. \\
+\hline
+{\em Vector} & Position vector type. \\
+\hline
+{\em Scalar} & Scalar data type. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmagrathea_1_1AbstractHyperSphere_a1fcfa26ef0a672e9deb79ca4040099c0}{\index{magrathea\-::\-Abstract\-Hyper\-Sphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}!$\sim$\-Abstract\-Hyper\-Sphere@{$\sim$\-Abstract\-Hyper\-Sphere}}
+\index{$\sim$\-Abstract\-Hyper\-Sphere@{$\sim$\-Abstract\-Hyper\-Sphere}!magrathea::AbstractHyperSphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}}
+\subsubsection[{$\sim$\-Abstract\-Hyper\-Sphere}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ {\bf magrathea\-::\-Abstract\-Hyper\-Sphere}$<$ Crtp, Dimension, Vector, Scalar $>$\-::$\sim${\bf Abstract\-Hyper\-Sphere} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [default]}}}\label{classmagrathea_1_1AbstractHyperSphere_a1fcfa26ef0a672e9deb79ca4040099c0}
+
+
+Protected destructor. 
+
+Avoids direct instantiation of the class, and only allows it through its derived children. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classmagrathea_1_1AbstractHyperSphere_a3dd8d25adc4df0a1aa1878f3b3f48835}{\index{magrathea\-::\-Abstract\-Hyper\-Sphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}!center@{center}}
+\index{center@{center}!magrathea::AbstractHyperSphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}}
+\subsubsection[{center}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ constexpr Scalar {\bf magrathea\-::\-Abstract\-Hyper\-Sphere}$<$ Crtp, Dimension, Vector, Scalar $>$\-::center (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{idim}
+\end{DoxyParamCaption}
+) const}}\label{classmagrathea_1_1AbstractHyperSphere_a3dd8d25adc4df0a1aa1878f3b3f48835}
+
+
+Center coordinate. 
+
+Computes the specified coordinate of the center of the hypersphere. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em idim} & Index of the dimension. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The coordinate $x_{i}$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperSphere_af16c5565a4d7819aa6db90f599a264fd}{\index{magrathea\-::\-Abstract\-Hyper\-Sphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}!center@{center}}
+\index{center@{center}!magrathea::AbstractHyperSphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}}
+\subsubsection[{center}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ Vector {\bf magrathea\-::\-Abstract\-Hyper\-Sphere}$<$ Crtp, Dimension, Vector, Scalar $>$\-::center (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractHyperSphere_af16c5565a4d7819aa6db90f599a264fd}
+
+
+Center vector. 
+
+Computes the position vector of the center of the hypersphere. \begin{DoxyReturn}{Returns}
+The position vector $\vec{x}$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperSphere_a143afcadd29366a1f3f88bd6503579c4}{\index{magrathea\-::\-Abstract\-Hyper\-Sphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}!diameter@{diameter}}
+\index{diameter@{diameter}!magrathea::AbstractHyperSphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}}
+\subsubsection[{diameter}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ constexpr Scalar {\bf magrathea\-::\-Abstract\-Hyper\-Sphere}$<$ Crtp, Dimension, Vector, Scalar $>$\-::diameter (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmagrathea_1_1AbstractHyperSphere_a143afcadd29366a1f3f88bd6503579c4}
+
+
+Diameter. 
+
+Computes the diameter of the hypersphere. \begin{DoxyReturn}{Returns}
+$2r$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperSphere_a93e069229d61e08a6026000e21dedb2e}{\index{magrathea\-::\-Abstract\-Hyper\-Sphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}!dimension@{dimension}}
+\index{dimension@{dimension}!magrathea::AbstractHyperSphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}}
+\subsubsection[{dimension}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ constexpr unsigned int {\bf magrathea\-::\-Abstract\-Hyper\-Sphere}$<$ Crtp, Dimension, Vector, Scalar $>$\-::dimension (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmagrathea_1_1AbstractHyperSphere_a93e069229d61e08a6026000e21dedb2e}
+
+
+Number of space dimension. 
+
+Computes the number of space dimension of the hypercube. \begin{DoxyReturn}{Returns}
+Dimension. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperSphere_a0d1fb9a90aeb540754e9f5f2b13c407f}{\index{magrathea\-::\-Abstract\-Hyper\-Sphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}!example@{example}}
+\index{example@{example}!magrathea::AbstractHyperSphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}}
+\subsubsection[{example}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ int {\bf magrathea\-::\-Abstract\-Hyper\-Sphere}$<$ Crtp, Dimension, Vector, Scalar $>$\-::example (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmagrathea_1_1AbstractHyperSphere_a0d1fb9a90aeb540754e9f5f2b13c407f}
+
+
+Example function. 
+
+Tests and demonstrates the use of \hyperlink{classmagrathea_1_1AbstractHyperSphere}{Abstract\-Hyper\-Sphere}. \begin{DoxyReturn}{Returns}
+0 if no error. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperSphere_a2fdd902b048b0192b8102fb2c2d30ad3}{\index{magrathea\-::\-Abstract\-Hyper\-Sphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}!inside@{inside}}
+\index{inside@{inside}!magrathea::AbstractHyperSphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}}
+\subsubsection[{inside}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ template$<$class Other\-Vector , class $>$ bool {\bf magrathea\-::\-Abstract\-Hyper\-Sphere}$<$ Crtp, Dimension, Vector, Scalar $>$\-::inside (
+\begin{DoxyParamCaption}
+\item[{const Other\-Vector \&}]{point}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractHyperSphere_a2fdd902b048b0192b8102fb2c2d30ad3}
+
+
+Point inside. 
+
+Checks whether a point is inside the hypersphere. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Vector} & Other position vector type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em point} & Position of the point. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the point is inside the hypersphere, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperSphere_a6242aa789a4de16158050321c3603c60}{\index{magrathea\-::\-Abstract\-Hyper\-Sphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}!maximum@{maximum}}
+\index{maximum@{maximum}!magrathea::AbstractHyperSphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}}
+\subsubsection[{maximum}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ constexpr Scalar {\bf magrathea\-::\-Abstract\-Hyper\-Sphere}$<$ Crtp, Dimension, Vector, Scalar $>$\-::maximum (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{idim}
+\end{DoxyParamCaption}
+) const}}\label{classmagrathea_1_1AbstractHyperSphere_a6242aa789a4de16158050321c3603c60}
+
+
+Maximum coordinate. 
+
+Computes the specified coordinate of the maximum boundary of the hypersphere. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em idim} & Index of the dimension. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The coordinate $x_{i}+r$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperSphere_a64995340d907a66c2f9b52efbcf719fd}{\index{magrathea\-::\-Abstract\-Hyper\-Sphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}!maximum@{maximum}}
+\index{maximum@{maximum}!magrathea::AbstractHyperSphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}}
+\subsubsection[{maximum}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ Vector {\bf magrathea\-::\-Abstract\-Hyper\-Sphere}$<$ Crtp, Dimension, Vector, Scalar $>$\-::maximum (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractHyperSphere_a64995340d907a66c2f9b52efbcf719fd}
+
+
+Maximum vector. 
+
+Computes the position vector of the maximum boundary of the hypersphere. \begin{DoxyReturn}{Returns}
+The position vector $\vec{x}+\vec{r}$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperSphere_a9c76e88eea428b595fe1ca44c43bb4e4}{\index{magrathea\-::\-Abstract\-Hyper\-Sphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}!minimum@{minimum}}
+\index{minimum@{minimum}!magrathea::AbstractHyperSphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}}
+\subsubsection[{minimum}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ constexpr Scalar {\bf magrathea\-::\-Abstract\-Hyper\-Sphere}$<$ Crtp, Dimension, Vector, Scalar $>$\-::minimum (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{idim}
+\end{DoxyParamCaption}
+) const}}\label{classmagrathea_1_1AbstractHyperSphere_a9c76e88eea428b595fe1ca44c43bb4e4}
+
+
+Minimum coordinate. 
+
+Computes the specified coordinate of the minimum boundary of the hypersphere. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em idim} & Index of the dimension. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The coordinate $x_{i}-r$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperSphere_a1aec8b8788f5b20154efd0b9fa6bc75a}{\index{magrathea\-::\-Abstract\-Hyper\-Sphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}!minimum@{minimum}}
+\index{minimum@{minimum}!magrathea::AbstractHyperSphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}}
+\subsubsection[{minimum}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ Vector {\bf magrathea\-::\-Abstract\-Hyper\-Sphere}$<$ Crtp, Dimension, Vector, Scalar $>$\-::minimum (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractHyperSphere_a1aec8b8788f5b20154efd0b9fa6bc75a}
+
+
+Minimum vector. 
+
+Computes the position vector of the minimum boundary of the hypersphere. \begin{DoxyReturn}{Returns}
+The position vector $\vec{x}-\vec{r}$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperSphere_ac9411f645094db51b69a3f4a5be5f05a}{\index{magrathea\-::\-Abstract\-Hyper\-Sphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}!outside@{outside}}
+\index{outside@{outside}!magrathea::AbstractHyperSphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}}
+\subsubsection[{outside}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ template$<$class Other\-Vector , class $>$ bool {\bf magrathea\-::\-Abstract\-Hyper\-Sphere}$<$ Crtp, Dimension, Vector, Scalar $>$\-::outside (
+\begin{DoxyParamCaption}
+\item[{const Other\-Vector \&}]{point}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractHyperSphere_ac9411f645094db51b69a3f4a5be5f05a}
+
+
+Point outside. 
+
+Checks whether a point is outside the hypersphere. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Vector} & Other position vector type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em point} & Position of the point. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the point is outside the hypersphere, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperSphere_adae4ee478c4da0e2476ed01bdeca772e}{\index{magrathea\-::\-Abstract\-Hyper\-Sphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}!radius@{radius}}
+\index{radius@{radius}!magrathea::AbstractHyperSphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}}
+\subsubsection[{radius}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ constexpr Scalar {\bf magrathea\-::\-Abstract\-Hyper\-Sphere}$<$ Crtp, Dimension, Vector, Scalar $>$\-::radius (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmagrathea_1_1AbstractHyperSphere_adae4ee478c4da0e2476ed01bdeca772e}
+
+
+Radius. 
+
+Computes the radius of the hypersphere. \begin{DoxyReturn}{Returns}
+$r$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperSphere_aaebbc45f113ae5a378fb3e66a6d6bd4b}{\index{magrathea\-::\-Abstract\-Hyper\-Sphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}!random@{random}}
+\index{random@{random}!magrathea::AbstractHyperSphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}}
+\subsubsection[{random}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ template$<$unsigned int Subdimension, class $>$ Vector {\bf magrathea\-::\-Abstract\-Hyper\-Sphere}$<$ Crtp, Dimension, Vector, Scalar $>$\-::random (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmagrathea_1_1AbstractHyperSphere_aaebbc45f113ae5a378fb3e66a6d6bd4b}
+
+
+Basic random location in the hypersphere. 
+
+Generates a random location, located in the volume or on the surface of the hypersphere. For example for a subdimension of 2 of a 3-\/dimensional hypersphere, the function will generates a random point located on the surface of the sphere. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Subdimension} & Dimension space. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Random position vector. 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+As the internal engine is a static one, do not use this function in parallel. 
+\end{DoxyWarning}
+\hypertarget{classmagrathea_1_1AbstractHyperSphere_a0d9bbd4a3609ba5a1fe97cd3097a4fc3}{\index{magrathea\-::\-Abstract\-Hyper\-Sphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}!random@{random}}
+\index{random@{random}!magrathea::AbstractHyperSphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}}
+\subsubsection[{random}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ template$<$unsigned int Subdimension, class Engine , class Distribution , class $>$ Vector {\bf magrathea\-::\-Abstract\-Hyper\-Sphere}$<$ Crtp, Dimension, Vector, Scalar $>$\-::random (
+\begin{DoxyParamCaption}
+\item[{Engine \&\&}]{engine, }
+\item[{Distribution \&\&}]{distribution}
+\end{DoxyParamCaption}
+) const}}\label{classmagrathea_1_1AbstractHyperSphere_a0d9bbd4a3609ba5a1fe97cd3097a4fc3}
+
+
+Generic random location in the hypersphere. 
+
+Generates a random location, located in the volume or on the surface of the hypersphere. For example for a subdimension of 2 of a 3-\/dimensional hypersphere, the function will generates a random point located on the surface of the sphere. As this function uses the passed random engine and distribution it is completely thread safe. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Subdimension} & Dimension space. \\
+\hline
+{\em Engine} & (Random engine type.) \\
+\hline
+{\em Distribution} & (Random distribution type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em engine} & Random engine. \\
+\hline
+\mbox{\tt in,out}  & {\em distribution} & Random distribution. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Random position vector. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperSphere_ac636769913d527319bde86deb2f1863c}{\index{magrathea\-::\-Abstract\-Hyper\-Sphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}!sn@{sn}}
+\index{sn@{sn}!magrathea::AbstractHyperSphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}}
+\subsubsection[{sn}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ template$<$unsigned int Other\-Dimension, typename Other\-Scalar $>$ constexpr Other\-Scalar {\bf magrathea\-::\-Abstract\-Hyper\-Sphere}$<$ Crtp, Dimension, Vector, Scalar $>$\-::sn (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmagrathea_1_1AbstractHyperSphere_ac636769913d527319bde86deb2f1863c}
+
+
+Surface of a n-\/dimensional unit sphere. 
+
+Computes the surface of a n-\/dimensional sphere with a unit radius. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Dimension} & Other number of space dimension. \\
+\hline
+{\em Other\-Scalar} & (Other scalar data type.) \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+$s_{n}$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperSphere_a0ab167f1e2d23dc522fd7e09387a424e}{\index{magrathea\-::\-Abstract\-Hyper\-Sphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}!surface@{surface}}
+\index{surface@{surface}!magrathea::AbstractHyperSphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}}
+\subsubsection[{surface}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ constexpr Scalar {\bf magrathea\-::\-Abstract\-Hyper\-Sphere}$<$ Crtp, Dimension, Vector, Scalar $>$\-::surface (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmagrathea_1_1AbstractHyperSphere_a0ab167f1e2d23dc522fd7e09387a424e}
+
+
+Outer surface. 
+
+Computes the total outer surface of the hypercube. \begin{DoxyReturn}{Returns}
+$s_{n}r^{n-1}$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperSphere_a98fd017fd23437d4ddcac5a2fbf30b60}{\index{magrathea\-::\-Abstract\-Hyper\-Sphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}!uniform@{uniform}}
+\index{uniform@{uniform}!magrathea::AbstractHyperSphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}}
+\subsubsection[{uniform}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ template$<$unsigned int Subdimension, typename Iterator , class $>$ std\-::pair$<$ Scalar, Scalar $>$ {\bf magrathea\-::\-Abstract\-Hyper\-Sphere}$<$ Crtp, Dimension, Vector, Scalar $>$\-::uniform (
+\begin{DoxyParamCaption}
+\item[{const Iterator \&}]{first, }
+\item[{const Iterator \&}]{last}
+\end{DoxyParamCaption}
+) const}}\label{classmagrathea_1_1AbstractHyperSphere_a98fd017fd23437d4ddcac5a2fbf30b60}
+
+
+Uniform distribution. 
+
+Generates a random distribution of points located on the surface of the hypersphere. Currently the function only works in two or three dimension corresponding to a value of one or two for the subdimension. In three dimensions, it uses a spiral to approximately distribute the points. The function eventually returns a pair of distance corresponding to the minimum and maximum distances between two generated points. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Subdimension} & Dimension space. \\
+\hline
+{\em Iterator} & (Pointer or iterator to vector types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & Beginning of the interval. \\
+\hline
+\mbox{\tt in}  & {\em end} & End of the interval. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Minimum and maximum distance between two points. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperSphere_a8ffa4892227db147188d35f6a5076d7f}{\index{magrathea\-::\-Abstract\-Hyper\-Sphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}!volume@{volume}}
+\index{volume@{volume}!magrathea::AbstractHyperSphere@{magrathea\-::\-Abstract\-Hyper\-Sphere}}
+\subsubsection[{volume}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ constexpr Scalar {\bf magrathea\-::\-Abstract\-Hyper\-Sphere}$<$ Crtp, Dimension, Vector, Scalar $>$\-::volume (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmagrathea_1_1AbstractHyperSphere_a8ffa4892227db147188d35f6a5076d7f}
+
+
+Volume. 
+
+Computes the volume of the hypersphere. \begin{DoxyReturn}{Returns}
+$\frac{s_{n}r^{n}}{n}$. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/magrathea/\hyperlink{abstracthypersphere_8h}{abstracthypersphere.\-h}\end{DoxyCompactItemize}

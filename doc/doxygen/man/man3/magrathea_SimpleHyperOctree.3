@@ -1,0 +1,2048 @@
+.TH "magrathea::SimpleHyperOctree< Type, Index, Data, Dimension, Position, Extent, Element, Container >" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::SimpleHyperOctree< Type, Index, Data, Dimension, Position, Extent, Element, Container > \- 
+.PP
+A simple hyperoctree based on bit manipulations\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <simplehyperoctree\&.h>\fP
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBLifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBSimpleHyperOctree\fP ()"
+.br
+.RI "\fIImplicit empty constructor\&. \fP"
+.ti -1c
+.RI "\fBSimpleHyperOctree\fP (const unsigned int ilvl, const unsigned int nref=0)"
+.br
+.RI "\fIExplicit level constructor\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBOperators\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > &rhs) const "
+.br
+.RI "\fIEqual to\&. \fP"
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > &rhs) const "
+.br
+.RI "\fINot equal to\&. \fP"
+.ti -1c
+.RI "Element & \fBoperator[]\fP (const unsigned long long int ielem)"
+.br
+.RI "\fIElement access operator\&. \fP"
+.ti -1c
+.RI "const Element & \fBoperator[]\fP (const unsigned long long int ielem) const "
+.br
+.RI "\fIImmutable element access operator\&. \fP"
+.ti -1c
+.RI "Container & \fBoperator()\fP ()"
+.br
+.RI "\fIContainer access operator\&. \fP"
+.ti -1c
+.RI "const Container & \fBoperator()\fP () const "
+.br
+.RI "\fIImmutable container access operator\&. \fP"
+.ti -1c
+.RI "Element & \fBoperator()\fP (const Index &idx)"
+.br
+.RI "\fIElement access operator from hyperoctree index\&. \fP"
+.ti -1c
+.RI "const Element & \fBoperator()\fP (const Index &idx) const "
+.br
+.RI "\fIImmutable element access operator from hyperoctree index\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<(sizeof\&.\&.\&.(Types) != 0)>::type, class  = typename std::enable_if<((std::is_convertible<typename std::tuple_element<0, std::tuple<typename std::remove_cv<typename std::remove_reference<Types>::type>::type\&.\&.\&.> >::type, Type>::value) ? (sizeof\&.\&.\&.(Types) == Dimension) : (sizeof\&.\&.\&.(Types) == 1)) && (!std::is_same<typename std::tuple_element<0, std::tuple<typename std::remove_cv<typename std::remove_reference<Types>::type>::type\&.\&.\&.> >::type, Index>::value)>::type> Element & \fBoperator()\fP (Types &&\&.\&.\&.iposs)"
+.br
+.RI "\fIElement access operator from position\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<(sizeof\&.\&.\&.(Types) != 0)>::type, class  = typename std::enable_if<((std::is_convertible<typename std::tuple_element<0, std::tuple<typename std::remove_cv<typename std::remove_reference<Types>::type>::type\&.\&.\&.> >::type, Type>::value) ? (sizeof\&.\&.\&.(Types) == Dimension) : (sizeof\&.\&.\&.(Types) == 1)) && (!std::is_same<typename std::tuple_element<0, std::tuple<typename std::remove_cv<typename std::remove_reference<Types>::type>::type\&.\&.\&.> >::type, Index>::value)>::type> const Element & \fBoperator()\fP (Types &&\&.\&.\&.iposs) const "
+.br
+.RI "\fIImmutable element access operator from position\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBAssignment\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBassign\fP ()"
+.br
+.RI "\fIEmpty assignment\&. \fP"
+.ti -1c
+.RI "\fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBassign\fP (const unsigned int ilvl, const unsigned int nref=0)"
+.br
+.RI "\fILevel assignment \&. \fP"
+.ti -1c
+.RI "\fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBassign\fP (const \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > &source)"
+.br
+.RI "\fICopy assignment \&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBManagement\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBnullify\fP ()"
+.br
+.RI "\fINullify\&. \fP"
+.ti -1c
+.RI "\fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > \fBcopy\fP () const "
+.br
+.RI "\fICopy\&. \fP"
+.ti -1c
+.RI "template<class Template  = SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>, class  = typename std::enable_if<std::is_constructible<Template, SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container> >::value>::type> Template \fBcast\fP () const "
+.br
+.RI "\fICast\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBAccess\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "Element & \fBat\fP (const unsigned long long int ielem)"
+.br
+.RI "\fIAccess to an element with range-check\&. \fP"
+.ti -1c
+.RI "const Element & \fBat\fP (const unsigned long long int ielem) const "
+.br
+.RI "\fIImmutable access to an element with range-check\&. \fP"
+.ti -1c
+.RI "Element & \fBfront\fP (const unsigned long long int ielem=0)"
+.br
+.RI "\fIAccess to the i-th element from the beginning\&. \fP"
+.ti -1c
+.RI "const Element & \fBfront\fP (const unsigned long long int ielem=0) const "
+.br
+.RI "\fIImmutable access to the i-th element from the beginning\&. \fP"
+.ti -1c
+.RI "Element & \fBback\fP (const unsigned long long int ielem=0)"
+.br
+.RI "\fIAccess to the i-th element from the end\&. \fP"
+.ti -1c
+.RI "const Element & \fBback\fP (const unsigned long long int ielem=0) const "
+.br
+.RI "\fIImmutable access to the i-th element from the end\&. \fP"
+.ti -1c
+.RI "Element & \fBcycle\fP (const long long int ielem)"
+.br
+.RI "\fICyclic access to an element\&. \fP"
+.ti -1c
+.RI "const Element & \fBcycle\fP (const long long int ielem) const "
+.br
+.RI "\fIImmutable cyclic access to an element\&. \fP"
+.ti -1c
+.RI "Container & \fBcontainer\fP ()"
+.br
+.RI "\fIDirect access to the underlying container\&. \fP"
+.ti -1c
+.RI "const Container & \fBcontainer\fP () const "
+.br
+.RI "\fIDirect access to the underlying container\&. \fP"
+.ti -1c
+.RI "Element * \fBdata\fP ()"
+.br
+.RI "\fIDirect access to the underlying array\&. \fP"
+.ti -1c
+.RI "const Element * \fBdata\fP () const "
+.br
+.RI "\fIImmutable direct access to the underlying array\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBIterators\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename Iterator  = decltype(std::declval<Container>()\&.begin()), class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(*std::declval<Iterator>())>::type>::type, Element>::value>::type> Iterator \fBbegin\fP ()"
+.br
+.RI "\fIIterator to the beginning\&. \fP"
+.ti -1c
+.RI "template<typename Iterator  = decltype(std::declval<const Container>()\&.begin()), class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(*std::declval<Iterator>())>::type>::type, Element>::value>::type> Iterator \fBbegin\fP () const "
+.br
+.RI "\fIImmutable iterator to the beginning\&. \fP"
+.ti -1c
+.RI "template<typename Iterator  = decltype(std::declval<Container>()\&.cbegin()), class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(*std::declval<Iterator>())>::type>::type, Element>::value>::type> Iterator \fBcbegin\fP () const "
+.br
+.RI "\fIForced immutable iterator to the beginning\&. \fP"
+.ti -1c
+.RI "template<typename Iterator  = decltype(std::declval<Container>()\&.end()), class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(*std::declval<Iterator>())>::type>::type, Element>::value>::type> Iterator \fBend\fP ()"
+.br
+.RI "\fIIterator to the end\&. \fP"
+.ti -1c
+.RI "template<typename Iterator  = decltype(std::declval<const Container>()\&.end()), class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(*std::declval<Iterator>())>::type>::type, Element>::value>::type> Iterator \fBend\fP () const "
+.br
+.RI "\fIImmutable iterator to the end\&. \fP"
+.ti -1c
+.RI "template<typename Iterator  = decltype(std::declval<Container>()\&.cend()), class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(*std::declval<Iterator>())>::type>::type, Element>::value>::type> Iterator \fBcend\fP () const "
+.br
+.RI "\fIForced immutable iterator to the end\&. \fP"
+.ti -1c
+.RI "template<typename Iterator  = decltype(std::declval<Container>()\&.rbegin()), class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(*std::declval<Iterator>())>::type>::type, Element>::value>::type> Iterator \fBrbegin\fP ()"
+.br
+.RI "\fIReverse iterator to the beginning\&. \fP"
+.ti -1c
+.RI "template<typename Iterator  = decltype(std::declval<const Container>()\&.rbegin()), class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(*std::declval<Iterator>())>::type>::type, Element>::value>::type> Iterator \fBrbegin\fP () const "
+.br
+.RI "\fIImmutable reverse iterator to the beginning\&. \fP"
+.ti -1c
+.RI "template<typename Iterator  = decltype(std::declval<Container>()\&.crbegin()), class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(*std::declval<Iterator>())>::type>::type, Element>::value>::type> Iterator \fBcrbegin\fP () const "
+.br
+.RI "\fIForced immutable reverse iterator to the beginning\&. \fP"
+.ti -1c
+.RI "template<typename Iterator  = decltype(std::declval<Container>()\&.rend()), class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(*std::declval<Iterator>())>::type>::type, Element>::value>::type> Iterator \fBrend\fP ()"
+.br
+.RI "\fIReverse iterator to the end\&. \fP"
+.ti -1c
+.RI "template<typename Iterator  = decltype(std::declval<const Container>()\&.rend()), class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(*std::declval<Iterator>())>::type>::type, Element>::value>::type> Iterator \fBrend\fP () const "
+.br
+.RI "\fIImmutable reverse iterator to the end\&. \fP"
+.ti -1c
+.RI "template<typename Iterator  = decltype(std::declval<Container>()\&.crend()), class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(*std::declval<Iterator>())>::type>::type, Element>::value>::type> Iterator \fBcrend\fP () const "
+.br
+.RI "\fIForced immutable reverse iterator to the end\&. \fP"
+.ti -1c
+.RI "template<typename Iterator , class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(*std::declval<Iterator>())>::type>::type, Element>::value>::type> unsigned long long int \fBindex\fP (const Iterator &it) const "
+.br
+.RI "\fIIndex of an iterator in the underlying container\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBSearch\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename Iterator  = decltype(std::declval<Container>()\&.begin()), class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(*std::declval<Iterator>())>::type>::type, Element>::value>::type> Iterator \fBfind\fP (const Index &idx)"
+.br
+.ti -1c
+.RI "template<typename Iterator  = decltype(std::declval<const Container>()\&.begin()), class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(*std::declval<Iterator>())>::type>::type, Element>::value>::type> Iterator \fBfind\fP (const Index &idx) const "
+.br
+.ti -1c
+.RI "template<typename Iterator  = decltype(std::declval<Container>()\&.begin()), typename\&.\&.\&. Types, class  = typename std::enable_if<(std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(*std::declval<Iterator>())>::type>::type, Element>::value) && ((std::is_convertible<typename std::tuple_element<0, std::tuple<typename std::remove_cv<typename std::remove_reference<Types>::type>::type\&.\&.\&.> >::type, Type>::value) ? (sizeof\&.\&.\&.(Types) == Dimension) : (sizeof\&.\&.\&.(Types) == 1)) && (!std::is_same<typename std::tuple_element<0, std::tuple<typename std::remove_cv<typename std::remove_reference<Types>::type>::type\&.\&.\&.> >::type, Index>::value)>::type> Iterator \fBlocate\fP (Types &&\&.\&.\&.iposs)"
+.br
+.ti -1c
+.RI "template<typename Iterator  = decltype(std::declval<const Container>()\&.begin()), typename\&.\&.\&. Types, class  = typename std::enable_if<(std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(*std::declval<Iterator>())>::type>::type, Element>::value) && ((std::is_convertible<typename std::tuple_element<0, std::tuple<typename std::remove_cv<typename std::remove_reference<Types>::type>::type\&.\&.\&.> >::type, Type>::value) ? (sizeof\&.\&.\&.(Types) == Dimension) : (sizeof\&.\&.\&.(Types) == 1)) && (!std::is_same<typename std::tuple_element<0, std::tuple<typename std::remove_cv<typename std::remove_reference<Types>::type>::type\&.\&.\&.> >::type, Index>::value)>::type> Iterator \fBlocate\fP (Types &&\&.\&.\&.iposs) const "
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fBCapacity\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "bool \fBempty\fP () const "
+.br
+.RI "\fIEmptiness checking\&. \fP"
+.ti -1c
+.RI "unsigned long long int \fBsize\fP () const "
+.br
+.RI "\fINumber of elements\&. \fP"
+.ti -1c
+.RI "unsigned long long int \fBcapacity\fP () const "
+.br
+.RI "\fICapacity of the underlying storage\&. \fP"
+.ti -1c
+.RI "unsigned long long int \fBspace\fP () const "
+.br
+.RI "\fIAvailable space\&. \fP"
+.ti -1c
+.RI "\fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBshrink\fP ()"
+.br
+.RI "\fIShrink reserved storage\&. \fP"
+.ti -1c
+.RI "\fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBreserve\fP (const unsigned long long int nelem)"
+.br
+.RI "\fIIncrease reserved storage\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBModifiers\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBfullclear\fP ()"
+.br
+.RI "\fIFull clear the content\&. \fP"
+.ti -1c
+.RI "\fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBclear\fP ()"
+.br
+.RI "\fIClear the contents\&. \fP"
+.ti -1c
+.RI "\fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBpop\fP ()"
+.br
+.RI "\fIPop back\&. \fP"
+.ti -1c
+.RI "template<class\&.\&.\&. Misc> \fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBappend\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAppend an element\&. \fP"
+.ti -1c
+.RI "template<class\&.\&.\&. Misc> \fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBresize\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIResize\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBrho\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the rho data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBrho\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIAccess to the rho data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBphi\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the phi data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBphi\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the phi data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBdphidxyz\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the dphidxyz data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBdphidxyz\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the dphidxyz data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBdphidx\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the dphidx data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBdphidx\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the dphidx data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBdphidy\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the dphidy data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBdphidy\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the dphidy data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBdphidz\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the dphidz data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBdphidz\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the dphidz data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBa\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the a data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBa\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the a data\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBRefinement\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBupdate\fP ()"
+.br
+.RI "\fIUpdate refinement\&. \fP"
+.ti -1c
+.RI "template<typename Iterator , class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(*std::declval<Iterator>())>::type>::type, Element>::value>::type> bool \fBroot\fP (const Iterator &it)"
+.br
+.RI "\fIRoot level\&. \fP"
+.ti -1c
+.RI "template<typename Iterator , class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(*std::declval<Iterator>())>::type>::type, Element>::value>::type> bool \fBleaf\fP (const Iterator &it)"
+.br
+.RI "\fILeaf level\&. \fP"
+.ti -1c
+.RI "template<typename Iterator , class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(*std::declval<Iterator>())>::type>::type, Element>::value>::type> \fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBrefine\fP (const Iterator &it)"
+.br
+.RI "\fIRefine an element\&. \fP"
+.ti -1c
+.RI "template<typename Iterator , class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(*std::declval<Iterator>())>::type>::type, Element>::value>::type> \fBSimpleHyperOctree\fP< Type, Index, 
+.br
+Data, Dimension, Position, 
+.br
+Extent, Element, Container > & \fBcoarsen\fP (const Iterator &it)"
+.br
+.RI "\fICoarsen an element\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBInterpolation\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<(sizeof\&.\&.\&.(Types) != 0)>::type, class  = typename std::enable_if<((std::is_convertible<typename std::tuple_element<0, std::tuple<typename std::remove_cv<typename std::remove_reference<Types>::type>::type\&.\&.\&.> >::type, Type>::value) ? (sizeof\&.\&.\&.(Types) == Dimension) : (sizeof\&.\&.\&.(Types) == 1)) && (!std::is_same<typename std::tuple_element<0, std::tuple<typename std::remove_cv<typename std::remove_reference<Types>::type>::type\&.\&.\&.> >::type, Index>::value)>::type> Data \fBngp\fP (Types &&\&.\&.\&.iposs) const "
+.br
+.RI "\fINearest grid point interpolation\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<(sizeof\&.\&.\&.(Types) != 0)>::type, class  = typename std::enable_if<((std::is_convertible<typename std::tuple_element<0, std::tuple<typename std::remove_cv<typename std::remove_reference<Types>::type>::type\&.\&.\&.> >::type, Type>::value) ? (sizeof\&.\&.\&.(Types) == Dimension) : (sizeof\&.\&.\&.(Types) == 1)) && (!std::is_same<typename std::tuple_element<0, std::tuple<typename std::remove_cv<typename std::remove_reference<Types>::type>::type\&.\&.\&.> >::type, Index>::value)>::type> Data \fBcic\fP (Types &&\&.\&.\&.iposs) const "
+.br
+.RI "\fICloud in cell interpolation\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<(sizeof\&.\&.\&.(Types) != 0)>::type, class  = typename std::enable_if<((std::is_convertible<typename std::tuple_element<0, std::tuple<typename std::remove_cv<typename std::remove_reference<Types>::type>::type\&.\&.\&.> >::type, Type>::value) ? (sizeof\&.\&.\&.(Types) == Dimension) : (sizeof\&.\&.\&.(Types) == 1)) && (!std::is_same<typename std::tuple_element<0, std::tuple<typename std::remove_cv<typename std::remove_reference<Types>::type>::type\&.\&.\&.> >::type, Index>::value)>::type> Data \fBtsc\fP (Types &&\&.\&.\&.iposs) const "
+.br
+.RI "\fITriangular Shaped Cloud interpolation\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<(sizeof\&.\&.\&.(Types) != 0)>::type, class  = typename std::enable_if<((std::is_convertible<typename std::tuple_element<0, std::tuple<typename std::remove_cv<typename std::remove_reference<Types>::type>::type\&.\&.\&.> >::type, Type>::value) ? (sizeof\&.\&.\&.(Types) == Dimension) : (sizeof\&.\&.\&.(Types) == 1)) && (!std::is_same<typename std::tuple_element<0, std::tuple<typename std::remove_cv<typename std::remove_reference<Types>::type>::type\&.\&.\&.> >::type, Index>::value)>::type> Data \fBtsc\fP (std::vector< Element > &elemsTsc, Types &&\&.\&.\&.iposs) const "
+.br
+.RI "\fITriangular Shaped Cloud interpolation\&. \fP"
+.in -1c
+.in -1c
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBProperties\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static constexpr Type \fBtype\fP ()"
+.br
+.RI "\fIType\&. \fP"
+.ti -1c
+.RI "static constexpr Position \fBposition\fP ()"
+.br
+.RI "\fIPosition\&. \fP"
+.ti -1c
+.RI "static constexpr Extent \fBextent\fP ()"
+.br
+.RI "\fIExtent\&. \fP"
+.ti -1c
+.RI "static constexpr Element \fBelement\fP ()"
+.br
+.RI "\fIElement\&. \fP"
+.ti -1c
+.RI "static constexpr unsigned int \fBdimension\fP ()"
+.br
+.RI "\fINumber of dimensions\&. \fP"
+.in -1c
+.in -1c
+.SS "Friends"
+
+.PP
+.RI "\fBStream\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename SelfType , class SelfIndex , class SelfData , unsigned int SelfDimension, class SelfPosition , class SelfExtent , class SelfElement , class SelfContainer > std::ostream & \fBoperator<<\fP (std::ostream &lhs, const \fBSimpleHyperOctree\fP< SelfType, SelfIndex, SelfData, SelfDimension, SelfPosition, SelfExtent, SelfElement, SelfContainer > &rhs)"
+.br
+.RI "\fI\fBOutput\fP stream operator\&. \fP"
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename Type = double, class Index = SimpleHyperOctreeIndex<unsigned long long int, 3>, class Data = double, unsigned int Dimension = Index::dimension(), class Position = std::ratio<0>, class Extent = std::ratio<1>, class Element = std::pair<Index, Data>, class Container = std::vector<Element>>exception magrathea::SimpleHyperOctree< Type, Index, Data, Dimension, Position, Extent, Element, Container >"
+A simple hyperoctree based on bit manipulations\&. 
+
+Implementation of a simple and easy-to-use and hyperoctree structure in arbitrary dimension\&. It provides basic find and search algorithms based on indices relying on bit manipulations\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Scalar position type\&. 
+.br
+\fIIndex\fP Index type\&. 
+.br
+\fIData\fP Data type\&. 
+.br
+\fIDimension\fP Number of dimensions\&. 
+.br
+\fIPosition\fP Position of the hyperoctree center\&. 
+.br
+\fIExtent\fP Extent of the hyperoctree\&. 
+.br
+\fIElement\fP Underlying element type\&. 
+.br
+\fIContainer\fP Underlying container type\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::\fBSimpleHyperOctree\fP ()\fC [inline]\fP"
+
+.PP
+Implicit empty constructor\&. Provides an implicit construction of an empty hyperoctree\&. 
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::\fBSimpleHyperOctree\fP (const unsigned intilvl, const unsigned intnref = \fC0\fP)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit level constructor\&. Provides an explicit construction of a fixed mesh starting from the specified level and refining the provided amount of times\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIilvl\fP Index of the first level\&. 
+.br
+\fInref\fP Number of refinements of the first level\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::a (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the a data\&. Provides an access to the a data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::a (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the a data\&. Provides an access to the a data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<class\&.\&.\&. Misc> \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::append (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Append an element\&. Appends an element by constructing it from the arguments and emplacing it at the end of the hyperoctree\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::assign ()\fC [inline]\fP"
+
+.PP
+Empty assignment\&. Provides an empty assignment of an empty hyperoctree\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::assign (const unsigned intilvl, const unsigned intnref = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Level assignment \&. Provides an assignment of a fixed mesh starting from the specified level and refining the provided amount of times\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIilvl\fP Index of the first level\&. 
+.br
+\fInref\fP Number of refinements of the first level\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::assign (const \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > &source)\fC [inline]\fP"
+
+.PP
+Copy assignment \&. Provides a copy assignment from another hyperoctree\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > Element & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::at (const unsigned long long intielem)\fC [inline]\fP"
+
+.PP
+Access to an element with range-check\&. Provides an access to the specified element with a range-check\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIielem\fP Index of the element in the underlying container\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > const Element & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::at (const unsigned long long intielem) const\fC [inline]\fP"
+
+.PP
+Immutable access to an element with range-check\&. Provides an access to the specified element with a range-check\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIielem\fP Index of the element in the underlying container\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > Element & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::back (const unsigned long long intielem = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Access to the i-th element from the end\&. Returns a reference to the i-th last element in the underlying container without doing any range check\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIielem\fP Index of the element in the underlying container\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > const Element & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::back (const unsigned long long intielem = \fC0\fP) const\fC [inline]\fP"
+
+.PP
+Immutable access to the i-th element from the end\&. Returns a reference to the i-th last element in the underlying container without doing any range check\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIielem\fP Index of the element in the underlying container\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename Iterator , class > Iterator \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::begin ()\fC [inline]\fP"
+
+.PP
+Iterator to the beginning\&. Returns a pointer to the first element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIterator\fP (Iterator type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the beginning\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename Iterator , class > Iterator \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::begin () const\fC [inline]\fP"
+
+.PP
+Immutable iterator to the beginning\&. Returns a pointer to the first element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIterator\fP (Iterator type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the beginning\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > unsigned long long int \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::capacity () const\fC [inline]\fP"
+
+.PP
+Capacity of the underlying storage\&. Returns the number of elements that the hyperoctree has currently allocated space for\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Capacity of the currently allocated underlying storage\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<class Template , class > Template \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::cast () const\fC [inline]\fP"
+
+.PP
+Cast\&. Casts contents to another object type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITemplate\fP \fBOutput\fP type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Casted copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename Iterator , class > Iterator \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::cbegin () const\fC [inline]\fP"
+
+.PP
+Forced immutable iterator to the beginning\&. Returns a constant pointer to the first element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIterator\fP (Iterator type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the beginning\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename Iterator , class > Iterator \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::cend () const\fC [inline]\fP"
+
+.PP
+Forced immutable iterator to the end\&. Returns a constant pointer to the position after the last element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIterator\fP (Iterator type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the end\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename\&.\&.\&. Types, class , class > Data \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::cic (Types &&\&.\&.\&.iposs) const\fC [inline]\fP"
+
+.PP
+Cloud in cell interpolation\&. Computes the value of the data at the provided position using a cloud in cell interpolation scheme\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Scalar position types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiposs\fP Real positions along each dimension\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Value of the data at the provided position\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::clear ()\fC [inline]\fP"
+
+.PP
+Clear the contents\&. Removes all elements from the hyperoctree\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename Iterator , class > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::coarsen (const Iterator &it)\fC [inline]\fP"
+
+.PP
+Coarsen an element\&. Coarsens a given element by invalidating all the underlying children\&. To become valid again, the container should be updated\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIterator\fP (Iterator type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIit\fP Iterator to an element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > Container & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::container ()\fC [inline]\fP"
+
+.PP
+Direct access to the underlying container\&. Provides a direct access to the underlying container by returning a reference to it\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the underlying container\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > const Container & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::container () const\fC [inline]\fP"
+
+.PP
+Direct access to the underlying container\&. Provides a direct access to the underlying container by returning a reference to it\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the underlying container\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::copy () const\fC [inline]\fP"
+
+.PP
+Copy\&. Generates a copy of the hyperoctree\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename Iterator , class > Iterator \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::crbegin () const\fC [inline]\fP"
+
+.PP
+Forced immutable reverse iterator to the beginning\&. Returns a constant reversed pointer to the position after the last element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIterator\fP (Iterator type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the end\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename Iterator , class > Iterator \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::crend () const\fC [inline]\fP"
+
+.PP
+Forced immutable reverse iterator to the end\&. Returns a constant reversed pointer to the first element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIterator\fP (Iterator type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the beginning\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > Element & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::cycle (const long long intielem)\fC [inline]\fP"
+
+.PP
+Cyclic access to an element\&. Provides a cyclic access to the elements, using the index modulo\&. Negative indexes are supported\&. It allows to iterate several times over the contents just by incrementing the provided index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIielem\fP Index of the element in the underlying container\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > const Element & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::cycle (const long long intielem) const\fC [inline]\fP"
+
+.PP
+Immutable cyclic access to an element\&. Provides a cyclic access to the elements, using the index modulo\&. Negative indexes are supported\&. It allows to iterate several times over the contents just by incrementing the provided index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIielem\fP Index of the element in the underlying container\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > Element * \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::data ()\fC [inline]\fP"
+
+.PP
+Direct access to the underlying array\&. Provides a direct access to the underlying array by returning a pointer to the first element of storage\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the underlying element storage\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > const Element * \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::data () const\fC [inline]\fP"
+
+.PP
+Immutable direct access to the underlying array\&. Provides a direct access to the underlying array by returning a pointer to the first element of storage\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the underlying element storage\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > constexpr unsigned int \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::dimension ()\fC [static]\fP"
+
+.PP
+Number of dimensions\&. Returns the number of spatial dimensions\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the number of dimensions\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::dphidx (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the dphidx data\&. Provides an access to the dphidx data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::dphidx (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the dphidx data\&. Provides an access to the dphidx data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::dphidxyz (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the dphidxyz data\&. Provides an access to the dphidxyz data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::dphidxyz (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the dphidxyz data\&. Provides an access to the dphidxyz data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::dphidy (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the dphidy data\&. Provides an access to the dphidy data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::dphidy (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the dphidy data\&. Provides an access to the dphidy data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::dphidz (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the dphidz data\&. Provides an access to the dphidz data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::dphidz (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the dphidz data\&. Provides an access to the dphidz data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > constexpr Element \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::element ()\fC [static]\fP"
+
+.PP
+Element\&. Returns a copy of the default element value\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the default element value\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > bool \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::empty () const\fC [inline]\fP"
+
+.PP
+Emptiness checking\&. Checks if the hyperoctree has no elements\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True if empty, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename Iterator , class > Iterator \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::end ()\fC [inline]\fP"
+
+.PP
+Iterator to the end\&. Returns a pointer to the position after the last element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIterator\fP (Iterator type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the end\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename Iterator , class > Iterator \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::end () const\fC [inline]\fP"
+
+.PP
+Immutable iterator to the end\&. Returns a pointer to the position after the last element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIterator\fP (Iterator type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the end\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > constexpr Extent \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::extent ()\fC [static]\fP"
+
+.PP
+Extent\&. Returns a copy of the default extent value\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the default extent value\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename Iterator , class > Iterator \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::find (const Index &idx)\fC [inline]\fP"
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename Iterator , class > Iterator \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::find (const Index &idx) const\fC [inline]\fP"
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > Element & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::front (const unsigned long long intielem = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Access to the i-th element from the beginning\&. Returns a reference to the i-th first element in the underlying container without doing any range check\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIielem\fP Index of the element in the underlying container\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > const Element & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::front (const unsigned long long intielem = \fC0\fP) const\fC [inline]\fP"
+
+.PP
+Immutable access to the i-th element from the beginning\&. Returns a reference to the i-th first element in the underlying container without doing any range check\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIielem\fP Index of the element in the underlying container\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::fullclear ()\fC [inline]\fP"
+
+.PP
+Full clear the content\&. Erase the hyperoctree\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename Iterator , class > unsigned long long int \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::index (const Iterator &it) const\fC [inline]\fP"
+
+.PP
+Index of an iterator in the underlying container\&. Returns the index of the element pointed by an iterator\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIterator\fP (Iterator type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIit\fP Iterator to an element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Index of the element in the underlying container\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::out_of_range\fP Out of range\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename Iterator , class > bool \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::leaf (const Iterator &it)\fC [inline]\fP"
+
+.PP
+Leaf level\&. Checks whether the given element corresponds to a leaf level\&. If the element does not have any child, it is considered at the leaf level\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIterator\fP (Iterator type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIit\fP Iterator to an element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the element is not refined, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename Iterator , typename\&.\&.\&. Types, class > Iterator \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::locate (Types &&\&.\&.\&.iposs)\fC [inline]\fP"
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename Iterator , typename\&.\&.\&. Types, class > Iterator \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::locate (Types &&\&.\&.\&.iposs) const\fC [inline]\fP"
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename\&.\&.\&. Types, class , class > Data \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::ngp (Types &&\&.\&.\&.iposs) const\fC [inline]\fP"
+
+.PP
+Nearest grid point interpolation\&. Computes the value of the data at the provided position using a nearest grid point interpolation scheme\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Scalar position types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiposs\fP Real positions along each dimension\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Value of the data at the provided position\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::nullify ()\fC [inline]\fP"
+
+.PP
+Nullify\&. Resets all data to their default values but keeping the same tree structure\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > bool \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::operator!= (const \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > &rhs) const\fC [inline]\fP"
+
+.PP
+Not equal to\&. Compares the hyperoctrees for difference\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if not equal, false if equal\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > Container & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::operator() ()\fC [inline]\fP"
+
+.PP
+Container access operator\&. Provides a direct access to the underlying container\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the container\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > const Container & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::operator() () const\fC [inline]\fP"
+
+.PP
+Immutable container access operator\&. Provides a direct access to the underlying container\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the container\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > Element & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::operator() (const Index &idx)\fC [inline]\fP"
+
+.PP
+Element access operator from hyperoctree index\&. Provides a direct access to the element corresponding to the specified index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIidx\fP Index value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > const Element & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::operator() (const Index &idx) const\fC [inline]\fP"
+
+.PP
+Immutable element access operator from hyperoctree index\&. Provides a direct access to the element corresponding to the specified index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIidx\fP Index value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename\&.\&.\&. Types, class , class > Element & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::operator() (Types &&\&.\&.\&.iposs)\fC [inline]\fP"
+
+.PP
+Element access operator from position\&. Provides a direct access to the element corresponding to the specified position\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Scalar position types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiposs\fP Real positions along each dimension\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename\&.\&.\&. Types, class , class > const Element & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::operator() (Types &&\&.\&.\&.iposs) const\fC [inline]\fP"
+
+.PP
+Immutable element access operator from position\&. Provides a direct access to the element corresponding to the specified position\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Scalar position types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiposs\fP Real positions along each dimension\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > bool \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::operator== (const \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > &rhs) const\fC [inline]\fP"
+
+.PP
+Equal to\&. Compares the hyperoctrees for equality\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if equal, false if not equal\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > Element & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::operator[] (const unsigned long long intielem)\fC [inline]\fP"
+
+.PP
+Element access operator\&. Provides a direct access to the specified element\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIielem\fP Index of the element in the underlying container\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > const Element & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::operator[] (const unsigned long long intielem) const\fC [inline]\fP"
+
+.PP
+Immutable element access operator\&. Provides a direct access to the specified element\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIielem\fP Index of the element in the underlying container\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::phi (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the phi data\&. Provides an access to the phi data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::phi (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the phi data\&. Provides an access to the phi data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::pop ()\fC [inline]\fP"
+
+.PP
+Pop back\&. Removes the last element of the hyperoctree\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > constexpr Position \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::position ()\fC [static]\fP"
+
+.PP
+Position\&. Returns a copy of the default position value\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the default position value\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename Iterator , class > Iterator \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::rbegin ()\fC [inline]\fP"
+
+.PP
+Reverse iterator to the beginning\&. Returns a reversed pointer to the position after the last element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIterator\fP (Iterator type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the end\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename Iterator , class > Iterator \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::rbegin () const\fC [inline]\fP"
+
+.PP
+Immutable reverse iterator to the beginning\&. Returns a reversed pointer to the position after the last element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIterator\fP (Iterator type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the end\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename Iterator , class > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::refine (const Iterator &it)\fC [inline]\fP"
+
+.PP
+Refine an element\&. Refines a given element by inserting the related children at the end of the container\&. To become valid and accessible, the container should be updated\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIterator\fP (Iterator type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIit\fP Iterator to an element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename Iterator , class > Iterator \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::rend ()\fC [inline]\fP"
+
+.PP
+Reverse iterator to the end\&. Returns a reversed pointer to the first element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIterator\fP (Iterator type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the beginning\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename Iterator , class > Iterator \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::rend () const\fC [inline]\fP"
+
+.PP
+Immutable reverse iterator to the end\&. Returns a reversed pointer to the first element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIterator\fP (Iterator type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the beginning\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::reserve (const unsigned long long intnelem)\fC [inline]\fP"
+
+.PP
+Increase reserved storage\&. Increases the capacity of the underlying storage\&. Existing elements are protected so it could not invalidate the actual contents\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInelem\fP New reserved number of elements\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<class\&.\&.\&. Misc> \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::resize (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Resize\&. Resizes the hyperoctree to contain a new number of elements\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::rho (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the rho data\&. Provides an access to the rho data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::rho (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Access to the rho data\&. Provides an access to the rho data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename Iterator , class > bool \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::root (const Iterator &it)\fC [inline]\fP"
+
+.PP
+Root level\&. Checks whether the given element corresponds to the root level\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIterator\fP (Iterator type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIit\fP Iterator to an element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the element is at the root level, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::shrink ()\fC [inline]\fP"
+
+.PP
+Shrink reserved storage\&. Reduces memory usage by freeing unused memory\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > unsigned long long int \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::size () const\fC [inline]\fP"
+
+.PP
+Number of elements\&. Returns the distance between the first and the last element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The number of elements in the hyperoctree\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > unsigned long long int \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::space () const\fC [inline]\fP"
+
+.PP
+Available space\&. Returns the maximum possible number of elements\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Maximum number of elements\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename\&.\&.\&. Types, class , class > Data \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::tsc (Types &&\&.\&.\&.iposs) const\fC [inline]\fP"
+
+.PP
+Triangular Shaped Cloud interpolation\&. Computes the value of the data at the provided position using a triangular shaped cloud interpolation scheme\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Scalar position types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiposs\fP Real positions along each dimension\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Value of the data at the provided position\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > template<typename\&.\&.\&. Types, class , class > Data \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::tsc (std::vector< Element > &elemsTsc, Types &&\&.\&.\&.iposs) const\fC [inline]\fP"
+
+.PP
+Triangular Shaped Cloud interpolation\&. Computes the value of the data at the provided position using a triangular shaped cloud interpolation scheme\&. Also use previsouly computed neighbouring cells 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Scalar position types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIelemsTsc\fP Neighbouring cells previsouly computed 
+.br
+\fIiposs\fP Real positions along each dimension\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Value of the data at the provided position\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > constexpr Type \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::type ()\fC [static]\fP"
+
+.PP
+Type\&. Returns a copy of the default type value\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the default type value\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > \fBSimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container > & \fBmagrathea::SimpleHyperOctree\fP< Type, Index, Data, Dimension, Position, Extent, Element, Container >::update ()\fC [inline]\fP"
+
+.PP
+Update refinement\&. Updates the octree refinement by removing coarsened cells , by sorting refined ones and by removing cells with the same index\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "template<typename Type = double, class Index = SimpleHyperOctreeIndex<unsigned long long int, 3>, class Data = double, unsigned int Dimension = Index::dimension(), class Position = std::ratio<0>, class Extent = std::ratio<1>, class Element = std::pair<Index, Data>, class Container = std::vector<Element>> template<typename SelfType , class SelfIndex , class SelfData , unsigned int SelfDimension, class SelfPosition , class SelfExtent , class SelfElement , class SelfContainer > std::ostream& operator<< (std::ostream &lhs, const \fBSimpleHyperOctree\fP< SelfType, SelfIndex, SelfData, SelfDimension, SelfPosition, SelfExtent, SelfElement, SelfContainer > &rhs)\fC [friend]\fP"
+
+.PP
+\fBOutput\fP stream operator\&. Displays the whole structure of the octree\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISelfType\fP (Scalar position type\&.) 
+.br
+\fISelfIndex\fP (Index type\&.) 
+.br
+\fISelfData\fP (Data type\&.) 
+.br
+\fISelfDimension\fP (Number of dimensions\&.) 
+.br
+\fISelfPosition\fP (Position of the hyperoctree center\&.) 
+.br
+\fISelfExtent\fP (Extent of the hyperoctree\&.) 
+.br
+\fISelfElement\fP (Underlying element type\&.) 
+.br
+\fISelfContainer\fP (Underlying container type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side stream\&. 
+.br
+\fIrhs\fP Right-hand side object\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBOutput\fP stream\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

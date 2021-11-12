@@ -1,0 +1,1367 @@
+.TH "magrathea" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "exception \fBAboutInstitute\fP"
+.br
+.RI "\fIInformation about an institution or an organization\&. \fP"
+.ti -1c
+.RI "exception \fBAboutLicense\fP"
+.br
+.RI "\fIInformation about the license of a code\&. \fP"
+.ti -1c
+.RI "exception \fBAboutObject\fP"
+.br
+.RI "\fIBasic about object with information on something\&. \fP"
+.ti -1c
+.RI "exception \fBAboutPeople\fP"
+.br
+.RI "\fIInformation about a developer, an author, or a contributor\&. \fP"
+.ti -1c
+.RI "class \fBAbstractAboutObject\fP"
+.br
+.RI "\fITuple abstraction of generic about object\&. \fP"
+.ti -1c
+.RI "class \fBAbstractContents\fP"
+.br
+.RI "\fITuple abstraction of numerical simulation contents\&. \fP"
+.ti -1c
+.RI "class \fBAbstractHyperCube\fP"
+.br
+.RI "\fIAbstract function provider for n-dimensional cubes\&. \fP"
+.ti -1c
+.RI "class \fBAbstractHyperSphere\fP"
+.br
+.RI "\fIAbstract function provider for n-dimensional spheres\&. \fP"
+.ti -1c
+.RI "class \fBAbstractNArray\fP"
+.br
+.RI "\fIAbstract base class of n-dimensional mathematical arrays\&. \fP"
+.ti -1c
+.RI "class \fBAbstractShape\fP"
+.br
+.RI "\fICommon abstraction of n-dimensional shapes\&. \fP"
+.ti -1c
+.RI "class \fBAbstractStep\fP"
+.br
+.RI "\fIAbstraction of an evolution step\&. \fP"
+.ti -1c
+.RI "class \fBAbstractSubstance\fP"
+.br
+.RI "\fITuple abstraction of geometrical substance\&. \fP"
+.ti -1c
+.RI "exception \fBConstant\fP"
+.br
+.RI "\fINumerical constant with constexpr constructor\&. \fP"
+.ti -1c
+.RI "exception \fBConstants\fP"
+.br
+.RI "\fICommon mathematical and physical constants\&. \fP"
+.ti -1c
+.RI "exception \fBContents\fP"
+.br
+.RI "\fIBasic implementation of numerical simulation contents\&. \fP"
+.ti -1c
+.RI "exception \fBDataHandler\fP"
+.br
+.RI "\fISet of basic operations on binary data related to IO\&. \fP"
+.ti -1c
+.RI "exception \fBDataModel\fP"
+.br
+.RI "\fIManagement of fundamental types representation\&. \fP"
+.ti -1c
+.RI "exception \fBDataSize\fP"
+.br
+.RI "\fI\fBWrapper\fP of binary data size and manager of unit conversion\&. \fP"
+.ti -1c
+.RI "exception \fBEulerianCategory\fP"
+.br
+.RI "\fICategory concept of eulerian : data at a fixed position\&. \fP"
+.ti -1c
+.RI "exception \fBEvolution\fP"
+.br
+.RI "\fIResizable container of steps dedicated to integration\&. \fP"
+.ti -1c
+.RI "exception \fBFileList\fP"
+.br
+.RI "\fIList of files based on a function or a vector\&. \fP"
+.ti -1c
+.RI "exception \fBFileSystem\fP"
+.br
+.RI "\fIGlobal file management\&. \fP"
+.ti -1c
+.RI "exception \fBGridCategory\fP"
+.br
+.RI "\fICategory concept of grid : data related to the mesh\&. \fP"
+.ti -1c
+.RI "exception \fBHyperCube\fP"
+.br
+.RI "\fIN-dimensional cube\&. \fP"
+.ti -1c
+.RI "exception \fBHyperSphere\fP"
+.br
+.RI "\fIN-dimensional sphere\&. \fP"
+.ti -1c
+.RI "exception \fBLagrangianCategory\fP"
+.br
+.RI "\fICategory concept of lagrangian : data moving with the flow\&. \fP"
+.ti -1c
+.RI "exception \fBNArray\fP"
+.br
+.RI "\fIBasic n-dimensional mathematical array\&. \fP"
+.ti -1c
+.RI "exception \fBShape\fP"
+.br
+.RI "\fIBasic implementation of shape\&. \fP"
+.ti -1c
+.RI "exception \fBSimpleHyperOctree\fP"
+.br
+.RI "\fIA simple hyperoctree based on bit manipulations\&. \fP"
+.ti -1c
+.RI "exception \fBSimpleHyperOctreeIndex\fP"
+.br
+.RI "\fIA simple hyperoctree index based on an integer\&. \fP"
+.ti -1c
+.RI "exception \fBStaticVector\fP"
+.br
+.RI "\fIBasic vectorized constant size container\&. \fP"
+.ti -1c
+.RI "class \fBStaticVectorizer\fP"
+.br
+.RI "\fIHelper class for generic constant size vectorization\&. \fP"
+.ti -1c
+.RI "exception \fBStep\fP"
+.br
+.RI "\fIBasic implementation of an evolution step\&. \fP"
+.ti -1c
+.RI "exception \fBSubstance\fP"
+.br
+.RI "\fIBasic implementation of geometrical substance\&. \fP"
+.ti -1c
+.RI "exception \fBTimer\fP"
+.br
+.RI "\fIA timer to manage time measurements and benchmarks\&. \fP"
+.ti -1c
+.RI "exception \fBVectorized\fP"
+.br
+.RI "\fIBasic vectorized container\&. \fP"
+.ti -1c
+.RI "class \fBVectorizer\fP"
+.br
+.RI "\fIHelper base class for generic vectorization\&. \fP"
+.ti -1c
+.RI "exception \fBWrapper\fP"
+.br
+.RI "\fIBasic value wrapper with getter and setter\&. \fP"
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<class SelfCrtp , class\&.\&.\&. SelfTypes> std::ostream & \fBoperator<<\fP (std::ostream &lhs, const \fBAbstractAboutObject\fP< SelfCrtp, SelfTypes\&.\&.\&.> &rhs)"
+.br
+.RI "\fI\fBOutput\fP stream operator\&. \fP"
+.ti -1c
+.RI "template<class SelfCrtp , class SelfCategory , class\&.\&.\&. SelfTypes> std::ostream & \fBoperator<<\fP (std::ostream &lhs, const \fBAbstractContents\fP< SelfCrtp, SelfCategory, SelfTypes\&.\&.\&.> &rhs)"
+.br
+.RI "\fI\fBOutput\fP stream operator\&. \fP"
+.ti -1c
+.RI "template<class SelfCrtp , class SelfScalar , class SelfArray , class SelfTuple > std::ostream & \fBoperator<<\fP (std::ostream &lhs, const \fBAbstractStep\fP< SelfCrtp, SelfScalar, SelfArray, SelfTuple > &rhs)"
+.br
+.RI "\fI\fBOutput\fP stream operator\&. \fP"
+.ti -1c
+.RI "template<class SelfCrtp , class\&.\&.\&. SelfTypes> std::ostream & \fBoperator<<\fP (std::ostream &lhs, const \fBAbstractSubstance\fP< SelfCrtp, SelfTypes\&.\&.\&.> &rhs)"
+.br
+.RI "\fI\fBOutput\fP stream operator\&. \fP"
+.ti -1c
+.RI "template<typename SelfType , unsigned int SelfSize> std::ostream & \fBoperator<<\fP (std::ostream &lhs, const \fBConstant\fP< SelfType, SelfSize > &rhs)"
+.br
+.RI "\fI\fBOutput\fP stream operator\&. \fP"
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &lhs, const \fBDataModel\fP &rhs)"
+.br
+.RI "\fI\fBOutput\fP stream operator\&. \fP"
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &lhs, const \fBDataSize\fP &rhs)"
+.br
+.RI "\fI\fBOutput\fP stream operator\&. \fP"
+.ti -1c
+.RI "template<class SelfType , class SelfContainer > std::ostream & \fBoperator<<\fP (std::ostream &lhs, const \fBEvolution\fP< SelfType, SelfContainer > &rhs)"
+.br
+.RI "\fI\fBOutput\fP stream operator\&. \fP"
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &lhs, const \fBFileList\fP &rhs)"
+.br
+.RI "\fI\fBOutput\fP stream operator\&. \fP"
+.ti -1c
+.RI "template<typename SelfType , unsigned int SelfDimension, unsigned int SelfBits> std::ostream & \fBoperator<<\fP (std::ostream &lhs, const \fBSimpleHyperOctreeIndex\fP< SelfType, SelfDimension, SelfBits > &rhs)"
+.br
+.RI "\fI\fBOutput\fP stream operator\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< typename 
+.br
+std::common_type< SelfType, 
+.br
+OtherType >::type, 
+.br
+SelfParameters\&.\&.\&.> \fBoperator+\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIAddition with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< typename 
+.br
+std::common_type< SelfType, 
+.br
+OtherType >::type, 
+.br
+SelfParameters\&.\&.\&.> \fBoperator-\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fISubstraction with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< typename 
+.br
+std::common_type< SelfType, 
+.br
+OtherType >::type, 
+.br
+SelfParameters\&.\&.\&.> \fBoperator*\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIMultiplication with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< typename 
+.br
+std::common_type< SelfType, 
+.br
+OtherType >::type, 
+.br
+SelfParameters\&.\&.\&.> \fBoperator/\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIDivision with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< typename 
+.br
+std::common_type< SelfType, 
+.br
+OtherType >::type, 
+.br
+SelfParameters\&.\&.\&.> \fBoperator%\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIModulo with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< typename 
+.br
+std::common_type< SelfType, 
+.br
+OtherType >::type, 
+.br
+SelfParameters\&.\&.\&.> \fBoperator&\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIBitwise AND with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< typename 
+.br
+std::common_type< SelfType, 
+.br
+OtherType >::type, 
+.br
+SelfParameters\&.\&.\&.> \fBoperator|\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIBitwise OR with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< typename 
+.br
+std::common_type< SelfType, 
+.br
+OtherType >::type, 
+.br
+SelfParameters\&.\&.\&.> \fBoperator^\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIBitwise XOR with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< OtherType, 
+.br
+SelfParameters\&.\&.\&.> \fBoperator<<\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIBitwise left shift with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< OtherType, 
+.br
+SelfParameters\&.\&.\&.> \fBoperator>>\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIBitwise right shift with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< bool, SelfParameters\&.\&.\&.> \fBoperator&&\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fILogical AND with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< bool, SelfParameters\&.\&.\&.> \fBoperator||\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fILogical OR with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< bool, SelfParameters\&.\&.\&.> \fBoperator==\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIEqual to with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< bool, SelfParameters\&.\&.\&.> \fBoperator!=\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fINot equal to with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< bool, SelfParameters\&.\&.\&.> \fBoperator>\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIGreater than with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< bool, SelfParameters\&.\&.\&.> \fBoperator<\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fILess than with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< bool, SelfParameters\&.\&.\&.> \fBoperator>=\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIGreater than or equal to with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp< bool, SelfParameters\&.\&.\&.> \fBoperator<=\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fILess than or equal to with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters> std::ostream & \fBoperator<<\fP (std::ostream &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fI\fBOutput\fP stream operator\&. \fP"
+.ti -1c
+.RI "template<typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters> std::istream & \fBoperator>>\fP (std::istream &lhs, \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fI\fBInput\fP stream operator\&. \fP"
+.ti -1c
+.RI "template<typename SelfType , class SelfPeriod , class SelfClock > std::ostream & \fBoperator<<\fP (std::ostream &lhs, const \fBTimer\fP< SelfType, SelfPeriod, SelfClock > &rhs)"
+.br
+.RI "\fI\fBOutput\fP stream operator\&. \fP"
+.ti -1c
+.RI "template<typename SelfType , unsigned int SelfSize> std::ostream & \fBoperator<<\fP (std::ostream &lhs, const \fBVectorized\fP< SelfType, SelfSize > &rhs)"
+.br
+.RI "\fI\fBOutput\fP stream operator\&. \fP"
+.in -1c
+.PP
+.RI "\fBLocate immutable element from position\&.\fP"
+.br
+Locates the most refined cell at the provided position and returns an immutable iterator to it\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIterator\fP (Iterator type\&.) 
+.br
+\fITypes\fP (Scalar position types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiposs\fP Real positions along each dimension\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable iterator to the element found at the specified position\&. 
+.RE
+.PP
+
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename SelfType , class SelfIndex , class SelfData , unsigned int SelfDimension, class SelfPosition , class SelfExtent , class SelfElement , class SelfContainer > std::ostream & \fBoperator<<\fP (std::ostream &lhs, const \fBSimpleHyperOctree\fP< SelfType, SelfIndex, SelfData, SelfDimension, SelfPosition, SelfExtent, SelfElement, SelfContainer > &rhs)"
+.br
+.RI "\fI\fBOutput\fP stream operator\&. \fP"
+.in -1c
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp<bool, SelfParameters\&.\&.\&.> magrathea::operator!= (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [inline]\fP"
+
+.PP
+Not equal to with lhs value\&. Applies the not equal to operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp<typename std::common_type<SelfType, OtherType>::type, SelfParameters\&.\&.\&.> magrathea::operator% (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [inline]\fP"
+
+.PP
+Modulo with lhs value\&. Applies the modulo operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp<typename std::common_type<SelfType, OtherType>::type, SelfParameters\&.\&.\&.> magrathea::operator& (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [inline]\fP"
+
+.PP
+Bitwise AND with lhs value\&. Applies the bitwise AND operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp<bool, SelfParameters\&.\&.\&.> magrathea::operator&& (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [inline]\fP"
+
+.PP
+Logical AND with lhs value\&. Applies the logical AND operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp<typename std::common_type<SelfType, OtherType>::type, SelfParameters\&.\&.\&.> magrathea::operator* (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [inline]\fP"
+
+.PP
+Multiplication with lhs value\&. Applies the multiplication operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp<typename std::common_type<SelfType, OtherType>::type, SelfParameters\&.\&.\&.> magrathea::operator+ (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [inline]\fP"
+
+.PP
+Addition with lhs value\&. Applies the addition operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp<typename std::common_type<SelfType, OtherType>::type, SelfParameters\&.\&.\&.> magrathea::operator- (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [inline]\fP"
+
+.PP
+Substraction with lhs value\&. Applies the substraction operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp<typename std::common_type<SelfType, OtherType>::type, SelfParameters\&.\&.\&.> magrathea::operator/ (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [inline]\fP"
+
+.PP
+Division with lhs value\&. Applies the division operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp<bool, SelfParameters\&.\&.\&.> magrathea::operator< (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [inline]\fP"
+
+.PP
+Less than with lhs value\&. Applies the less than operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename SelfType , unsigned int SelfSize> std::ostream& magrathea::operator<< (std::ostream &lhs, const Vectorized< SelfType, SelfSize > &rhs)"
+
+.PP
+\fBOutput\fP stream operator\&. Adds each element to the stream using the fill character to separate the elements\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISelfType\fP Data type\&. 
+.br
+\fISelfSize\fP Number of elements\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side stream\&. 
+.br
+\fIrhs\fP Right-hand side container\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBOutput\fP stream\&. 
+.RE
+.PP
+
+.SS "template<typename SelfType , class SelfPeriod , class SelfClock > std::ostream& magrathea::operator<< (std::ostream &lhs, const Timer< SelfType, SelfPeriod, SelfClock > &rhs)"
+
+.PP
+\fBOutput\fP stream operator\&. Prints out the total duration\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISelfType\fP (Duration representation type\&.) 
+.br
+\fISelfPeriod\fP (Standard ratio representing the tick period\&.) 
+.br
+\fISelfClock\fP (Internal clock type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side stream\&. 
+.br
+\fIrhs\fP Right-hand side timer\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBOutput\fP stream\&. 
+.RE
+.PP
+
+.SS "std::ostream& magrathea::operator<< (std::ostream &lhs, const DataModel &rhs)"
+
+.PP
+\fBOutput\fP stream operator\&. Prints out the data model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side stream\&. 
+.br
+\fIrhs\fP Right-hand side data model\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBOutput\fP stream\&. 
+.RE
+.PP
+
+.SS "template<class SelfCrtp , class\&.\&.\&. SelfTypes> std::ostream& magrathea::operator<< (std::ostream &lhs, const AbstractSubstance< SelfCrtp, SelfTypes\&.\&.\&.> &rhs)"
+
+.PP
+\fBOutput\fP stream operator\&. Adds each element to the stream\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfTypes\fP (Variadic list of components types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side stream\&. 
+.br
+\fIrhs\fP Right-hand side object\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBOutput\fP stream\&. 
+.RE
+.PP
+
+.SS "template<class SelfCrtp , class\&.\&.\&. SelfTypes> std::ostream& magrathea::operator<< (std::ostream &lhs, const AbstractAboutObject< SelfCrtp, SelfTypes\&.\&.\&.> &rhs)"
+
+.PP
+\fBOutput\fP stream operator\&. Adds each element to the stream\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfTypes\fP (Variadic list of components types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side stream\&. 
+.br
+\fIrhs\fP Right-hand side object\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBOutput\fP stream\&. 
+.RE
+.PP
+
+.SS "template<class SelfCrtp , class SelfCategory , class\&.\&.\&. SelfTypes> std::ostream& magrathea::operator<< (std::ostream &lhs, const AbstractContents< SelfCrtp, SelfCategory, SelfTypes\&.\&.\&.> &rhs)"
+
+.PP
+\fBOutput\fP stream operator\&. Adds each element to the stream\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfCategory\fP (\fBContents\fP category (Lagrangian, Eulerian, Grid\&.\&.\&.)\&.) 
+.br
+\fISelfTypes\fP (Variadic list of components types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side stream\&. 
+.br
+\fIrhs\fP Right-hand side object\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBOutput\fP stream\&. 
+.RE
+.PP
+
+.SS "std::ostream& magrathea::operator<< (std::ostream &lhs, const DataSize &rhs)"
+
+.PP
+\fBOutput\fP stream operator\&. Prints out the data size in the most convenient binary unit\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side stream\&. 
+.br
+\fIrhs\fP Right-hand side data size\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBOutput\fP stream\&. 
+.RE
+.PP
+
+.SS "template<class SelfType , class SelfContainer > std::ostream& magrathea::operator<< (std::ostream &lhs, const Evolution< SelfType, SelfContainer > &rhs)"
+
+.PP
+\fBOutput\fP stream operator\&. Adds each element to the stream using the \fCfill()\fP character as a separator\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISelfType\fP (\fBStep\fP type\&.) 
+.br
+\fISelfContainer\fP (Container type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side stream\&. 
+.br
+\fIrhs\fP Right-hand side object\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBOutput\fP stream\&. 
+.RE
+.PP
+
+.SS "template<typename SelfType , unsigned int SelfDimension, unsigned int SelfBits> std::ostream& magrathea::operator<< (std::ostream &lhs, const SimpleHyperOctreeIndex< SelfType, SelfDimension, SelfBits > &rhs)"
+
+.PP
+\fBOutput\fP stream operator\&. Displays the bits of the index\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISelfType\fP (Unsigned integer type\&.) 
+.br
+\fISelfDimension\fP (Number of dimensions\&.) 
+.br
+\fISelfBits\fP (Size of the type in bits\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side stream\&. 
+.br
+\fIrhs\fP Right-hand side object\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBOutput\fP stream\&. 
+.RE
+.PP
+
+.SS "template<typename SelfType , unsigned int SelfSize> std::ostream& magrathea::operator<< (std::ostream &lhs, const Constant< SelfType, SelfSize > &rhs)"
+
+.PP
+\fBOutput\fP stream operator\&. Adds each element to the stream using the \fCfill()\fP character as a separator\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISelfType\fP (Numerical type of the constant\&.) 
+.br
+\fISelfSize\fP (Size of the set of constants\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side stream\&. 
+.br
+\fIrhs\fP Right-hand side constant\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBOutput\fP stream\&. 
+.RE
+.PP
+
+.SS "std::ostream& magrathea::operator<< (std::ostream &lhs, const FileList &rhs)"
+
+.PP
+\fBOutput\fP stream operator\&. Adds each file name to the stream using the filling character as a separator\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side stream\&. 
+.br
+\fIrhs\fP Right-hand side file list\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBOutput\fP stream\&. 
+.RE
+.PP
+
+.SS "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp<OtherType, SelfParameters\&.\&.\&.> magrathea::operator<< (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [inline]\fP"
+
+.PP
+Bitwise left shift with lhs value\&. Applies the bitwise left shift operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename SelfType , class SelfIndex , class SelfData , unsigned int SelfDimension, class SelfPosition , class SelfExtent , class SelfElement , class SelfContainer > std::ostream& magrathea::operator<< (std::ostream &lhs, const SimpleHyperOctree< SelfType, SelfIndex, SelfData, SelfDimension, SelfPosition, SelfExtent, SelfElement, SelfContainer > &rhs)"
+
+.PP
+\fBOutput\fP stream operator\&. Displays the whole structure of the octree\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISelfType\fP (Scalar position type\&.) 
+.br
+\fISelfIndex\fP (Index type\&.) 
+.br
+\fISelfData\fP (Data type\&.) 
+.br
+\fISelfDimension\fP (Number of dimensions\&.) 
+.br
+\fISelfPosition\fP (Position of the hyperoctree center\&.) 
+.br
+\fISelfExtent\fP (Extent of the hyperoctree\&.) 
+.br
+\fISelfElement\fP (Underlying element type\&.) 
+.br
+\fISelfContainer\fP (Underlying container type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side stream\&. 
+.br
+\fIrhs\fP Right-hand side object\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBOutput\fP stream\&. 
+.RE
+.PP
+
+.SS "template<class SelfCrtp , class SelfScalar , class SelfArray , class SelfTuple > std::ostream& magrathea::operator<< (std::ostream &lhs, const AbstractStep< SelfCrtp, SelfScalar, SelfArray, SelfTuple > &rhs)"
+
+.PP
+\fBOutput\fP stream operator\&. Adds each element to the stream\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfScalar\fP (Scalar type of id\&.) 
+.br
+\fISelfArray\fP (Array type of core quantities\&.) 
+.br
+\fISelfTuple\fP (Tuple type of extra quantities\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side stream\&. 
+.br
+\fIrhs\fP Right-hand side object\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBOutput\fP stream\&. 
+.RE
+.PP
+
+.SS "template<typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters> std::ostream& magrathea::operator<< (std::ostream &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+
+.PP
+\fBOutput\fP stream operator\&. Adds each element to the stream using the \fCfill()\fP character as a separator\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side stream\&. 
+.br
+\fIrhs\fP Right-hand side container\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBOutput\fP stream\&. 
+.RE
+.PP
+
+.SS "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp<bool, SelfParameters\&.\&.\&.> magrathea::operator<= (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [inline]\fP"
+
+.PP
+Less than or equal to with lhs value\&. Applies the less than or equal to operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp<bool, SelfParameters\&.\&.\&.> magrathea::operator== (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [inline]\fP"
+
+.PP
+Equal to with lhs value\&. Applies the equal to operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp<bool, SelfParameters\&.\&.\&.> magrathea::operator> (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [inline]\fP"
+
+.PP
+Greater than with lhs value\&. Applies the greater than operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp<bool, SelfParameters\&.\&.\&.> magrathea::operator>= (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [inline]\fP"
+
+.PP
+Greater than or equal to with lhs value\&. Applies the greater than or equal to operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp<OtherType, SelfParameters\&.\&.\&.> magrathea::operator>> (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [inline]\fP"
+
+.PP
+Bitwise right shift with lhs value\&. Applies the bitwise right shift operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters> std::istream& magrathea::operator>> (std::istream &lhs, StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+
+.PP
+\fBInput\fP stream operator\&. Fills each element from the stream\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side stream\&. 
+.br
+\fIrhs\fP Right-hand side container\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBInput\fP stream\&. 
+.RE
+.PP
+
+.SS "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp<typename std::common_type<SelfType, OtherType>::type, SelfParameters\&.\&.\&.> magrathea::operator^ (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [inline]\fP"
+
+.PP
+Bitwise XOR with lhs value\&. Applies the bitwise XOR operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp<typename std::common_type<SelfType, OtherType>::type, SelfParameters\&.\&.\&.> magrathea::operator| (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [inline]\fP"
+
+.PP
+Bitwise OR with lhs value\&. Applies the bitwise OR operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, SelfType>::value)>::type> SelfCrtp<bool, SelfParameters\&.\&.\&.> magrathea::operator|| (const OtherType &lhs, const StaticVectorizer< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [inline]\fP"
+
+.PP
+Logical OR with lhs value\&. Applies the logical OR operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

@@ -1,0 +1,380 @@
+.TH "magrathea::AbstractShape" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::AbstractShape \- 
+.PP
+Common abstraction of n-dimensional shapes\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <abstractshape\&.h>\fP
+.PP
+Inherited by \fBmagrathea::AbstractHyperCube< HyperCube< Dimension, Vector, Scalar >, Dimension, Vector, Scalar >\fP, \fBmagrathea::AbstractHyperSphere< HyperSphere< Dimension, Vector, Scalar >, Dimension, Vector, Scalar >\fP, \fBCone< Vector, Scalar >\fP, \fBmagrathea::AbstractHyperCube< Crtp, Dimension, Vector, Scalar >\fP, \fBmagrathea::AbstractHyperSphere< Crtp, Dimension, Vector, Scalar >\fP, and \fBmagrathea::Shape\fP\&.
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBMathematical functions\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<int Exponent, typename Type > static constexpr Type \fBpow\fP (const Type &value)"
+.br
+.RI "\fIIntegral exponentiation\&. \fP"
+.ti -1c
+.RI "template<int Root, typename Type > static constexpr Type \fBrt\fP (const Type &value)"
+.br
+.RI "\fIFloating-point root\&. \fP"
+.ti -1c
+.RI "template<int Value, typename Type  = long long int> static constexpr Type \fBfactorial\fP ()"
+.br
+.RI "\fIFactorial\&. \fP"
+.ti -1c
+.RI "template<int Value, bool Odd, typename Type  = long long int> static constexpr Type \fBfactorial\fP ()"
+.br
+.ti -1c
+.RI "template<int Set, int Subset, typename Type  = long long int> static constexpr Type \fBbinomial\fP ()"
+.br
+.RI "\fIBinomial\&. \fP"
+.ti -1c
+.RI "template<int Set, int Subset, bool Repetition, typename Type  = long long int> static constexpr Type \fBcombinations\fP ()"
+.br
+.RI "\fICombinations\&. \fP"
+.ti -1c
+.RI "template<int Set, int Subset, bool Repetition, typename Type  = long long int> static constexpr Type \fBvariations\fP ()"
+.br
+.RI "\fIVariations\&. \fP"
+.ti -1c
+.RI "template<long long int Value, long long int Even = 1, long long int Odd = -1, typename Type  = long long int> static constexpr Type \fBalt\fP ()"
+.br
+.RI "\fIAlternating sequence\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBConstants\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<int Exponent = 1, typename Type  = double> static constexpr Type \fBgolden\fP ()"
+.br
+.RI "\fIGolden ratio\&. \fP"
+.ti -1c
+.RI "template<int Exponent = 1, typename Type  = double> static constexpr Type \fBpi\fP ()"
+.br
+.RI "\fIPi\&. \fP"
+.ti -1c
+.RI "template<int Exponent = 1, typename Type  = double> static constexpr Type \fBsqrtpi\fP ()"
+.br
+.RI "\fISquare root of pi\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SS "Protected Member Functions"
+
+.PP
+.RI "\fBProtected lifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fB~AbstractShape\fP ()"
+.br
+.RI "\fIProtected destructor\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBLifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class\&.\&.\&. Dummy> \fBAbstractShape\fP (const Dummy &\&.\&.\&.dummy)"
+.br
+.RI "\fIExplicit generic constructor\&. \fP"
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+Common abstraction of n-dimensional shapes\&. 
+
+Provides compile-time helper functions to deal with n-dimensional geometrical objects like hypercubes or hyperspheres\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "magrathea::AbstractShape::~AbstractShape ()\fC [inline]\fP, \fC [protected]\fP, \fC [default]\fP"
+
+.PP
+Protected destructor\&. Avoids direct instantiation of the class, and only allows it through its derived children\&. 
+.SS "template<class\&.\&.\&. Dummy> magrathea::AbstractShape::AbstractShape (const Dummy &\&.\&.\&.dummy)\fC [inline]\fP, \fC [explicit]\fP, \fC [protected]\fP"
+
+.PP
+Explicit generic constructor\&. Provides a constructor with dummy parameters for hackery purposes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDummy\fP (Dummy types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdummy\fP Dummy arguments\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<long long int Value, long long int Even, long long int Odd, typename Type > constexpr Type magrathea::AbstractShape::alt ()\fC [static]\fP"
+
+.PP
+Alternating sequence\&. Computes the specified value of an alternating sequence\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValue\fP Value of the argument $n$\&. 
+.br
+\fIEven\fP Value if even $n_{0}$\&. 
+.br
+\fIOdd\fP Value if odd $n_{1}$\&. 
+.br
+\fIType\fP (Result type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+$n_{0}$ if odd, $n_{1}$ if even\&. 
+.RE
+.PP
+
+.SS "template<int Set, int Subset, typename Type > constexpr Type magrathea::AbstractShape::binomial ()\fC [static]\fP"
+
+.PP
+Binomial\&. Computes the binomial coefficient of the specified integers, including extension to negative numbers\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISet\fP Value of the set $n$\&. 
+.br
+\fISubset\fP Value of the subset $k$\&. 
+.br
+\fIType\fP (Result type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+$\binom{n}{k}$\&. 
+.RE
+.PP
+
+.SS "template<int Set, int Subset, bool Repetition, typename Type > constexpr Type magrathea::AbstractShape::combinations ()\fC [static]\fP"
+
+.PP
+Combinations\&. Computes the number of combinations with or without repetitions for the specified integers\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISet\fP Value of the set $n$\&. 
+.br
+\fISubset\fP Value of the subset $k$\&. 
+.br
+\fIRepetition\fP Repetition specifier\&. 
+.br
+\fIType\fP (Result type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+$C^{k}_{n}$ or ${}^{R}C^{k}_{n}$\&. 
+.RE
+.PP
+
+.SS "int magrathea::AbstractShape::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBAbstractShape\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SS "template<int Value, bool Odd, typename Type > constexpr Type magrathea::AbstractShape::factorial ()\fC [static]\fP"
+
+.PP
+Factorial\&. Computes the factorial of the specified integer\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValue\fP Value of the argument $n$\&. 
+.br
+\fIType\fP (Result type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+$n!$\&.
+.RE
+.PP
+Computes the double factorial of the specified integer: multiplies the number by all inferior numbers that are even or odd depending on the parameter\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValue\fP Value of the argument $n$\&. 
+.br
+\fIOdd\fP Odd double factorial if true, even otherwise\&. 
+.br
+\fIType\fP (Result type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+$n!!$\&. 
+.RE
+.PP
+
+.SS "template<int Value, bool Odd, typename Type  = long long int> static constexpr Type magrathea::AbstractShape::factorial ()\fC [static]\fP"
+
+.SS "template<int Exponent, typename Type > constexpr Type magrathea::AbstractShape::golden ()\fC [static]\fP"
+
+.PP
+Golden ratio\&. Computes the value of $\varphi = \frac{1+\sqrt{5}}{2}$ at the given power\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIExponent\fP Value of the exponent $n$\&. 
+.br
+\fIType\fP (Result type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+$varphi^{n}$\&. 
+.RE
+.PP
+
+.SS "template<int Exponent, typename Type > constexpr Type magrathea::AbstractShape::pi ()\fC [static]\fP"
+
+.PP
+Pi\&. Computes the value of $pi$ at the given power\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIExponent\fP Value of the exponent $n$\&. 
+.br
+\fIType\fP (Result type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+$\pi^{n}$\&. 
+.RE
+.PP
+
+.SS "template<int Exponent, typename Type > constexpr Type magrathea::AbstractShape::pow (const Type &value)\fC [static]\fP"
+
+.PP
+Integral exponentiation\&. Computes the integral exponentiation of the specified value\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIExponent\fP Value of the exponent $n$\&. 
+.br
+\fIType\fP (Result type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Value of the argument $x$\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+$x^{n}$\&. 
+.RE
+.PP
+
+.SS "template<int Degree, typename Type > constexpr Type magrathea::AbstractShape::rt (const Type &value)\fC [static]\fP"
+
+.PP
+Floating-point root\&. Computes the floating-point root of the specified value\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDegree\fP Value of the degree $n$\&. 
+.br
+\fIType\fP (Result type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Value of the argument $x$\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+$\sqrt[n]{x}$\&. 
+.RE
+.PP
+
+.SS "template<int Exponent, typename Type > constexpr Type magrathea::AbstractShape::sqrtpi ()\fC [static]\fP"
+
+.PP
+Square root of pi\&. Computes the value of the square root of $pi$ at the given power\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIExponent\fP Value of the exponent $n$\&. 
+.br
+\fIType\fP (Result type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+$\left(\sqrt{\pi}\right)^{n}$\&. 
+.RE
+.PP
+
+.SS "template<int Set, int Subset, bool Repetition, typename Type > constexpr Type magrathea::AbstractShape::variations ()\fC [static]\fP"
+
+.PP
+Variations\&. Computes the number of variations with or without repetitions for the specified integers\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISet\fP Value of the set $n$\&. 
+.br
+\fISubset\fP Value of the subset $k$\&. 
+.br
+\fIRepetition\fP Repetition specifier\&. 
+.br
+\fIType\fP (Result type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+$V^{k}_{n}$ or ${}^{R}V^{k}_{n}$\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

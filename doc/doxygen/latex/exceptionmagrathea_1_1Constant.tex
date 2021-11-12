@@ -1,0 +1,1907 @@
+\hypertarget{exceptionmagrathea_1_1Constant}{\section{magrathea\-:\-:Constant$<$ Type, Size $>$ Exception Template Reference}
+\label{exceptionmagrathea_1_1Constant}\index{magrathea\-::\-Constant$<$ Type, Size $>$@{magrathea\-::\-Constant$<$ Type, Size $>$}}
+}
+
+
+Numerical constant with constexpr constructor.  
+
+
+
+
+{\ttfamily \#include $<$constant.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Lifecycle}\par
+\begin{DoxyCompactItemize}
+\item 
+constexpr \hyperlink{exceptionmagrathea_1_1Constant_a130d19ea63293f208d3f215e97178d01}{Constant} (const Type source)
+\begin{DoxyCompactList}\small\item\em Implicit constexpr value constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != 1$>$\-::type$>$ }\\constexpr \hyperlink{exceptionmagrathea_1_1Constant_a2af330965ee827c54dccd3ab90c7ef10}{Constant} (const Types...\-source)
+\begin{DoxyCompactList}\small\item\em Implicit constexpr values constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Other\-Type, Type$>$\-::value$>$\-::type$>$ }\\constexpr \hyperlink{exceptionmagrathea_1_1Constant_af9658fbfea0a0a82ca907de3b0f937b8}{Constant} (const Other\-Type source)
+\begin{DoxyCompactList}\small\item\em Implicit constexpr value conversion constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Other\-Type, Type$>$\-::value$>$\-::type$>$ }\\constexpr \hyperlink{exceptionmagrathea_1_1Constant_a34d0bdd690f7e5e23391a9532ae061c9}{Constant} (const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Other\-Type, Size $>$ source)
+\begin{DoxyCompactList}\small\item\em Implicit constexpr constant conversion constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Other\-Type, Type$>$\-::value$>$\-::type$>$ }\\constexpr \hyperlink{exceptionmagrathea_1_1Constant_ae3aa0f69a77cc956b9a4d032b4615113}{Constant} (const std\-::array$<$ Other\-Type, Size $>$ source)
+\begin{DoxyCompactList}\small\item\em Implicit constexpr array conversion constructor. \end{DoxyCompactList}\item 
+constexpr \hyperlink{exceptionmagrathea_1_1Constant_a2e16e68a780e7910f637ab74eb2d25e7}{Constant} (const std\-::array$<$ Type, Size $>$ source)
+\begin{DoxyCompactList}\small\item\em Implicit constexpr array constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Operators}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a012b7fef543e7a4407c6348a7dab84bf}{operator()} (const Types \&...values) const 
+\begin{DoxyCompactList}\small\item\em Incomplete setter operator. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) == Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a2768001408b9fdc850a6faca04d3c7f5}{operator()} (const Types...\-values) const 
+\begin{DoxyCompactList}\small\item\em Setter operator. \end{DoxyCompactList}\item 
+constexpr Type \hyperlink{exceptionmagrathea_1_1Constant_a110e3165961cb41b824d64be02cd6599}{operator()} () const 
+\begin{DoxyCompactList}\small\item\em Default getter operator. \end{DoxyCompactList}\item 
+constexpr Type \hyperlink{exceptionmagrathea_1_1Constant_aef20a71fff0ab3603853a88890483a16}{operator\mbox{[}$\,$\mbox{]}} (const unsigned int i) const 
+\begin{DoxyCompactList}\small\item\em Subscript operator. \end{DoxyCompactList}\item 
+constexpr \hyperlink{exceptionmagrathea_1_1Constant_a688efcf2658cfc56a673b805bfe8c6e8}{operator Type} () const 
+\begin{DoxyCompactList}\small\item\em Value cast operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Management}\par
+\begin{DoxyCompactItemize}
+\item 
+constexpr unsigned int \hyperlink{exceptionmagrathea_1_1Constant_a3aefe057e6f4f298863b2c0c75c28a25}{size} () const 
+\begin{DoxyCompactList}\small\item\em Size. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Other\-Size$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Other\-Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_aa33774cade64bdea5405fa5e9e699a61}{resize} () const 
+\begin{DoxyCompactList}\small\item\em Resize. \end{DoxyCompactList}\item 
+constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a55416d49403c9d3e91b223f45d5d48ef}{nullify} () const 
+\begin{DoxyCompactList}\small\item\em Nullify. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_ad3e1362e8722e3785e93461393e6f167}{set} (const Types \&...values) const 
+\begin{DoxyCompactList}\small\item\em Incomplete value setter. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) == Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a85b61beaf38cb8748b694b5557e274da}{set} (const Types...\-values) const 
+\begin{DoxyCompactList}\small\item\em Value setter. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type  = Type$>$ }\\constexpr Other\-Type \hyperlink{exceptionmagrathea_1_1Constant_abb1a14f5e5f79616bad2c7a41e32c02a}{get} (const unsigned int i=0) const 
+\begin{DoxyCompactList}\small\item\em Value getter. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type  = Type$>$ }\\constexpr Other\-Type \hyperlink{exceptionmagrathea_1_1Constant_a6c5801d652d4bb77e5dd0597ee4653b4}{value} (const unsigned int i=0) const 
+\begin{DoxyCompactList}\small\item\em Access a value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type  = Type$>$ }\\constexpr const std\-::array\\*
+$<$ Other\-Type, Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_abf9e53eb59e908e22bc1ee962d3f5d52}{data} () const 
+\begin{DoxyCompactList}\small\item\em Access data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type $>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}\\*
+$<$ Other\-Type, Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_ac5eda81fca344c527b578cebf98078a7}{cast} () const 
+\begin{DoxyCompactList}\small\item\em Cast. \end{DoxyCompactList}\item 
+constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a6bdff2e37ad703e4e7edf09a690341fa}{copy} () const 
+\begin{DoxyCompactList}\small\item\em Copy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Unary operations}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a669f747c750e99e4206db36b92b364ca}{inv} (const Types \&...values) const 
+\begin{DoxyCompactList}\small\item\em Start calculation of the inverse. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) == Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_aadc81f68d55445294f869898d1bda9d6}{inv} (const Types...\-values) const 
+\begin{DoxyCompactList}\small\item\em Stop calculation of the inverse. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a8d4db0128465befe15290627c00a6f9b}{opp} (const Types \&...values) const 
+\begin{DoxyCompactList}\small\item\em Start calculation of the opposite. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) == Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_ae9b664f9d38125ceaf98cbd92cb8ccc5}{opp} (const Types...\-values) const 
+\begin{DoxyCompactList}\small\item\em Stop calculation of opposite. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a26f573ca587ab347511a21ac5f4b34c6}{abs} (const Types \&...values) const 
+\begin{DoxyCompactList}\small\item\em Start calculation of the absolute value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) == Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a6358bedf0b2bbb87a6c12048c112537a}{abs} (const Types...\-values) const 
+\begin{DoxyCompactList}\small\item\em Stop calculation of the absolute value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a3f65e411438066260576f883f3e00782}{sgn} (const Types \&...values) const 
+\begin{DoxyCompactList}\small\item\em Start calculation of the the signum function. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) == Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a8309293f4bb0ed469bdb4f6f117a8423}{sgn} (const Types...\-values) const 
+\begin{DoxyCompactList}\small\item\em Stop calculation of the the signum function. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_ad073097e85c6e5596e7363a590130f63}{sq} (const Types \&...values) const 
+\begin{DoxyCompactList}\small\item\em Start calculation of the square. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) == Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a07f0356d64639a13e39a416765011cd6}{sq} (const Types...\-values) const 
+\begin{DoxyCompactList}\small\item\em Stop calculation of the square. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_ae257caa8f49094934fd4e9380ec780af}{cb} (const Types \&...values) const 
+\begin{DoxyCompactList}\small\item\em Start calculation of the cube. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) == Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_ae91a46a161e8ea78f4caf4c7ed3bdcee}{cb} (const Types...\-values) const 
+\begin{DoxyCompactList}\small\item\em Stop calculation of the cube. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a927a26387d1bd73331845708549afb61}{isqrt} (const Types \&...values) const 
+\begin{DoxyCompactList}\small\item\em Start calculation of the integer square root. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) == Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a94be3659a10d63a5eb93267a27463b4a}{isqrt} (const Types...\-values) const 
+\begin{DoxyCompactList}\small\item\em Stop calculation of the integer square root. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_afd58fdcea84e4f259c34fc3a922dcee0}{icbrt} (const Types \&...values) const 
+\begin{DoxyCompactList}\small\item\em Start calculation of the integer cube root. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) == Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a5d1484d9b7067a6847da625d9f2e1754}{icbrt} (const Types...\-values) const 
+\begin{DoxyCompactList}\small\item\em Stop calculation of the integer cube root. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a8506e353dd9cba341da6f9bab7bac51a}{ilog2} (const Types \&...values) const 
+\begin{DoxyCompactList}\small\item\em Start calculation of the integer base 2 logarithm. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) == Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a62346c844500d6ec3c1315b7c7d48273}{ilog2} (const Types...\-values) const 
+\begin{DoxyCompactList}\small\item\em Stop calculation of the integer base 2 logarithm. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a00b3a4bbf478172911401fcfccaa7f3c}{ilog10} (const Types \&...values) const 
+\begin{DoxyCompactList}\small\item\em Start calculation of the integer base 10 logarithm. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) == Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a9463599d224e99b9f8f86b2678b09374}{ilog10} (const Types...\-values) const 
+\begin{DoxyCompactList}\small\item\em Stop calculation of the integer base 10 logarithm. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Ratio  = std\-::ratio$<$1$>$, typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a54abd8b303f3c5ab9f9ac512d5a7ee23}{si} (const Types \&...values) const 
+\begin{DoxyCompactList}\small\item\em Start multiplication by a S\-I prefix. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Ratio  = std\-::ratio$<$1$>$, typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) == Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a260a07f1209ebdd536f4b12a7744e671}{si} (const Types...\-values) const 
+\begin{DoxyCompactList}\small\item\em Stop multiplication by a S\-I prefix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Arithmetic operations}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a4f3ccbe74306530d30fc5ec67d16c092}{add} (const Type rhs, const Types \&...values) const 
+\begin{DoxyCompactList}\small\item\em Start addition. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) == Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_abf612d53d00649319498d15cd70c768b}{add} (const Type, const Types...\-values) const 
+\begin{DoxyCompactList}\small\item\em Stop addition. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_af80b793e954db82f9ef25957aca41583}{sub} (const Type rhs, const Types \&...values) const 
+\begin{DoxyCompactList}\small\item\em Start substraction. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) == Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a7b30d612d39ab4387d471f1245536c5c}{sub} (const Type, const Types...\-values) const 
+\begin{DoxyCompactList}\small\item\em Stop substraction. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a3a426a14fc3ebb44c36eca6895eadfd5}{mul} (const Type rhs, const Types \&...values) const 
+\begin{DoxyCompactList}\small\item\em Start multiplication. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) == Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a31a02497bdf0805776395f1be257e0ce}{mul} (const Type, const Types...\-values) const 
+\begin{DoxyCompactList}\small\item\em Stop multiplication. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_ae1ec772ee7ac6d16656b9e4f88456e0b}{div} (const Type rhs, const Types \&...values) const 
+\begin{DoxyCompactList}\small\item\em Start division. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) == Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a6ff3d65343a6be2d0f51762acca8f34d}{div} (const Type, const Types...\-values) const 
+\begin{DoxyCompactList}\small\item\em Stop division. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a8930610422c915ea40c9d33000b40c7a}{mod} (const Type rhs, const Types \&...values) const 
+\begin{DoxyCompactList}\small\item\em Start modulo calculation. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) == Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a6fb7befad7f4909f9f1ae5722ccfb41a}{mod} (const Type, const Types...\-values) const 
+\begin{DoxyCompactList}\small\item\em Stop modulo calculation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Mathematical functions}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_ae9176bf852a3b1de4e63cf58e2d45ec3}{ratio} (const Type num, const Type den, const Types \&...values) const 
+\begin{DoxyCompactList}\small\item\em Start ratio multiplication. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) == Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a61408aedabbe82055606b2955e9a5511}{ratio} (const Type, const Type, const Types...\-values) const 
+\begin{DoxyCompactList}\small\item\em Stop ratio multiplication. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_af53153132d81a7d362a8698b254f2439}{pow} (const int n, const Types \&...values) const 
+\begin{DoxyCompactList}\small\item\em Start power calculation. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) == Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a62206c5dd2ba4d3f66bef0864a14c416}{pow} (const int, const Types...\-values) const 
+\begin{DoxyCompactList}\small\item\em Stop power calculation. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_afe40d96e2b84cea41792c2fce9577b3f}{irt} (const int n, const Types \&...values) const 
+\begin{DoxyCompactList}\small\item\em Start integer part root calculation. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) == Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_aabdd316e74d020d256af0725b113c6a7}{irt} (const int, const Types...\-values) const 
+\begin{DoxyCompactList}\small\item\em Stop integer root calculation. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a6d57455c5403974174abd5139bb07d11}{ilog} (const int b, const Types \&...values) const 
+\begin{DoxyCompactList}\small\item\em Start integer logarithm calculation. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) == Size$>$\-::type$>$ }\\constexpr const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Type, \\*
+Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a0f9c78ba974b0eb99dc87ee1fa6c2a8a}{ilog} (const int, const Types...\-values) const 
+\begin{DoxyCompactList}\small\item\em Stop integer logarithm calculation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Static Public Member Functions}
+\begin{Indent}{\bf Helpers}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Other\-Type , unsigned int Other\-Size, class Array , typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != Other\-Size$>$\-::type$>$ }\\static constexpr const \\*
+std\-::array$<$ Other\-Type, \\*
+Other\-Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a4f15a8e1b64bb5f231cc4468cb1b42c3}{transmute} (const Array source, const Types \&...values)
+\begin{DoxyCompactList}\small\item\em Start conversion of array data types. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , unsigned int Other\-Size, class Array , typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) == Other\-Size$>$\-::type$>$ }\\static constexpr const \\*
+std\-::array$<$ Other\-Type, \\*
+Other\-Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_ab139a1bbf12fe25aac8268c49fdc874b}{transmute} (const Array, const Types...\-values)
+\begin{DoxyCompactList}\small\item\em Stop conversion of array data types. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-arithmetic$<$\-Other\-Type$>$\-::value$>$\-::type$>$ }\\static constexpr Other\-Type \hyperlink{exceptionmagrathea_1_1Constant_a3b2b451665cc7a88ffd6722cf27a9959}{metapow} (const Other\-Type x, const int n)
+\begin{DoxyCompactList}\small\item\em Compile-\/time exponentiation. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , typename Integral\-Type  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-arithmetic$<$\-Other\-Type$>$\-::value) \&\& ((std\-::is\-\_\-same$<$\-Integral\-Type, std\-::true\-\_\-type$>$\-::value) $|$$|$ (std\-::is\-\_\-integral$<$\-Integral\-Type$>$\-::value))$>$\-::type$>$ }\\static constexpr Other\-Type \hyperlink{exceptionmagrathea_1_1Constant_a3107afd4bae68ed825c61e7ddf1a1942}{metairt} (const Other\-Type x, const int n, const Integral\-Type low=Integral\-Type(), const Integral\-Type high=Integral\-Type(), const Integral\-Type mid=Integral\-Type())
+\begin{DoxyCompactList}\small\item\em Compile-\/time integer root. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-arithmetic$<$\-Other\-Type$>$\-::value$>$\-::type$>$ }\\static constexpr Other\-Type \hyperlink{exceptionmagrathea_1_1Constant_a7082ad2753e3574c720b08c57d676c11}{metailog} (const Other\-Type x, const int b)
+\begin{DoxyCompactList}\small\item\em Compile-\/time integer logarithm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Test}\par
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{exceptionmagrathea_1_1Constant_a8f2832bf218014ca03a14a2c9998084d}{example} ()
+\begin{DoxyCompactList}\small\item\em Example function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Protected Attributes}
+\begin{Indent}{\bf Data members}\par
+\begin{DoxyCompactItemize}
+\item 
+const std\-::array$<$ Type, Size $>$ \hyperlink{exceptionmagrathea_1_1Constant_a00180da842634dbab0822eb25b33ed21}{\-\_\-data}
+\begin{DoxyCompactList}\small\item\em Set of numerical constants. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Friends}
+\begin{Indent}{\bf Stream}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Self\-Type , unsigned int Self\-Size$>$ }\\std\-::ostream \& \hyperlink{exceptionmagrathea_1_1Constant_aaa3327f78f80cda983b50f4bd1e27bfc}{operator$<$$<$} (std\-::ostream \&lhs, const \hyperlink{exceptionmagrathea_1_1Constant}{Constant}$<$ Self\-Type, Self\-Size $>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em \hyperlink{exceptionOutput}{Output} stream operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Type = double, unsigned int Size = 1$>$exception magrathea\-::\-Constant$<$ Type, Size $>$}
+
+Numerical constant with constexpr constructor. 
+
+Provides a class for integral and numerical constants based on the structure of {\ttfamily std\-::integral\-\_\-constant} with some extra mathematical functions. It accepts single or a set of constants internally stored in an array. As all is done at compile-\/time, all members works with copies of arithmetic values instead of references. Finally, one should define a constant to the maximum precision and calls the cast function to convert to a smaller precision. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Numerical type of the constant, that should have a constexpr constructor. \\
+\hline
+{\em Size} & Size of the set of constants, which is equal to one per default for a single value. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{exceptionmagrathea_1_1Constant_a130d19ea63293f208d3f215e97178d01}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!Constant@{Constant}}
+\index{Constant@{Constant}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{Constant}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ constexpr {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::{\bf Constant} (
+\begin{DoxyParamCaption}
+\item[{const Type}]{source}
+\end{DoxyParamCaption}
+)}}\label{exceptionmagrathea_1_1Constant_a130d19ea63293f208d3f215e97178d01}
+
+
+Implicit constexpr value constructor. 
+
+Implicitely constructs the constant from a single constant arithmetic value of the same type. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Single constant arithmetic value. \\
+\hline
+\end{DoxyParams}
+\hypertarget{exceptionmagrathea_1_1Constant_a2af330965ee827c54dccd3ab90c7ef10}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!Constant@{Constant}}
+\index{Constant@{Constant}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{Constant}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::{\bf Constant} (
+\begin{DoxyParamCaption}
+\item[{const Types...}]{source}
+\end{DoxyParamCaption}
+)}}\label{exceptionmagrathea_1_1Constant_a2af330965ee827c54dccd3ab90c7ef10}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+\{
+    static\_assert(1 == Size, \textcolor{stringliteral}{"ERROR = Constant::Constant() : not compatible
+       size"})
+\end{DoxyCode}
+
+
+Implicit constexpr values constructor. 
+
+Implicitely constructs the constant from a set of constant arithmetic values. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Set of constant arithmetic values. \\
+\hline
+\end{DoxyParams}
+\hypertarget{exceptionmagrathea_1_1Constant_af9658fbfea0a0a82ca907de3b0f937b8}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!Constant@{Constant}}
+\index{Constant@{Constant}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{Constant}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename Other\-Type, class $>$ constexpr {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::{\bf Constant} (
+\begin{DoxyParamCaption}
+\item[{const Other\-Type}]{source}
+\end{DoxyParamCaption}
+)}}\label{exceptionmagrathea_1_1Constant_af9658fbfea0a0a82ca907de3b0f937b8}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+\{
+    static\_assert(\textcolor{keyword}{sizeof}...(source) == Size, \textcolor{stringliteral}{"ERROR = Constant::Constant() :
+       not compatible size"})
+\end{DoxyCode}
+
+
+Implicit constexpr value conversion constructor. 
+
+Implicitely constructs the constant from a single constant arithmetic value of another type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & (Other data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Single constant arithmetic value. \\
+\hline
+\end{DoxyParams}
+\hypertarget{exceptionmagrathea_1_1Constant_a34d0bdd690f7e5e23391a9532ae061c9}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!Constant@{Constant}}
+\index{Constant@{Constant}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{Constant}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename Other\-Type, class $>$ constexpr {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::{\bf Constant} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Constant}$<$ Other\-Type, Size $>$}]{source}
+\end{DoxyParamCaption}
+)}}\label{exceptionmagrathea_1_1Constant_a34d0bdd690f7e5e23391a9532ae061c9}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+\{
+    static\_assert(1 == Size, \textcolor{stringliteral}{"ERROR = Constant::Constant() : not compatible
+       size"})
+\end{DoxyCode}
+
+
+Implicit constexpr constant conversion constructor. 
+
+Implicitely constructs the constant from a constant of another type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & (Other data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Other constant. \\
+\hline
+\end{DoxyParams}
+\hypertarget{exceptionmagrathea_1_1Constant_ae3aa0f69a77cc956b9a4d032b4615113}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!Constant@{Constant}}
+\index{Constant@{Constant}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{Constant}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename Other\-Type, class $>$ constexpr {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::{\bf Constant} (
+\begin{DoxyParamCaption}
+\item[{const std\-::array$<$ Other\-Type, Size $>$}]{source}
+\end{DoxyParamCaption}
+)}}\label{exceptionmagrathea_1_1Constant_ae3aa0f69a77cc956b9a4d032b4615113}
+
+
+Implicit constexpr array conversion constructor. 
+
+Implicitely constructs the constant from a constant array of another type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & (Other data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Array. \\
+\hline
+\end{DoxyParams}
+\hypertarget{exceptionmagrathea_1_1Constant_a2e16e68a780e7910f637ab74eb2d25e7}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!Constant@{Constant}}
+\index{Constant@{Constant}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{Constant}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ constexpr {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::{\bf Constant} (
+\begin{DoxyParamCaption}
+\item[{const std\-::array$<$ Type, Size $>$}]{source}
+\end{DoxyParamCaption}
+)}}\label{exceptionmagrathea_1_1Constant_a2e16e68a780e7910f637ab74eb2d25e7}
+
+
+Implicit constexpr array constructor. 
+
+Implicitely constructs the constant from a constant array of the same type. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Array. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{exceptionmagrathea_1_1Constant_a26f573ca587ab347511a21ac5f4b34c6}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!abs@{abs}}
+\index{abs@{abs}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{abs}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::abs (
+\begin{DoxyParamCaption}
+\item[{const Types \&...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a26f573ca587ab347511a21ac5f4b34c6}
+
+
+Start calculation of the absolute value. 
+
+Starts recursive calculation of the absolute constant value \-: $\left|x\right|$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a6358bedf0b2bbb87a6c12048c112537a}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!abs@{abs}}
+\index{abs@{abs}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{abs}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::abs (
+\begin{DoxyParamCaption}
+\item[{const Types...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a6358bedf0b2bbb87a6c12048c112537a}
+
+
+Stop calculation of the absolute value. 
+
+Stops recursive calculation of the absolute constant value \-: $\left|x\right|$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a4f3ccbe74306530d30fc5ec67d16c092}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!add@{add}}
+\index{add@{add}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::add (
+\begin{DoxyParamCaption}
+\item[{const Type}]{rhs, }
+\item[{const Types \&...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a4f3ccbe74306530d30fc5ec67d16c092}
+
+
+Start addition. 
+
+Starts recursive addition of a value \-: $x+y$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_abf612d53d00649319498d15cd70c768b}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!add@{add}}
+\index{add@{add}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::add (
+\begin{DoxyParamCaption}
+\item[{const Type}]{, }
+\item[{const Types...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_abf612d53d00649319498d15cd70c768b}
+
+
+Stop addition. 
+
+Stops recursive addition of a value \-: $x+y$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_ac5eda81fca344c527b578cebf98078a7}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!cast@{cast}}
+\index{cast@{cast}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{cast}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename Other\-Type $>$ constexpr const {\bf Constant}$<$ Other\-Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::cast (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_ac5eda81fca344c527b578cebf98078a7}
+
+
+Cast. 
+
+Casts to another constant type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & Other data type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_ae257caa8f49094934fd4e9380ec780af}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!cb@{cb}}
+\index{cb@{cb}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{cb}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::cb (
+\begin{DoxyParamCaption}
+\item[{const Types \&...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_ae257caa8f49094934fd4e9380ec780af}
+
+
+Start calculation of the cube. 
+
+Starts recursive calculation of the cubed constant value \-: $x^{3}$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_ae91a46a161e8ea78f4caf4c7ed3bdcee}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!cb@{cb}}
+\index{cb@{cb}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{cb}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::cb (
+\begin{DoxyParamCaption}
+\item[{const Types...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_ae91a46a161e8ea78f4caf4c7ed3bdcee}
+
+
+Stop calculation of the cube. 
+
+Stops recursive calculation of the cubed constant value \-: $x^{3}$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a6bdff2e37ad703e4e7edf09a690341fa}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!copy@{copy}}
+\index{copy@{copy}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{copy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::copy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a6bdff2e37ad703e4e7edf09a690341fa}
+
+
+Copy. 
+
+Copies the constant. \begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_abf9e53eb59e908e22bc1ee962d3f5d52}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!data@{data}}
+\index{data@{data}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename Other\-Type $>$ constexpr const std\-::array$<$ Other\-Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_abf9e53eb59e908e22bc1ee962d3f5d52}
+
+
+Access data. 
+
+Returns the internal constant array casted to the desired type.  
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & Other data type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Copy of the array. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_ae1ec772ee7ac6d16656b9e4f88456e0b}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!div@{div}}
+\index{div@{div}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{div}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::div (
+\begin{DoxyParamCaption}
+\item[{const Type}]{rhs, }
+\item[{const Types \&...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_ae1ec772ee7ac6d16656b9e4f88456e0b}
+
+
+Start division. 
+
+Starts recursive division by a value \-: $\frac{x}{y}$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a6ff3d65343a6be2d0f51762acca8f34d}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!div@{div}}
+\index{div@{div}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{div}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::div (
+\begin{DoxyParamCaption}
+\item[{const Type}]{, }
+\item[{const Types...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a6ff3d65343a6be2d0f51762acca8f34d}
+
+
+Stop division. 
+
+Stops recursive division by a value \-: $\frac{x}{y}$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a8f2832bf218014ca03a14a2c9998084d}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!example@{example}}
+\index{example@{example}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{example}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ int {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::example (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1Constant_a8f2832bf218014ca03a14a2c9998084d}
+
+
+Example function. 
+
+Tests and demonstrates the use of \hyperlink{exceptionmagrathea_1_1Constant}{Constant}. \begin{DoxyReturn}{Returns}
+0 if no error. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_abb1a14f5e5f79616bad2c7a41e32c02a}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!get@{get}}
+\index{get@{get}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename Other\-Type $>$ constexpr Other\-Type {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::get (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_abb1a14f5e5f79616bad2c7a41e32c02a}
+
+
+Value getter. 
+
+Returns the specified value casted to the desired type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & Other data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index of the value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Value. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_afd58fdcea84e4f259c34fc3a922dcee0}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!icbrt@{icbrt}}
+\index{icbrt@{icbrt}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{icbrt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::icbrt (
+\begin{DoxyParamCaption}
+\item[{const Types \&...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_afd58fdcea84e4f259c34fc3a922dcee0}
+
+
+Start calculation of the integer cube root. 
+
+Starts recursive calculation of the integer cube root constant value \-: $\left[\sqrt[3]{\left[x\right]}\right] $. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a5d1484d9b7067a6847da625d9f2e1754}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!icbrt@{icbrt}}
+\index{icbrt@{icbrt}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{icbrt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::icbrt (
+\begin{DoxyParamCaption}
+\item[{const Types...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a5d1484d9b7067a6847da625d9f2e1754}
+
+
+Stop calculation of the integer cube root. 
+
+Stops recursive calculation of the integer cube root constant value \-: $\left[\sqrt[3]{\left[x\right]}\right] $. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a6d57455c5403974174abd5139bb07d11}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!ilog@{ilog}}
+\index{ilog@{ilog}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{ilog}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::ilog (
+\begin{DoxyParamCaption}
+\item[{const int}]{b, }
+\item[{const Types \&...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a6d57455c5403974174abd5139bb07d11}
+
+
+Start integer logarithm calculation. 
+
+Starts recursive integer logarithm calculation in the given base for integral arguments \-: $\left[\log_{b}\left(\left[ x\right]\right)\right]$. For non-\/compatible arguments, the function returns 0. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em b} & Logarithm integral base. \\
+\hline
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a0f9c78ba974b0eb99dc87ee1fa6c2a8a}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!ilog@{ilog}}
+\index{ilog@{ilog}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{ilog}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::ilog (
+\begin{DoxyParamCaption}
+\item[{const int}]{, }
+\item[{const Types...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a0f9c78ba974b0eb99dc87ee1fa6c2a8a}
+
+
+Stop integer logarithm calculation. 
+
+Stops recursive integer logarithm calculation in the given base for integral arguments \-: $\left[\log_{b}\left(\left[ x\right]\right)\right]$. For non-\/compatible arguments, the function returns 0. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a00b3a4bbf478172911401fcfccaa7f3c}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!ilog10@{ilog10}}
+\index{ilog10@{ilog10}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{ilog10}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::ilog10 (
+\begin{DoxyParamCaption}
+\item[{const Types \&...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a00b3a4bbf478172911401fcfccaa7f3c}
+
+
+Start calculation of the integer base 10 logarithm. 
+
+Starts recursive calculation of the integer base 10 logarithm constant value \-: $\left[\log_{10}\left(\left[x \right]\right)\right]$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a9463599d224e99b9f8f86b2678b09374}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!ilog10@{ilog10}}
+\index{ilog10@{ilog10}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{ilog10}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::ilog10 (
+\begin{DoxyParamCaption}
+\item[{const Types...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a9463599d224e99b9f8f86b2678b09374}
+
+
+Stop calculation of the integer base 10 logarithm. 
+
+Stops recursive calculation of the integer base 10 logarithm constant value \-: $\left[\log_{10}\left(\left[x \right]\right)\right]$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a8506e353dd9cba341da6f9bab7bac51a}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!ilog2@{ilog2}}
+\index{ilog2@{ilog2}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{ilog2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::ilog2 (
+\begin{DoxyParamCaption}
+\item[{const Types \&...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a8506e353dd9cba341da6f9bab7bac51a}
+
+
+Start calculation of the integer base 2 logarithm. 
+
+Starts recursive calculation of the integer base 2 logarithm constant value \-: $\left[\log_{2}\left(\left[x \right]\right)\right]$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a62346c844500d6ec3c1315b7c7d48273}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!ilog2@{ilog2}}
+\index{ilog2@{ilog2}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{ilog2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::ilog2 (
+\begin{DoxyParamCaption}
+\item[{const Types...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a62346c844500d6ec3c1315b7c7d48273}
+
+
+Stop calculation of the integer base 2 logarithm. 
+
+Stops recursive calculation of the integer base 2 logarithm constant value \-: $\left[\log_{2}\left(\left[x \right]\right)\right]$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a669f747c750e99e4206db36b92b364ca}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!inv@{inv}}
+\index{inv@{inv}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{inv}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::inv (
+\begin{DoxyParamCaption}
+\item[{const Types \&...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a669f747c750e99e4206db36b92b364ca}
+
+
+Start calculation of the inverse. 
+
+Starts recursive calculation of the inverse constant value \-: $\frac{1}{x}$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_aadc81f68d55445294f869898d1bda9d6}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!inv@{inv}}
+\index{inv@{inv}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{inv}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::inv (
+\begin{DoxyParamCaption}
+\item[{const Types...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_aadc81f68d55445294f869898d1bda9d6}
+
+
+Stop calculation of the inverse. 
+
+Stops recursive calculation of the inverse constant value \-: $\frac{1}{x}$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_afe40d96e2b84cea41792c2fce9577b3f}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!irt@{irt}}
+\index{irt@{irt}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{irt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::irt (
+\begin{DoxyParamCaption}
+\item[{const int}]{n, }
+\item[{const Types \&...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_afe40d96e2b84cea41792c2fce9577b3f}
+
+
+Start integer part root calculation. 
+
+Starts recursive integer root calculation for integral arguments \-: $\left[\sqrt[n]{\left[x\right]}\right]$. For non-\/compatible arguments, the function returns 0. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em n} & Root order. \\
+\hline
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_aabdd316e74d020d256af0725b113c6a7}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!irt@{irt}}
+\index{irt@{irt}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{irt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::irt (
+\begin{DoxyParamCaption}
+\item[{const int}]{, }
+\item[{const Types...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_aabdd316e74d020d256af0725b113c6a7}
+
+
+Stop integer root calculation. 
+
+Stops recursive integer root calculation for integral arguments \-: $\left[\sqrt[n]{\left[x\right]}\right]$. For non-\/compatible arguments, the function returns 0. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a927a26387d1bd73331845708549afb61}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!isqrt@{isqrt}}
+\index{isqrt@{isqrt}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{isqrt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::isqrt (
+\begin{DoxyParamCaption}
+\item[{const Types \&...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a927a26387d1bd73331845708549afb61}
+
+
+Start calculation of the integer square root. 
+
+Starts recursive calculation of the integer square root constant value \-: $\left[\sqrt{\left[x\right]}\right]$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a94be3659a10d63a5eb93267a27463b4a}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!isqrt@{isqrt}}
+\index{isqrt@{isqrt}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{isqrt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::isqrt (
+\begin{DoxyParamCaption}
+\item[{const Types...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a94be3659a10d63a5eb93267a27463b4a}
+
+
+Stop calculation of the integer square root. 
+
+Stops recursive calculation of the integer square root constant value \-: $\left[\sqrt{\left[x\right]}\right]$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a7082ad2753e3574c720b08c57d676c11}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!metailog@{metailog}}
+\index{metailog@{metailog}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{metailog}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename Other\-Type , class $>$ constexpr Other\-Type {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::metailog (
+\begin{DoxyParamCaption}
+\item[{const Other\-Type}]{x, }
+\item[{const int}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1Constant_a7082ad2753e3574c720b08c57d676c11}
+
+
+Compile-\/time integer logarithm. 
+
+Returns the value of the integer logarithm in the given base for integral arguments at compile-\/time \-: $\left[\log_{b} \left(\left[x\right]\right)\right]$. For non-\/compatible arguments, the function returns 0. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & (Other data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & Value. \\
+\hline
+\mbox{\tt in}  & {\em b} & Logarithm integral base. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Value of the result. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a3107afd4bae68ed825c61e7ddf1a1942}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!metairt@{metairt}}
+\index{metairt@{metairt}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{metairt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename Other\-Type , typename Integral\-Type , class $>$ constexpr Other\-Type {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::metairt (
+\begin{DoxyParamCaption}
+\item[{const Other\-Type}]{x, }
+\item[{const int}]{n, }
+\item[{const Integral\-Type}]{low = {\ttfamily IntegralType()}, }
+\item[{const Integral\-Type}]{high = {\ttfamily IntegralType()}, }
+\item[{const Integral\-Type}]{mid = {\ttfamily IntegralType()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1Constant_a3107afd4bae68ed825c61e7ddf1a1942}
+
+
+Compile-\/time integer root. 
+
+Returns the value of the integer root for integral arguments at compile-\/time \-: $\left[\sqrt[n]{\left[x\right]}\right] $. For non-\/compatible arguments, the function returns 0. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & (Other data type.) \\
+\hline
+{\em Integral\-Type} & (Integer type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & Value. \\
+\hline
+\mbox{\tt in}  & {\em n} & Root order. \\
+\hline
+\mbox{\tt in}  & {\em low} & (Lower bound for binary recursive search.) \\
+\hline
+\mbox{\tt in}  & {\em high} & (Higher bound for binary recursive search.) \\
+\hline
+\mbox{\tt in}  & {\em mid} & (Mid value for binary recursive search.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Value of the result. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a3b2b451665cc7a88ffd6722cf27a9959}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!metapow@{metapow}}
+\index{metapow@{metapow}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{metapow}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename Other\-Type , class $>$ constexpr Other\-Type {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::metapow (
+\begin{DoxyParamCaption}
+\item[{const Other\-Type}]{x, }
+\item[{const int}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1Constant_a3b2b451665cc7a88ffd6722cf27a9959}
+
+
+Compile-\/time exponentiation. 
+
+Returns the value of the integral power of the argument \-: $x^{n}$. For negative exponents, the function returns the inverse of the integral power. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & (Other data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & Value. \\
+\hline
+\mbox{\tt in}  & {\em n} & Exponent of the power. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Value of the result. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a8930610422c915ea40c9d33000b40c7a}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!mod@{mod}}
+\index{mod@{mod}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{mod}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::mod (
+\begin{DoxyParamCaption}
+\item[{const Type}]{rhs, }
+\item[{const Types \&...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a8930610422c915ea40c9d33000b40c7a}
+
+
+Start modulo calculation. 
+
+Starts recursive modulo calculation \-: $x\%y$. For floating-\/point types, it computes the floating-\/point modulo. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a6fb7befad7f4909f9f1ae5722ccfb41a}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!mod@{mod}}
+\index{mod@{mod}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{mod}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::mod (
+\begin{DoxyParamCaption}
+\item[{const Type}]{, }
+\item[{const Types...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a6fb7befad7f4909f9f1ae5722ccfb41a}
+
+
+Stop modulo calculation. 
+
+Stops recursive modulo calculation \-: $x\%y$. For floating-\/point types, it computes the floating-\/point modulo. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a3a426a14fc3ebb44c36eca6895eadfd5}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!mul@{mul}}
+\index{mul@{mul}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{mul}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::mul (
+\begin{DoxyParamCaption}
+\item[{const Type}]{rhs, }
+\item[{const Types \&...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a3a426a14fc3ebb44c36eca6895eadfd5}
+
+
+Start multiplication. 
+
+Starts recursive multiplication by a value \-: $x \times y$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a31a02497bdf0805776395f1be257e0ce}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!mul@{mul}}
+\index{mul@{mul}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{mul}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::mul (
+\begin{DoxyParamCaption}
+\item[{const Type}]{, }
+\item[{const Types...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a31a02497bdf0805776395f1be257e0ce}
+
+
+Stop multiplication. 
+
+Stops recursive multiplication by a value \-: $x \times y$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a55416d49403c9d3e91b223f45d5d48ef}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!nullify@{nullify}}
+\index{nullify@{nullify}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{nullify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::nullify (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a55416d49403c9d3e91b223f45d5d48ef}
+
+
+Nullify. 
+
+Returns a copy of the constant filled with null values. \begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a688efcf2658cfc56a673b805bfe8c6e8}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!operator Type@{operator Type}}
+\index{operator Type@{operator Type}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{operator Type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ constexpr {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::operator Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a688efcf2658cfc56a673b805bfe8c6e8}
+
+
+Value cast operator. 
+
+Implicitely returns the first value of the underlying array of constants. This should be used with caution in case of a set of constants as it only operates on the first element. \begin{DoxyReturn}{Returns}
+Value. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a012b7fef543e7a4407c6348a7dab84bf}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!operator()@{operator()}}
+\index{operator()@{operator()}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::operator() (
+\begin{DoxyParamCaption}
+\item[{const Types \&...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a012b7fef543e7a4407c6348a7dab84bf}
+
+
+Incomplete setter operator. 
+
+Starts recursive extraction of the missing values from the current array. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & Set of constant arithmetic values. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a2768001408b9fdc850a6faca04d3c7f5}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!operator()@{operator()}}
+\index{operator()@{operator()}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::operator() (
+\begin{DoxyParamCaption}
+\item[{const Types...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a2768001408b9fdc850a6faca04d3c7f5}
+
+
+Setter operator. 
+
+Sets the values. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & Set of constant arithmetic values. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a110e3165961cb41b824d64be02cd6599}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!operator()@{operator()}}
+\index{operator()@{operator()}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ constexpr Type {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::operator() (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a110e3165961cb41b824d64be02cd6599}
+
+
+Default getter operator. 
+
+Returns the first value. \begin{DoxyReturn}{Returns}
+Value. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_aef20a71fff0ab3603853a88890483a16}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ constexpr Type {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_aef20a71fff0ab3603853a88890483a16}
+
+
+Subscript operator. 
+
+Returns the specified value of the underlying array. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index of the value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Value. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a8d4db0128465befe15290627c00a6f9b}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!opp@{opp}}
+\index{opp@{opp}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{opp}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::opp (
+\begin{DoxyParamCaption}
+\item[{const Types \&...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a8d4db0128465befe15290627c00a6f9b}
+
+
+Start calculation of the opposite. 
+
+Starts recursive calculation of the opposite constant value \-: $-x$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_ae9b664f9d38125ceaf98cbd92cb8ccc5}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!opp@{opp}}
+\index{opp@{opp}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{opp}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::opp (
+\begin{DoxyParamCaption}
+\item[{const Types...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_ae9b664f9d38125ceaf98cbd92cb8ccc5}
+
+
+Stop calculation of opposite. 
+
+Stops recursive calculation of the opposite constant value \-: $-x$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_af53153132d81a7d362a8698b254f2439}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!pow@{pow}}
+\index{pow@{pow}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{pow}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::pow (
+\begin{DoxyParamCaption}
+\item[{const int}]{n, }
+\item[{const Types \&...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_af53153132d81a7d362a8698b254f2439}
+
+
+Start power calculation. 
+
+Starts recursive power calculation for integral exponent \-: $x^{n}$. For negative exponents, the function returns the inverse of the integral power. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em n} & Exponent of the power. \\
+\hline
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a62206c5dd2ba4d3f66bef0864a14c416}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!pow@{pow}}
+\index{pow@{pow}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{pow}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::pow (
+\begin{DoxyParamCaption}
+\item[{const int}]{, }
+\item[{const Types...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a62206c5dd2ba4d3f66bef0864a14c416}
+
+
+Stop power calculation. 
+
+Stops recursive power calculation for integral exponent \-: $x^{n}$. For negative exponents, the function returns the inverse of the integral power. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_ae9176bf852a3b1de4e63cf58e2d45ec3}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!ratio@{ratio}}
+\index{ratio@{ratio}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{ratio}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::ratio (
+\begin{DoxyParamCaption}
+\item[{const Type}]{num, }
+\item[{const Type}]{den, }
+\item[{const Types \&...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_ae9176bf852a3b1de4e63cf58e2d45ec3}
+
+
+Start ratio multiplication. 
+
+Starts recursive ratio multiplication \-: $\frac{x\times num }{den}$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em num} & Numerator. \\
+\hline
+\mbox{\tt in}  & {\em den} & Denominator. \\
+\hline
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a61408aedabbe82055606b2955e9a5511}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!ratio@{ratio}}
+\index{ratio@{ratio}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{ratio}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::ratio (
+\begin{DoxyParamCaption}
+\item[{const Type}]{, }
+\item[{const Type}]{, }
+\item[{const Types...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a61408aedabbe82055606b2955e9a5511}
+
+
+Stop ratio multiplication. 
+
+Stops recursive ratio multiplication \-: $\frac{x\times num }{den}$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_aa33774cade64bdea5405fa5e9e699a61}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!resize@{resize}}
+\index{resize@{resize}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{resize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$unsigned int Other\-Size$>$ constexpr const {\bf Constant}$<$ Type, Other\-Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::resize (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_aa33774cade64bdea5405fa5e9e699a61}
+
+
+Resize. 
+
+Returns a copy of the constant with a new size. \begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_ad3e1362e8722e3785e93461393e6f167}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!set@{set}}
+\index{set@{set}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::set (
+\begin{DoxyParamCaption}
+\item[{const Types \&...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_ad3e1362e8722e3785e93461393e6f167}
+
+
+Incomplete value setter. 
+
+Starts recursive extraction of the missing values from the current array. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & Set of constant arithmetic values. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a85b61beaf38cb8748b694b5557e274da}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!set@{set}}
+\index{set@{set}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::set (
+\begin{DoxyParamCaption}
+\item[{const Types...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a85b61beaf38cb8748b694b5557e274da}
+
+
+Value setter. 
+
+Sets the values. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & Set of constant arithmetic values. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a3f65e411438066260576f883f3e00782}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!sgn@{sgn}}
+\index{sgn@{sgn}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{sgn}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::sgn (
+\begin{DoxyParamCaption}
+\item[{const Types \&...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a3f65e411438066260576f883f3e00782}
+
+
+Start calculation of the the signum function. 
+
+Starts recursive calculation of the signum constant value \-: $sgn\left(x = 0\right) = 0 $, $sgn\left(x < 0 \right) = -1 $, $sgn\left(x > 0\right) = 1$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a8309293f4bb0ed469bdb4f6f117a8423}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!sgn@{sgn}}
+\index{sgn@{sgn}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{sgn}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::sgn (
+\begin{DoxyParamCaption}
+\item[{const Types...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a8309293f4bb0ed469bdb4f6f117a8423}
+
+
+Stop calculation of the the signum function. 
+
+Stops recursive calculation of the signum constant value \-: $sgn\left(x = 0\right) = 0 $, $sgn\left(x < 0 \right) = -1 $, $sgn\left(x > 0\right) = 1$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a54abd8b303f3c5ab9f9ac512d5a7ee23}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!si@{si}}
+\index{si@{si}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{si}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$class Ratio , typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::si (
+\begin{DoxyParamCaption}
+\item[{const Types \&...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a54abd8b303f3c5ab9f9ac512d5a7ee23}
+
+
+Start multiplication by a S\-I prefix. 
+
+Starts recursive multiplication by a S\-I prefix ratio \-: $\frac{x\times num}{den}$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Ratio} & Standard ratio type. \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a260a07f1209ebdd536f4b12a7744e671}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!si@{si}}
+\index{si@{si}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{si}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$class Ratio , typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::si (
+\begin{DoxyParamCaption}
+\item[{const Types...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a260a07f1209ebdd536f4b12a7744e671}
+
+
+Stop multiplication by a S\-I prefix. 
+
+Stops recursive multiplication by a S\-I prefix ratio \-: $\frac{x\times num}{den}$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Ratio} & Standard ratio type. \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a3aefe057e6f4f298863b2c0c75c28a25}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!size@{size}}
+\index{size@{size}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ constexpr unsigned int {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a3aefe057e6f4f298863b2c0c75c28a25}
+
+
+Size. 
+
+Returns the size of the constant. \begin{DoxyReturn}{Returns}
+Value of the size. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_ad073097e85c6e5596e7363a590130f63}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!sq@{sq}}
+\index{sq@{sq}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{sq}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::sq (
+\begin{DoxyParamCaption}
+\item[{const Types \&...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_ad073097e85c6e5596e7363a590130f63}
+
+
+Start calculation of the square. 
+
+Starts recursive calculation of the squared constant value \-: $x^{2}$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a07f0356d64639a13e39a416765011cd6}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!sq@{sq}}
+\index{sq@{sq}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{sq}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::sq (
+\begin{DoxyParamCaption}
+\item[{const Types...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a07f0356d64639a13e39a416765011cd6}
+
+
+Stop calculation of the square. 
+
+Stops recursive calculation of the squared constant value \-: $x^{2}$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_af80b793e954db82f9ef25957aca41583}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!sub@{sub}}
+\index{sub@{sub}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{sub}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::sub (
+\begin{DoxyParamCaption}
+\item[{const Type}]{rhs, }
+\item[{const Types \&...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_af80b793e954db82f9ef25957aca41583}
+
+
+Start substraction. 
+
+Starts recursive substraction of a value \-: $x-y$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a7b30d612d39ab4387d471f1245536c5c}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!sub@{sub}}
+\index{sub@{sub}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{sub}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename... Types, class $>$ constexpr const {\bf Constant}$<$ Type, Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::sub (
+\begin{DoxyParamCaption}
+\item[{const Type}]{, }
+\item[{const Types...}]{values}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a7b30d612d39ab4387d471f1245536c5c}
+
+
+Stop substraction. 
+
+Stops recursive substraction of a value \-: $x-y$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a4f15a8e1b64bb5f231cc4468cb1b42c3}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!transmute@{transmute}}
+\index{transmute@{transmute}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{transmute}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename Other\-Type , unsigned int Other\-Size, class Array , typename... Types, class $>$ constexpr const std\-::array$<$ Other\-Type, Other\-Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::transmute (
+\begin{DoxyParamCaption}
+\item[{const Array}]{source, }
+\item[{const Types \&...}]{values}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1Constant_a4f15a8e1b64bb5f231cc4468cb1b42c3}
+
+
+Start conversion of array data types. 
+
+Recursively extracts and casts data from source to construct an array of another type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & Other data type. \\
+\hline
+{\em Other\-Size} & Other size. \\
+\hline
+{\em Array} & (Array type.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Array to convert. \\
+\hline
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Casted array. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_ab139a1bbf12fe25aac8268c49fdc874b}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!transmute@{transmute}}
+\index{transmute@{transmute}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{transmute}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename Other\-Type , unsigned int Other\-Size, class Array , typename... Types, class $>$ constexpr const std\-::array$<$ Other\-Type, Other\-Size $>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::transmute (
+\begin{DoxyParamCaption}
+\item[{const Array}]{, }
+\item[{const Types...}]{values}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1Constant_ab139a1bbf12fe25aac8268c49fdc874b}
+
+
+Stop conversion of array data types. 
+
+Stops the recursive extraction and constructs the final array from data. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & Other data type. \\
+\hline
+{\em Other\-Size} & Other size. \\
+\hline
+{\em Array} & (Array type.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em values} & (Recursively extracted values.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Casted array. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Constant_a6c5801d652d4bb77e5dd0597ee4653b4}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!value@{value}}
+\index{value@{value}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{value}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename Other\-Type $>$ constexpr Other\-Type {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::value (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1Constant_a6c5801d652d4bb77e5dd0597ee4653b4}
+
+
+Access a value. 
+
+Returns the specified value casted to the desired type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & Other data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index of the value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Value. 
+\end{DoxyReturn}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{exceptionmagrathea_1_1Constant_aaa3327f78f80cda983b50f4bd1e27bfc}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type = double, unsigned int Size = 1$>$ template$<$typename Self\-Type , unsigned int Self\-Size$>$ std\-::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{lhs, }
+\item[{const {\bf Constant}$<$ Self\-Type, Self\-Size $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{exceptionmagrathea_1_1Constant_aaa3327f78f80cda983b50f4bd1e27bfc}
+
+
+\hyperlink{exceptionOutput}{Output} stream operator. 
+
+Adds each element to the stream using the {\ttfamily fill()} character as a separator. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Self\-Type} & (Numerical type of the constant.) \\
+\hline
+{\em Self\-Size} & (Size of the set of constants.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em lhs} & Left-\/hand side stream. \\
+\hline
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side constant. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{exceptionOutput}{Output} stream. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{exceptionmagrathea_1_1Constant_a00180da842634dbab0822eb25b33ed21}{\index{magrathea\-::\-Constant@{magrathea\-::\-Constant}!\-\_\-data@{\-\_\-data}}
+\index{\-\_\-data@{\-\_\-data}!magrathea::Constant@{magrathea\-::\-Constant}}
+\subsubsection[{\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type = double, unsigned int Size = 1$>$ const std\-::array$<$Type, Size$>$ {\bf magrathea\-::\-Constant}$<$ Type, Size $>$\-::\-\_\-data\hspace{0.3cm}{\ttfamily [protected]}}}\label{exceptionmagrathea_1_1Constant_a00180da842634dbab0822eb25b33ed21}
+
+
+Set of numerical constants. 
+
+
+
+The documentation for this exception was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/magrathea/\hyperlink{constant_8h}{constant.\-h}\end{DoxyCompactItemize}

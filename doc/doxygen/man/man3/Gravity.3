@@ -1,0 +1,900 @@
+.TH "Gravity< Type, Dimension >" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Gravity< Type, Dimension > \- 
+.PP
+\fBGravity\fP cell implementation for raytracing\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <gravity\&.h>\fP
+.PP
+Inherits \fBmagrathea::AbstractContents< Gravity< Type, Dimension >, magrathea::EulerianCategory, Type, Type, std::array< Type, Dimension >, Type, Type, std::array< Type, Dimension > >\fP, and \fBmagrathea::AbstractContents< Gravity< Type, Dimension >, magrathea::EulerianCategory, Type, Type, std::array< Type, Dimension >, Type, Type >\fP\&.
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBLifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class\&.\&.\&. Misc> \fBGravity\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIExplicit generic constructor\&. \fP"
+.ti -1c
+.RI "template<class\&.\&.\&. Misc> \fBGravity\fP (Misc &&\&.\&.\&.misc)"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fBData\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type > >()\&.template data<0, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBrho\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the rho data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type > >()\&.template data<0, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBrho\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the rho data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type > >()\&.template data<1, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBphi\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the phi data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type > >()\&.template data<1, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBphi\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the phi data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type > >()\&.template data<2, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidxyz\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the dphidxyz data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type > >()\&.template data<2, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidxyz\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the dphidxyz data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type > >()\&.template data<2, Values\&.\&.\&.>(0, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidx\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the dphidx data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type > >()\&.template data<2, Values\&.\&.\&.>(0, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidx\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the dphidx data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type > >()\&.template data<2, Values\&.\&.\&.>(1, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidy\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the dphidy data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type > >()\&.template data<2, Values\&.\&.\&.>(1, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidy\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the dphidy data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type > >()\&.template data<2, Values\&.\&.\&.>(2, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidz\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the dphidz data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type > >()\&.template data<2, Values\&.\&.\&.>(2, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidz\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the dphidz data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type > >()\&.template data<3, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBa\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the a data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type > >()\&.template data<3, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBa\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the a data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type > >()\&.template data<4, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidt\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the dphidt data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type > >()\&.template data<4, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidt\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the dphidt data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<0, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBrho\fP (Misc &&\&.\&.\&.misc)"
+.br
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<0, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBrho\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<1, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBphi\fP (Misc &&\&.\&.\&.misc)"
+.br
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<1, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBphi\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<2, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidxyz\fP (Misc &&\&.\&.\&.misc)"
+.br
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<2, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidxyz\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<2, Values\&.\&.\&.>(0, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidx\fP (Misc &&\&.\&.\&.misc)"
+.br
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<2, Values\&.\&.\&.>(0, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidx\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<2, Values\&.\&.\&.>(1, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidy\fP (Misc &&\&.\&.\&.misc)"
+.br
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<2, Values\&.\&.\&.>(1, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidy\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<2, Values\&.\&.\&.>(2, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidz\fP (Misc &&\&.\&.\&.misc)"
+.br
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<2, Values\&.\&.\&.>(2, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidz\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<3, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBa\fP (Misc &&\&.\&.\&.misc)"
+.br
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<3, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBa\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<4, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidt\fP (Misc &&\&.\&.\&.misc)"
+.br
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<4, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidt\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<5, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBvxyz\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the vxyz data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<5, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBvxyz\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the vxyz data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<5, Values\&.\&.\&.>(0, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBvx\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the vx data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<5, Values\&.\&.\&.>(0, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBvx\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the vx data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<5, Values\&.\&.\&.>(1, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBvy\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the vy data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<5, Values\&.\&.\&.>(1, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBvy\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the vy data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<5, Values\&.\&.\&.>(2, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBvz\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the vz data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<5, Values\&.\&.\&.>(2, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBvz\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the vz data\&. \fP"
+.in -1c
+.in -1c
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.in -1c
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "using \fBoperator\fP = typedef"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename Type = double, unsigned int Dimension = 3>exception Gravity< Type, Dimension >"
+\fBGravity\fP cell implementation for raytracing\&. 
+
+A gravity cell containing the local density and the local potential\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Data type\&. 
+.br
+\fIDimension\fP Number of space dimension\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename Type , unsigned int Dimension> template<class\&.\&.\&. Misc> \fBGravity\fP< Type, Dimension >::\fBGravity\fP (Misc &&\&.\&.\&.misc)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit generic constructor\&. Provides a generic interface to all constructors of the base class\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+
+.SS "template<typename Type  = double, unsigned int Dimension = 3> template<class\&.\&.\&. Misc> \fBGravity\fP< Type, Dimension >::\fBGravity\fP (Misc &&\&.\&.\&.misc)\fC [inline]\fP, \fC [explicit]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBGravity\fP< Type, Dimension >::a (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the a data\&. Provides an access to the a data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type  = double, unsigned int Dimension = 3> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<3, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBGravity\fP< Type, Dimension >::a (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBGravity\fP< Type, Dimension >::a (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the a data\&. Provides an immutable access to the a data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type  = double, unsigned int Dimension = 3> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<3, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBGravity\fP< Type, Dimension >::a (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.SS "template<typename Type  = double, unsigned int Dimension = 3> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<4, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBGravity\fP< Type, Dimension >::dphidt (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBGravity\fP< Type, Dimension >::dphidt (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the dphidt data\&. Provides an access to the dphidt data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBGravity\fP< Type, Dimension >::dphidt (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the dphidt data\&. Provides an immutable access to the dphidt data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type  = double, unsigned int Dimension = 3> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<4, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBGravity\fP< Type, Dimension >::dphidt (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.SS "template<typename Type  = double, unsigned int Dimension = 3> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<2, Values\&.\&.\&.>(0, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBGravity\fP< Type, Dimension >::dphidx (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBGravity\fP< Type, Dimension >::dphidx (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the dphidx data\&. Provides an access to the dphidx data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBGravity\fP< Type, Dimension >::dphidx (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the dphidx data\&. Provides an immutable access to the dphidx data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type  = double, unsigned int Dimension = 3> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<2, Values\&.\&.\&.>(0, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBGravity\fP< Type, Dimension >::dphidx (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.SS "template<typename Type  = double, unsigned int Dimension = 3> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<2, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBGravity\fP< Type, Dimension >::dphidxyz (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBGravity\fP< Type, Dimension >::dphidxyz (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the dphidxyz data\&. Provides an access to the dphidxyz data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type  = double, unsigned int Dimension = 3> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<2, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBGravity\fP< Type, Dimension >::dphidxyz (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBGravity\fP< Type, Dimension >::dphidxyz (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the dphidxyz data\&. Provides an immutable access to the dphidxyz data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBGravity\fP< Type, Dimension >::dphidy (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the dphidy data\&. Provides an access to the dphidy data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type  = double, unsigned int Dimension = 3> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<2, Values\&.\&.\&.>(1, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBGravity\fP< Type, Dimension >::dphidy (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBGravity\fP< Type, Dimension >::dphidy (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the dphidy data\&. Provides an immutable access to the dphidy data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type  = double, unsigned int Dimension = 3> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<2, Values\&.\&.\&.>(1, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBGravity\fP< Type, Dimension >::dphidy (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBGravity\fP< Type, Dimension >::dphidz (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the dphidz data\&. Provides an access to the dphidz data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type  = double, unsigned int Dimension = 3> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<2, Values\&.\&.\&.>(2, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBGravity\fP< Type, Dimension >::dphidz (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBGravity\fP< Type, Dimension >::dphidz (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the dphidz data\&. Provides an immutable access to the dphidz data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type  = double, unsigned int Dimension = 3> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<2, Values\&.\&.\&.>(2, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBGravity\fP< Type, Dimension >::dphidz (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.SS "template<typename Type , unsigned int Dimension> int \fBGravity\fP< Type, Dimension >::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBGravity\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SS "template<typename Type  = double, unsigned int Dimension = 3> static int \fBGravity\fP< Type, Dimension >::example ()\fC [static]\fP"
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBGravity\fP< Type, Dimension >::phi (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the phi data\&. Provides an access to the phi data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type  = double, unsigned int Dimension = 3> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<1, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBGravity\fP< Type, Dimension >::phi (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBGravity\fP< Type, Dimension >::phi (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the phi data\&. Provides an immutable access to the phi data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type  = double, unsigned int Dimension = 3> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<1, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBGravity\fP< Type, Dimension >::phi (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.SS "template<typename Type  = double, unsigned int Dimension = 3> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<0, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBGravity\fP< Type, Dimension >::rho (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBGravity\fP< Type, Dimension >::rho (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the rho data\&. Provides an access to the rho data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBGravity\fP< Type, Dimension >::rho (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the rho data\&. Provides an immutable access to the rho data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type  = double, unsigned int Dimension = 3> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> >()\&.template data<0, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBGravity\fP< Type, Dimension >::rho (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBGravity\fP< Type, Dimension >::vx (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the vx data\&. Provides an access to the vx data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBGravity\fP< Type, Dimension >::vx (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the vx data\&. Provides an immutable access to the vx data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBGravity\fP< Type, Dimension >::vxyz (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the vxyz data\&. Provides an access to the vxyz data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBGravity\fP< Type, Dimension >::vxyz (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the vxyz data\&. Provides an immutable access to the vxyz data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBGravity\fP< Type, Dimension >::vy (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the vy data\&. Provides an access to the vy data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBGravity\fP< Type, Dimension >::vy (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the vy data\&. Provides an immutable access to the vy data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBGravity\fP< Type, Dimension >::vz (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the vz data\&. Provides an access to the vz data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBGravity\fP< Type, Dimension >::vz (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the vz data\&. Provides an immutable access to the vz data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename Type  = double, unsigned int Dimension = 3> typedef \fBGravity\fP< Type, Dimension >::operator"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

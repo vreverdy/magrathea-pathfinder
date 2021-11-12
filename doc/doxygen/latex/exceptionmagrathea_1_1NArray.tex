@@ -1,0 +1,182 @@
+\hypertarget{exceptionmagrathea_1_1NArray}{\section{magrathea\-:\-:N\-Array$<$ Type, Size $>$ Exception Template Reference}
+\label{exceptionmagrathea_1_1NArray}\index{magrathea\-::\-N\-Array$<$ Type, Size $>$@{magrathea\-::\-N\-Array$<$ Type, Size $>$}}
+}
+
+
+Basic n-\/dimensional mathematical array.  
+
+
+
+
+{\ttfamily \#include $<$narray.\-h$>$}
+
+Inheritance diagram for magrathea\-:\-:N\-Array$<$ Type, Size $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{exceptionmagrathea_1_1NArray}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Lifecycle}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{exceptionmagrathea_1_1NArray_acca52d7eebaed0e348d08bbe0842a472}{N\-Array} ()
+\begin{DoxyCompactList}\small\item\em Implicit empty constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Fundamental\-Type  = Type, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-fundamental$<$\-Fundamental\-Type$>$\-::value$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1NArray_a3eeaff0a8e63e6d61637b00ad90a3421}{N\-Array} (const \hyperlink{exceptionmagrathea_1_1NArray}{N\-Array}$<$ Fundamental\-Type, Size $>$ \&source)
+\begin{DoxyCompactList}\small\item\em Implicit conversion constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type  = Type, class... Misc, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Other\-Type, Type$>$\-::value$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1NArray_a72b7915a39e9b3c8e99402b1d5fad08c}{N\-Array} (const std\-::initializer\-\_\-list$<$ Other\-Type $>$ \&source, const Misc \&...misc)
+\begin{DoxyCompactList}\small\item\em Implicit initializer list constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class... Misc, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Misc) != 0$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1NArray_a9e5be0242ff3e1261e40bdd4bdaf7b58}{N\-Array} (const Misc \&...misc)
+\begin{DoxyCompactList}\small\item\em Explicit generic constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Static Public Member Functions}
+\begin{Indent}{\bf Test}\par
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{exceptionmagrathea_1_1NArray_aad23f5de773bda14e5fa0e6e4d2e9605}{example} ()
+\begin{DoxyCompactList}\small\item\em Example function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{exceptionmagrathea_1_1NArray_aa6eab16c5ba3cc719553a2465f0319df}{operator} = typedef
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{Indent}{\bf Data members}\par
+\begin{DoxyCompactItemize}
+\item 
+Type \hyperlink{exceptionmagrathea_1_1NArray_a9bc055609b16d71846679d87b367934c}{\-\_\-data} \mbox{[}Size\mbox{]}
+\begin{DoxyCompactList}\small\item\em Data contents. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Type = double, unsigned int Size = 1$>$exception magrathea\-::\-N\-Array$<$ Type, Size $>$}
+
+Basic n-\/dimensional mathematical array. 
+
+This class is the direct derivation of \hyperlink{classmagrathea_1_1AbstractNArray}{Abstract\-N\-Array}. It provides the most basic n-\/dimensional mathematical array without adding new functionalities to the abstract class. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+{\em Size} & Number of elements. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{exceptionmagrathea_1_1NArray_acca52d7eebaed0e348d08bbe0842a472}{\index{magrathea\-::\-N\-Array@{magrathea\-::\-N\-Array}!N\-Array@{N\-Array}}
+\index{N\-Array@{N\-Array}!magrathea::NArray@{magrathea\-::\-N\-Array}}
+\subsubsection[{N\-Array}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ {\bf magrathea\-::\-N\-Array}$<$ Type, Size $>$\-::{\bf N\-Array} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1NArray_acca52d7eebaed0e348d08bbe0842a472}
+
+
+Implicit empty constructor. 
+
+Does nothing. \hypertarget{exceptionmagrathea_1_1NArray_a3eeaff0a8e63e6d61637b00ad90a3421}{\index{magrathea\-::\-N\-Array@{magrathea\-::\-N\-Array}!N\-Array@{N\-Array}}
+\index{N\-Array@{N\-Array}!magrathea::NArray@{magrathea\-::\-N\-Array}}
+\subsubsection[{N\-Array}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename Fundamental\-Type , class $>$ {\bf magrathea\-::\-N\-Array}$<$ Type, Size $>$\-::{\bf N\-Array} (
+\begin{DoxyParamCaption}
+\item[{const {\bf N\-Array}$<$ Fundamental\-Type, Size $>$ \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1NArray_a3eeaff0a8e63e6d61637b00ad90a3421}
+
+
+Implicit conversion constructor. 
+
+Provides an implicit conversion from a fundamental type contents. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Fundamental\-Type} & (Fundamental data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\hypertarget{exceptionmagrathea_1_1NArray_a72b7915a39e9b3c8e99402b1d5fad08c}{\index{magrathea\-::\-N\-Array@{magrathea\-::\-N\-Array}!N\-Array@{N\-Array}}
+\index{N\-Array@{N\-Array}!magrathea::NArray@{magrathea\-::\-N\-Array}}
+\subsubsection[{N\-Array}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename Other\-Type , class... Misc, class $>$ {\bf magrathea\-::\-N\-Array}$<$ Type, Size $>$\-::{\bf N\-Array} (
+\begin{DoxyParamCaption}
+\item[{const std\-::initializer\-\_\-list$<$ Other\-Type $>$ \&}]{source, }
+\item[{const Misc \&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1NArray_a72b7915a39e9b3c8e99402b1d5fad08c}
+
+
+Implicit initializer list constructor. 
+
+Provides an implicit conversion from an initializer list. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & (Other data type.) \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\hypertarget{exceptionmagrathea_1_1NArray_a9e5be0242ff3e1261e40bdd4bdaf7b58}{\index{magrathea\-::\-N\-Array@{magrathea\-::\-N\-Array}!N\-Array@{N\-Array}}
+\index{N\-Array@{N\-Array}!magrathea::NArray@{magrathea\-::\-N\-Array}}
+\subsubsection[{N\-Array}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$class... Misc, class $>$ {\bf magrathea\-::\-N\-Array}$<$ Type, Size $>$\-::{\bf N\-Array} (
+\begin{DoxyParamCaption}
+\item[{const Misc \&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{exceptionmagrathea_1_1NArray_a9e5be0242ff3e1261e40bdd4bdaf7b58}
+
+
+Explicit generic constructor. 
+
+Provides a generic interface to all constructors of the base class. Before calling the associated constructor of the base class, the contents is initialized. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{exceptionmagrathea_1_1NArray_aad23f5de773bda14e5fa0e6e4d2e9605}{\index{magrathea\-::\-N\-Array@{magrathea\-::\-N\-Array}!example@{example}}
+\index{example@{example}!magrathea::NArray@{magrathea\-::\-N\-Array}}
+\subsubsection[{example}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ int {\bf magrathea\-::\-N\-Array}$<$ Type, Size $>$\-::example (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1NArray_aad23f5de773bda14e5fa0e6e4d2e9605}
+
+
+Example function. 
+
+Tests and demonstrates the use of \hyperlink{exceptionmagrathea_1_1NArray}{N\-Array}. \begin{DoxyReturn}{Returns}
+0 if no error. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{exceptionmagrathea_1_1NArray_a9bc055609b16d71846679d87b367934c}{\index{magrathea\-::\-N\-Array@{magrathea\-::\-N\-Array}!\-\_\-data@{\-\_\-data}}
+\index{\-\_\-data@{\-\_\-data}!magrathea::NArray@{magrathea\-::\-N\-Array}}
+\subsubsection[{\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type = double, unsigned int Size = 1$>$ Type {\bf magrathea\-::\-N\-Array}$<$ Type, Size $>$\-::\-\_\-data\mbox{[}Size\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}}\label{exceptionmagrathea_1_1NArray_a9bc055609b16d71846679d87b367934c}
+
+
+Data contents. 
+
+\hypertarget{exceptionmagrathea_1_1NArray_aa6eab16c5ba3cc719553a2465f0319df}{\index{magrathea\-::\-N\-Array@{magrathea\-::\-N\-Array}!operator@{operator}}
+\index{operator@{operator}!magrathea::NArray@{magrathea\-::\-N\-Array}}
+\subsubsection[{operator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type = double, unsigned int Size = 1$>$ using {\bf magrathea\-::\-N\-Array}$<$ Type, Size $>$\-::operator = }}\label{exceptionmagrathea_1_1NArray_aa6eab16c5ba3cc719553a2465f0319df}
+
+
+The documentation for this exception was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/magrathea/\hyperlink{narray_8h}{narray.\-h}\end{DoxyCompactItemize}

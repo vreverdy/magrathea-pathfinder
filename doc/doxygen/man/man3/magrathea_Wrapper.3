@@ -1,0 +1,291 @@
+.TH "magrathea::Wrapper< Type >" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::Wrapper< Type > \- 
+.PP
+Basic value wrapper with getter and setter\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <wrapper\&.h>\fP
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBLifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename OtherType  = Type, class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> constexpr \fBWrapper\fP (const OtherType &source=Type())"
+.br
+.RI "\fIImplicit value constructor\&. \fP"
+.ti -1c
+.RI "template<typename OtherType  = Type, class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> constexpr \fBWrapper\fP (const \fBWrapper\fP< OtherType > &source)"
+.br
+.RI "\fIImplicit wrapper constructor\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBAssignment\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename OtherType  = Type, class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> \fBWrapper\fP< Type > & \fBoperator=\fP (const OtherType &source)"
+.br
+.RI "\fIValue assignment operator\&. \fP"
+.ti -1c
+.RI "template<typename OtherType  = Type, class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> \fBWrapper\fP< Type > & \fBoperator=\fP (const \fBWrapper\fP< OtherType > &source)"
+.br
+.RI "\fIWrapped assignment operator\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBOperators\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "constexpr \fBoperator Type\fP () const "
+.br
+.RI "\fICast operator\&. \fP"
+.ti -1c
+.RI "constexpr const Type & \fBoperator()\fP () const "
+.br
+.RI "\fIImmutable getter operator\&. \fP"
+.ti -1c
+.RI "Type & \fBoperator()\fP ()"
+.br
+.RI "\fIGetter operator\&. \fP"
+.ti -1c
+.RI "template<typename OtherType  = Type, class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> Type & \fBoperator()\fP (const OtherType &source)"
+.br
+.RI "\fIValue setter operator\&. \fP"
+.ti -1c
+.RI "template<typename OtherType  = Type, class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> Type & \fBoperator()\fP (const \fBWrapper\fP< OtherType > &source)"
+.br
+.RI "\fIWrapped setter operator\&. \fP"
+.in -1c
+.in -1c
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SS "Public Attributes"
+
+.PP
+.RI "\fBData members\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "Type \fB_data\fP"
+.br
+.RI "\fIWrapped object\&. \fP"
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename Type = double>exception magrathea::Wrapper< Type >"
+Basic value wrapper with getter and setter\&. 
+
+Provides a class that can wrap a value or an object and allows access by \fCoperator()\fP\&. It can be used as a public class member to avoid the writing of trivial getter and setter\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Wrapped type\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename Type > template<typename OtherType , class > constexpr \fBmagrathea::Wrapper\fP< Type >::\fBWrapper\fP (const OtherType &source = \fCType()\fP)"
+
+.PP
+Implicit value constructor\&. Implicitely constructs the wrapper from a value of a convertible type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Value\&. 
+.RE
+.PP
+
+.SS "template<typename Type > template<typename OtherType , class > constexpr \fBmagrathea::Wrapper\fP< Type >::\fBWrapper\fP (const \fBWrapper\fP< OtherType > &source)"
+
+.PP
+Implicit wrapper constructor\&. Implicitely constructs the wrapper from a wrapper of a convertible type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Other wrapper\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename Type > int \fBmagrathea::Wrapper\fP< Type >::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBWrapper\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr \fBmagrathea::Wrapper\fP< Type >::operator Type () const"
+
+.PP
+Cast operator\&. Implicitely casts the wrapper to the wrapped type\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr const Type & \fBmagrathea::Wrapper\fP< Type >::operator() () const"
+
+.PP
+Immutable getter operator\&. Returns a const reference to the wrapped object\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Const reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type > Type & \fBmagrathea::Wrapper\fP< Type >::operator() ()\fC [inline]\fP"
+
+.PP
+Getter operator\&. Returns a reference to the wrapped object\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type > template<typename OtherType , class > Type & \fBmagrathea::Wrapper\fP< Type >::operator() (const OtherType &source)\fC [inline]\fP"
+
+.PP
+Value setter operator\&. Sets the contents from a value of a convertible type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type > template<typename OtherType , class > Type & \fBmagrathea::Wrapper\fP< Type >::operator() (const \fBWrapper\fP< OtherType > &source)\fC [inline]\fP"
+
+.PP
+Wrapped setter operator\&. Sets the contents from a wrapper of a convertible type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Other wrapper\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type > template<typename OtherType , class > \fBWrapper\fP< Type > & \fBmagrathea::Wrapper\fP< Type >::operator= (const OtherType &source)\fC [inline]\fP"
+
+.PP
+Value assignment operator\&. Assigns the contents from a value of a convertible type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type > template<typename OtherType , class > \fBWrapper\fP< Type > & \fBmagrathea::Wrapper\fP< Type >::operator= (const \fBWrapper\fP< OtherType > &source)\fC [inline]\fP"
+
+.PP
+Wrapped assignment operator\&. Assigns the contents from a wrapper of a convertible type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Other wrapper\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename Type = double> Type \fBmagrathea::Wrapper\fP< Type >::_data"
+
+.PP
+Wrapped object\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

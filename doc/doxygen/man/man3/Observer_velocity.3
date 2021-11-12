@@ -1,0 +1,128 @@
+.TH "Observer_velocity" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Observer_velocity \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <observer_velocity\&.h>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<class Parameters , class Map > static void \fBReadParamFile\fP (Parameters &\fBparameters\fP, Map &parameter)"
+.br
+.RI "\fIRead parameter file\&. \fP"
+.ti -1c
+.RI "template<typename Type1 , template< typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > static void \fBCreateOctreeVelocityWithCIC\fP (Octree< Type, Index, Data, Dimension, Position, Extent, Element, Container > &octree, std::vector< Type1 > &pos_part, std::vector< Type1 > &vel_part)"
+.br
+.RI "\fIAdd velocity to Octree using CIC\&. \fP"
+.ti -1c
+.RI "template<typename Type1 , template< typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > static void \fBCreateOctreeVelocityWithTSC\fP (Octree< Type, Index, Data, Dimension, Position, Extent, Element, Container > &octree, std::vector< Type1 > &pos_part, std::vector< Type1 > &vel_part)"
+.br
+.RI "\fIAdd velocity to Octree using TSC\&. \fP"
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename Type1 , template< typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > void Observer_velocity::CreateOctreeVelocityWithCIC (Octree< Type, Index, Data, Dimension, Position, Extent, Element, Container > &octree, std::vector< Type1 > &pos_part, std::vector< Type1 > &vel_part)\fC [static]\fP"
+
+.PP
+Add velocity to Octree using CIC\&. Add velocity to Octree using CIC 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType1\fP Type1 type 
+.br
+\fIOctree\fP octree type 
+.br
+\fIType\fP type type 
+.br
+\fIIndex\fP index type 
+.br
+\fIData\fP data type 
+.br
+\fIDimension\fP Number of dimensions 
+.br
+\fIPosition\fP position type 
+.br
+\fIExtent\fP extent type 
+.br
+\fIElement\fP element type 
+.br
+\fIContainer\fP container type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoctree\fP Octree be to filled with velocity field 
+.br
+\fIpos_part\fP Position of particles 
+.br
+\fIvel_part\fP Velocity of particles 
+.RE
+.PP
+
+.SS "template<typename Type1 , template< typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > void Observer_velocity::CreateOctreeVelocityWithTSC (Octree< Type, Index, Data, Dimension, Position, Extent, Element, Container > &octree, std::vector< Type1 > &pos_part, std::vector< Type1 > &vel_part)\fC [static]\fP"
+
+.PP
+Add velocity to Octree using TSC\&. Add velocity to Octree using TSC 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType1\fP Type1 type 
+.br
+\fIOctree\fP octree type 
+.br
+\fIType\fP type type 
+.br
+\fIIndex\fP index type 
+.br
+\fIData\fP data type 
+.br
+\fIDimension\fP Number of dimensions 
+.br
+\fIPosition\fP position type 
+.br
+\fIExtent\fP extent type 
+.br
+\fIElement\fP element type 
+.br
+\fIContainer\fP container type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoctree\fP Octree be to filled with velocity field 
+.br
+\fIpos_part\fP Position of particles 
+.br
+\fIvel_part\fP Velocity of particles 
+.RE
+.PP
+
+.SS "template<class Parameters , class Map > void Observer_velocity::ReadParamFile (Parameters &parameters, Map &parameter)\fC [static]\fP"
+
+.PP
+Read parameter file\&. Read and put in a structure the parameters\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIParameters\fP structure type 
+.br
+\fIMap\fP map type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Structure containing the parameters\&. 
+.br
+\fIparameter\fP Contains parameters to be rewritten 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

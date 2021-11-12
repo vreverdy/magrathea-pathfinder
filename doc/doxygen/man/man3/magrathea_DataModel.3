@@ -1,0 +1,857 @@
+.TH "magrathea::DataModel" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::DataModel \- 
+.PP
+Management of fundamental types representation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <datamodel\&.h>\fP
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBLifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBDataModel\fP (const unsigned long long int source=0)"
+.br
+.RI "\fIExplicit value constructor\&. \fP"
+.ti -1c
+.RI "\fBDataModel\fP (const bool big, const bool twos, const bool fieee754, const bool dieee754, const bool ldieee754, const unsigned int psize, const unsigned int bsize, const unsigned int csize, const unsigned int sisize, const unsigned int isize, const unsigned int lisize, const unsigned int llisize, const unsigned int fsize, const unsigned int dsize, const unsigned int ldsize)"
+.br
+.RI "\fIExplicit detailed constructor\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBOperators\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "unsigned long long int \fBoperator()\fP ()"
+.br
+.RI "\fIAccess operator\&. \fP"
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBDataModel\fP &rhs)"
+.br
+.RI "\fIEqual to comparison\&. \fP"
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBDataModel\fP &rhs)"
+.br
+.RI "\fINot equal to comparison\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBAssignment\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBDataModel\fP & \fBassign\fP (const \fBDataModel\fP &source)"
+.br
+.RI "\fICopy assignment\&. \fP"
+.ti -1c
+.RI "\fBDataModel\fP & \fBassign\fP (const unsigned long long int source=0)"
+.br
+.RI "\fIValue assignment\&. \fP"
+.ti -1c
+.RI "\fBDataModel\fP & \fBassign\fP (const bool big, const bool twos, const bool fieee754, const bool dieee754, const bool ldieee754, const unsigned int psize, const unsigned int bsize, const unsigned int csize, const unsigned int sisize, const unsigned int isize, const unsigned int lisize, const unsigned int llisize, const unsigned int fsize, const unsigned int dsize, const unsigned int ldsize)"
+.br
+.RI "\fIDetailed assignment\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBManagement\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "unsigned int \fBsize\fP () const "
+.br
+.RI "\fIGet the size of the code\&. \fP"
+.ti -1c
+.RI "const unsigned long long int & \fBdata\fP () const "
+.br
+.RI "\fIAccess data\&. \fP"
+.ti -1c
+.RI "\fBDataModel\fP & \fBclear\fP ()"
+.br
+.RI "\fIClear code\&. \fP"
+.ti -1c
+.RI "\fBDataModel\fP \fBcopy\fP () const "
+.br
+.RI "\fICopy\&. \fP"
+.ti -1c
+.RI "template<typename Type  = DataModel> Type \fBcast\fP () const "
+.br
+.RI "\fICast\&. \fP"
+.ti -1c
+.RI "bool \fBcheck\fP ()"
+.br
+.RI "\fICheck if standard\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBGetters\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "unsigned long long int \fBget\fP () const "
+.br
+.RI "\fIGlobal getter\&. \fP"
+.ti -1c
+.RI "bool \fBendianness\fP () const "
+.br
+.RI "\fIGet endianness\&. \fP"
+.ti -1c
+.RI "bool \fBcomplement\fP () const "
+.br
+.RI "\fIGet complement\&. \fP"
+.ti -1c
+.RI "template<typename Type , class  = typename std::enable_if<(!std::is_pointer<Type>::value) && (std::is_floating_point<typename std::decay<Type>::type>::value)>::type> bool \fBieee754\fP () const "
+.br
+.RI "\fIGet IEEE-754 compatibility\&.   \fP"
+.ti -1c
+.RI "template<typename Type , class  = typename std::enable_if<(std::is_pointer<Type>::value) || (std::is_integral<typename std::decay<Type>::type>::value) || (std::is_floating_point<typename std::decay<Type>::type>::value)>::type> unsigned int \fBsize\fP () const "
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fBSetters\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBDataModel\fP & \fBset\fP (const bool big, const bool twos, const bool fieee754, const bool dieee754, const bool ldieee754, const unsigned int psize, const unsigned int bsize, const unsigned int csize, const unsigned int sisize, const unsigned int isize, const unsigned int lisize, const unsigned int llisize, const unsigned int fsize, const unsigned int dsize, const unsigned int ldsize)"
+.br
+.RI "\fIGlobal setter\&. \fP"
+.ti -1c
+.RI "\fBDataModel\fP & \fBendianness\fP (const bool value)"
+.br
+.RI "\fISet endianness\&. \fP"
+.ti -1c
+.RI "\fBDataModel\fP & \fBcomplement\fP (const bool value)"
+.br
+.RI "\fISet complement\&. \fP"
+.ti -1c
+.RI "template<typename Type , class  = typename std::enable_if<(!std::is_pointer<Type>::value) && (std::is_floating_point<typename std::decay<Type>::type>::value)>::type> \fBDataModel\fP & \fBieee754\fP (const bool value)"
+.br
+.RI "\fISet IEEE-754 compatibility\&. \fP"
+.ti -1c
+.RI "template<typename Type , class  = typename std::enable_if<(std::is_pointer<Type>::value) || (std::is_integral<typename std::decay<Type>::type>::value) || (std::is_floating_point<typename std::decay<Type>::type>::value)>::type> \fBDataModel\fP & \fBsize\fP (const unsigned int value)"
+.br
+.RI "\fISet type size\&.   \fP"
+.in -1c
+.in -1c
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBHelpers\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename Type , typename Decayed  = typename std::decay<Type>::type, typename Signed  = typename std::make_signed<typename std::conditional<(std::is_integral<Decayed>::value) && (!std::is_same<Decayed, bool>::value), Decayed, int>::type>::type, typename Fundamental  = typename std::conditional<std::is_pointer<Type>::value, void*, typename std::conditional<(std::is_integral<Decayed>::value) && (!std::is_same<Decayed, bool>::value), typename std::conditional<std::is_same<Signed, signed char>::value, char, Signed>::type, Decayed>::type>::type, class  = typename std::enable_if<(std::is_pointer<Fundamental>::value) || (std::is_integral<Fundamental>::value) || (std::is_floating_point<Fundamental>::value)>::type> static constexpr Fundamental \fBfundamental\fP ()"
+.br
+.RI "\fIGet the associated fundamental type\&. \fP"
+.ti -1c
+.RI "template<typename Type , class  = typename std::enable_if<(!std::is_pointer<Type>::value) && (std::is_floating_point<typename std::decay<Type>::type>::value)>::type> static constexpr bool \fBcontrol754\fP ()"
+.br
+.RI "\fIControl IEEE-754 system compatibility\&. \fP"
+.ti -1c
+.RI "static constexpr bool \fBcontrol\fP ()"
+.br
+.RI "\fIControl if standard\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBPredefined\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static const \fBDataModel\fP & \fBsystem\fP ()"
+.br
+.RI "\fISystem data model\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SS "Protected Attributes"
+
+.PP
+.RI "\fBData members\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "unsigned long long int \fB_code\fP"
+.br
+.RI "\fIInternal encoding of data types\&. \fP"
+.in -1c
+.in -1c
+.SS "Friends"
+
+.PP
+.RI "\fBStream\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &lhs, const \fBDataModel\fP &rhs)"
+.br
+.RI "\fI\fBOutput\fP stream operator\&. \fP"
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+Management of fundamental types representation\&. 
+
+Class to hold the data representation of fundamental types on a system\&. The information is encoded in an \fCunsigned long long int\fP in the following way where \fC[BXbY-Z] \fP means the information starts at the bit \fCY\fP of the byte \fCX\fP and its size is \fCZ\fP bits : 
+.PD 0
+
+.IP "\(bu" 2
+\fC[B0b0-1]\fP endianness 
+.IP "\(bu" 2
+\fC[B0b1-1]\fP complement 
+.IP "\(bu" 2
+\fC[B1b0-1]\fP \fCfloat\fP compatibility to the IEEE-754 \fCbinary32\fP representation 
+.IP "\(bu" 2
+\fC[B1b1-1]\fP \fCdouble\fP compatibility to the IEEE-754 \fCbinary64\fP representation 
+.IP "\(bu" 2
+\fC[B1b2-1]\fP \fClong double\fP compatibility to the IEEE-754 \fCbinary128\fP representation 
+.IP "\(bu" 2
+\fC[B2b0-4]\fP \fCvoid*\fP size 
+.IP "\(bu" 2
+\fC[B2b4-4]\fP \fCbool\fP size 
+.IP "\(bu" 2
+\fC[B3b0-4]\fP \fCchar\fP size 
+.IP "\(bu" 2
+\fC[B3b4-4]\fP \fCshort int\fP size 
+.IP "\(bu" 2
+\fC[B4b0-4]\fP \fCint\fP size 
+.IP "\(bu" 2
+\fC[B4b4-4]\fP \fClong int\fP size 
+.IP "\(bu" 2
+\fC[B5b0-4]\fP \fClong long int\fP size 
+.IP "\(bu" 2
+\fC[B6b0-4]\fP \fCfloat\fP size 
+.IP "\(bu" 2
+\fC[B6b4-4]\fP \fCdouble\fP size 
+.IP "\(bu" 2
+\fC[B7b0-4]\fP \fClong double\fP size
+.PP
+Specified sizes cannot be equal to zero and are defaulted to one\&. Futhermore, the IEEE-754 compatibility corresponds to correct byte size, IEC-559 compatibility, denormalization, correct radix and correct number of mantissa digits\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "magrathea::DataModel::DataModel (const unsigned long long intsource = \fC0\fP)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit value constructor\&. Explicitely constructs the data model from an \fCunsigned long long int\fP code\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Code to be used for construction\&. 
+.RE
+.PP
+
+.SS "magrathea::DataModel::DataModel (const boolbig, const booltwos, const boolfieee754, const booldieee754, const boolldieee754, const unsigned intpsize, const unsigned intbsize, const unsigned intcsize, const unsigned intsisize, const unsigned intisize, const unsigned intlisize, const unsigned intllisize, const unsigned intfsize, const unsigned intdsize, const unsigned intldsize)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit detailed constructor\&. Explicitely constructs the data model using all the needed values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbig\fP False for little-endian, true for big-endian\&. 
+.br
+\fItwos\fP True for two's complement, false otherwise\&. 
+.br
+\fIfieee754\fP IEEE-754 \fCbinary32\fP compatibility of \fCfloat\fP\&. 
+.br
+\fIdieee754\fP IEEE-754 \fCbinary64\fP compatibility of \fCdouble\fP\&. 
+.br
+\fIldieee754\fP IEEE-754 \fCbinary128\fP compatibility of \fClong double\fP\&. 
+.br
+\fIpsize\fP Byte size of pointers\&. 
+.br
+\fIbsize\fP Byte size of \fCbool\fP\&. 
+.br
+\fIcsize\fP Byte size of \fCchar\fP\&. 
+.br
+\fIsisize\fP Byte size of \fCshort int\fP\&. 
+.br
+\fIisize\fP Byte size of \fCint\fP\&. 
+.br
+\fIlisize\fP Byte size of \fClong int\fP\&. 
+.br
+\fIllisize\fP Byte size of \fClong long int\fP\&. 
+.br
+\fIfsize\fP Byte size of \fCfloat\fP\&. 
+.br
+\fIdsize\fP Byte size of \fCdouble\fP\&. 
+.br
+\fIldsize\fP Byte size of \fClong double\fP\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBDataModel\fP & magrathea::DataModel::assign (const \fBDataModel\fP &source)\fC [inline]\fP"
+
+.PP
+Copy assignment\&. Assign the code from another data model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "\fBDataModel\fP & magrathea::DataModel::assign (const unsigned long long intsource = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Value assignment\&. Assigns a code to the data model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "\fBDataModel\fP & magrathea::DataModel::assign (const boolbig, const booltwos, const boolfieee754, const booldieee754, const boolldieee754, const unsigned intpsize, const unsigned intbsize, const unsigned intcsize, const unsigned intsisize, const unsigned intisize, const unsigned intlisize, const unsigned intllisize, const unsigned intfsize, const unsigned intdsize, const unsigned intldsize)\fC [inline]\fP"
+
+.PP
+Detailed assignment\&. Assigns the contents of the data model using all the needed values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbig\fP False for little-endian, true for big-endian\&. 
+.br
+\fItwos\fP True for two's complement, false otherwise\&. 
+.br
+\fIfieee754\fP IEEE-754 \fCbinary32\fP compatibility of \fCfloat\fP\&. 
+.br
+\fIdieee754\fP IEEE-754 \fCbinary64\fP compatibility of \fCdouble\fP\&. 
+.br
+\fIldieee754\fP IEEE-754 \fCbinary128\fP compatibility of \fClong double\fP\&. 
+.br
+\fIpsize\fP Byte size of pointers\&. 
+.br
+\fIbsize\fP Byte size of \fCbool\fP\&. 
+.br
+\fIcsize\fP Byte size of \fCchar\fP\&. 
+.br
+\fIsisize\fP Byte size of \fCshort int\fP\&. 
+.br
+\fIisize\fP Byte size of \fCint\fP\&. 
+.br
+\fIlisize\fP Byte size of \fClong int\fP\&. 
+.br
+\fIllisize\fP Byte size of \fClong long int\fP\&. 
+.br
+\fIfsize\fP Byte size of \fCfloat\fP\&. 
+.br
+\fIdsize\fP Byte size of \fCdouble\fP\&. 
+.br
+\fIldsize\fP Byte size of \fClong double\fP\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type > Type magrathea::DataModel::cast () const\fC [inline]\fP"
+
+.PP
+Cast\&. Returns a copy of the data model casted to the provided type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Data type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Casted copy\&. 
+.RE
+.PP
+
+.SS "bool magrathea::DataModel::check ()\fC [inline]\fP"
+
+.PP
+Check if standard\&. Checks whether the data model is a standard one\&. It means that it has all the following properties : 
+.PD 0
+
+.IP "\(bu" 2
+it uses two's complement 
+.IP "\(bu" 2
+\fCfloat\fP and \fCdouble\fP are IEEE-754 compliant 
+.IP "\(bu" 2
+pointer size is 4 or 8 
+.IP "\(bu" 2
+\fCbool\fP size is 1 
+.IP "\(bu" 2
+\fCchar\fP size is 1 
+.IP "\(bu" 2
+\fCshort int\fP size is 2 
+.IP "\(bu" 2
+\fCint\fP size is 4 
+.IP "\(bu" 2
+\fClong int\fP size is 4 or 8 
+.IP "\(bu" 2
+\fClong long int\fP size is 8 
+.IP "\(bu" 2
+\fCfloat\fP size is 4 
+.IP "\(bu" 2
+\fCdouble\fP size is 8 
+.IP "\(bu" 2
+\fClong double\fP size is 8, 10, 12 or 16
+.PP
+\fBReturns:\fP
+.RS 4
+True if the data model is standard, false if not\&. 
+.RE
+.PP
+
+.SS "\fBDataModel\fP & magrathea::DataModel::clear ()\fC [inline]\fP"
+
+.PP
+Clear code\&. Clears the whole contents and sets the flags to zero, and the sizes to one\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "bool magrathea::DataModel::complement () const\fC [inline]\fP"
+
+.PP
+Get complement\&. Returns whether the system use two's complement encoding or not according to the data model\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True for two's complement, false otherwise\&. 
+.RE
+.PP
+
+.SS "\fBDataModel\fP & magrathea::DataModel::complement (const boolvalue)\fC [inline]\fP"
+
+.PP
+Set complement\&. Sets the complement of the data model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP True for two's complement, false otherwise\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "constexpr bool magrathea::DataModel::control ()\fC [static]\fP"
+
+.PP
+Control if standard\&. Controls whether the system data model is a standard one\&. It means that it has all the following properties : 
+.PD 0
+
+.IP "\(bu" 2
+it uses two's complement 
+.IP "\(bu" 2
+\fCfloat\fP and \fCdouble\fP are IEEE-754 compliant 
+.IP "\(bu" 2
+\fClong double\fP is IEC-559 compliant, can be denormalized and has a binary radix 
+.IP "\(bu" 2
+pointer size is 4 or 8 
+.IP "\(bu" 2
+\fCbool\fP size is 1 
+.IP "\(bu" 2
+\fCchar\fP size is 1 
+.IP "\(bu" 2
+\fCshort int\fP size is 2 
+.IP "\(bu" 2
+\fCint\fP size is 4 
+.IP "\(bu" 2
+\fClong int\fP size is 4 or 8 
+.IP "\(bu" 2
+\fClong long int\fP size is 8 
+.IP "\(bu" 2
+\fCfloat\fP size is 4 
+.IP "\(bu" 2
+\fCdouble\fP size is 8 
+.IP "\(bu" 2
+\fClong double\fP size is 8, 10, 12 or 16
+.PP
+\fBReturns:\fP
+.RS 4
+True if the data model is standard, false if not\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class > constexpr bool magrathea::DataModel::control754 ()\fC [static]\fP"
+
+.PP
+Control IEEE-754 system compatibility\&. Control whether the floating-point type is compatible with the IEEE-754 standard on the current architecture : correct byte size, IEC-559 compatibility, denormalization, correct radix and correct number of mantissa digits\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Floating-point type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the type is compliant to IEEE-754, false otherwise\&. 
+.RE
+.PP
+
+.SS "\fBDataModel\fP magrathea::DataModel::copy () const\fC [inline]\fP"
+
+.PP
+Copy\&. Returns a copy of the data model\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "const unsigned long long int & magrathea::DataModel::data () const\fC [inline]\fP"
+
+.PP
+Access data\&. Returns a constant reference to the internal underlying data which is the data model code\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the code\&. 
+.RE
+.PP
+
+.SS "bool magrathea::DataModel::endianness () const\fC [inline]\fP"
+
+.PP
+Get endianness\&. Returns the endianness from data model\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+False for little-endian, true for big-endian\&. 
+.RE
+.PP
+
+.SS "\fBDataModel\fP & magrathea::DataModel::endianness (const boolvalue)\fC [inline]\fP"
+
+.PP
+Set endianness\&. Sets the endianness of the data model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP False for little-endian, true for big-endian\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "int magrathea::DataModel::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBDataModel\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SS "template<typename Type , typename Decayed , typename Signed , typename Fundamental , class > constexpr Fundamental magrathea::DataModel::fundamental ()\fC [static]\fP"
+
+.PP
+Get the associated fundamental type\&. Converts the type passed as first template argument to an associated fundamental type : 
+.PD 0
+
+.IP "\(bu" 2
+\fCvoid*\fP if the type is a pointer 
+.IP "\(bu" 2
+\fCbool\fP if the type is a cv-qualified boolean 
+.IP "\(bu" 2
+\fCchar\fP if the type is a cv-qualified plain, signed or unsigned character 
+.IP "\(bu" 2
+signed decayed type if the type is an integral type 
+.IP "\(bu" 2
+decayed type if the type is a floating-point type 
+.PP
+\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Type to convert\&. 
+.br
+\fIDecayed\fP (Decayed version of the type\&.) 
+.br
+\fISigned\fP (Signed version of the type\&.) 
+.br
+\fIFundamental\fP (Fundamental version of the type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Default value of the fundamental type\&. 
+.RE
+.PP
+
+.SS "unsigned long long int magrathea::DataModel::get () const\fC [inline]\fP"
+
+.PP
+Global getter\&. Returns a copy of the underlying complete code of the data model\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the code\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class > bool magrathea::DataModel::ieee754 () const\fC [inline]\fP"
+
+.PP
+Get IEEE-754 compatibility\&.   Returns whether the specified floating-point type is compliant to the IEEE-754 standard according to the data model\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Floating-point type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if compliant, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class > \fBDataModel\fP & magrathea::DataModel::ieee754 (const boolvalue)\fC [inline]\fP"
+
+.PP
+Set IEEE-754 compatibility\&. Sets whether the specified floating-point type is compliant to the IEEE-754 standard\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Floating-point type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP True if compliant, false otherwise\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "bool magrathea::DataModel::operator!= (const \fBDataModel\fP &rhs)\fC [inline]\fP"
+
+.PP
+Not equal to comparison\&. Compares two data models for difference\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True if the two data models are not equal, false otherwise\&. 
+.RE
+.PP
+
+.SS "unsigned long long int magrathea::DataModel::operator() ()\fC [inline]\fP"
+
+.PP
+Access operator\&. Returns a copy of the underlying complete code of the data model\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the code\&. 
+.RE
+.PP
+
+.SS "bool magrathea::DataModel::operator== (const \fBDataModel\fP &rhs)\fC [inline]\fP"
+
+.PP
+Equal to comparison\&. Compares two data models for equality\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True if the two data models are equal, false otherwise\&. 
+.RE
+.PP
+
+.SS "\fBDataModel\fP & magrathea::DataModel::set (const boolbig, const booltwos, const boolfieee754, const booldieee754, const boolldieee754, const unsigned intpsize, const unsigned intbsize, const unsigned intcsize, const unsigned intsisize, const unsigned intisize, const unsigned intlisize, const unsigned intllisize, const unsigned intfsize, const unsigned intdsize, const unsigned intldsize)\fC [inline]\fP"
+
+.PP
+Global setter\&. Sets the content using all the needed values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbig\fP False for little-endian, true for big-endian\&. 
+.br
+\fItwos\fP True for two's complement, false otherwise\&. 
+.br
+\fIfieee754\fP IEEE-754 \fCbinary32\fP compatibility of \fCfloat\fP\&. 
+.br
+\fIdieee754\fP IEEE-754 \fCbinary64\fP compatibility of \fCdouble\fP\&. 
+.br
+\fIldieee754\fP IEEE-754 \fCbinary128\fP compatibility of \fClong double\fP\&. 
+.br
+\fIpsize\fP Byte size of pointers\&. 
+.br
+\fIbsize\fP Byte size of \fCbool\fP\&. 
+.br
+\fIcsize\fP Byte size of \fCchar\fP\&. 
+.br
+\fIsisize\fP Byte size of \fCshort int\fP\&. 
+.br
+\fIisize\fP Byte size of \fCint\fP\&. 
+.br
+\fIlisize\fP Byte size of \fClong int\fP\&. 
+.br
+\fIllisize\fP Byte size of \fClong long int\fP\&. 
+.br
+\fIfsize\fP Byte size of \fCfloat\fP\&. 
+.br
+\fIdsize\fP Byte size of \fCdouble\fP\&. 
+.br
+\fIldsize\fP Byte size of \fClong double\fP\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "unsigned int magrathea::DataModel::size () const\fC [inline]\fP"
+
+.PP
+Get the size of the code\&. Get type size\&.  
+.PP
+Returns the result of the \fCsizeof\fP operator on the underlying code\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Size of the code in bytes\&.
+.RE
+.PP
+Returns the size of the provided fundamental type according to the data model\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Pointer, integral of floating-point type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Type size in bytes\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class  = typename std::enable_if<(std::is_pointer<Type>::value) || (std::is_integral<typename std::decay<Type>::type>::value) || (std::is_floating_point<typename std::decay<Type>::type>::value)>::type> unsigned int magrathea::DataModel::size () const\fC [inline]\fP"
+
+.SS "template<typename Type , class > \fBDataModel\fP & magrathea::DataModel::size (const unsigned intvalue)\fC [inline]\fP"
+
+.PP
+Set type size\&.   Sets the size of the provided fundamental type of the data model\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Pointer, integral of floating-point type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Type size in bytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "const \fBDataModel\fP & magrathea::DataModel::system ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+System data model\&. Returns an immutable reference to singleton representing the data model of the current architecture\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to system data model singleton\&. 
+.RE
+.PP
+
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "std::ostream& operator<< (std::ostream &lhs, const \fBDataModel\fP &rhs)\fC [friend]\fP"
+
+.PP
+\fBOutput\fP stream operator\&. Prints out the data model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side stream\&. 
+.br
+\fIrhs\fP Right-hand side data model\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBOutput\fP stream\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "unsigned long long int magrathea::DataModel::_code\fC [protected]\fP"
+
+.PP
+Internal encoding of data types\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

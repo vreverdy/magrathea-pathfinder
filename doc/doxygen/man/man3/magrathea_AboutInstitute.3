@@ -1,0 +1,727 @@
+.TH "magrathea::AboutInstitute" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::AboutInstitute \- 
+.PP
+Information about an institution or an organization\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <aboutinstitute\&.h>\fP
+.PP
+Inherits \fBmagrathea::AbstractAboutObject< AboutInstitute, std::string, std::string, std::string, std::string, std::string, std::string, std::string, std::string, std::string, std::string >\fP\&.
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBLifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class\&.\&.\&. Misc> \fBAboutInstitute\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIExplicit generic constructor\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBAccessors\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "std::string \fBidentification\fP (const std::string &separator=' - ') const "
+.br
+.RI "\fIFull identification accessor\&. \fP"
+.ti -1c
+.RI "std::string \fBaddress\fP (const std::string &separator=', ') const "
+.br
+.RI "\fIAddress accessor\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBMutators\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBAboutInstitute\fP & \fBidentification\fP (const std::string &stitle, const std::string &sname, const std::string &sextended)"
+.br
+.RI "\fIFull identification mutator\&. \fP"
+.ti -1c
+.RI "\fBAboutInstitute\fP & \fBaddress\fP (const std::string &sstreet, const std::string &szip, const std::string &scity, const std::string &sregion, const std::string &scountry)"
+.br
+.RI "\fIAddress mutator\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBGetters\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "const std::string & \fBtitle\fP () const "
+.br
+.RI "\fITitle or acronym getter\&. \fP"
+.ti -1c
+.RI "const std::string & \fBname\fP () const "
+.br
+.RI "\fIComplete name getter\&. \fP"
+.ti -1c
+.RI "const std::string & \fBextended\fP () const "
+.br
+.RI "\fIExtended name or information getter\&. \fP"
+.ti -1c
+.RI "const std::string & \fBstreet\fP () const "
+.br
+.RI "\fIStreet number getter\&. \fP"
+.ti -1c
+.RI "const std::string & \fBzip\fP () const "
+.br
+.RI "\fIZip code getter\&. \fP"
+.ti -1c
+.RI "const std::string & \fBcity\fP () const "
+.br
+.RI "\fICity getter\&. \fP"
+.ti -1c
+.RI "const std::string & \fBregion\fP () const "
+.br
+.RI "\fIRegion getter\&. \fP"
+.ti -1c
+.RI "const std::string & \fBcountry\fP () const "
+.br
+.RI "\fICountry getter\&. \fP"
+.ti -1c
+.RI "const std::string & \fBlink\fP () const "
+.br
+.RI "\fIWebsite or link getter\&. \fP"
+.ti -1c
+.RI "const std::string & \fBcontact\fP () const "
+.br
+.RI "\fIContact information getter\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBSetters\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBAboutInstitute\fP & \fBtitle\fP (const std::string &value)"
+.br
+.RI "\fITitle or acronym setter\&. \fP"
+.ti -1c
+.RI "\fBAboutInstitute\fP & \fBname\fP (const std::string &value)"
+.br
+.RI "\fIComplete name setter\&. \fP"
+.ti -1c
+.RI "\fBAboutInstitute\fP & \fBextended\fP (const std::string &value)"
+.br
+.RI "\fIExtended name or information setter\&. \fP"
+.ti -1c
+.RI "\fBAboutInstitute\fP & \fBstreet\fP (const std::string &value)"
+.br
+.RI "\fIStreet number setter\&. \fP"
+.ti -1c
+.RI "\fBAboutInstitute\fP & \fBzip\fP (const std::string &value)"
+.br
+.RI "\fIZip code setter\&. \fP"
+.ti -1c
+.RI "\fBAboutInstitute\fP & \fBcity\fP (const std::string &value)"
+.br
+.RI "\fICity setter\&. \fP"
+.ti -1c
+.RI "\fBAboutInstitute\fP & \fBregion\fP (const std::string &value)"
+.br
+.RI "\fIRegion setter\&. \fP"
+.ti -1c
+.RI "\fBAboutInstitute\fP & \fBcountry\fP (const std::string &value)"
+.br
+.RI "\fICountry setter\&. \fP"
+.ti -1c
+.RI "\fBAboutInstitute\fP & \fBlink\fP (const std::string &value)"
+.br
+.RI "\fIWebsite or link setter\&. \fP"
+.ti -1c
+.RI "\fBAboutInstitute\fP & \fBcontact\fP (const std::string &value)"
+.br
+.RI "\fIContact information setter\&. \fP"
+.in -1c
+.in -1c
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBPredefined\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static const \fBAboutInstitute\fP & \fBluth\fP ()"
+.br
+.RI "\fIPredefined LUTH\&. \fP"
+.ti -1c
+.RI "static const \fBAboutInstitute\fP & \fBsap\fP ()"
+.br
+.RI "\fIPredefined SAp\&. \fP"
+.ti -1c
+.RI "static const \fBAboutInstitute\fP & \fBipag\fP ()"
+.br
+.RI "\fIPredefined IPAG\&. \fP"
+.ti -1c
+.RI "static const \fBAboutInstitute\fP & \fBobspm\fP ()"
+.br
+.RI "\fIPredefined OBSPM\&. \fP"
+.ti -1c
+.RI "static const \fBAboutInstitute\fP & \fBiap\fP ()"
+.br
+.RI "\fIPredefined IAP\&. \fP"
+.ti -1c
+.RI "static const \fBAboutInstitute\fP & \fBias\fP ()"
+.br
+.RI "\fIPredefined IAS\&. \fP"
+.ti -1c
+.RI "static const \fBAboutInstitute\fP & \fBcnrs\fP ()"
+.br
+.RI "\fIPredefined CNRS\&. \fP"
+.ti -1c
+.RI "static const \fBAboutInstitute\fP & \fBcnes\fP ()"
+.br
+.RI "\fIPredefined CNES\&. \fP"
+.ti -1c
+.RI "static const \fBAboutInstitute\fP & \fBcea\fP ()"
+.br
+.RI "\fIPredefined CEA\&. \fP"
+.ti -1c
+.RI "static const \fBAboutInstitute\fP & \fBesa\fP ()"
+.br
+.RI "\fIPredefined ESA\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "using \fBoperator\fP = typedef"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Information about an institution or an organization\&. 
+
+Name, link, contact, address\&.\&.\&. of an institute\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class\&.\&.\&. Misc> magrathea::AboutInstitute::AboutInstitute (Misc &&\&.\&.\&.misc)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit generic constructor\&. Provides a generic interface to all constructors of the base class\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "std::string magrathea::AboutInstitute::address (const std::string &separator = \fC', '\fP) const\fC [inline]\fP"
+
+.PP
+Address accessor\&. Gets the value of the street, zip, city, region and country properties\&. If one of the field is empty, the separator is not used\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIseparator\fP String separator\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Address\&. 
+.RE
+.PP
+
+.SS "\fBAboutInstitute\fP & magrathea::AboutInstitute::address (const std::string &sstreet, const std::string &szip, const std::string &scity, const std::string &sregion, const std::string &scountry)\fC [inline]\fP"
+
+.PP
+Address mutator\&. Sets the value of the street, zip, city, region and country properties\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsstreet\fP Street number\&. 
+.br
+\fIszip\fP Zip code\&. 
+.br
+\fIscity\fP City\&. 
+.br
+\fIsregion\fP Region\&. 
+.br
+\fIscountry\fP Country\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "const \fBAboutInstitute\fP & magrathea::AboutInstitute::cea ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined CEA\&. Information on the Commissariat a l'Energie Atomique et aux Energies Alternatives\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to institute singleton\&. 
+.RE
+.PP
+
+.SS "const std::string & magrathea::AboutInstitute::city () const\fC [inline]\fP"
+
+.PP
+City getter\&. Gets the value of the city property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+City\&. 
+.RE
+.PP
+
+.SS "\fBAboutInstitute\fP & magrathea::AboutInstitute::city (const std::string &value)\fC [inline]\fP"
+
+.PP
+City setter\&. Sets the value of the city property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP City\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "const \fBAboutInstitute\fP & magrathea::AboutInstitute::cnes ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined CNES\&. Information on the Centre National d'Etudes Spatiales\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to institute singleton\&. 
+.RE
+.PP
+
+.SS "const \fBAboutInstitute\fP & magrathea::AboutInstitute::cnrs ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined CNRS\&. Information on the Centre National de la Recherche Scientifique\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to institute singleton\&. 
+.RE
+.PP
+
+.SS "const std::string & magrathea::AboutInstitute::contact () const\fC [inline]\fP"
+
+.PP
+Contact information getter\&. Gets the value of the contact property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Contact\&. 
+.RE
+.PP
+
+.SS "\fBAboutInstitute\fP & magrathea::AboutInstitute::contact (const std::string &value)\fC [inline]\fP"
+
+.PP
+Contact information setter\&. Sets the value of the contact property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Contact\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "const std::string & magrathea::AboutInstitute::country () const\fC [inline]\fP"
+
+.PP
+Country getter\&. Gets the value of the country property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Country\&. 
+.RE
+.PP
+
+.SS "\fBAboutInstitute\fP & magrathea::AboutInstitute::country (const std::string &value)\fC [inline]\fP"
+
+.PP
+Country setter\&. Sets the value of the country property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Country\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "const \fBAboutInstitute\fP & magrathea::AboutInstitute::esa ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined ESA\&. Information on the European Space Agency\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to institute singleton\&. 
+.RE
+.PP
+
+.SS "int magrathea::AboutInstitute::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBAboutInstitute\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SS "const std::string & magrathea::AboutInstitute::extended () const\fC [inline]\fP"
+
+.PP
+Extended name or information getter\&. Gets the value of the extended property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Extended\&. 
+.RE
+.PP
+
+.SS "\fBAboutInstitute\fP & magrathea::AboutInstitute::extended (const std::string &value)\fC [inline]\fP"
+
+.PP
+Extended name or information setter\&. Sets the value of the extended property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Extended\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "const \fBAboutInstitute\fP & magrathea::AboutInstitute::iap ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined IAP\&. Information on the Institut d'Astrophysique de Paris\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to institute singleton\&. 
+.RE
+.PP
+
+.SS "const \fBAboutInstitute\fP & magrathea::AboutInstitute::ias ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined IAS\&. Information on the Institut d'Astrophysique Spatiale\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to institute singleton\&. 
+.RE
+.PP
+
+.SS "std::string magrathea::AboutInstitute::identification (const std::string &separator = \fC' - '\fP) const\fC [inline]\fP"
+
+.PP
+Full identification accessor\&. Gets the value of the title, the name and the extended name properties\&. If one of the field is empty, the separator is not used\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIseparator\fP String separator\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Indentification\&. 
+.RE
+.PP
+
+.SS "\fBAboutInstitute\fP & magrathea::AboutInstitute::identification (const std::string &stitle, const std::string &sname, const std::string &sextended)\fC [inline]\fP"
+
+.PP
+Full identification mutator\&. Sets the value of the title, the name and the extended name properties\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstitle\fP Title or acronym\&. 
+.br
+\fIsname\fP Complete name\&. 
+.br
+\fIsextended\fP Extended name or information\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "const \fBAboutInstitute\fP & magrathea::AboutInstitute::ipag ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined IPAG\&. Information on the Institut de Planetologie et d’Astrophysique de Grenoble 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to institute singleton\&. 
+.RE
+.PP
+
+.SS "const std::string & magrathea::AboutInstitute::link () const\fC [inline]\fP"
+
+.PP
+Website or link getter\&. Gets the value of the link property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Link\&. 
+.RE
+.PP
+
+.SS "\fBAboutInstitute\fP & magrathea::AboutInstitute::link (const std::string &value)\fC [inline]\fP"
+
+.PP
+Website or link setter\&. Sets the value of the link property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Link\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "const \fBAboutInstitute\fP & magrathea::AboutInstitute::luth ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined LUTH\&. Information on the Laboratoire Univers et Theories\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to institute singleton\&. 
+.RE
+.PP
+
+.SS "const std::string & magrathea::AboutInstitute::name () const\fC [inline]\fP"
+
+.PP
+Complete name getter\&. Gets the value of the name property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Name\&. 
+.RE
+.PP
+
+.SS "\fBAboutInstitute\fP & magrathea::AboutInstitute::name (const std::string &value)\fC [inline]\fP"
+
+.PP
+Complete name setter\&. Sets the value of the name property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Name\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "const \fBAboutInstitute\fP & magrathea::AboutInstitute::obspm ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined OBSPM\&. Information on the Observatoire de Paris\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to institute singleton\&. 
+.RE
+.PP
+
+.SS "const std::string & magrathea::AboutInstitute::region () const\fC [inline]\fP"
+
+.PP
+Region getter\&. Gets the value of the region property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Region\&. 
+.RE
+.PP
+
+.SS "\fBAboutInstitute\fP & magrathea::AboutInstitute::region (const std::string &value)\fC [inline]\fP"
+
+.PP
+Region setter\&. Sets the value of the region property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Region\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "const \fBAboutInstitute\fP & magrathea::AboutInstitute::sap ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined SAp\&. Information on the Service d'Astrophysique du CEA Saclay\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to institute singleton\&. 
+.RE
+.PP
+
+.SS "const std::string & magrathea::AboutInstitute::street () const\fC [inline]\fP"
+
+.PP
+Street number getter\&. Gets the value of the street property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Street\&. 
+.RE
+.PP
+
+.SS "\fBAboutInstitute\fP & magrathea::AboutInstitute::street (const std::string &value)\fC [inline]\fP"
+
+.PP
+Street number setter\&. Sets the value of the street property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Street\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "const std::string & magrathea::AboutInstitute::title () const\fC [inline]\fP"
+
+.PP
+Title or acronym getter\&. Gets the value of the title property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Title\&. 
+.RE
+.PP
+
+.SS "\fBAboutInstitute\fP & magrathea::AboutInstitute::title (const std::string &value)\fC [inline]\fP"
+
+.PP
+Title or acronym setter\&. Sets the value of the title property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Title\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "const std::string & magrathea::AboutInstitute::zip () const\fC [inline]\fP"
+
+.PP
+Zip code getter\&. Gets the value of the zip property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Zip\&. 
+.RE
+.PP
+
+.SS "\fBAboutInstitute\fP & magrathea::AboutInstitute::zip (const std::string &value)\fC [inline]\fP"
+
+.PP
+Zip code setter\&. Sets the value of the zip property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Zip\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "using magrathea::AboutInstitute::operator = "
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

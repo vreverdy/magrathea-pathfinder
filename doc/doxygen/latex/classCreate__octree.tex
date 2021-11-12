@@ -1,0 +1,597 @@
+\hypertarget{classCreate__octree}{\section{Create\-\_\-octree Class Reference}
+\label{classCreate__octree}\index{Create\-\_\-octree@{Create\-\_\-octree}}
+}
+
+
+{\ttfamily \#include $<$create\-\_\-octree.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$template$<$ typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container $>$ class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameter , class Cone , class File\-List , class Sphere , typename Integer , typename Scalar $>$ }\\void \hyperlink{classCreate__octree_aa5eeca0cadf9d5f3c7e879bff2056db3}{Preparation\-H\-D\-F5\-\_\-from\-\_\-particles} (Octree$<$ Type, Index, Data, Dimension, Position, Extent, Element, Container $>$ \&octree, const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, const Integer ntasks, const Integer rank, const std\-::vector$<$ \hyperlink{exceptionCone}{Cone} $>$ \&cone, const std\-::vector$<$ \hyperlink{exceptionCone}{Cone} $>$ \&cone\-If\-Rot, const Scalar thetay, const Scalar thetaz, \hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \&conefile, const Sphere \&microsphere)
+\begin{DoxyCompactList}\small\item\em Create Octree binary files. \end{DoxyCompactList}\item 
+{\footnotesize template$<$template$<$ typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container $>$ class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameter , class Cone , class Sphere , class File\-List , class Index2 , typename Integer , typename Scalar , class Cosmology $>$ }\\void \hyperlink{classCreate__octree_a86a2b4ce7276e54d28581e322b50ab70}{Preparation\-Binary} (Octree$<$ Type, Index, Data, Dimension, Position, Extent, Element, Container $>$ \&octree, const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, const Integer ntasks, const Integer rank, const std\-::vector$<$ \hyperlink{exceptionCone}{Cone} $>$ \&cone, \hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \&conefile, const Sphere \&microsphere, Index2 \&filetree, const Scalar h, const Scalar omegam, const Scalar lboxmpch, Scalar \&amin, const Cosmology \&cosmology)
+\begin{DoxyCompactList}\small\item\em Create Octree binary files. \end{DoxyCompactList}\item 
+{\footnotesize template$<$template$<$ typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container $>$ class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameter , class Cone , class File\-List , class Sphere , typename Integer , typename Scalar , class Cosmology $>$ }\\void \hyperlink{classCreate__octree_a5b1bddfafec3deb6f721001e75cd6ee3}{Preparation\-A\-S\-C\-I\-I} (Octree$<$ Type, Index, Data, Dimension, Position, Extent, Element, Container $>$ \&octree, const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, const Integer ntasks, const Integer rank, const std\-::vector$<$ \hyperlink{exceptionCone}{Cone} $>$ \&cone, const std\-::vector$<$ \hyperlink{exceptionCone}{Cone} $>$ \&cone\-If\-Rot, const std\-::array$<$ std\-::array$<$ double, 3 $>$, 3 $>$ \&rotm1, \hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \&conefile, const Sphere \&microsphere, const Scalar h, const Scalar omegam, const Scalar lboxmpch, Scalar \&amin, const Cosmology \&cosmology)
+\begin{DoxyCompactList}\small\item\em Create Octree binary files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Parameters , class Map $>$ }\\static void \hyperlink{classCreate__octree_a8f2443e8281a386229cc93464fdc0a91}{Read\-Param\-File} (Parameters \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, Map \&parameter)
+\begin{DoxyCompactList}\small\item\em Read parameter file. \end{DoxyCompactList}\item 
+{\footnotesize template$<$template$<$ typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container $>$ class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameters , class Cone , class File\-List , class Sphere , typename Integer , typename Scalar , class Cosmology $>$ }\\static void \hyperlink{classCreate__octree_a25467fd4c0b60a6da707e445c81e1ee7}{Preparation\-H\-D\-F5\-\_\-from\-\_\-cells} (Octree$<$ Type, Index, Data, Dimension, Position, Extent, Element, Container $>$ \&octree, const Parameters \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, const Integer ntasks, const Integer rank, const std\-::vector$<$ \hyperlink{exceptionCone}{Cone} $>$ \&cone, const std\-::vector$<$ \hyperlink{exceptionCone}{Cone} $>$ \&cone\-If\-Rot, const std\-::array$<$ std\-::array$<$ double, 3 $>$, 3 $>$ \&rotm1, const Scalar thetay, const Scalar thetaz, \hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \&conefile, const Sphere \&microsphere, const Scalar h, const Scalar omegam, const Scalar lboxmpch, Scalar \&amin, const Cosmology \&cosmology)
+\begin{DoxyCompactList}\small\item\em Create Octree binary files. \end{DoxyCompactList}\item 
+{\footnotesize template$<$template$<$ typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container $>$ class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameters , class Cone , class File\-List , class Sphere , typename Integer , typename Scalar $>$ }\\static void \hyperlink{classCreate__octree_aac249233d95e5afb3c0a10b45d43fe67}{Preparation\-H\-D\-F5\-\_\-from\-\_\-particles} (Octree$<$ Type, Index, Data, Dimension, Position, Extent, Element, Container $>$ \&octree, const Parameters \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, const Integer ntasks, const Integer rank, const std\-::vector$<$ \hyperlink{exceptionCone}{Cone} $>$ \&cone, const std\-::vector$<$ \hyperlink{exceptionCone}{Cone} $>$ \&cone\-If\-Rot, const Scalar thetay, const Scalar thetaz, \hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \&conefile, const Sphere \&microsphere)
+\item 
+{\footnotesize template$<$template$<$ typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container $>$ class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameters , class Cone , class Sphere , class File\-List , class Index2 , typename Integer , typename Scalar , class Cosmology $>$ }\\static void \hyperlink{classCreate__octree_a1f4d4fd760e8a78df9b23418e3024974}{Preparation\-Binary} (Octree$<$ Type, Index, Data, Dimension, Position, Extent, Element, Container $>$ \&octree, const Parameters \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, const Integer ntasks, const Integer rank, const std\-::vector$<$ \hyperlink{exceptionCone}{Cone} $>$ \&cone, \hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \&conefile, const Sphere \&microsphere, Index2 \&filetree, const Scalar h, const Scalar omegam, const Scalar lboxmpch, Scalar \&amin, const Cosmology \&cosmology)
+\item 
+{\footnotesize template$<$template$<$ typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container $>$ class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameters , class Cone , class File\-List , class Sphere , typename Integer , typename Scalar , class Cosmology $>$ }\\static void \hyperlink{classCreate__octree_ab8d673029a2e1fceeec75e0aa2331a4f}{Preparation\-A\-S\-C\-I\-I} (Octree$<$ Type, Index, Data, Dimension, Position, Extent, Element, Container $>$ \&octree, const Parameters \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, const Integer ntasks, const Integer rank, const std\-::vector$<$ \hyperlink{exceptionCone}{Cone} $>$ \&cone, const std\-::vector$<$ \hyperlink{exceptionCone}{Cone} $>$ \&cone\-If\-Rot, const std\-::array$<$ std\-::array$<$ double, 3 $>$, 3 $>$ \&rotm1, \hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \&conefile, const Sphere \&microsphere, const Scalar h, const Scalar omegam, const Scalar lboxmpch, Scalar \&amin, const Cosmology \&cosmology)
+\item 
+{\footnotesize template$<$class Parameters , typename Type1 , template$<$ typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container $>$ class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container $>$ }\\static void \hyperlink{classCreate__octree_a19115f98a9951649e441c9f4191b228a}{Create\-Octree\-With\-C\-I\-C} (bool \&continue\-\_\-refining, Octree$<$ Type, Index, Data, Dimension, Position, Extent, Element, Container $>$ \&octree, const Parameters \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, std\-::vector$<$ Type1 $>$ \&pos\-\_\-part, std\-::vector$<$ Type1 $>$ \&force\-\_\-part, std\-::vector$<$ Type1 $>$ \&potential\-\_\-part, std\-::vector$<$ Type1 $>$ \&a\-\_\-part)
+\begin{DoxyCompactList}\small\item\em Create Octree using C\-I\-C. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Parameters , typename Type1 , template$<$ typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container $>$ class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container $>$ }\\static void \hyperlink{classCreate__octree_ace0cf97315351461c23359ef93f31000}{Create\-Octree\-With\-T\-S\-C} (bool \&continue\-\_\-refining, Octree$<$ Type, Index, Data, Dimension, Position, Extent, Element, Container $>$ \&octree, const Parameters \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, std\-::vector$<$ Type1 $>$ \&pos\-\_\-part, std\-::vector$<$ Type1 $>$ \&force\-\_\-part, std\-::vector$<$ Type1 $>$ \&potential\-\_\-part, std\-::vector$<$ Type1 $>$ \&a\-\_\-part)
+\begin{DoxyCompactList}\small\item\em Create Octree using T\-S\-C. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCreate__octree_a19115f98a9951649e441c9f4191b228a}{\index{Create\-\_\-octree@{Create\-\_\-octree}!Create\-Octree\-With\-C\-I\-C@{Create\-Octree\-With\-C\-I\-C}}
+\index{Create\-Octree\-With\-C\-I\-C@{Create\-Octree\-With\-C\-I\-C}!Create_octree@{Create\-\_\-octree}}
+\subsubsection[{Create\-Octree\-With\-C\-I\-C}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Parameters , typename Type1 , template$<$ typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container $>$ class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container $>$ void Create\-\_\-octree\-::\-Create\-Octree\-With\-C\-I\-C (
+\begin{DoxyParamCaption}
+\item[{bool \&}]{continue\-\_\-refining, }
+\item[{Octree$<$ Type, Index, Data, Dimension, Position, Extent, Element, Container $>$ \&}]{octree, }
+\item[{const Parameters \&}]{parameters, }
+\item[{std\-::vector$<$ Type1 $>$ \&}]{pos\-\_\-part, }
+\item[{std\-::vector$<$ Type1 $>$ \&}]{force\-\_\-part, }
+\item[{std\-::vector$<$ Type1 $>$ \&}]{potential\-\_\-part, }
+\item[{std\-::vector$<$ Type1 $>$ \&}]{a\-\_\-part}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classCreate__octree_a19115f98a9951649e441c9f4191b228a}
+
+
+Create Octree using C\-I\-C. 
+
+Create Octree using C\-I\-C from particles 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Parameters} & Parameters type \\
+\hline
+{\em Type1} & Type1 type \\
+\hline
+{\em Octree} & octree type \\
+\hline
+{\em Type} & type type \\
+\hline
+{\em Index} & index type \\
+\hline
+{\em Data} & data type \\
+\hline
+{\em Dimension} & Number of dimensions \\
+\hline
+{\em Position} & position type \\
+\hline
+{\em Extent} & extent type \\
+\hline
+{\em Element} & element type \\
+\hline
+{\em Container} & container type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em continue\-\_\-refining} & Bolean which controls if we continue refinement \\
+\hline
+\mbox{\tt in,out}  & {\em octree} & Octree be to filled using particles \\
+\hline
+\mbox{\tt in}  & {\em parameters} & Parameters structure \\
+\hline
+\mbox{\tt in}  & {\em pos\-\_\-part} & Position of particles \\
+\hline
+\mbox{\tt in}  & {\em force\-\_\-part} & Force of particles \\
+\hline
+\mbox{\tt in}  & {\em potential\-\_\-part} & Potential of particles \\
+\hline
+\mbox{\tt in}  & {\em a\-\_\-part} & Scale factor of particles \\
+\hline
+\end{DoxyParams}
+\hypertarget{classCreate__octree_ace0cf97315351461c23359ef93f31000}{\index{Create\-\_\-octree@{Create\-\_\-octree}!Create\-Octree\-With\-T\-S\-C@{Create\-Octree\-With\-T\-S\-C}}
+\index{Create\-Octree\-With\-T\-S\-C@{Create\-Octree\-With\-T\-S\-C}!Create_octree@{Create\-\_\-octree}}
+\subsubsection[{Create\-Octree\-With\-T\-S\-C}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Parameters , typename Type1 , template$<$ typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container $>$ class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container $>$ void Create\-\_\-octree\-::\-Create\-Octree\-With\-T\-S\-C (
+\begin{DoxyParamCaption}
+\item[{bool \&}]{continue\-\_\-refining, }
+\item[{Octree$<$ Type, Index, Data, Dimension, Position, Extent, Element, Container $>$ \&}]{octree, }
+\item[{const Parameters \&}]{parameters, }
+\item[{std\-::vector$<$ Type1 $>$ \&}]{pos\-\_\-part, }
+\item[{std\-::vector$<$ Type1 $>$ \&}]{force\-\_\-part, }
+\item[{std\-::vector$<$ Type1 $>$ \&}]{potential\-\_\-part, }
+\item[{std\-::vector$<$ Type1 $>$ \&}]{a\-\_\-part}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classCreate__octree_ace0cf97315351461c23359ef93f31000}
+
+
+Create Octree using T\-S\-C. 
+
+Create Octree using T\-S\-C 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Parameters} & Parameters type \\
+\hline
+{\em Type1} & Type1 type \\
+\hline
+{\em Octree} & octree type \\
+\hline
+{\em Type} & type type \\
+\hline
+{\em Index} & index type \\
+\hline
+{\em Data} & data type \\
+\hline
+{\em Dimension} & Number of dimensions \\
+\hline
+{\em Position} & position type \\
+\hline
+{\em Extent} & extent type \\
+\hline
+{\em Element} & element type \\
+\hline
+{\em Container} & container type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em continue\-\_\-refining} & Bolean which controls if we continue refinement \\
+\hline
+\mbox{\tt in,out}  & {\em octree} & Octree be to filled using particles \\
+\hline
+\mbox{\tt in}  & {\em parameters} & Parameters structure \\
+\hline
+\mbox{\tt in}  & {\em pos\-\_\-part} & Position of particles \\
+\hline
+\mbox{\tt in}  & {\em force\-\_\-part} & Force of particles \\
+\hline
+\mbox{\tt in}  & {\em potential\-\_\-part} & Potential of particles \\
+\hline
+\mbox{\tt in}  & {\em a\-\_\-part} & Scale factor of particles \\
+\hline
+\end{DoxyParams}
+\hypertarget{classCreate__octree_ab8d673029a2e1fceeec75e0aa2331a4f}{\index{Create\-\_\-octree@{Create\-\_\-octree}!Preparation\-A\-S\-C\-I\-I@{Preparation\-A\-S\-C\-I\-I}}
+\index{Preparation\-A\-S\-C\-I\-I@{Preparation\-A\-S\-C\-I\-I}!Create_octree@{Create\-\_\-octree}}
+\subsubsection[{Preparation\-A\-S\-C\-I\-I}]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container $>$ class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameters , class Cone , class File\-List , class Sphere , typename Integer , typename Scalar , class Cosmology $>$ static void Create\-\_\-octree\-::\-Preparation\-A\-S\-C\-I\-I (
+\begin{DoxyParamCaption}
+\item[{Octree$<$ Type, Index, Data, Dimension, Position, Extent, Element, Container $>$ \&}]{octree, }
+\item[{const Parameters \&}]{parameters, }
+\item[{const Integer}]{ntasks, }
+\item[{const Integer}]{rank, }
+\item[{const std\-::vector$<$ {\bf Cone} $>$ \&}]{cone, }
+\item[{const std\-::vector$<$ {\bf Cone} $>$ \&}]{cone\-If\-Rot, }
+\item[{const std\-::array$<$ std\-::array$<$ double, 3 $>$, 3 $>$ \&}]{rotm1, }
+\item[{{\bf File\-List} \&}]{conefile, }
+\item[{const Sphere \&}]{microsphere, }
+\item[{const Scalar}]{h, }
+\item[{const Scalar}]{omegam, }
+\item[{const Scalar}]{lboxmpch, }
+\item[{Scalar \&}]{amin, }
+\item[{const Cosmology \&}]{cosmology}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classCreate__octree_ab8d673029a2e1fceeec75e0aa2331a4f}
+\hypertarget{classCreate__octree_a5b1bddfafec3deb6f721001e75cd6ee3}{\index{Create\-\_\-octree@{Create\-\_\-octree}!Preparation\-A\-S\-C\-I\-I@{Preparation\-A\-S\-C\-I\-I}}
+\index{Preparation\-A\-S\-C\-I\-I@{Preparation\-A\-S\-C\-I\-I}!Create_octree@{Create\-\_\-octree}}
+\subsubsection[{Preparation\-A\-S\-C\-I\-I}]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container $>$ class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameter , class Cone , class File\-List , class Sphere , typename Integer , typename Scalar , class Cosmology $>$ void Create\-\_\-octree\-::\-Preparation\-A\-S\-C\-I\-I (
+\begin{DoxyParamCaption}
+\item[{Octree$<$ Type, Index, Data, Dimension, Position, Extent, Element, Container $>$ \&}]{octree, }
+\item[{const Parameter \&}]{parameters, }
+\item[{const Integer}]{ntasks, }
+\item[{const Integer}]{rank, }
+\item[{const std\-::vector$<$ {\bf Cone} $>$ \&}]{cone, }
+\item[{const std\-::vector$<$ {\bf Cone} $>$ \&}]{cone\-If\-Rot, }
+\item[{const std\-::array$<$ std\-::array$<$ double, 3 $>$, 3 $>$ \&}]{rotm1, }
+\item[{{\bf File\-List} \&}]{conefile, }
+\item[{const Sphere \&}]{microsphere, }
+\item[{const Scalar}]{h, }
+\item[{const Scalar}]{omegam, }
+\item[{const Scalar}]{lboxmpch, }
+\item[{Scalar \&}]{amin, }
+\item[{const Cosmology \&}]{cosmology}
+\end{DoxyParamCaption}
+)}}\label{classCreate__octree_a5b1bddfafec3deb6f721001e75cd6ee3}
+
+
+Create Octree binary files. 
+
+Create Octree binary files from A\-S\-C\-I\-I iles. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Octree} & octree type \\
+\hline
+{\em Type} & type type \\
+\hline
+{\em Index} & index type \\
+\hline
+{\em Data} & data type \\
+\hline
+{\em Dimension} & Number of dimensions \\
+\hline
+{\em Position} & position type \\
+\hline
+{\em Extent} & extent type \\
+\hline
+{\em Element} & element type \\
+\hline
+{\em Container} & container type \\
+\hline
+{\em Parameters} & Parameters type \\
+\hline
+{\em \hyperlink{exceptionCone}{Cone}} & cone type \\
+\hline
+{\em Filelist} & filelist type \\
+\hline
+{\em Sphere} & sphere type \\
+\hline
+{\em Integer} & Integer type \\
+\hline
+{\em Scalar} & scalar type \\
+\hline
+{\em Cosmology} & cosmology type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em octree} & Octree to be filled \\
+\hline
+\mbox{\tt in}  & {\em parameters} & Parameters structure \\
+\hline
+\mbox{\tt in}  & {\em ntasks} & Number of tasks \\
+\hline
+\mbox{\tt in}  & {\em rank} & Process rank \\
+\hline
+\mbox{\tt in}  & {\em cone} & \hyperlink{exceptionCone}{Cone} properties \\
+\hline
+\mbox{\tt in}  & {\em cone\-If\-Rot} & \hyperlink{exceptionCone}{Cone} with possibly rotation \\
+\hline
+\mbox{\tt in}  & {\em rotm1} & Rotation matrix for narrow cells \\
+\hline
+\mbox{\tt in}  & {\em conefile} & \hyperlink{exceptionCone}{Cone} names in conedir \\
+\hline
+\mbox{\tt in}  & {\em microsphere} & Central buffer zone for Octree \\
+\hline
+\mbox{\tt in}  & {\em h} & dimensionless Hubble parameter \\
+\hline
+\mbox{\tt in}  & {\em omegam} & Matter density fraction \\
+\hline
+\mbox{\tt in}  & {\em lboxmpch} & Size of simulation box \\
+\hline
+\mbox{\tt in}  & {\em amin} & minimum value scale factor \\
+\hline
+\mbox{\tt in}  & {\em cosmology} & Cosmological tables \\
+\hline
+\end{DoxyParams}
+\hypertarget{classCreate__octree_a1f4d4fd760e8a78df9b23418e3024974}{\index{Create\-\_\-octree@{Create\-\_\-octree}!Preparation\-Binary@{Preparation\-Binary}}
+\index{Preparation\-Binary@{Preparation\-Binary}!Create_octree@{Create\-\_\-octree}}
+\subsubsection[{Preparation\-Binary}]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container $>$ class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameters , class Cone , class Sphere , class File\-List , class Index2 , typename Integer , typename Scalar , class Cosmology $>$ static void Create\-\_\-octree\-::\-Preparation\-Binary (
+\begin{DoxyParamCaption}
+\item[{Octree$<$ Type, Index, Data, Dimension, Position, Extent, Element, Container $>$ \&}]{octree, }
+\item[{const Parameters \&}]{parameters, }
+\item[{const Integer}]{ntasks, }
+\item[{const Integer}]{rank, }
+\item[{const std\-::vector$<$ {\bf Cone} $>$ \&}]{cone, }
+\item[{{\bf File\-List} \&}]{conefile, }
+\item[{const Sphere \&}]{microsphere, }
+\item[{Index2 \&}]{filetree, }
+\item[{const Scalar}]{h, }
+\item[{const Scalar}]{omegam, }
+\item[{const Scalar}]{lboxmpch, }
+\item[{Scalar \&}]{amin, }
+\item[{const Cosmology \&}]{cosmology}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classCreate__octree_a1f4d4fd760e8a78df9b23418e3024974}
+\hypertarget{classCreate__octree_a86a2b4ce7276e54d28581e322b50ab70}{\index{Create\-\_\-octree@{Create\-\_\-octree}!Preparation\-Binary@{Preparation\-Binary}}
+\index{Preparation\-Binary@{Preparation\-Binary}!Create_octree@{Create\-\_\-octree}}
+\subsubsection[{Preparation\-Binary}]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container $>$ class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameter , class Cone , class Sphere , class File\-List , class Index2 , typename Integer , typename Scalar , class Cosmology $>$ void Create\-\_\-octree\-::\-Preparation\-Binary (
+\begin{DoxyParamCaption}
+\item[{Octree$<$ Type, Index, Data, Dimension, Position, Extent, Element, Container $>$ \&}]{octree, }
+\item[{const Parameter \&}]{parameters, }
+\item[{const Integer}]{ntasks, }
+\item[{const Integer}]{rank, }
+\item[{const std\-::vector$<$ {\bf Cone} $>$ \&}]{cone, }
+\item[{{\bf File\-List} \&}]{conefile, }
+\item[{const Sphere \&}]{microsphere, }
+\item[{Index2 \&}]{filetree, }
+\item[{const Scalar}]{h, }
+\item[{const Scalar}]{omegam, }
+\item[{const Scalar}]{lboxmpch, }
+\item[{Scalar \&}]{amin, }
+\item[{const Cosmology \&}]{cosmology}
+\end{DoxyParamCaption}
+)}}\label{classCreate__octree_a86a2b4ce7276e54d28581e322b50ab70}
+
+
+Create Octree binary files. 
+
+Create Octree binary files from Binary. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Octree} & octree type \\
+\hline
+{\em Type} & type type \\
+\hline
+{\em Index} & index type \\
+\hline
+{\em Data} & data type \\
+\hline
+{\em Dimension} & Number of dimensions \\
+\hline
+{\em Position} & position type \\
+\hline
+{\em Extent} & extent type \\
+\hline
+{\em Element} & element type \\
+\hline
+{\em Container} & container type \\
+\hline
+{\em Parameters} & Parameters type \\
+\hline
+{\em \hyperlink{exceptionCone}{Cone}} & cone type \\
+\hline
+{\em Filelist} & filelist type \\
+\hline
+{\em Sphere} & sphere type \\
+\hline
+{\em Integer} & Integer type \\
+\hline
+{\em Scalar} & scalar type \\
+\hline
+{\em Cosmology} & cosmology type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em octree} & Octree to be filled \\
+\hline
+\mbox{\tt in}  & {\em parameters} & Parameters structure \\
+\hline
+\mbox{\tt in}  & {\em ntasks} & Number of tasks \\
+\hline
+\mbox{\tt in}  & {\em rank} & Process rank \\
+\hline
+\mbox{\tt in}  & {\em cone} & \hyperlink{exceptionCone}{Cone} properties \\
+\hline
+\mbox{\tt in}  & {\em conefile} & \hyperlink{exceptionCone}{Cone} names in conedir \\
+\hline
+\mbox{\tt in}  & {\em microsphere} & Central buffer zone for Octree \\
+\hline
+\mbox{\tt in}  & {\em filetree} & Type of Octree containing strings \\
+\hline
+\mbox{\tt in}  & {\em h} & dimensionless Hubble parameter \\
+\hline
+\mbox{\tt in}  & {\em omegam} & Matter density fraction \\
+\hline
+\mbox{\tt in}  & {\em lboxmpch} & Size of simulation box \\
+\hline
+\mbox{\tt in}  & {\em amin} & minimum value scale factor \\
+\hline
+\mbox{\tt in}  & {\em cosmology} & Cosmological tables \\
+\hline
+\end{DoxyParams}
+\hypertarget{classCreate__octree_a25467fd4c0b60a6da707e445c81e1ee7}{\index{Create\-\_\-octree@{Create\-\_\-octree}!Preparation\-H\-D\-F5\-\_\-from\-\_\-cells@{Preparation\-H\-D\-F5\-\_\-from\-\_\-cells}}
+\index{Preparation\-H\-D\-F5\-\_\-from\-\_\-cells@{Preparation\-H\-D\-F5\-\_\-from\-\_\-cells}!Create_octree@{Create\-\_\-octree}}
+\subsubsection[{Preparation\-H\-D\-F5\-\_\-from\-\_\-cells}]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container $>$ class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameters , class Cone , class File\-List , class Sphere , typename Integer , typename Scalar , class Cosmology $>$ void Create\-\_\-octree\-::\-Preparation\-H\-D\-F5\-\_\-from\-\_\-cells (
+\begin{DoxyParamCaption}
+\item[{Octree$<$ Type, Index, Data, Dimension, Position, Extent, Element, Container $>$ \&}]{octree, }
+\item[{const Parameters \&}]{parameters, }
+\item[{const Integer}]{ntasks, }
+\item[{const Integer}]{rank, }
+\item[{const std\-::vector$<$ {\bf Cone} $>$ \&}]{cone, }
+\item[{const std\-::vector$<$ {\bf Cone} $>$ \&}]{cone\-If\-Rot, }
+\item[{const std\-::array$<$ std\-::array$<$ double, 3 $>$, 3 $>$ \&}]{rotm1, }
+\item[{const Scalar}]{thetay, }
+\item[{const Scalar}]{thetaz, }
+\item[{{\bf File\-List} \&}]{conefile, }
+\item[{const Sphere \&}]{microsphere, }
+\item[{const Scalar}]{h, }
+\item[{const Scalar}]{omegam, }
+\item[{const Scalar}]{lboxmpch, }
+\item[{Scalar \&}]{amin, }
+\item[{const Cosmology \&}]{cosmology}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classCreate__octree_a25467fd4c0b60a6da707e445c81e1ee7}
+
+
+Create Octree binary files. 
+
+Create Octree binary files from H\-D\-F5. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Octree} & octree type \\
+\hline
+{\em Type} & type type \\
+\hline
+{\em Index} & index type \\
+\hline
+{\em Data} & data type \\
+\hline
+{\em Dimension} & Number of dimensions \\
+\hline
+{\em Position} & position type \\
+\hline
+{\em Extent} & extent type \\
+\hline
+{\em Element} & element type \\
+\hline
+{\em Container} & container type \\
+\hline
+{\em Parameters} & Parameters type \\
+\hline
+{\em \hyperlink{exceptionCone}{Cone}} & cone type \\
+\hline
+{\em Filelist} & filelist type \\
+\hline
+{\em Sphere} & sphere type \\
+\hline
+{\em Integer} & Integer type \\
+\hline
+{\em Scalar} & scalar type \\
+\hline
+{\em Cosmology} & cosmology type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em octree} & Octree to be filled \\
+\hline
+\mbox{\tt in}  & {\em parameters} & Parameters structure \\
+\hline
+\mbox{\tt in}  & {\em ntasks} & Number of tasks \\
+\hline
+\mbox{\tt in}  & {\em rank} & Process rank \\
+\hline
+\mbox{\tt in}  & {\em cone} & \hyperlink{exceptionCone}{Cone} properties \\
+\hline
+\mbox{\tt in}  & {\em cone\-If\-Rot} & \hyperlink{exceptionCone}{Cone} with possibly rotation \\
+\hline
+\mbox{\tt in}  & {\em rotm1} & Rotation matrix for narrow cells \\
+\hline
+\mbox{\tt in}  & {\em thetay} & Semi-\/angle for solid angle in direction y \\
+\hline
+\mbox{\tt in}  & {\em thetaz} & Semi-\/angle for solid angle in direction z \\
+\hline
+\mbox{\tt in}  & {\em conefile} & \hyperlink{exceptionCone}{Cone} names in conedir \\
+\hline
+\mbox{\tt in}  & {\em microsphere} & Central buffer zone for Octree \\
+\hline
+\mbox{\tt in}  & {\em h} & Dimensionless Hubble parameter \\
+\hline
+\mbox{\tt in}  & {\em omegam} & Matter density fraction \\
+\hline
+\mbox{\tt in}  & {\em lboxmpch} & Size of simulation box \\
+\hline
+\mbox{\tt in}  & {\em amin} & minimum value scale factor \\
+\hline
+\mbox{\tt in}  & {\em cosmology} & Cosmological tables \\
+\hline
+\end{DoxyParams}
+\hypertarget{classCreate__octree_aac249233d95e5afb3c0a10b45d43fe67}{\index{Create\-\_\-octree@{Create\-\_\-octree}!Preparation\-H\-D\-F5\-\_\-from\-\_\-particles@{Preparation\-H\-D\-F5\-\_\-from\-\_\-particles}}
+\index{Preparation\-H\-D\-F5\-\_\-from\-\_\-particles@{Preparation\-H\-D\-F5\-\_\-from\-\_\-particles}!Create_octree@{Create\-\_\-octree}}
+\subsubsection[{Preparation\-H\-D\-F5\-\_\-from\-\_\-particles}]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container $>$ class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameters , class Cone , class File\-List , class Sphere , typename Integer , typename Scalar $>$ static void Create\-\_\-octree\-::\-Preparation\-H\-D\-F5\-\_\-from\-\_\-particles (
+\begin{DoxyParamCaption}
+\item[{Octree$<$ Type, Index, Data, Dimension, Position, Extent, Element, Container $>$ \&}]{octree, }
+\item[{const Parameters \&}]{parameters, }
+\item[{const Integer}]{ntasks, }
+\item[{const Integer}]{rank, }
+\item[{const std\-::vector$<$ {\bf Cone} $>$ \&}]{cone, }
+\item[{const std\-::vector$<$ {\bf Cone} $>$ \&}]{cone\-If\-Rot, }
+\item[{const Scalar}]{thetay, }
+\item[{const Scalar}]{thetaz, }
+\item[{{\bf File\-List} \&}]{conefile, }
+\item[{const Sphere \&}]{microsphere}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classCreate__octree_aac249233d95e5afb3c0a10b45d43fe67}
+\hypertarget{classCreate__octree_aa5eeca0cadf9d5f3c7e879bff2056db3}{\index{Create\-\_\-octree@{Create\-\_\-octree}!Preparation\-H\-D\-F5\-\_\-from\-\_\-particles@{Preparation\-H\-D\-F5\-\_\-from\-\_\-particles}}
+\index{Preparation\-H\-D\-F5\-\_\-from\-\_\-particles@{Preparation\-H\-D\-F5\-\_\-from\-\_\-particles}!Create_octree@{Create\-\_\-octree}}
+\subsubsection[{Preparation\-H\-D\-F5\-\_\-from\-\_\-particles}]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container $>$ class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container , class Parameter , class Cone , class File\-List , class Sphere , typename Integer , typename Scalar $>$ void Create\-\_\-octree\-::\-Preparation\-H\-D\-F5\-\_\-from\-\_\-particles (
+\begin{DoxyParamCaption}
+\item[{Octree$<$ Type, Index, Data, Dimension, Position, Extent, Element, Container $>$ \&}]{octree, }
+\item[{const Parameter \&}]{parameters, }
+\item[{const Integer}]{ntasks, }
+\item[{const Integer}]{rank, }
+\item[{const std\-::vector$<$ {\bf Cone} $>$ \&}]{cone, }
+\item[{const std\-::vector$<$ {\bf Cone} $>$ \&}]{cone\-If\-Rot, }
+\item[{const Scalar}]{thetay, }
+\item[{const Scalar}]{thetaz, }
+\item[{{\bf File\-List} \&}]{conefile, }
+\item[{const Sphere \&}]{microsphere}
+\end{DoxyParamCaption}
+)}}\label{classCreate__octree_aa5eeca0cadf9d5f3c7e879bff2056db3}
+
+
+Create Octree binary files. 
+
+Create Octree binary files from H\-D\-F5. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Octree} & octree type \\
+\hline
+{\em Type} & type type \\
+\hline
+{\em Index} & index type \\
+\hline
+{\em Data} & data type \\
+\hline
+{\em Dimension} & Number of dimensions \\
+\hline
+{\em Position} & position type \\
+\hline
+{\em Extent} & extent type \\
+\hline
+{\em Element} & element type \\
+\hline
+{\em Container} & container type \\
+\hline
+{\em Parameters} & Parameters type \\
+\hline
+{\em \hyperlink{exceptionCone}{Cone}} & cone type \\
+\hline
+{\em Filelist} & filelist type \\
+\hline
+{\em Sphere} & sphere type \\
+\hline
+{\em Integer} & Integer type \\
+\hline
+{\em Scalar} & scalar type \\
+\hline
+{\em Cosmology} & cosmology type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em octree} & Octree to be filled \\
+\hline
+\mbox{\tt in}  & {\em parameters} & Parameters structure \\
+\hline
+\mbox{\tt in}  & {\em ntasks} & Number of tasks \\
+\hline
+\mbox{\tt in}  & {\em rank} & Process rank \\
+\hline
+\mbox{\tt in}  & {\em cone} & \hyperlink{exceptionCone}{Cone} properties \\
+\hline
+\mbox{\tt in}  & {\em cone\-If\-Rot} & \hyperlink{exceptionCone}{Cone} with possibly rotation \\
+\hline
+\mbox{\tt in}  & {\em conefile} & \hyperlink{exceptionCone}{Cone} names in conedir \\
+\hline
+\mbox{\tt in}  & {\em microsphere} & Central buffer zone for Octree \\
+\hline
+\mbox{\tt in}  & {\em h} & Dimensionless Hubble parameter \\
+\hline
+\mbox{\tt in}  & {\em omegam} & Matter density fraction \\
+\hline
+\mbox{\tt in}  & {\em lboxmpch} & Size of simulation box \\
+\hline
+\mbox{\tt in}  & {\em amin} & minimum value scale factor \\
+\hline
+\mbox{\tt in}  & {\em cosmology} & Cosmological tables \\
+\hline
+\end{DoxyParams}
+\hypertarget{classCreate__octree_a8f2443e8281a386229cc93464fdc0a91}{\index{Create\-\_\-octree@{Create\-\_\-octree}!Read\-Param\-File@{Read\-Param\-File}}
+\index{Read\-Param\-File@{Read\-Param\-File}!Create_octree@{Create\-\_\-octree}}
+\subsubsection[{Read\-Param\-File}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Parameters , class Map $>$ void Create\-\_\-octree\-::\-Read\-Param\-File (
+\begin{DoxyParamCaption}
+\item[{Parameters \&}]{parameters, }
+\item[{Map \&}]{parameter}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classCreate__octree_a8f2443e8281a386229cc93464fdc0a91}
+
+
+Read parameter file. 
+
+Read and put in a structure the parameters. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Parameters} & structure type \\
+\hline
+{\em Map} & map type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em parameters} & Structure containing the parameters. \\
+\hline
+\mbox{\tt in}  & {\em parameter} & Contains parameters to be rewritten \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/\hyperlink{create__octree_8h}{create\-\_\-octree.\-h}\end{DoxyCompactItemize}

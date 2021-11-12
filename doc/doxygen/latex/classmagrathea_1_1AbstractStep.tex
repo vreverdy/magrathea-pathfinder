@@ -1,0 +1,564 @@
+\hypertarget{classmagrathea_1_1AbstractStep}{\section{magrathea\-:\-:Abstract\-Step$<$ Crtp, Scalar, Array, Tuple $>$ Class Template Reference}
+\label{classmagrathea_1_1AbstractStep}\index{magrathea\-::\-Abstract\-Step$<$ Crtp, Scalar, Array, Tuple $>$@{magrathea\-::\-Abstract\-Step$<$ Crtp, Scalar, Array, Tuple $>$}}
+}
+
+
+Abstraction of an evolution step.  
+
+
+
+
+{\ttfamily \#include $<$abstractstep.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Lifecycle}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmagrathea_1_1AbstractStep_afbbeb00b0e104c7e6737d6af782232b1}{Abstract\-Step} ()
+\begin{DoxyCompactList}\small\item\em Implicit empty constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Other\-Crtp , class Other\-Scalar , class Other\-Array , class Other\-Tuple $>$ }\\\hyperlink{classmagrathea_1_1AbstractStep_a5ac5108646863a17a498c9b405399f38}{Abstract\-Step} (const \hyperlink{classmagrathea_1_1AbstractStep}{Abstract\-Step}$<$ Other\-Crtp, Other\-Scalar, Other\-Array, Other\-Tuple $>$ \&source)
+\begin{DoxyCompactList}\small\item\em Explicit conversion constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Other\-Scalar , class Other\-Array  = Array, class Other\-Tuple  = Tuple, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-constructible$<$\-Scalar, Other\-Scalar$>$\-::value) \&\& (std\-::is\-\_\-constructible$<$\-Array, Other\-Array$>$\-::value) \&\& (std\-::is\-\_\-constructible$<$\-Tuple, Other\-Tuple$>$\-::value)$>$\-::type$>$ }\\\hyperlink{classmagrathea_1_1AbstractStep_a26c0255b3421d15ff9e24e6415469147}{Abstract\-Step} (const Other\-Scalar \&scalar, const Other\-Array \&array=Other\-Array(), const Other\-Tuple \&tuple=Other\-Tuple())
+\begin{DoxyCompactList}\small\item\em Explicit step constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Operators}\par
+\begin{DoxyCompactItemize}
+\item 
+Crtp \& \hyperlink{classmagrathea_1_1AbstractStep_ae717165a76d3f1a497a4bd3567e35a45}{operator=} (const \hyperlink{classmagrathea_1_1AbstractStep}{Abstract\-Step}$<$ Crtp, Scalar, Array, Tuple $>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Other\-Crtp , class Other\-Scalar , class Other\-Array , class Other\-Tuple $>$ }\\Crtp \& \hyperlink{classmagrathea_1_1AbstractStep_afeba5101a495fd1aba6bc2b0280e1789}{operator=} (const \hyperlink{classmagrathea_1_1AbstractStep}{Abstract\-Step}$<$ Other\-Crtp, Other\-Scalar, Other\-Array, Other\-Tuple $>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em Conversion assignment operator. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Other\-Crtp , class Other\-Scalar , class Other\-Array , class Other\-Tuple $>$ }\\bool \hyperlink{classmagrathea_1_1AbstractStep_a25cd4b3ae4798c009f9e3b7d4732f4ce}{operator==} (const \hyperlink{classmagrathea_1_1AbstractStep}{Abstract\-Step}$<$ Other\-Crtp, Other\-Scalar, Other\-Array, Other\-Tuple $>$ \&rhs) const 
+\begin{DoxyCompactList}\small\item\em Equal to. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Other\-Crtp , class Other\-Scalar , class Other\-Array , class Other\-Tuple $>$ }\\bool \hyperlink{classmagrathea_1_1AbstractStep_aed7136ca921c369f501f90337bc86460}{operator!=} (const \hyperlink{classmagrathea_1_1AbstractStep}{Abstract\-Step}$<$ Other\-Crtp, Other\-Scalar, Other\-Array, Other\-Tuple $>$ \&rhs) const 
+\begin{DoxyCompactList}\small\item\em Not equal to. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Assignment}\par
+\begin{DoxyCompactItemize}
+\item 
+Crtp \& \hyperlink{classmagrathea_1_1AbstractStep_ab06748b8710a2411fb547e705671a5be}{assign} ()
+\begin{DoxyCompactList}\small\item\em Empty assignment. \end{DoxyCompactList}\item 
+Crtp \& \hyperlink{classmagrathea_1_1AbstractStep_a97e8a490a0dc0c387a9fe550eca8bf1a}{assign} (const \hyperlink{classmagrathea_1_1AbstractStep}{Abstract\-Step}$<$ Crtp, Scalar, Array, Tuple $>$ \&source)
+\begin{DoxyCompactList}\small\item\em Copy assignment. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Other\-Crtp , class Other\-Scalar , class Other\-Array , class Other\-Tuple $>$ }\\Crtp \& \hyperlink{classmagrathea_1_1AbstractStep_accb7357d8e533b0bca41cff35c0cc7e3}{assign} (const \hyperlink{classmagrathea_1_1AbstractStep}{Abstract\-Step}$<$ Other\-Crtp, Other\-Scalar, Other\-Array, Other\-Tuple $>$ \&source)
+\begin{DoxyCompactList}\small\item\em Conversion assignment. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Other\-Scalar , class Other\-Array  = Array, class Other\-Tuple  = Tuple, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-constructible$<$\-Scalar, Other\-Scalar$>$\-::value) \&\& (std\-::is\-\_\-constructible$<$\-Array, Other\-Array$>$\-::value) \&\& (std\-::is\-\_\-constructible$<$\-Tuple, Other\-Tuple$>$\-::value)$>$\-::type$>$ }\\Crtp \& \hyperlink{classmagrathea_1_1AbstractStep_ac7c94a26fbeb808bb1c57d30dc1c0d38}{assign} (const Other\-Scalar \&scalar, const Other\-Array \&array=Other\-Array(), const Other\-Tuple \&tuple=Other\-Tuple())
+\begin{DoxyCompactList}\small\item\em \hyperlink{exceptionmagrathea_1_1Step}{Step} assignment. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Management}\par
+\begin{DoxyCompactItemize}
+\item 
+Crtp \& \hyperlink{classmagrathea_1_1AbstractStep_ae833b273850149c10348221b89669b7c}{nullify} ()
+\begin{DoxyCompactList}\small\item\em Nullify. \end{DoxyCompactList}\item 
+Crtp \hyperlink{classmagrathea_1_1AbstractStep_aef31281fdad7c2f5f00146be30c68165}{copy} () const 
+\begin{DoxyCompactList}\small\item\em Copy. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Other\-Crtp  = Crtp, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-constructible$<$\-Other\-Crtp, Crtp$>$\-::value$>$\-::type$>$ }\\Other\-Crtp \hyperlink{classmagrathea_1_1AbstractStep_a0e3ffbff756cee3293ba8d9e3c02e875}{cast} () const 
+\begin{DoxyCompactList}\small\item\em Cast. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Data}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class... Dummy, class Type  = typename std\-::conditional$<$sizeof...(\-Dummy) == 0, std\-::tuple$<$\-Scalar, Array, Tuple$>$, void$>$\-::type, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Dummy) == 0$>$\-::type, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Type, typename std\-::conditional$<$sizeof...(\-Dummy) == 0, std\-::tuple$<$\-Scalar, Array, Tuple$>$, void$>$\-::type$>$\-::value$>$\-::type$>$ }\\Type \& \hyperlink{classmagrathea_1_1AbstractStep_ab0f83b996e111c4519ad21bfc8ac6f7d}{data} (Dummy...)
+\begin{DoxyCompactList}\small\item\em Unified data access. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class... Dummy, class Type  = typename std\-::conditional$<$sizeof...(\-Dummy) == 0, std\-::tuple$<$\-Scalar, Array, Tuple$>$, void$>$\-::type, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Dummy) == 0$>$\-::type, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Type, typename std\-::conditional$<$sizeof...(\-Dummy) == 0, std\-::tuple$<$\-Scalar, Array, Tuple$>$, void$>$\-::type$>$\-::value$>$\-::type$>$ }\\const Type \& \hyperlink{classmagrathea_1_1AbstractStep_a46b053791efe59ce0ac59dc6b099d817}{data} (Dummy...) const 
+\begin{DoxyCompactList}\small\item\em Unified data getter. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Type , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Type, typename std\-::conditional$<$!std\-::is\-\_\-void$<$\-Type$>$\-::value, std\-::tuple$<$\-Scalar, Array, Tuple$>$, void$>$\-::type$>$\-::value$>$\-::type$>$ }\\Crtp \& \hyperlink{classmagrathea_1_1AbstractStep_a561bb9eac2a69c087f21a8ef470e57d5}{data} (const Type \&value)
+\begin{DoxyCompactList}\small\item\em Unified data setter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Protected Member Functions}
+\begin{Indent}{\bf Protected lifecycle}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmagrathea_1_1AbstractStep_af7c09cc4b31e6a751bb59b9127f40c41}{$\sim$\-Abstract\-Step} ()
+\begin{DoxyCompactList}\small\item\em Protected destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Crtp, class Scalar, class Array, class Tuple$>$class magrathea\-::\-Abstract\-Step$<$ Crtp, Scalar, Array, Tuple $>$}
+
+Abstraction of an evolution step. 
+
+This class is an abstraction of an evolution step with common functions, like assignment, copy, getters and setters. A step object is basically a standard structure with additional features. The internal behaviour is based on three groups of quantities \-: 
+\begin{DoxyItemize}
+\item id \-: a scalar id of the step 
+\item core \-: an array of basic quantities 
+\item extra \-: a tuple of derived quantities
+\end{DoxyItemize}. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Crtp} & Derived C\-R\-T\-P class. \\
+\hline
+{\em Scalar} & Scalar type of id. \\
+\hline
+{\em Array} & Array type of core quantities. \\
+\hline
+{\em Tuple} & Tuple type of extra quantities. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmagrathea_1_1AbstractStep_af7c09cc4b31e6a751bb59b9127f40c41}{\index{magrathea\-::\-Abstract\-Step@{magrathea\-::\-Abstract\-Step}!$\sim$\-Abstract\-Step@{$\sim$\-Abstract\-Step}}
+\index{$\sim$\-Abstract\-Step@{$\sim$\-Abstract\-Step}!magrathea::AbstractStep@{magrathea\-::\-Abstract\-Step}}
+\subsubsection[{$\sim$\-Abstract\-Step}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Scalar , class Array , class Tuple $>$ {\bf magrathea\-::\-Abstract\-Step}$<$ Crtp, Scalar, Array, Tuple $>$\-::$\sim${\bf Abstract\-Step} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [default]}}}\label{classmagrathea_1_1AbstractStep_af7c09cc4b31e6a751bb59b9127f40c41}
+
+
+Protected destructor. 
+
+Avoids direct instantiation of the class, and only allows it through its derived children. \hypertarget{classmagrathea_1_1AbstractStep_afbbeb00b0e104c7e6737d6af782232b1}{\index{magrathea\-::\-Abstract\-Step@{magrathea\-::\-Abstract\-Step}!Abstract\-Step@{Abstract\-Step}}
+\index{Abstract\-Step@{Abstract\-Step}!magrathea::AbstractStep@{magrathea\-::\-Abstract\-Step}}
+\subsubsection[{Abstract\-Step}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Scalar , class Array , class Tuple $>$ {\bf magrathea\-::\-Abstract\-Step}$<$ Crtp, Scalar, Array, Tuple $>$\-::{\bf Abstract\-Step} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractStep_afbbeb00b0e104c7e6737d6af782232b1}
+
+
+Implicit empty constructor. 
+
+Provides an implicit construction of an object initialized to its default value. \hypertarget{classmagrathea_1_1AbstractStep_a5ac5108646863a17a498c9b405399f38}{\index{magrathea\-::\-Abstract\-Step@{magrathea\-::\-Abstract\-Step}!Abstract\-Step@{Abstract\-Step}}
+\index{Abstract\-Step@{Abstract\-Step}!magrathea::AbstractStep@{magrathea\-::\-Abstract\-Step}}
+\subsubsection[{Abstract\-Step}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Scalar , class Array , class Tuple $>$ template$<$class Other\-Crtp , class Other\-Scalar , class Other\-Array , class Other\-Tuple $>$ {\bf magrathea\-::\-Abstract\-Step}$<$ Crtp, Scalar, Array, Tuple $>$\-::{\bf Abstract\-Step} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Abstract\-Step}$<$ Other\-Crtp, Other\-Scalar, Other\-Array, Other\-Tuple $>$ \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{classmagrathea_1_1AbstractStep_a5ac5108646863a17a498c9b405399f38}
+
+
+Explicit conversion constructor. 
+
+Provides an explicit construction from another type of object. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Crtp} & (Other derived C\-R\-T\-P class.) \\
+\hline
+{\em Other\-Scalar} & (Other scalar type of id.) \\
+\hline
+{\em Other\-Array} & (Other array type of core quantities.) \\
+\hline
+{\em Other\-Tuple} & (Other tuple type of extra quantities.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classmagrathea_1_1AbstractStep_a26c0255b3421d15ff9e24e6415469147}{\index{magrathea\-::\-Abstract\-Step@{magrathea\-::\-Abstract\-Step}!Abstract\-Step@{Abstract\-Step}}
+\index{Abstract\-Step@{Abstract\-Step}!magrathea::AbstractStep@{magrathea\-::\-Abstract\-Step}}
+\subsubsection[{Abstract\-Step}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Scalar , class Array , class Tuple $>$ template$<$class Other\-Scalar , class Other\-Array , class Other\-Tuple , class $>$ {\bf magrathea\-::\-Abstract\-Step}$<$ Crtp, Scalar, Array, Tuple $>$\-::{\bf Abstract\-Step} (
+\begin{DoxyParamCaption}
+\item[{const Other\-Scalar \&}]{scalar, }
+\item[{const Other\-Array \&}]{array = {\ttfamily OtherArray()}, }
+\item[{const Other\-Tuple \&}]{tuple = {\ttfamily OtherTuple()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{classmagrathea_1_1AbstractStep_a26c0255b3421d15ff9e24e6415469147}
+
+
+Explicit step constructor. 
+
+Provides an explicit construction from step components. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Scalar} & (Other scalar type of id.) \\
+\hline
+{\em Other\-Array} & (Other array type of core quantities.) \\
+\hline
+{\em Other\-Tuple} & (Other tuple type of extra quantities.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em scalar} & Source of the scalar. \\
+\hline
+\mbox{\tt in}  & {\em array} & Source of the array. \\
+\hline
+\mbox{\tt in}  & {\em tuple} & Source of the tuple. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmagrathea_1_1AbstractStep_ab06748b8710a2411fb547e705671a5be}{\index{magrathea\-::\-Abstract\-Step@{magrathea\-::\-Abstract\-Step}!assign@{assign}}
+\index{assign@{assign}!magrathea::AbstractStep@{magrathea\-::\-Abstract\-Step}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Scalar , class Array , class Tuple $>$ Crtp \& {\bf magrathea\-::\-Abstract\-Step}$<$ Crtp, Scalar, Array, Tuple $>$\-::assign (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractStep_ab06748b8710a2411fb547e705671a5be}
+
+
+Empty assignment. 
+
+Assigns contents from an object initialized to its default value. \begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractStep_a97e8a490a0dc0c387a9fe550eca8bf1a}{\index{magrathea\-::\-Abstract\-Step@{magrathea\-::\-Abstract\-Step}!assign@{assign}}
+\index{assign@{assign}!magrathea::AbstractStep@{magrathea\-::\-Abstract\-Step}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp, class Scalar, class Array, class Tuple$>$ Crtp \& {\bf magrathea\-::\-Abstract\-Step}$<$ Crtp, Scalar, Array, Tuple $>$\-::assign (
+\begin{DoxyParamCaption}
+\item[{const {\bf Abstract\-Step}$<$ Crtp, Scalar, Array, Tuple $>$ \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractStep_a97e8a490a0dc0c387a9fe550eca8bf1a}
+
+
+Copy assignment. 
+
+Assigns contents from the same type of object. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractStep_accb7357d8e533b0bca41cff35c0cc7e3}{\index{magrathea\-::\-Abstract\-Step@{magrathea\-::\-Abstract\-Step}!assign@{assign}}
+\index{assign@{assign}!magrathea::AbstractStep@{magrathea\-::\-Abstract\-Step}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Scalar , class Array , class Tuple $>$ template$<$class Other\-Crtp , class Other\-Scalar , class Other\-Array , class Other\-Tuple $>$ Crtp \& {\bf magrathea\-::\-Abstract\-Step}$<$ Crtp, Scalar, Array, Tuple $>$\-::assign (
+\begin{DoxyParamCaption}
+\item[{const {\bf Abstract\-Step}$<$ Other\-Crtp, Other\-Scalar, Other\-Array, Other\-Tuple $>$ \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractStep_accb7357d8e533b0bca41cff35c0cc7e3}
+
+
+Conversion assignment. 
+
+Assigns contents from another type of object. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Crtp} & (Other derived C\-R\-T\-P class.) \\
+\hline
+{\em Other\-Scalar} & (Other scalar type of id.) \\
+\hline
+{\em Other\-Array} & (Other array type of core quantities.) \\
+\hline
+{\em Other\-Tuple} & (Other tuple type of extra quantities.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractStep_ac7c94a26fbeb808bb1c57d30dc1c0d38}{\index{magrathea\-::\-Abstract\-Step@{magrathea\-::\-Abstract\-Step}!assign@{assign}}
+\index{assign@{assign}!magrathea::AbstractStep@{magrathea\-::\-Abstract\-Step}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Scalar , class Array , class Tuple $>$ template$<$class Other\-Scalar , class Other\-Array , class Other\-Tuple , class $>$ Crtp \& {\bf magrathea\-::\-Abstract\-Step}$<$ Crtp, Scalar, Array, Tuple $>$\-::assign (
+\begin{DoxyParamCaption}
+\item[{const Other\-Scalar \&}]{scalar, }
+\item[{const Other\-Array \&}]{array = {\ttfamily OtherArray()}, }
+\item[{const Other\-Tuple \&}]{tuple = {\ttfamily OtherTuple()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractStep_ac7c94a26fbeb808bb1c57d30dc1c0d38}
+
+
+\hyperlink{exceptionmagrathea_1_1Step}{Step} assignment. 
+
+Assigns contents from step components. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Scalar} & (Other scalar type of id.) \\
+\hline
+{\em Other\-Array} & (Other array type of core quantities.) \\
+\hline
+{\em Other\-Tuple} & (Other tuple type of extra quantities.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em scalar} & Source of the scalar. \\
+\hline
+\mbox{\tt in}  & {\em array} & Source of the array. \\
+\hline
+\mbox{\tt in}  & {\em tuple} & Source of the tuple. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractStep_a0e3ffbff756cee3293ba8d9e3c02e875}{\index{magrathea\-::\-Abstract\-Step@{magrathea\-::\-Abstract\-Step}!cast@{cast}}
+\index{cast@{cast}!magrathea::AbstractStep@{magrathea\-::\-Abstract\-Step}}
+\subsubsection[{cast}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Scalar , class Array , class Tuple $>$ template$<$class Other\-Crtp , class $>$ Other\-Crtp {\bf magrathea\-::\-Abstract\-Step}$<$ Crtp, Scalar, Array, Tuple $>$\-::cast (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractStep_a0e3ffbff756cee3293ba8d9e3c02e875}
+
+
+Cast. 
+
+Casts contents to another object type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Crtp} & Other derived C\-R\-T\-P class. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Casted copy. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractStep_aef31281fdad7c2f5f00146be30c68165}{\index{magrathea\-::\-Abstract\-Step@{magrathea\-::\-Abstract\-Step}!copy@{copy}}
+\index{copy@{copy}!magrathea::AbstractStep@{magrathea\-::\-Abstract\-Step}}
+\subsubsection[{copy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Scalar , class Array , class Tuple $>$ Crtp {\bf magrathea\-::\-Abstract\-Step}$<$ Crtp, Scalar, Array, Tuple $>$\-::copy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractStep_aef31281fdad7c2f5f00146be30c68165}
+
+
+Copy. 
+
+Generates a copy of the object. \begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractStep_ab0f83b996e111c4519ad21bfc8ac6f7d}{\index{magrathea\-::\-Abstract\-Step@{magrathea\-::\-Abstract\-Step}!data@{data}}
+\index{data@{data}!magrathea::AbstractStep@{magrathea\-::\-Abstract\-Step}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Scalar , class Array , class Tuple $>$ template$<$class... Dummy, class Type , class , class $>$ Type \& {\bf magrathea\-::\-Abstract\-Step}$<$ Crtp, Scalar, Array, Tuple $>$\-::data (
+\begin{DoxyParamCaption}
+\item[{Dummy...}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractStep_ab0f83b996e111c4519ad21bfc8ac6f7d}
+
+
+Unified data access. 
+
+Unified data inner component access.
+
+Unified data component access.
+
+Provides a direct access to the data. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Dummy} & (Dummy types.) \\
+\hline
+{\em Type} & (Data std\-::tuple$<$\-Scalar, Array, Tuple$>$ type.) \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Reference to the data.
+\end{DoxyReturn}
+Provides a direct access to the specified component of the data. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Index} & Index of the component. \\
+\hline
+{\em Dummy} & (Dummy types.) \\
+\hline
+{\em Type} & (Component type.) \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Reference to the component of the data.
+\end{DoxyReturn}
+Provides a direct access to the specified inner component of the specified component of the data. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Index} & Index of the component. \\
+\hline
+{\em Subscript} & Subscript of the inner component. \\
+\hline
+{\em Dummy} & (Dummy types.) \\
+\hline
+{\em Type} & (Inner component type.) \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Reference to the inner component of the data. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractStep_a46b053791efe59ce0ac59dc6b099d817}{\index{magrathea\-::\-Abstract\-Step@{magrathea\-::\-Abstract\-Step}!data@{data}}
+\index{data@{data}!magrathea::AbstractStep@{magrathea\-::\-Abstract\-Step}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Scalar , class Array , class Tuple $>$ template$<$class... Dummy, class Type , class , class $>$ const Type \& {\bf magrathea\-::\-Abstract\-Step}$<$ Crtp, Scalar, Array, Tuple $>$\-::data (
+\begin{DoxyParamCaption}
+\item[{Dummy...}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractStep_a46b053791efe59ce0ac59dc6b099d817}
+
+
+Unified data getter. 
+
+Gets the data. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Dummy} & (Dummy types.) \\
+\hline
+{\em Type} & (Data std\-::tuple$<$\-Scalar, Array, Tuple$>$ type.) \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Immutable reference to the data. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractStep_a561bb9eac2a69c087f21a8ef470e57d5}{\index{magrathea\-::\-Abstract\-Step@{magrathea\-::\-Abstract\-Step}!data@{data}}
+\index{data@{data}!magrathea::AbstractStep@{magrathea\-::\-Abstract\-Step}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Scalar , class Array , class Tuple $>$ template$<$unsigned int Index, unsigned int Subscript, class Type , class , class , class $>$ Crtp \& {\bf magrathea\-::\-Abstract\-Step}$<$ Crtp, Scalar, Array, Tuple $>$\-::data (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractStep_a561bb9eac2a69c087f21a8ef470e57d5}
+
+
+Unified data setter. 
+
+Unified data inner component setter.
+
+Unified data component setter.
+
+Sets the data. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & Data value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference.
+\end{DoxyReturn}
+Sets the specified component of the data. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Index} & Index of the component. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & Component value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference.
+\end{DoxyReturn}
+Sets the specified inner component of the specified component of the data. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Index} & Index of the component. \\
+\hline
+{\em Subscript} & Subscript of the inner component. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & Inner component value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractStep_ae833b273850149c10348221b89669b7c}{\index{magrathea\-::\-Abstract\-Step@{magrathea\-::\-Abstract\-Step}!nullify@{nullify}}
+\index{nullify@{nullify}!magrathea::AbstractStep@{magrathea\-::\-Abstract\-Step}}
+\subsubsection[{nullify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Scalar , class Array , class Tuple $>$ Crtp \& {\bf magrathea\-::\-Abstract\-Step}$<$ Crtp, Scalar, Array, Tuple $>$\-::nullify (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractStep_ae833b273850149c10348221b89669b7c}
+
+
+Nullify. 
+
+Resets all data members to their default values. \begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractStep_aed7136ca921c369f501f90337bc86460}{\index{magrathea\-::\-Abstract\-Step@{magrathea\-::\-Abstract\-Step}!operator!=@{operator!=}}
+\index{operator!=@{operator!=}!magrathea::AbstractStep@{magrathea\-::\-Abstract\-Step}}
+\subsubsection[{operator!=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Scalar , class Array , class Tuple $>$ template$<$class Other\-Crtp , class Other\-Scalar , class Other\-Array , class Other\-Tuple $>$ bool {\bf magrathea\-::\-Abstract\-Step}$<$ Crtp, Scalar, Array, Tuple $>$\-::operator!= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Abstract\-Step}$<$ Other\-Crtp, Other\-Scalar, Other\-Array, Other\-Tuple $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractStep_aed7136ca921c369f501f90337bc86460}
+
+
+Not equal to. 
+
+Compares for difference and returns true if the contents is different. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Crtp} & (Other derived C\-R\-T\-P class.) \\
+\hline
+{\em Other\-Scalar} & (Other scalar type of id.) \\
+\hline
+{\em Other\-Array} & (Other array type of core quantities.) \\
+\hline
+{\em Other\-Tuple} & (Other tuple type of extra quantities.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if not equal, false if equal. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractStep_ae717165a76d3f1a497a4bd3567e35a45}{\index{magrathea\-::\-Abstract\-Step@{magrathea\-::\-Abstract\-Step}!operator=@{operator=}}
+\index{operator=@{operator=}!magrathea::AbstractStep@{magrathea\-::\-Abstract\-Step}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp, class Scalar, class Array, class Tuple$>$ Crtp \& {\bf magrathea\-::\-Abstract\-Step}$<$ Crtp, Scalar, Array, Tuple $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Abstract\-Step}$<$ Crtp, Scalar, Array, Tuple $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractStep_ae717165a76d3f1a497a4bd3567e35a45}
+
+
+Copy assignment operator. 
+
+Assigns contents from the same type of object. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractStep_afeba5101a495fd1aba6bc2b0280e1789}{\index{magrathea\-::\-Abstract\-Step@{magrathea\-::\-Abstract\-Step}!operator=@{operator=}}
+\index{operator=@{operator=}!magrathea::AbstractStep@{magrathea\-::\-Abstract\-Step}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Scalar , class Array , class Tuple $>$ template$<$class Other\-Crtp , class Other\-Scalar , class Other\-Array , class Other\-Tuple $>$ Crtp \& {\bf magrathea\-::\-Abstract\-Step}$<$ Crtp, Scalar, Array, Tuple $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Abstract\-Step}$<$ Other\-Crtp, Other\-Scalar, Other\-Array, Other\-Tuple $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractStep_afeba5101a495fd1aba6bc2b0280e1789}
+
+
+Conversion assignment operator. 
+
+Assigns contents from another type of object. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Crtp} & (Other derived C\-R\-T\-P class.) \\
+\hline
+{\em Other\-Scalar} & (Other scalar type of id.) \\
+\hline
+{\em Other\-Array} & (Other array type of core quantities.) \\
+\hline
+{\em Other\-Tuple} & (Other tuple type of extra quantities.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractStep_a25cd4b3ae4798c009f9e3b7d4732f4ce}{\index{magrathea\-::\-Abstract\-Step@{magrathea\-::\-Abstract\-Step}!operator==@{operator==}}
+\index{operator==@{operator==}!magrathea::AbstractStep@{magrathea\-::\-Abstract\-Step}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , class Scalar , class Array , class Tuple $>$ template$<$class Other\-Crtp , class Other\-Scalar , class Other\-Array , class Other\-Tuple $>$ bool {\bf magrathea\-::\-Abstract\-Step}$<$ Crtp, Scalar, Array, Tuple $>$\-::operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf Abstract\-Step}$<$ Other\-Crtp, Other\-Scalar, Other\-Array, Other\-Tuple $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractStep_a25cd4b3ae4798c009f9e3b7d4732f4ce}
+
+
+Equal to. 
+
+Compares for equality and returns true if the contents is equal. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Crtp} & (Other derived C\-R\-T\-P class.) \\
+\hline
+{\em Other\-Scalar} & (Other scalar type of id.) \\
+\hline
+{\em Other\-Array} & (Other array type of core quantities.) \\
+\hline
+{\em Other\-Tuple} & (Other tuple type of extra quantities.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if equal, false if not equal. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/magrathea/\hyperlink{abstractstep_8h}{abstractstep.\-h}\end{DoxyCompactItemize}

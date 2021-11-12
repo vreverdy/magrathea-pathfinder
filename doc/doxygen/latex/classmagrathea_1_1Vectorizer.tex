@@ -1,0 +1,845 @@
+\hypertarget{classmagrathea_1_1Vectorizer}{\section{magrathea\-:\-:Vectorizer Class Reference}
+\label{classmagrathea_1_1Vectorizer}\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}}
+}
+
+
+Helper base class for generic vectorization.  
+
+
+
+
+{\ttfamily \#include $<$vectorizer.\-h$>$}
+
+Inheritance diagram for magrathea\-:\-:Vectorizer\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.955224cm]{classmagrathea_1_1Vectorizer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Vectorization}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmagrathea_1_1Vectorizer}{Vectorizer} \& \hyperlink{classmagrathea_1_1Vectorizer_a83ebb071ab30dce7af155d3c0e597fb9}{operator\mbox{[}$\,$\mbox{]}} (const unsigned int i)
+\begin{DoxyCompactList}\small\item\em Direct access to the element. \end{DoxyCompactList}\item 
+const \hyperlink{classmagrathea_1_1Vectorizer}{Vectorizer} \& \hyperlink{classmagrathea_1_1Vectorizer_aa058daf8b240bb587b80888ab88340c7}{operator\mbox{[}$\,$\mbox{]}} (const unsigned int i) const 
+\begin{DoxyCompactList}\small\item\em Immutable direct access to the element. \end{DoxyCompactList}\item 
+\hyperlink{classmagrathea_1_1Vectorizer}{Vectorizer} \& \hyperlink{classmagrathea_1_1Vectorizer_afe3c5369c91276766e0197fa33ae4951}{resize} (const unsigned int n)
+\begin{DoxyCompactList}\small\item\em Resize the container. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{classmagrathea_1_1Vectorizer_a3b54f2b5f17c2054f99e03c7c4614558}{size} () const 
+\begin{DoxyCompactList}\small\item\em Get the size of the container. \end{DoxyCompactList}\item 
+bool \hyperlink{classmagrathea_1_1Vectorizer_a2e30cc7971bfbcf7b21f993b56c0644e}{constant} () const 
+\begin{DoxyCompactList}\small\item\em Get whether the container has a constant size. \end{DoxyCompactList}\item 
+bool \hyperlink{classmagrathea_1_1Vectorizer_ab5100fafcacd2c835380dbe0403422ec}{boolean} () const 
+\begin{DoxyCompactList}\small\item\em Get whether the container has a boolean type. \end{DoxyCompactList}\item 
+std\-::array$<$ unsigned int, 0 $>$ \hyperlink{classmagrathea_1_1Vectorizer_a7815b5c9e9ff56064306e7d07dae5bb7}{parameters} () const 
+\begin{DoxyCompactList}\small\item\em Get the template parameters. \end{DoxyCompactList}\item 
+void \hyperlink{classmagrathea_1_1Vectorizer_af46ebf417fa856107cb9b84db9939f76}{type} () const 
+\begin{DoxyCompactList}\small\item\em Get the data type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Static Public Member Functions}
+\begin{Indent}{\bf Check}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$bool Exception = true, class First\-Type , class Second\-Type , class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, First\-Type$>$\-::value) $|$$|$ (!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Second\-Type$>$\-::value)$>$\-::type$>$ }\\static constexpr bool \hyperlink{classmagrathea_1_1Vectorizer_a9c5d14ef63c3245c6e3ba161e5efdf95}{check} (const First\-Type \&, const Second\-Type \&)
+\begin{DoxyCompactList}\small\item\em Check compatibility with at least one non-\/vectorized type. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Exception = true, class First\-Type , class Second\-Type , class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, First\-Type$>$\-::value) \&\& (std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Second\-Type$>$\-::value)$>$\-::type, class  = typename std\-::enable\-\_\-if$<$(\-First\-Type\-::constant()) \&\& (\-Second\-Type\-::constant())$>$\-::type$>$ }\\static constexpr bool \hyperlink{classmagrathea_1_1Vectorizer_a46a8845625441b2b7ca940542c5a42ea}{check} (const First\-Type \&, const Second\-Type \&)
+\item 
+{\footnotesize template$<$bool Exception = true, class First\-Type , class Second\-Type , class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, First\-Type$>$\-::value) \&\& (std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Second\-Type$>$\-::value)$>$\-::type, class  = typename std\-::enable\-\_\-if$<$(!\-First\-Type\-::constant()) $|$$|$ (!\-Second\-Type\-::constant())$>$\-::type, class  = void$>$ }\\static bool \hyperlink{classmagrathea_1_1Vectorizer_a8cbb51491c2e83e5cedeced2d5945cde}{check} (const First\-Type \&first, const Second\-Type \&second)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Getters}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Integral\-Type , Integral\-Type Value, typename Dummy\-Type  = unsigned int, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-integral$<$\-Integral\-Type$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Dummy\-Type, unsigned int$>$\-::value)$>$\-::type$>$ }\\static constexpr Integral\-Type \hyperlink{classmagrathea_1_1Vectorizer_a8d9b9d79268199cbac2906cffd22c0d4}{get} (const std\-::integral\-\_\-constant$<$ Integral\-Type, Value $>$, const Dummy\-Type=Dummy\-Type())
+\begin{DoxyCompactList}\small\item\em Integral constant getter. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Data\-Type , typename Dummy\-Type  = unsigned int, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Data\-Type$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Dummy\-Type, unsigned int$>$\-::value)$>$\-::type$>$ }\\static Data\-Type \& \hyperlink{classmagrathea_1_1Vectorizer_a7a89b7c95b5067316ad946aaab3d5686}{get} (Data\-Type \&source, const Dummy\-Type=Dummy\-Type())
+\begin{DoxyCompactList}\small\item\em Non-\/vectorized getter. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Data\-Type , typename Dummy\-Type  = unsigned int, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Data\-Type$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Dummy\-Type, unsigned int$>$\-::value)$>$\-::type$>$ }\\static const Data\-Type \& \hyperlink{classmagrathea_1_1Vectorizer_a9a63af59c59b04cbbe01a3447a7ac552}{get} (const Data\-Type \&source, const Dummy\-Type=Dummy\-Type())
+\begin{DoxyCompactList}\small\item\em Immutable non-\/vectorized getter. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Vectorized\-Type , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Vectorized\-Type$>$\-::value$>$\-::type, typename Data\-Type  = typename std\-::remove\-\_\-reference$<$decltype(\-Vectorized\-Type\-::type())$>$\-::type$>$ }\\static Data\-Type \& \hyperlink{classmagrathea_1_1Vectorizer_af077b83bc7bc9d07e59895cf3df6641e}{get} (Vectorized\-Type \&source, const unsigned int i)
+\begin{DoxyCompactList}\small\item\em Vector element getter. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Vectorized\-Type , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Vectorized\-Type$>$\-::value$>$\-::type, typename Data\-Type  = typename std\-::remove\-\_\-reference$<$decltype(\-Vectorized\-Type\-::type())$>$\-::type$>$ }\\static const Data\-Type \& \hyperlink{classmagrathea_1_1Vectorizer_a3a3ae98c035c1f3004ee2f88f6179066}{get} (const Vectorized\-Type \&source, const unsigned int i)
+\begin{DoxyCompactList}\small\item\em Immutable vector element getter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Setters}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Vectorized\-Type , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Vectorized\-Type$>$\-::value$>$\-::type$>$ }\\static Vectorized\-Type \& \hyperlink{classmagrathea_1_1Vectorizer_a67836bbf5aced8fee531fd2caf839f15}{set} (Vectorized\-Type \&destination)
+\begin{DoxyCompactList}\small\item\em Empty setter. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Vectorized\-Type , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Vectorized\-Type$>$\-::value$>$\-::type, class Generic\-Type $>$ }\\static Vectorized\-Type \& \hyperlink{classmagrathea_1_1Vectorizer_aa586478d9b24b19586ff1d6dfdff5b68}{set} (Vectorized\-Type \&destination, const Generic\-Type \&source)
+\begin{DoxyCompactList}\small\item\em Copy setter. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Vectorized\-Type , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Vectorized\-Type$>$\-::value$>$\-::type, class Generic\-Type , class First , class Second , class... Others, class  = typename std\-::enable\-\_\-if$<$(sizeof...(\-Others) != 0) \&\& (sizeof...(\-Others) != 1)$>$\-::type$>$ }\\static Vectorized\-Type \& \hyperlink{classmagrathea_1_1Vectorizer_ab181cd6d6a7afb777ebab551cc36bc33}{set} (Vectorized\-Type \&destination, const Generic\-Type \&source, const First \&first, const Second \&second, const Others \&...others)
+\begin{DoxyCompactList}\small\item\em Variadic setter. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Vectorized\-Type , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Vectorized\-Type$>$\-::value$>$\-::type, class Generic\-Type , typename Size\-Type  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-same$<$\-Size\-Type, std\-::true\-\_\-type$>$\-::value) $|$$|$ (std\-::is\-\_\-convertible$<$\-Size\-Type, unsigned int$>$\-::value)$>$\-::type$>$ }\\static Vectorized\-Type \& \hyperlink{classmagrathea_1_1Vectorizer_acccf60d696c7fdba17a8ff7bf0efa5de}{set} (Vectorized\-Type \&destination, const Generic\-Type \&source, const unsigned int pos, const Size\-Type num=Size\-Type())
+\begin{DoxyCompactList}\small\item\em Partial setter. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Vectorized\-Type , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Vectorized\-Type$>$\-::value$>$\-::type, typename Data\-Type  = typename std\-::remove\-\_\-reference$<$decltype(\-Vectorized\-Type\-::type())$>$\-::type, typename Size\-Type  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-convertible$<$\-Data\-Type, typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Vectorized\-Type$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::value) \&\& ((std\-::is\-\_\-same$<$\-Size\-Type, std\-::true\-\_\-type$>$\-::value) $|$$|$ (std\-::is\-\_\-convertible$<$\-Size\-Type, unsigned int$>$\-::value))$>$\-::type$>$ }\\static Vectorized\-Type \& \hyperlink{classmagrathea_1_1Vectorizer_af3453b370f7c850f2ab17f20d0d3fb33}{set} (Vectorized\-Type \&destination, const std\-::initializer\-\_\-list$<$ Data\-Type $>$ \&source, const unsigned int pos=0, const Size\-Type num=Size\-Type())
+\begin{DoxyCompactList}\small\item\em Partial list setter. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Vectorized\-Type , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Vectorized\-Type$>$\-::value$>$\-::type, typename Iterator\-Type , typename Size\-Type  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-same$<$\-Size\-Type, std\-::true\-\_\-type$>$\-::value) $|$$|$ (std\-::is\-\_\-convertible$<$\-Size\-Type, unsigned int$>$\-::value)$>$\-::type$>$ }\\static Vectorized\-Type \& \hyperlink{classmagrathea_1_1Vectorizer_ac0dd17adf7a9cc87583510b0ed84cde8}{set} (Vectorized\-Type \&destination, const Iterator\-Type \&first, const Iterator\-Type \&last, const unsigned int pos=0, const Size\-Type num=Size\-Type(), typename std\-::iterator\-\_\-traits$<$ Iterator\-Type $>$\-::iterator\-\_\-category $\ast$=nullptr)
+\begin{DoxyCompactList}\small\item\em Partial range setter. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Vectorized\-Type , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Vectorized\-Type$>$\-::value$>$\-::type, class Generic\-Type , class Mask\-Type , typename Dummy\-Type  = unsigned int, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask\-Type$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Dummy\-Type, unsigned int$>$\-::value)$>$\-::type$>$ }\\static Vectorized\-Type \& \hyperlink{classmagrathea_1_1Vectorizer_a5ea3e9a7f164f31f1f8f9b7ab3abe12c}{set} (Vectorized\-Type \&destination, const Generic\-Type \&source, const Mask\-Type \&mask, const Dummy\-Type=Dummy\-Type())
+\begin{DoxyCompactList}\small\item\em Masked setter. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Vectorized\-Type , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Vectorized\-Type$>$\-::value$>$\-::type, typename Data\-Type  = typename std\-::remove\-\_\-reference$<$decltype(\-Vectorized\-Type\-::type())$>$\-::type, class Mask\-Type , typename Dummy\-Type  = unsigned int, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask\-Type$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Dummy\-Type, unsigned int$>$\-::value)$>$\-::type$>$ }\\static Vectorized\-Type \& \hyperlink{classmagrathea_1_1Vectorizer_aacc7d73a284fc36d87653df867ef6e00}{set} (Vectorized\-Type \&destination, const std\-::initializer\-\_\-list$<$ Data\-Type $>$ \&source, const Mask\-Type \&mask, const Dummy\-Type=Dummy\-Type())
+\begin{DoxyCompactList}\small\item\em Masked list setter. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Vectorized\-Type , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Vectorized\-Type$>$\-::value$>$\-::type, typename Iterator\-Type , class Mask\-Type , typename Dummy\-Type  = unsigned int, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask\-Type$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Dummy\-Type, unsigned int$>$\-::value)$>$\-::type$>$ }\\static Vectorized\-Type \& \hyperlink{classmagrathea_1_1Vectorizer_a0f6c5228f8e7f3bba38d57886a4ef51a}{set} (Vectorized\-Type \&destination, const Iterator\-Type \&first, const Iterator\-Type \&last, const Mask\-Type \&mask, const Dummy\-Type=Dummy\-Type(), typename std\-::iterator\-\_\-traits$<$ Iterator\-Type $>$\-::iterator\-\_\-category $\ast$=nullptr)
+\begin{DoxyCompactList}\small\item\em Masked range setter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Test}\par
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{classmagrathea_1_1Vectorizer_a302758cf072c56ea44519a41c2b70171}{example} ()
+\begin{DoxyCompactList}\small\item\em Example function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Protected Member Functions}
+\begin{Indent}{\bf Protected lifecycle}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmagrathea_1_1Vectorizer_ab42248d231900ce89e17405a9e751535}{$\sim$\-Vectorizer} ()
+\begin{DoxyCompactList}\small\item\em Protected destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+Helper base class for generic vectorization. 
+
+Provides global functions for vectorization implementation. \hyperlink{classmagrathea_1_1Vectorizer}{Vectorizer} helpers (like \hyperlink{classmagrathea_1_1StaticVectorizer}{Static\-Vectorizer} or Dynamic\-Vectorizer) are derived from this class and have to implement the following functions required by C\-R\-T\-P \-: 
+\begin{DoxyItemize}
+\item {\ttfamily operator\mbox{[}\mbox{]}} 
+\item {\ttfamily \hyperlink{classmagrathea_1_1Vectorizer_afe3c5369c91276766e0197fa33ae4951}{resize()}} 
+\item {\ttfamily \hyperlink{classmagrathea_1_1Vectorizer_a3b54f2b5f17c2054f99e03c7c4614558}{size()}} 
+\item {\ttfamily \hyperlink{classmagrathea_1_1Vectorizer_a2e30cc7971bfbcf7b21f993b56c0644e}{constant()}} 
+\item {\ttfamily \hyperlink{classmagrathea_1_1Vectorizer_ab5100fafcacd2c835380dbe0403422ec}{boolean()}} 
+\item {\ttfamily \hyperlink{classmagrathea_1_1Vectorizer_a7815b5c9e9ff56064306e7d07dae5bb7}{parameters()}} 
+\item {\ttfamily \hyperlink{classmagrathea_1_1Vectorizer_af46ebf417fa856107cb9b84db9939f76}{type()}} 
+\end{DoxyItemize}
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmagrathea_1_1Vectorizer_ab42248d231900ce89e17405a9e751535}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!$\sim$\-Vectorizer@{$\sim$\-Vectorizer}}
+\index{$\sim$\-Vectorizer@{$\sim$\-Vectorizer}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{$\sim$\-Vectorizer}]{\setlength{\rightskip}{0pt plus 5cm}magrathea\-::\-Vectorizer\-::$\sim$\-Vectorizer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [default]}}}\label{classmagrathea_1_1Vectorizer_ab42248d231900ce89e17405a9e751535}
+
+
+Protected destructor. 
+
+Does nothing. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classmagrathea_1_1Vectorizer_ab5100fafcacd2c835380dbe0403422ec}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!boolean@{boolean}}
+\index{boolean@{boolean}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{boolean}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-Vectorizer\-::boolean (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1Vectorizer_ab5100fafcacd2c835380dbe0403422ec}
+
+
+Get whether the container has a boolean type. 
+
+Returns true if the container has a boolean type size, false otherwise. This function is required by the vectorization mechanism. \begin{DoxyReturn}{Returns}
+Copy of true if the container has a boolean type. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::logic\-\_\-error} & This function should be overloaded by derived classes. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{classmagrathea_1_1Vectorizer_a9c5d14ef63c3245c6e3ba161e5efdf95}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!check@{check}}
+\index{check@{check}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Exception, class First\-Type , class Second\-Type , class , class , class $>$ bool magrathea\-::\-Vectorizer\-::check (
+\begin{DoxyParamCaption}
+\item[{const First\-Type \&}]{first, }
+\item[{const Second\-Type \&}]{second}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classmagrathea_1_1Vectorizer_a9c5d14ef63c3245c6e3ba161e5efdf95}
+
+
+Check compatibility with at least one non-\/vectorized type. 
+
+Check compatibility between two vectorized types.
+
+Check compatibility between two static vectorized types.
+
+Checks whether the two provided vectorizer have compatible properties. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Exception} & Throw exception or assertion on error. \\
+\hline
+{\em First\-Type} & (First type.) \\
+\hline
+{\em Second\-Type} & (Second type.) \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+True whether the two types are compatible, false otherwise.
+\end{DoxyReturn}
+Checks whether the two provided vectorizer have compatible properties. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Exception} & Throw exception or assertion on error. \\
+\hline
+{\em First\-Type} & (First type.) \\
+\hline
+{\em Second\-Type} & (Second type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & First argument. \\
+\hline
+\mbox{\tt in}  & {\em second} & Second argument. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True whether the two types are compatible, false otherwise. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::length\-\_\-error} & \hyperlink{classmagrathea_1_1Vectorizer}{Vectorizer} sizes are not equal. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{classmagrathea_1_1Vectorizer_a46a8845625441b2b7ca940542c5a42ea}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!check@{check}}
+\index{check@{check}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Exception = true, class First\-Type , class Second\-Type , class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, First\-Type$>$\-::value) \&\& (std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Second\-Type$>$\-::value)$>$\-::type, class  = typename std\-::enable\-\_\-if$<$(\-First\-Type\-::constant()) \&\& (\-Second\-Type\-::constant())$>$\-::type$>$ static constexpr bool magrathea\-::\-Vectorizer\-::check (
+\begin{DoxyParamCaption}
+\item[{const First\-Type \&}]{, }
+\item[{const Second\-Type \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmagrathea_1_1Vectorizer_a46a8845625441b2b7ca940542c5a42ea}
+\hypertarget{classmagrathea_1_1Vectorizer_a8cbb51491c2e83e5cedeced2d5945cde}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!check@{check}}
+\index{check@{check}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Exception = true, class First\-Type , class Second\-Type , class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, First\-Type$>$\-::value) \&\& (std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Second\-Type$>$\-::value)$>$\-::type, class  = typename std\-::enable\-\_\-if$<$(!\-First\-Type\-::constant()) $|$$|$ (!\-Second\-Type\-::constant())$>$\-::type, class  = void$>$ static bool magrathea\-::\-Vectorizer\-::check (
+\begin{DoxyParamCaption}
+\item[{const First\-Type \&}]{first, }
+\item[{const Second\-Type \&}]{second}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classmagrathea_1_1Vectorizer_a8cbb51491c2e83e5cedeced2d5945cde}
+\hypertarget{classmagrathea_1_1Vectorizer_a2e30cc7971bfbcf7b21f993b56c0644e}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!constant@{constant}}
+\index{constant@{constant}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{constant}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-Vectorizer\-::constant (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1Vectorizer_a2e30cc7971bfbcf7b21f993b56c0644e}
+
+
+Get whether the container has a constant size. 
+
+Returns true if the container has a constant size, false otherwise. This function is required by the vectorization mechanism. \begin{DoxyReturn}{Returns}
+Copy of true if the container has a constant size. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::logic\-\_\-error} & This function should be overloaded by derived classes. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{classmagrathea_1_1Vectorizer_a302758cf072c56ea44519a41c2b70171}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!example@{example}}
+\index{example@{example}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{example}]{\setlength{\rightskip}{0pt plus 5cm}int magrathea\-::\-Vectorizer\-::example (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmagrathea_1_1Vectorizer_a302758cf072c56ea44519a41c2b70171}
+
+
+Example function. 
+
+Tests and demonstrates the use of \hyperlink{classmagrathea_1_1Vectorizer}{Vectorizer}. \begin{DoxyReturn}{Returns}
+0 if no error. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1Vectorizer_a8d9b9d79268199cbac2906cffd22c0d4}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!get@{get}}
+\index{get@{get}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Integral\-Type , Integral\-Type Value, typename Dummy\-Type , class $>$ constexpr Integral\-Type magrathea\-::\-Vectorizer\-::get (
+\begin{DoxyParamCaption}
+\item[{const std\-::integral\-\_\-constant$<$ Integral\-Type, Value $>$}]{, }
+\item[{const Dummy\-Type}]{ = {\ttfamily DummyType()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmagrathea_1_1Vectorizer_a8d9b9d79268199cbac2906cffd22c0d4}
+
+
+Integral constant getter. 
+
+Returns the value of the provided integral constant. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Integral\-Type} & (Integral type.) \\
+\hline
+{\em Dummy\-Type} & (Dummy parameter type.) \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Value of the integral constant. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1Vectorizer_a7a89b7c95b5067316ad946aaab3d5686}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!get@{get}}
+\index{get@{get}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Dummy\-Type, class $>$ Data\-Type \& magrathea\-::\-Vectorizer\-::get (
+\begin{DoxyParamCaption}
+\item[{Data\-Type \&}]{source, }
+\item[{const Dummy\-Type}]{ = {\ttfamily DummyType()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classmagrathea_1_1Vectorizer_a7a89b7c95b5067316ad946aaab3d5686}
+
+
+Non-\/vectorized getter. 
+
+Returns a reference to the provided non-\/vectorized source. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Data\-Type} & (Data type.) \\
+\hline
+{\em Dummy\-Type} & (Dummy parameter type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Argument to get. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the argument. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1Vectorizer_a9a63af59c59b04cbbe01a3447a7ac552}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!get@{get}}
+\index{get@{get}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Dummy\-Type, class $>$ const Data\-Type \& magrathea\-::\-Vectorizer\-::get (
+\begin{DoxyParamCaption}
+\item[{const Data\-Type \&}]{source, }
+\item[{const Dummy\-Type}]{ = {\ttfamily DummyType()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classmagrathea_1_1Vectorizer_a9a63af59c59b04cbbe01a3447a7ac552}
+
+
+Immutable non-\/vectorized getter. 
+
+Returns a constant reference to the provided non-\/vectorized source. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Data\-Type} & (Data type.) \\
+\hline
+{\em Dummy\-Type} & (Dummy parameter type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Argument to get. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Const reference to the argument. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1Vectorizer_af077b83bc7bc9d07e59895cf3df6641e}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!get@{get}}
+\index{get@{get}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vectorized\-Type , class , typename Data\-Type $>$ Data\-Type \& magrathea\-::\-Vectorizer\-::get (
+\begin{DoxyParamCaption}
+\item[{Vectorized\-Type \&}]{source, }
+\item[{const unsigned int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classmagrathea_1_1Vectorizer_af077b83bc7bc9d07e59895cf3df6641e}
+
+
+Vector element getter. 
+
+Returns a reference to the i-\/th element of the provided vectorized source. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Vectorized\-Type} & (\hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized} type.) \\
+\hline
+{\em Data\-Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source container. \\
+\hline
+\mbox{\tt in}  & {\em i} & Index of the element. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the specified element. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1Vectorizer_a3a3ae98c035c1f3004ee2f88f6179066}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!get@{get}}
+\index{get@{get}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vectorized\-Type , class , typename Data\-Type $>$ const Data\-Type \& magrathea\-::\-Vectorizer\-::get (
+\begin{DoxyParamCaption}
+\item[{const Vectorized\-Type \&}]{source, }
+\item[{const unsigned int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classmagrathea_1_1Vectorizer_a3a3ae98c035c1f3004ee2f88f6179066}
+
+
+Immutable vector element getter. 
+
+Returns a constant reference to the i-\/th element of the provided vectorized source. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Vectorized\-Type} & (\hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized} type.) \\
+\hline
+{\em Data\-Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source container. \\
+\hline
+\mbox{\tt in}  & {\em i} & Index of the element. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Const reference to the specified element. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1Vectorizer_a83ebb071ab30dce7af155d3c0e597fb9}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vectorizer} \& magrathea\-::\-Vectorizer\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1Vectorizer_a83ebb071ab30dce7af155d3c0e597fb9}
+
+
+Direct access to the element. 
+
+Provides a direct access to the specified element. This function is required by the vectorization mechanism. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index of the element. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the element. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::logic\-\_\-error} & This function should be overloaded by derived classes. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{classmagrathea_1_1Vectorizer_aa058daf8b240bb587b80888ab88340c7}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Vectorizer} \& magrathea\-::\-Vectorizer\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1Vectorizer_aa058daf8b240bb587b80888ab88340c7}
+
+
+Immutable direct access to the element. 
+
+Provides a constant direct access to the specified element. This function is required by the vectorization mechanism. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index of the element. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Const reference to the element. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::logic\-\_\-error} & This function should be overloaded by derived classes. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{classmagrathea_1_1Vectorizer_a7815b5c9e9ff56064306e7d07dae5bb7}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!parameters@{parameters}}
+\index{parameters@{parameters}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{parameters}]{\setlength{\rightskip}{0pt plus 5cm}std\-::array$<$ unsigned int, 0 $>$ magrathea\-::\-Vectorizer\-::parameters (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1Vectorizer_a7815b5c9e9ff56064306e7d07dae5bb7}
+
+
+Get the template parameters. 
+
+Returns an array containing the template parameters. This function is required by the vectorization mechanism. \begin{DoxyReturn}{Returns}
+Copy of an array of parameters. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::logic\-\_\-error} & This function should be overloaded by derived classes. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{classmagrathea_1_1Vectorizer_afe3c5369c91276766e0197fa33ae4951}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!resize@{resize}}
+\index{resize@{resize}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{resize}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vectorizer} \& magrathea\-::\-Vectorizer\-::resize (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1Vectorizer_afe3c5369c91276766e0197fa33ae4951}
+
+
+Resize the container. 
+
+Resizes the container and returns a reference to it. This function is required by the vectorization mechanism. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em n} & New size. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::logic\-\_\-error} & This function should be overloaded by derived classes. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{classmagrathea_1_1Vectorizer_a67836bbf5aced8fee531fd2caf839f15}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!set@{set}}
+\index{set@{set}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vectorized\-Type , class $>$ Vectorized\-Type \& magrathea\-::\-Vectorizer\-::set (
+\begin{DoxyParamCaption}
+\item[{Vectorized\-Type \&}]{destination}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classmagrathea_1_1Vectorizer_a67836bbf5aced8fee531fd2caf839f15}
+
+
+Empty setter. 
+
+Does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Vectorized\-Type} & (\hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized} type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em destination} & Destination of the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the destination. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1Vectorizer_aa586478d9b24b19586ff1d6dfdff5b68}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!set@{set}}
+\index{set@{set}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vectorized\-Type , class , class Generic\-Type $>$ Vectorized\-Type \& magrathea\-::\-Vectorizer\-::set (
+\begin{DoxyParamCaption}
+\item[{Vectorized\-Type \&}]{destination, }
+\item[{const Generic\-Type \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classmagrathea_1_1Vectorizer_aa586478d9b24b19586ff1d6dfdff5b68}
+
+
+Copy setter. 
+
+Copies the whole contents of the source to the destination. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Vectorized\-Type} & (\hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized} type.) \\
+\hline
+{\em Generic\-Type} & (Generic type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em destination} & Destination of the copy. \\
+\hline
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the destination. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1Vectorizer_ab181cd6d6a7afb777ebab551cc36bc33}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!set@{set}}
+\index{set@{set}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vectorized\-Type , class , class Generic\-Type , class First , class Second , class... Others, class $>$ Vectorized\-Type \& magrathea\-::\-Vectorizer\-::set (
+\begin{DoxyParamCaption}
+\item[{Vectorized\-Type \&}]{destination, }
+\item[{const Generic\-Type \&}]{source, }
+\item[{const First \&}]{first, }
+\item[{const Second \&}]{second, }
+\item[{const Others \&...}]{others}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classmagrathea_1_1Vectorizer_ab181cd6d6a7afb777ebab551cc36bc33}
+
+
+Variadic setter. 
+
+Calls recursively the setters for a long list of arguments. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Vectorized\-Type} & (\hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized} type.) \\
+\hline
+{\em Generic\-Type} & (Generic type.) \\
+\hline
+{\em First} & (First type.) \\
+\hline
+{\em Second} & (Second type.) \\
+\hline
+{\em Others} & (Other types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em destination} & Destination of the copy. \\
+\hline
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\mbox{\tt in}  & {\em first} & First extra argument.  \\
+\hline
+\mbox{\tt in}  & {\em second} & Second extra argument. \\
+\hline
+\mbox{\tt in}  & {\em others} & Other arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the destination. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1Vectorizer_acccf60d696c7fdba17a8ff7bf0efa5de}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!set@{set}}
+\index{set@{set}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vectorized\-Type , class , class Generic\-Type , typename Size\-Type , class $>$ Vectorized\-Type \& magrathea\-::\-Vectorizer\-::set (
+\begin{DoxyParamCaption}
+\item[{Vectorized\-Type \&}]{destination, }
+\item[{const Generic\-Type \&}]{source, }
+\item[{const unsigned int}]{pos, }
+\item[{const Size\-Type}]{num = {\ttfamily SizeType()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classmagrathea_1_1Vectorizer_acccf60d696c7fdba17a8ff7bf0efa5de}
+
+
+Partial setter. 
+
+Copies the contents of the source to a part of the destination. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Vectorized\-Type} & (\hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized} type.) \\
+\hline
+{\em Generic\-Type} & (Generic type.) \\
+\hline
+{\em Size\-Type} & (Size type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em destination} & Destination of the copy. \\
+\hline
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\mbox{\tt in}  & {\em pos} & Starting position of the copy. \\
+\hline
+\mbox{\tt in}  & {\em num} & Number of elements to copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the destination. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1Vectorizer_af3453b370f7c850f2ab17f20d0d3fb33}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!set@{set}}
+\index{set@{set}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vectorized\-Type , class , typename Data\-Type , typename Size\-Type , class $>$ Vectorized\-Type \& magrathea\-::\-Vectorizer\-::set (
+\begin{DoxyParamCaption}
+\item[{Vectorized\-Type \&}]{destination, }
+\item[{const std\-::initializer\-\_\-list$<$ Data\-Type $>$ \&}]{source, }
+\item[{const unsigned int}]{pos = {\ttfamily 0}, }
+\item[{const Size\-Type}]{num = {\ttfamily SizeType()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classmagrathea_1_1Vectorizer_af3453b370f7c850f2ab17f20d0d3fb33}
+
+
+Partial list setter. 
+
+Copies the contents of the source to a part of the destination. The first element of the list is copied at the provided position, and the next elements are copied after it. If the list is too small, empty values are added to its end. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Vectorized\-Type} & (\hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized} type.) \\
+\hline
+{\em Data\-Type} & (Data type.) \\
+\hline
+{\em Size\-Type} & (Size type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em destination} & Destination of the copy. \\
+\hline
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\mbox{\tt in}  & {\em pos} & Starting position of the copy. \\
+\hline
+\mbox{\tt in}  & {\em num} & Number of elements to copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the destination. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1Vectorizer_ac0dd17adf7a9cc87583510b0ed84cde8}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!set@{set}}
+\index{set@{set}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vectorized\-Type , class , typename Iterator\-Type , typename Size\-Type , class $>$ Vectorized\-Type \& magrathea\-::\-Vectorizer\-::set (
+\begin{DoxyParamCaption}
+\item[{Vectorized\-Type \&}]{destination, }
+\item[{const Iterator\-Type \&}]{first, }
+\item[{const Iterator\-Type \&}]{last, }
+\item[{const unsigned int}]{pos = {\ttfamily 0}, }
+\item[{const Size\-Type}]{num = {\ttfamily SizeType()}, }
+\item[{typename std\-::iterator\-\_\-traits$<$ Iterator\-Type $>$\-::iterator\-\_\-category $\ast$}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classmagrathea_1_1Vectorizer_ac0dd17adf7a9cc87583510b0ed84cde8}
+
+
+Partial range setter. 
+
+Copies the values from the range to a part of the destination. The first element of the range is copied at the provided position, and the next elements are copied after it. The copy stops as soon as the end of the range is encountered or if the number of elements to copy is reached. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Vectorized\-Type} & (\hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized} type.) \\
+\hline
+{\em Iterator\-Type} & (Iterator or pointer type.) \\
+\hline
+{\em Size\-Type} & (Size type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em destination} & Destination of the copy. \\
+\hline
+\mbox{\tt in}  & {\em first} & Iterator to the beginning of the range. \\
+\hline
+\mbox{\tt in}  & {\em last} & Iterator to the end of the range. \\
+\hline
+\mbox{\tt in}  & {\em pos} & Starting position of the copy. \\
+\hline
+\mbox{\tt in}  & {\em num} & Number of elements to copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the destination. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1Vectorizer_a5ea3e9a7f164f31f1f8f9b7ab3abe12c}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!set@{set}}
+\index{set@{set}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vectorized\-Type , class , class Generic\-Type , class Mask\-Type , typename Dummy\-Type , class $>$ Vectorized\-Type \& magrathea\-::\-Vectorizer\-::set (
+\begin{DoxyParamCaption}
+\item[{Vectorized\-Type \&}]{destination, }
+\item[{const Generic\-Type \&}]{source, }
+\item[{const Mask\-Type \&}]{mask, }
+\item[{const Dummy\-Type}]{ = {\ttfamily DummyType()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classmagrathea_1_1Vectorizer_a5ea3e9a7f164f31f1f8f9b7ab3abe12c}
+
+
+Masked setter. 
+
+Copies elements of the source to the destination using a mask of boolean values \-: the values are copied only where the mask is true. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Vectorized\-Type} & (\hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized} type.) \\
+\hline
+{\em Generic\-Type} & (Generic type.) \\
+\hline
+{\em Mask\-Type} & (Mask Type.) \\
+\hline
+{\em Dummy\-Type} & (Dummy parameter type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em destination} & Destination of the copy. \\
+\hline
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\mbox{\tt in}  & {\em mask} & Boolean mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the destination. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1Vectorizer_aacc7d73a284fc36d87653df867ef6e00}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!set@{set}}
+\index{set@{set}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vectorized\-Type , class , typename Data\-Type , class Mask\-Type , typename Dummy\-Type , class $>$ Vectorized\-Type \& magrathea\-::\-Vectorizer\-::set (
+\begin{DoxyParamCaption}
+\item[{Vectorized\-Type \&}]{destination, }
+\item[{const std\-::initializer\-\_\-list$<$ Data\-Type $>$ \&}]{source, }
+\item[{const Mask\-Type \&}]{mask, }
+\item[{const Dummy\-Type}]{ = {\ttfamily DummyType()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classmagrathea_1_1Vectorizer_aacc7d73a284fc36d87653df867ef6e00}
+
+
+Masked list setter. 
+
+Copies the contents of the source to the destination using a mask of boolean values \-: the values are copied only where the mask is true. The iteration over values in the destination and in the source list are independant \-: the n-\/th element of the list is copied to the n-\/th true element of the destination. If the list is too small, empty values are added to its end. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Vectorized\-Type} & (\hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized} type.) \\
+\hline
+{\em Data\-Type} & (Data type.) \\
+\hline
+{\em Mask\-Type} & (Mask Type.) \\
+\hline
+{\em Dummy\-Type} & (Dummy parameter type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em destination} & Destination of the copy. \\
+\hline
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\mbox{\tt in}  & {\em mask} & Boolean mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the destination. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1Vectorizer_a0f6c5228f8e7f3bba38d57886a4ef51a}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!set@{set}}
+\index{set@{set}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vectorized\-Type , class , typename Iterator\-Type , class Mask\-Type , typename Dummy\-Type , class $>$ Vectorized\-Type \& magrathea\-::\-Vectorizer\-::set (
+\begin{DoxyParamCaption}
+\item[{Vectorized\-Type \&}]{destination, }
+\item[{const Iterator\-Type \&}]{first, }
+\item[{const Iterator\-Type \&}]{last, }
+\item[{const Mask\-Type \&}]{mask, }
+\item[{const Dummy\-Type}]{ = {\ttfamily DummyType()}, }
+\item[{typename std\-::iterator\-\_\-traits$<$ Iterator\-Type $>$\-::iterator\-\_\-category $\ast$}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classmagrathea_1_1Vectorizer_a0f6c5228f8e7f3bba38d57886a4ef51a}
+
+
+Masked range setter. 
+
+Copies the values from the range to the destination using a mask of boolean values \-: the values are copied only where the mask is true. The iteration over values in the destination and in the range list are independant \-: the n-\/th element of the range is copied to the n-\/th true element of the destination. The copy stops as soon as the end of the range is encountered or if the number of elements to copy is reached. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Vectorized\-Type} & (\hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized} type.) \\
+\hline
+{\em Iterator} & (Iterator or pointer type.) \\
+\hline
+{\em Mask\-Type} & (Mask Type.) \\
+\hline
+{\em Dummy\-Type} & (Dummy parameter type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em destination} & Destination of the copy. \\
+\hline
+\mbox{\tt in}  & {\em first} & Iterator to the beginning of the range. \\
+\hline
+\mbox{\tt in}  & {\em last} & Iterator to the end of the range. \\
+\hline
+\mbox{\tt in}  & {\em mask} & Boolean mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the destination. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1Vectorizer_a3b54f2b5f17c2054f99e03c7c4614558}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!size@{size}}
+\index{size@{size}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int magrathea\-::\-Vectorizer\-::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1Vectorizer_a3b54f2b5f17c2054f99e03c7c4614558}
+
+
+Get the size of the container. 
+
+Returns the current number of elements. This function is required by the vectorization mechanism. \begin{DoxyReturn}{Returns}
+Copy of the size. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::logic\-\_\-error} & This function should be overloaded by derived classes. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{classmagrathea_1_1Vectorizer_af46ebf417fa856107cb9b84db9939f76}{\index{magrathea\-::\-Vectorizer@{magrathea\-::\-Vectorizer}!type@{type}}
+\index{type@{type}!magrathea::Vectorizer@{magrathea\-::\-Vectorizer}}
+\subsubsection[{type}]{\setlength{\rightskip}{0pt plus 5cm}void magrathea\-::\-Vectorizer\-::type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1Vectorizer_af46ebf417fa856107cb9b84db9939f76}
+
+
+Get the data type. 
+
+Returns a copy of the default value of the data type. \begin{DoxyReturn}{Returns}
+Copy of the default value of the data type. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::logic\-\_\-error} & This function should be overloaded by derived classes. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/magrathea/\hyperlink{vectorizer_8h}{vectorizer.\-h}\end{DoxyCompactItemize}

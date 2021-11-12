@@ -1,0 +1,494 @@
+.TH "magrathea::AbstractHyperCube< Crtp, Dimension, Vector, Scalar >" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::AbstractHyperCube< Crtp, Dimension, Vector, Scalar > \- 
+.PP
+Abstract function provider for n-dimensional cubes\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <abstracthypercube\&.h>\fP
+.PP
+Inherits \fBmagrathea::AbstractShape\fP\&.
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBPosition\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "constexpr Scalar \fBcenter\fP (const unsigned int idim) const "
+.br
+.RI "\fICenter coordinate\&. \fP"
+.ti -1c
+.RI "Vector \fBcenter\fP () const "
+.br
+.RI "\fICenter vector\&. \fP"
+.ti -1c
+.RI "constexpr Scalar \fBminimum\fP (const unsigned int idim) const "
+.br
+.RI "\fIMinimum coordinate\&. \fP"
+.ti -1c
+.RI "Vector \fBminimum\fP () const "
+.br
+.RI "\fIMinimum vector\&. \fP"
+.ti -1c
+.RI "constexpr Scalar \fBmaximum\fP (const unsigned int idim) const "
+.br
+.RI "\fIMaximum coordinate\&. \fP"
+.ti -1c
+.RI "Vector \fBmaximum\fP () const "
+.br
+.RI "\fIMaximum vector\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBMeasures\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "constexpr Scalar \fBlength\fP () const "
+.br
+.RI "\fILength\&. \fP"
+.ti -1c
+.RI "constexpr Scalar \fBvolume\fP () const "
+.br
+.RI "\fIVolume\&. \fP"
+.ti -1c
+.RI "template<unsigned int Subdimension = Dimension-(Dimension != 0)> constexpr Scalar \fBsurface\fP () const "
+.br
+.RI "\fIOuter surface\&. \fP"
+.ti -1c
+.RI "template<unsigned int Subdimension = Dimension-(Dimension != 0)> constexpr Scalar \fBarea\fP () const "
+.br
+.RI "\fIElement area\&. \fP"
+.ti -1c
+.RI "template<unsigned int Subdimension = Dimension> constexpr Scalar \fBdiagonal\fP () const "
+.br
+.RI "\fIDiagonal\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBDistribution\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<unsigned int Subdimension = Dimension, class  = typename std::enable_if<(Subdimension != 0) || (Subdimension == 0)>::type> Vector \fBrandom\fP () const "
+.br
+.RI "\fIBasic random location in the hypercube\&. \fP"
+.ti -1c
+.RI "template<unsigned int Subdimension = Dimension, class Engine , class Distribution , class  = typename std::enable_if<((Subdimension != 0) || (Subdimension == 0)) && (std::decay<Engine>::type::min() != std::decay<Engine>::type::max()) && (!std::is_void<typename std::decay<Distribution>::type::result_type>::value)>::type> Vector \fBrandom\fP (Engine &&engine, Distribution &&distribution) const "
+.br
+.RI "\fIGeneric random location in the hypercube\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBCollision\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class OtherVector , class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(std::declval<OtherVector>()[0])>::type>::type, Scalar>::value>::type> bool \fBinside\fP (const OtherVector &\fBpoint\fP) const "
+.br
+.RI "\fIPoint inside\&. \fP"
+.ti -1c
+.RI "template<class OtherVector , class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(std::declval<OtherVector>()[0])>::type>::type, Scalar>::value>::type> bool \fBoutside\fP (const OtherVector &\fBpoint\fP) const "
+.br
+.RI "\fIPoint outside\&. \fP"
+.in -1c
+.in -1c
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBConstants\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static constexpr unsigned int \fBdimension\fP ()"
+.br
+.RI "\fINumber of space dimension\&. \fP"
+.ti -1c
+.RI "template<unsigned int Subdimension = Dimension> static constexpr unsigned int \fBelements\fP ()"
+.br
+.RI "\fINumber of elements\&. \fP"
+.ti -1c
+.RI "template<unsigned int FirstSubdimension = 0, unsigned int LastSubdimension = Dimension-(Dimension != 0)> static constexpr unsigned int \fBsubelements\fP ()"
+.br
+.RI "\fISum of elements\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SS "Protected Member Functions"
+
+.PP
+.RI "\fBProtected lifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fB~AbstractHyperCube\fP ()"
+.br
+.RI "\fIProtected destructor\&. \fP"
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class Crtp, unsigned int Dimension, class Vector, typename Scalar>class magrathea::AbstractHyperCube< Crtp, Dimension, Vector, Scalar >"
+Abstract function provider for n-dimensional cubes\&. 
+
+Provides a common base for n-dimensional cubes thanks to CRTP\&. To use it, one has to derive from this class and pass the derived class itself as the CRTP parameter\&. The derived classes should provide two immutable functions : 
+.PD 0
+
+.IP "\(bu" 2
+position() 
+.IP "\(bu" 2
+extent()
+.PP
+in order to get the position of the center along one coordinate and the edge length of the hypercube\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fICrtp\fP Derived CRTP class\&. 
+.br
+\fIDimension\fP Number of space dimension\&. 
+.br
+\fIVector\fP Position vector type\&. 
+.br
+\fIScalar\fP Scalar data type\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > \fBmagrathea::AbstractHyperCube\fP< Crtp, Dimension, Vector, Scalar >::~\fBAbstractHyperCube\fP ()\fC [inline]\fP, \fC [protected]\fP, \fC [default]\fP"
+
+.PP
+Protected destructor\&. Avoids direct instantiation of the class, and only allows it through its derived children\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > template<unsigned int Subdimension> constexpr Scalar \fBmagrathea::AbstractHyperCube\fP< Crtp, Dimension, Vector, Scalar >::area () const"
+
+.PP
+Element area\&. Computes the surface of a single element of the hypercube\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISubdimension\fP Dimension of elements\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+$l^{D}$\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > constexpr Scalar \fBmagrathea::AbstractHyperCube\fP< Crtp, Dimension, Vector, Scalar >::center (const unsigned intidim) const"
+
+.PP
+Center coordinate\&. Computes the specified coordinate of the center of the hypercube\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIidim\fP Index of the dimension\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The coordinate $x_{i}$\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > Vector \fBmagrathea::AbstractHyperCube\fP< Crtp, Dimension, Vector, Scalar >::center () const\fC [inline]\fP"
+
+.PP
+Center vector\&. Computes the position vector of the center of the hypercube\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The position vector $\vec{x}$\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > template<unsigned int Subdimension> constexpr Scalar \fBmagrathea::AbstractHyperCube\fP< Crtp, Dimension, Vector, Scalar >::diagonal () const"
+
+.PP
+Diagonal\&. Computes the length of the diagonal in the specified subdimension\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISubdimension\fP Dimension of elements\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+$\sqrt{D} \times l$\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > constexpr unsigned int \fBmagrathea::AbstractHyperCube\fP< Crtp, Dimension, Vector, Scalar >::dimension ()\fC [static]\fP"
+
+.PP
+Number of space dimension\&. Computes the number of space dimension of the hypercube\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Dimension\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > template<unsigned int Subdimension> constexpr unsigned int \fBmagrathea::AbstractHyperCube\fP< Crtp, Dimension, Vector, Scalar >::elements ()\fC [static]\fP"
+
+.PP
+Number of elements\&. Computes the number of elements of the specified subdimension in the hypercube\&. For example, for a specified subdimension 0, it computes the number of points\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISubdimension\fP Dimension of elements\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+$2^{D-d}\binom{D}{d}$\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > int \fBmagrathea::AbstractHyperCube\fP< Crtp, Dimension, Vector, Scalar >::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBAbstractHyperCube\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > template<class OtherVector , class > bool \fBmagrathea::AbstractHyperCube\fP< Crtp, Dimension, Vector, Scalar >::inside (const OtherVector &point) const\fC [inline]\fP"
+
+.PP
+Point inside\&. Checks whether a point is inside the hypercube\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherVector\fP Other position vector type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpoint\fP Position of the point\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the point is inside the hypercube, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > constexpr Scalar \fBmagrathea::AbstractHyperCube\fP< Crtp, Dimension, Vector, Scalar >::length () const"
+
+.PP
+Length\&. Computes the edge length of the hypercube\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+$l$\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > constexpr Scalar \fBmagrathea::AbstractHyperCube\fP< Crtp, Dimension, Vector, Scalar >::maximum (const unsigned intidim) const"
+
+.PP
+Maximum coordinate\&. Computes the specified coordinate of the maximum boundary of the hypercube\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIidim\fP Index of the dimension\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The coordinate $x_{i}+\frac{l}{2}$\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > Vector \fBmagrathea::AbstractHyperCube\fP< Crtp, Dimension, Vector, Scalar >::maximum () const\fC [inline]\fP"
+
+.PP
+Maximum vector\&. Computes the position vector of the maximum boundary of the hypercube\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The position vector $\vec{x}+\frac{\vec{l}}{2}$\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > constexpr Scalar \fBmagrathea::AbstractHyperCube\fP< Crtp, Dimension, Vector, Scalar >::minimum (const unsigned intidim) const"
+
+.PP
+Minimum coordinate\&. Computes the specified coordinate of the minimum boundary of the hypercube\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIidim\fP Index of the dimension\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The coordinate $x_{i}-\frac{l}{2}$\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > Vector \fBmagrathea::AbstractHyperCube\fP< Crtp, Dimension, Vector, Scalar >::minimum () const\fC [inline]\fP"
+
+.PP
+Minimum vector\&. Computes the position vector of the minimum boundary of the hypercube\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The position vector $\vec{x}-\frac{\vec{l}}{2}$\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > template<class OtherVector , class > bool \fBmagrathea::AbstractHyperCube\fP< Crtp, Dimension, Vector, Scalar >::outside (const OtherVector &point) const\fC [inline]\fP"
+
+.PP
+Point outside\&. Checks whether a point is outside the hypercube\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherVector\fP Other position vector type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpoint\fP Position of the point\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the point is outside the hypercube, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > template<unsigned int Subdimension, class > Vector \fBmagrathea::AbstractHyperCube\fP< Crtp, Dimension, Vector, Scalar >::random () const"
+
+.PP
+Basic random location in the hypercube\&. Generates a random location, located on the subdimensional elements of the hypercube\&. For example for a subdimension of 2 of a 3-dimensional hypercube, the function will generates a random point located on the surface of the cube\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISubdimension\fP Dimension space\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Random position vector\&. 
+.RE
+.PP
+\fBWarning:\fP
+.RS 4
+As the internal engine is a static one, do not use this function in parallel\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > template<unsigned int Subdimension, class Engine , class Distribution , class > Vector \fBmagrathea::AbstractHyperCube\fP< Crtp, Dimension, Vector, Scalar >::random (Engine &&engine, Distribution &&distribution) const"
+
+.PP
+Generic random location in the hypercube\&. Generates a random location, located on the subdimensional elements of the hypercube\&. For example for a subdimension of 2 of a 3-dimensional hypercube, the function will generates a random point located on the surface of the cube\&. As this function uses the passed random engine and distribution it is completely thread safe\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISubdimension\fP Dimension space\&. 
+.br
+\fIEngine\fP (Random engine type\&.) 
+.br
+\fIDistribution\fP (Random distribution type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIengine\fP Random engine\&. 
+.br
+\fIdistribution\fP Random distribution\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Random position vector\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > template<unsigned int First, unsigned int Last> constexpr unsigned int \fBmagrathea::AbstractHyperCube\fP< Crtp, Dimension, Vector, Scalar >::subelements ()\fC [static]\fP"
+
+.PP
+Sum of elements\&. Computes the sum of the hypercube elements between the two given dimensions\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFirst\fP First dimension of elements\&. 
+.br
+\fILast\fP Last dimension of elements\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+$\sum_{d}2^{D-d}\binom{D}{d}$\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > template<unsigned int Subdimension> constexpr Scalar \fBmagrathea::AbstractHyperCube\fP< Crtp, Dimension, Vector, Scalar >::surface () const"
+
+.PP
+Outer surface\&. Computes the total outer surface of the hypercube\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISubdimension\fP Dimension of elements\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+$2^{D-d}\binom{D}{d} \times l^{D}$\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > constexpr Scalar \fBmagrathea::AbstractHyperCube\fP< Crtp, Dimension, Vector, Scalar >::volume () const"
+
+.PP
+Volume\&. Computes the volume of the hypercube\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+$l^{D}$\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

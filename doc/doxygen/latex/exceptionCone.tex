@@ -1,0 +1,485 @@
+\hypertarget{exceptionCone}{\section{Cone$<$ Vector, Scalar $>$ Exception Template Reference}
+\label{exceptionCone}\index{Cone$<$ Vector, Scalar $>$@{Cone$<$ Vector, Scalar $>$}}
+}
+
+
+Three-\/dimensional cone.  
+
+
+
+
+{\ttfamily \#include $<$cone.\-h$>$}
+
+Inheritance diagram for Cone$<$ Vector, Scalar $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.135903cm]{exceptionCone}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Lifecycle}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class... Misc$>$ }\\\hyperlink{exceptionCone_a7b9c6954d245e3d35d5eb2901c9a086a}{Cone} (Misc \&\&...misc)
+\begin{DoxyCompactList}\small\item\em Explicit generic constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Data}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Substance$<$\-Cone$<$\-Vector, Scalar$>$, Vector, Vector, Scalar$>$ $>$().\-template data$<$0, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionCone_a088968b50b3e59167a79fad9e1058e89}{vertex} (Misc \&\&...misc)
+\begin{DoxyCompactList}\small\item\em Access to the vertex data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Substance$<$\-Cone$<$\-Vector, Scalar$>$, Vector, Vector, Scalar$>$ $>$().\-template data$<$0, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionCone_a2c9ab423f362b7182a28aadd149eeb06}{vertex} (Misc \&\&...misc) const 
+\begin{DoxyCompactList}\small\item\em Immutable access to the vertex data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Substance$<$\-Cone$<$\-Vector, Scalar$>$, Vector, Vector, Scalar$>$ $>$().\-template data$<$1, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionCone_a3d030c1eb1c35b3979a7ee738b0f38a0}{base} (Misc \&\&...misc)
+\begin{DoxyCompactList}\small\item\em Access to the base data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Substance$<$\-Cone$<$\-Vector, Scalar$>$, Vector, Vector, Scalar$>$ $>$().\-template data$<$1, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionCone_a86afa044f79b4138dd1704423cd02617}{base} (Misc \&\&...misc) const 
+\begin{DoxyCompactList}\small\item\em Immutable access to the base data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Substance$<$\-Cone$<$\-Vector, Scalar$>$, Vector, Vector, Scalar$>$ $>$().\-template data$<$2, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionCone_a5c5107bf3cf2d5724108508d70c0667f}{angle} (Misc \&\&...misc)
+\begin{DoxyCompactList}\small\item\em Access to the angle data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Substance$<$\-Cone$<$\-Vector, Scalar$>$, Vector, Vector, Scalar$>$ $>$().\-template data$<$2, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionCone_aa5cf0712cebdd236812ecef0929f7d48}{angle} (Misc \&\&...misc) const 
+\begin{DoxyCompactList}\small\item\em Immutable access to the angle data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Position}\par
+\begin{DoxyCompactItemize}
+\item 
+Scalar \hyperlink{exceptionCone_a3d7fded1266f396cb66b2e987f7de905}{direction} (const unsigned int idim) const 
+\begin{DoxyCompactList}\small\item\em Direction coordinate. \end{DoxyCompactList}\item 
+Vector \hyperlink{exceptionCone_a5c07e67a1e924183402b7b8dc04e6d49}{direction} () const 
+\begin{DoxyCompactList}\small\item\em Direction vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Measures}\par
+\begin{DoxyCompactItemize}
+\item 
+Scalar \hyperlink{exceptionCone_acef26d62a63179268e81b9ca5640daed}{length} () const 
+\begin{DoxyCompactList}\small\item\em Length. \end{DoxyCompactList}\item 
+Scalar \hyperlink{exceptionCone_aca98ec9ca8793bbe0556f6538806f3e5}{radius} () const 
+\begin{DoxyCompactList}\small\item\em Radius. \end{DoxyCompactList}\item 
+Scalar \hyperlink{exceptionCone_adfc26d582942165b4cb857e3baa3fad6}{diameter} () const 
+\begin{DoxyCompactList}\small\item\em Diameter. \end{DoxyCompactList}\item 
+Scalar \hyperlink{exceptionCone_a42c8b091a9ebec9b4f5b5807a6c1c332}{circle} () const 
+\begin{DoxyCompactList}\small\item\em Circle. \end{DoxyCompactList}\item 
+Scalar \hyperlink{exceptionCone_a48be13b713e8b2190e3a79abe3b8761a}{surface} () const 
+\begin{DoxyCompactList}\small\item\em Surface. \end{DoxyCompactList}\item 
+Scalar \hyperlink{exceptionCone_a57b5c860b35acba399aacb55e01938ba}{volume} () const 
+\begin{DoxyCompactList}\small\item\em Volume. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Collision}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Other\-Vector , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Other\-Vector$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type, Scalar$>$\-::value$>$\-::type$>$ }\\bool \hyperlink{exceptionCone_afce298b94b2985098f43f714e0c25657}{inside} (const Other\-Vector \&\hyperlink{miscellaneous_8h_af4785a592bbb7b2a8882c18bb0101192}{point}) const 
+\begin{DoxyCompactList}\small\item\em Point inside. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Other\-Vector , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Other\-Vector$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type, Scalar$>$\-::value$>$\-::type$>$ }\\bool \hyperlink{exceptionCone_a54359eab94464b0adf2660a1b152ac96}{outside} (const Other\-Vector \&\hyperlink{miscellaneous_8h_af4785a592bbb7b2a8882c18bb0101192}{point}) const 
+\begin{DoxyCompactList}\small\item\em Point outside. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Static Public Member Functions}
+\begin{Indent}{\bf Test}\par
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{exceptionCone_a388297ab0d58bf5788813ed91b300d6f}{example} ()
+\begin{DoxyCompactList}\small\item\em Example function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{exceptionCone_a576e1736772f72874683b3788488a7d4}{operator} = typedef
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Vector = std\-::array$<$double, 3$>$, typename Scalar = typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Vector$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type$>$exception Cone$<$ Vector, Scalar $>$}
+
+Three-\/dimensional cone. 
+
+Implementation of a basic cone in three dimensions. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Vector} & Position vector type. \\
+\hline
+{\em Scalar} & Scalar data type. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{exceptionCone_a7b9c6954d245e3d35d5eb2901c9a086a}{\index{Cone@{Cone}!Cone@{Cone}}
+\index{Cone@{Cone}!Cone@{Cone}}
+\subsubsection[{Cone}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vector , typename Scalar $>$ template$<$class... Misc$>$ {\bf Cone}$<$ Vector, Scalar $>$\-::{\bf Cone} (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{exceptionCone_a7b9c6954d245e3d35d5eb2901c9a086a}
+
+
+Explicit generic constructor. 
+
+Provides a generic interface to all constructors of the base class. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{exceptionCone_a5c5107bf3cf2d5724108508d70c0667f}{\index{Cone@{Cone}!angle@{angle}}
+\index{angle@{angle}!Cone@{Cone}}
+\subsubsection[{angle}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vector , typename Scalar $>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Cone}$<$ Vector, Scalar $>$\-::angle (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionCone_a5c5107bf3cf2d5724108508d70c0667f}
+
+
+Access to the angle data. 
+
+Provides an access to the angle data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionCone_aa5cf0712cebdd236812ecef0929f7d48}{\index{Cone@{Cone}!angle@{angle}}
+\index{angle@{angle}!Cone@{Cone}}
+\subsubsection[{angle}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vector , typename Scalar $>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Cone}$<$ Vector, Scalar $>$\-::angle (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionCone_aa5cf0712cebdd236812ecef0929f7d48}
+
+
+Immutable access to the angle data. 
+
+Provides an immutable access to the angle data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionCone_a3d030c1eb1c35b3979a7ee738b0f38a0}{\index{Cone@{Cone}!base@{base}}
+\index{base@{base}!Cone@{Cone}}
+\subsubsection[{base}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vector , typename Scalar $>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Cone}$<$ Vector, Scalar $>$\-::base (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionCone_a3d030c1eb1c35b3979a7ee738b0f38a0}
+
+
+Access to the base data. 
+
+Provides an access to the base data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionCone_a86afa044f79b4138dd1704423cd02617}{\index{Cone@{Cone}!base@{base}}
+\index{base@{base}!Cone@{Cone}}
+\subsubsection[{base}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vector , typename Scalar $>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Cone}$<$ Vector, Scalar $>$\-::base (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionCone_a86afa044f79b4138dd1704423cd02617}
+
+
+Immutable access to the base data. 
+
+Provides an immutable access to the base data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionCone_a42c8b091a9ebec9b4f5b5807a6c1c332}{\index{Cone@{Cone}!circle@{circle}}
+\index{circle@{circle}!Cone@{Cone}}
+\subsubsection[{circle}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vector , typename Scalar $>$ Scalar {\bf Cone}$<$ Vector, Scalar $>$\-::circle (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionCone_a42c8b091a9ebec9b4f5b5807a6c1c332}
+
+
+Circle. 
+
+Computes the base area of the cone. \begin{DoxyReturn}{Returns}
+$B$. 
+\end{DoxyReturn}
+\hypertarget{exceptionCone_adfc26d582942165b4cb857e3baa3fad6}{\index{Cone@{Cone}!diameter@{diameter}}
+\index{diameter@{diameter}!Cone@{Cone}}
+\subsubsection[{diameter}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vector , typename Scalar $>$ Scalar {\bf Cone}$<$ Vector, Scalar $>$\-::diameter (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionCone_adfc26d582942165b4cb857e3baa3fad6}
+
+
+Diameter. 
+
+Computes the base diameter of the cone. \begin{DoxyReturn}{Returns}
+$d$. 
+\end{DoxyReturn}
+\hypertarget{exceptionCone_a3d7fded1266f396cb66b2e987f7de905}{\index{Cone@{Cone}!direction@{direction}}
+\index{direction@{direction}!Cone@{Cone}}
+\subsubsection[{direction}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vector , typename Scalar $>$ Scalar {\bf Cone}$<$ Vector, Scalar $>$\-::direction (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{idim}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionCone_a3d7fded1266f396cb66b2e987f7de905}
+
+
+Direction coordinate. 
+
+Computes the specified coordinate of the vector going from the vertex to the base center. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em idim} & Index of the dimension. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The coordinate of $b_{i}-v_{i}$. 
+\end{DoxyReturn}
+\hypertarget{exceptionCone_a5c07e67a1e924183402b7b8dc04e6d49}{\index{Cone@{Cone}!direction@{direction}}
+\index{direction@{direction}!Cone@{Cone}}
+\subsubsection[{direction}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vector , typename Scalar $>$ Vector {\bf Cone}$<$ Vector, Scalar $>$\-::direction (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionCone_a5c07e67a1e924183402b7b8dc04e6d49}
+
+
+Direction vector. 
+
+Computes the vector going from the vertex to the base center. \begin{DoxyReturn}{Returns}
+The vector $\vec{b}-\vec{v}$. 
+\end{DoxyReturn}
+\hypertarget{exceptionCone_a388297ab0d58bf5788813ed91b300d6f}{\index{Cone@{Cone}!example@{example}}
+\index{example@{example}!Cone@{Cone}}
+\subsubsection[{example}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vector , typename Scalar $>$ int {\bf Cone}$<$ Vector, Scalar $>$\-::example (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionCone_a388297ab0d58bf5788813ed91b300d6f}
+
+
+Example function. 
+
+Tests and demonstrates the use of \hyperlink{exceptionCone}{Cone}. \begin{DoxyReturn}{Returns}
+0 if no error. 
+\end{DoxyReturn}
+\hypertarget{exceptionCone_afce298b94b2985098f43f714e0c25657}{\index{Cone@{Cone}!inside@{inside}}
+\index{inside@{inside}!Cone@{Cone}}
+\subsubsection[{inside}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vector , typename Scalar $>$ template$<$class Other\-Vector , class $>$ bool {\bf Cone}$<$ Vector, Scalar $>$\-::inside (
+\begin{DoxyParamCaption}
+\item[{const Other\-Vector \&}]{point}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionCone_afce298b94b2985098f43f714e0c25657}
+
+
+Point inside. 
+
+Checks whether a point is inside the cone. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Vector} & Other position vector type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em point} & Position of the point. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the point is inside the cone, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionCone_acef26d62a63179268e81b9ca5640daed}{\index{Cone@{Cone}!length@{length}}
+\index{length@{length}!Cone@{Cone}}
+\subsubsection[{length}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vector , typename Scalar $>$ Scalar {\bf Cone}$<$ Vector, Scalar $>$\-::length (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionCone_acef26d62a63179268e81b9ca5640daed}
+
+
+Length. 
+
+Computes the height length of the cone. \begin{DoxyReturn}{Returns}
+$h$. 
+\end{DoxyReturn}
+\hypertarget{exceptionCone_a54359eab94464b0adf2660a1b152ac96}{\index{Cone@{Cone}!outside@{outside}}
+\index{outside@{outside}!Cone@{Cone}}
+\subsubsection[{outside}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vector , typename Scalar $>$ template$<$class Other\-Vector , class $>$ bool {\bf Cone}$<$ Vector, Scalar $>$\-::outside (
+\begin{DoxyParamCaption}
+\item[{const Other\-Vector \&}]{point}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionCone_a54359eab94464b0adf2660a1b152ac96}
+
+
+Point outside. 
+
+Checks whether a point is outside the cone. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Vector} & Other position vector type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em point} & Position of the point. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the point is outside the cone, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionCone_aca98ec9ca8793bbe0556f6538806f3e5}{\index{Cone@{Cone}!radius@{radius}}
+\index{radius@{radius}!Cone@{Cone}}
+\subsubsection[{radius}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vector , typename Scalar $>$ Scalar {\bf Cone}$<$ Vector, Scalar $>$\-::radius (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionCone_aca98ec9ca8793bbe0556f6538806f3e5}
+
+
+Radius. 
+
+Computes the base radius of the cone. \begin{DoxyReturn}{Returns}
+$r$. 
+\end{DoxyReturn}
+\hypertarget{exceptionCone_a48be13b713e8b2190e3a79abe3b8761a}{\index{Cone@{Cone}!surface@{surface}}
+\index{surface@{surface}!Cone@{Cone}}
+\subsubsection[{surface}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vector , typename Scalar $>$ Scalar {\bf Cone}$<$ Vector, Scalar $>$\-::surface (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionCone_a48be13b713e8b2190e3a79abe3b8761a}
+
+
+Surface. 
+
+Computes the outer surface of the cone. \begin{DoxyReturn}{Returns}
+$\pi\times r^{2}+\pi\times r \times h$. 
+\end{DoxyReturn}
+\hypertarget{exceptionCone_a088968b50b3e59167a79fad9e1058e89}{\index{Cone@{Cone}!vertex@{vertex}}
+\index{vertex@{vertex}!Cone@{Cone}}
+\subsubsection[{vertex}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vector , typename Scalar $>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Cone}$<$ Vector, Scalar $>$\-::vertex (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionCone_a088968b50b3e59167a79fad9e1058e89}
+
+
+Access to the vertex data. 
+
+Provides an access to the vertex data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionCone_a2c9ab423f362b7182a28aadd149eeb06}{\index{Cone@{Cone}!vertex@{vertex}}
+\index{vertex@{vertex}!Cone@{Cone}}
+\subsubsection[{vertex}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vector , typename Scalar $>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Cone}$<$ Vector, Scalar $>$\-::vertex (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionCone_a2c9ab423f362b7182a28aadd149eeb06}
+
+
+Immutable access to the vertex data. 
+
+Provides an immutable access to the vertex data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionCone_a57b5c860b35acba399aacb55e01938ba}{\index{Cone@{Cone}!volume@{volume}}
+\index{volume@{volume}!Cone@{Cone}}
+\subsubsection[{volume}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vector , typename Scalar $>$ Scalar {\bf Cone}$<$ Vector, Scalar $>$\-::volume (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionCone_a57b5c860b35acba399aacb55e01938ba}
+
+
+Volume. 
+
+Computes the volume of the cone. \begin{DoxyReturn}{Returns}
+$\frac{\pi\times r^{2}\times h}{3}$. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{exceptionCone_a576e1736772f72874683b3788488a7d4}{\index{Cone@{Cone}!operator@{operator}}
+\index{operator@{operator}!Cone@{Cone}}
+\subsubsection[{operator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vector = std\-::array$<$double, 3$>$, typename Scalar = typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Vector$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type$>$ using {\bf Cone}$<$ Vector, Scalar $>$\-::operator = }}\label{exceptionCone_a576e1736772f72874683b3788488a7d4}
+
+
+The documentation for this exception was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/\hyperlink{cone_8h}{cone.\-h}\end{DoxyCompactItemize}

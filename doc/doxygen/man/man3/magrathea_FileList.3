@@ -1,0 +1,1419 @@
+.TH "magrathea::FileList" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::FileList \- 
+.PP
+List of files based on a function or a vector\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <filelist\&.h>\fP
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBLifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class Type  = std::string, class  = typename std::enable_if<std::is_convertible<Type, std::string>::value>::type> \fBFileList\fP (const std::initializer_list< Type > &source=std::initializer_list< Type >())"
+.br
+.RI "\fIImpliticit initializer list constructor\&. \fP"
+.ti -1c
+.RI "template<class ContainerType , class PrefixType  = std::string, class  = typename std::enable_if<!(std::is_convertible<ContainerType, std::string>::value) && (std::is_convertible<typename std::remove_reference<decltype(*std::begin(std::declval<ContainerType>()))>::type, std::string>::value) && (std::is_convertible<PrefixType, std::string>::value)>::type> \fBFileList\fP (const ContainerType &source, const PrefixType &prefix=PrefixType())"
+.br
+.RI "\fIExplicit container constructor\&. \fP"
+.ti -1c
+.RI "template<typename IteratorType , class PrefixType  = std::string, class  = typename std::enable_if<(std::is_convertible<typename std::remove_reference<decltype(*std::declval<IteratorType>())>::type, std::string>::value) && (std::is_convertible<PrefixType, std::string>::value)>::type> \fBFileList\fP (const IteratorType &begin, const IteratorType &end, const PrefixType &prefix=PrefixType())"
+.br
+.RI "\fIExplicit iterator constructor\&. \fP"
+.ti -1c
+.RI "template<class FormatType , class PrefixType  = std::string, class  = typename std::enable_if<(std::is_convertible<FormatType, std::string>::value) && (std::is_convertible<PrefixType, std::string>::value)>::type> \fBFileList\fP (const FormatType &cformat, const int width=0, const unsigned int amount=1, const unsigned int shift=0, const PrefixType &prefix=PrefixType())"
+.br
+.RI "\fIExplicit format constructor\&. \fP"
+.ti -1c
+.RI "template<class Function , class PrefixType  = std::string, class  = typename std::enable_if<(std::is_convertible<typename std::remove_reference<typename std::result_of<Function(const unsigned int)>::type>::type, std::string>::value) && !(std::is_same<typename std::decay<Function>::type, FileList>::value) && (std::is_convertible<PrefixType, std::string>::value)>::type> \fBFileList\fP (Function &&f, const unsigned int amount=1, const unsigned int shift=0, const PrefixType &prefix=PrefixType())"
+.br
+.RI "\fIExplicit generator constructor\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBOperators\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class ContainerType , class  = typename std::enable_if<!(std::is_convertible<ContainerType, std::string>::value) && (std::is_convertible<typename std::remove_reference<decltype(*std::begin(std::declval<ContainerType>()))>::type, std::string>::value)>::type> \fBFileList\fP & \fBoperator=\fP (const ContainerType &source)"
+.br
+.RI "\fIContainer assignment operator\&. \fP"
+.ti -1c
+.RI "template<class FormatType , class  = typename std::enable_if<std::is_convertible<FormatType, std::string>::value>::type, class  = void> \fBFileList\fP & \fBoperator=\fP (const FormatType &cformat)"
+.br
+.RI "\fIFormat assignment operator\&. \fP"
+.ti -1c
+.RI "template<class Function , class  = typename std::enable_if<(std::is_convertible<typename std::remove_reference<typename std::result_of<Function(const unsigned int)>::type>::type, std::string>::value) && !(std::is_same<typename std::decay<Function>::type, FileList>::value)>::type, class  = void, class  = void> \fBFileList\fP & \fBoperator=\fP (Function &&f)"
+.br
+.RI "\fIGenerator assignment operator\&. \fP"
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBFileList\fP &rhs) const "
+.br
+.RI "\fIEqual to\&. \fP"
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBFileList\fP &rhs) const "
+.br
+.RI "\fINot equal to\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBAssignment\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBFileList\fP & \fBassign\fP (const \fBFileList\fP &source)"
+.br
+.RI "\fICopy assignment\&. \fP"
+.ti -1c
+.RI "template<class ContainerType  = std::initializer_list<std::string>, class PrefixType  = std::string, class  = typename std::enable_if<!(std::is_convertible<ContainerType, std::string>::value) && (std::is_convertible<typename std::remove_reference<decltype(*std::begin(std::declval<ContainerType>()))>::type, std::string>::value) && (std::is_convertible<PrefixType, std::string>::value)>::type> \fBFileList\fP & \fBassign\fP (const ContainerType &source=ContainerType(), const PrefixType &prefix=PrefixType())"
+.br
+.RI "\fIContainer assignment\&. \fP"
+.ti -1c
+.RI "template<typename IteratorType , class PrefixType  = std::string, class  = typename std::enable_if<(std::is_convertible<typename std::remove_reference<decltype(*std::declval<IteratorType>())>::type, std::string>::value) && (std::is_convertible<PrefixType, std::string>::value)>::type> \fBFileList\fP & \fBassign\fP (const IteratorType &begin, const IteratorType &end, const PrefixType &prefix=PrefixType())"
+.br
+.RI "\fIIterator assignment\&. \fP"
+.ti -1c
+.RI "template<class FormatType , class PrefixType  = std::string, class  = typename std::enable_if<(std::is_convertible<FormatType, std::string>::value) && (std::is_convertible<PrefixType, std::string>::value)>::type> \fBFileList\fP & \fBassign\fP (const FormatType &cformat, const int width=0, const unsigned int amount=1, const unsigned int shift=0, const PrefixType &prefix=PrefixType())"
+.br
+.RI "\fIFormat assignment\&. \fP"
+.ti -1c
+.RI "template<class Function , class PrefixType  = std::string, class  = typename std::enable_if<(std::is_convertible<typename std::remove_reference<typename std::result_of<Function(const unsigned int)>::type>::type, std::string>::value) && !(std::is_same<typename std::decay<Function>::type, FileList>::value) && (std::is_convertible<PrefixType, std::string>::value)>::type> \fBFileList\fP & \fBassign\fP (Function &&f, const unsigned int amount=1, const unsigned int shift=0, const PrefixType &prefix=PrefixType())"
+.br
+.RI "\fIGenerator assignment\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBManagement\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "bool \fBempty\fP () const "
+.br
+.RI "\fIEmpty\&. \fP"
+.ti -1c
+.RI "bool \fBcleared\fP () const "
+.br
+.RI "\fICleared\&. \fP"
+.ti -1c
+.RI "unsigned int \fBcapacity\fP () const "
+.br
+.RI "\fICapacity\&. \fP"
+.ti -1c
+.RI "\fBFileList\fP & \fBresize\fP (const unsigned int amount)"
+.br
+.RI "\fIResize\&. \fP"
+.ti -1c
+.RI "\fBFileList\fP & \fBreserve\fP (const unsigned int amount)"
+.br
+.RI "\fIReserve space for the container\&. \fP"
+.ti -1c
+.RI "\fBFileList\fP & \fBshrink\fP ()"
+.br
+.RI "\fIShrink the container\&. \fP"
+.ti -1c
+.RI "\fBFileList\fP & \fBclear\fP ()"
+.br
+.RI "\fIClear\&. \fP"
+.ti -1c
+.RI "\fBFileList\fP \fBcopy\fP () const "
+.br
+.RI "\fICopy\&. \fP"
+.ti -1c
+.RI "template<class Type  = FileList, class  = typename std::enable_if<std::is_constructible<Type, FileList>::value>::type> Type \fBcast\fP () const "
+.br
+.RI "\fICast\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBGetters\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "const std::vector< std::string > & \fBcontainer\fP () const "
+.br
+.RI "\fIContainer getter\&. \fP"
+.ti -1c
+.RI "const std::string & \fBformat\fP () const "
+.br
+.RI "\fIFormat getter\&. \fP"
+.ti -1c
+.RI "const std::function
+.br
+< std::string(const unsigned 
+.br
+int)> & \fBgenerator\fP () const "
+.br
+.RI "\fIGenerator getter\&. \fP"
+.ti -1c
+.RI "const std::string & \fBroot\fP () const "
+.br
+.RI "\fIRoot getter\&. \fP"
+.ti -1c
+.RI "const int & \fBlength\fP () const "
+.br
+.RI "\fILength getter\&. \fP"
+.ti -1c
+.RI "const unsigned int & \fBsize\fP () const "
+.br
+.RI "\fISize getter\&. \fP"
+.ti -1c
+.RI "const unsigned int & \fBoffset\fP () const "
+.br
+.RI "\fIOffset getter\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBFiles\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "std::string \fBoperator[]\fP (const unsigned int i) const "
+.br
+.RI "\fISubscript operator\&. \fP"
+.ti -1c
+.RI "std::string \fBat\fP (const unsigned int i) const "
+.br
+.RI "\fIRange check access\&. \fP"
+.ti -1c
+.RI "std::string \fBfront\fP (const unsigned int i=0) const "
+.br
+.RI "\fIAccess from the beginning\&. \fP"
+.ti -1c
+.RI "std::string \fBback\fP (const unsigned int i=0) const "
+.br
+.RI "\fIAccess from the end\&. \fP"
+.ti -1c
+.RI "std::string \fBoperator()\fP (const unsigned int i) const "
+.br
+.RI "\fIGenerator operator\&. \fP"
+.ti -1c
+.RI "std::string \fBget\fP (const unsigned int i) const "
+.br
+.RI "\fIGenerator getter\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBManipulations\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class Type  = std::vector<std::string>, class  = typename std::enable_if<((std::is_void<decltype(std::declval<Type>()\&.resize(0))>::value) || (!std::is_void<decltype(std::declval<Type>()\&.resize(0))>::value)) && (!std::is_const<decltype(std::declval<Type>()[0])>::value) && (std::is_reference<decltype(std::declval<Type>()[0])>::value) && (std::is_convertible<decltype(std::declval<Type>()[0]), std::string>::value)>::type> Type \fBconvert\fP () const "
+.br
+.RI "\fIConvert\&. \fP"
+.ti -1c
+.RI "std::string \fBcommon\fP () const "
+.br
+.RI "\fICommon file part\&. \fP"
+.ti -1c
+.RI "\fBFileList\fP \fBformatify\fP () const "
+.br
+.RI "\fIDetect common format\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBAlgorithms\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class Function , class\&.\&.\&. Args, class  = typename std::result_of<Function(std::string, Args\&.\&.\&.)>::type> \fBFileList\fP & \fBapply\fP (Function &&f, Args &&\&.\&.\&.args)"
+.br
+.RI "\fIApplication of a function on each file\&. \fP"
+.ti -1c
+.RI "unsigned int \fBcount\fP () const "
+.br
+.RI "\fICount existing files\&. \fP"
+.ti -1c
+.RI "template<class Function , class  = typename std::enable_if<std::is_convertible<typename std::result_of<Function(std::string)>::type, bool>::value>::type> unsigned int \fBcount\fP (Function &&f) const "
+.br
+.RI "\fICount files satisfying a condition\&. \fP"
+.ti -1c
+.RI "template<class Function , typename FirstType  = std::true_type, typename AmountType  = std::true_type, class  = typename std::enable_if<(std::is_convertible<typename std::result_of<Function(std::string)>::type, bool>::value) && ((std::is_same<AmountType, std::true_type>::value) || (std::is_convertible<FirstType, unsigned int>::value)) && ((std::is_same<AmountType, std::true_type>::value) || (std::is_convertible<AmountType, int>::value))>::type> unsigned int \fBfind\fP (Function &&f, const FirstType first=FirstType(), const AmountType amount=AmountType()) const "
+.br
+.RI "\fIFind first file satisfying a condition\&. \fP"
+.ti -1c
+.RI "template<class Function  = std::less<std::string>, class  = typename std::enable_if<std::is_convertible<typename std::result_of<Function(std::string, std::string)>::type, bool>::value>::type> \fBFileList\fP & \fBsort\fP (Function &&f=Function())"
+.br
+.RI "\fISort file names\&. \fP"
+.ti -1c
+.RI "template<class Function  = std::less<std::string>, class  = typename std::enable_if<std::is_convertible<typename std::result_of<Function(std::string, std::string)>::type, bool>::value>::type> bool \fBsorted\fP (Function &&f=Function()) const "
+.br
+.RI "\fICheck sorting\&. \fP"
+.ti -1c
+.RI "template<class Function  = std::equal_to<std::string>, class  = typename std::enable_if<std::is_convertible<typename std::result_of<Function(std::string, std::string)>::type, bool>::value>::type> \fBFileList\fP & \fBunique\fP (Function &&f=Function())"
+.br
+.RI "\fIUnique file names\&. \fP"
+.ti -1c
+.RI "template<class Function  = std::equal_to<std::string>, class  = typename std::enable_if<std::is_convertible<typename std::result_of<Function(std::string, std::string)>::type, bool>::value>::type> bool \fBunicity\fP (Function &&f=Function()) const "
+.br
+.RI "\fICheck unicity\&. \fP"
+.in -1c
+.in -1c
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBHelpers\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename IndexType  = std::true_type, class  = typename std::enable_if<(std::is_same<IndexType, std::true_type>::value) || (std::is_convertible<IndexType, unsigned int>::value)>::type> static std::string \fBgenerate\fP (const IndexType i=IndexType())"
+.br
+.RI "\fITemporary file name generator\&. \fP"
+.ti -1c
+.RI "template<class ContainerType , class  = typename std::enable_if<!(std::is_convertible<ContainerType, std::string>::value) && (std::is_convertible<typename std::remove_reference<decltype(*std::begin(std::declval<ContainerType>()))>::type, std::string>::value)>::type> static std::string \fBgenerate\fP (const unsigned int i, const ContainerType &source)"
+.br
+.RI "\fIContainer-based file name generator\&. \fP"
+.ti -1c
+.RI "template<unsigned int BufferSize = std::numeric_limits<unsigned char>::max()*std::numeric_limits<unsigned char>::digits, typename WidthType  = std::true_type, class  = typename std::enable_if<(std::is_same<WidthType, std::true_type>::value) || (std::is_convertible<WidthType, int>::value)>::type> static std::string \fBgenerate\fP (const unsigned int i, const std::string &cformat, const WidthType width=WidthType())"
+.br
+.RI "\fIFormat-based file name generator\&. \fP"
+.ti -1c
+.RI "template<class Function , class  = typename std::enable_if<(std::is_convertible<typename std::remove_reference<typename std::result_of<Function(const unsigned int)>::type>::type, std::string>::value) && !(std::is_same<typename std::decay<Function>::type, FileList>::value)>::type> static std::string \fBgenerate\fP (const unsigned int i, Function &&f)"
+.br
+.RI "\fIFormat-based file name generator\&. \fP"
+.ti -1c
+.RI "template<typename Dir  = unsigned int, typename Min  = unsigned int, typename Num  = unsigned int, typename Max  = unsigned int, class  = typename std::enable_if<(std::is_convertible<Dir, unsigned int>::value) && (std::is_convertible<Min, unsigned int>::value) && (std::is_convertible<Num, unsigned int>::value) && (std::is_convertible<Max, unsigned int>::value)>::type> static unsigned int \fBnumberify\fP (const std::string &str, unsigned int pos=std::numeric_limits< unsigned int >::max(), Dir &&dir=Dir(), Min &&min=Min(), Num &&num=Num(), Max &&max=Max())"
+.br
+.RI "\fIParse number in a string\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SS "Public Attributes"
+
+.PP
+.RI "\fBData members\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "std::vector< std::string > \fB_container\fP"
+.br
+.RI "\fIContainer of file names\&. \fP"
+.ti -1c
+.RI "std::string \fB_format\fP"
+.br
+.RI "\fIFormat of file names\&. \fP"
+.ti -1c
+.RI "std::function< std::string(const 
+.br
+unsigned int)> \fB_generator\fP"
+.br
+.RI "\fIGenerator of file names\&. \fP"
+.ti -1c
+.RI "std::string \fB_root\fP"
+.br
+.RI "\fICommon root prefix\&. \fP"
+.ti -1c
+.RI "int \fB_length\fP"
+.br
+.RI "\fIOptional width of the format field\&. \fP"
+.ti -1c
+.RI "unsigned int \fB_size\fP"
+.br
+.RI "\fITotal file list size\&. \fP"
+.ti -1c
+.RI "unsigned int \fB_offset\fP"
+.br
+.RI "\fIOffset between file identificator and list index\&. \fP"
+.in -1c
+.in -1c
+.SS "Friends"
+
+.PP
+.RI "\fBStream\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &lhs, const \fBFileList\fP &rhs)"
+.br
+.RI "\fI\fBOutput\fP stream operator\&. \fP"
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+List of files based on a function or a vector\&. 
+
+Class to hold a list of paths to files\&. Internally, the list can be stored as a container of strings, a C-like format or a function object that will generate the file names on the fly\&. An offset allows to shift the real identificator of the files regarding the list index\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class Type , class > magrathea::FileList::FileList (const std::initializer_list< Type > &source = \fCstd::initializer_list<Type>()\fP)\fC [inline]\fP"
+
+.PP
+Impliticit initializer list constructor\&. Implicitely constructs the file list from an initializer list of paths\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+
+.SS "template<class ContainerType , class PrefixType , class > magrathea::FileList::FileList (const ContainerType &source, const PrefixType &prefix = \fCPrefixType()\fP)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit container constructor\&. Explicitely constructs the file list from a container of paths\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIContainerType\fP (Container type\&.) 
+.br
+\fIPrefixType\fP (Prefix type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.br
+\fIprefix\fP Common root prefix\&. 
+.RE
+.PP
+
+.SS "template<typename IteratorType , class PrefixType , class > magrathea::FileList::FileList (const IteratorType &begin, const IteratorType &end, const PrefixType &prefix = \fCPrefixType()\fP)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit iterator constructor\&. Explicitely constructs the file list from a range of iterators\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIteratorType\fP (Iterator or pointer type\&.) 
+.br
+\fIPrefixType\fP (Prefix type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbegin\fP Iterator to the beginning of the range\&. 
+.br
+\fIend\fP Iterator to the end of the range\&. 
+.br
+\fIprefix\fP Common root prefix\&. 
+.RE
+.PP
+
+.SS "template<class FormatType , class PrefixType , class > magrathea::FileList::FileList (const FormatType &cformat, const intwidth = \fC0\fP, const unsigned intamount = \fC1\fP, const unsigned intshift = \fC0\fP, const PrefixType &prefix = \fCPrefixType()\fP)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit format constructor\&. Explicitely constructs the file list from a C-like format string and its width if required\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFormatType\fP (Type of the format string\&.) 
+.br
+\fIPrefixType\fP (Prefix type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcformat\fP Format of file names\&. 
+.br
+\fIwidth\fP Optional width of the format field\&. 
+.br
+\fIamount\fP Total file list size\&. 
+.br
+\fIshift\fP Offset between file identificator and list index\&. 
+.br
+\fIprefix\fP Common root prefix\&. 
+.RE
+.PP
+
+.SS "template<class Function , class PrefixType , class > magrathea::FileList::FileList (Function &&f, const unsigned intamount = \fC1\fP, const unsigned intshift = \fC0\fP, const PrefixType &prefix = \fCPrefixType()\fP)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit generator constructor\&. Explicitely constructs the file list from a generator function\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFunction\fP (Function type : \fCstd::string(const unsigned int)\fP\&.) 
+.br
+\fIPrefixType\fP (Prefix type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Function object \fCstd::string(const unsigned int)\fP\&. 
+.br
+\fIamount\fP Total file list size\&. 
+.br
+\fIshift\fP Offset between file identificator and list index\&. 
+.br
+\fIprefix\fP Common root prefix\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class Function , class\&.\&.\&. Args, class > \fBFileList\fP & magrathea::FileList::apply (Function &&f, Args &&\&.\&.\&.args)"
+
+.PP
+Application of a function on each file\&. Applies the provided algorithm on each file of the list, passing the extra arguments as extra function parameters if specified\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFunction\fP (Function type : \fCType(std::string, Args\&.\&.\&.) \fP\&.) 
+.br
+\fIArgs\fP (Extra types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Function object \fCType(std::string, Args\&.\&.\&.)\fP\&. 
+.br
+\fIargs\fP Extra arguments of the function\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "\fBFileList\fP & magrathea::FileList::assign (const \fBFileList\fP &source)\fC [inline]\fP"
+
+.PP
+Copy assignment\&. Assigns the file list contents using another file list\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class ContainerType , class PrefixType , class > \fBFileList\fP & magrathea::FileList::assign (const ContainerType &source = \fCContainerType()\fP, const PrefixType &prefix = \fCPrefixType()\fP)\fC [inline]\fP"
+
+.PP
+Container assignment\&. Assigns the file list contents using a container of paths\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIContainerType\fP (Container type\&.) 
+.br
+\fIPrefixType\fP (Prefix type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.br
+\fIprefix\fP Common root prefix\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename IteratorType , class PrefixType , class > \fBFileList\fP & magrathea::FileList::assign (const IteratorType &begin, const IteratorType &end, const PrefixType &prefix = \fCPrefixType()\fP)\fC [inline]\fP"
+
+.PP
+Iterator assignment\&. Assigns the file list contents using a range of iterators\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIteratorType\fP (Iterator or pointer type\&.) 
+.br
+\fIPrefixType\fP (Prefix type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbegin\fP Iterator to the beginning of the range\&. 
+.br
+\fIend\fP Iterator to the end of the range\&. 
+.br
+\fIprefix\fP Common root prefix\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class FormatType , class PrefixType , class > \fBFileList\fP & magrathea::FileList::assign (const FormatType &cformat, const intwidth = \fC0\fP, const unsigned intamount = \fC1\fP, const unsigned intshift = \fC0\fP, const PrefixType &prefix = \fCPrefixType()\fP)\fC [inline]\fP"
+
+.PP
+Format assignment\&. Assigns the file list contents using a C-like format string and its width if required\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFormatType\fP (Type of the format string\&.) 
+.br
+\fIPrefixType\fP (Prefix type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcformat\fP Format of file names\&. 
+.br
+\fIwidth\fP Optional width of the format field\&. 
+.br
+\fIamount\fP Total file list size\&. 
+.br
+\fIshift\fP Offset between file identificator and list index\&. 
+.br
+\fIprefix\fP Common root prefix\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Function , class PrefixType , class > \fBFileList\fP & magrathea::FileList::assign (Function &&f, const unsigned intamount = \fC1\fP, const unsigned intshift = \fC0\fP, const PrefixType &prefix = \fCPrefixType()\fP)\fC [inline]\fP"
+
+.PP
+Generator assignment\&. Assigns the file list contents usign a generator function\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFunction\fP (Function type : \fCstd::string(const unsigned int)\fP\&.) 
+.br
+\fIPrefixType\fP (Prefix type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Function object \fCstd::string(const unsigned int)\fP\&. 
+.br
+\fIamount\fP Total file list size\&. 
+.br
+\fIshift\fP Offset between file identificator and list index\&. 
+.br
+\fIprefix\fP Common root prefix\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "std::string magrathea::FileList::at (const unsigned inti) const\fC [inline]\fP"
+
+.PP
+Range check access\&. Returns the file name at the specified position in the file list or throws an error if the index cannot be reached\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the specified element\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::out_of_range\fP Out of range\&. 
+.RE
+.PP
+
+.SS "std::string magrathea::FileList::back (const unsigned inti = \fC0\fP) const\fC [inline]\fP"
+
+.PP
+Access from the end\&. Returns the file name at the specified position in the file list starting from the end and without any range check\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the specified element\&. 
+.RE
+.PP
+
+.SS "unsigned int magrathea::FileList::capacity () const\fC [inline]\fP"
+
+.PP
+Capacity\&. Returns the current capacity of the underlying container if it is used to store the file names, or returns the size if a format or a generator function is used\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Current capacity\&. 
+.RE
+.PP
+
+.SS "template<class Type , class > Type magrathea::FileList::cast () const\fC [inline]\fP"
+
+.PP
+Cast\&. Returns a copy of the file list casted to the provided type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Casted copy\&. 
+.RE
+.PP
+
+.SS "\fBFileList\fP & magrathea::FileList::clear ()\fC [inline]\fP"
+
+.PP
+Clear\&. Clears the whole contents of the file list\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "bool magrathea::FileList::cleared () const\fC [inline]\fP"
+
+.PP
+Cleared\&. Returns true if the file list is equal to a cleared one\&. It corresponds to an empty size, an empty format and an empty function\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True if the file list is cleared, false otherwise\&. 
+.RE
+.PP
+
+.SS "std::string magrathea::FileList::common () const"
+
+.PP
+Common file part\&. Detects the longest common character sequence within the whole list, starting from the beginning\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Longest common part\&. 
+.RE
+.PP
+
+.SS "const std::vector< std::string > & magrathea::FileList::container () const\fC [inline]\fP"
+
+.PP
+Container getter\&. Gets the container of file names\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the container\&. 
+.RE
+.PP
+
+.SS "template<class Type , class > Type magrathea::FileList::convert () const"
+
+.PP
+Convert\&. Converts data to the specified type of container\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Container of file names\&. 
+.RE
+.PP
+
+.SS "\fBFileList\fP magrathea::FileList::copy () const\fC [inline]\fP"
+
+.PP
+Copy\&. Returns a copy of the file list\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "unsigned int magrathea::FileList::count () const"
+
+.PP
+Count existing files\&. Counts the number of existing files in the list\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Number of existing files\&. 
+.RE
+.PP
+
+.SS "template<class Function , class > unsigned int magrathea::FileList::count (Function &&f) const"
+
+.PP
+Count files satisfying a condition\&. Counts the number of files in the list that satisfy the provided condition\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFunction\fP (Function type : \fCbool(std::string)\fP\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Function object \fCbool(std::string)\fP\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of files satisfying the condition\&. 
+.RE
+.PP
+
+.SS "bool magrathea::FileList::empty () const\fC [inline]\fP"
+
+.PP
+Empty\&. Returns true if the file list size is equal to zero\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True if the file list is empty, false otherwise\&. 
+.RE
+.PP
+
+.SS "int magrathea::FileList::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBFileList\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SS "template<class Function , typename FirstType , typename AmountType , class > unsigned int magrathea::FileList::find (Function &&f, const FirstTypefirst = \fCFirstType()\fP, const AmountTypeamount = \fCAmountType()\fP) const"
+
+.PP
+Find first file satisfying a condition\&. Computes the index of the first file satisfying the specified predicate\&. The first and amount arguments allows to specify the first file to test and the amount of file to test\&. As an example, an amount of zero file do not test any file, and an amount of -2 file tests the first file and the previous one\&. If no file satisfy the predicate, the function returns the size of the list\&. Boundary overflows and unsigned substractions are correctly handled\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFunction\fP (Function type : \fCbool(std::string)\fP\&.) 
+.br
+\fIFirstType\fP (Integral type of the first index\&.) 
+.br
+\fIAmountType\fP (Integral type of the first index\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Function object \fCbool(std::string)\fP\&. 
+.br
+\fIfirst\fP First file index to test\&. 
+.br
+\fIamount\fP Amount of file to test in the corresponding direction\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Index of the first file satisfying the predicate\&. 
+.RE
+.PP
+
+.SS "const std::string & magrathea::FileList::format () const\fC [inline]\fP"
+
+.PP
+Format getter\&. Gets the format of file names\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the format\&. 
+.RE
+.PP
+
+.SS "\fBFileList\fP magrathea::FileList::formatify () const"
+
+.PP
+Detect common format\&. Computes whether a common format can be deduced from the file list and returns a format based file list on success or an empty one on failure\&. Note that in case of a function or a container based list with a single element, the last number of the string is converted to a format\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Formatted file list\&. 
+.RE
+.PP
+
+.SS "std::string magrathea::FileList::front (const unsigned inti = \fC0\fP) const\fC [inline]\fP"
+
+.PP
+Access from the beginning\&. Returns the file name at the specified position in the file list starting from the beginning and without any range check\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the specified element\&. 
+.RE
+.PP
+
+.SS "template<typename IndexType , class > std::string magrathea::FileList::generate (const IndexTypei = \fCIndexType()\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Temporary file name generator\&. Generates a temporary file name based on the specified index\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIndexType\fP (Integral type corresponding to the index\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+File name\&. 
+.RE
+.PP
+
+.SS "template<class ContainerType , class > std::string magrathea::FileList::generate (const unsigned inti, const ContainerType &source)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Container-based file name generator\&. Gets the specified element of the passed container\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIContainerType\fP (Container type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index\&. 
+.br
+\fIsource\fP Source container\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+File name\&. 
+.RE
+.PP
+
+.SS "template<unsigned int BufferSize, typename WidthType , class > std::string magrathea::FileList::generate (const unsigned inti, const std::string &cformat, const WidthTypewidth = \fCWidthType()\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Format-based file name generator\&. Generates a file name using the specified C-style format\&. If this format requires a width specifier, it can be passed as an optional parameter\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIBufferSize\fP Value of the internal buffer size\&. 
+.br
+\fIWidthType\fP (Integral type corresponding to the format width\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index\&. 
+.br
+\fIcformat\fP C-like format string\&. 
+.br
+\fIwidth\fP Optional width of the format field\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+File name\&. 
+.RE
+.PP
+
+.SS "template<class Function , class > std::string magrathea::FileList::generate (const unsigned inti, Function &&f)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Format-based file name generator\&. Generates a file name passing the index to the specified function\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFunction\fP (Function type : \fCstd::string(const unsigned int)\fP\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index\&. 
+.br
+\fIf\fP Function object \fCstd::string(const unsigned int)\fP\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+File name\&. 
+.RE
+.PP
+
+.SS "const std::function< std::string(const unsigned int)> & magrathea::FileList::generator () const\fC [inline]\fP"
+
+.PP
+Generator getter\&. Gets the generator of file names\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the generator\&. 
+.RE
+.PP
+
+.SS "std::string magrathea::FileList::get (const unsigned inti) const\fC [inline]\fP"
+
+.PP
+Generator getter\&. Generates the file name using the specified index and ignoring the root, the size limit (except if the list is based on a container) and the offset\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the generated element\&. 
+.RE
+.PP
+
+.SS "const int & magrathea::FileList::length () const\fC [inline]\fP"
+
+.PP
+Length getter\&. Gets the optional width of the format field\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the length\&. 
+.RE
+.PP
+
+.SS "template<typename Dir , typename Min , typename Num , typename Max , class > unsigned int magrathea::FileList::numberify (const std::string &str, unsigned intpos = \fCstd::numeric_limits<unsigned int>::max()\fP, Dir &&dir = \fCDir()\fP, Min &&min = \fCMin()\fP, Num &&num = \fCNum()\fP, Max &&max = \fCMax()\fP)\fC [static]\fP"
+
+.PP
+Parse number in a string\&. Detects positions of specific markers around a digit in a string\&. If the specified position is greater than the string length, it is first adjusted to the last character of the string\&. If the character at the provided position is not a digit, the function starts by searching the last digit before the position\&. In case of failure, all the markers are set equal to the end of the string\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDir\fP (Directory type\&.) 
+.br
+\fIMin\fP (Minimum type\&.) 
+.br
+\fINum\fP (Number type\&.) 
+.br
+\fIMax\fP (Maximum type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstr\fP \fBInput\fP string containing the number to parse\&. 
+.br
+\fIpos\fP Position of a digit inside the string\&. 
+.br
+\fIdir\fP First character after the last slash before the specified position\&. 
+.br
+\fImin\fP First digit of the number around the specified position, including preceding zeroes\&. 
+.br
+\fInum\fP First digit of the number around the specified position, excluding preceding zeroes\&. 
+.br
+\fImax\fP First position after the number around the specified position\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Value of the number around the specified position\&. 
+.RE
+.PP
+
+.SS "const unsigned int & magrathea::FileList::offset () const\fC [inline]\fP"
+
+.PP
+Offset getter\&. Gets the offset between file identificator and list index\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the offset\&. 
+.RE
+.PP
+
+.SS "bool magrathea::FileList::operator!= (const \fBFileList\fP &rhs) const\fC [inline]\fP"
+
+.PP
+Not equal to\&. Compares for difference and returns true if two elements returned by the subscript operator differs: the internal storage is not compared\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if not equal, false if equal\&. 
+.RE
+.PP
+
+.SS "std::string magrathea::FileList::operator() (const unsigned inti) const\fC [inline]\fP"
+
+.PP
+Generator operator\&. Generates the file name using the specified index and ignoring the root, the size limit (except if the list is based on a container) and the offset\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the generated element\&. 
+.RE
+.PP
+
+.SS "template<class ContainerType , class > \fBFileList\fP & magrathea::FileList::operator= (const ContainerType &source)\fC [inline]\fP"
+
+.PP
+Container assignment operator\&. Assigns the file list contents using a container of paths and without any root prefix\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIContainerType\fP (Container type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class FormatType , class , class > \fBFileList\fP & magrathea::FileList::operator= (const FormatType &cformat)\fC [inline]\fP"
+
+.PP
+Format assignment operator\&. Assigns the file list contents using a C-like format string without any root prefix and with a size of one element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFormatType\fP (Type of the format string\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcformat\fP Format of file names\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Function , class , class , class > \fBFileList\fP & magrathea::FileList::operator= (Function &&f)\fC [inline]\fP"
+
+.PP
+Generator assignment operator\&. Assigns the file list contents usign a generator function without any root prefix and with a size of one element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFunction\fP (Function type : \fCstd::string(const unsigned int)\fP\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Function object \fCstd::string(const unsigned int)\fP\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "bool magrathea::FileList::operator== (const \fBFileList\fP &rhs) const\fC [inline]\fP"
+
+.PP
+Equal to\&. Compares for equality and returns true if all elements returned by the subscript operator are equal: the internal storage is not compared and consequently a container-based file list can be equal to a format-based file list\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if equal, false if not equal\&. 
+.RE
+.PP
+
+.SS "std::string magrathea::FileList::operator[] (const unsigned inti) const\fC [inline]\fP"
+
+.PP
+Subscript operator\&. Returns the file name at the specified position in the file list or returns an empty string if it does not exist\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the specified element\&. 
+.RE
+.PP
+
+.SS "\fBFileList\fP & magrathea::FileList::reserve (const unsigned intamount)\fC [inline]\fP"
+
+.PP
+Reserve space for the container\&. Increases the capacity of the container if the specified size is greater than the current one\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP New capacity\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "\fBFileList\fP & magrathea::FileList::resize (const unsigned intamount)\fC [inline]\fP"
+
+.PP
+Resize\&. Resizes the current list and returns it\&. In case of a container based list, the new contents is initialized as empty\&. Note that setting a null size, empties the list but does not clear it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP New size\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "const std::string & magrathea::FileList::root () const\fC [inline]\fP"
+
+.PP
+Root getter\&. Gets the common root prefix\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the root\&. 
+.RE
+.PP
+
+.SS "\fBFileList\fP & magrathea::FileList::shrink ()\fC [inline]\fP"
+
+.PP
+Shrink the container\&. Shrinks the container capacity to fit its size\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "const unsigned int & magrathea::FileList::size () const\fC [inline]\fP"
+
+.PP
+Size getter\&. Gets the total file list size\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the size\&. 
+.RE
+.PP
+
+.SS "template<class Function , class > \fBFileList\fP & magrathea::FileList::sort (Function &&f = \fCFunction()\fP)"
+
+.PP
+Sort file names\&. Sorts the file names using the provided comparator function if the file list is based on a container\&. If the file list is based on a format, it is checked whether the two first files are sorted and an error is thrown if they are not\&. Finally, if the file list is based on a generator function, the order is checked and an error is thrown in case of non sorted list\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFunction\fP (Function type : \fCbool(std::string, std::string) \fP\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Function object \fCbool(std::string, std::string)\fP\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::runtime_error\fP Generator based list cannot be modified\&. 
+.br
+\fIstd::runtime_error\fP \fBConstant\fP format based list cannot be modified\&. 
+.RE
+.PP
+
+.SS "template<class Function , class > bool magrathea::FileList::sorted (Function &&f = \fCFunction()\fP) const"
+
+.PP
+Check sorting\&. Checks whether the file names are sorted using the provided comparator function\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFunction\fP (Function type : \fCbool(std::string, std::string) \fP\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Function object \fCbool(std::string, std::string)\fP\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the contents is sorted, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<class Function , class > bool magrathea::FileList::unicity (Function &&f = \fCFunction()\fP) const"
+
+.PP
+Check unicity\&. Checks whether the file names are unique using the provided comparator function\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFunction\fP (Function type : \fCbool(std::string, std::string) \fP\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Function object \fCbool(std::string, std::string)\fP\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the contents is unique, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<class Function , class > \fBFileList\fP & magrathea::FileList::unique (Function &&f = \fCFunction()\fP)"
+
+.PP
+Unique file names\&. Erases consecutive equal file names using the provided comparator function if the file list is based on a container\&. If the file list is based on a format, it is checked whether the two first files are unique and if they are not, the file size is set equals to one\&. Finally, if the file list is based on a generator function, the unicity is checked and an error is thrown in case of non unique names\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFunction\fP (Function type : \fCbool(std::string, std::string) \fP\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Function object \fCbool(std::string, std::string)\fP\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::runtime_error\fP Generator based list cannot be modified\&. 
+.RE
+.PP
+
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "std::ostream& operator<< (std::ostream &lhs, const \fBFileList\fP &rhs)\fC [friend]\fP"
+
+.PP
+\fBOutput\fP stream operator\&. Adds each file name to the stream using the filling character as a separator\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side stream\&. 
+.br
+\fIrhs\fP Right-hand side file list\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBOutput\fP stream\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "std::vector<std::string> magrathea::FileList::_container"
+
+.PP
+Container of file names\&. 
+.SS "std::string magrathea::FileList::_format"
+
+.PP
+Format of file names\&. 
+.SS "std::function<std::string(const unsigned int)> magrathea::FileList::_generator"
+
+.PP
+Generator of file names\&. 
+.SS "int magrathea::FileList::_length"
+
+.PP
+Optional width of the format field\&. 
+.SS "unsigned int magrathea::FileList::_offset"
+
+.PP
+Offset between file identificator and list index\&. 
+.SS "std::string magrathea::FileList::_root"
+
+.PP
+Common root prefix\&. 
+.SS "unsigned int magrathea::FileList::_size"
+
+.PP
+Total file list size\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

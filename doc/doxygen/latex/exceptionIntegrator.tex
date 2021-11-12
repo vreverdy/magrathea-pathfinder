@@ -1,0 +1,557 @@
+\hypertarget{exceptionIntegrator}{\section{Integrator Exception Reference}
+\label{exceptionIntegrator}\index{Integrator@{Integrator}}
+}
+
+
+Integration utilities for raytracing.  
+
+
+
+
+{\ttfamily \#include $<$integrator.\-h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{Indent}{\bf Initialization}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Type  = double, class Sphere , class Vector , typename Scalar , class Engine , class Distribution , unsigned int Dimension = Sphere\-::dimension(), class  = typename std\-::enable\-\_\-if$<$\-Dimension == 3$>$\-::type$>$ }\\static \hyperlink{exceptionPhoton}{Photon}$<$ Type, Dimension $>$ \hyperlink{exceptionIntegrator_afa4fc23bb2d561af06390f232ff44fd0}{launch} (const Sphere \&sphere, const \hyperlink{exceptionCone}{Cone}$<$ Vector, Scalar $>$ \&cone, Engine \&engine, Distribution \&distribution)
+\begin{DoxyCompactList}\small\item\em Launch a photon in a cone. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = double, class Sphere , class Container , class Vector , typename Scalar , class Engine , class Distribution , unsigned int Dimension = Sphere\-::dimension(), class  = typename std\-::enable\-\_\-if$<$(\-Dimension == 3) \&\& (std\-::is\-\_\-convertible$<$typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Container$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type, Cone$<$\-Vector, Scalar$>$ $>$\-::value)$>$\-::type$>$ }\\static \hyperlink{exceptionPhoton}{Photon}$<$ Type, Dimension $>$ \hyperlink{exceptionIntegrator_ad47a9c114d8fb6c7d285789ec10424e6}{launch} (const Sphere \&sphere, const \hyperlink{exceptionCone}{Cone}$<$ Vector, Scalar $>$ \&cone, const Container \&cones, Engine \&engine, Distribution \&distribution)
+\begin{DoxyCompactList}\small\item\em Launch a photon in a serie of cones. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , unsigned int Dimension = 3, class  = typename std\-::enable\-\_\-if$<$\-Dimension == 3$>$\-::type$>$ }\\static \hyperlink{exceptionPhoton}{Photon}$<$ Type, Dimension $>$ \hyperlink{exceptionIntegrator_a4c403c0175db5350c68d8147a623b41d}{launch} (const Type xbegin, const Type ybegin, const Type zbegin, const Type xend, const Type yend, const Type zend)
+\begin{DoxyCompactList}\small\item\em Launch a photon going from a position to another. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , unsigned int Dimension = 3, class  = typename std\-::enable\-\_\-if$<$\-Dimension == 3$>$\-::type$>$ }\\static \hyperlink{exceptionPhoton}{Photon}$<$ Type, Dimension $>$ \hyperlink{exceptionIntegrator_af311ebd7e6c2029f95b28f472c8cfd91}{launch} (const Type xbegin, const Type ybegin, const Type zbegin, const Type phi, const Type theta)
+\begin{DoxyCompactList}\small\item\em Launch a photon going from a position to a specified direction. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Center = false, typename Type , unsigned int Dimension, class Container  = std\-::vector$<$\-Photon$<$\-Type, Dimension$>$ $>$, class  = typename std\-::enable\-\_\-if$<$\-Dimension == 3$>$\-::type$>$ }\\static Container \hyperlink{exceptionIntegrator_a2ba2f81cae1ab9e7763093ace0af1a47}{launch} (const \hyperlink{exceptionPhoton}{Photon}$<$ Type, Dimension $>$ \&photon, const unsigned int count, const Type angle, const Type rotation=Type())
+\begin{DoxyCompactList}\small\item\em Launch photons around one photon. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Computation}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$int Order = O\-R\-D\-E\-R, class Array , class Element , class Cosmology , class Octree , class Type , unsigned int Dimension = Octree\-::dimension(), class Data  = typename std\-::tuple\-\_\-element$<$1, decltype(\-Octree\-::element())$>$\-::type, class Position  = decltype(\-Octree\-::position()), class Extent  = decltype(\-Octree\-::extent())$>$ }\\static Array \& \hyperlink{exceptionIntegrator_af8786b67385276132bc97a953a48939e}{dphotondl} (Array \&output, const Array \&input, const Cosmology \&cosmology, const Octree \&octree, const Type length, std\-::vector$<$ Element $>$ \&elems\-Tsc)
+\begin{DoxyCompactList}\small\item\em Derivative of a photon. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Evolution}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$int Order = O\-R\-D\-E\-R, bool R\-K4 = true, bool Verbose = false, class Cosmology , class Octree , class Type , class Trajectory , unsigned int Dimension = Octree\-::dimension(), class Element  = typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Trajectory$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type, class Data  = typename std\-::tuple\-\_\-element$<$1, decltype(\-Octree\-::element())$>$\-::type, class Core  = decltype(\-Element\-::template type$<$1$>$()), unsigned int Size = std\-::tuple\-\_\-size$<$\-Core$>$\-::value, class Position  = decltype(\-Octree\-::position()), class Extent  = decltype(\-Octree\-::extent()), class Point $>$ }\\static Trajectory \& \hyperlink{exceptionIntegrator_a9b8a5ecc2a7ee7742d5c96b0d85b0824}{integrate} (Trajectory \&trajectory, const Cosmology \&cosmology, const Octree \&octree, const Point \&vobs, const Type length, const unsigned int nsteps=1)
+\begin{DoxyCompactList}\small\item\em Geodesics integration. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int Order = O\-R\-D\-E\-R, bool R\-K4 = true, bool Verbose = false, class Cosmology , class Octree , class Type , class Trajectory , unsigned int Dimension = Octree\-::dimension(), class Element  = typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Trajectory$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type, class Data  = typename std\-::tuple\-\_\-element$<$1, decltype(\-Octree\-::element())$>$\-::type, class Core  = decltype(\-Element\-::template type$<$1$>$()), unsigned int Size = std\-::tuple\-\_\-size$<$\-Core$>$\-::value, class Position  = decltype(\-Octree\-::position()), class Extent  = decltype(\-Octree\-::extent()), class Point  = std\-::array$<$\-Type, 3$>$$>$ }\\static Trajectory \& \hyperlink{exceptionIntegrator_af32fdd6a60fdf84c2a23522ceadfd169}{integrate} (Trajectory \&trajectory, const std\-::string interpolation, const Type interp\-Ref, const Cosmology \&cosmology, const Octree \&octree, const Point \&vobs, const Type length, const unsigned int nsteps=1, const Point \&ki\-Target=Point())
+\begin{DoxyCompactList}\small\item\em Geodesics integration. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int Order = O\-R\-D\-E\-R, bool R\-K4 = true, bool Verbose = false, class Cosmology , class Octree , class Type , unsigned int Dimension, class Homogeneous  = std\-::vector$<$\-Photon$<$\-Type, Dimension$>$ $>$, class Point , class  = typename std\-::enable\-\_\-if$<$(\-Dimension == 3) \&\& (\-Dimension == Octree\-::dimension())$>$\-::type$>$ }\\static \hyperlink{exceptionmagrathea_1_1Evolution}{magrathea\-::\-Evolution}\\*
+$<$ \hyperlink{exceptionPhoton}{Photon}$<$ Type, Dimension $>$ $>$ \hyperlink{exceptionIntegrator_a7e0e97f32880308e1acbe73fb66e05f9}{propagate} (const \hyperlink{exceptionPhoton}{Photon}$<$ Type, Dimension $>$ \&photon, const unsigned int count, const Type angle, const Type rotation, const std\-::string \&interpolation, const Cosmology \&cosmology, const Octree \&octree, const Point \&vobs, const Type length, const unsigned int nsteps=1, const Type amin=Type(), const std\-::string \&filenames=std\-::string(), const Homogeneous \&homogeneous=Homogeneous())
+\begin{DoxyCompactList}\small\item\em Propagation of a ray bundle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Test}\par
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{exceptionIntegrator_a27277665213cd072e01fe568221acfb5}{example} ()
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+Integration utilities for raytracing. 
+
+Provides a list of integration routines for geodesics integration. 
+
+\subsection{Member Function Documentation}
+\hypertarget{exceptionIntegrator_af8786b67385276132bc97a953a48939e}{\index{Integrator@{Integrator}!dphotondl@{dphotondl}}
+\index{dphotondl@{dphotondl}!Integrator@{Integrator}}
+\subsubsection[{dphotondl}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Order, class Array , class Element , class Cosmology , class Octree , class Type , unsigned int Dimension, class Data , class Position , class Extent $>$ Array \& Integrator\-::dphotondl (
+\begin{DoxyParamCaption}
+\item[{Array \&}]{output, }
+\item[{const Array \&}]{input, }
+\item[{const Cosmology \&}]{cosmology, }
+\item[{const Octree \&}]{octree, }
+\item[{const Type}]{length, }
+\item[{std\-::vector$<$ Element $>$ \&}]{elems\-Tsc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionIntegrator_af8786b67385276132bc97a953a48939e}
+
+
+Derivative of a photon. 
+
+Computes the derivative of the core components of a photon. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Order} & Octree interpolation order \-: 0 for N\-G\-P, 1 for C\-I\-C, 2 for T\-S\-C or -\/1 for an homogeneous universe. \\
+\hline
+{\em Array} & Core array type. \\
+\hline
+{\em Element} & data element for neighbouring cells \\
+\hline
+{\em Cosmology} & Cosmology evolution type. \\
+\hline
+{\em Octree} & Octree type. \\
+\hline
+{\em Type} & Scalar type. \\
+\hline
+{\em Dimension} & Number of space dimension. \\
+\hline
+{\em Data} & Data type. \\
+\hline
+{\em Position} & Position of the hyperoctree center. \\
+\hline
+{\em Extent} & Extent of the hyperoctree. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em output} & \hyperlink{exceptionOutput}{Output} data. \\
+\hline
+\mbox{\tt in}  & {\em input} & \hyperlink{exceptionInput}{Input} data. \\
+\hline
+\mbox{\tt in}  & {\em cosmology} & Cosmology evolution. \\
+\hline
+\mbox{\tt in}  & {\em octree} & Octree. \\
+\hline
+\mbox{\tt in}  & {\em length} & Spatial length. \\
+\hline
+\mbox{\tt in}  & {\em elems\-Tsc} & Indexes of neighbouring cells \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the output data. 
+\end{DoxyReturn}
+\hypertarget{exceptionIntegrator_a27277665213cd072e01fe568221acfb5}{\index{Integrator@{Integrator}!example@{example}}
+\index{example@{example}!Integrator@{Integrator}}
+\subsubsection[{example}]{\setlength{\rightskip}{0pt plus 5cm}static int Integrator\-::example (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionIntegrator_a27277665213cd072e01fe568221acfb5}
+\hypertarget{exceptionIntegrator_a9b8a5ecc2a7ee7742d5c96b0d85b0824}{\index{Integrator@{Integrator}!integrate@{integrate}}
+\index{integrate@{integrate}!Integrator@{Integrator}}
+\subsubsection[{integrate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Order, bool R\-K4, bool Verbose, class Cosmology , class Octree , class Type , class Trajectory , unsigned int Dimension, class Element , class Data , class Core , unsigned int Size, class Position , class Extent , class Point $>$ Trajectory \& Integrator\-::integrate (
+\begin{DoxyParamCaption}
+\item[{Trajectory \&}]{trajectory, }
+\item[{const Cosmology \&}]{cosmology, }
+\item[{const Octree \&}]{octree, }
+\item[{const Point \&}]{vobs, }
+\item[{const Type}]{length, }
+\item[{const unsigned int}]{nsteps = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionIntegrator_a9b8a5ecc2a7ee7742d5c96b0d85b0824}
+
+
+Geodesics integration. 
+
+Integrates the geodesics equation of a photon. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Order} & Octree interpolation order \-: 0 for N\-G\-P, 1 for C\-I\-C, 2 for T\-S\-C or -\/1 for an homogeneous universe. \\
+\hline
+{\em R\-K4} & Runge-\/kutta of fourth order or euler. \\
+\hline
+{\em Verbose} & Verbose mode for debug purposes. \\
+\hline
+{\em Cosmology} & Cosmology evolution type. \\
+\hline
+{\em Octree} & Octree type. \\
+\hline
+{\em Type} & Scalar type. \\
+\hline
+{\em Trajectory} & Trajectory type. \\
+\hline
+{\em Dimension} & Number of space dimension. \\
+\hline
+{\em Element} & \hyperlink{exceptionPhoton}{Photon} type. \\
+\hline
+{\em Data} & Data type. \\
+\hline
+{\em Core} & Core data type. \\
+\hline
+{\em Size} & Core size. \\
+\hline
+{\em Position} & Position of the hyperoctree center. \\
+\hline
+{\em Extent} & Extent of the hyperoctree. \\
+\hline
+{\em Point} & Point type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em trajectory} & Trajectory. \\
+\hline
+\mbox{\tt in}  & {\em cosmology} & Cosmology evolution. \\
+\hline
+\mbox{\tt in}  & {\em octree} & Octree. \\
+\hline
+\mbox{\tt in}  & {\em vobs} & Observer peculiar velocity, in S\-I \\
+\hline
+\mbox{\tt in}  & {\em length} & Spatial length in S\-I units. \\
+\hline
+\mbox{\tt in}  & {\em nsteps} & Number of lambda steps per grid. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the trajectory data. 
+\end{DoxyReturn}
+\hypertarget{exceptionIntegrator_af32fdd6a60fdf84c2a23522ceadfd169}{\index{Integrator@{Integrator}!integrate@{integrate}}
+\index{integrate@{integrate}!Integrator@{Integrator}}
+\subsubsection[{integrate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Order, bool R\-K4, bool Verbose, class Cosmology , class Octree , class Type , class Trajectory , unsigned int Dimension, class Element , class Data , class Core , unsigned int Size, class Position , class Extent , class Point $>$ Trajectory \& Integrator\-::integrate (
+\begin{DoxyParamCaption}
+\item[{Trajectory \&}]{trajectory, }
+\item[{const std\-::string}]{interpolation, }
+\item[{const Type}]{interp\-Ref, }
+\item[{const Cosmology \&}]{cosmology, }
+\item[{const Octree \&}]{octree, }
+\item[{const Point \&}]{vobs, }
+\item[{const Type}]{length, }
+\item[{const unsigned int}]{nsteps = {\ttfamily 1}, }
+\item[{const Point \&}]{ki\-Target = {\ttfamily Point()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionIntegrator_af32fdd6a60fdf84c2a23522ceadfd169}
+
+
+Geodesics integration. 
+
+Integrates the geodesics equation of a photon until some condition. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Order} & Octree interpolation order \-: 0 for N\-G\-P, 1 for C\-I\-C, 2 for T\-S\-C or -\/1 for an homogeneous universe. \\
+\hline
+{\em R\-K4} & Runge-\/kutta of fourth order or euler. \\
+\hline
+{\em Verbose} & Verbose mode for debug purposes. \\
+\hline
+{\em Cosmology} & Cosmology evolution type. \\
+\hline
+{\em Octree} & Octree type. \\
+\hline
+{\em Type} & Scalar type. \\
+\hline
+{\em Trajectory} & Trajectory type. \\
+\hline
+{\em Dimension} & Number of space dimension. \\
+\hline
+{\em Element} & \hyperlink{exceptionPhoton}{Photon} type. \\
+\hline
+{\em Data} & Data type. \\
+\hline
+{\em Core} & Core data type. \\
+\hline
+{\em Size} & Core size. \\
+\hline
+{\em Position} & Position of the hyperoctree center. \\
+\hline
+{\em Extent} & Extent of the hyperoctree. \\
+\hline
+{\em Point} & Point type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em trajectory} & Trajectory. \\
+\hline
+\mbox{\tt in}  & {\em interpolation} & Which type of stop criterion for the integration \\
+\hline
+\mbox{\tt in}  & {\em interp\-Ref} & Where to stop the integration \\
+\hline
+\mbox{\tt in}  & {\em cosmology} & Cosmology evolution. \\
+\hline
+\mbox{\tt in}  & {\em octree} & Octree. \\
+\hline
+\mbox{\tt in}  & {\em vobs} & Observer peculiar velocity, in S\-I \\
+\hline
+\mbox{\tt in}  & {\em length} & Spatial length in S\-I units. \\
+\hline
+\mbox{\tt in}  & {\em nsteps} & Number of lambda steps per grid. \\
+\hline
+\mbox{\tt in}  & {\em ki\-Target} & Normal to the plane needed for a given photon. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the trajectory data. 
+\end{DoxyReturn}
+\hypertarget{exceptionIntegrator_afa4fc23bb2d561af06390f232ff44fd0}{\index{Integrator@{Integrator}!launch@{launch}}
+\index{launch@{launch}!Integrator@{Integrator}}
+\subsubsection[{launch}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Sphere , class Vector , typename Scalar , class Engine , class Distribution , unsigned int Dimension, class $>$ {\bf Photon}$<$ Type, Dimension $>$ Integrator\-::launch (
+\begin{DoxyParamCaption}
+\item[{const Sphere \&}]{sphere, }
+\item[{const {\bf Cone}$<$ Vector, Scalar $>$ \&}]{cone, }
+\item[{Engine \&}]{engine, }
+\item[{Distribution \&}]{distribution}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionIntegrator_afa4fc23bb2d561af06390f232ff44fd0}
+
+
+Launch a photon in a cone. 
+
+Launches a photon in the provided cone. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & \hyperlink{exceptionPhoton}{Photon} type. \\
+\hline
+{\em Dimension} & Number of space dimension. \\
+\hline
+{\em Vector} & Position vector type. \\
+\hline
+{\em Scalar} & Scalar data type. \\
+\hline
+{\em Engine} & Random engine type. \\
+\hline
+{\em Distribution} & Random distribution type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sphere} & Sphere to pick up the center and the surface. \\
+\hline
+\mbox{\tt in}  & {\em cone} & Current cone. \\
+\hline
+\mbox{\tt in,out}  & {\em engine} & Random engine. \\
+\hline
+\mbox{\tt in,out}  & {\em distribution} & Random distribution. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Initial photon in the cone. 
+\end{DoxyReturn}
+\hypertarget{exceptionIntegrator_ad47a9c114d8fb6c7d285789ec10424e6}{\index{Integrator@{Integrator}!launch@{launch}}
+\index{launch@{launch}!Integrator@{Integrator}}
+\subsubsection[{launch}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Sphere , class Container , class Vector , typename Scalar , class Engine , class Distribution , unsigned int Dimension, class $>$ {\bf Photon}$<$ Type, Dimension $>$ Integrator\-::launch (
+\begin{DoxyParamCaption}
+\item[{const Sphere \&}]{sphere, }
+\item[{const {\bf Cone}$<$ Vector, Scalar $>$ \&}]{cone, }
+\item[{const Container \&}]{cones, }
+\item[{Engine \&}]{engine, }
+\item[{Distribution \&}]{distribution}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionIntegrator_ad47a9c114d8fb6c7d285789ec10424e6}
+
+
+Launch a photon in a serie of cones. 
+
+Launches a photon in the provided cone with the guarantee that this cone is the closest one comparatively to a list of cones. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & \hyperlink{exceptionPhoton}{Photon} type. \\
+\hline
+{\em Dimension} & Number of space dimension. \\
+\hline
+{\em Sphere} & Sphere type. \\
+\hline
+{\em Container} & Container of cones type. \\
+\hline
+{\em Vector} & Position vector type. \\
+\hline
+{\em Scalar} & Scalar data type. \\
+\hline
+{\em Engine} & Random engine type. \\
+\hline
+{\em Distribution} & Random distribution type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sphere} & Sphere to pick up the center and the surface. \\
+\hline
+\mbox{\tt in}  & {\em cone} & Current cone. \\
+\hline
+\mbox{\tt in}  & {\em cones} & List of cones to compare distance. \\
+\hline
+\mbox{\tt in,out}  & {\em engine} & Random engine. \\
+\hline
+\mbox{\tt in,out}  & {\em distribution} & Random distribution. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Initial photon in the cone. 
+\end{DoxyReturn}
+\hypertarget{exceptionIntegrator_a4c403c0175db5350c68d8147a623b41d}{\index{Integrator@{Integrator}!launch@{launch}}
+\index{launch@{launch}!Integrator@{Integrator}}
+\subsubsection[{launch}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, class $>$ {\bf Photon}$<$ Type, Dimension $>$ Integrator\-::launch (
+\begin{DoxyParamCaption}
+\item[{const Type}]{xbegin, }
+\item[{const Type}]{ybegin, }
+\item[{const Type}]{zbegin, }
+\item[{const Type}]{xend, }
+\item[{const Type}]{yend, }
+\item[{const Type}]{zend}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionIntegrator_a4c403c0175db5350c68d8147a623b41d}
+
+
+Launch a photon going from a position to another. 
+
+Launches a photon starting from a point and going to another one. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & \hyperlink{exceptionPhoton}{Photon} type. \\
+\hline
+{\em Dimension} & Number of space dimension. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em xbegin} & Starting x coordinate. \\
+\hline
+\mbox{\tt in}  & {\em ybegin} & Starting y coordinate. \\
+\hline
+\mbox{\tt in}  & {\em zbegin} & Starting z coordinate. \\
+\hline
+\mbox{\tt in}  & {\em xend} & Ending x coordinate. \\
+\hline
+\mbox{\tt in}  & {\em yend} & Ending y coordinate. \\
+\hline
+\mbox{\tt in}  & {\em zend} & Ending z coordinate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Initial photon. 
+\end{DoxyReturn}
+\hypertarget{exceptionIntegrator_af311ebd7e6c2029f95b28f472c8cfd91}{\index{Integrator@{Integrator}!launch@{launch}}
+\index{launch@{launch}!Integrator@{Integrator}}
+\subsubsection[{launch}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension, class $>$ {\bf Photon}$<$ Type, Dimension $>$ Integrator\-::launch (
+\begin{DoxyParamCaption}
+\item[{const Type}]{xbegin, }
+\item[{const Type}]{ybegin, }
+\item[{const Type}]{zbegin, }
+\item[{const Type}]{phi, }
+\item[{const Type}]{theta}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionIntegrator_af311ebd7e6c2029f95b28f472c8cfd91}
+
+
+Launch a photon going from a position to a specified direction. 
+
+Launches a photon starting from a point and going to specified direction. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & \hyperlink{exceptionPhoton}{Photon} type. \\
+\hline
+{\em Dimension} & Number of space dimension. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em xbegin} & Starting x coordinate. \\
+\hline
+\mbox{\tt in}  & {\em ybegin} & Starting y coordinate. \\
+\hline
+\mbox{\tt in}  & {\em zbegin} & Starting z coordinate. \\
+\hline
+\mbox{\tt in}  & {\em phi} & Phi angular coordinate. \\
+\hline
+\mbox{\tt in}  & {\em theta} & Theta angular coordinate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Initial photon. 
+\end{DoxyReturn}
+\hypertarget{exceptionIntegrator_a2ba2f81cae1ab9e7763093ace0af1a47}{\index{Integrator@{Integrator}!launch@{launch}}
+\index{launch@{launch}!Integrator@{Integrator}}
+\subsubsection[{launch}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Center, typename Type , unsigned int Dimension, class Container , class $>$ Container Integrator\-::launch (
+\begin{DoxyParamCaption}
+\item[{const {\bf Photon}$<$ Type, Dimension $>$ \&}]{photon, }
+\item[{const unsigned int}]{count, }
+\item[{const Type}]{angle, }
+\item[{const Type}]{rotation = {\ttfamily Type()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionIntegrator_a2ba2f81cae1ab9e7763093ace0af1a47}
+
+
+Launch photons around one photon. 
+
+Launches a group of photon on a cone around one photon. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Center} & Adds the center photon in the resulting vector if true. \\
+\hline
+{\em Type} & \hyperlink{exceptionPhoton}{Photon} type. \\
+\hline
+{\em Dimension} & Number of space dimension. \\
+\hline
+{\em Container} & Container of photons type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em photon} & Central photon. \\
+\hline
+\mbox{\tt in}  & {\em count} & Number of photons to return. \\
+\hline
+\mbox{\tt in}  & {\em angle} & Half-\/angle at the cone vertex. \\
+\hline
+\mbox{\tt in}  & {\em rotation} & Arbitrary rotation to optionally apply on the resulting circle of photons. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Circle of photons. 
+\end{DoxyReturn}
+\hypertarget{exceptionIntegrator_a7e0e97f32880308e1acbe73fb66e05f9}{\index{Integrator@{Integrator}!propagate@{propagate}}
+\index{propagate@{propagate}!Integrator@{Integrator}}
+\subsubsection[{propagate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Order, bool R\-K4, bool Verbose, class Cosmology , class Octree , class Type , unsigned int Dimension, class Homogeneous , class Point , class $>$ {\bf magrathea\-::\-Evolution}$<$ {\bf Photon}$<$ Type, Dimension $>$ $>$ Integrator\-::propagate (
+\begin{DoxyParamCaption}
+\item[{const {\bf Photon}$<$ Type, Dimension $>$ \&}]{photon, }
+\item[{const unsigned int}]{count, }
+\item[{const Type}]{angle, }
+\item[{const Type}]{rotation, }
+\item[{const std\-::string \&}]{interpolation, }
+\item[{const Cosmology \&}]{cosmology, }
+\item[{const Octree \&}]{octree, }
+\item[{const Point \&}]{vobs, }
+\item[{const Type}]{length, }
+\item[{const unsigned int}]{nsteps = {\ttfamily 1}, }
+\item[{const Type}]{amin = {\ttfamily Type()}, }
+\item[{const std\-::string \&}]{filenames = {\ttfamily std\-:\-:string()}, }
+\item[{const Homogeneous \&}]{homogeneous = {\ttfamily Homogeneous()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionIntegrator_a7e0e97f32880308e1acbe73fb66e05f9}
+
+
+Propagation of a ray bundle. 
+
+Propagates a ray bundle calling the integrator for each photon. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Order} & Octree interpolation order \-: 0 for N\-G\-P, 1 for C\-I\-C, 2 for T\-S\-C or -\/1 for an homogeneous universe. \\
+\hline
+{\em R\-K4} & Runge-\/kutta of fourth order or euler. \\
+\hline
+{\em Verbose} & Verbose mode for debug purposes. \\
+\hline
+{\em Cosmology} & Cosmology evolution type. \\
+\hline
+{\em Octree} & Octree type. \\
+\hline
+{\em Type} & Scalar type. \\
+\hline
+{\em Dimension} & Number of space dimension. \\
+\hline
+{\em Homogeneous} & Homogeneous reference. \\
+\hline
+{\em Point} & point type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em photon} & Central photon initial data. \\
+\hline
+\mbox{\tt in}  & {\em count} & Number of other photons to use. \\
+\hline
+\mbox{\tt in}  & {\em angle} & Half-\/angle at the cone vertex. \\
+\hline
+\mbox{\tt in}  & {\em rotation} & Arbitrary rotation to optionally apply on the resulting circle of photons. \\
+\hline
+\mbox{\tt in}  & {\em interpolation} & Stop condition \-: redshift, a, t, r. \\
+\hline
+\mbox{\tt in}  & {\em cosmology} & Cosmology evolution. \\
+\hline
+\mbox{\tt in}  & {\em octree} & Octree. \\
+\hline
+\mbox{\tt in}  & {\em vobs} & Observer peculiar velocity, in S\-I \\
+\hline
+\mbox{\tt in}  & {\em length} & Spatial length in S\-I units. \\
+\hline
+\mbox{\tt in}  & {\em nsteps} & Number of lambda steps per grid. \\
+\hline
+\mbox{\tt in}  & {\em amin} & If different from zero, all photons should end by this value of a. \\
+\hline
+\mbox{\tt in}  & {\em filenames} & File names of the output. If empty, no output. If at least on percent sign, all trajectories are saved. Otherwise, only the central one is saved. \\
+\hline
+\mbox{\tt in}  & {\em Homogeneous} & Optional homogeneous trajectory. If not provided the angular diameter distance use the inhomogeneous value of a. If provided, the homogeneous value of a for the given radius is used. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Central photon trajectory. 
+\end{DoxyReturn}
+
+
+The documentation for this exception was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/\hyperlink{integrator_8h}{integrator.\-h}\end{DoxyCompactItemize}

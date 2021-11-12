@@ -1,0 +1,430 @@
+.TH "Miscellaneous" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Miscellaneous \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <miscellaneous\&.h>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBgetFilesinDir\fP (const std::string dirName, std::vector< std::string > &fileNames)"
+.br
+.RI "\fIGet list of files\&. \fP"
+.ti -1c
+.RI "static void \fBTokenize\fP (const std::string &str, std::vector< std::string > &tokens, const std::string &delimiters=' ')"
+.br
+.RI "\fITokenize string\&. \fP"
+.ti -1c
+.RI "template<class Vectored > static void \fBclear_shrink\fP (Vectored &vector)"
+.br
+.RI "\fIClear and shrink vector\&. \fP"
+.ti -1c
+.RI "template<typename Type > static void \fBfullclear_vector\fP (std::vector< Type > &vector)"
+.br
+.RI "\fIErase vector\&. \fP"
+.ti -1c
+.RI "template<class Function , typename Integer > static void \fBTicketizeFunction\fP (const Integer rank, const Integer ntasks, Function &&function)"
+.br
+.RI "\fIIO ticket funtion\&. \fP"
+.ti -1c
+.RI "template<class Cone , template< unsigned int, class, typename > class Sphere, unsigned int Dimension, class Vector , typename Scalar , typename Integer > static void \fBGenerateFullskyCones\fP (const Integer ncones, std::vector< \fBCone\fP > &cone, std::vector< \fBCone\fP > &coneIfRot, Sphere< Dimension, Vector, Scalar > &sphere)"
+.br
+.RI "\fIGenerate fullsky cones\&. \fP"
+.ti -1c
+.RI "template<class Parameter , class Cone , template< unsigned int, class, typename > class Sphere, unsigned int Dimension, class Vector , typename Scalar > static void \fBGenerateNarrowCones\fP (const Parameter &\fBparameters\fP, std::vector< \fBCone\fP > &cone, std::vector< \fBCone\fP > &coneIfRot, Sphere< Dimension, Vector, Scalar > &sphere, std::array< std::array< double, 3 >, 3 > &rotm1, Scalar &thetay, Scalar &thetaz)"
+.br
+.RI "\fIGenerate narrow cones\&. \fP"
+.ti -1c
+.RI "template<class Octree , class Filelist , typename Integer > static void \fBloadOctree\fP (const Integer icone, Octree &octree, Filelist &conefile)"
+.br
+.RI "\fILoad octree\&. \fP"
+.ti -1c
+.RI "template<class Octree , class Cosmology , class Parameters , typename Real > static void \fBcorrectOctree\fP (Octree &octree, const Cosmology &cosmology, Parameters &\fBparameters\fP, const Real h, const Real omegam, const Real lboxmpch, Real &amin)"
+.br
+.RI "\fICorrect octree\&. \fP"
+.ti -1c
+.RI "template<class Vector , typename Scalar , class Container > static std::vector< std::array
+.br
+< double, 8 > > \fBgetTargets\fP (const std::vector< std::array< double, 8 > > &posTargets, const \fBCone\fP< Vector, Scalar > &cone, const Container &cones)"
+.br
+.RI "\fIGet target\&. \fP"
+.ti -1c
+.RI "template<class Parameter , class Cone , typename Type1 > static void \fBfill_particles_vectors\fP (const Parameter &\fBparameters\fP, const \fBCone\fP &cone, const std::vector< std::string > &shellList, std::vector< Type1 > &pos_part, std::vector< Type1 > &force_part, std::vector< Type1 > &potential_part, std::vector< Type1 > &a_part, const double thetay, const double thetaz)"
+.br
+.RI "\fIRewrite particle in vector\&. \fP"
+.ti -1c
+.RI "template<template< typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > static void \fBVizualizeOctree\fP (const Octree< Type, Index, Data, Dimension, Position, Extent, Element, Container > &octree, const Type radius)"
+.br
+.RI "\fIWrite position of cells\&. \fP"
+.ti -1c
+.RI "template<typename Integer , class Parameters > static void \fBReadFromCat\fP (const Integer icone, const Parameters &\fBparameters\fP, std::vector< std::array< double, 18 > > &catalogue)"
+.br
+.RI "\fIRead magrathea source catalogue\&. \fP"
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class Vectored > void Miscellaneous::clear_shrink (Vectored &vector)\fC [static]\fP"
+
+.PP
+Clear and shrink vector\&. Clear and shrink vector\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIVectored\fP vector type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvector\fP Vector to be cleared\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Empty vector 
+.RE
+.PP
+
+.SS "template<class Octree , class Cosmology , class Parameters , typename Real > void Miscellaneous::correctOctree (Octree &octree, const Cosmology &cosmology, Parameters &parameters, const Realh, const Realomegam, const Reallboxmpch, Real &amin)\fC [static]\fP"
+
+.PP
+Correct octree\&. Process a loaded Octree\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOctree\fP octree type 
+.br
+\fICosmology\fP cosmology type 
+.br
+\fIParameters\fP parameters type 
+.br
+\fIReal\fP float/real type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoctree\fP Octree to be filled 
+.br
+\fIcosmology\fP Cosmological tables 
+.br
+\fIconefile\fP \fBCone\fP names in conedir 
+.br
+\fIparameters\fP Parameters structure 
+.br
+\fIh\fP dimensionless Hubble parameter 
+.br
+\fIomegam\fP Matter density fraction 
+.br
+\fIlboxmpch\fP Size of simulation box 
+.br
+\fIamin\fP minimum value scale factor 
+.RE
+.PP
+
+.SS "template<class Parameter , class Cone , typename Type1 > void Miscellaneous::fill_particles_vectors (const Parameter &parameters, const \fBCone\fP &cone, const std::vector< std::string > &shellList, std::vector< Type1 > &pos_part, std::vector< Type1 > &force_part, std::vector< Type1 > &potential_part, std::vector< Type1 > &a_part, const doublethetay, const doublethetaz)\fC [static]\fP"
+
+.PP
+Rewrite particle in vector\&. Rewrite particle position/velocity from HDF5 in a vector\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIParameter\fP Parameter type 
+.br
+\fI\fBCone\fP\fP cone type 
+.br
+\fIType1\fP type1 type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Parameter structure 
+.br
+\fIcone\fP \fBCone\fP parameters 
+.br
+\fIshellList\fP List of HDF5 files containing particles 
+.br
+\fIpos_part\fP Position of particles 
+.br
+\fIforce_part\fP Force of particles 
+.br
+\fIpotential_part\fP Potential of particles 
+.br
+\fIa_part\fP scale factor of particles 
+.br
+\fIthetay\fP Semi-angle for solid angle in direction y 
+.br
+\fIthetaz\fP Semi-angle for solid angle in direction z 
+.RE
+.PP
+
+.SS "template<typename Type > void Miscellaneous::fullclear_vector (std::vector< Type > &vector)\fC [static]\fP"
+
+.PP
+Erase vector\&. Erase vector\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Type type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvector\fP Vector to be erased\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Empty vector 
+.RE
+.PP
+
+.SS "template<class Cone , template< unsigned int, class, typename > class Sphere, unsigned int Dimension, class Vector , typename Scalar , typename Integer > void Miscellaneous::GenerateFullskyCones (const Integerncones, std::vector< \fBCone\fP > &cone, std::vector< \fBCone\fP > &coneIfRot, Sphere< Dimension, Vector, Scalar > &sphere)\fC [static]\fP"
+
+.PP
+Generate fullsky cones\&. Generate fullsky cones\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fI\fBCone\fP\fP cone type 
+.br
+\fISphere\fP sphere type 
+.br
+\fIDimension\fP dimension 
+.br
+\fIVector\fP vector type 
+.br
+\fIScalar\fP scalar type 
+.br
+\fIInteger\fP integer type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIncones\fP Number of cones \&. 
+.br
+\fIcone\fP Cones generated 
+.br
+\fIconeIfRot\fP Cones generated 
+.br
+\fIsphere\fP Central sphere 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Generate the shape of fullsky cones\&. 
+.RE
+.PP
+
+.SS "template<class Parameter , class Cone , template< unsigned int, class, typename > class Sphere, unsigned int Dimension, class Vector , typename Scalar > void Miscellaneous::GenerateNarrowCones (const Parameter &parameters, std::vector< \fBCone\fP > &cone, std::vector< \fBCone\fP > &coneIfRot, Sphere< Dimension, Vector, Scalar > &sphere, std::array< std::array< double, 3 >, 3 > &rotm1, Scalar &thetay, Scalar &thetaz)\fC [static]\fP"
+
+.PP
+Generate narrow cones\&. Generate narrow cones\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIParameter\fP Parameter type\&. 
+.br
+\fI\fBCone\fP\fP cone type 
+.br
+\fISphere\fP sphere type 
+.br
+\fIDimension\fP dimension 
+.br
+\fIVector\fP vector type 
+.br
+\fIScalar\fP scalar type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Parameter structure 
+.br
+\fIcone\fP Cones generated 
+.br
+\fIconeIfRot\fP Cones generated 
+.br
+\fIsphere\fP Central sphere 
+.br
+\fIrotm1\fP Rotation matrix for narrow cone cells 
+.br
+\fIthetay\fP Semi-angle for solid angle in direction y 
+.br
+\fIthetaz\fP Semi-angle for solid angle in direction z 
+.RE
+.PP
+
+.SS "void Miscellaneous::getFilesinDir (const std::stringdirName, std::vector< std::string > &fileNames)\fC [static]\fP"
+
+.PP
+Get list of files\&. Get list of files and directories\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIString\fP Directory name\&. 
+.br
+\fIvector<string>\fP List of files and directories\&. 
+.RE
+.PP
+
+.SS "template<class Vector , typename Scalar , class Container > std::vector< std::array< double, 8 > > Miscellaneous::getTargets (const std::vector< std::array< double, 8 > > &posTargets, const \fBCone\fP< Vector, Scalar > &cone, const Container &cones)\fC [static]\fP"
+
+.PP
+Get target\&. Get target if inside cone\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIVector\fP Position vector type\&. 
+.br
+\fIScalar\fP Scalar data type 
+.br
+\fIContainer\fP Container of cone type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposTargets\fP vector of halo positions\&. 
+.br
+\fI\fBCone\fP\fP current cone\&. 
+.br
+\fICones\fP to compare distances\&. return Vector vector of targets inside cone 
+.RE
+.PP
+
+.SS "template<class Octree , class Filelist , typename Integer > void Miscellaneous::loadOctree (const Integericone, Octree &octree, Filelist &conefile)\fC [static]\fP"
+
+.PP
+Load octree\&. Load binary octree from preparation phase\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOctree\fP octree type 
+.br
+\fIFilelist\fP cone file type 
+.br
+\fIInteger\fP integer type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIicone\fP cone number 
+.br
+\fIoctree\fP Octree to be filled 
+.br
+\fIconefile\fP \fBCone\fP names in conedir 
+.RE
+.PP
+
+.SS "template<typename Integer , class Parameters > void Miscellaneous::ReadFromCat (const Integericone, const Parameters &parameters, std::vector< std::array< double, 18 > > &catalogue)\fC [static]\fP"
+
+.PP
+Read magrathea source catalogue\&. Read magrathea source catalogue\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIInteger\fP Integer type 
+.br
+\fIParameter\fP Parameter type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Parameter structure 
+.br
+\fIicone\fP cone number 
+.br
+\fICatalogue\fP Vector containing the source catalogue 
+.RE
+.PP
+
+.SS "template<class Function , typename Integer > void Miscellaneous::TicketizeFunction (const Integerrank, const Integerntasks, Function &&function)\fC [static]\fP"
+
+.PP
+IO ticket funtion\&. IO ticket system for heavy IO computations\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFunction\fP lambda function 
+.br
+\fIInteger\fP integer type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrank\fP Process rank \&. 
+.br
+\fIntasks\fP Number of tasks 
+.br
+\fIfunction\fP Lambda function 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Operation using ticketing system\&. 
+.RE
+.PP
+
+.SS "void Miscellaneous::Tokenize (const std::string &str, std::vector< std::string > &tokens, const std::string &delimiters = \fC' '\fP)\fC [static]\fP"
+
+.PP
+Tokenize string\&. Tokenize strings with delimiters\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIstr\fP String to tokenize 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fItokens\fP Vector of strings\&. 
+.br
+\fIdelimiters\fP Delimiters used to tokenize String\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+tokenized vector 
+.RE
+.PP
+
+.SS "template<template< typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > void Miscellaneous::VizualizeOctree (const Octree< Type, Index, Data, Dimension, Position, Extent, Element, Container > &octree, const Typeradius)\fC [static]\fP"
+
+.PP
+Write position of cells\&. Write position of cells under a given radius\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOctree\fP octree type 
+.br
+\fIType\fP type type 
+.br
+\fIIndex\fP index type 
+.br
+\fIData\fP data type 
+.br
+\fIDimension\fP Number of dimensions 
+.br
+\fIPosition\fP position type 
+.br
+\fIExtent\fP extent type 
+.br
+\fIElement\fP element type 
+.br
+\fIContainer\fP container type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoctree\fP Octree to be filled 
+.br
+\fIradius\fP Maximum radius at which we write cells (in Ramses Units) 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

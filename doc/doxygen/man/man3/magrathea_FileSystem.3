@@ -1,0 +1,1048 @@
+.TH "magrathea::FileSystem" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::FileSystem \- 
+.PP
+Global file management\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <filesystem\&.h>\fP
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBUtilities\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static bool \fBendianness\fP ()"
+.br
+.RI "\fIGet system endianness\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap, typename Type , class  = typename std::enable_if<!Byteswap>::type> static bool \fBbyteswap\fP (const Type &variable)"
+.br
+.RI "\fIDo not swap bytes\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = true, typename Type , class  = typename std::enable_if<Byteswap>::type> static bool \fBbyteswap\fP (Type &variable)"
+.br
+.RI "\fISwap bytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned int, class  = typename std::enable_if<std::is_integral<Type>::value>::type> static Type \fBbom\fP ()"
+.br
+.RI "\fIByte order mark\&. \fP"
+.ti -1c
+.RI "template<typename Type , class  = typename std::enable_if<std::is_integral<Type>::value>::type> static bool \fBbom\fP (const Type &mark)"
+.br
+.RI "\fIByte order mark endianness\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBSize\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename Type  = char, class Stream > static long long int \fBweight\fP (Stream &stream)"
+.br
+.RI "\fIGet the weight of a file in terms of a specific type\&. \fP"
+.ti -1c
+.RI "static long long int \fBsize\fP (const std::string &filename)"
+.br
+.RI "\fIGet size of a file passed by name\&. \fP"
+.ti -1c
+.RI "static long long int \fBsize\fP (std::istream &stream)"
+.br
+.RI "\fIGet size of a file passed by input stream\&. \fP"
+.ti -1c
+.RI "static long long int \fBsize\fP (std::ostream &stream)"
+.br
+.RI "\fIGet size of a file passed by output stream\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBManagement\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static std::string \fBtemporary\fP (const std::string &prefix='\\b', const std::string &suffix='')"
+.br
+.RI "\fITemporary file name\&. \fP"
+.ti -1c
+.RI "static std::string \fBdated\fP (const std::string &prefix='', const std::string &suffix='', const std::string &format='%Y-%m-%d-%H-%M-%S')"
+.br
+.RI "\fIDated file name\&. \fP"
+.ti -1c
+.RI "static bool \fBremove\fP (const std::string &filename)"
+.br
+.RI "\fIRemove a file\&. \fP"
+.ti -1c
+.RI "static bool \fBrename\fP (const std::string &oldname, const std::string &newname, const std::ios::openmode &mode=std::ios::out)"
+.br
+.RI "\fIRename a file\&. \fP"
+.ti -1c
+.RI "static bool \fBcopy\fP (const std::string &oldname, const std::string &newname, const std::ios::openmode &mode=std::ios::out, const long long int chunk=-1)"
+.br
+.RI "\fICopy\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBSplit and join\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<bool Byteswap = false, typename Marker  = long long int, class Container > static unsigned int \fBsplit\fP (const std::string &filename, const Container &filenames, const std::ios::openmode &mode=std::ios::out, const long long int chunk=-1, const unsigned long long int limit=0)"
+.br
+.RI "\fISplit a file in several files\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, typename Marker  = long long int, class Container > static unsigned int \fBunsplit\fP (const Container &filenames, const std::string &filename, const std::ios::openmode &mode=std::ios::out, const long long int chunk=-1)"
+.br
+.RI "\fIUnsplit several files in a file\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, typename Marker  = long long int, class Container > static unsigned int \fBjoin\fP (const Container &filenames, const std::string &filename, const std::ios::openmode &mode=std::ios::out, const long long int chunk=-1)"
+.br
+.RI "\fIJoin several files in a file\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, typename Marker  = long long int, class Container > static unsigned int \fBunjoin\fP (const std::string &filename, const Container &filenames, const std::ios::openmode &mode=std::ios::out, const long long int chunk=-1)"
+.br
+.RI "\fIUnjoin a file in several files\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBComparison\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static bool \fBcompare\fP (const std::string &first, const std::string &second, const long long int chunk=-1)"
+.br
+.RI "\fICompare two files passed by names\&. \fP"
+.ti -1c
+.RI "static bool \fBcompare\fP (std::istream &first, std::istream &second, const long long int chunk=-1)"
+.br
+.RI "\fICompare two files passed by input stream\&. \fP"
+.ti -1c
+.RI "static bool \fBcompare\fP (std::ostream &first, std::ostream &second, const long long int chunk=-1)"
+.br
+.RI "\fICompare two files passed by output stream\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBExistence and creation\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static bool \fBexist\fP (const std::string &filename)"
+.br
+.RI "\fICheck file existence\&. \fP"
+.ti -1c
+.RI "template<typename Type  = char> static bool \fBcheck\fP (const std::string &filename, const long long int min=-1, const long long int max=-1)"
+.br
+.RI "\fICheck file consistency\&. \fP"
+.ti -1c
+.RI "template<class Contents  = std::true_type> static bool \fBcreate\fP (const std::string &filename, const \fBContents\fP &contents=\fBContents\fP())"
+.br
+.RI "\fICreate a file\&. \fP"
+.ti -1c
+.RI "template<class Contents  = std::true_type> static bool \fBinitialize\fP (const std::string &filename, const \fBContents\fP &contents=\fBContents\fP())"
+.br
+.RI "\fIInitialize a new file\&. \fP"
+.ti -1c
+.RI "template<class Contents  = std::true_type> static bool \fBreset\fP (const std::string &filename, const \fBContents\fP &contents=\fBContents\fP())"
+.br
+.RI "\fIReset an existing file\&. \fP"
+.ti -1c
+.RI "template<class Contents  = char, class  = typename std::enable_if<!std::is_convertible<Contents, std::string>::value>::type> static bool \fBgenerate\fP (const std::string &filename, const std::ios::openmode &mode, const long long int amount, const long long int chunk=-1, const \fBContents\fP &contents=\fBContents\fP())"
+.br
+.RI "\fIGenerate a binary file based on contents\&. \fP"
+.ti -1c
+.RI "template<class Contents , class  = typename std::enable_if<std::is_convertible<Contents, std::string>::value>::type, class  = void> static bool \fBgenerate\fP (const std::string &filename, const std::ios::openmode &mode, const long long int amount, const long long int chunk, const \fBContents\fP &contents)"
+.br
+.ti -1c
+.RI "template<class Engine , class Distribution , class Contents  = typename std::decay<Distribution>::type::result_type, class  = typename std::enable_if<(std::decay<Engine>::type::min() != std::decay<Engine>::type::max()) && (!std::is_void<typename std::decay<Distribution>::type::result_type>::value)>::type> static bool \fBgenerate\fP (const std::string &filename, const std::ios::openmode &mode, const long long int amount, const long long int chunk, Engine &&engine, Distribution &&distribution)"
+.br
+.RI "\fIGenerate a random binary file\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBSize control\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename Type  = char, class Stream > static bool \fBempty\fP (Stream &stream)"
+.br
+.RI "\fIEmpty file\&. \fP"
+.ti -1c
+.RI "template<typename Type  = char, class Stream > static bool \fBexact\fP (Stream &stream, const long long int amount)"
+.br
+.RI "\fIFile of exact specified size\&. \fP"
+.ti -1c
+.RI "template<typename Type  = char, class Stream > static bool \fBregular\fP (Stream &stream, const long long int min=-1, const long long int max=-1)"
+.br
+.RI "\fIRegular file\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBFile types\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static bool \fBascii\fP (const std::string &filename, const long long int min=-1, const long long int max=-1, const long long int chunk=-1)"
+.br
+.RI "\fIAscii file\&. \fP"
+.ti -1c
+.RI "static bool \fBeascii\fP (const std::string &filename, const long long int min=-1, const long long int max=-1, const long long int chunk=-1)"
+.br
+.RI "\fIExtended ascii file\&. \fP"
+.ti -1c
+.RI "template<typename Type  = char> static bool \fBbinary\fP (const std::string &filename, const long long int min=-1, const long long int max=-1, const long long int chunk=-1)"
+.br
+.RI "\fIBinary file\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+Global file management\&. 
+
+Provides general functions to manage files, retrieve some information and perform standard operations on files\&. All functions are standard-compliant, but use either C++ or C depending on performances\&. Most functions return whether the operation is a success and do not throw any exception\&. In the class, an unit means the size in bytes of a provided type\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "bool magrathea::FileSystem::ascii (const std::string &filename, const long long intmin = \fC-1\fP, const long long intmax = \fC-1\fP, const long long intchunk = \fC-1\fP)\fC [static]\fP"
+
+.PP
+Ascii file\&. Tests whether the file is an ascii file containing between the minimum and maximum amount of bytes and using the chunk parameter to control the buffer size\&. A file is considered as ascii if all its bytes are in the ranges [9, 13] or [32, 126]\&. An empty file is considered as an ascii file\&. A value of -1 for the minimum or for the maximum means that this boundary is not tested\&. Finally, the chunk parameter allows to specify whether a buffer is used in binary mode : 0 corresponds to no buffer, a positive integer corresponds to the amount of contents that is put into the buffer, and a negative integer corresponds to a buffer of the total size of the file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP File name\&. 
+.br
+\fImin\fP Check if the file contains at least this amount of data\&. 
+.br
+\fImax\fP Check if the file contains at most this amount of data\&. 
+.br
+\fIchunk\fP Buffer size\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the file is an ascii file satisfying the provided conditions, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<typename Type > bool magrathea::FileSystem::binary (const std::string &filename, const long long intmin = \fC-1\fP, const long long intmax = \fC-1\fP, const long long intchunk = \fC-1\fP)\fC [static]\fP"
+
+.PP
+Binary file\&. Tests whether the file is a binary file containing between the minimum and maximum amount of data and using the chunk parameter to control the buffer size\&. A file is considered as binary if it has a byte outside of the ranges [9, 13] or [32, 126], or [128, 255]\&. An empty file is not considered as a binary file\&. If the file size is not divisible by the specified unit, the function returns false\&. A value of -1 for the minimum or for the maximum means that this boundary is not tested\&. Finally, the chunk parameter allows to specify whether a buffer is used in binary mode : 0 corresponds to no buffer, a positive integer corresponds to the amount of contents that is put into the buffer, and a negative integer corresponds to a buffer of the total size of the file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP File name\&. 
+.br
+\fImin\fP Check if the file contains at least this amount of data\&. 
+.br
+\fImax\fP Check if the file contains at most this amount of data\&. 
+.br
+\fIchunk\fP Buffer size\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the file is a binary file satisfying the provided conditions, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class > Type magrathea::FileSystem::bom ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Byte order mark\&. Returns the byte order mark 0xFEFF casted to the provided type\&. It is used to detect the endianness : for example, for a 4-bytes integer : 00-00-FE-FF indicates big-endianness and FF-FE-00-00 indicates little-endianness\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Integral byte order mark type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Cast of 0xFEFF\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class > bool magrathea::FileSystem::bom (const Type &mark)\fC [static]\fP"
+
+.PP
+Byte order mark endianness\&. Returns endianness from byte order mark passed as parameter : true for big-endian, false for little-endian\&. The byte order mark should be of the form FE-FF\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Integral byte order mark type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImark\fP Byte order mark\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True for big-endian, false for little-endian\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::invalid_argument\fP Unrecognized byte order mark\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type , class > bool magrathea::FileSystem::byteswap (const Type &variable)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Do not swap bytes\&. Does not invert the order of bytes of the passed variable to keep the endianness\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Do not swap endianness if false\&. 
+.br
+\fIType\fP (Variable type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvariable\fP Variable\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+False if the variable has not been byteswapped\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type , class > bool magrathea::FileSystem::byteswap (Type &variable)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Swap bytes\&. Inverts the order of bytes of the passed variable to change the endianness\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness if true\&. 
+.br
+\fIType\fP (Variable type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvariable\fP Variable\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the variable has been byteswapped\&. 
+.RE
+.PP
+
+.SS "template<typename Type > bool magrathea::FileSystem::check (const std::string &filename, const long long intmin = \fC-1\fP, const long long intmax = \fC-1\fP)\fC [static]\fP"
+
+.PP
+Check file consistency\&. Returns whether the file can be opened successfully and whether it contains between the minimum and the maximum data of the provided type\&. If the total size is not divisible by the size of the type, the function returns false\&. If the file is not empty, reading a byte is also tested\&. A value of -1 for the minimum or for the maximum means that this boundary is not tested\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Type representing the considered unit\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP File name\&. 
+.br
+\fImin\fP Check if the file contains at least this amount of data\&. 
+.br
+\fImax\fP Check if the file contains at most this amount of data\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the file can be opened an is compliant to the provided parameters, false otherwise\&. 
+.RE
+.PP
+
+.SS "bool magrathea::FileSystem::compare (const std::string &first, const std::string &second, const long long intchunk = \fC-1\fP)\fC [static]\fP"
+
+.PP
+Compare two files passed by names\&. Compares two files from their file names and return true if both can be tested without errors, have the same size, and have the same contents\&. A file compared to itself returns true whether it can be opened without errors\&. Finally, the chunk parameter allows to specify whether a buffer is used for the comparison : 0 corresponds to no buffer, a positive integer corresponds to the amount of bytes that is put into the buffer, and a negative integer corresponds to a buffer of the total size of the file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP First file name\&. 
+.br
+\fIsecond\fP Second file name\&. 
+.br
+\fIchunk\fP Buffer size\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if both files compares equal without errors, false otherwise\&. 
+.RE
+.PP
+
+.SS "bool magrathea::FileSystem::compare (std::istream &first, std::istream &second, const long long intchunk = \fC-1\fP)\fC [static]\fP"
+
+.PP
+Compare two files passed by input stream\&. Compares two opened input streams and return true if both can be tested without errors, have the same size, and have the same contents\&. A stream compared to itself returns true whether it can be accessed without errors\&. Finally, the chunk parameter allows to specify whether a buffer is used for the comparison : 0 corresponds to no buffer, a positive integer corresponds to the amount of bytes that is put into the buffer, and a negative integer corresponds to a buffer of the total size of the file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP First input stream\&. 
+.br
+\fIsecond\fP Second input stream\&. 
+.br
+\fIchunk\fP Buffer size\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if both input streams compares equal without errors, false otherwise\&. 
+.RE
+.PP
+
+.SS "bool magrathea::FileSystem::compare (std::ostream &first, std::ostream &second, const long long intchunk = \fC-1\fP)\fC [static]\fP"
+
+.PP
+Compare two files passed by output stream\&. Compares two opened output streams and return true if both can be tested without errors and have the same size as no further comparison can be done with output streams\&. Finally, the chunk parameter allows to specify whether a buffer is used for the comparison : 0 corresponds to no buffer, a positive integer corresponds to the amount of bytes that is put into the buffer, and negative integer corresponds to a buffer of the total size of the file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP First output stream\&. 
+.br
+\fIsecond\fP Second output stream\&. 
+.br
+\fIchunk\fP Buffer size\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if both output streams compares equal without errors, false otherwise\&. 
+.RE
+.PP
+
+.SS "bool magrathea::FileSystem::copy (const std::string &oldname, const std::string &newname, const std::ios::openmode &mode = \fCstd::ios::out\fP, const long long intchunk = \fC-1\fP)\fC [static]\fP"
+
+.PP
+Copy\&. Copy the provided file to a new location\&. If the old and new names are equal, the function returns false without further tests\&. By default, if a standard output open mode is specified, all existing files are protected and only a new one can be created\&. This protection can be removed by explicitely specifying the truncate open mode\&. Finally, the chunk parameter allows to specify whether a buffer is used for the copy : 0 corresponds to no buffer, a positive integer corresponds to the amount of bytes that is put into the buffer, and a negative integer corresponds to a buffer of the total size of the file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoldname\fP Old file name\&. 
+.br
+\fInewname\fP New file name\&. 
+.br
+\fImode\fP Open mode\&. 
+.br
+\fIchunk\fP Buffer size\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the copy was done without errors, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<class Contents > bool magrathea::FileSystem::create (const std::string &filename, const \fBContents\fP &contents = \fC\fBContents\fP()\fP)\fC [static]\fP"
+
+.PP
+Create a file\&. Creates a file, overwriting any previous file if needed\&. This is equivalent to create a new file using an \fCstd::ofstream\fP and the \fCstd::ios::trunc\fP open mode\&. The extra parameter allows to initialize the file with contents : if this parameter is convertible to a string, the file is opened as a text file, otherwise it is considered as a binary file\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fI\fBContents\fP\fP \fBContents\fP type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP File name\&. 
+.br
+\fIcontents\fP \fBContents\fP to add to the file\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the file was created without errors, false otherwise\&. 
+.RE
+.PP
+
+.SS "std::string magrathea::FileSystem::dated (const std::string &prefix = \fC''\fP, const std::string &suffix = \fC''\fP, const std::string &format = \fC'%Y-%m-%d-%H-%M-%S'\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Dated file name\&. Generates a file name from the current time\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprefix\fP File name prefix or path\&. 
+.br
+\fIsuffix\fP File name suffix or extension\&. 
+.br
+\fIformat\fP Date format compatible with \fCstrftime()\fP\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Generated dated file name\&. 
+.RE
+.PP
+
+.SS "bool magrathea::FileSystem::eascii (const std::string &filename, const long long intmin = \fC-1\fP, const long long intmax = \fC-1\fP, const long long intchunk = \fC-1\fP)\fC [static]\fP"
+
+.PP
+Extended ascii file\&. Tests whether the file is an extended ascii file containing between the minimum and maximum amount of bytes and using the chunk parameter to control the buffer size\&. A file is considered as extended ascii if all its bytes are in the ranges [9, 13] or [32, 126], or [128, 255]\&. An empty file is considered as an extended ascii file\&. A value of -1 for the minimum or for the maximum means that this boundary is not tested\&. Finally, the chunk parameter allows to specify whether a buffer is used in binary mode : 0 corresponds to no buffer, a positive integer corresponds to the amount of contents that is put into the buffer, and a negative integer corresponds to a buffer of the total size of the file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP File name\&. 
+.br
+\fImin\fP Check if the file contains at least this amount of data\&. 
+.br
+\fImax\fP Check if the file contains at most this amount of data\&. 
+.br
+\fIchunk\fP Buffer size\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the file is an extended ascii file satisfying the provided conditions, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Stream > bool magrathea::FileSystem::empty (Stream &stream)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Empty file\&. Returns whether the file exists and is empty\&. The unit type is here for compatibility reasons with other size control functions\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Type representing the considered unit\&. 
+.br
+\fIStream\fP (String, input stream or output stream\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP Stream\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the file size is null, false otherwise\&. 
+.RE
+.PP
+
+.SS "bool magrathea::FileSystem::endianness ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Get system endianness\&. Returns the system endianness tested with an integer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True for big-endian, false for little-endian\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Stream > bool magrathea::FileSystem::exact (Stream &stream, const long long intamount)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+File of exact specified size\&. Returns whether the file size measured in the specified unit is exactly equals to the value\&. For example if the specified type is an integer, and the value is equal to 4, it returns true if the file contains exactly 4 integers\&. A value equals to -1 returns true if the file size cannot be computed\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Type representing the considered unit\&. 
+.br
+\fIStream\fP (String, input stream or output stream\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP Stream\&. 
+.br
+\fIamount\fP Amount of contents to for comparison\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the file size corresponds to the provided value, false otherwise\&. 
+.RE
+.PP
+
+.SS "int magrathea::FileSystem::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBFileSystem\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SS "bool magrathea::FileSystem::exist (const std::string &filename)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Check file existence\&. Returns whether the file can be opened\&. The difference with the \fC\fBcheck()\fP\fP function is that \fCexists()\fP use a C test without checking the C++ error bits\&. Consequently, it may be faster than the \fC\fBcheck()\fP\fP implementation and therefore is well suited to check the existence of a large number of files\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP File name\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the file exists, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<class Contents , class , class > bool magrathea::FileSystem::generate (const std::string &filename, const std::ios::openmode &mode, const long long intamount, const long long intchunk = \fC-1\fP, const \fBContents\fP &contents = \fC\fBContents\fP()\fP)\fC [static]\fP"
+
+.PP
+Generate a binary file based on contents\&. Generate a text file based on contents\&.
+.PP
+Creates a new file putting a repetition of the specified amount of contents in it\&. To use the binary mode, this contents should not be convertible to a string\&. By default, if a standard output open mode is specified, all existing files are protected and only a new one can be created\&. This protection can be removed by explicitely specifying the truncate open mode\&. Finally, the chunk parameter allows to specify whether a buffer is used in binary mode : 0 corresponds to no buffer, a positive integer corresponds to the amount of contents that is put into the buffer, and a negative integer corresponds to a buffer of the total size of the file\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fI\fBContents\fP\fP (\fBContents\fP type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP File name\&. 
+.br
+\fImode\fP Open mode\&. 
+.br
+\fIamount\fP Amount of contents to be put in the file\&. 
+.br
+\fIchunk\fP Buffer size\&. 
+.br
+\fIcontents\fP \fBContents\fP to add to the file\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the file was created without errors, false otherwise\&.
+.RE
+.PP
+Creates a new text file putting a repetition of the specified amount of contents in it\&. To use the text mode, this contents should be convertible to a string\&. By default, if a standard output open mode is specified, all existing files are protected and only a new one can be created\&. This protection can be removed by explicitely specifying the truncate open mode\&. Finally, the chunk parameter allows to specify whether a buffer string is used in text mode : 0 corresponds to no buffer, a positive integer corresponds to the amount of contents copies that are put into the buffer, and a negative integer corresponds to a buffer of the total size of the file\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fI\fBContents\fP\fP (\fBContents\fP type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP File name\&. 
+.br
+\fImode\fP Open mode\&. 
+.br
+\fIamount\fP Amount of contents to be put in the file\&. 
+.br
+\fIchunk\fP Buffer size\&. 
+.br
+\fIcontents\fP \fBContents\fP to add to the file\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the file was created without errors, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<class Contents , class  = typename std::enable_if<std::is_convertible<Contents, std::string>::value>::type, class  = void> static bool magrathea::FileSystem::generate (const std::string &filename, const std::ios::openmode &mode, const long long intamount, const long long intchunk, const \fBContents\fP &contents)\fC [static]\fP"
+
+.SS "template<class Engine , class Distribution , class Contents , class > bool magrathea::FileSystem::generate (const std::string &filename, const std::ios::openmode &mode, const long long intamount, const long long intchunk, Engine &&engine, Distribution &&distribution)\fC [static]\fP"
+
+.PP
+Generate a random binary file\&. Creates a new random file putting a repetition of the random numbers generated thanks to the specified engine and distribution and using the distribution result type as the contents type\&. By default, if a standard output open mode is specified, all existing files are protected and only a new one can be created\&. This protection can be removed by explicitely specifying the truncate open mode\&. Finally, the chunk parameter allows to specify whether a buffer is used in binary mode : 0 corresponds to no buffer, a positive integer corresponds to the amount of contents that is put into the buffer, and a negative integer corresponds to a buffer of the total size of the file\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIEngine\fP (Random engine type\&.) 
+.br
+\fIDistribution\fP (Random distribution type\&.) 
+.br
+\fI\fBContents\fP\fP (\fBContents\fP type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP File name\&. 
+.br
+\fImode\fP Open mode\&. 
+.br
+\fIamount\fP Amount of contents to be put in the file\&. 
+.br
+\fIchunk\fP Buffer size\&. 
+.br
+\fIengine\fP Random engine\&. 
+.br
+\fIdistribution\fP Random distribution\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the file was created without errors, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<class Contents > bool magrathea::FileSystem::initialize (const std::string &filename, const \fBContents\fP &contents = \fC\fBContents\fP()\fP)\fC [static]\fP"
+
+.PP
+Initialize a new file\&. Creates a new file, without overwriting any previous file\&. This function is well suited to create a file without risking to erase some important existing data\&. The extra parameter allows to initialize the file with contents : if this parameter is convertible to a string, the file is opened as a text file, otherwise it is considered as a binary file\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fI\fBContents\fP\fP \fBContents\fP type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP File name\&. 
+.br
+\fIcontents\fP \fBContents\fP to add to the file\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the file was created without errors, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Marker , class Container > unsigned int magrathea::FileSystem::join (const Container &filenames, const std::string &filename, const std::ios::openmode &mode = \fCstd::ios::out\fP, const long long intchunk = \fC-1\fP)\fC [static]\fP"
+
+.PP
+Join several files in a file\&. Joins the provided list of file into a single file\&. At the beginning and the end of each file a record marker of the file size in bytes is added\&. By default, if a standard output open mode is specified, all existing files are protected and only a new one can be created\&. This protection can be removed by explicitely specifying the truncate open mode\&. Finally, the chunk parameter allows to specify whether a buffer is used for the copy : 0 corresponds to no buffer, a positive integer corresponds to the amount of bytes that is put into the buffer, and a negative integer corresponds to a buffer of the total size of the file\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness of markers\&. 
+.br
+\fIMarker\fP Record marker type\&. 
+.br
+\fIContainer\fP (File container type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilenames\fP \fBInput\fP file names to join\&. 
+.br
+\fIfilename\fP \fBOutput\fP file name\&. 
+.br
+\fImode\fP Open mode\&. 
+.br
+\fIchunk\fP Buffer size\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of files written on success, zero on error\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Stream > bool magrathea::FileSystem::regular (Stream &stream, const long long intmin = \fC-1\fP, const long long intmax = \fC-1\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Regular file\&. Tests if the file is regular regarding to the provided options\&. It returns true if the file can be read without problems, if its size in bytes can be divided by the size of the provided type, and if its size in the specified unit is between the minimum and maximum provided amount of data\&. A value of -1 for the minimum or for the maximum means that this boundary is not tested\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Type representing the considered unit\&. 
+.br
+\fIStream\fP (String, input stream or output stream\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP Stream\&. 
+.br
+\fImin\fP Check if the file contains at least this amount of data\&. 
+.br
+\fImax\fP Check if the file contains at most this amount of data\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the file size is regular regarding the parameters, false otherwise\&. 
+.RE
+.PP
+
+.SS "bool magrathea::FileSystem::remove (const std::string &filename)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Remove a file\&. Removes an existing file from the file system and returns true on success\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP File name\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false on error\&. 
+.RE
+.PP
+
+.SS "bool magrathea::FileSystem::rename (const std::string &oldname, const std::string &newname, const std::ios::openmode &mode = \fCstd::ios::out\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Rename a file\&. Renames an existing file and returns true on success\&. If the old and new names are equal, the function returns false without further tests\&. If the new file name already exists, nothing is done and the function fails except if the truncate open mode is specified : in that case, the existing file is erased\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoldname\fP Old name\&. 
+.br
+\fInewname\fP New name\&. 
+.br
+\fImode\fP Open mode\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false on error\&. 
+.RE
+.PP
+
+.SS "template<class Contents > bool magrathea::FileSystem::reset (const std::string &filename, const \fBContents\fP &contents = \fC\fBContents\fP()\fP)\fC [static]\fP"
+
+.PP
+Reset an existing file\&. Erases the contents of an existing file without creating a new one if the specified name does not exist\&. This function is well suited to avoid the unexpected creation of new files\&. The extra parameter allows to initialize the file with contents : if this parameter is convertible to a string, the file is opened as a text file, otherwise it is considered as a binary file\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fI\fBContents\fP\fP \fBContents\fP type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP File name\&. 
+.br
+\fIcontents\fP \fBContents\fP to add to the file\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the file was created without errors, false otherwise\&. 
+.RE
+.PP
+
+.SS "long long int magrathea::FileSystem::size (const std::string &filename)\fC [static]\fP"
+
+.PP
+Get size of a file passed by name\&. Opens the file, computes its size and closes it\&. If the file does not exist or if a stream error is detected, -1 is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP File name\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+File size in bytes or -1 if error\&. 
+.RE
+.PP
+
+.SS "long long int magrathea::FileSystem::size (std::istream &stream)\fC [static]\fP"
+
+.PP
+Get size of a file passed by input stream\&. Saves the current position, computes the size of the passed stream and returns to the original position\&. If the file does not exist or if a stream error is detected, -1 is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBInput\fP stream\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+File size in bytes or -1 if error\&. 
+.RE
+.PP
+
+.SS "long long int magrathea::FileSystem::size (std::ostream &stream)\fC [static]\fP"
+
+.PP
+Get size of a file passed by output stream\&. Saves the current position, computes the size of the passed stream and returns to the original position\&. If the file does not exist or if a stream error is detected, -1 is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBOutput\fP stream\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+File size in bytes or -1 if error\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Marker , class Container > unsigned int magrathea::FileSystem::split (const std::string &filename, const Container &filenames, const std::ios::openmode &mode = \fCstd::ios::out\fP, const long long intchunk = \fC-1\fP, const unsigned long long intlimit = \fC0\fP)\fC [static]\fP"
+
+.PP
+Split a file in several files\&. Splits the provided file into several ones of lower sizes\&. At the beginning and the end of each file, the current iterator byte position regarding the splitted file is saved as a marker\&. A beginning marker equals to zero corresponds to the first and an end marker equals to zero corresponds to the last file\&. The limit parameter allows to limit the size by file to an exact number of bytes\&. By default, if a standard output open mode is specified, all existing files are protected and only new ones can be created\&. This protection can be removed by explicitely specifying the truncate open mode\&. Finally, the chunk parameter allows to specify whether a buffer is used for the copy : 0 corresponds to no buffer, a positive integer corresponds to the amount of bytes that is put into the buffer, and a negative integer corresponds to a buffer of the total size of the file\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness of markers\&. 
+.br
+\fIMarker\fP Record marker type\&. 
+.br
+\fIContainer\fP (File container type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP \fBInput\fP file name to split\&. 
+.br
+\fIfilenames\fP \fBOutput\fP file names\&. 
+.br
+\fImode\fP Open mode\&. 
+.br
+\fIchunk\fP Buffer size\&. 
+.br
+\fIlimit\fP Size limit of each file\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of files written on success, zero on error\&. 
+.RE
+.PP
+
+.SS "std::string magrathea::FileSystem::temporary (const std::string &prefix = \fC'\\b'\fP, const std::string &suffix = \fC''\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Temporary file name\&. Generates a temporary file name\&. If no argument is used, then the default location is used\&. If an empty prefix is specified, the path is erased, and only the file name is kept\&. If a prefix or a suffix is specified, the default path is erased, the file name is kept and prefixed and suffixed by the arguments\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprefix\fP File name prefix or path\&. 
+.br
+\fIsuffix\fP File name suffix or extension\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Generated temporary file name\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Marker , class Container > unsigned int magrathea::FileSystem::unjoin (const std::string &filename, const Container &filenames, const std::ios::openmode &mode = \fCstd::ios::out\fP, const long long intchunk = \fC-1\fP)\fC [static]\fP"
+
+.PP
+Unjoin a file in several files\&. Unjoins the provided file into the original ones\&. The original marker size should correspond to the provided one\&. If output file names are not unique, the previous file is truncated or not depending on the specified open mode\&. By default, if a standard output open mode is specified, all existing files are protected and only new ones can be created\&. This protection can be removed by explicitely specifying the truncate open mode\&. Finally, the chunk parameter allows to specify whether a buffer is used for the copy : 0 corresponds to no buffer, a positive integer corresponds to the amount of bytes that is put into the buffer, and a negative integer corresponds to a buffer of the total size of the file\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness of markers\&. 
+.br
+\fIMarker\fP Record marker type\&. 
+.br
+\fIContainer\fP (File container type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP \fBInput\fP file name to unjoin\&. 
+.br
+\fIfilenames\fP \fBOutput\fP file names\&. 
+.br
+\fImode\fP Open mode\&. 
+.br
+\fIchunk\fP Buffer size\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of files written on success, zero on error\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Marker , class Container > unsigned int magrathea::FileSystem::unsplit (const Container &filenames, const std::string &filename, const std::ios::openmode &mode = \fCstd::ios::out\fP, const long long intchunk = \fC-1\fP)\fC [static]\fP"
+
+.PP
+Unsplit several files in a file\&. Unsplits the provided list of files into the original one\&. The original marker size should correspond to the provided one\&. By default, if a standard output open mode is specified, all existing files are protected and only a new one can be created\&. This protection can be removed by explicitely specifying the truncate open mode\&. Finally, the chunk parameter allows to specify whether a buffer is used for the copy : 0 corresponds to no buffer, a positive integer corresponds to the amount of bytes that is put into the buffer, and a negative integer corresponds to a buffer of the total size of the file\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness of markers\&. 
+.br
+\fIMarker\fP Record marker type\&. 
+.br
+\fIContainer\fP (File container type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilenames\fP \fBInput\fP file names to unsplit\&. 
+.br
+\fIfilename\fP \fBOutput\fP file name\&. 
+.br
+\fImode\fP Open mode\&. 
+.br
+\fIchunk\fP Buffer size\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of files written on success, zero on error\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Stream > long long int magrathea::FileSystem::weight (Stream &stream)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Get the weight of a file in terms of a specific type\&. Returns the amount of data of the specified type equivalent to the file size\&. This is just the file size divided by the size of the specified type rounded to the lower integer\&. If the file does not exist or if a stream error is detected, -1 is returned\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Type representing the considered unit\&. 
+.br
+\fIStream\fP (String, input stream or output stream\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP Stream\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+File weight in unit or -1 if error\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

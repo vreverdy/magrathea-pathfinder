@@ -1,0 +1,973 @@
+\hypertarget{classTReadHDF5}{\section{T\-Read\-H\-D\-F5 Class Reference}
+\label{classTReadHDF5}\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}}
+}
+
+
+{\ttfamily \#include $<$T\-Read\-H\-D\-F5.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classTReadHDF5_a6ab4eea431df35b9dd508413dcab5886}{display\-All\-Infos} (const std\-::string \&file\-Name) const 
+\begin{DoxyCompactList}\small\item\em Prints informations. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type1 $>$ }\\void \hyperlink{classTReadHDF5_addea7c947cd2d922f464ff54aa1450d3}{fill\-Vectors\-\_\-part} (const double \&fraction, const std\-::string \&file\-Name, const std\-::string \&file\-Side, const std\-::string \&output\-\_\-name1, std\-::vector$<$ Type1 $>$ \&output1)
+\begin{DoxyCompactList}\small\item\em Get data from part cones. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static hid\-\_\-t \hyperlink{classTReadHDF5_a7241a87bc4017e5b00e11d9bf20c769c}{h5t\-\_\-native} (const int N)
+\begin{DoxyCompactList}\small\item\em Converts Type to the corresponding hid\-\_\-t. \end{DoxyCompactList}\item 
+static hid\-\_\-t \hyperlink{classTReadHDF5_a897822b6771779be677168cc9b95f0c9}{h5t\-\_\-native} (const unsigned int N)
+\begin{DoxyCompactList}\small\item\em Converts Type to the corresponding hid\-\_\-t. \end{DoxyCompactList}\item 
+static hid\-\_\-t \hyperlink{classTReadHDF5_a563fb7bf6d6f0fabba0099acbe8e9e9e}{h5t\-\_\-native} (const float N)
+\begin{DoxyCompactList}\small\item\em Converts Type to the corresponding hid\-\_\-t. \end{DoxyCompactList}\item 
+static hid\-\_\-t \hyperlink{classTReadHDF5_aeac44c6e13309a8757832a629b3cdd5b}{h5t\-\_\-native} (const double N)
+\begin{DoxyCompactList}\small\item\em Converts Type to the corresponding hid\-\_\-t. \end{DoxyCompactList}\item 
+static hid\-\_\-t \hyperlink{classTReadHDF5_a33470f1db45a18dd3ca47f283813a216}{h5t\-\_\-native} (const unsigned long int N)
+\begin{DoxyCompactList}\small\item\em Converts Type to the corresponding hid\-\_\-t. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\static hid\-\_\-t \hyperlink{classTReadHDF5_a91c6970cbe98541264935070726c4155}{h5t\-\_\-native} (void)
+\begin{DoxyCompactList}\small\item\em Converts Type to the corresponding hid\-\_\-t. \end{DoxyCompactList}\item 
+static void \hyperlink{classTReadHDF5_a86a0072eed333fd2b67e184fdf00aab4}{pos\-\_\-from\-\_\-index\-\_\-fullsky} (const std\-::string \&str, const std\-::vector$<$ int $>$ \&nctab, const std\-::vector$<$ float $>$ \&dimtab, const float \&cubesize, std\-::array$<$ double, 3 $>$ \&point111)
+\begin{DoxyCompactList}\small\item\em Get position from index. \end{DoxyCompactList}\item 
+static void \hyperlink{classTReadHDF5_aefb9c43fabfe2ee6f47953bd983a5390}{pos\-\_\-from\-\_\-index\-\_\-narrow} (const std\-::string \&str, const std\-::vector$<$ int $>$ \&nctab, const std\-::vector$<$ float $>$ \&dimtab, const float \&cubesize, const double \&thetay, const double \&thetaz, std\-::array$<$ double, 3 $>$ \&point111)
+\begin{DoxyCompactList}\small\item\em Get position from index. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\static void \hyperlink{classTReadHDF5_ab917bdf220564910fc1486f8087a9921}{get\-\_\-data\-\_\-from\-\_\-dataset} (const hid\-\_\-t \&gid, const std\-::string \&output\-\_\-name, std\-::vector$<$ Type $>$ \&output)
+\begin{DoxyCompactList}\small\item\em Get data from dataset. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , typename... String, typename... Vector$>$ }\\static void \hyperlink{classTReadHDF5_a6849140b79d37a2f30ebd0313b46d44d}{get\-\_\-data\-\_\-from\-\_\-dataset} (const hid\-\_\-t \&gid, const std\-::string \&output\-\_\-name, std\-::vector$<$ Type $>$ \&output, const String \&...output\-\_\-names, Vector \&...outputs)
+\begin{DoxyCompactList}\small\item\em Get data from dataset. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Integer $>$ }\\static void \hyperlink{classTReadHDF5_a9216682231626d38ad3ae76e3d781b7d}{cells\-Per\-Levels} (const std\-::string \&file\-Name, std\-::vector$<$ Integer $>$ \&count)
+\begin{DoxyCompactList}\small\item\em Number of cells. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Parameter , typename Integer , class Conic $>$ }\\static void \hyperlink{classTReadHDF5_ab142e0d47373804593362c6a92872785}{cells\-And\-Cubes\-Per\-Levels} (const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, const std\-::string \&file\-Name, std\-::vector$<$ Integer $>$ \&count, std\-::vector$<$ std\-::vector$<$ std\-::string $>$ $>$ \&cube\-Number, const double \&thetay, const double \&thetaz, const Conic \&conic)
+\begin{DoxyCompactList}\small\item\em Get cells per level. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\static void \hyperlink{classTReadHDF5_a4c2d118dacf586206bb9cfa14016d361}{get\-Attribute} (const std\-::string \&file\-Name, const std\-::string \&attribute\-Name, Type \&attribute\-Value)
+\begin{DoxyCompactList}\small\item\em Get attribute. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\static void \hyperlink{classTReadHDF5_a1cf2dbad8b9add78d95262d8fc638834}{get\-Attribute} (const std\-::string \&file\-Name, const std\-::string \&attribute\-Name, std\-::vector$<$ Type $>$ \&attribute\-Value)
+\begin{DoxyCompactList}\small\item\em Get attribute. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\static void \hyperlink{classTReadHDF5_aca28e0bf060104fb784527da376c6f7b}{get\-Attribute} (const std\-::string \&file\-Name, const std\-::string \&attribute\-Name1, const std\-::string \&attribute\-Name2, Type \&attribute\-Value)
+\begin{DoxyCompactList}\small\item\em Get attribute. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\static void \hyperlink{classTReadHDF5_a1e1af3932520e11e400e0d884e69a68c}{get\-Attribute} (const std\-::string \&file\-Name, const std\-::string \&attribute\-Name1, const std\-::string \&attribute\-Name2, std\-::vector$<$ Type $>$ \&attribute\-Value)
+\begin{DoxyCompactList}\small\item\em Get attribute. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\static void \hyperlink{classTReadHDF5_ac8924d0a0bde56d8007a75c9a7873d88}{fill\-Vectors\-\_\-grav} (const std\-::string \&file\-Name, const unsigned int \&level\-Min, const unsigned int \&level\-Max, const std\-::string \&output\-\_\-name, std\-::vector$<$ Type $>$ \&output)
+\begin{DoxyCompactList}\small\item\em Get data from grav cones. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , typename... String, typename... Vector$>$ }\\static void \hyperlink{classTReadHDF5_a68d10bab126e3ba070e9f6f299ffa97b}{fill\-Vectors\-\_\-grav} (const std\-::string \&file\-Name, const unsigned int \&level\-Min, const unsigned int \&level\-Max, const std\-::string \&output\-\_\-name, std\-::vector$<$ Type $>$ \&output, const String \&...output\-\_\-names, Vector \&...outputs)
+\begin{DoxyCompactList}\small\item\em Get data from grav cones. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\static void \hyperlink{classTReadHDF5_a8a481ac0eb5b56f9be58d4d22363858c}{fill\-Vectors\-\_\-grav} (const std\-::string \&file\-Name, const unsigned int \&level\-Min, const unsigned int \&level\-Max, const std\-::vector$<$ std\-::string $>$ \&cube\-Number, const std\-::string \&output\-\_\-name, std\-::vector$<$ Type $>$ \&output)
+\begin{DoxyCompactList}\small\item\em Get data from grave cones. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , typename... String, typename... Vector$>$ }\\static void \hyperlink{classTReadHDF5_ab9b822c6a232ec91b869ccc7a363d157}{fill\-Vectors\-\_\-grav} (const std\-::string \&file\-Name, const unsigned int \&level\-Min, const unsigned int \&level\-Max, const std\-::vector$<$ std\-::string $>$ \&cube\-Number, const std\-::string \&output\-\_\-name, std\-::vector$<$ Type $>$ \&output, const String \&...output\-\_\-names, Vector \&...outputs)
+\begin{DoxyCompactList}\small\item\em Get data from grav cones. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\static void \hyperlink{classTReadHDF5_a0d90131976f57e7dd159e1e003e43848}{fill\-Vectors\-\_\-part} (const std\-::string \&file\-Name, const std\-::string \&file\-Side, const std\-::string \&output\-\_\-name, std\-::vector$<$ Type $>$ \&output)
+\begin{DoxyCompactList}\small\item\em Get data from part cones. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , typename... String, typename... Vector$>$ }\\static void \hyperlink{classTReadHDF5_adad8a4900612bac2a049f5c701e7e427}{fill\-Vectors\-\_\-part} (const std\-::string \&file\-Name, const std\-::string \&file\-Side, const std\-::string \&output\-\_\-name, std\-::vector$<$ Type $>$ \&output, const String \&...output\-\_\-names, Vector \&...outputs)
+\begin{DoxyCompactList}\small\item\em Get data from part cones. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\static void \hyperlink{classTReadHDF5_aa2a7c1c5a047f44ea424f94d60f1a442}{fill\-Vectors\-\_\-part} (const double \&fraction, const std\-::string \&file\-Name, const std\-::string \&file\-Side, const std\-::string \&output\-\_\-name, std\-::vector$<$ Type $>$ \&output)
+\item 
+{\footnotesize template$<$typename Type1 , typename Type2 $>$ }\\static void \hyperlink{classTReadHDF5_ae177f1bddfeb46b09115bf6d9a7bbc7e}{fill\-Vectors\-\_\-part} (const double \&fraction, const std\-::string \&file\-Name, const std\-::string \&file\-Side, const std\-::string \&output\-\_\-name1, std\-::vector$<$ Type1 $>$ \&output1, const std\-::string \&output\-\_\-name2, std\-::vector$<$ Type2 $>$ \&output2)
+\begin{DoxyCompactList}\small\item\em Get data from part cones. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type1 , typename Type2 , typename Type3 $>$ }\\static void \hyperlink{classTReadHDF5_aeeeacbe514c5f1db0724bb2a6c7a37e1}{fill\-Vectors\-\_\-part} (const double \&fraction, const std\-::string \&file\-Name, const std\-::string \&file\-Side, const std\-::string \&output\-\_\-name1, std\-::vector$<$ Type1 $>$ \&output1, const std\-::string \&output\-\_\-name2, std\-::vector$<$ Type2 $>$ \&output2, const std\-::string \&output\-\_\-name3, std\-::vector$<$ Type3 $>$ \&output3)
+\begin{DoxyCompactList}\small\item\em Get data from part cones. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Parameter , typename Type , class Conic $>$ }\\static void \hyperlink{classTReadHDF5_a81db1912ea74ca10c4400c0505a98a2e}{fill\-Vectors\-\_\-part} (const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, const std\-::string \&file\-Name, const double \&thetay, const double \&thetaz, const Conic \&conic, const std\-::string \&file\-Side, const std\-::string \&output\-\_\-name, std\-::vector$<$ Type $>$ \&output)
+\begin{DoxyCompactList}\small\item\em Get data from part cones. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Parameter , typename Type , typename... String, typename... Vector, class Conic $>$ }\\static void \hyperlink{classTReadHDF5_ac516e016bb822591f18b7f1843c16e51}{fill\-Vectors\-\_\-part} (const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, const std\-::string \&file\-Name, const double \&thetay, const double \&thetaz, const Conic \&conic, const std\-::string \&file\-Side, const std\-::string \&output\-\_\-name, std\-::vector$<$ Type $>$ \&output, const String \&...output\-\_\-names, Vector \&...outputs)
+\begin{DoxyCompactList}\small\item\em Get data from part cones. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classTReadHDF5_ab142e0d47373804593362c6a92872785}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!cells\-And\-Cubes\-Per\-Levels@{cells\-And\-Cubes\-Per\-Levels}}
+\index{cells\-And\-Cubes\-Per\-Levels@{cells\-And\-Cubes\-Per\-Levels}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{cells\-And\-Cubes\-Per\-Levels}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Parameter , typename Integer , class Conic $>$ void T\-Read\-H\-D\-F5\-::cells\-And\-Cubes\-Per\-Levels (
+\begin{DoxyParamCaption}
+\item[{const Parameter \&}]{parameters, }
+\item[{const std\-::string \&}]{file\-Name, }
+\item[{std\-::vector$<$ Integer $>$ \&}]{count, }
+\item[{std\-::vector$<$ std\-::vector$<$ std\-::string $>$ $>$ \&}]{cube\-Number, }
+\item[{const double \&}]{thetay, }
+\item[{const double \&}]{thetaz, }
+\item[{const Conic \&}]{conic}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_ab142e0d47373804593362c6a92872785}
+
+
+Get cells per level. 
+
+Get cells per level. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Parameter} & Parameter type. \\
+\hline
+{\em Integer} & Count type \\
+\hline
+{\em Conic} & \hyperlink{exceptionCone}{Cone} type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em parameters} & Parameter structure. \\
+\hline
+\mbox{\tt in}  & {\em file\-Name} & File name. \\
+\hline
+\mbox{\tt in,out}  & {\em count} & Number of cells per level \\
+\hline
+\mbox{\tt in}  & {\em cube\-Number} & Name number of cubes per level. \\
+\hline
+\mbox{\tt in}  & {\em thetay} & Semi-\/angle for solid angle in direction y \\
+\hline
+\mbox{\tt in}  & {\em thetaz} & Semi-\/angle for solid angle in direction z \\
+\hline
+\mbox{\tt in}  & {\em conic} & \hyperlink{exceptionCone}{Cone}. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classTReadHDF5_a9216682231626d38ad3ae76e3d781b7d}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!cells\-Per\-Levels@{cells\-Per\-Levels}}
+\index{cells\-Per\-Levels@{cells\-Per\-Levels}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{cells\-Per\-Levels}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Integer $>$ void T\-Read\-H\-D\-F5\-::cells\-Per\-Levels (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{file\-Name, }
+\item[{std\-::vector$<$ Integer $>$ \&}]{count}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_a9216682231626d38ad3ae76e3d781b7d}
+
+
+Number of cells. 
+
+Number of cells per level 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Integer} & Count type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file\-Name} & File name. \\
+\hline
+\mbox{\tt in,out}  & {\em count} & Number of cells per level. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classTReadHDF5_a6ab4eea431df35b9dd508413dcab5886}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!display\-All\-Infos@{display\-All\-Infos}}
+\index{display\-All\-Infos@{display\-All\-Infos}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{display\-All\-Infos}]{\setlength{\rightskip}{0pt plus 5cm}void T\-Read\-H\-D\-F5\-::display\-All\-Infos (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{file\-Name}
+\end{DoxyParamCaption}
+) const}}\label{classTReadHDF5_a6ab4eea431df35b9dd508413dcab5886}
+
+
+Prints informations. 
+
+Prints the following informations on the H\-D\-F5 file \-:
+\begin{DoxyItemize}
+\item File name
+\item Group names
+\item Number of subgroups 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file\-Name} & File list. \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\hypertarget{classTReadHDF5_ac8924d0a0bde56d8007a75c9a7873d88}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!fill\-Vectors\-\_\-grav@{fill\-Vectors\-\_\-grav}}
+\index{fill\-Vectors\-\_\-grav@{fill\-Vectors\-\_\-grav}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{fill\-Vectors\-\_\-grav}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ void T\-Read\-H\-D\-F5\-::fill\-Vectors\-\_\-grav (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{file\-Name, }
+\item[{const unsigned int \&}]{level\-Min, }
+\item[{const unsigned int \&}]{level\-Max, }
+\item[{const std\-::string \&}]{output\-\_\-name, }
+\item[{std\-::vector$<$ Type $>$ \&}]{output}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_ac8924d0a0bde56d8007a75c9a7873d88}
+
+
+Get data from grav cones. 
+
+Get list of values of a dataset. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file\-Name} & File name. \\
+\hline
+\mbox{\tt in}  & {\em level\-Min} & int Minimum level. \\
+\hline
+\mbox{\tt in}  & {\em level\-Max} & int Maximum level. \\
+\hline
+\mbox{\tt in}  & {\em output\-\_\-name} & Data name. \\
+\hline
+\mbox{\tt in,out}  & {\em output} & Data vector. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classTReadHDF5_a68d10bab126e3ba070e9f6f299ffa97b}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!fill\-Vectors\-\_\-grav@{fill\-Vectors\-\_\-grav}}
+\index{fill\-Vectors\-\_\-grav@{fill\-Vectors\-\_\-grav}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{fill\-Vectors\-\_\-grav}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , typename... String, typename... Vector$>$ void T\-Read\-H\-D\-F5\-::fill\-Vectors\-\_\-grav (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{file\-Name, }
+\item[{const unsigned int \&}]{level\-Min, }
+\item[{const unsigned int \&}]{level\-Max, }
+\item[{const std\-::string \&}]{output\-\_\-name, }
+\item[{std\-::vector$<$ Type $>$ \&}]{output, }
+\item[{const String \&...}]{output\-\_\-names, }
+\item[{Vector \&...}]{outputs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_a68d10bab126e3ba070e9f6f299ffa97b}
+
+
+Get data from grav cones. 
+
+Get list of values of a dataset. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file\-Name} & File name. \\
+\hline
+\mbox{\tt in}  & {\em level\-Min} & int Minimum level. \\
+\hline
+\mbox{\tt in}  & {\em level\-Max} & int Maximum level. \\
+\hline
+\mbox{\tt in}  & {\em output\-\_\-name} & Data name. \\
+\hline
+\mbox{\tt in,out}  & {\em output} & Data vector. \\
+\hline
+\mbox{\tt in}  & {\em output\-\_\-names} & Variadic Data names. \\
+\hline
+\mbox{\tt in,out}  & {\em outputs} & Variadic Data vectors. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classTReadHDF5_a8a481ac0eb5b56f9be58d4d22363858c}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!fill\-Vectors\-\_\-grav@{fill\-Vectors\-\_\-grav}}
+\index{fill\-Vectors\-\_\-grav@{fill\-Vectors\-\_\-grav}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{fill\-Vectors\-\_\-grav}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ void T\-Read\-H\-D\-F5\-::fill\-Vectors\-\_\-grav (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{file\-Name, }
+\item[{const unsigned int \&}]{level\-Min, }
+\item[{const unsigned int \&}]{level\-Max, }
+\item[{const std\-::vector$<$ std\-::string $>$ \&}]{cube\-Number, }
+\item[{const std\-::string \&}]{output\-\_\-name, }
+\item[{std\-::vector$<$ Type $>$ \&}]{output}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_a8a481ac0eb5b56f9be58d4d22363858c}
+
+
+Get data from grave cones. 
+
+Get list of values of a dataset of a cube that intersects the cone G\-I\-V\-E\-N the list of cubes as inputs 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file\-Name} & File name. \\
+\hline
+\mbox{\tt in}  & {\em level\-Min} & Minimum level. \\
+\hline
+\mbox{\tt in}  & {\em level\-Max} & Maximum level. \\
+\hline
+\mbox{\tt in,out}  & {\em cube\-Number} & Name of cubes that intersects the cone. \\
+\hline
+\mbox{\tt in}  & {\em output\-\_\-name} & Data name. \\
+\hline
+\mbox{\tt in,out}  & {\em output} & Data vector. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classTReadHDF5_ab9b822c6a232ec91b869ccc7a363d157}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!fill\-Vectors\-\_\-grav@{fill\-Vectors\-\_\-grav}}
+\index{fill\-Vectors\-\_\-grav@{fill\-Vectors\-\_\-grav}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{fill\-Vectors\-\_\-grav}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , typename... String, typename... Vector$>$ void T\-Read\-H\-D\-F5\-::fill\-Vectors\-\_\-grav (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{file\-Name, }
+\item[{const unsigned int \&}]{level\-Min, }
+\item[{const unsigned int \&}]{level\-Max, }
+\item[{const std\-::vector$<$ std\-::string $>$ \&}]{cube\-Number, }
+\item[{const std\-::string \&}]{output\-\_\-name, }
+\item[{std\-::vector$<$ Type $>$ \&}]{output, }
+\item[{const String \&...}]{output\-\_\-names, }
+\item[{Vector \&...}]{outputs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_ab9b822c6a232ec91b869ccc7a363d157}
+
+
+Get data from grav cones. 
+
+Get lists of values of datasets of a cube that intersects the cone G\-I\-V\-E\-N the list of cubes as inputs 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type1} & Data type. \\
+\hline
+{\em Type2} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file\-Name} & File name. \\
+\hline
+\mbox{\tt in}  & {\em level\-Min} & Minimum level. \\
+\hline
+\mbox{\tt in}  & {\em level\-Max} & Maximum level. \\
+\hline
+\mbox{\tt in,out}  & {\em cube\-Number} & Name of cubes that intersects the cone. \\
+\hline
+\mbox{\tt in}  & {\em output\-\_\-name} & Data name. \\
+\hline
+\mbox{\tt in,out}  & {\em output} & Data vector. \\
+\hline
+\mbox{\tt in}  & {\em output\-\_\-names} & Variadic Data names. \\
+\hline
+\mbox{\tt in,out}  & {\em outputs} & Variadic Data vectors. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classTReadHDF5_a0d90131976f57e7dd159e1e003e43848}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!fill\-Vectors\-\_\-part@{fill\-Vectors\-\_\-part}}
+\index{fill\-Vectors\-\_\-part@{fill\-Vectors\-\_\-part}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{fill\-Vectors\-\_\-part}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ void T\-Read\-H\-D\-F5\-::fill\-Vectors\-\_\-part (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{file\-Name, }
+\item[{const std\-::string \&}]{file\-Side, }
+\item[{const std\-::string \&}]{output\-\_\-name, }
+\item[{std\-::vector$<$ Type $>$ \&}]{output}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_a0d90131976f57e7dd159e1e003e43848}
+
+
+Get data from part cones. 
+
+Get lists of values of datasets 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & dataset type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file\-Name} & File name. \\
+\hline
+\mbox{\tt in}  & {\em file\-Side} & side name('data' or 'metadata' in Raygal simulation H\-D\-F5 files). \\
+\hline
+\mbox{\tt in}  & {\em output\-\_\-name} & Data name. \\
+\hline
+\mbox{\tt in,out}  & {\em output} & Data vector. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classTReadHDF5_adad8a4900612bac2a049f5c701e7e427}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!fill\-Vectors\-\_\-part@{fill\-Vectors\-\_\-part}}
+\index{fill\-Vectors\-\_\-part@{fill\-Vectors\-\_\-part}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{fill\-Vectors\-\_\-part}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , typename... String, typename... Vector$>$ void T\-Read\-H\-D\-F5\-::fill\-Vectors\-\_\-part (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{file\-Name, }
+\item[{const std\-::string \&}]{file\-Side, }
+\item[{const std\-::string \&}]{output\-\_\-name, }
+\item[{std\-::vector$<$ Type $>$ \&}]{output, }
+\item[{const String \&...}]{output\-\_\-names, }
+\item[{Vector \&...}]{outputs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_adad8a4900612bac2a049f5c701e7e427}
+
+
+Get data from part cones. 
+
+Get lists of values of datasets 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type1} & Dataset type. \\
+\hline
+{\em Type2} & Dataset type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file\-Name} & File name. \\
+\hline
+\mbox{\tt in}  & {\em file\-Side} & side name('data' or 'metadata' in Raygal simulation H\-D\-F5 files). \\
+\hline
+\mbox{\tt in}  & {\em output\-\_\-name} & Data name. \\
+\hline
+\mbox{\tt in,out}  & {\em output} & Data vector. \\
+\hline
+\mbox{\tt in}  & {\em output\-\_\-names} & Variadic Data names. \\
+\hline
+\mbox{\tt in,out}  & {\em outputs} & Variadic Data vectors. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classTReadHDF5_aa2a7c1c5a047f44ea424f94d60f1a442}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!fill\-Vectors\-\_\-part@{fill\-Vectors\-\_\-part}}
+\index{fill\-Vectors\-\_\-part@{fill\-Vectors\-\_\-part}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{fill\-Vectors\-\_\-part}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ static void T\-Read\-H\-D\-F5\-::fill\-Vectors\-\_\-part (
+\begin{DoxyParamCaption}
+\item[{const double \&}]{fraction, }
+\item[{const std\-::string \&}]{file\-Name, }
+\item[{const std\-::string \&}]{file\-Side, }
+\item[{const std\-::string \&}]{output\-\_\-name, }
+\item[{std\-::vector$<$ Type $>$ \&}]{output}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_aa2a7c1c5a047f44ea424f94d60f1a442}
+\hypertarget{classTReadHDF5_ae177f1bddfeb46b09115bf6d9a7bbc7e}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!fill\-Vectors\-\_\-part@{fill\-Vectors\-\_\-part}}
+\index{fill\-Vectors\-\_\-part@{fill\-Vectors\-\_\-part}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{fill\-Vectors\-\_\-part}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type1 , typename Type2$>$ void T\-Read\-H\-D\-F5\-::fill\-Vectors\-\_\-part (
+\begin{DoxyParamCaption}
+\item[{const double \&}]{fraction, }
+\item[{const std\-::string \&}]{file\-Name, }
+\item[{const std\-::string \&}]{file\-Side, }
+\item[{const std\-::string \&}]{output\-\_\-name1, }
+\item[{std\-::vector$<$ Type1 $>$ \&}]{output1, }
+\item[{const std\-::string \&}]{output\-\_\-name2, }
+\item[{std\-::vector$<$ Type2 $>$ \&}]{output2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_ae177f1bddfeb46b09115bf6d9a7bbc7e}
+
+
+Get data from part cones. 
+
+Get lists of values of datasets 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type1} & Dataset type. \\
+\hline
+{\em Type2} & Dataset type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em fraction} & probability under which we take the data \\
+\hline
+\mbox{\tt in}  & {\em file\-Name} & File name. \\
+\hline
+\mbox{\tt in}  & {\em file\-Side} & side name( data or metadata ). \\
+\hline
+\mbox{\tt in}  & {\em output\-\_\-name1} & Data name. \\
+\hline
+\mbox{\tt in,out}  & {\em output1} & Data vector. \\
+\hline
+\mbox{\tt in}  & {\em output\-\_\-name2} & Variadic Data name. \\
+\hline
+\mbox{\tt in,out}  & {\em output2} & Variadic Data vector. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classTReadHDF5_aeeeacbe514c5f1db0724bb2a6c7a37e1}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!fill\-Vectors\-\_\-part@{fill\-Vectors\-\_\-part}}
+\index{fill\-Vectors\-\_\-part@{fill\-Vectors\-\_\-part}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{fill\-Vectors\-\_\-part}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type1 , typename Type2, typename Type3$>$ void T\-Read\-H\-D\-F5\-::fill\-Vectors\-\_\-part (
+\begin{DoxyParamCaption}
+\item[{const double \&}]{fraction, }
+\item[{const std\-::string \&}]{file\-Name, }
+\item[{const std\-::string \&}]{file\-Side, }
+\item[{const std\-::string \&}]{output\-\_\-name1, }
+\item[{std\-::vector$<$ Type1 $>$ \&}]{output1, }
+\item[{const std\-::string \&}]{output\-\_\-name2, }
+\item[{std\-::vector$<$ Type2 $>$ \&}]{output2, }
+\item[{const std\-::string \&}]{output\-\_\-name3, }
+\item[{std\-::vector$<$ Type3 $>$ \&}]{output3}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_aeeeacbe514c5f1db0724bb2a6c7a37e1}
+
+
+Get data from part cones. 
+
+Get lists of values of datasets 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type1} & Dataset type. \\
+\hline
+{\em Type2} & Dataset type. \\
+\hline
+{\em Type3} & Dataset type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em fraction} & probability under which we take the data \\
+\hline
+\mbox{\tt in}  & {\em file\-Name} & File name. \\
+\hline
+\mbox{\tt in}  & {\em file\-Side} & side name( data or metadata ). \\
+\hline
+\mbox{\tt in}  & {\em output\-\_\-name1} & Data name. \\
+\hline
+\mbox{\tt in,out}  & {\em output1} & Data vector. \\
+\hline
+\mbox{\tt in}  & {\em output\-\_\-name2} & Data name. \\
+\hline
+\mbox{\tt in,out}  & {\em output2} & Data vector. \\
+\hline
+\mbox{\tt in}  & {\em output\-\_\-name3} & Data name. \\
+\hline
+\mbox{\tt in,out}  & {\em output3} & Data vector. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classTReadHDF5_a81db1912ea74ca10c4400c0505a98a2e}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!fill\-Vectors\-\_\-part@{fill\-Vectors\-\_\-part}}
+\index{fill\-Vectors\-\_\-part@{fill\-Vectors\-\_\-part}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{fill\-Vectors\-\_\-part}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Parameter , typename Type, class Conic$>$ void T\-Read\-H\-D\-F5\-::fill\-Vectors\-\_\-part (
+\begin{DoxyParamCaption}
+\item[{const Parameter \&}]{parameters, }
+\item[{const std\-::string \&}]{file\-Name, }
+\item[{const double \&}]{thetay, }
+\item[{const double \&}]{thetaz, }
+\item[{const Conic \&}]{conic, }
+\item[{const std\-::string \&}]{file\-Side, }
+\item[{const std\-::string \&}]{output\-\_\-name, }
+\item[{std\-::vector$<$ Type $>$ \&}]{output}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_a81db1912ea74ca10c4400c0505a98a2e}
+
+
+Get data from part cones. 
+
+Get values of datasets 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Parameter} & Parameter type. \\
+\hline
+{\em Type1} & Dataset type. \\
+\hline
+{\em Type2} & Dataset type. \\
+\hline
+{\em Conic} & \hyperlink{exceptionCone}{Cone} type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em parameters} & Parameter structure. \\
+\hline
+\mbox{\tt in}  & {\em file\-Name} & File name. \\
+\hline
+\mbox{\tt in}  & {\em thetay} & Semi-\/angle for solid angle in direction y \\
+\hline
+\mbox{\tt in}  & {\em thetaz} & Semi-\/angle for solid angle in direction z \\
+\hline
+\mbox{\tt in}  & {\em conic} & \hyperlink{exceptionCone}{Cone}. \\
+\hline
+\mbox{\tt in}  & {\em file\-Side} & side name( data or metadata ). \\
+\hline
+\mbox{\tt in}  & {\em output\-\_\-name} & Data name. \\
+\hline
+\mbox{\tt in,out}  & {\em output} & Data vector. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classTReadHDF5_ac516e016bb822591f18b7f1843c16e51}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!fill\-Vectors\-\_\-part@{fill\-Vectors\-\_\-part}}
+\index{fill\-Vectors\-\_\-part@{fill\-Vectors\-\_\-part}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{fill\-Vectors\-\_\-part}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Parameter , typename Type, typename... String, typename... Vector, class Conic $>$ void T\-Read\-H\-D\-F5\-::fill\-Vectors\-\_\-part (
+\begin{DoxyParamCaption}
+\item[{const Parameter \&}]{parameters, }
+\item[{const std\-::string \&}]{file\-Name, }
+\item[{const double \&}]{thetay, }
+\item[{const double \&}]{thetaz, }
+\item[{const Conic \&}]{conic, }
+\item[{const std\-::string \&}]{file\-Side, }
+\item[{const std\-::string \&}]{output\-\_\-name, }
+\item[{std\-::vector$<$ Type $>$ \&}]{output, }
+\item[{const String \&...}]{output\-\_\-names, }
+\item[{Vector \&...}]{outputs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_ac516e016bb822591f18b7f1843c16e51}
+
+
+Get data from part cones. 
+
+Get values of datasets 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Parameter} & Parameter type. \\
+\hline
+{\em Type1} & Dataset type. \\
+\hline
+{\em Type2} & Dataset type. \\
+\hline
+{\em Conic} & \hyperlink{exceptionCone}{Cone} type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em parameters} & Parameter structure. \\
+\hline
+\mbox{\tt in}  & {\em file\-Name} & File name. \\
+\hline
+\mbox{\tt in}  & {\em thetay} & Semi-\/angle for solid angle in direction y \\
+\hline
+\mbox{\tt in}  & {\em thetaz} & Semi-\/angle for solid angle in direction z \\
+\hline
+\mbox{\tt in}  & {\em conic} & \hyperlink{exceptionCone}{Cone}. \\
+\hline
+\mbox{\tt in}  & {\em file\-Side} & side name( data or metadata ). \\
+\hline
+\mbox{\tt in}  & {\em output\-\_\-name} & Data name. \\
+\hline
+\mbox{\tt in,out}  & {\em output} & Data vector. \\
+\hline
+\mbox{\tt in}  & {\em output\-\_\-names} & Variadic Data names. \\
+\hline
+\mbox{\tt in,out}  & {\em outputs} & Variadic Data vectors. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classTReadHDF5_addea7c947cd2d922f464ff54aa1450d3}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!fill\-Vectors\-\_\-part@{fill\-Vectors\-\_\-part}}
+\index{fill\-Vectors\-\_\-part@{fill\-Vectors\-\_\-part}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{fill\-Vectors\-\_\-part}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type1 $>$ void T\-Read\-H\-D\-F5\-::fill\-Vectors\-\_\-part (
+\begin{DoxyParamCaption}
+\item[{const double \&}]{fraction, }
+\item[{const std\-::string \&}]{file\-Name, }
+\item[{const std\-::string \&}]{file\-Side, }
+\item[{const std\-::string \&}]{output\-\_\-name1, }
+\item[{std\-::vector$<$ Type1 $>$ \&}]{output1}
+\end{DoxyParamCaption}
+)}}\label{classTReadHDF5_addea7c947cd2d922f464ff54aa1450d3}
+
+
+Get data from part cones. 
+
+Get lists of values of datasets 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type1} & Dataset type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em fraction} & Probability under which we take the data \\
+\hline
+\mbox{\tt in}  & {\em file\-Name} & File name. \\
+\hline
+\mbox{\tt in}  & {\em file\-Side} & side name( data or metadata ). \\
+\hline
+\mbox{\tt in}  & {\em output\-\_\-name1} & Data name. \\
+\hline
+\mbox{\tt in,out}  & {\em output1} & Data vector. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classTReadHDF5_ab917bdf220564910fc1486f8087a9921}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!get\-\_\-data\-\_\-from\-\_\-dataset@{get\-\_\-data\-\_\-from\-\_\-dataset}}
+\index{get\-\_\-data\-\_\-from\-\_\-dataset@{get\-\_\-data\-\_\-from\-\_\-dataset}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{get\-\_\-data\-\_\-from\-\_\-dataset}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ void T\-Read\-H\-D\-F5\-::get\-\_\-data\-\_\-from\-\_\-dataset (
+\begin{DoxyParamCaption}
+\item[{const hid\-\_\-t \&}]{gid, }
+\item[{const std\-::string \&}]{output\-\_\-name, }
+\item[{std\-::vector$<$ Type $>$ \&}]{output}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_ab917bdf220564910fc1486f8087a9921}
+
+
+Get data from dataset. 
+
+Get data from dataset 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Type type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em gid} & Group H\-D\-F5 id. \\
+\hline
+\mbox{\tt in}  & {\em output\-\_\-name} & Data name. \\
+\hline
+\mbox{\tt in,out}  & {\em output} & Data vector. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classTReadHDF5_a6849140b79d37a2f30ebd0313b46d44d}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!get\-\_\-data\-\_\-from\-\_\-dataset@{get\-\_\-data\-\_\-from\-\_\-dataset}}
+\index{get\-\_\-data\-\_\-from\-\_\-dataset@{get\-\_\-data\-\_\-from\-\_\-dataset}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{get\-\_\-data\-\_\-from\-\_\-dataset}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , typename... String, typename... Vector$>$ void T\-Read\-H\-D\-F5\-::get\-\_\-data\-\_\-from\-\_\-dataset (
+\begin{DoxyParamCaption}
+\item[{const hid\-\_\-t \&}]{gid, }
+\item[{const std\-::string \&}]{output\-\_\-name, }
+\item[{std\-::vector$<$ Type $>$ \&}]{output, }
+\item[{const String \&...}]{output\-\_\-names, }
+\item[{Vector \&...}]{outputs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_a6849140b79d37a2f30ebd0313b46d44d}
+
+
+Get data from dataset. 
+
+Get data from dataset 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Type type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em gid} & Group H\-D\-F5 id. \\
+\hline
+\mbox{\tt in}  & {\em output\-\_\-name} & Data name. \\
+\hline
+\mbox{\tt in,out}  & {\em output} & Data vector. \\
+\hline
+\mbox{\tt in}  & {\em output\-\_\-names} & Variadic Data names. \\
+\hline
+\mbox{\tt in,out}  & {\em outputs} & Variadic Data vectors. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classTReadHDF5_a4c2d118dacf586206bb9cfa14016d361}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!get\-Attribute@{get\-Attribute}}
+\index{get\-Attribute@{get\-Attribute}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{get\-Attribute}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ void T\-Read\-H\-D\-F5\-::get\-Attribute (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{file\-Name, }
+\item[{const std\-::string \&}]{attribute\-Name, }
+\item[{Type \&}]{attribute\-Value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_a4c2d118dacf586206bb9cfa14016d361}
+
+
+Get attribute. 
+
+Get attribute. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Attribute type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file\-Name} & File name. \\
+\hline
+\mbox{\tt in}  & {\em attribute\-Name} & Attribute name. \\
+\hline
+\mbox{\tt in,out}  & {\em attribute\-Value} & Value of attribute. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classTReadHDF5_a1cf2dbad8b9add78d95262d8fc638834}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!get\-Attribute@{get\-Attribute}}
+\index{get\-Attribute@{get\-Attribute}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{get\-Attribute}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ void T\-Read\-H\-D\-F5\-::get\-Attribute (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{file\-Name, }
+\item[{const std\-::string \&}]{attribute\-Name, }
+\item[{std\-::vector$<$ Type $>$ \&}]{attribute\-Value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_a1cf2dbad8b9add78d95262d8fc638834}
+
+
+Get attribute. 
+
+Get attribute. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Attribute type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file\-Name} & File name. \\
+\hline
+\mbox{\tt in}  & {\em attribute\-Name} & Attribute name. \\
+\hline
+\mbox{\tt in,out}  & {\em attribute\-Value} & Values of attribute. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classTReadHDF5_aca28e0bf060104fb784527da376c6f7b}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!get\-Attribute@{get\-Attribute}}
+\index{get\-Attribute@{get\-Attribute}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{get\-Attribute}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ void T\-Read\-H\-D\-F5\-::get\-Attribute (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{file\-Name, }
+\item[{const std\-::string \&}]{group\-Name, }
+\item[{const std\-::string \&}]{attribute\-Name, }
+\item[{Type \&}]{attribute\-Value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_aca28e0bf060104fb784527da376c6f7b}
+
+
+Get attribute. 
+
+Get attribute. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Attribute type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file\-Name} & File name. \\
+\hline
+\mbox{\tt in}  & {\em group\-Name} & Group name. \\
+\hline
+\mbox{\tt in}  & {\em attribute\-Name} & Attribute name \\
+\hline
+\mbox{\tt in,out}  & {\em attribute\-Value} & Value of attribute. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classTReadHDF5_a1e1af3932520e11e400e0d884e69a68c}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!get\-Attribute@{get\-Attribute}}
+\index{get\-Attribute@{get\-Attribute}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{get\-Attribute}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ void T\-Read\-H\-D\-F5\-::get\-Attribute (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{file\-Name, }
+\item[{const std\-::string \&}]{group\-Name, }
+\item[{const std\-::string \&}]{attribute\-Name, }
+\item[{std\-::vector$<$ Type $>$ \&}]{attribute\-Value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_a1e1af3932520e11e400e0d884e69a68c}
+
+
+Get attribute. 
+
+Get attribute. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Attribute type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file\-Name} & File name. \\
+\hline
+\mbox{\tt in}  & {\em group\-Name} & Group name. \\
+\hline
+\mbox{\tt in}  & {\em attribute\-Name} & Attribute name. \\
+\hline
+\mbox{\tt in,out}  & {\em attribute\-Value\-Values} & of attribute. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classTReadHDF5_a7241a87bc4017e5b00e11d9bf20c769c}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!h5t\-\_\-native@{h5t\-\_\-native}}
+\index{h5t\-\_\-native@{h5t\-\_\-native}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{h5t\-\_\-native}]{\setlength{\rightskip}{0pt plus 5cm}hid\-\_\-t T\-Read\-H\-D\-F5\-::h5t\-\_\-native (
+\begin{DoxyParamCaption}
+\item[{const int}]{N}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_a7241a87bc4017e5b00e11d9bf20c769c}
+
+
+Converts Type to the corresponding hid\-\_\-t. 
+
+The H\-D\-F5 C routines use a hid\-\_\-t type in order to get the data of a specified type. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em N} & (only the type matters, not the value) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+hid\-\_\-t H5\-T\-\_\-\-N\-A\-T\-I\-V\-E of the intput type 
+\end{DoxyReturn}
+\hypertarget{classTReadHDF5_a897822b6771779be677168cc9b95f0c9}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!h5t\-\_\-native@{h5t\-\_\-native}}
+\index{h5t\-\_\-native@{h5t\-\_\-native}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{h5t\-\_\-native}]{\setlength{\rightskip}{0pt plus 5cm}hid\-\_\-t T\-Read\-H\-D\-F5\-::h5t\-\_\-native (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{N}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_a897822b6771779be677168cc9b95f0c9}
+
+
+Converts Type to the corresponding hid\-\_\-t. 
+
+The H\-D\-F5 C routines use a hid\-\_\-t type in order to get the data of a specified type. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em N} & (only the type matters, not the value) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+hid\-\_\-t H5\-T\-\_\-\-N\-A\-T\-I\-V\-E of the intput type 
+\end{DoxyReturn}
+\hypertarget{classTReadHDF5_a563fb7bf6d6f0fabba0099acbe8e9e9e}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!h5t\-\_\-native@{h5t\-\_\-native}}
+\index{h5t\-\_\-native@{h5t\-\_\-native}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{h5t\-\_\-native}]{\setlength{\rightskip}{0pt plus 5cm}hid\-\_\-t T\-Read\-H\-D\-F5\-::h5t\-\_\-native (
+\begin{DoxyParamCaption}
+\item[{const float}]{N}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_a563fb7bf6d6f0fabba0099acbe8e9e9e}
+
+
+Converts Type to the corresponding hid\-\_\-t. 
+
+The H\-D\-F5 C routines use a hid\-\_\-t type in order to get the data of a specified type. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em N} & (only the type matters, not the value) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+hid\-\_\-t H5\-T\-\_\-\-N\-A\-T\-I\-V\-E of the intput type 
+\end{DoxyReturn}
+\hypertarget{classTReadHDF5_aeac44c6e13309a8757832a629b3cdd5b}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!h5t\-\_\-native@{h5t\-\_\-native}}
+\index{h5t\-\_\-native@{h5t\-\_\-native}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{h5t\-\_\-native}]{\setlength{\rightskip}{0pt plus 5cm}hid\-\_\-t T\-Read\-H\-D\-F5\-::h5t\-\_\-native (
+\begin{DoxyParamCaption}
+\item[{const double}]{N}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_aeac44c6e13309a8757832a629b3cdd5b}
+
+
+Converts Type to the corresponding hid\-\_\-t. 
+
+The H\-D\-F5 C routines use a hid\-\_\-t type in order to get the data of a specified type. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em N} & (only the type matters, not the value) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+hid\-\_\-t H5\-T\-\_\-\-N\-A\-T\-I\-V\-E of the intput type 
+\end{DoxyReturn}
+\hypertarget{classTReadHDF5_a33470f1db45a18dd3ca47f283813a216}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!h5t\-\_\-native@{h5t\-\_\-native}}
+\index{h5t\-\_\-native@{h5t\-\_\-native}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{h5t\-\_\-native}]{\setlength{\rightskip}{0pt plus 5cm}hid\-\_\-t T\-Read\-H\-D\-F5\-::h5t\-\_\-native (
+\begin{DoxyParamCaption}
+\item[{const unsigned long int}]{N}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_a33470f1db45a18dd3ca47f283813a216}
+
+
+Converts Type to the corresponding hid\-\_\-t. 
+
+The H\-D\-F5 C routines use a hid\-\_\-t type in order to get the data of a specified type. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em N} & (only the type matters, not the value) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+hid\-\_\-t H5\-T\-\_\-\-N\-A\-T\-I\-V\-E of the intput type 
+\end{DoxyReturn}
+\hypertarget{classTReadHDF5_a91c6970cbe98541264935070726c4155}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!h5t\-\_\-native@{h5t\-\_\-native}}
+\index{h5t\-\_\-native@{h5t\-\_\-native}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{h5t\-\_\-native}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ hid\-\_\-t T\-Read\-H\-D\-F5\-::h5t\-\_\-native (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_a91c6970cbe98541264935070726c4155}
+
+
+Converts Type to the corresponding hid\-\_\-t. 
+
+The H\-D\-F5 C routines use a hid\-\_\-t type in order to get the data of a specified type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Type \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+hid\-\_\-t H5\-T\-\_\-\-N\-A\-T\-I\-V\-E of the intput type 
+\end{DoxyReturn}
+\hypertarget{classTReadHDF5_a86a0072eed333fd2b67e184fdf00aab4}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!pos\-\_\-from\-\_\-index\-\_\-fullsky@{pos\-\_\-from\-\_\-index\-\_\-fullsky}}
+\index{pos\-\_\-from\-\_\-index\-\_\-fullsky@{pos\-\_\-from\-\_\-index\-\_\-fullsky}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{pos\-\_\-from\-\_\-index\-\_\-fullsky}]{\setlength{\rightskip}{0pt plus 5cm}void T\-Read\-H\-D\-F5\-::pos\-\_\-from\-\_\-index\-\_\-fullsky (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{str, }
+\item[{const std\-::vector$<$ int $>$ \&}]{nctab, }
+\item[{const std\-::vector$<$ float $>$ \&}]{dimtab, }
+\item[{const float \&}]{cubesize, }
+\item[{std\-::array$<$ double, 3 $>$ \&}]{point111}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_a86a0072eed333fd2b67e184fdf00aab4}
+
+
+Get position from index. 
+
+Get position from indexes in Raygal simulation fullsky data cubes 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em str} & Cube name in H\-D\-F5 file. \\
+\hline
+\mbox{\tt in}  & {\em nctab} & Number of cubes in data \\
+\hline
+\mbox{\tt in}  & {\em dimtab} & Dimensions of data. \\
+\hline
+\mbox{\tt in}  & {\em cubesize} & Cube size. \\
+\hline
+\mbox{\tt in,out}  & {\em point111} & Cube center position. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classTReadHDF5_aefb9c43fabfe2ee6f47953bd983a5390}{\index{T\-Read\-H\-D\-F5@{T\-Read\-H\-D\-F5}!pos\-\_\-from\-\_\-index\-\_\-narrow@{pos\-\_\-from\-\_\-index\-\_\-narrow}}
+\index{pos\-\_\-from\-\_\-index\-\_\-narrow@{pos\-\_\-from\-\_\-index\-\_\-narrow}!TReadHDF5@{T\-Read\-H\-D\-F5}}
+\subsubsection[{pos\-\_\-from\-\_\-index\-\_\-narrow}]{\setlength{\rightskip}{0pt plus 5cm}void T\-Read\-H\-D\-F5\-::pos\-\_\-from\-\_\-index\-\_\-narrow (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{str, }
+\item[{const std\-::vector$<$ int $>$ \&}]{nctab, }
+\item[{const std\-::vector$<$ float $>$ \&}]{dimtab, }
+\item[{const float \&}]{cubesize, }
+\item[{const double \&}]{thetay, }
+\item[{const double \&}]{thetaz, }
+\item[{std\-::array$<$ double, 3 $>$ \&}]{point111}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classTReadHDF5_aefb9c43fabfe2ee6f47953bd983a5390}
+
+
+Get position from index. 
+
+Get position from indexes in Raygal simulation narrow data cubes 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em str} & Cube name in H\-D\-F5 file. \\
+\hline
+\mbox{\tt in}  & {\em nctab} & Number of cubes in every dimension. \\
+\hline
+\mbox{\tt in}  & {\em dimtab} & Dimensions in Ramses units of the parallelepiped around the cone \\
+\hline
+\mbox{\tt in}  & {\em cubesize} & Cube size. \\
+\hline
+\mbox{\tt in}  & {\em thetay} & Semi-\/angle for solid angle in direction y \\
+\hline
+\mbox{\tt in}  & {\em thetaz} & Semi-\/angle for solid angle in direction z \\
+\hline
+\mbox{\tt in,out}  & {\em point111} & Cube center position. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/\hyperlink{TReadHDF5_8h}{T\-Read\-H\-D\-F5.\-h}\end{DoxyCompactItemize}

@@ -1,0 +1,301 @@
+.TH "Output" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Output \- 
+.PP
+\fBOutput\fP utilities for raytracing\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <output\&.h>\fP
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBUtilities\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class Type  = std::string, class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<Type>::type>::type, std::string>::value>::type> static std::string \fBname\fP (Type &&value=Type())"
+.br
+.RI "\fIFile name from a string\&. \fP"
+.ti -1c
+.RI "template<class Type , class  = typename std::enable_if<!std::is_convertible<typename std::remove_cv<typename std::remove_reference<Type>::type>::type, std::string>::value>::type> static std::string \fBname\fP (const Type &value)"
+.br
+.RI "\fIFile name from a number\&. \fP"
+.ti -1c
+.RI "template<template< class, class > class Type, class First , class Second , class  = typename std::enable_if<(std::tuple_size<Type<First, Second> >::value == std::tuple_size<std::pair<First, Second> >::value) && (std::is_convertible<First, std::string>::value)>::type> static std::string \fBname\fP (const Type< First, Second > &value)"
+.br
+.RI "\fIFile name from a format\&. \fP"
+.ti -1c
+.RI "template<class Type , class\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != 0>::type> static std::string \fBname\fP (Type &&value, Types &&\&.\&.\&.values)"
+.br
+.RI "\fIFile name from a format\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBSave\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class Octree , class  = typename std::enable_if<Octree::dimension() != 0>::type> static bool \fBsave\fP (std::ostream &stream, const Octree &octree, const int digits=0)"
+.br
+.RI "\fISave a octree\&. \fP"
+.ti -1c
+.RI "template<class Cosmology , class  = typename std::enable_if<std::tuple_size<Cosmology>::value != 0>::type> static bool \fBsave\fP (std::ostream &stream, const Cosmology &cosmology, const unsigned int digits=0)"
+.br
+.RI "\fISave a cosmology\&. \fP"
+.ti -1c
+.RI "template<class Trajectory , class  = typename std::enable_if<!std::is_void<typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Trajectory>()[0]\&.type())>::type>::type>::value>::type> static bool \fBsave\fP (std::ostream &stream, const Trajectory &trajectory, const unsigned int &digits=0)"
+.br
+.RI "\fISave a trajectory\&. \fP"
+.ti -1c
+.RI "template<class Container , typename Type  = typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Container>()[0])>::type>::type, typename Integral  = std::true_type, class  = typename std::enable_if<!std::is_void<typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Container>()[0])>::type>::type>::value>::type> static bool \fBsave\fP (std::ostream &stream, const Container &x, const Container &y, const Container &ymean, const Container &ystd, const unsigned int digits=0, const Integral count=Integral())"
+.br
+.RI "\fISave statistics\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBOutput\fP utilities for raytracing\&. 
+
+Provides a list of exportation routines to save data for raytracing\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "int Output::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBOutput\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SS "template<class Type , class > std::string Output::name (Type &&value = \fCType()\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+File name from a string\&. Produces a file name from a string\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Type convertible to a string\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Value of the string\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Name corresponding to the string\&. 
+.RE
+.PP
+
+.SS "template<class Type , class > std::string Output::name (const Type &value)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+File name from a number\&. Produces a file name from a number\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Number type convertible to a string\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Value of the number\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Name corresponding to the number\&. 
+.RE
+.PP
+
+.SS "template<template< class, class > class Type, class First , class Second , class > std::string Output::name (const Type< First, Second > &value)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+File name from a format\&. Produces a file name from a format\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Pair type\&. 
+.br
+\fIFirst\fP Type convertible to a string\&. 
+.br
+\fISecond\fP Second type associated to the format\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Value of the pair\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Name corresponding to the format\&. 
+.RE
+.PP
+
+.SS "template<class Type, class\&.\&.\&. Types, class > std::string Output::name (Type &&value, Types &&\&.\&.\&.values)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+File name from a format\&. Produces a file name from a serie of components by recursively calling the name function\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP First type\&. 
+.br
+\fITypes\fP Other types\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP First value\&. 
+.br
+\fIvalues\fP Other values\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Name corresponding to the serie of components\&. 
+.RE
+.PP
+
+.SS "template<class Octree , class > bool Output::save (std::ostream &stream, const Octree &octree, const intdigits = \fC0\fP)\fC [static]\fP"
+
+.PP
+Save a octree\&. Writes an octree to a text file\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOctree\fP Octree type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBOutput\fP stream\&. 
+.br
+\fIoctree\fP Octree\&. 
+.br
+\fIdigits\fP Optional precision\&.  
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<class Cosmology , class > bool Output::save (std::ostream &stream, const Cosmology &cosmology, const unsigned intdigits = \fC0\fP)\fC [static]\fP"
+
+.PP
+Save a cosmology\&. Writes each step of a cosmology to a text file\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fICosmology\fP Cosmology type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBOutput\fP stream\&. 
+.br
+\fIcosmology\fP Cosmology\&. 
+.br
+\fIdigits\fP Optional precision\&.  
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<class Trajectory , class > bool Output::save (std::ostream &stream, const Trajectory &trajectory, const unsigned int &digits = \fC0\fP)\fC [static]\fP"
+
+.PP
+Save a trajectory\&. Writes each step of the trajectory to a text file\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITrajectory\fP Trajectory type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBOutput\fP stream\&. 
+.br
+\fItrajectory\fP Trajectory\&. 
+.br
+\fIdigits\fP Optional precision\&.  
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<class Container , typename Type , typename Integral , class > bool Output::save (std::ostream &stream, const Container &x, const Container &y, const Container &ymean, const Container &ystd, const unsigned intdigits = \fC0\fP, const Integralcount = \fCIntegral()\fP)\fC [static]\fP"
+
+.PP
+Save statistics\&. Save photons statistics\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIContainer\fP Container type\&. 
+.br
+\fIType\fP Data type\&. 
+.br
+\fIIntegral\fP Integral type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBOutput\fP stream\&. 
+.br
+\fIx\fP Abscissae\&. 
+.br
+\fIy\fP Homogeneous ordinates\&. 
+.br
+\fIymean\fP Mean of values\&. 
+.br
+\fIystd\fP Standard deviation of values\&. 
+.br
+\fIdigits\fP Optional precision\&. 
+.br
+\fIcount\fP Optional count\&.  
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false otherwise\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

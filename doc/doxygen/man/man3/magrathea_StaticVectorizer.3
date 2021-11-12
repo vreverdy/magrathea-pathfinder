@@ -1,0 +1,4014 @@
+.TH "magrathea::StaticVectorizer< Kind, Size, Crtp, Type, Parameters >" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::StaticVectorizer< Kind, Size, Crtp, Type, Parameters > \- 
+.PP
+Helper class for generic constant size vectorization\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <staticvectorizer\&.h>\fP
+.PP
+Inherits \fBmagrathea::Vectorizer\fP\&.
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBVectorization\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "Type & \fBoperator[]\fP (const unsigned int i)"
+.br
+.RI "\fIDirect access to the element\&. \fP"
+.ti -1c
+.RI "const Type & \fBoperator[]\fP (const unsigned int i) const "
+.br
+.RI "\fIImmutable direct access to the element\&. \fP"
+.ti -1c
+.RI "Crtp< Type, Parameters\&.\&.\&.> & \fBresize\fP (const unsigned int n)"
+.br
+.RI "\fIResize the container\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBOperators : assignment\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "Crtp< Type, Parameters\&.\&.\&.> & \fBoperator=\fP (const \fBStaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fICopy assignment operator\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> Crtp< Type, Parameters\&.\&.\&.> & \fBoperator=\fP (const std::initializer_list< OtherType > &rhs)"
+.br
+.RI "\fIInitializer list assignment operator\&. \fP"
+.ti -1c
+.RI "template<class Misc > Crtp< Type, Parameters\&.\&.\&.> & \fBoperator=\fP (const Misc &rhs)"
+.br
+.RI "\fICopy assignment operator\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBOperators : compound assignement\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class GenericType > Crtp< Type, Parameters\&.\&.\&.> & \fBoperator+=\fP (const GenericType &rhs)"
+.br
+.RI "\fIAddition assignment\&. \fP"
+.ti -1c
+.RI "template<class GenericType > Crtp< Type, Parameters\&.\&.\&.> & \fBoperator-=\fP (const GenericType &rhs)"
+.br
+.RI "\fISubstraction assignment\&. \fP"
+.ti -1c
+.RI "template<class GenericType > Crtp< Type, Parameters\&.\&.\&.> & \fBoperator*=\fP (const GenericType &rhs)"
+.br
+.RI "\fIMultiplication assignment\&. \fP"
+.ti -1c
+.RI "template<class GenericType > Crtp< Type, Parameters\&.\&.\&.> & \fBoperator/=\fP (const GenericType &rhs)"
+.br
+.RI "\fIDivision assignment\&. \fP"
+.ti -1c
+.RI "template<class GenericType > Crtp< Type, Parameters\&.\&.\&.> & \fBoperator%=\fP (const GenericType &rhs)"
+.br
+.RI "\fIModulo assignment\&. \fP"
+.ti -1c
+.RI "template<class GenericType > Crtp< Type, Parameters\&.\&.\&.> & \fBoperator&=\fP (const GenericType &rhs)"
+.br
+.RI "\fIBitwise AND assignment\&. \fP"
+.ti -1c
+.RI "template<class GenericType > Crtp< Type, Parameters\&.\&.\&.> & \fBoperator|=\fP (const GenericType &rhs)"
+.br
+.RI "\fIBitwise OR assignment\&. \fP"
+.ti -1c
+.RI "template<class GenericType > Crtp< Type, Parameters\&.\&.\&.> & \fBoperator^=\fP (const GenericType &rhs)"
+.br
+.RI "\fIBitwise XOR assignment\&. \fP"
+.ti -1c
+.RI "template<class GenericType > Crtp< Type, Parameters\&.\&.\&.> & \fBoperator<<=\fP (const GenericType &rhs)"
+.br
+.RI "\fIBitwise left shift assignment\&. \fP"
+.ti -1c
+.RI "template<class GenericType > Crtp< Type, Parameters\&.\&.\&.> & \fBoperator>>=\fP (const GenericType &rhs)"
+.br
+.RI "\fIBitwise right shift assignment\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBOperators : main\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> Crtp< typename 
+.br
+std::common_type< Type, 
+.br
+OtherType >::\fBtype\fP, 
+.br
+Parameters\&.\&.\&.> \fBoperator+\fP (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const "
+.br
+.RI "\fIAddition\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> Crtp< typename 
+.br
+std::common_type< Type, 
+.br
+OtherType >::\fBtype\fP, 
+.br
+Parameters\&.\&.\&.> \fBoperator-\fP (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const "
+.br
+.RI "\fISubstraction\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> Crtp< typename 
+.br
+std::common_type< Type, 
+.br
+OtherType >::\fBtype\fP, 
+.br
+Parameters\&.\&.\&.> \fBoperator*\fP (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const "
+.br
+.RI "\fIMultiplication\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> Crtp< typename 
+.br
+std::common_type< Type, 
+.br
+OtherType >::\fBtype\fP, 
+.br
+Parameters\&.\&.\&.> \fBoperator/\fP (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const "
+.br
+.RI "\fIDivision\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> Crtp< typename 
+.br
+std::common_type< Type, 
+.br
+OtherType >::\fBtype\fP, 
+.br
+Parameters\&.\&.\&.> \fBoperator%\fP (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const "
+.br
+.RI "\fIModulo\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> Crtp< typename 
+.br
+std::common_type< Type, 
+.br
+OtherType >::\fBtype\fP, 
+.br
+Parameters\&.\&.\&.> \fBoperator&\fP (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const "
+.br
+.RI "\fIBitwise AND\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> Crtp< typename 
+.br
+std::common_type< Type, 
+.br
+OtherType >::\fBtype\fP, 
+.br
+Parameters\&.\&.\&.> \fBoperator|\fP (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const "
+.br
+.RI "\fIBitwise OR\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> Crtp< typename 
+.br
+std::common_type< Type, 
+.br
+OtherType >::\fBtype\fP, 
+.br
+Parameters\&.\&.\&.> \fBoperator^\fP (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const "
+.br
+.RI "\fIBitwise XOR\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> Crtp< Type, Parameters\&.\&.\&.> \fBoperator<<\fP (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const "
+.br
+.RI "\fIBitwise left shift\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> Crtp< Type, Parameters\&.\&.\&.> \fBoperator>>\fP (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const "
+.br
+.RI "\fIBitwise right shift\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> Crtp< bool, Parameters\&.\&.\&.> \fBoperator&&\fP (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const "
+.br
+.RI "\fILogical AND\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> Crtp< bool, Parameters\&.\&.\&.> \fBoperator||\fP (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const "
+.br
+.RI "\fILogical OR\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> Crtp< bool, Parameters\&.\&.\&.> \fBoperator==\fP (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const "
+.br
+.RI "\fIEqual to\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> Crtp< bool, Parameters\&.\&.\&.> \fBoperator!=\fP (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const "
+.br
+.RI "\fINot equal to\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> Crtp< bool, Parameters\&.\&.\&.> \fBoperator>\fP (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const "
+.br
+.RI "\fIGreater than\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> Crtp< bool, Parameters\&.\&.\&.> \fBoperator<\fP (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const "
+.br
+.RI "\fILess than\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> Crtp< bool, Parameters\&.\&.\&.> \fBoperator>=\fP (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const "
+.br
+.RI "\fIGreater than or equal to\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> Crtp< bool, Parameters\&.\&.\&.> \fBoperator<=\fP (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const "
+.br
+.RI "\fILess than or equal to\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBOperators : with rhs value\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, Type>::value)>::type> Crtp< typename 
+.br
+std::common_type< Type, 
+.br
+OtherType >::\fBtype\fP, 
+.br
+Parameters\&.\&.\&.> \fBoperator+\fP (const OtherType &rhs) const "
+.br
+.RI "\fIAddition with rhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, Type>::value)>::type> Crtp< typename 
+.br
+std::common_type< Type, 
+.br
+OtherType >::\fBtype\fP, 
+.br
+Parameters\&.\&.\&.> \fBoperator-\fP (const OtherType &rhs) const "
+.br
+.RI "\fISubstraction with rhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, Type>::value)>::type> Crtp< typename 
+.br
+std::common_type< Type, 
+.br
+OtherType >::\fBtype\fP, 
+.br
+Parameters\&.\&.\&.> \fBoperator*\fP (const OtherType &rhs) const "
+.br
+.RI "\fIMultiplication with rhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, Type>::value)>::type> Crtp< typename 
+.br
+std::common_type< Type, 
+.br
+OtherType >::\fBtype\fP, 
+.br
+Parameters\&.\&.\&.> \fBoperator/\fP (const OtherType &rhs) const "
+.br
+.RI "\fIDivision with rhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, Type>::value)>::type> Crtp< typename 
+.br
+std::common_type< Type, 
+.br
+OtherType >::\fBtype\fP, 
+.br
+Parameters\&.\&.\&.> \fBoperator%\fP (const OtherType &rhs) const "
+.br
+.RI "\fIModulo with rhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, Type>::value)>::type> Crtp< typename 
+.br
+std::common_type< Type, 
+.br
+OtherType >::\fBtype\fP, 
+.br
+Parameters\&.\&.\&.> \fBoperator&\fP (const OtherType &rhs) const "
+.br
+.RI "\fIBitwise AND with rhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, Type>::value)>::type> Crtp< typename 
+.br
+std::common_type< Type, 
+.br
+OtherType >::\fBtype\fP, 
+.br
+Parameters\&.\&.\&.> \fBoperator|\fP (const OtherType &rhs) const "
+.br
+.RI "\fIBitwise OR with rhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, Type>::value)>::type> Crtp< typename 
+.br
+std::common_type< Type, 
+.br
+OtherType >::\fBtype\fP, 
+.br
+Parameters\&.\&.\&.> \fBoperator^\fP (const OtherType &rhs) const "
+.br
+.RI "\fIBitwise XOR with rhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, Type>::value)>::type> Crtp< Type, Parameters\&.\&.\&.> \fBoperator<<\fP (const OtherType &rhs) const "
+.br
+.RI "\fIBitwise left shift with rhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, Type>::value)>::type> Crtp< Type, Parameters\&.\&.\&.> \fBoperator>>\fP (const OtherType &rhs) const "
+.br
+.RI "\fIBitwise right shift with rhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, Type>::value)>::type> Crtp< bool, Parameters\&.\&.\&.> \fBoperator&&\fP (const OtherType &rhs) const "
+.br
+.RI "\fILogical AND with rhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, Type>::value)>::type> Crtp< bool, Parameters\&.\&.\&.> \fBoperator||\fP (const OtherType &rhs) const "
+.br
+.RI "\fILogical OR with rhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, Type>::value)>::type> Crtp< bool, Parameters\&.\&.\&.> \fBoperator==\fP (const OtherType &rhs) const "
+.br
+.RI "\fIEqual to with rhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, Type>::value)>::type> Crtp< bool, Parameters\&.\&.\&.> \fBoperator!=\fP (const OtherType &rhs) const "
+.br
+.RI "\fINot equal to with rhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, Type>::value)>::type> Crtp< bool, Parameters\&.\&.\&.> \fBoperator>\fP (const OtherType &rhs) const "
+.br
+.RI "\fIGreater than with rhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, Type>::value)>::type> Crtp< bool, Parameters\&.\&.\&.> \fBoperator<\fP (const OtherType &rhs) const "
+.br
+.RI "\fILess than with rhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, Type>::value)>::type> Crtp< bool, Parameters\&.\&.\&.> \fBoperator>=\fP (const OtherType &rhs) const "
+.br
+.RI "\fIGreater than or equal to with rhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<(!std::is_base_of<Vectorizer, OtherType>::value) && (std::is_convertible<OtherType, Type>::value)>::type> Crtp< bool, Parameters\&.\&.\&.> \fBoperator<=\fP (const OtherType &rhs) const "
+.br
+.RI "\fILess than or equal to with rhs value\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBOperators : unary\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "Crtp< bool, Parameters\&.\&.\&.> \fBoperator!\fP () const "
+.br
+.RI "\fILogical NOT\&. \fP"
+.ti -1c
+.RI "Crtp< Type, Parameters\&.\&.\&.> \fBoperator~\fP () const "
+.br
+.RI "\fIBitwise NOT\&. \fP"
+.ti -1c
+.RI "Crtp< Type, Parameters\&.\&.\&.> \fBoperator+\fP () const "
+.br
+.RI "\fIInteger promotion\&. \fP"
+.ti -1c
+.RI "Crtp< Type, Parameters\&.\&.\&.> \fBoperator-\fP () const "
+.br
+.RI "\fIAdditive inverse\&. \fP"
+.ti -1c
+.RI "Crtp< Type, Parameters\&.\&.\&.> & \fBoperator++\fP ()"
+.br
+.RI "\fIIncrement prefix\&. \fP"
+.ti -1c
+.RI "Crtp< Type, Parameters\&.\&.\&.> & \fBoperator--\fP ()"
+.br
+.RI "\fIDecrement prefix\&. \fP"
+.ti -1c
+.RI "Crtp< Type, Parameters\&.\&.\&.> \fBoperator++\fP (int)"
+.br
+.RI "\fIIncrement suffix\&. \fP"
+.ti -1c
+.RI "Crtp< Type, Parameters\&.\&.\&.> \fBoperator--\fP (int)"
+.br
+.RI "\fIDecrement suffix\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBAccess\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBStaticVectorizer\fP< Kind, Size, 
+.br
+Crtp, Type, Parameters\&.\&.\&.> & \fBoperator()\fP ()"
+.br
+.RI "\fIAbstract class access\&. \fP"
+.ti -1c
+.RI "const \fBStaticVectorizer\fP< Kind, 
+.br
+Size, Crtp, Type, 
+.br
+Parameters\&.\&.\&.> & \fBoperator()\fP () const "
+.br
+.RI "\fIImmutable abstract class access\&. \fP"
+.ti -1c
+.RI "Type & \fBoperator()\fP (const unsigned int i)"
+.br
+.RI "\fIMonodimensional access operator\&. \fP"
+.ti -1c
+.RI "const Type & \fBoperator()\fP (const unsigned int i) const "
+.br
+.RI "\fIImmutable monodimensional access operator\&. \fP"
+.ti -1c
+.RI "Type & \fBat\fP (const unsigned int i)"
+.br
+.RI "\fIMonodimensional access with range-check\&. \fP"
+.ti -1c
+.RI "const Type & \fBat\fP (const unsigned int i) const "
+.br
+.RI "\fIImmutable monodimensional access with range-check\&. \fP"
+.ti -1c
+.RI "Type & \fBfront\fP (const unsigned int i=0)"
+.br
+.RI "\fIMonodimensional access to the i-th element from the beginning\&. \fP"
+.ti -1c
+.RI "const Type & \fBfront\fP (const unsigned int i=0) const "
+.br
+.RI "\fIImmutable monodimensional access to the i-th element from the beginning\&. \fP"
+.ti -1c
+.RI "Type & \fBback\fP (const unsigned int i=0)"
+.br
+.RI "\fIMonodimensional access to the i-th element from the end\&. \fP"
+.ti -1c
+.RI "const Type & \fBback\fP (const unsigned int i=0) const "
+.br
+.RI "\fIImmutable monodimensional access to the i-th element from the end\&. \fP"
+.ti -1c
+.RI "Type & \fBcycle\fP (const int i)"
+.br
+.RI "\fICyclic monodimensional access to the contents\&. \fP"
+.ti -1c
+.RI "const Type & \fBcycle\fP (const int i) const "
+.br
+.RI "\fIImmutable cyclic monodimensional access to the contents\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBAssignment\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename OtherType , class\&.\&.\&. Misc, class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> Crtp< Type, Parameters\&.\&.\&.> & \fBassign\fP (const std::initializer_list< OtherType > &source, const Misc &\&.\&.\&.misc)"
+.br
+.RI "\fIInitializer list assignment\&. \fP"
+.ti -1c
+.RI "template<class\&.\&.\&. Misc> Crtp< Type, Parameters\&.\&.\&.> & \fBassign\fP (const Misc &\&.\&.\&.misc)"
+.br
+.RI "\fIGeneric assignment\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class\&.\&.\&. Misc, class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> Crtp< Type, Parameters\&.\&.\&.> & \fBfill\fP (const std::initializer_list< OtherType > &source, const Misc &\&.\&.\&.misc)"
+.br
+.RI "\fIInitializer list fill\&. \fP"
+.ti -1c
+.RI "template<class\&.\&.\&. Misc> Crtp< Type, Parameters\&.\&.\&.> & \fBfill\fP (const Misc &\&.\&.\&.misc)"
+.br
+.RI "\fIGeneric fill\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class\&.\&.\&. Misc, class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> Crtp< Type, Parameters\&.\&.\&.> \fBreplace\fP (const std::initializer_list< OtherType > &source, const Misc &\&.\&.\&.misc)"
+.br
+.RI "\fIInitializer list replace\&. \fP"
+.ti -1c
+.RI "template<class\&.\&.\&. Misc> Crtp< Type, Parameters\&.\&.\&.> \fBreplace\fP (const Misc &\&.\&.\&.misc)"
+.br
+.RI "\fIGeneric replace\&. \fP"
+.ti -1c
+.RI "template<class GenericType > Crtp< Type, Parameters\&.\&.\&.> & \fBput\fP (const GenericType &source, const unsigned int pos, const unsigned int num=1)"
+.br
+.RI "\fIPut an element in the container\&. \fP"
+.ti -1c
+.RI "template<class GenericType > Crtp< Type, Parameters\&.\&.\&.> \fBchange\fP (const GenericType &source, const unsigned int pos, const unsigned int num=1)"
+.br
+.RI "\fIChange an element of the container\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBManagement\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "Crtp< Type, Parameters\&.\&.\&.> & \fBreserve\fP (const unsigned int n)"
+.br
+.RI "\fIReserve new space for the container\&. \fP"
+.ti -1c
+.RI "Crtp< Type, Parameters\&.\&.\&.> & \fBclear\fP ()"
+.br
+.RI "\fIClear contents\&. \fP"
+.ti -1c
+.RI "template<class\&.\&.\&. Location> Crtp< Type, Parameters\&.\&.\&.> & \fBnullify\fP (const Location &\&.\&.\&.location)"
+.br
+.RI "\fISet elements to their default values\&. \fP"
+.ti -1c
+.RI "template<class\&.\&.\&. Location> Crtp< Type, Parameters\&.\&.\&.> & \fBswap\fP (\fBStaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters\&.\&.\&.> &rhs, const Location &\&.\&.\&.location)"
+.br
+.RI "\fISwap elements by copy\&. \fP"
+.ti -1c
+.RI "Crtp< Type, Parameters\&.\&.\&.> \fBcopy\fP () const "
+.br
+.RI "\fICopy\&. \fP"
+.ti -1c
+.RI "template<typename OtherType  = Type, class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> Crtp< OtherType, Parameters\&.\&.\&.> \fBcast\fP () const "
+.br
+.RI "\fICast to a different data type\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBComparison\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "bool \fBnull\fP () const "
+.br
+.RI "\fICheck whether all elements are null\&. \fP"
+.ti -1c
+.RI "template<class GenericType > bool \fBeq\fP (const GenericType &rhs) const "
+.br
+.RI "\fICompare for equality\&. \fP"
+.ti -1c
+.RI "template<class GenericType > bool \fBne\fP (const GenericType &rhs) const "
+.br
+.RI "\fICompare for difference\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBStatistics\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class Mask  = std::true_type, class  = typename std::enable_if<(std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value)>::type> const Type & \fBmin\fP (const Mask &bitmask=Mask()) const "
+.br
+.RI "\fIMinimum element\&. \fP"
+.ti -1c
+.RI "template<class Mask  = std::true_type, class  = typename std::enable_if<(std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value)>::type> const Type & \fBmax\fP (const Mask &bitmask=Mask()) const "
+.br
+.RI "\fIMaximum element\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBApplication\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename Return  = Type, class Function , class\&.\&.\&. Args, class  = typename std::enable_if<!std::is_base_of<Vectorizer, typename std::decay<Function>::type>::value>::type> Crtp< Type, Parameters\&.\&.\&.> & \fBmodify\fP (Function &&f, Args &&\&.\&.\&.args)"
+.br
+.RI "\fIModification by a function object\&. \fP"
+.ti -1c
+.RI "template<typename Return  = Type, class Mask , class Function , class\&.\&.\&. Args, class  = typename std::enable_if<(std::is_base_of<Vectorizer, Mask>::value) && (!std::is_base_of<Vectorizer, typename std::decay<Function>::type>::value)>::type> Crtp< Type, Parameters\&.\&.\&.> & \fBmodify\fP (const Mask &bitmask, Function &&f, Args &&\&.\&.\&.args)"
+.br
+.RI "\fIMasked modification by a function object\&. \fP"
+.ti -1c
+.RI "template<typename Return  = Type, class Function , class\&.\&.\&. Args, class  = typename std::enable_if<!std::is_base_of<Vectorizer, typename std::decay<Function>::type>::value>::type> Crtp< Return, Parameters\&.\&.\&.> \fBapply\fP (Function &&f, Args &&\&.\&.\&.args) const "
+.br
+.RI "\fIApplication of a function object\&. \fP"
+.ti -1c
+.RI "template<typename Return  = Type, class Mask , class Function , class\&.\&.\&. Args, class  = typename std::enable_if<(std::is_base_of<Vectorizer, Mask>::value) && (!std::is_base_of<Vectorizer, typename std::decay<Function>::type>::value)>::type> Crtp< Return, Parameters\&.\&.\&.> \fBapply\fP (const Mask &bitmask, Function &&f, Args &&\&.\&.\&.args) const "
+.br
+.RI "\fIMasked application of a function object\&. \fP"
+.ti -1c
+.RI "template<typename Return  = Type, class Function  = std::plus<Type>, class  = typename std::enable_if<!std::is_base_of<Vectorizer, typename std::decay<Function>::type>::value>::type> Return \fBreduce\fP (Function &&f=Function(), const Return &init=Return()) const "
+.br
+.RI "\fIReduction by a function object\&. \fP"
+.ti -1c
+.RI "template<typename Return  = Type, class Mask , class Function  = std::plus<Type>, class  = typename std::enable_if<(std::is_base_of<Vectorizer, Mask>::value) && (!std::is_base_of<Vectorizer, typename std::decay<Function>::type>::value)>::type> Return \fBreduce\fP (const Mask &bitmask, Function &&f=Function(), const Return &init=Return()) const "
+.br
+.RI "\fIReduction by a function object\&. \fP"
+.ti -1c
+.RI "template<typename Result  = void, class Function , class Arg , class\&.\&.\&. Args, typename Return  = typename std::conditional<std::is_void<Result>::value, typename std::common_type<Type, Arg, Args\&.\&.\&.>::type, Result>::type> Crtp< Return, Parameters\&.\&.\&.> \fBcombine\fP (Function &&f, const \fBStaticVectorizer\fP< Kind, Size, Crtp, Arg, Parameters\&.\&.\&.> &arg, const \fBStaticVectorizer\fP< Kind, Size, Crtp, Args, Parameters\&.\&.\&.> &\&.\&.\&.args) const "
+.br
+.RI "\fICombination by a function object\&. \fP"
+.ti -1c
+.RI "template<typename Return  = Type, class Function > Crtp< Return, Parameters\&.\&.\&.> \fBcombine\fP (Function &&) const "
+.br
+.RI "\fIUnique combination by a function object\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBCount\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class Reference  = bool, class Mask  = std::true_type, class  = typename std::enable_if<((std::is_convertible<Type, Reference>::value) || (std::is_base_of<Vectorizer, Reference>::value)) && ((std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value))>::type> unsigned int \fBcount\fP (const Reference &r=true, const Mask &bitmask=Mask()) const "
+.br
+.RI "\fICount values\&. \fP"
+.ti -1c
+.RI "template<class Function , class Mask  = std::true_type, class  = typename std::enable_if<((!std::is_convertible<Type, typename std::decay<Function>::type>::value) && (!std::is_base_of<Vectorizer, typename std::decay<Function>::type>::value)) && ((std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value))>::type> unsigned int \fBcount\fP (Function &&f, const Mask &bitmask=Mask()) const "
+.br
+.RI "\fICount with predicate\&. \fP"
+.ti -1c
+.RI "template<class Reference  = bool, class Mask  = std::true_type, class  = typename std::enable_if<((std::is_convertible<Type, Reference>::value) || (std::is_base_of<Vectorizer, Reference>::value)) && ((std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value))>::type> bool \fBall\fP (const Reference &r=true, const Mask &bitmask=Mask()) const "
+.br
+.RI "\fIAll values equal\&. \fP"
+.ti -1c
+.RI "template<class Function , class Mask  = std::true_type, class  = typename std::enable_if<((!std::is_convertible<Type, typename std::decay<Function>::type>::value) && (!std::is_base_of<Vectorizer, typename std::decay<Function>::type>::value)) && ((std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value))>::type> bool \fBall\fP (Function &&f, const Mask &bitmask=Mask()) const "
+.br
+.RI "\fIAll values satisfying the predicate\&. \fP"
+.ti -1c
+.RI "template<class Reference  = bool, class Mask  = std::true_type, class  = typename std::enable_if<((std::is_convertible<Type, Reference>::value) || (std::is_base_of<Vectorizer, Reference>::value)) && ((std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value))>::type> bool \fBany\fP (const Reference &r=true, const Mask &bitmask=Mask()) const "
+.br
+.RI "\fIAny value equal\&. \fP"
+.ti -1c
+.RI "template<class Function , class Mask  = std::true_type, class  = typename std::enable_if<((!std::is_convertible<Type, typename std::decay<Function>::type>::value) && (!std::is_base_of<Vectorizer, typename std::decay<Function>::type>::value)) && ((std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value))>::type> bool \fBany\fP (Function &&f, const Mask &bitmask=Mask()) const "
+.br
+.RI "\fIAny value satisfying the predicate\&. \fP"
+.ti -1c
+.RI "template<class Reference  = bool, class Mask  = std::true_type, class  = typename std::enable_if<((std::is_convertible<Type, Reference>::value) || (std::is_base_of<Vectorizer, Reference>::value)) && ((std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value))>::type> bool \fBnone\fP (const Reference &r=true, const Mask &bitmask=Mask()) const "
+.br
+.RI "\fINo value equal\&. \fP"
+.ti -1c
+.RI "template<class Function , class Mask  = std::true_type, class  = typename std::enable_if<((!std::is_convertible<Type, typename std::decay<Function>::type>::value) && (!std::is_base_of<Vectorizer, typename std::decay<Function>::type>::value)) && ((std::is_base_of<Vectorizer, Mask>::value) || (std::is_same<std::true_type, Mask>::value))>::type> bool \fBnone\fP (Function &&f, const Mask &bitmask=Mask()) const "
+.br
+.RI "\fINo value satisfying the predicate\&. \fP"
+.in -1c
+.in -1c
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBStatic vectorization\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static constexpr unsigned int \fBsize\fP ()"
+.br
+.RI "\fIGet the size of the container\&. \fP"
+.ti -1c
+.RI "static constexpr bool \fBconstant\fP ()"
+.br
+.RI "\fIGet whether the container has a constant size\&. \fP"
+.ti -1c
+.RI "static constexpr bool \fBboolean\fP ()"
+.br
+.RI "\fIGet whether the container has a boolean type\&. \fP"
+.ti -1c
+.RI "static constexpr std::array
+.br
+< Kind, sizeof\&.\&.\&.(Parameters)> \fBparameters\fP ()"
+.br
+.RI "\fIGet the template parameters\&. \fP"
+.ti -1c
+.RI "static Type \fBtype\fP ()"
+.br
+.RI "\fIGet the data type\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBSize\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static constexpr bool \fBempty\fP ()"
+.br
+.RI "\fIGet whether the container is empty\&. \fP"
+.ti -1c
+.RI "static constexpr unsigned int \fBcapacity\fP ()"
+.br
+.RI "\fIGet the capacity of the container\&. \fP"
+.ti -1c
+.RI "static constexpr unsigned int \fBtbytes\fP ()"
+.br
+.RI "\fIGet the size of the data type\&. \fP"
+.ti -1c
+.RI "static constexpr unsigned long 
+.br
+long int \fBbytes\fP ()"
+.br
+.RI "\fIGet the size in bytes\&. \fP"
+.ti -1c
+.RI "static unsigned long long int \fBspace\fP ()"
+.br
+.RI "\fIGet the maximum available space\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBPredefined\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static Crtp< bool, Parameters\&.\&.\&.> \fBmask\fP (const bool value=true)"
+.br
+.RI "\fIDefault mask creation\&. \fP"
+.ti -1c
+.RI "template<class Container , class  = typename std::enable_if<(!std::is_base_of<Vectorizer, Container>::value) && (std::is_convertible<typename std::remove_reference<decltype(std::declval<Container>()[0])>::type, bool>::value) && ((std::is_void<decltype(std::declval<Container>()\&.flip())>::value) || (std::is_reference<decltype(std::declval<Container>()\&.flip())>::value))>::type> static Crtp< bool, Parameters\&.\&.\&.> \fBmask\fP (const Container &container)"
+.br
+.RI "\fIStandard boolean container mask creation\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class\&.\&.\&. Misc, class  = typename std::enable_if<std::is_convertible<OtherType, bool>::value>::type> static Crtp< bool, Parameters\&.\&.\&.> \fBmask\fP (const std::initializer_list< OtherType > &source, const Misc &\&.\&.\&.misc)"
+.br
+.RI "\fIInitializer list mask creation\&. \fP"
+.ti -1c
+.RI "template<class\&.\&.\&. Misc, class  = typename std::enable_if<sizeof\&.\&.\&.(Misc) != 0>::type> static Crtp< bool, Parameters\&.\&.\&.> \fBmask\fP (const Misc &\&.\&.\&.misc)"
+.br
+.RI "\fIGeneric mask creation\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SS "Protected Member Functions"
+
+.PP
+.RI "\fBProtected lifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fB~StaticVectorizer\fP ()"
+.br
+.RI "\fIProtected destructor\&. \fP"
+.in -1c
+.in -1c
+.SS "Friends"
+
+.PP
+.RI "\fBOperators : with lhs value\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp< typename 
+.br
+std::common_type< SelfType, 
+.br
+OtherType >::\fBtype\fP, 
+.br
+SelfParameters\&.\&.\&.> \fBoperator+\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIAddition with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp< typename 
+.br
+std::common_type< SelfType, 
+.br
+OtherType >::\fBtype\fP, 
+.br
+SelfParameters\&.\&.\&.> \fBoperator-\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fISubstraction with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp< typename 
+.br
+std::common_type< SelfType, 
+.br
+OtherType >::\fBtype\fP, 
+.br
+SelfParameters\&.\&.\&.> \fBoperator*\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIMultiplication with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp< typename 
+.br
+std::common_type< SelfType, 
+.br
+OtherType >::\fBtype\fP, 
+.br
+SelfParameters\&.\&.\&.> \fBoperator/\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIDivision with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp< typename 
+.br
+std::common_type< SelfType, 
+.br
+OtherType >::\fBtype\fP, 
+.br
+SelfParameters\&.\&.\&.> \fBoperator%\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIModulo with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp< typename 
+.br
+std::common_type< SelfType, 
+.br
+OtherType >::\fBtype\fP, 
+.br
+SelfParameters\&.\&.\&.> \fBoperator&\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIBitwise AND with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp< typename 
+.br
+std::common_type< SelfType, 
+.br
+OtherType >::\fBtype\fP, 
+.br
+SelfParameters\&.\&.\&.> \fBoperator|\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIBitwise OR with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp< typename 
+.br
+std::common_type< SelfType, 
+.br
+OtherType >::\fBtype\fP, 
+.br
+SelfParameters\&.\&.\&.> \fBoperator^\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIBitwise XOR with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp< OtherType, 
+.br
+SelfParameters\&.\&.\&.> \fBoperator<<\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIBitwise left shift with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp< OtherType, 
+.br
+SelfParameters\&.\&.\&.> \fBoperator>>\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIBitwise right shift with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp< bool, SelfParameters\&.\&.\&.> \fBoperator&&\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fILogical AND with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp< bool, SelfParameters\&.\&.\&.> \fBoperator||\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fILogical OR with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp< bool, SelfParameters\&.\&.\&.> \fBoperator==\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIEqual to with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp< bool, SelfParameters\&.\&.\&.> \fBoperator!=\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fINot equal to with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp< bool, SelfParameters\&.\&.\&.> \fBoperator>\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIGreater than with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp< bool, SelfParameters\&.\&.\&.> \fBoperator<\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fILess than with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp< bool, SelfParameters\&.\&.\&.> \fBoperator>=\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fIGreater than or equal to with lhs value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp< bool, SelfParameters\&.\&.\&.> \fBoperator<=\fP (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fILess than or equal to with lhs value\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBStream\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters> std::ostream & \fBoperator<<\fP (std::ostream &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fI\fBOutput\fP stream operator\&. \fP"
+.ti -1c
+.RI "template<typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters> std::istream & \fBoperator>>\fP (std::istream &lhs, \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)"
+.br
+.RI "\fI\fBInput\fP stream operator\&. \fP"
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters>class magrathea::StaticVectorizer< Kind, Size, Crtp, Type, Parameters >"
+Helper class for generic constant size vectorization\&. 
+
+Provides vectorization for constant size containers thanks to the curiously recurring template pattern (CRTP) trick\&. To use it, one has to derive from this class and pass the derived class itself as the CRTP parameter\&. The derived classes have to satisfy the conditions required by the \fBVectorizer\fP base class and have to implement the following functions required by CRTP : 
+.PD 0
+
+.IP "\(bu" 2
+\fC\fBoperator[](const unsigned int)\fP\fP
+.PP
+One can also modify members like \fCoperator()\fP to change the behaviour of the function\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIKind\fP Kind of arguments\&. 
+.br
+\fISize\fP Number of elements\&. 
+.br
+\fICrtp\fP Derived CRTP class\&. 
+.br
+\fIType\fP Data type\&. 
+.br
+\fIParameters\fP List of parameters\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::~\fBStaticVectorizer\fP ()\fC [inline]\fP, \fC [protected]\fP, \fC [default]\fP"
+
+.PP
+Protected destructor\&. Does nothing\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class Reference , class Mask , class > bool \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::all (const Reference &r = \fCtrue\fP, const Mask &bitmask = \fCMask()\fP) const\fC [inline]\fP"
+
+.PP
+All values equal\&. Checks if the comparison with the provided reference returns true for all elements in the specified region\&. Note that before any comparison, the values in the container are casted to the reference data type\&. With no argument, this function returns true if the whole contents is non-null (true)\&. It returns true if the container is empty\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIReference\fP (Reference type\&.) 
+.br
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIr\fP Reference for comparison : value or vectorized container\&. 
+.br
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the boolean result\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class Function , class Mask , class > bool \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::all (Function &&f, const Mask &bitmask = \fCMask()\fP) const\fC [inline]\fP"
+
+.PP
+All values satisfying the predicate\&. Checks if the unary predicate returns true for all elements in the specified region\&. It returns true if the container is empty\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFunction\fP (Function type : \fCbool(Type)\fP\&.) 
+.br
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Predicate \fCbool(Type)\fP\&. 
+.br
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the boolean result\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class Reference , class Mask , class > bool \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::any (const Reference &r = \fCtrue\fP, const Mask &bitmask = \fCMask()\fP) const\fC [inline]\fP"
+
+.PP
+Any value equal\&. Checks if the comparison with the provided reference returns true for any element in the specified region\&. Note that before any comparison, the values in the container are casted to the reference data type\&. With no argument, this function returns true if the whole contents is non-null (true)\&. It returns false if the container is empty\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIReference\fP (Reference type\&.) 
+.br
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIr\fP Reference for comparison : value or vectorized container\&. 
+.br
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the boolean result\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class Function , class Mask , class > bool \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::any (Function &&f, const Mask &bitmask = \fCMask()\fP) const\fC [inline]\fP"
+
+.PP
+Any value satisfying the predicate\&. Checks if the unary predicate returns true for any element in the specified region\&. It returns false if the container is empty\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFunction\fP (Function type : \fCbool(Type)\fP\&.) 
+.br
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Predicate \fCbool(Type)\fP\&. 
+.br
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the boolean result\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename Return , class Function , class\&.\&.\&. Args, class > Crtp< Return, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::apply (Function &&f, Args &&\&.\&.\&.args) const\fC [inline]\fP"
+
+.PP
+Application of a function object\&. Applies a function object to each element of the container and returns a copy of the result\&. For a result \fCy\fP, an element \fCx\fP, a function \fCf\fP and for extra arguments \fCargs\&.\&.\&.\fP, an equivalent expression is : \fCy = f(x, args\&.\&.\&.)\fP\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIReturn\fP Return type\&. 
+.br
+\fIFunction\fP (Function type : \fCReturn(Type, Args\&.\&.\&.)\fP\&.) 
+.br
+\fIArgs\fP (Extra types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Function object \fCReturn(Type, Args\&.\&.\&.)\fP\&. 
+.br
+\fIargs\fP Extra arguments of the function\&.  
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+\fBWarning:\fP
+.RS 4
+The size of the extra arguments is not checked\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename Return , class Mask , class Function, class\&.\&.\&. Args, class > Crtp< Return, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::apply (const Mask &bitmask, Function &&f, Args &&\&.\&.\&.args) const\fC [inline]\fP"
+
+.PP
+Masked application of a function object\&. Applies a function object to each element of the container where the mask is true and returns a copy of the result\&. For a result \fCy\fP, an element \fCx\fP, a function \fCf\fP and for extra arguments \fCargs\&.\&.\&.\fP, an equivalent expression is : \fCy = f(x, args\&.\&.\&.)\fP\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIReturn\fP Return type\&. 
+.br
+\fIMask\fP (Mask type\&.) 
+.br
+\fIFunction\fP (Function type : \fCReturn(Type, Args\&.\&.\&.)\fP\&.) 
+.br
+\fIArgs\fP (Extra types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbitmask\fP Boolean mask\&. 
+.br
+\fIf\fP Function object \fCReturn(Type, Args\&.\&.\&.)\fP\&. 
+.br
+\fIargs\fP Extra arguments of the function\&.  
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+\fBWarning:\fP
+.RS 4
+The size of the extra arguments is not checked\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class\&.\&.\&. Misc, class > Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::assign (const std::initializer_list< OtherType > &source, const Misc &\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Initializer list assignment\&. Provides an assignment from an initializer list equivalent to a call to a constructor\&. Before any operation, the contents is reinitialized to its default value\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.br
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class\&.\&.\&. Misc> Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::assign (const Misc &\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Generic assignment\&. Provides a generic assignment equivalent to a call to a constructor\&. Before any operation, the contents is reinitialized to its default value\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Type & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::at (const unsigned inti)\fC [inline]\fP"
+
+.PP
+Monodimensional access with range-check\&. Provides a monodimensional access to the element with a range-check\&. Due to the check this function is slower than the \fC[]\fP or the \fC()\fP operator\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Element index\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the element\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::out_of_range\fP Out of range\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> const Type & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::at (const unsigned inti) const\fC [inline]\fP"
+
+.PP
+Immutable monodimensional access with range-check\&. Provides a monodimensional access to the element with a range-check\&. Due to the check this function is slower than the \fC[]\fP or the \fC()\fP operator\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Element index\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the element\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::out_of_range\fP Out of range\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Type & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::back (const unsigned inti = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Monodimensional access to the i-th element from the end\&. Returns a reference to the i-th last element in the container without doing any range check\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Element index\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> const Type & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::back (const unsigned inti = \fC0\fP) const\fC [inline]\fP"
+
+.PP
+Immutable monodimensional access to the i-th element from the end\&. Returns a reference to the i-th last element in the container without doing any range check\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Element index\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> constexpr bool \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::boolean ()\fC [static]\fP"
+
+.PP
+Get whether the container has a boolean type\&. Returns true if the container has a boolean type, false otherwise\&. This function is required by the vectorization mechanism\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of true if the container has a boolean type\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> constexpr unsigned long long int \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::bytes ()\fC [static]\fP"
+
+.PP
+Get the size in bytes\&. Returns the total size in bytes which is the number of elements multiplied by the size in bytes of an element\&. This does not take into account alignment bytes : to get the real memory imprint use the \fCsizeof()\fP function\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the size in bytes\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> constexpr unsigned int \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::capacity ()\fC [static]\fP"
+
+.PP
+Get the capacity of the container\&. Returns the capacity of the container, which is equal to its size\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the capacity\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< OtherType, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::cast () const\fC [inline]\fP"
+
+.PP
+Cast to a different data type\&. Returns a copy of the container converted to another data type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP Other data type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class GenericType > Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::change (const GenericType &source, const unsigned intpos, const unsigned intnum = \fC1\fP)\fC [inline]\fP"
+
+.PP
+Change an element of the container\&. Provides a single element assignment to modify the contents\&. This function is well suited for chaining assignment\&. This is equivalent to the \fC\fBput()\fP\fP function but it operates on a copy and not on the container itself\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIGenericType\fP (Value or vectorized type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.br
+\fIpos\fP Starting position of the copy\&. 
+.br
+\fInum\fP Number of elements to copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::clear ()\fC [inline]\fP"
+
+.PP
+Clear contents\&. Clear the whole contents and sets the size to zero\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::length_error\fP The container cannot be resized\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename Result , class Function , class Arg , class\&.\&.\&. Args, typename Return > Crtp< Return, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::combine (Function &&f, const \fBStaticVectorizer\fP< Kind, Size, Crtp, Arg, Parameters\&.\&.\&.> &arg, const \fBStaticVectorizer\fP< Kind, Size, Crtp, Args, Parameters\&.\&.\&.> &\&.\&.\&.args) const\fC [inline]\fP"
+
+.PP
+Combination by a function object\&. Combines several vectorized containers using a function object\&. It is equivalent to a transversal reduction operation\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIResult\fP Specified return type\&. 
+.br
+\fIFunction\fP (Function type : \fCReturn(Return, Type)\fP\&.) 
+.br
+\fIArg\fP (First argument type\&.) 
+.br
+\fIArgs\fP (Other argument types\&.) 
+.br
+\fIReturn\fP Return type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Function object \fCReturn(Return, Type)\fP\&. 
+.br
+\fIarg\fP First argument\&. 
+.br
+\fIargs\fP Other arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename Return , class Function > Crtp< Return, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::combine (Function &&) const\fC [inline]\fP"
+
+.PP
+Unique combination by a function object\&. Does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIReturn\fP Return type\&. 
+.br
+\fIFunction\fP (Function type : \fCReturn(Return, Type)\fP\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> constexpr bool \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::constant ()\fC [static]\fP"
+
+.PP
+Get whether the container has a constant size\&. Returns true if the container has a constant size, false otherwise\&. This function is required by the vectorization mechanism\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of true\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::copy () const\fC [inline]\fP"
+
+.PP
+Copy\&. Returns a copy of the container\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class Reference , class Mask , class > unsigned int \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::count (const Reference &r = \fCtrue\fP, const Mask &bitmask = \fCMask()\fP) const\fC [inline]\fP"
+
+.PP
+Count values\&. Count the number of valid comparisons with the provided reference in the specified region\&. Note that before any comparison, the values in the container are casted to the reference data type\&. With no argument, this function counts the number of non-null values (true) in the container\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIReference\fP (Reference type\&.) 
+.br
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIr\fP Reference for comparison : value or vectorized container\&. 
+.br
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the valid counts\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class Function , class Mask , class > unsigned int \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::count (Function &&f, const Mask &bitmask = \fCMask()\fP) const\fC [inline]\fP"
+
+.PP
+Count with predicate\&. Count the numbers of times the predicate is true in the specified region\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFunction\fP (Function type : \fCbool(Type)\fP\&.) 
+.br
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Predicate \fCbool(Type)\fP\&. 
+.br
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the valid counts\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Type & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::cycle (const inti)\fC [inline]\fP"
+
+.PP
+Cyclic monodimensional access to the contents\&. Provides a cyclic access to the contents, using the index modulo\&. Negative indexes are supported\&. It allows to iterate several times over the contents just by incrementing the provided index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Element index\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> const Type & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::cycle (const inti) const\fC [inline]\fP"
+
+.PP
+Immutable cyclic monodimensional access to the contents\&. Provides a cyclic access to the contents, using the index modulo\&. Negative indexes are supported\&. It allows to iterate several times over the contents just by incrementing the provided index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Element index\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> constexpr bool \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::empty ()\fC [static]\fP"
+
+.PP
+Get whether the container is empty\&. Returns the result of the comparison between the size and zero\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the result of the test\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class GenericType > bool \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::eq (const GenericType &rhs) const\fC [inline]\fP"
+
+.PP
+Compare for equality\&. Returns true if all elements of the containers are equal, returns false otherwise\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIGenericType\fP (Value or vectorized type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the result\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> int \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBStaticVectorizer\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class\&.\&.\&. Misc, class > Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::fill (const std::initializer_list< OtherType > &source, const Misc &\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Initializer list fill\&. Fills the contents using the \fC\fBset()\fP\fP function and without reinitializing the contents before any operation\&. This is equivalent to the \fC\fBreplace()\fP\fP function but it operates on the container itself and not on a copy\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.br
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class\&.\&.\&. Misc> Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::fill (const Misc &\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Generic fill\&. Fills the contents using the \fC\fBset()\fP\fP function and without reinitializing the contents before any operation\&. This is equivalent to the \fC\fBreplace()\fP\fP function but it operates on the container itself and not on a copy\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Type & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::front (const unsigned inti = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Monodimensional access to the i-th element from the beginning\&. Returns a reference to the i-th first element in the container without doing any range check\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Element index\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> const Type & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::front (const unsigned inti = \fC0\fP) const\fC [inline]\fP"
+
+.PP
+Immutable monodimensional access to the i-th element from the beginning\&. Returns a reference to the i-th first element in the container without doing any range check\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Element index\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Crtp< bool, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::mask (const boolvalue = \fCtrue\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Default mask creation\&. Creates a mask from a boolean value, which is true per default\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Boolean value used to create the mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class Container , class > Crtp< bool, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::mask (const Container &container)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Standard boolean container mask creation\&. Creates a mask from a standard boolean container, which can be a \fCstd::bitset\fP or a \fCstd::vector<bool>\fP\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIContainer\fP (Boolean container type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontainer\fP Boolean container\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class\&.\&.\&. Misc, class > Crtp< bool, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::mask (const std::initializer_list< OtherType > &source, const Misc &\&.\&.\&.misc)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Initializer list mask creation\&. Creates a mask from an initializer list by calling the associated constructor\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.br
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class\&.\&.\&. Misc, class > Crtp< bool, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::mask (const Misc &\&.\&.\&.misc)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Generic mask creation\&. Creates a mask from generic arguments by calling the associated constructor\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class Mask , class > const Type & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::max (const Mask &bitmask = \fCMask()\fP) const\fC [inline]\fP"
+
+.PP
+Maximum element\&. Returns a reference to the maximum element of the container or masked container\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the element\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::runtime_error\fP Empty search\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class Mask , class > const Type & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::min (const Mask &bitmask = \fCMask()\fP) const\fC [inline]\fP"
+
+.PP
+Minimum element\&. Returns a reference to the minimum element of the container or masked container\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the element\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::runtime_error\fP Empty search\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename Return , class Function , class\&.\&.\&. Args, class > Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::modify (Function &&f, Args &&\&.\&.\&.args)\fC [inline]\fP"
+
+.PP
+Modification by a function object\&. Modifies the container by applying a function object to each element\&. For an element \fCx\fP, a function \fCf\fP and for extra arguments \fCargs\&.\&.\&.\fP, an equivalent expression is : \fCx = f(x, args\&.\&.\&.)\fP\&. The return type is used as an internal cast before affectation\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIReturn\fP Return type\&. 
+.br
+\fIFunction\fP (Function type : \fCType(Type, Args\&.\&.\&.)\fP\&.) 
+.br
+\fIArgs\fP (Extra types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Function object \fCType(Type, Args\&.\&.\&.)\fP\&. 
+.br
+\fIargs\fP Extra arguments of the function\&.  
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+\fBWarning:\fP
+.RS 4
+The size of the extra arguments is not checked\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename Return , class Mask , class Function, class\&.\&.\&. Args, class > Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::modify (const Mask &bitmask, Function &&f, Args &&\&.\&.\&.args)\fC [inline]\fP"
+
+.PP
+Masked modification by a function object\&. Modifies the container by applying a function object to each element where the mask is true\&. For an element \fCx\fP, a function \fCf\fP and for extra arguments \fCargs\&.\&.\&. \fP, an equivalent expression is : \fCx = f(x, args\&.\&.\&.) \fP\&. The return type is used as an internal cast before affectation\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIReturn\fP Return type\&. 
+.br
+\fIMask\fP (Mask type\&.) 
+.br
+\fIFunction\fP (Function type : \fCType(Type, Args\&.\&.\&.)\fP\&.) 
+.br
+\fIArgs\fP (Extra types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbitmask\fP Boolean mask\&. 
+.br
+\fIf\fP Function object \fCType(Type, Args\&.\&.\&.)\fP\&. 
+.br
+\fIargs\fP Extra arguments of the function\&.  
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+\fBWarning:\fP
+.RS 4
+The size of the extra arguments is not checked\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class GenericType > bool \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::ne (const GenericType &rhs) const\fC [inline]\fP"
+
+.PP
+Compare for difference\&. Returns true if at least one element is different in the two containers, returns false otherwise\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIGenericType\fP (Value or vectorized type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the result\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class Reference , class Mask , class > bool \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::none (const Reference &r = \fCtrue\fP, const Mask &bitmask = \fCMask()\fP) const\fC [inline]\fP"
+
+.PP
+No value equal\&. Checks if the comparison with the provided reference returns true for no element in the specified region\&. Note that before any comparison, the values in the container are casted to the reference data type\&. With no argument, this function returns true if the whole contents is null (false)\&. It returns true if the container is empty\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIReference\fP (Reference type\&.) 
+.br
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIr\fP Reference for comparison : value or vectorized container\&. 
+.br
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the boolean result\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class Function , class Mask , class > bool \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::none (Function &&f, const Mask &bitmask = \fCMask()\fP) const\fC [inline]\fP"
+
+.PP
+No value satisfying the predicate\&. Checks if the unary predicate returns true for no element in the specified region\&. It returns true if the container is empty\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFunction\fP (Function type : \fCbool(Type)\fP\&.) 
+.br
+\fIMask\fP (Mask type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Predicate \fCbool(Type)\fP\&. 
+.br
+\fIbitmask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the boolean result\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> bool \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::null () const\fC [inline]\fP"
+
+.PP
+Check whether all elements are null\&. Returns true if all elements are set to their default value, returns false otherwise\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the result of the test\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class\&.\&.\&. Location> Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::nullify (const Location &\&.\&.\&.location)\fC [inline]\fP"
+
+.PP
+Set elements to their default values\&. Sets the specified elements to their default value using the \fC\fBset()\fP\fP function for the provided location\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fILocation\fP (Mask or position specifiers\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlocation\fP Boolean mask or starting position and number of elements\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Crtp< bool, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator! () const\fC [inline]\fP"
+
+.PP
+Logical NOT\&. Applies the logical NOT operator to each element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< bool, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::\fBoperator!\fP= (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const\fC [inline]\fP"
+
+.PP
+Not equal to\&. Applies the not equal to operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< bool, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::\fBoperator!\fP= (const OtherType &rhs) const\fC [inline]\fP"
+
+.PP
+Not equal to with rhs value\&. Applies the not equal to operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< typename std::common_type< Type, OtherType >::\fBtype\fP, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator% (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const\fC [inline]\fP"
+
+.PP
+Modulo\&. Applies the modulo operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< typename std::common_type< Type, OtherType >::\fBtype\fP, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator% (const OtherType &rhs) const\fC [inline]\fP"
+
+.PP
+Modulo with rhs value\&. Applies the modulo operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class GenericType > Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator%= (const GenericType &rhs)\fC [inline]\fP"
+
+.PP
+Modulo assignment\&. Applies the modulo assignment operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIGenericType\fP (Value or vectorized type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< typename std::common_type< Type, OtherType >::\fBtype\fP, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator& (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const\fC [inline]\fP"
+
+.PP
+Bitwise AND\&. Applies the bitwise AND operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< typename std::common_type< Type, OtherType >::\fBtype\fP, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator& (const OtherType &rhs) const\fC [inline]\fP"
+
+.PP
+Bitwise AND with rhs value\&. Applies the bitwise AND operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< bool, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator&& (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const\fC [inline]\fP"
+
+.PP
+Logical AND\&. Applies the logical AND operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< bool, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator&& (const OtherType &rhs) const\fC [inline]\fP"
+
+.PP
+Logical AND with rhs value\&. Applies the logical AND operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class GenericType > Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator&= (const GenericType &rhs)\fC [inline]\fP"
+
+.PP
+Bitwise AND assignment\&. Applies the bitwise AND assignment operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIGenericType\fP (Value or vectorized type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> \fBStaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator() ()\fC [inline]\fP"
+
+.PP
+Abstract class access\&. Casts to the abstract class\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> const \fBStaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator() () const\fC [inline]\fP"
+
+.PP
+Immutable abstract class access\&. Casts to the abstract class\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Type & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator() (const unsigned inti)\fC [inline]\fP"
+
+.PP
+Monodimensional access operator\&. Provides a monodimensional access to the element\&. For a monodimensional array, it is equivalent to the \fC[]\fP operator\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Element index\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> const Type & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator() (const unsigned inti) const\fC [inline]\fP"
+
+.PP
+Immutable monodimensional access operator\&. Provides a monodimensional access to the element\&. For a monodimensional array, it is equivalent to the \fC[]\fP operator\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Element index\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< typename std::common_type< Type, OtherType >::\fBtype\fP, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator* (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const\fC [inline]\fP"
+
+.PP
+Multiplication\&. Applies the multiplication operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< typename std::common_type< Type, OtherType >::\fBtype\fP, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator* (const OtherType &rhs) const\fC [inline]\fP"
+
+.PP
+Multiplication with rhs value\&. Applies the multiplication operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class GenericType > Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator*= (const GenericType &rhs)\fC [inline]\fP"
+
+.PP
+Multiplication assignment\&. Applies the multiplication assignment operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIGenericType\fP (Value or vectorized type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< typename std::common_type< Type, OtherType >::\fBtype\fP, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator+ (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const\fC [inline]\fP"
+
+.PP
+Addition\&. Applies the addition operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< typename std::common_type< Type, OtherType >::\fBtype\fP, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator+ (const OtherType &rhs) const\fC [inline]\fP"
+
+.PP
+Addition with rhs value\&. Applies the addition operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator+ () const\fC [inline]\fP"
+
+.PP
+Integer promotion\&. Applies the integer promotion operator to each element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator++ ()\fC [inline]\fP"
+
+.PP
+Increment prefix\&. Applies the increment prefix operator to each element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator++ (int)\fC [inline]\fP"
+
+.PP
+Increment suffix\&. Applies the increment suffix operator to each element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class GenericType > Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator+= (const GenericType &rhs)\fC [inline]\fP"
+
+.PP
+Addition assignment\&. Applies the addition assignment operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIGenericType\fP (Value or vectorized type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< typename std::common_type< Type, OtherType >::\fBtype\fP, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator- (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const\fC [inline]\fP"
+
+.PP
+Substraction\&. Applies the substraction operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< typename std::common_type< Type, OtherType >::\fBtype\fP, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator- (const OtherType &rhs) const\fC [inline]\fP"
+
+.PP
+Substraction with rhs value\&. Applies the substraction operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator- () const\fC [inline]\fP"
+
+.PP
+Additive inverse\&. Applies the additive inverse operator to each element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator-- ()\fC [inline]\fP"
+
+.PP
+Decrement prefix\&. Applies the decrement prefix operator to each element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator-- (int)\fC [inline]\fP"
+
+.PP
+Decrement suffix\&. Applies the decrement suffix operator to each element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class GenericType > Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator-= (const GenericType &rhs)\fC [inline]\fP"
+
+.PP
+Substraction assignment\&. Applies the substraction assignment operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIGenericType\fP (Value or vectorized type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< typename std::common_type< Type, OtherType >::\fBtype\fP, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator/ (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const\fC [inline]\fP"
+
+.PP
+Division\&. Applies the division operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< typename std::common_type< Type, OtherType >::\fBtype\fP, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator/ (const OtherType &rhs) const\fC [inline]\fP"
+
+.PP
+Division with rhs value\&. Applies the division operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class GenericType > Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator/= (const GenericType &rhs)\fC [inline]\fP"
+
+.PP
+Division assignment\&. Applies the division assignment operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIGenericType\fP (Value or vectorized type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< bool, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator< (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const\fC [inline]\fP"
+
+.PP
+Less than\&. Applies the less than operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< bool, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator< (const OtherType &rhs) const\fC [inline]\fP"
+
+.PP
+Less than with rhs value\&. Applies the less than operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator<< (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const\fC [inline]\fP"
+
+.PP
+Bitwise left shift\&. Applies the bitwise left shift operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator<< (const OtherType &rhs) const\fC [inline]\fP"
+
+.PP
+Bitwise left shift with rhs value\&. Applies the bitwise left shift operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class GenericType > Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator<<= (const GenericType &rhs)\fC [inline]\fP"
+
+.PP
+Bitwise left shift assignment\&. Applies the bitwise left shift assignment operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIGenericType\fP (Value or vectorized type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< bool, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator<= (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const\fC [inline]\fP"
+
+.PP
+Less than or equal to\&. Applies the less than or equal to operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< bool, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator<= (const OtherType &rhs) const\fC [inline]\fP"
+
+.PP
+Less than or equal to with rhs value\&. Applies the less than or equal to operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator= (const \fBStaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters\&.\&.\&.> &rhs)\fC [inline]\fP"
+
+.PP
+Copy assignment operator\&. Copies the contents of the container\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator= (const std::initializer_list< OtherType > &rhs)\fC [inline]\fP"
+
+.PP
+Initializer list assignment operator\&. Provides an initializer list assignment\&. The assignment is delegated to the \fC\fBset()\fP\fP helper function thanks to the following call : \fCset(*this, rhs)\fP\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class Misc > Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator= (const Misc &rhs)\fC [inline]\fP"
+
+.PP
+Copy assignment operator\&. Provides a generic assignment\&. The assignment is delegated to the \fC\fBset()\fP\fP helper function\&. Conversion assignment, value assignment and assignment are provided through this function thanks to the following call : \fCset(*this, misc\&.\&.\&.)\fP\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMisc\fP (\fBMiscellaneous\fP type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< bool, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator== (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const\fC [inline]\fP"
+
+.PP
+Equal to\&. Applies the equal to operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< bool, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator== (const OtherType &rhs) const\fC [inline]\fP"
+
+.PP
+Equal to with rhs value\&. Applies the equal to operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< bool, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator> (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const\fC [inline]\fP"
+
+.PP
+Greater than\&. Applies the greater than operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< bool, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator> (const OtherType &rhs) const\fC [inline]\fP"
+
+.PP
+Greater than with rhs value\&. Applies the greater than operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< bool, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator>= (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const\fC [inline]\fP"
+
+.PP
+Greater than or equal to\&. Applies the greater than or equal to operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< bool, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator>= (const OtherType &rhs) const\fC [inline]\fP"
+
+.PP
+Greater than or equal to with rhs value\&. Applies the greater than or equal to operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator>> (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const\fC [inline]\fP"
+
+.PP
+Bitwise right shift\&. Applies the bitwise right shift operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator>> (const OtherType &rhs) const\fC [inline]\fP"
+
+.PP
+Bitwise right shift with rhs value\&. Applies the bitwise right shift operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class GenericType > Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator>>= (const GenericType &rhs)\fC [inline]\fP"
+
+.PP
+Bitwise right shift assignment\&. Applies the bitwise right shift assignment operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIGenericType\fP (Value or vectorized type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Type & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator[] (const unsigned inti)\fC [inline]\fP"
+
+.PP
+Direct access to the element\&. Provides a direct access to the specified element\&. This function is required by the vectorization mechanism\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index of the element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> const Type & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator[] (const unsigned inti) const\fC [inline]\fP"
+
+.PP
+Immutable direct access to the element\&. Provides a constant direct access to the specified element\&. This function is required by the vectorization mechanism\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index of the element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the element\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< typename std::common_type< Type, OtherType >::\fBtype\fP, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator^ (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const\fC [inline]\fP"
+
+.PP
+Bitwise XOR\&. Applies the bitwise XOR operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< typename std::common_type< Type, OtherType >::\fBtype\fP, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator^ (const OtherType &rhs) const\fC [inline]\fP"
+
+.PP
+Bitwise XOR with rhs value\&. Applies the bitwise XOR operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class GenericType > Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator^= (const GenericType &rhs)\fC [inline]\fP"
+
+.PP
+Bitwise XOR assignment\&. Applies the bitwise XOR assignment operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIGenericType\fP (Value or vectorized type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< typename std::common_type< Type, OtherType >::\fBtype\fP, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator| (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const\fC [inline]\fP"
+
+.PP
+Bitwise OR\&. Applies the bitwise OR operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< typename std::common_type< Type, OtherType >::\fBtype\fP, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator| (const OtherType &rhs) const\fC [inline]\fP"
+
+.PP
+Bitwise OR with rhs value\&. Applies the bitwise OR operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class GenericType > Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator|= (const GenericType &rhs)\fC [inline]\fP"
+
+.PP
+Bitwise OR assignment\&. Applies the bitwise OR assignment operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIGenericType\fP (Value or vectorized type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< bool, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator|| (const \fBStaticVectorizer\fP< Kind, Size, Crtp, OtherType, Parameters\&.\&.\&.> &rhs) const\fC [inline]\fP"
+
+.PP
+Logical OR\&. Applies the logical OR operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class > Crtp< bool, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator|| (const OtherType &rhs) const\fC [inline]\fP"
+
+.PP
+Logical OR with rhs value\&. Applies the logical OR operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::operator~ () const\fC [inline]\fP"
+
+.PP
+Bitwise NOT\&. Applies the bitwise NOT operator to each element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> constexpr std::array< Kind, sizeof\&.\&.\&.(Parameters)> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::parameters ()\fC [static]\fP"
+
+.PP
+Get the template parameters\&. Returns an array containing the template parameters\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of an array of parameters\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class GenericType > Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::put (const GenericType &source, const unsigned intpos, const unsigned intnum = \fC1\fP)\fC [inline]\fP"
+
+.PP
+Put an element in the container\&. Provides a single element assignment to modify the contents\&. This function is well suited for chaining assignment\&. This is equivalent to the \fC\fBchange()\fP\fP function but it operates on the container itself and not on a copy\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIGenericType\fP (Value or vectorized type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.br
+\fIpos\fP Starting position of the copy\&. 
+.br
+\fInum\fP Number of elements to copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename Return , class Function , class > Return \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::reduce (Function &&f = \fCFunction()\fP, const Return &init = \fCReturn()\fP) const\fC [inline]\fP"
+
+.PP
+Reduction by a function object\&. Reduces the contents using a binary function object initialized to the \fCinit\fP value\&. For each reduced element \fCx\fP, the equivalent expression is \fCresult = f(result, x)\fP\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIReturn\fP Return type\&. 
+.br
+\fIFunction\fP (Function type : \fCReturn(Return, Type)\fP\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Function object \fCReturn(Return, Type)\fP\&. 
+.br
+\fIinit\fP Initial value for the reduction\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the result\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename Return , class Mask , class Function , class > Return \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::reduce (const Mask &bitmask, Function &&f = \fCFunction()\fP, const Return &init = \fCReturn()\fP) const\fC [inline]\fP"
+
+.PP
+Reduction by a function object\&. Reduces the contents using a binary function object initialized to the \fCinit\fP value where the mask is true\&. For each reduced element \fCx\fP, the equivalent expression is \fCresult = f(result, x)\fP\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIReturn\fP Return type\&. 
+.br
+\fIMask\fP (Mask type\&.) 
+.br
+\fIFunction\fP (Function type : \fCReturn(Return, Type)\fP\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbitmask\fP Boolean mask\&. 
+.br
+\fIf\fP Function object \fCReturn(Return, Type)\fP\&. 
+.br
+\fIinit\fP Initial value for the reduction\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the result\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<typename OtherType , class\&.\&.\&. Misc, class > Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::replace (const std::initializer_list< OtherType > &source, const Misc &\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Initializer list replace\&. Replaces the contents using the \fC\fBset()\fP\fP function and without reinitializing the contents before any operation\&. This is equivalent to the \fC\fBfill()\fP\fP function but it operates on a copy and not on the container itself\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.br
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> template<class\&.\&.\&. Misc> Crtp< Type, Parameters\&.\&.\&.> \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::replace (const Misc &\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Generic replace\&. Replaces the contents using the \fC\fBset()\fP\fP function and without reinitializing the contents before any operation\&. This is equivalent to the \fC\fBfill()\fP\fP function but it operates on a copy and not on the container itself\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::reserve (const unsigned intn)\fC [inline]\fP"
+
+.PP
+Reserve new space for the container\&. Reserves new space for the container in order to optimize future resize calls\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIn\fP New size for reservation\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::length_error\fP The container cannot be resized\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::resize (const unsigned intn)\fC [inline]\fP"
+
+.PP
+Resize the container\&. Resizes the container and returns a reference to it\&. This function is required by the vectorization mechanism\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIn\fP New size\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::length_error\fP The container cannot be resized\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> constexpr unsigned int \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::size ()\fC [static]\fP"
+
+.PP
+Get the size of the container\&. Returns the current number of elements\&. This function is required by the vectorization mechanism\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the size\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> unsigned long long int \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::space ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Get the maximum available space\&. Returns the \fCmax_size()\fP of a \fCstd::vector\fP of the same type\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the maximum size\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<class\&.\&.\&. Location> Crtp< Type, Parameters\&.\&.\&.> & \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::swap (\fBStaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters\&.\&.\&.> &rhs, const Location &\&.\&.\&.location)\fC [inline]\fP"
+
+.PP
+Swap elements by copy\&. Swaps the elements of the two containers by copy at the provided location and returns a reference to the left-hand side\&. The resulting operation is not optimal because it implies a temporary copy\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fILocation\fP (Mask or position specifiers\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.br
+\fIlocation\fP Boolean mask or starting position and number of elements\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> constexpr unsigned int \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::tbytes ()\fC [static]\fP"
+
+.PP
+Get the size of the data type\&. Returns the size of the element type in bytes\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the size of the data type\&. 
+.RE
+.PP
+
+.SS "template<typename Kind , unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type , Kind\&.\&.\&. Parameters> Type \fBmagrathea::StaticVectorizer\fP< Kind, Size, Crtp, Type, Parameters >::type ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Get the data type\&. Returns a copy of the default value of the data type\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the default value of the data type\&. 
+.RE
+.PP
+
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp<bool, SelfParameters\&.\&.\&.> \fBoperator!\fP= (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [friend]\fP"
+
+.PP
+Not equal to with lhs value\&. Applies the not equal to operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp<typename std::common_type<SelfType, OtherType>::\fBtype\fP, SelfParameters\&.\&.\&.> operator% (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [friend]\fP"
+
+.PP
+Modulo with lhs value\&. Applies the modulo operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp<typename std::common_type<SelfType, OtherType>::\fBtype\fP, SelfParameters\&.\&.\&.> operator& (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [friend]\fP"
+
+.PP
+Bitwise AND with lhs value\&. Applies the bitwise AND operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp<bool, SelfParameters\&.\&.\&.> operator&& (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [friend]\fP"
+
+.PP
+Logical AND with lhs value\&. Applies the logical AND operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp<typename std::common_type<SelfType, OtherType>::\fBtype\fP, SelfParameters\&.\&.\&.> operator* (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [friend]\fP"
+
+.PP
+Multiplication with lhs value\&. Applies the multiplication operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp<typename std::common_type<SelfType, OtherType>::\fBtype\fP, SelfParameters\&.\&.\&.> operator+ (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [friend]\fP"
+
+.PP
+Addition with lhs value\&. Applies the addition operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp<typename std::common_type<SelfType, OtherType>::\fBtype\fP, SelfParameters\&.\&.\&.> operator- (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [friend]\fP"
+
+.PP
+Substraction with lhs value\&. Applies the substraction operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp<typename std::common_type<SelfType, OtherType>::\fBtype\fP, SelfParameters\&.\&.\&.> operator/ (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [friend]\fP"
+
+.PP
+Division with lhs value\&. Applies the division operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp<bool, SelfParameters\&.\&.\&.> operator< (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [friend]\fP"
+
+.PP
+Less than with lhs value\&. Applies the less than operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp<OtherType, SelfParameters\&.\&.\&.> operator<< (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [friend]\fP"
+
+.PP
+Bitwise left shift with lhs value\&. Applies the bitwise left shift operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters> std::ostream& operator<< (std::ostream &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [friend]\fP"
+
+.PP
+\fBOutput\fP stream operator\&. Adds each element to the stream using the \fC\fBfill()\fP\fP character as a separator\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side stream\&. 
+.br
+\fIrhs\fP Right-hand side container\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBOutput\fP stream\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp<bool, SelfParameters\&.\&.\&.> operator<= (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [friend]\fP"
+
+.PP
+Less than or equal to with lhs value\&. Applies the less than or equal to operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp<bool, SelfParameters\&.\&.\&.> operator== (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [friend]\fP"
+
+.PP
+Equal to with lhs value\&. Applies the equal to operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp<bool, SelfParameters\&.\&.\&.> operator> (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [friend]\fP"
+
+.PP
+Greater than with lhs value\&. Applies the greater than operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp<bool, SelfParameters\&.\&.\&.> operator>= (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [friend]\fP"
+
+.PP
+Greater than or equal to with lhs value\&. Applies the greater than or equal to operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp<OtherType, SelfParameters\&.\&.\&.> operator>> (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [friend]\fP"
+
+.PP
+Bitwise right shift with lhs value\&. Applies the bitwise right shift operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters> std::istream& operator>> (std::istream &lhs, \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [friend]\fP"
+
+.PP
+\fBInput\fP stream operator\&. Fills each element from the stream\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side stream\&. 
+.br
+\fIrhs\fP Right-hand side container\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBInput\fP stream\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp<typename std::common_type<SelfType, OtherType>::\fBtype\fP, SelfParameters\&.\&.\&.> operator^ (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [friend]\fP"
+
+.PP
+Bitwise XOR with lhs value\&. Applies the bitwise XOR operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp<typename std::common_type<SelfType, OtherType>::\fBtype\fP, SelfParameters\&.\&.\&.> operator| (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [friend]\fP"
+
+.PP
+Bitwise OR with lhs value\&. Applies the bitwise OR operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Common type copy\&. 
+.RE
+.PP
+
+.SS "template<typename Kind, unsigned int Size, template< typename, Kind\&.\&.\&.> class Crtp, typename Type, Kind\&.\&.\&. Parameters> template<typename OtherType , typename SelfKind , unsigned int SelfSize, template< typename, SelfKind\&.\&.\&.> class SelfCrtp, typename SelfType , SelfKind\&.\&.\&. SelfParameters, class > SelfCrtp<bool, SelfParameters\&.\&.\&.> operator|| (const OtherType &lhs, const \fBStaticVectorizer\fP< SelfKind, SelfSize, SelfCrtp, SelfType, SelfParameters\&.\&.\&.> &rhs)\fC [friend]\fP"
+
+.PP
+Logical OR with lhs value\&. Applies the logical OR operator to each element\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fISelfKind\fP (Kind of arguments\&.) 
+.br
+\fISelfSize\fP (Number of elements\&.) 
+.br
+\fISelfCrtp\fP (Derived CRTP class\&.) 
+.br
+\fISelfType\fP (Data type\&.) 
+.br
+\fISelfParameters\fP (List of parameters\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side\&. 
+.br
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean copy\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

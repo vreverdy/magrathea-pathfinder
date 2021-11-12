@@ -1,0 +1,383 @@
+\hypertarget{classmagrathea_1_1AbstractShape}{\section{magrathea\-:\-:Abstract\-Shape Class Reference}
+\label{classmagrathea_1_1AbstractShape}\index{magrathea\-::\-Abstract\-Shape@{magrathea\-::\-Abstract\-Shape}}
+}
+
+
+Common abstraction of n-\/dimensional shapes.  
+
+
+
+
+{\ttfamily \#include $<$abstractshape.\-h$>$}
+
+Inheritance diagram for magrathea\-:\-:Abstract\-Shape\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.435459cm]{classmagrathea_1_1AbstractShape}
+\end{center}
+\end{figure}
+\subsection*{Static Public Member Functions}
+\begin{Indent}{\bf Mathematical functions}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$int Exponent, typename Type $>$ }\\static constexpr Type \hyperlink{classmagrathea_1_1AbstractShape_addc3d8958b27b24b554a7753260e26fb}{pow} (const Type \&value)
+\begin{DoxyCompactList}\small\item\em Integral exponentiation. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int Root, typename Type $>$ }\\static constexpr Type \hyperlink{classmagrathea_1_1AbstractShape_acfe83657f79a6fcbe5d9738e1eb21c47}{rt} (const Type \&value)
+\begin{DoxyCompactList}\small\item\em Floating-\/point root. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int Value, typename Type  = long long int$>$ }\\static constexpr Type \hyperlink{classmagrathea_1_1AbstractShape_a504662ac2e5983fa9d4b1fe83687f455}{factorial} ()
+\begin{DoxyCompactList}\small\item\em Factorial. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int Value, bool Odd, typename Type  = long long int$>$ }\\static constexpr Type \hyperlink{classmagrathea_1_1AbstractShape_ab1ea9fd7a67575173ec2f972f1762718}{factorial} ()
+\item 
+{\footnotesize template$<$int Set, int Subset, typename Type  = long long int$>$ }\\static constexpr Type \hyperlink{classmagrathea_1_1AbstractShape_afac5f2f05a6266a88c0fd3958ec4bdb2}{binomial} ()
+\begin{DoxyCompactList}\small\item\em Binomial. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int Set, int Subset, bool Repetition, typename Type  = long long int$>$ }\\static constexpr Type \hyperlink{classmagrathea_1_1AbstractShape_a4cf829267323ad25824ab956f5d9ce5a}{combinations} ()
+\begin{DoxyCompactList}\small\item\em Combinations. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int Set, int Subset, bool Repetition, typename Type  = long long int$>$ }\\static constexpr Type \hyperlink{classmagrathea_1_1AbstractShape_a8e9095e3f654e760652205547891f4c4}{variations} ()
+\begin{DoxyCompactList}\small\item\em Variations. \end{DoxyCompactList}\item 
+{\footnotesize template$<$long long int Value, long long int Even = 1, long long int Odd = -\/1, typename Type  = long long int$>$ }\\static constexpr Type \hyperlink{classmagrathea_1_1AbstractShape_aad71cb2f8187c2831b6ac3b6cf8084e3}{alt} ()
+\begin{DoxyCompactList}\small\item\em Alternating sequence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Constants}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$int Exponent = 1, typename Type  = double$>$ }\\static constexpr Type \hyperlink{classmagrathea_1_1AbstractShape_a4b038a58859de1911d04584dd7b18e3f}{golden} ()
+\begin{DoxyCompactList}\small\item\em Golden ratio. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int Exponent = 1, typename Type  = double$>$ }\\static constexpr Type \hyperlink{classmagrathea_1_1AbstractShape_ad782623b5d444a31418ec129c17c3c4d}{pi} ()
+\begin{DoxyCompactList}\small\item\em Pi. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int Exponent = 1, typename Type  = double$>$ }\\static constexpr Type \hyperlink{classmagrathea_1_1AbstractShape_ab2302d9c9fe8f3294a19e1195e4cb7dc}{sqrtpi} ()
+\begin{DoxyCompactList}\small\item\em Square root of pi. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Test}\par
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{classmagrathea_1_1AbstractShape_a4a507954044448b960294dbc12cb668f}{example} ()
+\begin{DoxyCompactList}\small\item\em Example function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Protected Member Functions}
+\begin{Indent}{\bf Protected lifecycle}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmagrathea_1_1AbstractShape_aa4a59365d6616259ab2fe03c4c37c740}{$\sim$\-Abstract\-Shape} ()
+\begin{DoxyCompactList}\small\item\em Protected destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Lifecycle}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class... Dummy$>$ }\\\hyperlink{classmagrathea_1_1AbstractShape_a9a6c6b4f5dd7bbea6625eb64fb162687}{Abstract\-Shape} (const Dummy \&...dummy)
+\begin{DoxyCompactList}\small\item\em Explicit generic constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+Common abstraction of n-\/dimensional shapes. 
+
+Provides compile-\/time helper functions to deal with n-\/dimensional geometrical objects like hypercubes or hyperspheres. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmagrathea_1_1AbstractShape_aa4a59365d6616259ab2fe03c4c37c740}{\index{magrathea\-::\-Abstract\-Shape@{magrathea\-::\-Abstract\-Shape}!$\sim$\-Abstract\-Shape@{$\sim$\-Abstract\-Shape}}
+\index{$\sim$\-Abstract\-Shape@{$\sim$\-Abstract\-Shape}!magrathea::AbstractShape@{magrathea\-::\-Abstract\-Shape}}
+\subsubsection[{$\sim$\-Abstract\-Shape}]{\setlength{\rightskip}{0pt plus 5cm}magrathea\-::\-Abstract\-Shape\-::$\sim$\-Abstract\-Shape (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [default]}}}\label{classmagrathea_1_1AbstractShape_aa4a59365d6616259ab2fe03c4c37c740}
+
+
+Protected destructor. 
+
+Avoids direct instantiation of the class, and only allows it through its derived children. \hypertarget{classmagrathea_1_1AbstractShape_a9a6c6b4f5dd7bbea6625eb64fb162687}{\index{magrathea\-::\-Abstract\-Shape@{magrathea\-::\-Abstract\-Shape}!Abstract\-Shape@{Abstract\-Shape}}
+\index{Abstract\-Shape@{Abstract\-Shape}!magrathea::AbstractShape@{magrathea\-::\-Abstract\-Shape}}
+\subsubsection[{Abstract\-Shape}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class... Dummy$>$ magrathea\-::\-Abstract\-Shape\-::\-Abstract\-Shape (
+\begin{DoxyParamCaption}
+\item[{const Dummy \&...}]{dummy}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [protected]}}}\label{classmagrathea_1_1AbstractShape_a9a6c6b4f5dd7bbea6625eb64fb162687}
+
+
+Explicit generic constructor. 
+
+Provides a constructor with dummy parameters for hackery purposes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Dummy} & (Dummy types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em dummy} & Dummy arguments. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmagrathea_1_1AbstractShape_aad71cb2f8187c2831b6ac3b6cf8084e3}{\index{magrathea\-::\-Abstract\-Shape@{magrathea\-::\-Abstract\-Shape}!alt@{alt}}
+\index{alt@{alt}!magrathea::AbstractShape@{magrathea\-::\-Abstract\-Shape}}
+\subsubsection[{alt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$long long int Value, long long int Even, long long int Odd, typename Type $>$ constexpr Type magrathea\-::\-Abstract\-Shape\-::alt (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmagrathea_1_1AbstractShape_aad71cb2f8187c2831b6ac3b6cf8084e3}
+
+
+Alternating sequence. 
+
+Computes the specified value of an alternating sequence. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Value} & Value of the argument $n$. \\
+\hline
+{\em Even} & Value if even $n_{0}$. \\
+\hline
+{\em Odd} & Value if odd $n_{1}$. \\
+\hline
+{\em Type} & (Result type.) \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+$n_{0}$ if odd, $n_{1}$ if even. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractShape_afac5f2f05a6266a88c0fd3958ec4bdb2}{\index{magrathea\-::\-Abstract\-Shape@{magrathea\-::\-Abstract\-Shape}!binomial@{binomial}}
+\index{binomial@{binomial}!magrathea::AbstractShape@{magrathea\-::\-Abstract\-Shape}}
+\subsubsection[{binomial}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Set, int Subset, typename Type $>$ constexpr Type magrathea\-::\-Abstract\-Shape\-::binomial (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmagrathea_1_1AbstractShape_afac5f2f05a6266a88c0fd3958ec4bdb2}
+
+
+Binomial. 
+
+Computes the binomial coefficient of the specified integers, including extension to negative numbers. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Set} & Value of the set $n$. \\
+\hline
+{\em Subset} & Value of the subset $k$. \\
+\hline
+{\em Type} & (Result type.) \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+$\binom{n}{k}$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractShape_a4cf829267323ad25824ab956f5d9ce5a}{\index{magrathea\-::\-Abstract\-Shape@{magrathea\-::\-Abstract\-Shape}!combinations@{combinations}}
+\index{combinations@{combinations}!magrathea::AbstractShape@{magrathea\-::\-Abstract\-Shape}}
+\subsubsection[{combinations}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Set, int Subset, bool Repetition, typename Type $>$ constexpr Type magrathea\-::\-Abstract\-Shape\-::combinations (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmagrathea_1_1AbstractShape_a4cf829267323ad25824ab956f5d9ce5a}
+
+
+Combinations. 
+
+Computes the number of combinations with or without repetitions for the specified integers. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Set} & Value of the set $n$. \\
+\hline
+{\em Subset} & Value of the subset $k$. \\
+\hline
+{\em Repetition} & Repetition specifier. \\
+\hline
+{\em Type} & (Result type.) \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+$C^{k}_{n}$ or ${}^{R}C^{k}_{n}$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractShape_a4a507954044448b960294dbc12cb668f}{\index{magrathea\-::\-Abstract\-Shape@{magrathea\-::\-Abstract\-Shape}!example@{example}}
+\index{example@{example}!magrathea::AbstractShape@{magrathea\-::\-Abstract\-Shape}}
+\subsubsection[{example}]{\setlength{\rightskip}{0pt plus 5cm}int magrathea\-::\-Abstract\-Shape\-::example (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmagrathea_1_1AbstractShape_a4a507954044448b960294dbc12cb668f}
+
+
+Example function. 
+
+Tests and demonstrates the use of \hyperlink{classmagrathea_1_1AbstractShape}{Abstract\-Shape}. \begin{DoxyReturn}{Returns}
+0 if no error. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractShape_a504662ac2e5983fa9d4b1fe83687f455}{\index{magrathea\-::\-Abstract\-Shape@{magrathea\-::\-Abstract\-Shape}!factorial@{factorial}}
+\index{factorial@{factorial}!magrathea::AbstractShape@{magrathea\-::\-Abstract\-Shape}}
+\subsubsection[{factorial}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Value, bool Odd, typename Type $>$ constexpr Type magrathea\-::\-Abstract\-Shape\-::factorial (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmagrathea_1_1AbstractShape_a504662ac2e5983fa9d4b1fe83687f455}
+
+
+Factorial. 
+
+Computes the factorial of the specified integer. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Value} & Value of the argument $n$. \\
+\hline
+{\em Type} & (Result type.) \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+$n!$.
+\end{DoxyReturn}
+Computes the double factorial of the specified integer\-: multiplies the number by all inferior numbers that are even or odd depending on the parameter. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Value} & Value of the argument $n$. \\
+\hline
+{\em Odd} & Odd double factorial if true, even otherwise. \\
+\hline
+{\em Type} & (Result type.) \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+$n!!$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractShape_ab1ea9fd7a67575173ec2f972f1762718}{\index{magrathea\-::\-Abstract\-Shape@{magrathea\-::\-Abstract\-Shape}!factorial@{factorial}}
+\index{factorial@{factorial}!magrathea::AbstractShape@{magrathea\-::\-Abstract\-Shape}}
+\subsubsection[{factorial}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Value, bool Odd, typename Type  = long long int$>$ static constexpr Type magrathea\-::\-Abstract\-Shape\-::factorial (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmagrathea_1_1AbstractShape_ab1ea9fd7a67575173ec2f972f1762718}
+\hypertarget{classmagrathea_1_1AbstractShape_a4b038a58859de1911d04584dd7b18e3f}{\index{magrathea\-::\-Abstract\-Shape@{magrathea\-::\-Abstract\-Shape}!golden@{golden}}
+\index{golden@{golden}!magrathea::AbstractShape@{magrathea\-::\-Abstract\-Shape}}
+\subsubsection[{golden}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Exponent, typename Type $>$ constexpr Type magrathea\-::\-Abstract\-Shape\-::golden (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmagrathea_1_1AbstractShape_a4b038a58859de1911d04584dd7b18e3f}
+
+
+Golden ratio. 
+
+Computes the value of $\varphi = \frac{1+\sqrt{5}}{2}$ at the given power. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Exponent} & Value of the exponent $n$. \\
+\hline
+{\em Type} & (Result type.) \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+$varphi^{n}$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractShape_ad782623b5d444a31418ec129c17c3c4d}{\index{magrathea\-::\-Abstract\-Shape@{magrathea\-::\-Abstract\-Shape}!pi@{pi}}
+\index{pi@{pi}!magrathea::AbstractShape@{magrathea\-::\-Abstract\-Shape}}
+\subsubsection[{pi}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Exponent, typename Type $>$ constexpr Type magrathea\-::\-Abstract\-Shape\-::pi (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmagrathea_1_1AbstractShape_ad782623b5d444a31418ec129c17c3c4d}
+
+
+Pi. 
+
+Computes the value of $pi$ at the given power. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Exponent} & Value of the exponent $n$. \\
+\hline
+{\em Type} & (Result type.) \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+$\pi^{n}$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractShape_addc3d8958b27b24b554a7753260e26fb}{\index{magrathea\-::\-Abstract\-Shape@{magrathea\-::\-Abstract\-Shape}!pow@{pow}}
+\index{pow@{pow}!magrathea::AbstractShape@{magrathea\-::\-Abstract\-Shape}}
+\subsubsection[{pow}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Exponent, typename Type $>$ constexpr Type magrathea\-::\-Abstract\-Shape\-::pow (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmagrathea_1_1AbstractShape_addc3d8958b27b24b554a7753260e26fb}
+
+
+Integral exponentiation. 
+
+Computes the integral exponentiation of the specified value. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Exponent} & Value of the exponent $n$. \\
+\hline
+{\em Type} & (Result type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & Value of the argument $x$. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+$x^{n}$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractShape_acfe83657f79a6fcbe5d9738e1eb21c47}{\index{magrathea\-::\-Abstract\-Shape@{magrathea\-::\-Abstract\-Shape}!rt@{rt}}
+\index{rt@{rt}!magrathea::AbstractShape@{magrathea\-::\-Abstract\-Shape}}
+\subsubsection[{rt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Degree, typename Type $>$ constexpr Type magrathea\-::\-Abstract\-Shape\-::rt (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmagrathea_1_1AbstractShape_acfe83657f79a6fcbe5d9738e1eb21c47}
+
+
+Floating-\/point root. 
+
+Computes the floating-\/point root of the specified value. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Degree} & Value of the degree $n$. \\
+\hline
+{\em Type} & (Result type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & Value of the argument $x$. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+$\sqrt[n]{x}$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractShape_ab2302d9c9fe8f3294a19e1195e4cb7dc}{\index{magrathea\-::\-Abstract\-Shape@{magrathea\-::\-Abstract\-Shape}!sqrtpi@{sqrtpi}}
+\index{sqrtpi@{sqrtpi}!magrathea::AbstractShape@{magrathea\-::\-Abstract\-Shape}}
+\subsubsection[{sqrtpi}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Exponent, typename Type $>$ constexpr Type magrathea\-::\-Abstract\-Shape\-::sqrtpi (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmagrathea_1_1AbstractShape_ab2302d9c9fe8f3294a19e1195e4cb7dc}
+
+
+Square root of pi. 
+
+Computes the value of the square root of $pi$ at the given power. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Exponent} & Value of the exponent $n$. \\
+\hline
+{\em Type} & (Result type.) \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+$\left(\sqrt{\pi}\right)^{n}$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractShape_a8e9095e3f654e760652205547891f4c4}{\index{magrathea\-::\-Abstract\-Shape@{magrathea\-::\-Abstract\-Shape}!variations@{variations}}
+\index{variations@{variations}!magrathea::AbstractShape@{magrathea\-::\-Abstract\-Shape}}
+\subsubsection[{variations}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Set, int Subset, bool Repetition, typename Type $>$ constexpr Type magrathea\-::\-Abstract\-Shape\-::variations (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmagrathea_1_1AbstractShape_a8e9095e3f654e760652205547891f4c4}
+
+
+Variations. 
+
+Computes the number of variations with or without repetitions for the specified integers. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Set} & Value of the set $n$. \\
+\hline
+{\em Subset} & Value of the subset $k$. \\
+\hline
+{\em Repetition} & Repetition specifier. \\
+\hline
+{\em Type} & (Result type.) \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+$V^{k}_{n}$ or ${}^{R}V^{k}_{n}$. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/magrathea/\hyperlink{abstractshape_8h}{abstractshape.\-h}\end{DoxyCompactItemize}

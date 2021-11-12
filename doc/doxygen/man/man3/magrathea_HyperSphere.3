@@ -1,0 +1,257 @@
+.TH "magrathea::HyperSphere< Dimension, Vector, Scalar >" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::HyperSphere< Dimension, Vector, Scalar > \- 
+.PP
+N-dimensional sphere\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <hypersphere\&.h>\fP
+.PP
+Inherits \fBmagrathea::AbstractHyperSphere< HyperSphere< Dimension, Vector, Scalar >, Dimension, Vector, Scalar >\fP, and \fBmagrathea::AbstractSubstance< HyperSphere< Dimension, Vector, Scalar >, Vector, Scalar >\fP\&.
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBLifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class\&.\&.\&. Misc> \fBHyperSphere\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIExplicit generic constructor\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBData\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<AbstractSubstance<HyperSphere<Dimension, Vector, Scalar>, Vector, Scalar> >()\&.template data<0, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBposition\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the position data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const AbstractSubstance<HyperSphere<Dimension, Vector, Scalar>, Vector, Scalar> >()\&.template data<0, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBposition\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the position data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<AbstractSubstance<HyperSphere<Dimension, Vector, Scalar>, Vector, Scalar> >()\&.template data<1, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBextent\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the extent data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const AbstractSubstance<HyperSphere<Dimension, Vector, Scalar>, Vector, Scalar> >()\&.template data<1, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBextent\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the extent data\&. \fP"
+.in -1c
+.in -1c
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBPredefined\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static constexpr \fBHyperSphere\fP
+.br
+< Dimension, Vector, Scalar > \fBunit\fP ()"
+.br
+.RI "\fIUnit hypersphere\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "using \fBoperator\fP = typedef"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+
+.SS "template<unsigned int Dimension = 3, class Vector = std::array<double, Dimension>, typename Scalar = typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Vector>()[0])>::type>::type>exception magrathea::HyperSphere< Dimension, Vector, Scalar >"
+N-dimensional sphere\&. 
+
+Implementation of a basic hypersphere of arbitrary dimension\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDimension\fP Number of space dimension\&. 
+.br
+\fIVector\fP Position vector type\&. 
+.br
+\fIScalar\fP Scalar data type\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<unsigned int Dimension, class Vector , typename Scalar > template<class\&.\&.\&. Misc> \fBmagrathea::HyperSphere\fP< Dimension, Vector, Scalar >::\fBHyperSphere\fP (Misc &&\&.\&.\&.misc)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit generic constructor\&. Provides a generic interface to all constructors of the base class\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<unsigned int Dimension, class Vector , typename Scalar > int \fBmagrathea::HyperSphere\fP< Dimension, Vector, Scalar >::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBHyperSphere\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Dimension, class Vector , typename Scalar > template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBmagrathea::HyperSphere\fP< Dimension, Vector, Scalar >::extent (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the extent data\&. Provides an access to the extent data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Dimension, class Vector , typename Scalar > template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBmagrathea::HyperSphere\fP< Dimension, Vector, Scalar >::extent (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the extent data\&. Provides an immutable access to the extent data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Dimension, class Vector , typename Scalar > template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBmagrathea::HyperSphere\fP< Dimension, Vector, Scalar >::position (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the position data\&. Provides an access to the position data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Dimension, class Vector , typename Scalar > template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBmagrathea::HyperSphere\fP< Dimension, Vector, Scalar >::position (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the position data\&. Provides an immutable access to the position data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Dimension, class Vector , typename Scalar > constexpr \fBHyperSphere\fP< Dimension, Vector, Scalar > \fBmagrathea::HyperSphere\fP< Dimension, Vector, Scalar >::unit ()\fC [static]\fP"
+
+.PP
+Unit hypersphere\&. Creates an hypersphere with a position of zero and with an extent of one\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of a unit hypersphere\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<unsigned int Dimension = 3, class Vector = std::array<double, Dimension>, typename Scalar = typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Vector>()[0])>::type>::type> using \fBmagrathea::HyperSphere\fP< Dimension, Vector, Scalar >::operator = "
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

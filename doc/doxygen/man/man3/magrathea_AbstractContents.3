@@ -1,0 +1,609 @@
+.TH "magrathea::AbstractContents< Crtp, Category, Types >" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::AbstractContents< Crtp, Category, Types > \- 
+.PP
+Tuple abstraction of numerical simulation contents\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <abstractcontents\&.h>\fP
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBLifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBAbstractContents\fP ()"
+.br
+.RI "\fIImplicit empty constructor\&. \fP"
+.ti -1c
+.RI "template<class OtherCrtp , class OtherCategory , class\&.\&.\&. OtherTypes> \fBAbstractContents\fP (const \fBAbstractContents\fP< OtherCrtp, OtherCategory, OtherTypes\&.\&.\&.> &source)"
+.br
+.RI "\fIExplicit conversion constructor\&. \fP"
+.ti -1c
+.RI "template<class\&.\&.\&. OtherTypes> \fBAbstractContents\fP (const std::tuple< OtherTypes\&.\&.\&.> &source)"
+.br
+.RI "\fIExplicit data constructor\&. \fP"
+.ti -1c
+.RI "template<class\&.\&.\&. OtherTypes, class  = typename std::enable_if<(sizeof\&.\&.\&.(OtherTypes) != 0) && (std::is_constructible<typename std::tuple_element<0, typename std::conditional<sizeof\&.\&.\&.(Types) != 0, std::tuple<Types\&.\&.\&.>, std::tuple<std::true_type> >::type>::type, typename std::tuple_element<0, typename std::conditional<sizeof\&.\&.\&.(OtherTypes) != 0, std::tuple<OtherTypes\&.\&.\&.>, std::tuple<std::true_type> >::type>::type>::value)>::type> \fBAbstractContents\fP (const OtherTypes &\&.\&.\&.source)"
+.br
+.RI "\fIExplicit components constructor\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBOperators\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "Crtp & \fBoperator=\fP (const \fBAbstractContents\fP< Crtp, Category, Types\&.\&.\&.> &rhs)"
+.br
+.RI "\fICopy assignment operator\&. \fP"
+.ti -1c
+.RI "template<class OtherCrtp , class OtherCategory , class\&.\&.\&. OtherTypes> Crtp & \fBoperator=\fP (const \fBAbstractContents\fP< OtherCrtp, OtherCategory, OtherTypes\&.\&.\&.> &rhs)"
+.br
+.RI "\fIConversion assignment operator\&. \fP"
+.ti -1c
+.RI "template<class\&.\&.\&. OtherTypes> Crtp & \fBoperator=\fP (const std::tuple< OtherTypes\&.\&.\&.> &rhs)"
+.br
+.RI "\fIData assignment operator\&. \fP"
+.ti -1c
+.RI "template<class OtherCrtp , class OtherCategory , class\&.\&.\&. OtherTypes> bool \fBoperator==\fP (const \fBAbstractContents\fP< OtherCrtp, OtherCategory, OtherTypes\&.\&.\&.> &rhs) const "
+.br
+.RI "\fIEqual to\&. \fP"
+.ti -1c
+.RI "template<class OtherCrtp , class OtherCategory , class\&.\&.\&. OtherTypes> bool \fBoperator!=\fP (const \fBAbstractContents\fP< OtherCrtp, OtherCategory, OtherTypes\&.\&.\&.> &rhs) const "
+.br
+.RI "\fINot equal to\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBAssignment\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "Crtp & \fBassign\fP ()"
+.br
+.RI "\fIEmpty assignment\&. \fP"
+.ti -1c
+.RI "Crtp & \fBassign\fP (const \fBAbstractContents\fP< Crtp, Category, Types\&.\&.\&.> &source)"
+.br
+.RI "\fICopy assignment\&. \fP"
+.ti -1c
+.RI "template<class OtherCrtp , class OtherCategory , class\&.\&.\&. OtherTypes> Crtp & \fBassign\fP (const \fBAbstractContents\fP< OtherCrtp, OtherCategory, OtherTypes\&.\&.\&.> &source)"
+.br
+.RI "\fIConversion assignment\&. \fP"
+.ti -1c
+.RI "template<class\&.\&.\&. OtherTypes> Crtp & \fBassign\fP (const std::tuple< OtherTypes\&.\&.\&.> &source)"
+.br
+.RI "\fIData assignment\&. \fP"
+.ti -1c
+.RI "template<class\&.\&.\&. OtherTypes, class  = typename std::enable_if<(sizeof\&.\&.\&.(OtherTypes) != 0) && (std::is_constructible<typename std::tuple_element<0, typename std::conditional<sizeof\&.\&.\&.(Types) != 0, std::tuple<Types\&.\&.\&.>, std::tuple<std::true_type> >::type>::type, typename std::tuple_element<0, typename std::conditional<sizeof\&.\&.\&.(OtherTypes) != 0, std::tuple<OtherTypes\&.\&.\&.>, std::tuple<std::true_type> >::type>::type>::value)>::type> Crtp & \fBassign\fP (const OtherTypes &\&.\&.\&.source)"
+.br
+.RI "\fIComponents assignment\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBManagement\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "Crtp & \fBnullify\fP ()"
+.br
+.RI "\fINullify\&. \fP"
+.ti -1c
+.RI "Crtp \fBcopy\fP () const "
+.br
+.RI "\fICopy\&. \fP"
+.ti -1c
+.RI "template<class OtherCrtp  = Crtp, class  = typename std::enable_if<std::is_constructible<OtherCrtp, Crtp>::value>::type> OtherCrtp \fBcast\fP () const "
+.br
+.RI "\fICast\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBData\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class\&.\&.\&. Dummy, class Type  = typename std::conditional<sizeof\&.\&.\&.(Dummy) == 0, std::tuple<Types\&.\&.\&.>, void>::type, class  = typename std::enable_if<sizeof\&.\&.\&.(Dummy) == 0>::type, class  = typename std::enable_if<std::is_convertible<Type, typename std::conditional<sizeof\&.\&.\&.(Dummy) == 0, std::tuple<Types\&.\&.\&.>, void>::type>::value>::type> Type & \fBdata\fP (Dummy\&.\&.\&.)"
+.br
+.RI "\fIUnified data access\&. \fP"
+.ti -1c
+.RI "template<class\&.\&.\&. Dummy, class Type  = typename std::conditional<sizeof\&.\&.\&.(Dummy) == 0, std::tuple<Types\&.\&.\&.>, void>::type, class  = typename std::enable_if<sizeof\&.\&.\&.(Dummy) == 0>::type, class  = typename std::enable_if<std::is_convertible<Type, typename std::conditional<sizeof\&.\&.\&.(Dummy) == 0, std::tuple<Types\&.\&.\&.>, void>::type>::value>::type> const Type & \fBdata\fP (Dummy\&.\&.\&.) const "
+.br
+.RI "\fIUnified data getter\&. \fP"
+.ti -1c
+.RI "template<class Type , class  = typename std::enable_if<std::is_convertible<Type, typename std::conditional<!std::is_void<Type>::value, std::tuple<Types\&.\&.\&.>, void>::type>::value>::type> Crtp & \fBdata\fP (const Type &value)"
+.br
+.RI "\fIUnified data setter\&. \fP"
+.in -1c
+.in -1c
+.SS "Protected Member Functions"
+
+.PP
+.RI "\fBProtected lifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fB~AbstractContents\fP ()"
+.br
+.RI "\fIProtected destructor\&. \fP"
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class Crtp, class Category, class\&.\&.\&. Types>class magrathea::AbstractContents< Crtp, Category, Types >"
+Tuple abstraction of numerical simulation contents\&. 
+
+This class is an abstraction of physical contents in a simulation\&. It can be a lagrangian, an eulerian or a grid quantity or even other non-traditional type\&. This abstraction provides standardized access to generic types of internal data that can represents an index, a position, a velocity vector, a temperature, a density or everything else\&.\&.\&. Mixed-types operations are provided for objects of the same category\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fICrtp\fP Derived CRTP class\&. 
+.br
+\fICategory\fP \fBContents\fP category (Lagrangian, Eulerian, Grid\&.\&.\&.)\&. 
+.br
+\fITypes\fP Variadic list of components types\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class Crtp , class Category , class\&.\&.\&. Types> \fBmagrathea::AbstractContents\fP< Crtp, Category, Types >::~\fBAbstractContents\fP ()\fC [inline]\fP, \fC [protected]\fP, \fC [default]\fP"
+
+.PP
+Protected destructor\&. Avoids direct instantiation of the class, and only allows it through its derived children\&. 
+.SS "template<class Crtp , class Category , class\&.\&.\&. Types> \fBmagrathea::AbstractContents\fP< Crtp, Category, Types >::\fBAbstractContents\fP ()\fC [inline]\fP"
+
+.PP
+Implicit empty constructor\&. Provides an implicit construction of an object initialized to its default value\&. 
+.SS "template<class Crtp , class Category , class\&.\&.\&. Types> template<class OtherCrtp , class OtherCategory , class\&.\&.\&. OtherTypes> \fBmagrathea::AbstractContents\fP< Crtp, Category, Types >::\fBAbstractContents\fP (const \fBAbstractContents\fP< OtherCrtp, OtherCategory, OtherTypes\&.\&.\&.> &source)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit conversion constructor\&. Provides an explicit construction from another type of object\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherCrtp\fP (Other derived CRTP class\&.) 
+.br
+\fIOtherCategory\fP (Other contents category (Lagrangian, Eulerian, Grid\&.\&.\&.)\&.) 
+.br
+\fIOtherTypes\fP (Other variadic list of components types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Category , class\&.\&.\&. Types> template<class\&.\&.\&. OtherTypes> \fBmagrathea::AbstractContents\fP< Crtp, Category, Types >::\fBAbstractContents\fP (const std::tuple< OtherTypes\&.\&.\&.> &source)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit data constructor\&. Provides an explicit construction from data\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherTypes\fP (Other variadic list of object property types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Category , class\&.\&.\&. Types> template<class\&.\&.\&. OtherTypes, class > \fBmagrathea::AbstractContents\fP< Crtp, Category, Types >::\fBAbstractContents\fP (const OtherTypes &\&.\&.\&.source)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit components constructor\&. Provides an explicit construction from components\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherTypes\fP (Other variadic list of object property types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class Crtp , class Category , class\&.\&.\&. Types> Crtp & \fBmagrathea::AbstractContents\fP< Crtp, Category, Types >::assign ()\fC [inline]\fP"
+
+.PP
+Empty assignment\&. Assigns contents from an object initialized to its default value\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Crtp, class Category, class\&.\&.\&. Types> Crtp & \fBmagrathea::AbstractContents\fP< Crtp, Category, Types >::assign (const \fBAbstractContents\fP< Crtp, Category, Types\&.\&.\&.> &source)\fC [inline]\fP"
+
+.PP
+Copy assignment\&. Assigns contents from the same type of object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Category , class\&.\&.\&. Types> template<class OtherCrtp , class OtherCategory , class\&.\&.\&. OtherTypes> Crtp & \fBmagrathea::AbstractContents\fP< Crtp, Category, Types >::assign (const \fBAbstractContents\fP< OtherCrtp, OtherCategory, OtherTypes\&.\&.\&.> &source)\fC [inline]\fP"
+
+.PP
+Conversion assignment\&. Assigns contents from another type of object\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherCrtp\fP (Other derived CRTP class\&.) 
+.br
+\fIOtherCategory\fP (Other contents category (Lagrangian, Eulerian, Grid\&.\&.\&.)\&.) 
+.br
+\fIOtherTypes\fP (Other variadic list of components types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Category , class\&.\&.\&. Types> template<class\&.\&.\&. OtherTypes> Crtp & \fBmagrathea::AbstractContents\fP< Crtp, Category, Types >::assign (const std::tuple< OtherTypes\&.\&.\&.> &source)\fC [inline]\fP"
+
+.PP
+Data assignment\&. Assigns contents from data\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherTypes\fP (Other variadic list of object property types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Category , class\&.\&.\&. Types> template<class\&.\&.\&. OtherTypes, class > Crtp & \fBmagrathea::AbstractContents\fP< Crtp, Category, Types >::assign (const OtherTypes &\&.\&.\&.source)\fC [inline]\fP"
+
+.PP
+Components assignment\&. Assigns contents from components\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherTypes\fP (Other variadic list of object property types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Category , class\&.\&.\&. Types> template<class OtherCrtp , class > OtherCrtp \fBmagrathea::AbstractContents\fP< Crtp, Category, Types >::cast () const\fC [inline]\fP"
+
+.PP
+Cast\&. Casts contents to another object type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherCrtp\fP Other derived CRTP class\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Casted copy\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Category , class\&.\&.\&. Types> Crtp \fBmagrathea::AbstractContents\fP< Crtp, Category, Types >::copy () const\fC [inline]\fP"
+
+.PP
+Copy\&. Generates a copy of the object\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Category , class\&.\&.\&. Types> template<class\&.\&.\&. Dummy, class Type , class , class > Type & \fBmagrathea::AbstractContents\fP< Crtp, Category, Types >::data (Dummy\&.\&.\&.)\fC [inline]\fP"
+
+.PP
+Unified data access\&. Unified data inner component access\&.
+.PP
+Unified data component access\&.
+.PP
+Provides a direct access to the data\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDummy\fP (Dummy types\&.) 
+.br
+\fIType\fP (Data std::tuple<Types\&.\&.\&.> type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the data\&.
+.RE
+.PP
+Provides a direct access to the specified component of the data\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIndex\fP Index of the component\&. 
+.br
+\fIDummy\fP (Dummy types\&.) 
+.br
+\fIType\fP (Component type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the component of the data\&.
+.RE
+.PP
+Provides a direct access to the specified inner component of the specified component of the data\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIndex\fP Index of the component\&. 
+.br
+\fISubscript\fP Subscript of the inner component\&. 
+.br
+\fIDummy\fP (Dummy types\&.) 
+.br
+\fIType\fP (Inner component type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the inner component of the data\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Category , class\&.\&.\&. Types> template<class\&.\&.\&. Dummy, class Type , class , class > const Type & \fBmagrathea::AbstractContents\fP< Crtp, Category, Types >::data (Dummy\&.\&.\&.) const\fC [inline]\fP"
+
+.PP
+Unified data getter\&. Gets the data\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDummy\fP (Dummy types\&.) 
+.br
+\fIType\fP (Data std::tuple<Types\&.\&.\&.> type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the data\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Category , class\&.\&.\&. Types> template<unsigned int Index, unsigned int Subscript, class Type , class , class , class > Crtp & \fBmagrathea::AbstractContents\fP< Crtp, Category, Types >::data (const Type &value)\fC [inline]\fP"
+
+.PP
+Unified data setter\&. Unified data inner component setter\&.
+.PP
+Unified data component setter\&.
+.PP
+Sets the data\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Data value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&.
+.RE
+.PP
+Sets the specified component of the data\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIndex\fP Index of the component\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Component value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&.
+.RE
+.PP
+Sets the specified inner component of the specified component of the data\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIndex\fP Index of the component\&. 
+.br
+\fISubscript\fP Subscript of the inner component\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Inner component value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Category , class\&.\&.\&. Types> Crtp & \fBmagrathea::AbstractContents\fP< Crtp, Category, Types >::nullify ()\fC [inline]\fP"
+
+.PP
+Nullify\&. Resets all data members to their default values\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Category , class\&.\&.\&. Types> template<class OtherCrtp , class OtherCategory , class\&.\&.\&. OtherTypes> bool \fBmagrathea::AbstractContents\fP< Crtp, Category, Types >::operator!= (const \fBAbstractContents\fP< OtherCrtp, OtherCategory, OtherTypes\&.\&.\&.> &rhs) const\fC [inline]\fP"
+
+.PP
+Not equal to\&. Compares for difference and returns true if the contents is different\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherCrtp\fP (Other derived CRTP class\&.) 
+.br
+\fIOtherCategory\fP (Other contents category (Lagrangian, Eulerian, Grid\&.\&.\&.)\&.) 
+.br
+\fIOtherTypes\fP (Other variadic list of components types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if not equal, false if equal\&. 
+.RE
+.PP
+
+.SS "template<class Crtp, class Category, class\&.\&.\&. Types> Crtp & \fBmagrathea::AbstractContents\fP< Crtp, Category, Types >::operator= (const \fBAbstractContents\fP< Crtp, Category, Types\&.\&.\&.> &rhs)\fC [inline]\fP"
+
+.PP
+Copy assignment operator\&. Assigns contents from the same type of object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Category , class\&.\&.\&. Types> template<class OtherCrtp , class OtherCategory , class\&.\&.\&. OtherTypes> Crtp & \fBmagrathea::AbstractContents\fP< Crtp, Category, Types >::operator= (const \fBAbstractContents\fP< OtherCrtp, OtherCategory, OtherTypes\&.\&.\&.> &rhs)\fC [inline]\fP"
+
+.PP
+Conversion assignment operator\&. Assigns contents from another type of object\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherCrtp\fP (Other derived CRTP class\&.) 
+.br
+\fIOtherCategory\fP (Other contents category (Lagrangian, Eulerian, Grid\&.\&.\&.)\&.) 
+.br
+\fIOtherTypes\fP (Other variadic list of components types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Category , class\&.\&.\&. Types> template<class\&.\&.\&. OtherTypes> Crtp & \fBmagrathea::AbstractContents\fP< Crtp, Category, Types >::operator= (const std::tuple< OtherTypes\&.\&.\&.> &rhs)\fC [inline]\fP"
+
+.PP
+Data assignment operator\&. Assigns contents from data\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherTypes\fP (Other variadic list of object property types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Category , class\&.\&.\&. Types> template<class OtherCrtp , class OtherCategory , class\&.\&.\&. OtherTypes> bool \fBmagrathea::AbstractContents\fP< Crtp, Category, Types >::operator== (const \fBAbstractContents\fP< OtherCrtp, OtherCategory, OtherTypes\&.\&.\&.> &rhs) const\fC [inline]\fP"
+
+.PP
+Equal to\&. Compares for equality and returns true if the contents is equal\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherCrtp\fP (Other derived CRTP class\&.) 
+.br
+\fIOtherCategory\fP (Other contents category (Lagrangian, Eulerian, Grid\&.\&.\&.)\&.) 
+.br
+\fIOtherTypes\fP (Other variadic list of components types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if equal, false if not equal\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

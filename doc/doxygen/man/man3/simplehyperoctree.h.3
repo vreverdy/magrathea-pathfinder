@@ -1,0 +1,112 @@
+.TH "/data/home/mbreton/magrathea_pathfinder/src/magrathea/simplehyperoctree.h" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/data/home/mbreton/magrathea_pathfinder/src/magrathea/simplehyperoctree.h \- 
+.PP
+A simple hyperoctree based on bit manipulations\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <iostream>\fP
+.br
+\fC#include <iomanip>\fP
+.br
+\fC#include <sstream>\fP
+.br
+\fC#include <type_traits>\fP
+.br
+\fC#include <cstdlib>\fP
+.br
+\fC#include <cmath>\fP
+.br
+\fC#include <limits>\fP
+.br
+\fC#include <algorithm>\fP
+.br
+\fC#include <vector>\fP
+.br
+\fC#include <bitset>\fP
+.br
+\fC#include <array>\fP
+.br
+\fC#include <tuple>\fP
+.br
+\fC#include 'simplehyperoctreeindex\&.h'\fP
+.br
+\fC#include '\&.\&./utility\&.h'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "exception \fBmagrathea::SimpleHyperOctree< Type, Index, Data, Dimension, Position, Extent, Element, Container >\fP"
+.br
+.RI "\fIA simple hyperoctree based on bit manipulations\&. \fP"
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBmagrathea\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.PP
+.RI "\fBLocate immutable element from position\&.\fP"
+.br
+Locates the most refined cell at the provided position and returns an immutable iterator to it\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIterator\fP (Iterator type\&.) 
+.br
+\fITypes\fP (Scalar position types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiposs\fP Real positions along each dimension\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable iterator to the element found at the specified position\&. 
+.RE
+.PP
+
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename SelfType , class SelfIndex , class SelfData , unsigned int SelfDimension, class SelfPosition , class SelfExtent , class SelfElement , class SelfContainer > std::ostream & \fBmagrathea::operator<<\fP (std::ostream &lhs, const SimpleHyperOctree< SelfType, SelfIndex, SelfData, SelfDimension, SelfPosition, SelfExtent, SelfElement, SelfContainer > &rhs)"
+.br
+.RI "\fI\fBOutput\fP stream operator\&. \fP"
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+A simple hyperoctree based on bit manipulations\&. 
+
+\fBAuthor:\fP
+.RS 4
+Vincent Reverdy (vince.rev@gmail.com), Michel-Andrès Breton (michel-andres.breton@obspm.fr) 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+2012-2013, 2015-2016 
+.RE
+.PP
+\fBCopyright:\fP
+.RS 4
+CECILL-B License 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

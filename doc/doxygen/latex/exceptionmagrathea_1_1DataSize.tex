@@ -1,0 +1,1373 @@
+\hypertarget{exceptionmagrathea_1_1DataSize}{\section{magrathea\-:\-:Data\-Size Exception Reference}
+\label{exceptionmagrathea_1_1DataSize}\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}}
+}
+
+
+\hyperlink{exceptionmagrathea_1_1Wrapper}{Wrapper} of binary data size and manager of unit conversion.  
+
+
+
+
+{\ttfamily \#include $<$datasize.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Lifecycle}\par
+\begin{DoxyCompactItemize}
+\item 
+constexpr \hyperlink{exceptionmagrathea_1_1DataSize_a1df5bce30b0ba2a4eeb5cb435482f1b6}{Data\-Size} ()
+\begin{DoxyCompactList}\small\item\em Implicit constexpr empty constructor. \end{DoxyCompactList}\item 
+constexpr \hyperlink{exceptionmagrathea_1_1DataSize_a1ea878322e7b9d9d35d21d46ee7ae398}{Data\-Size} (const long long int amount)
+\begin{DoxyCompactList}\small\item\em Explicit constexpr value constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Operators}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Type $>$ }\\\hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \& \hyperlink{exceptionmagrathea_1_1DataSize_a0fd84c6806ce037a4483c3596cfaf380}{operator=} (const Type \&rhs)
+\begin{DoxyCompactList}\small\item\em Conversion assignment operator. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \& \hyperlink{exceptionmagrathea_1_1DataSize_a5313635e436d3f1645e26d3dd6e74b82}{operator=} (const \hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \&rhs)
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
+unsigned long long int \hyperlink{exceptionmagrathea_1_1DataSize_a7f75549fdf34e7386fbd5129f0366e7d}{operator()} ()
+\begin{DoxyCompactList}\small\item\em Conversion operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Management}\par
+\begin{DoxyCompactItemize}
+\item 
+constexpr const long long int \& \hyperlink{exceptionmagrathea_1_1DataSize_a83002f4eff626baefb0a76efcee41da4}{data} () const 
+\begin{DoxyCompactList}\small\item\em Access data. \end{DoxyCompactList}\item 
+constexpr \hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \hyperlink{exceptionmagrathea_1_1DataSize_ad604ec3c72b03f7523ab7ec8ffa652f0}{copy} () const 
+\begin{DoxyCompactList}\small\item\em Copy. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = Data\-Size$>$ }\\constexpr Type \hyperlink{exceptionmagrathea_1_1DataSize_a26d4a1ef59546650acba811bd1ae5547}{cast} () const 
+\begin{DoxyCompactList}\small\item\em Cast. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Getters}\par
+\begin{DoxyCompactItemize}
+\item 
+bool constexpr \hyperlink{exceptionmagrathea_1_1DataSize_a25b5a17d3d7ebb52cde519441f5530ed}{valid} () const 
+\begin{DoxyCompactList}\small\item\em Get the validity of the data size. \end{DoxyCompactList}\item 
+bool constexpr \hyperlink{exceptionmagrathea_1_1DataSize_a9b6ecaeffdf938b8934ad621986594cc}{empty} () const 
+\begin{DoxyCompactList}\small\item\em Get whether the size is not null. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\constexpr Type \hyperlink{exceptionmagrathea_1_1DataSize_a3dce7c04810b501551e9705ef8b60822}{bytes} () const 
+\begin{DoxyCompactList}\small\item\em Get data size in bytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\constexpr Type \hyperlink{exceptionmagrathea_1_1DataSize_a58fdd2082cb520d113cea22d7023f68f}{kibibytes} () const 
+\begin{DoxyCompactList}\small\item\em Get data size in kibibytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\constexpr Type \hyperlink{exceptionmagrathea_1_1DataSize_ac12548a6dd52871d96a3e0bf4e16a926}{mebibytes} () const 
+\begin{DoxyCompactList}\small\item\em Get data size in mebibytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\constexpr Type \hyperlink{exceptionmagrathea_1_1DataSize_a0417abd5488a1a4b304ebd71969d9af1}{gibibytes} () const 
+\begin{DoxyCompactList}\small\item\em Get data size in gibibytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\constexpr Type \hyperlink{exceptionmagrathea_1_1DataSize_a44e0aa087c6d74fa62b3e9fad3ab706d}{tebibytes} () const 
+\begin{DoxyCompactList}\small\item\em Get data size in tebibytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\constexpr Type \hyperlink{exceptionmagrathea_1_1DataSize_afa9b7a2c33c3673ad2cdecfce6c0c2c9}{pebibytes} () const 
+\begin{DoxyCompactList}\small\item\em Get data size in pebibytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\constexpr Type \hyperlink{exceptionmagrathea_1_1DataSize_af5cb17a3611bea11625f78ef498889e4}{exbibytes} () const 
+\begin{DoxyCompactList}\small\item\em Get data size in exbibytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\constexpr Type \hyperlink{exceptionmagrathea_1_1DataSize_ac70111a3953336284d030f5217f560c3}{kilobytes} () const 
+\begin{DoxyCompactList}\small\item\em Get data size in kilobytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\constexpr Type \hyperlink{exceptionmagrathea_1_1DataSize_a6cb109eed4fbf002e9df5ab03ed30b92}{megabytes} () const 
+\begin{DoxyCompactList}\small\item\em Get data size in megabytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\constexpr Type \hyperlink{exceptionmagrathea_1_1DataSize_ac905eed152d52c88f8d6d097b00ac8c6}{gigabytes} () const 
+\begin{DoxyCompactList}\small\item\em Get data size in gigabytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\constexpr Type \hyperlink{exceptionmagrathea_1_1DataSize_afcf0c85f514e722667e76a197370f3ea}{terabytes} () const 
+\begin{DoxyCompactList}\small\item\em Get data size in terabytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\constexpr Type \hyperlink{exceptionmagrathea_1_1DataSize_a1e8e83135c301f096b7dc294fa537141}{petabytes} () const 
+\begin{DoxyCompactList}\small\item\em Get data size in petabytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\constexpr Type \hyperlink{exceptionmagrathea_1_1DataSize_af4290f1d8080c1923fc983aabcbc136e}{exabytes} () const 
+\begin{DoxyCompactList}\small\item\em Get data size in exabytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\constexpr Type \hyperlink{exceptionmagrathea_1_1DataSize_a544c4749e7d6f5ec6d990fedcdb36b66}{bits} () const 
+\begin{DoxyCompactList}\small\item\em Get data size in bits. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Setters}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \& \hyperlink{exceptionmagrathea_1_1DataSize_a0922e436ed67e5a0e85f0fea8755f2e7}{valid} (const bool ok)
+\begin{DoxyCompactList}\small\item\em Set valid status. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \& \hyperlink{exceptionmagrathea_1_1DataSize_ad8673f77d6f7d3b6eec25119c1197faf}{empty} (const bool ok)
+\begin{DoxyCompactList}\small\item\em Set empty status. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\\hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \& \hyperlink{exceptionmagrathea_1_1DataSize_aa174ec78a569c35df04960bf3d38e2d4}{bytes} (const Type \&amount)
+\begin{DoxyCompactList}\small\item\em Set data size in bytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\\hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \& \hyperlink{exceptionmagrathea_1_1DataSize_a073c8dfc183b69e288b7a58cd723cffe}{kibibytes} (const Type \&amount)
+\begin{DoxyCompactList}\small\item\em Set data size in kibibytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\\hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \& \hyperlink{exceptionmagrathea_1_1DataSize_a71997eeb607319792486bac384fb6329}{mebibytes} (const Type \&amount)
+\begin{DoxyCompactList}\small\item\em Set data size in mebibytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\\hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \& \hyperlink{exceptionmagrathea_1_1DataSize_ae2798b09fa832ffe0d213fcb78fd01ff}{gibibytes} (const Type \&amount)
+\begin{DoxyCompactList}\small\item\em Set data size in gibibytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\\hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \& \hyperlink{exceptionmagrathea_1_1DataSize_a15d9fe713e47a1512b3febbf79dd196f}{tebibytes} (const Type \&amount)
+\begin{DoxyCompactList}\small\item\em Set data size in tebibytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\\hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \& \hyperlink{exceptionmagrathea_1_1DataSize_a2a7dff5ed4c768db5234e18ccbb29e61}{pebibytes} (const Type \&amount)
+\begin{DoxyCompactList}\small\item\em Set data size in pebibytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\\hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \& \hyperlink{exceptionmagrathea_1_1DataSize_a6571b0c392de8bbb76c8434df52f177a}{exbibytes} (const Type \&amount)
+\begin{DoxyCompactList}\small\item\em Set data size in exbibytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\\hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \& \hyperlink{exceptionmagrathea_1_1DataSize_a1b0bf5944f02d9542a72ec522bb3a155}{kilobytes} (const Type \&amount)
+\begin{DoxyCompactList}\small\item\em Set data size in kilobytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\\hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \& \hyperlink{exceptionmagrathea_1_1DataSize_a9dfc314fd344037a6fd010790fe29d0e}{megabytes} (const Type \&amount)
+\begin{DoxyCompactList}\small\item\em Set data size in megabytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\\hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \& \hyperlink{exceptionmagrathea_1_1DataSize_a3fbec8a42050dae7e9020ad0e3c4aa95}{gigabytes} (const Type \&amount)
+\begin{DoxyCompactList}\small\item\em Set data size in gigabytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\\hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \& \hyperlink{exceptionmagrathea_1_1DataSize_a9ce9519d240e7db290b5b7e0f1ca0afb}{terabytes} (const Type \&amount)
+\begin{DoxyCompactList}\small\item\em Set data size in terabytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\\hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \& \hyperlink{exceptionmagrathea_1_1DataSize_ac126cc0c013db8c39c886286b91ac6c3}{petabytes} (const Type \&amount)
+\begin{DoxyCompactList}\small\item\em Set data size in petabytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\\hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \& \hyperlink{exceptionmagrathea_1_1DataSize_ab6d259868ed85d55d3da6c4e769ed915}{exabytes} (const Type \&amount)
+\begin{DoxyCompactList}\small\item\em Set data size in exabytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\\hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \& \hyperlink{exceptionmagrathea_1_1DataSize_afb00905f0f8898e0461a04c086fc420a}{bits} (const Type \&amount)
+\begin{DoxyCompactList}\small\item\em Set data size in bits. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Static Public Member Functions}
+\begin{Indent}{\bf Predefined}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\static constexpr \hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \hyperlink{exceptionmagrathea_1_1DataSize_ae26d8393c21bca35e65555fb29e9e0c7}{byte} (const Type \&amount=Type(1))
+\begin{DoxyCompactList}\small\item\em Predefined data size in bytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\static constexpr \hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \hyperlink{exceptionmagrathea_1_1DataSize_abe9525a24519869ef7fd1d593df6442f}{kibi} (const Type \&amount=Type(1))
+\begin{DoxyCompactList}\small\item\em Predefined data size in kibibytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\static constexpr \hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \hyperlink{exceptionmagrathea_1_1DataSize_add3ff8e910fbd0d0deacebe2f48410ec}{mebi} (const Type \&amount=Type(1))
+\begin{DoxyCompactList}\small\item\em Predefined data size in mebibytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\static constexpr \hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \hyperlink{exceptionmagrathea_1_1DataSize_ad422da3996190021a0786430d1793e61}{gibi} (const Type \&amount=Type(1))
+\begin{DoxyCompactList}\small\item\em Predefined data size in gibibytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\static constexpr \hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \hyperlink{exceptionmagrathea_1_1DataSize_a46fe14cd5bfd609e502fecd6408dd75c}{tebi} (const Type \&amount=Type(1))
+\begin{DoxyCompactList}\small\item\em Predefined data size in tebibytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\static constexpr \hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \hyperlink{exceptionmagrathea_1_1DataSize_a3452fef4c5afbe4bcf678a469a33582e}{pebi} (const Type \&amount=Type(1))
+\begin{DoxyCompactList}\small\item\em Predefined data size in pebibytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\static constexpr \hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \hyperlink{exceptionmagrathea_1_1DataSize_af2558af230f37eac2d558ae5a12abb28}{exbi} (const Type \&amount=Type(1))
+\begin{DoxyCompactList}\small\item\em Predefined data size in exbibytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\static constexpr \hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \hyperlink{exceptionmagrathea_1_1DataSize_a13f28fc15cccb1fb9c6e42a3993af90f}{kilo} (const Type \&amount=Type(1))
+\begin{DoxyCompactList}\small\item\em Predefined data size in kilobytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\static constexpr \hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \hyperlink{exceptionmagrathea_1_1DataSize_af073dab13fc604a0cff951f46510a35a}{mega} (const Type \&amount=Type(1))
+\begin{DoxyCompactList}\small\item\em Predefined data size in megabytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\static constexpr \hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \hyperlink{exceptionmagrathea_1_1DataSize_aada5bca96ee00f7c52cd5777d42e64fe}{giga} (const Type \&amount=Type(1))
+\begin{DoxyCompactList}\small\item\em Predefined data size in gigabytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\static constexpr \hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \hyperlink{exceptionmagrathea_1_1DataSize_adab1c667b7286de648e238221037da8e}{tera} (const Type \&amount=Type(1))
+\begin{DoxyCompactList}\small\item\em Predefined data size in terabytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\static constexpr \hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \hyperlink{exceptionmagrathea_1_1DataSize_a956908e22027ada049656164e9035481}{peta} (const Type \&amount=Type(1))
+\begin{DoxyCompactList}\small\item\em Predefined data size in petabytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\static constexpr \hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \hyperlink{exceptionmagrathea_1_1DataSize_a619786a80f92e735d750d329057173d5}{exa} (const Type \&amount=Type(1))
+\begin{DoxyCompactList}\small\item\em Predefined data size in exabytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = unsigned long long int$>$ }\\static constexpr \hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \hyperlink{exceptionmagrathea_1_1DataSize_ac37ca732763000b06b7ce2c3f68c419c}{bit} (const Type \&amount=Type(8))
+\begin{DoxyCompactList}\small\item\em Predefined data size in bits. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Test}\par
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{exceptionmagrathea_1_1DataSize_a228321b9767ce487d2635090972616b6}{example} ()
+\begin{DoxyCompactList}\small\item\em Example function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Protected Attributes}
+\begin{Indent}{\bf Data members}\par
+\begin{DoxyCompactItemize}
+\item 
+long long int \hyperlink{exceptionmagrathea_1_1DataSize_afa83372be705d488fcf02d5102d46c9f}{\-\_\-size}
+\begin{DoxyCompactList}\small\item\em Data size in bytes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Friends}
+\begin{Indent}{\bf Stream}\par
+\begin{DoxyCompactItemize}
+\item 
+std\-::ostream \& \hyperlink{exceptionmagrathea_1_1DataSize_a8e194016cf87d9a96ba494a79f947a07}{operator$<$$<$} (std\-::ostream \&lhs, const \hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size} \&rhs)
+\begin{DoxyCompactList}\small\item\em \hyperlink{exceptionOutput}{Output} stream operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+\hyperlink{exceptionmagrathea_1_1Wrapper}{Wrapper} of binary data size and manager of unit conversion. 
+
+Class to hold a byte count to represent the size of a file or a chunk of memory. The byte count is stored internally into a long long integer whose negative values are associated with a void data size like a non-\/existing file. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{exceptionmagrathea_1_1DataSize_a1df5bce30b0ba2a4eeb5cb435482f1b6}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!Data\-Size@{Data\-Size}}
+\index{Data\-Size@{Data\-Size}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{Data\-Size}]{\setlength{\rightskip}{0pt plus 5cm}constexpr magrathea\-::\-Data\-Size\-::\-Data\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{exceptionmagrathea_1_1DataSize_a1df5bce30b0ba2a4eeb5cb435482f1b6}
+
+
+Implicit constexpr empty constructor. 
+
+Implicitely constructs the data size and set it to an invalid size. \hypertarget{exceptionmagrathea_1_1DataSize_a1ea878322e7b9d9d35d21d46ee7ae398}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!Data\-Size@{Data\-Size}}
+\index{Data\-Size@{Data\-Size}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{Data\-Size}]{\setlength{\rightskip}{0pt plus 5cm}constexpr magrathea\-::\-Data\-Size\-::\-Data\-Size (
+\begin{DoxyParamCaption}
+\item[{const long long int}]{amount}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{exceptionmagrathea_1_1DataSize_a1ea878322e7b9d9d35d21d46ee7ae398}
+
+
+Explicit constexpr value constructor. 
+
+Explicitely constructs the data size from a long long integer. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Value to be used for construction. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{exceptionmagrathea_1_1DataSize_ac37ca732763000b06b7ce2c3f68c419c}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!bit@{bit}}
+\index{bit@{bit}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{bit}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr {\bf Data\-Size} magrathea\-::\-Data\-Size\-::bit (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount = {\ttfamily Type(8)}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataSize_ac37ca732763000b06b7ce2c3f68c419c}
+
+
+Predefined data size in bits. 
+
+Constructs and returns a data size based on an amount of bits. If the number of provided bits is not divisible by 8, an extra byte is added. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of bits. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the data size. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a544c4749e7d6f5ec6d990fedcdb36b66}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!bits@{bits}}
+\index{bits@{bits}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{bits}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr Type magrathea\-::\-Data\-Size\-::bits (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1DataSize_a544c4749e7d6f5ec6d990fedcdb36b66}
+
+
+Get data size in bits. 
+
+Returns the data size in bits in the provided type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+The amount of bits. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_afb00905f0f8898e0461a04c086fc420a}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!bits@{bits}}
+\index{bits@{bits}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{bits}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ {\bf Data\-Size} \& magrathea\-::\-Data\-Size\-::bits (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataSize_afb00905f0f8898e0461a04c086fc420a}
+
+
+Set data size in bits. 
+
+Sets the current data size in bits. If the number of provided bits is not divisible by 8, an extra byte is added. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of bits. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_ae26d8393c21bca35e65555fb29e9e0c7}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!byte@{byte}}
+\index{byte@{byte}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{byte}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr {\bf Data\-Size} magrathea\-::\-Data\-Size\-::byte (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount = {\ttfamily Type(1)}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataSize_ae26d8393c21bca35e65555fb29e9e0c7}
+
+
+Predefined data size in bytes. 
+
+Constructs and returns a data size based on an amount of bytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of bytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the data size. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a3dce7c04810b501551e9705ef8b60822}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!bytes@{bytes}}
+\index{bytes@{bytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{bytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr Type magrathea\-::\-Data\-Size\-::bytes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1DataSize_a3dce7c04810b501551e9705ef8b60822}
+
+
+Get data size in bytes. 
+
+Returns the data size in bytes in the provided type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+The amount of bytes. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_aa174ec78a569c35df04960bf3d38e2d4}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!bytes@{bytes}}
+\index{bytes@{bytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{bytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ {\bf Data\-Size} \& magrathea\-::\-Data\-Size\-::bytes (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataSize_aa174ec78a569c35df04960bf3d38e2d4}
+
+
+Set data size in bytes. 
+
+Sets the current data size in bytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of bytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a26d4a1ef59546650acba811bd1ae5547}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!cast@{cast}}
+\index{cast@{cast}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{cast}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr Type magrathea\-::\-Data\-Size\-::cast (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1DataSize_a26d4a1ef59546650acba811bd1ae5547}
+
+
+Cast. 
+
+Returns a copy of the data size casted to the provided type. If the size is undefined and the type has a signaling Na\-N, then this signaling Na\-N is returned. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_ad604ec3c72b03f7523ab7ec8ffa652f0}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!copy@{copy}}
+\index{copy@{copy}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{copy}]{\setlength{\rightskip}{0pt plus 5cm}constexpr {\bf Data\-Size} magrathea\-::\-Data\-Size\-::copy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1DataSize_ad604ec3c72b03f7523ab7ec8ffa652f0}
+
+
+Copy. 
+
+Returns a copy of the data size. \begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a83002f4eff626baefb0a76efcee41da4}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!data@{data}}
+\index{data@{data}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}constexpr const long long int \& magrathea\-::\-Data\-Size\-::data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1DataSize_a83002f4eff626baefb0a76efcee41da4}
+
+
+Access data. 
+
+Returns a constant reference to the internal underlying data which is the size in bytes as a long long integer, negative if undefined. \begin{DoxyReturn}{Returns}
+Const reference to the data. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a9b6ecaeffdf938b8934ad621986594cc}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!empty@{empty}}
+\index{empty@{empty}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{empty}]{\setlength{\rightskip}{0pt plus 5cm}constexpr bool magrathea\-::\-Data\-Size\-::empty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1DataSize_a9b6ecaeffdf938b8934ad621986594cc}
+
+
+Get whether the size is not null. 
+
+Returns true if the size is equal to zero or if data is not valid. \begin{DoxyReturn}{Returns}
+Whether the size is not strictly greater than zero. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_ad8673f77d6f7d3b6eec25119c1197faf}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!empty@{empty}}
+\index{empty@{empty}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{empty}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Data\-Size} \& magrathea\-::\-Data\-Size\-::empty (
+\begin{DoxyParamCaption}
+\item[{const bool}]{ok}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataSize_ad8673f77d6f7d3b6eec25119c1197faf}
+
+
+Set empty status. 
+
+Sets the size to zero if the argument is true, change it to the maximum between the current size and one byte if false. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ok} & Status. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a619786a80f92e735d750d329057173d5}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!exa@{exa}}
+\index{exa@{exa}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{exa}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr {\bf Data\-Size} magrathea\-::\-Data\-Size\-::exa (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount = {\ttfamily Type(1)}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataSize_a619786a80f92e735d750d329057173d5}
+
+
+Predefined data size in exabytes. 
+
+Constructs and returns a data size based on an amount of exabytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of exabytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the data size. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_af4290f1d8080c1923fc983aabcbc136e}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!exabytes@{exabytes}}
+\index{exabytes@{exabytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{exabytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr Type magrathea\-::\-Data\-Size\-::exabytes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1DataSize_af4290f1d8080c1923fc983aabcbc136e}
+
+
+Get data size in exabytes. 
+
+Returns the data size in exabytes in the provided type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+The amount of exabytes. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_ab6d259868ed85d55d3da6c4e769ed915}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!exabytes@{exabytes}}
+\index{exabytes@{exabytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{exabytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ {\bf Data\-Size} \& magrathea\-::\-Data\-Size\-::exabytes (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataSize_ab6d259868ed85d55d3da6c4e769ed915}
+
+
+Set data size in exabytes. 
+
+Sets the current data size in exabytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of exabytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a228321b9767ce487d2635090972616b6}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!example@{example}}
+\index{example@{example}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{example}]{\setlength{\rightskip}{0pt plus 5cm}int magrathea\-::\-Data\-Size\-::example (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataSize_a228321b9767ce487d2635090972616b6}
+
+
+Example function. 
+
+Tests and demonstrates the use of \hyperlink{exceptionmagrathea_1_1DataSize}{Data\-Size}. \begin{DoxyReturn}{Returns}
+0 if no error. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_af2558af230f37eac2d558ae5a12abb28}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!exbi@{exbi}}
+\index{exbi@{exbi}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{exbi}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr {\bf Data\-Size} magrathea\-::\-Data\-Size\-::exbi (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount = {\ttfamily Type(1)}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataSize_af2558af230f37eac2d558ae5a12abb28}
+
+
+Predefined data size in exbibytes. 
+
+Constructs and returns a data size based on an amount of exbibytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of exbibytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the data size. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_af5cb17a3611bea11625f78ef498889e4}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!exbibytes@{exbibytes}}
+\index{exbibytes@{exbibytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{exbibytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr Type magrathea\-::\-Data\-Size\-::exbibytes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1DataSize_af5cb17a3611bea11625f78ef498889e4}
+
+
+Get data size in exbibytes. 
+
+Returns the data size in exbibytes in the provided type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+The amount of exbibytes. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a6571b0c392de8bbb76c8434df52f177a}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!exbibytes@{exbibytes}}
+\index{exbibytes@{exbibytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{exbibytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ {\bf Data\-Size} \& magrathea\-::\-Data\-Size\-::exbibytes (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataSize_a6571b0c392de8bbb76c8434df52f177a}
+
+
+Set data size in exbibytes. 
+
+Sets the current data size in exbibytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of exbibytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_ad422da3996190021a0786430d1793e61}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!gibi@{gibi}}
+\index{gibi@{gibi}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{gibi}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr {\bf Data\-Size} magrathea\-::\-Data\-Size\-::gibi (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount = {\ttfamily Type(1)}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataSize_ad422da3996190021a0786430d1793e61}
+
+
+Predefined data size in gibibytes. 
+
+Constructs and returns a data size based on an amount of gibibytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of gibibytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the data size. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a0417abd5488a1a4b304ebd71969d9af1}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!gibibytes@{gibibytes}}
+\index{gibibytes@{gibibytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{gibibytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr Type magrathea\-::\-Data\-Size\-::gibibytes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1DataSize_a0417abd5488a1a4b304ebd71969d9af1}
+
+
+Get data size in gibibytes. 
+
+Returns the data size in gibibytes in the provided type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+The amount of gibibytes. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_ae2798b09fa832ffe0d213fcb78fd01ff}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!gibibytes@{gibibytes}}
+\index{gibibytes@{gibibytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{gibibytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ {\bf Data\-Size} \& magrathea\-::\-Data\-Size\-::gibibytes (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataSize_ae2798b09fa832ffe0d213fcb78fd01ff}
+
+
+Set data size in gibibytes. 
+
+Sets the current data size in gibibytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of gibibytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_aada5bca96ee00f7c52cd5777d42e64fe}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!giga@{giga}}
+\index{giga@{giga}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{giga}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr {\bf Data\-Size} magrathea\-::\-Data\-Size\-::giga (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount = {\ttfamily Type(1)}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataSize_aada5bca96ee00f7c52cd5777d42e64fe}
+
+
+Predefined data size in gigabytes. 
+
+Constructs and returns a data size based on an amount of gigabytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of gigabytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the data size. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_ac905eed152d52c88f8d6d097b00ac8c6}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!gigabytes@{gigabytes}}
+\index{gigabytes@{gigabytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{gigabytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr Type magrathea\-::\-Data\-Size\-::gigabytes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1DataSize_ac905eed152d52c88f8d6d097b00ac8c6}
+
+
+Get data size in gigabytes. 
+
+Returns the data size in gigabytes in the provided type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+The amount of gigabytes. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a3fbec8a42050dae7e9020ad0e3c4aa95}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!gigabytes@{gigabytes}}
+\index{gigabytes@{gigabytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{gigabytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ {\bf Data\-Size} \& magrathea\-::\-Data\-Size\-::gigabytes (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataSize_a3fbec8a42050dae7e9020ad0e3c4aa95}
+
+
+Set data size in gigabytes. 
+
+Sets the current data size in gigabytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of gigabytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_abe9525a24519869ef7fd1d593df6442f}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!kibi@{kibi}}
+\index{kibi@{kibi}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{kibi}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr {\bf Data\-Size} magrathea\-::\-Data\-Size\-::kibi (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount = {\ttfamily Type(1)}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataSize_abe9525a24519869ef7fd1d593df6442f}
+
+
+Predefined data size in kibibytes. 
+
+Constructs and returns a data size based on an amount of kibibytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of kibibytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the data size. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a58fdd2082cb520d113cea22d7023f68f}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!kibibytes@{kibibytes}}
+\index{kibibytes@{kibibytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{kibibytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr Type magrathea\-::\-Data\-Size\-::kibibytes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1DataSize_a58fdd2082cb520d113cea22d7023f68f}
+
+
+Get data size in kibibytes. 
+
+Returns the data size in kibibytes in the provided type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+The amount of kibibytes. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a073c8dfc183b69e288b7a58cd723cffe}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!kibibytes@{kibibytes}}
+\index{kibibytes@{kibibytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{kibibytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ {\bf Data\-Size} \& magrathea\-::\-Data\-Size\-::kibibytes (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataSize_a073c8dfc183b69e288b7a58cd723cffe}
+
+
+Set data size in kibibytes. 
+
+Sets the current data size in kibibytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of kibibytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a13f28fc15cccb1fb9c6e42a3993af90f}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!kilo@{kilo}}
+\index{kilo@{kilo}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{kilo}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr {\bf Data\-Size} magrathea\-::\-Data\-Size\-::kilo (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount = {\ttfamily Type(1)}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataSize_a13f28fc15cccb1fb9c6e42a3993af90f}
+
+
+Predefined data size in kilobytes. 
+
+Constructs and returns a data size based on an amount of kilobytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of kilobytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the data size. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_ac70111a3953336284d030f5217f560c3}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!kilobytes@{kilobytes}}
+\index{kilobytes@{kilobytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{kilobytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr Type magrathea\-::\-Data\-Size\-::kilobytes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1DataSize_ac70111a3953336284d030f5217f560c3}
+
+
+Get data size in kilobytes. 
+
+Returns the data size in kilobytes in the provided type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+The amount of kilobytes. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a1b0bf5944f02d9542a72ec522bb3a155}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!kilobytes@{kilobytes}}
+\index{kilobytes@{kilobytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{kilobytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ {\bf Data\-Size} \& magrathea\-::\-Data\-Size\-::kilobytes (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataSize_a1b0bf5944f02d9542a72ec522bb3a155}
+
+
+Set data size in kilobytes. 
+
+Sets the current data size in kilobytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of kilobytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_add3ff8e910fbd0d0deacebe2f48410ec}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!mebi@{mebi}}
+\index{mebi@{mebi}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{mebi}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr {\bf Data\-Size} magrathea\-::\-Data\-Size\-::mebi (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount = {\ttfamily Type(1)}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataSize_add3ff8e910fbd0d0deacebe2f48410ec}
+
+
+Predefined data size in mebibytes. 
+
+Constructs and returns a data size based on an amount of mebibytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of mebibytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the data size. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_ac12548a6dd52871d96a3e0bf4e16a926}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!mebibytes@{mebibytes}}
+\index{mebibytes@{mebibytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{mebibytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr Type magrathea\-::\-Data\-Size\-::mebibytes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1DataSize_ac12548a6dd52871d96a3e0bf4e16a926}
+
+
+Get data size in mebibytes. 
+
+Returns the data size in mebibytes in the provided type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+The amount of mebibytes. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a71997eeb607319792486bac384fb6329}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!mebibytes@{mebibytes}}
+\index{mebibytes@{mebibytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{mebibytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ {\bf Data\-Size} \& magrathea\-::\-Data\-Size\-::mebibytes (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataSize_a71997eeb607319792486bac384fb6329}
+
+
+Set data size in mebibytes. 
+
+Sets the current data size in mebibytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of mebibytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_af073dab13fc604a0cff951f46510a35a}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!mega@{mega}}
+\index{mega@{mega}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{mega}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr {\bf Data\-Size} magrathea\-::\-Data\-Size\-::mega (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount = {\ttfamily Type(1)}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataSize_af073dab13fc604a0cff951f46510a35a}
+
+
+Predefined data size in megabytes. 
+
+Constructs and returns a data size based on an amount of megabytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of megabytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the data size. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a6cb109eed4fbf002e9df5ab03ed30b92}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!megabytes@{megabytes}}
+\index{megabytes@{megabytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{megabytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr Type magrathea\-::\-Data\-Size\-::megabytes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1DataSize_a6cb109eed4fbf002e9df5ab03ed30b92}
+
+
+Get data size in megabytes. 
+
+Returns the data size in megabytes in the provided type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+The amount of megabytes. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a9dfc314fd344037a6fd010790fe29d0e}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!megabytes@{megabytes}}
+\index{megabytes@{megabytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{megabytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ {\bf Data\-Size} \& magrathea\-::\-Data\-Size\-::megabytes (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataSize_a9dfc314fd344037a6fd010790fe29d0e}
+
+
+Set data size in megabytes. 
+
+Sets the current data size in megabytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of megabytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a7f75549fdf34e7386fbd5129f0366e7d}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!operator()@{operator()}}
+\index{operator()@{operator()}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long long int magrathea\-::\-Data\-Size\-::operator() (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataSize_a7f75549fdf34e7386fbd5129f0366e7d}
+
+
+Conversion operator. 
+
+ 
+
+Returns the number of bytes or throw an error if the size is not defined. \begin{DoxyReturn}{Returns}
+The size in bytes. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::underflow\-\_\-error} & Undefined size. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{exceptionmagrathea_1_1DataSize_a0fd84c6806ce037a4483c3596cfaf380}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!operator=@{operator=}}
+\index{operator=@{operator=}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ {\bf Data\-Size} \& magrathea\-::\-Data\-Size\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataSize_a0fd84c6806ce037a4483c3596cfaf380}
+
+
+Conversion assignment operator. 
+
+Convert the provided amount of bytes to a data size. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a5313635e436d3f1645e26d3dd6e74b82}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!operator=@{operator=}}
+\index{operator=@{operator=}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Data\-Size} \& magrathea\-::\-Data\-Size\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Data\-Size} \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataSize_a5313635e436d3f1645e26d3dd6e74b82}
+
+
+Copy assignment operator. 
+
+Copies the contents of another data size. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a3452fef4c5afbe4bcf678a469a33582e}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!pebi@{pebi}}
+\index{pebi@{pebi}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{pebi}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr {\bf Data\-Size} magrathea\-::\-Data\-Size\-::pebi (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount = {\ttfamily Type(1)}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataSize_a3452fef4c5afbe4bcf678a469a33582e}
+
+
+Predefined data size in pebibytes. 
+
+Constructs and returns a data size based on an amount of pebibytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of pebibytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the data size. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_afa9b7a2c33c3673ad2cdecfce6c0c2c9}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!pebibytes@{pebibytes}}
+\index{pebibytes@{pebibytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{pebibytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr Type magrathea\-::\-Data\-Size\-::pebibytes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1DataSize_afa9b7a2c33c3673ad2cdecfce6c0c2c9}
+
+
+Get data size in pebibytes. 
+
+Returns the data size in pebibytes in the provided type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+The amount of pebibytes. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a2a7dff5ed4c768db5234e18ccbb29e61}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!pebibytes@{pebibytes}}
+\index{pebibytes@{pebibytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{pebibytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ {\bf Data\-Size} \& magrathea\-::\-Data\-Size\-::pebibytes (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataSize_a2a7dff5ed4c768db5234e18ccbb29e61}
+
+
+Set data size in pebibytes. 
+
+Sets the current data size in pebibytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of pebibytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a956908e22027ada049656164e9035481}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!peta@{peta}}
+\index{peta@{peta}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{peta}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr {\bf Data\-Size} magrathea\-::\-Data\-Size\-::peta (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount = {\ttfamily Type(1)}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataSize_a956908e22027ada049656164e9035481}
+
+
+Predefined data size in petabytes. 
+
+Constructs and returns a data size based on an amount of petabytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of petabytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the data size. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a1e8e83135c301f096b7dc294fa537141}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!petabytes@{petabytes}}
+\index{petabytes@{petabytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{petabytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr Type magrathea\-::\-Data\-Size\-::petabytes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1DataSize_a1e8e83135c301f096b7dc294fa537141}
+
+
+Get data size in petabytes. 
+
+Returns the data size in petabytes in the provided type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+The amount of petabytes. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_ac126cc0c013db8c39c886286b91ac6c3}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!petabytes@{petabytes}}
+\index{petabytes@{petabytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{petabytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ {\bf Data\-Size} \& magrathea\-::\-Data\-Size\-::petabytes (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataSize_ac126cc0c013db8c39c886286b91ac6c3}
+
+
+Set data size in petabytes. 
+
+Sets the current data size in petabytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of petabytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a46fe14cd5bfd609e502fecd6408dd75c}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!tebi@{tebi}}
+\index{tebi@{tebi}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{tebi}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr {\bf Data\-Size} magrathea\-::\-Data\-Size\-::tebi (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount = {\ttfamily Type(1)}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataSize_a46fe14cd5bfd609e502fecd6408dd75c}
+
+
+Predefined data size in tebibytes. 
+
+Constructs and returns a data size based on an amount of tebibytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of tebibytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the data size. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a44e0aa087c6d74fa62b3e9fad3ab706d}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!tebibytes@{tebibytes}}
+\index{tebibytes@{tebibytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{tebibytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr Type magrathea\-::\-Data\-Size\-::tebibytes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1DataSize_a44e0aa087c6d74fa62b3e9fad3ab706d}
+
+
+Get data size in tebibytes. 
+
+Returns the data size in tebibytes in the provided type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+The amount of tebibytes. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a15d9fe713e47a1512b3febbf79dd196f}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!tebibytes@{tebibytes}}
+\index{tebibytes@{tebibytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{tebibytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ {\bf Data\-Size} \& magrathea\-::\-Data\-Size\-::tebibytes (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataSize_a15d9fe713e47a1512b3febbf79dd196f}
+
+
+Set data size in tebibytes. 
+
+Sets the current data size in tebibytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of tebibytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_adab1c667b7286de648e238221037da8e}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!tera@{tera}}
+\index{tera@{tera}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{tera}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr {\bf Data\-Size} magrathea\-::\-Data\-Size\-::tera (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount = {\ttfamily Type(1)}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataSize_adab1c667b7286de648e238221037da8e}
+
+
+Predefined data size in terabytes. 
+
+Constructs and returns a data size based on an amount of terabytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of terabytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the data size. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_afcf0c85f514e722667e76a197370f3ea}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!terabytes@{terabytes}}
+\index{terabytes@{terabytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{terabytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr Type magrathea\-::\-Data\-Size\-::terabytes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1DataSize_afcf0c85f514e722667e76a197370f3ea}
+
+
+Get data size in terabytes. 
+
+Returns the data size in terabytes in the provided type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+The amount of terabytes. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a9ce9519d240e7db290b5b7e0f1ca0afb}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!terabytes@{terabytes}}
+\index{terabytes@{terabytes}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{terabytes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ {\bf Data\-Size} \& magrathea\-::\-Data\-Size\-::terabytes (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{amount}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataSize_a9ce9519d240e7db290b5b7e0f1ca0afb}
+
+
+Set data size in terabytes. 
+
+Sets the current data size in terabytes. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & Amount of terabytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a25b5a17d3d7ebb52cde519441f5530ed}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!valid@{valid}}
+\index{valid@{valid}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{valid}]{\setlength{\rightskip}{0pt plus 5cm}constexpr bool magrathea\-::\-Data\-Size\-::valid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1DataSize_a25b5a17d3d7ebb52cde519441f5530ed}
+
+
+Get the validity of the data size. 
+
+Returns whether the data exists or not. The existence of data is defined as a size greater or equal to zero. \begin{DoxyReturn}{Returns}
+Data validity. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataSize_a0922e436ed67e5a0e85f0fea8755f2e7}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!valid@{valid}}
+\index{valid@{valid}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{valid}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Data\-Size} \& magrathea\-::\-Data\-Size\-::valid (
+\begin{DoxyParamCaption}
+\item[{const bool}]{ok}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataSize_a0922e436ed67e5a0e85f0fea8755f2e7}
+
+
+Set valid status. 
+
+Sets the size to invalid if the argument is false, change it to the maximum between the current size and zero if true. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ok} & Status. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{exceptionmagrathea_1_1DataSize_a8e194016cf87d9a96ba494a79f947a07}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{lhs, }
+\item[{const {\bf Data\-Size} \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{exceptionmagrathea_1_1DataSize_a8e194016cf87d9a96ba494a79f947a07}
+
+
+\hyperlink{exceptionOutput}{Output} stream operator. 
+
+Prints out the data size in the most convenient binary unit. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em lhs} & Left-\/hand side stream. \\
+\hline
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side data size. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{exceptionOutput}{Output} stream. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{exceptionmagrathea_1_1DataSize_afa83372be705d488fcf02d5102d46c9f}{\index{magrathea\-::\-Data\-Size@{magrathea\-::\-Data\-Size}!\-\_\-size@{\-\_\-size}}
+\index{\-\_\-size@{\-\_\-size}!magrathea::DataSize@{magrathea\-::\-Data\-Size}}
+\subsubsection[{\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}long long int magrathea\-::\-Data\-Size\-::\-\_\-size\hspace{0.3cm}{\ttfamily [protected]}}}\label{exceptionmagrathea_1_1DataSize_afa83372be705d488fcf02d5102d46c9f}
+
+
+Data size in bytes. 
+
+
+
+The documentation for this exception was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/magrathea/\hyperlink{datasize_8h}{datasize.\-h}\end{DoxyCompactItemize}

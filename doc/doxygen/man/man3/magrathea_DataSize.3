@@ -1,0 +1,1345 @@
+.TH "magrathea::DataSize" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::DataSize \- 
+.PP
+\fBWrapper\fP of binary data size and manager of unit conversion\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <datasize\&.h>\fP
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBLifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "constexpr \fBDataSize\fP ()"
+.br
+.RI "\fIImplicit constexpr empty constructor\&. \fP"
+.ti -1c
+.RI "constexpr \fBDataSize\fP (const long long int amount)"
+.br
+.RI "\fIExplicit constexpr value constructor\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBOperators\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename Type > \fBDataSize\fP & \fBoperator=\fP (const Type &rhs)"
+.br
+.RI "\fIConversion assignment operator\&. \fP"
+.ti -1c
+.RI "\fBDataSize\fP & \fBoperator=\fP (const \fBDataSize\fP &rhs)"
+.br
+.RI "\fICopy assignment operator\&. \fP"
+.ti -1c
+.RI "unsigned long long int \fBoperator()\fP ()"
+.br
+.RI "\fIConversion operator\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBManagement\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "constexpr const long long int & \fBdata\fP () const "
+.br
+.RI "\fIAccess data\&. \fP"
+.ti -1c
+.RI "constexpr \fBDataSize\fP \fBcopy\fP () const "
+.br
+.RI "\fICopy\&. \fP"
+.ti -1c
+.RI "template<typename Type  = DataSize> constexpr Type \fBcast\fP () const "
+.br
+.RI "\fICast\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBGetters\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "bool constexpr \fBvalid\fP () const "
+.br
+.RI "\fIGet the validity of the data size\&. \fP"
+.ti -1c
+.RI "bool constexpr \fBempty\fP () const "
+.br
+.RI "\fIGet whether the size is not null\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> constexpr Type \fBbytes\fP () const "
+.br
+.RI "\fIGet data size in bytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> constexpr Type \fBkibibytes\fP () const "
+.br
+.RI "\fIGet data size in kibibytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> constexpr Type \fBmebibytes\fP () const "
+.br
+.RI "\fIGet data size in mebibytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> constexpr Type \fBgibibytes\fP () const "
+.br
+.RI "\fIGet data size in gibibytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> constexpr Type \fBtebibytes\fP () const "
+.br
+.RI "\fIGet data size in tebibytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> constexpr Type \fBpebibytes\fP () const "
+.br
+.RI "\fIGet data size in pebibytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> constexpr Type \fBexbibytes\fP () const "
+.br
+.RI "\fIGet data size in exbibytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> constexpr Type \fBkilobytes\fP () const "
+.br
+.RI "\fIGet data size in kilobytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> constexpr Type \fBmegabytes\fP () const "
+.br
+.RI "\fIGet data size in megabytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> constexpr Type \fBgigabytes\fP () const "
+.br
+.RI "\fIGet data size in gigabytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> constexpr Type \fBterabytes\fP () const "
+.br
+.RI "\fIGet data size in terabytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> constexpr Type \fBpetabytes\fP () const "
+.br
+.RI "\fIGet data size in petabytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> constexpr Type \fBexabytes\fP () const "
+.br
+.RI "\fIGet data size in exabytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> constexpr Type \fBbits\fP () const "
+.br
+.RI "\fIGet data size in bits\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBSetters\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBDataSize\fP & \fBvalid\fP (const bool ok)"
+.br
+.RI "\fISet valid status\&. \fP"
+.ti -1c
+.RI "\fBDataSize\fP & \fBempty\fP (const bool ok)"
+.br
+.RI "\fISet empty status\&. \fP"
+.ti -1c
+.RI "template<typename Type > \fBDataSize\fP & \fBbytes\fP (const Type &amount)"
+.br
+.RI "\fISet data size in bytes\&. \fP"
+.ti -1c
+.RI "template<typename Type > \fBDataSize\fP & \fBkibibytes\fP (const Type &amount)"
+.br
+.RI "\fISet data size in kibibytes\&. \fP"
+.ti -1c
+.RI "template<typename Type > \fBDataSize\fP & \fBmebibytes\fP (const Type &amount)"
+.br
+.RI "\fISet data size in mebibytes\&. \fP"
+.ti -1c
+.RI "template<typename Type > \fBDataSize\fP & \fBgibibytes\fP (const Type &amount)"
+.br
+.RI "\fISet data size in gibibytes\&. \fP"
+.ti -1c
+.RI "template<typename Type > \fBDataSize\fP & \fBtebibytes\fP (const Type &amount)"
+.br
+.RI "\fISet data size in tebibytes\&. \fP"
+.ti -1c
+.RI "template<typename Type > \fBDataSize\fP & \fBpebibytes\fP (const Type &amount)"
+.br
+.RI "\fISet data size in pebibytes\&. \fP"
+.ti -1c
+.RI "template<typename Type > \fBDataSize\fP & \fBexbibytes\fP (const Type &amount)"
+.br
+.RI "\fISet data size in exbibytes\&. \fP"
+.ti -1c
+.RI "template<typename Type > \fBDataSize\fP & \fBkilobytes\fP (const Type &amount)"
+.br
+.RI "\fISet data size in kilobytes\&. \fP"
+.ti -1c
+.RI "template<typename Type > \fBDataSize\fP & \fBmegabytes\fP (const Type &amount)"
+.br
+.RI "\fISet data size in megabytes\&. \fP"
+.ti -1c
+.RI "template<typename Type > \fBDataSize\fP & \fBgigabytes\fP (const Type &amount)"
+.br
+.RI "\fISet data size in gigabytes\&. \fP"
+.ti -1c
+.RI "template<typename Type > \fBDataSize\fP & \fBterabytes\fP (const Type &amount)"
+.br
+.RI "\fISet data size in terabytes\&. \fP"
+.ti -1c
+.RI "template<typename Type > \fBDataSize\fP & \fBpetabytes\fP (const Type &amount)"
+.br
+.RI "\fISet data size in petabytes\&. \fP"
+.ti -1c
+.RI "template<typename Type > \fBDataSize\fP & \fBexabytes\fP (const Type &amount)"
+.br
+.RI "\fISet data size in exabytes\&. \fP"
+.ti -1c
+.RI "template<typename Type > \fBDataSize\fP & \fBbits\fP (const Type &amount)"
+.br
+.RI "\fISet data size in bits\&. \fP"
+.in -1c
+.in -1c
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBPredefined\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> static constexpr \fBDataSize\fP \fBbyte\fP (const Type &amount=Type(1))"
+.br
+.RI "\fIPredefined data size in bytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> static constexpr \fBDataSize\fP \fBkibi\fP (const Type &amount=Type(1))"
+.br
+.RI "\fIPredefined data size in kibibytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> static constexpr \fBDataSize\fP \fBmebi\fP (const Type &amount=Type(1))"
+.br
+.RI "\fIPredefined data size in mebibytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> static constexpr \fBDataSize\fP \fBgibi\fP (const Type &amount=Type(1))"
+.br
+.RI "\fIPredefined data size in gibibytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> static constexpr \fBDataSize\fP \fBtebi\fP (const Type &amount=Type(1))"
+.br
+.RI "\fIPredefined data size in tebibytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> static constexpr \fBDataSize\fP \fBpebi\fP (const Type &amount=Type(1))"
+.br
+.RI "\fIPredefined data size in pebibytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> static constexpr \fBDataSize\fP \fBexbi\fP (const Type &amount=Type(1))"
+.br
+.RI "\fIPredefined data size in exbibytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> static constexpr \fBDataSize\fP \fBkilo\fP (const Type &amount=Type(1))"
+.br
+.RI "\fIPredefined data size in kilobytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> static constexpr \fBDataSize\fP \fBmega\fP (const Type &amount=Type(1))"
+.br
+.RI "\fIPredefined data size in megabytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> static constexpr \fBDataSize\fP \fBgiga\fP (const Type &amount=Type(1))"
+.br
+.RI "\fIPredefined data size in gigabytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> static constexpr \fBDataSize\fP \fBtera\fP (const Type &amount=Type(1))"
+.br
+.RI "\fIPredefined data size in terabytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> static constexpr \fBDataSize\fP \fBpeta\fP (const Type &amount=Type(1))"
+.br
+.RI "\fIPredefined data size in petabytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> static constexpr \fBDataSize\fP \fBexa\fP (const Type &amount=Type(1))"
+.br
+.RI "\fIPredefined data size in exabytes\&. \fP"
+.ti -1c
+.RI "template<typename Type  = unsigned long long int> static constexpr \fBDataSize\fP \fBbit\fP (const Type &amount=Type(8))"
+.br
+.RI "\fIPredefined data size in bits\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SS "Protected Attributes"
+
+.PP
+.RI "\fBData members\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "long long int \fB_size\fP"
+.br
+.RI "\fIData size in bytes\&. \fP"
+.in -1c
+.in -1c
+.SS "Friends"
+
+.PP
+.RI "\fBStream\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &lhs, const \fBDataSize\fP &rhs)"
+.br
+.RI "\fI\fBOutput\fP stream operator\&. \fP"
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBWrapper\fP of binary data size and manager of unit conversion\&. 
+
+Class to hold a byte count to represent the size of a file or a chunk of memory\&. The byte count is stored internally into a long long integer whose negative values are associated with a void data size like a non-existing file\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "constexpr magrathea::DataSize::DataSize ()"
+
+.PP
+Implicit constexpr empty constructor\&. Implicitely constructs the data size and set it to an invalid size\&. 
+.SS "constexpr magrathea::DataSize::DataSize (const long long intamount)\fC [explicit]\fP"
+
+.PP
+Explicit constexpr value constructor\&. Explicitely constructs the data size from a long long integer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Value to be used for construction\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename Type > constexpr \fBDataSize\fP magrathea::DataSize::bit (const Type &amount = \fCType(8)\fP)\fC [static]\fP"
+
+.PP
+Predefined data size in bits\&. Constructs and returns a data size based on an amount of bits\&. If the number of provided bits is not divisible by 8, an extra byte is added\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of bits\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the data size\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr Type magrathea::DataSize::bits () const"
+
+.PP
+Get data size in bits\&. Returns the data size in bits in the provided type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Data type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The amount of bits\&. 
+.RE
+.PP
+
+.SS "template<typename Type > \fBDataSize\fP & magrathea::DataSize::bits (const Type &amount)\fC [inline]\fP"
+
+.PP
+Set data size in bits\&. Sets the current data size in bits\&. If the number of provided bits is not divisible by 8, an extra byte is added\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of bits\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr \fBDataSize\fP magrathea::DataSize::byte (const Type &amount = \fCType(1)\fP)\fC [static]\fP"
+
+.PP
+Predefined data size in bytes\&. Constructs and returns a data size based on an amount of bytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of bytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the data size\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr Type magrathea::DataSize::bytes () const"
+
+.PP
+Get data size in bytes\&. Returns the data size in bytes in the provided type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Data type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The amount of bytes\&. 
+.RE
+.PP
+
+.SS "template<typename Type > \fBDataSize\fP & magrathea::DataSize::bytes (const Type &amount)\fC [inline]\fP"
+
+.PP
+Set data size in bytes\&. Sets the current data size in bytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of bytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr Type magrathea::DataSize::cast () const"
+
+.PP
+Cast\&. Returns a copy of the data size casted to the provided type\&. If the size is undefined and the type has a signaling NaN, then this signaling NaN is returned\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Data type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "constexpr \fBDataSize\fP magrathea::DataSize::copy () const"
+
+.PP
+Copy\&. Returns a copy of the data size\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "constexpr const long long int & magrathea::DataSize::data () const"
+
+.PP
+Access data\&. Returns a constant reference to the internal underlying data which is the size in bytes as a long long integer, negative if undefined\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Const reference to the data\&. 
+.RE
+.PP
+
+.SS "constexpr bool magrathea::DataSize::empty () const"
+
+.PP
+Get whether the size is not null\&. Returns true if the size is equal to zero or if data is not valid\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Whether the size is not strictly greater than zero\&. 
+.RE
+.PP
+
+.SS "\fBDataSize\fP & magrathea::DataSize::empty (const boolok)\fC [inline]\fP"
+
+.PP
+Set empty status\&. Sets the size to zero if the argument is true, change it to the maximum between the current size and one byte if false\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIok\fP Status\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr \fBDataSize\fP magrathea::DataSize::exa (const Type &amount = \fCType(1)\fP)\fC [static]\fP"
+
+.PP
+Predefined data size in exabytes\&. Constructs and returns a data size based on an amount of exabytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of exabytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the data size\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr Type magrathea::DataSize::exabytes () const"
+
+.PP
+Get data size in exabytes\&. Returns the data size in exabytes in the provided type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Data type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The amount of exabytes\&. 
+.RE
+.PP
+
+.SS "template<typename Type > \fBDataSize\fP & magrathea::DataSize::exabytes (const Type &amount)\fC [inline]\fP"
+
+.PP
+Set data size in exabytes\&. Sets the current data size in exabytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of exabytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "int magrathea::DataSize::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBDataSize\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr \fBDataSize\fP magrathea::DataSize::exbi (const Type &amount = \fCType(1)\fP)\fC [static]\fP"
+
+.PP
+Predefined data size in exbibytes\&. Constructs and returns a data size based on an amount of exbibytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of exbibytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the data size\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr Type magrathea::DataSize::exbibytes () const"
+
+.PP
+Get data size in exbibytes\&. Returns the data size in exbibytes in the provided type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Data type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The amount of exbibytes\&. 
+.RE
+.PP
+
+.SS "template<typename Type > \fBDataSize\fP & magrathea::DataSize::exbibytes (const Type &amount)\fC [inline]\fP"
+
+.PP
+Set data size in exbibytes\&. Sets the current data size in exbibytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of exbibytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr \fBDataSize\fP magrathea::DataSize::gibi (const Type &amount = \fCType(1)\fP)\fC [static]\fP"
+
+.PP
+Predefined data size in gibibytes\&. Constructs and returns a data size based on an amount of gibibytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of gibibytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the data size\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr Type magrathea::DataSize::gibibytes () const"
+
+.PP
+Get data size in gibibytes\&. Returns the data size in gibibytes in the provided type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Data type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The amount of gibibytes\&. 
+.RE
+.PP
+
+.SS "template<typename Type > \fBDataSize\fP & magrathea::DataSize::gibibytes (const Type &amount)\fC [inline]\fP"
+
+.PP
+Set data size in gibibytes\&. Sets the current data size in gibibytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of gibibytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr \fBDataSize\fP magrathea::DataSize::giga (const Type &amount = \fCType(1)\fP)\fC [static]\fP"
+
+.PP
+Predefined data size in gigabytes\&. Constructs and returns a data size based on an amount of gigabytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of gigabytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the data size\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr Type magrathea::DataSize::gigabytes () const"
+
+.PP
+Get data size in gigabytes\&. Returns the data size in gigabytes in the provided type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Data type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The amount of gigabytes\&. 
+.RE
+.PP
+
+.SS "template<typename Type > \fBDataSize\fP & magrathea::DataSize::gigabytes (const Type &amount)\fC [inline]\fP"
+
+.PP
+Set data size in gigabytes\&. Sets the current data size in gigabytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of gigabytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr \fBDataSize\fP magrathea::DataSize::kibi (const Type &amount = \fCType(1)\fP)\fC [static]\fP"
+
+.PP
+Predefined data size in kibibytes\&. Constructs and returns a data size based on an amount of kibibytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of kibibytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the data size\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr Type magrathea::DataSize::kibibytes () const"
+
+.PP
+Get data size in kibibytes\&. Returns the data size in kibibytes in the provided type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Data type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The amount of kibibytes\&. 
+.RE
+.PP
+
+.SS "template<typename Type > \fBDataSize\fP & magrathea::DataSize::kibibytes (const Type &amount)\fC [inline]\fP"
+
+.PP
+Set data size in kibibytes\&. Sets the current data size in kibibytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of kibibytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr \fBDataSize\fP magrathea::DataSize::kilo (const Type &amount = \fCType(1)\fP)\fC [static]\fP"
+
+.PP
+Predefined data size in kilobytes\&. Constructs and returns a data size based on an amount of kilobytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of kilobytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the data size\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr Type magrathea::DataSize::kilobytes () const"
+
+.PP
+Get data size in kilobytes\&. Returns the data size in kilobytes in the provided type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Data type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The amount of kilobytes\&. 
+.RE
+.PP
+
+.SS "template<typename Type > \fBDataSize\fP & magrathea::DataSize::kilobytes (const Type &amount)\fC [inline]\fP"
+
+.PP
+Set data size in kilobytes\&. Sets the current data size in kilobytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of kilobytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr \fBDataSize\fP magrathea::DataSize::mebi (const Type &amount = \fCType(1)\fP)\fC [static]\fP"
+
+.PP
+Predefined data size in mebibytes\&. Constructs and returns a data size based on an amount of mebibytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of mebibytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the data size\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr Type magrathea::DataSize::mebibytes () const"
+
+.PP
+Get data size in mebibytes\&. Returns the data size in mebibytes in the provided type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Data type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The amount of mebibytes\&. 
+.RE
+.PP
+
+.SS "template<typename Type > \fBDataSize\fP & magrathea::DataSize::mebibytes (const Type &amount)\fC [inline]\fP"
+
+.PP
+Set data size in mebibytes\&. Sets the current data size in mebibytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of mebibytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr \fBDataSize\fP magrathea::DataSize::mega (const Type &amount = \fCType(1)\fP)\fC [static]\fP"
+
+.PP
+Predefined data size in megabytes\&. Constructs and returns a data size based on an amount of megabytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of megabytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the data size\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr Type magrathea::DataSize::megabytes () const"
+
+.PP
+Get data size in megabytes\&. Returns the data size in megabytes in the provided type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Data type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The amount of megabytes\&. 
+.RE
+.PP
+
+.SS "template<typename Type > \fBDataSize\fP & magrathea::DataSize::megabytes (const Type &amount)\fC [inline]\fP"
+
+.PP
+Set data size in megabytes\&. Sets the current data size in megabytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of megabytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "unsigned long long int magrathea::DataSize::operator() ()\fC [inline]\fP"
+
+.PP
+Conversion operator\&.  
+.PP
+Returns the number of bytes or throw an error if the size is not defined\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The size in bytes\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::underflow_error\fP Undefined size\&. 
+.RE
+.PP
+
+.SS "template<typename Type > \fBDataSize\fP & magrathea::DataSize::operator= (const Type &rhs)\fC [inline]\fP"
+
+.PP
+Conversion assignment operator\&. Convert the provided amount of bytes to a data size\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "\fBDataSize\fP & magrathea::DataSize::operator= (const \fBDataSize\fP &rhs)\fC [inline]\fP"
+
+.PP
+Copy assignment operator\&. Copies the contents of another data size\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr \fBDataSize\fP magrathea::DataSize::pebi (const Type &amount = \fCType(1)\fP)\fC [static]\fP"
+
+.PP
+Predefined data size in pebibytes\&. Constructs and returns a data size based on an amount of pebibytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of pebibytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the data size\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr Type magrathea::DataSize::pebibytes () const"
+
+.PP
+Get data size in pebibytes\&. Returns the data size in pebibytes in the provided type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Data type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The amount of pebibytes\&. 
+.RE
+.PP
+
+.SS "template<typename Type > \fBDataSize\fP & magrathea::DataSize::pebibytes (const Type &amount)\fC [inline]\fP"
+
+.PP
+Set data size in pebibytes\&. Sets the current data size in pebibytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of pebibytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr \fBDataSize\fP magrathea::DataSize::peta (const Type &amount = \fCType(1)\fP)\fC [static]\fP"
+
+.PP
+Predefined data size in petabytes\&. Constructs and returns a data size based on an amount of petabytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of petabytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the data size\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr Type magrathea::DataSize::petabytes () const"
+
+.PP
+Get data size in petabytes\&. Returns the data size in petabytes in the provided type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Data type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The amount of petabytes\&. 
+.RE
+.PP
+
+.SS "template<typename Type > \fBDataSize\fP & magrathea::DataSize::petabytes (const Type &amount)\fC [inline]\fP"
+
+.PP
+Set data size in petabytes\&. Sets the current data size in petabytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of petabytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr \fBDataSize\fP magrathea::DataSize::tebi (const Type &amount = \fCType(1)\fP)\fC [static]\fP"
+
+.PP
+Predefined data size in tebibytes\&. Constructs and returns a data size based on an amount of tebibytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of tebibytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the data size\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr Type magrathea::DataSize::tebibytes () const"
+
+.PP
+Get data size in tebibytes\&. Returns the data size in tebibytes in the provided type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Data type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The amount of tebibytes\&. 
+.RE
+.PP
+
+.SS "template<typename Type > \fBDataSize\fP & magrathea::DataSize::tebibytes (const Type &amount)\fC [inline]\fP"
+
+.PP
+Set data size in tebibytes\&. Sets the current data size in tebibytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of tebibytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr \fBDataSize\fP magrathea::DataSize::tera (const Type &amount = \fCType(1)\fP)\fC [static]\fP"
+
+.PP
+Predefined data size in terabytes\&. Constructs and returns a data size based on an amount of terabytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of terabytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the data size\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr Type magrathea::DataSize::terabytes () const"
+
+.PP
+Get data size in terabytes\&. Returns the data size in terabytes in the provided type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Data type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The amount of terabytes\&. 
+.RE
+.PP
+
+.SS "template<typename Type > \fBDataSize\fP & magrathea::DataSize::terabytes (const Type &amount)\fC [inline]\fP"
+
+.PP
+Set data size in terabytes\&. Sets the current data size in terabytes\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIamount\fP Amount of terabytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "constexpr bool magrathea::DataSize::valid () const"
+
+.PP
+Get the validity of the data size\&. Returns whether the data exists or not\&. The existence of data is defined as a size greater or equal to zero\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Data validity\&. 
+.RE
+.PP
+
+.SS "\fBDataSize\fP & magrathea::DataSize::valid (const boolok)\fC [inline]\fP"
+
+.PP
+Set valid status\&. Sets the size to invalid if the argument is false, change it to the maximum between the current size and zero if true\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIok\fP Status\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "std::ostream& operator<< (std::ostream &lhs, const \fBDataSize\fP &rhs)\fC [friend]\fP"
+
+.PP
+\fBOutput\fP stream operator\&. Prints out the data size in the most convenient binary unit\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side stream\&. 
+.br
+\fIrhs\fP Right-hand side data size\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBOutput\fP stream\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "long long int magrathea::DataSize::_size\fC [protected]\fP"
+
+.PP
+Data size in bytes\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

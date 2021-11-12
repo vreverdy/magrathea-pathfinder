@@ -1,0 +1,963 @@
+\hypertarget{exceptionUtility}{\section{Utility Exception Reference}
+\label{exceptionUtility}\index{Utility@{Utility}}
+}
+
+
+List of utilities for raytracing.  
+
+
+
+
+{\ttfamily \#include $<$utility.\-h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Type $>$ }\\static std\-::array$<$ std\-::array\\*
+$<$ Type, 2 $>$, 2 $>$ \hyperlink{exceptionUtility_a1873b248b7e37b48532c512eb19d037b}{inv\-Matrix2d} (const std\-::array$<$ std\-::array$<$ Type, 2 $>$, 2 $>$ \&A)
+\begin{DoxyCompactList}\small\item\em Inverse matrix. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Type $>$ }\\static std\-::array$<$ std\-::array\\*
+$<$ Type, 3 $>$, 3 $>$ \hyperlink{exceptionUtility_a3b7516865a1c4621f4b9807fea8ce67a}{inv\-Matrix3d} (const std\-::array$<$ std\-::array$<$ Type, 3 $>$, 3 $>$ \&A)
+\begin{DoxyCompactList}\small\item\em Inverse matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}{\bf Parallelization}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$int Default = 0, typename Type , class Function , class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-convertible$<$decltype(std\-::declval$<$\-Type$>$()+std\-::declval$<$\-Type$>$()), int$>$\-::value) \&\& (!std\-::is\-\_\-function$<$typename std\-::result\-\_\-of$<$\-Function(\-Type)$>$\-::type$>$\-::value)$>$\-::type$>$ }\\static double \hyperlink{exceptionUtility_a9b35ecb9385f2ebe5790603b68cd5fd2}{parallelize} (const Type nsteps, Function \&\&function, const int nthreads=(Default!=0)?(Default)\-:(std\-::thread\-::hardware\-\_\-concurrency()))
+\begin{DoxyCompactList}\small\item\em Parallelize a loop. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int Default = 0, typename Type , class Function , class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-void$<$decltype(std\-::declval$<$\-Type$>$()/std\-::declval$<$\-Type$>$())$>$\-::value) \&\& (!std\-::is\-\_\-function$<$typename std\-::result\-\_\-of$<$\-Function(\-Type)$>$\-::type$>$\-::value)$>$\-::type$>$ }\\static double \hyperlink{exceptionUtility_a9125993caa1c19cc24a92401773bf979}{parallelize} (const Type \&first, const Type \&last, const Type \&increment, Function \&\&function, const int nthreads=(Default!=0)?(Default)\-:(std\-::thread\-::hardware\-\_\-concurrency()))
+\begin{DoxyCompactList}\small\item\em Parallelize an iteration over a range of values. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int Default = 0, typename Iterator , class Function , class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-void$<$decltype($\ast$std\-::declval$<$\-Iterator$>$())$>$\-::value) \&\& (!std\-::is\-\_\-function$<$typename std\-::result\-\_\-of$<$\-Function(decltype($\ast$std\-::declval$<$\-Iterator$>$()))$>$\-::type$>$\-::value)$>$\-::type$>$ }\\static double \hyperlink{exceptionUtility_a62d54b2aa4e6688976aff399e72c0021}{parallelize} (const Iterator \&first, const Iterator \&last, Function \&\&function, const int nthreads=(Default!=0)?(Default)\-:(std\-::thread\-::hardware\-\_\-concurrency()))
+\begin{DoxyCompactList}\small\item\em Parallelize an iteration over a range of iterators. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Geometry}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$unsigned int Dimension, unsigned int Index = 0, class Vector , typename Scalar  = typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Vector$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type$>$ }\\static constexpr Scalar \hyperlink{exceptionUtility_a97b7552f884347aa26480b84b65dc37f}{distance} (const Vector \&first, const Vector \&second)
+\begin{DoxyCompactList}\small\item\em Euclidian distance. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Dimension, unsigned int Index = 0, class Vector , typename Scalar  = typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Vector$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type$>$ }\\static constexpr Scalar \hyperlink{exceptionUtility_a2bf5cac446ff15394d9b382b744b5f53}{dot} (const Vector \&first, const Vector \&second)
+\begin{DoxyCompactList}\small\item\em Dot product. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Dimension, unsigned int Index = 0, class Vector , typename Scalar  = typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Vector$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type$>$ }\\static Vector \hyperlink{exceptionUtility_adeee291b41fae8cf2e8aee7260f03b0a}{cross} (const Vector \&first, const Vector \&second)
+\begin{DoxyCompactList}\small\item\em Three dimensional cross product. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Dimension, unsigned int Index = 0, class Vector , typename Scalar  = typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Vector$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type$>$ }\\static Vector \hyperlink{exceptionUtility_a837bb7d580a72127e1ba14bd59c41b54}{join} (const Vector \&first, const Vector \&second)
+\begin{DoxyCompactList}\small\item\em Join two points. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Operator , unsigned int Dimension, unsigned int Index = 0, class Vector , typename Scalar  = typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Vector$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type$>$ }\\static Vector \hyperlink{exceptionUtility_a7982ba3fafc912d50e00d2fd6d470d42}{apply} (const Vector \&first, const Vector \&second)
+\begin{DoxyCompactList}\small\item\em Apply operator to all elements. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Dimension, class Vector , typename Scalar $>$ }\\static constexpr Scalar \hyperlink{exceptionUtility_ac0c6a5f0453a9599554949f06a8d116e}{radius} (const \hyperlink{exceptionmagrathea_1_1HyperSphere}{magrathea\-::\-Hyper\-Sphere}$<$ Dimension, Vector, Scalar $>$ \&hypersphere)
+\begin{DoxyCompactList}\small\item\em Radius of an hypersphere. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Dimension, class Vector , typename Scalar $>$ }\\static constexpr Scalar \hyperlink{exceptionUtility_a64d223d506b4a5ab47a3e087412c5840}{radius} (const \hyperlink{exceptionmagrathea_1_1HyperCube}{magrathea\-::\-Hyper\-Cube}$<$ Dimension, Vector, Scalar $>$ \&hypercube)
+\begin{DoxyCompactList}\small\item\em Radius of an hypercube. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Dimension, class Vector , typename Scalar , typename Type  = Scalar$>$ }\\static \hyperlink{exceptionmagrathea_1_1HyperCube}{magrathea\-::\-Hyper\-Cube}\\*
+$<$ Dimension, Vector, Scalar $>$ \hyperlink{exceptionUtility_af3e3b0d101940f485211b1a8736c5f7e}{cubify} (const \hyperlink{exceptionmagrathea_1_1HyperSphere}{magrathea\-::\-Hyper\-Sphere}$<$ Dimension, Vector, Scalar $>$ \&hypersphere, Type factor=Type(1))
+\begin{DoxyCompactList}\small\item\em Hypersphere to hypercube conversion. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Dimension, class Vector , typename Scalar , typename Type  = Scalar$>$ }\\static \hyperlink{exceptionmagrathea_1_1HyperSphere}{magrathea\-::\-Hyper\-Sphere}\\*
+$<$ Dimension, Vector, Scalar $>$ \hyperlink{exceptionUtility_a70117b896ea38d46693ae3ab65138ac9}{spherify} (const \hyperlink{exceptionmagrathea_1_1HyperCube}{magrathea\-::\-Hyper\-Cube}$<$ Dimension, Vector, Scalar $>$ \&hypercube, Type factor=Type(1))
+\begin{DoxyCompactList}\small\item\em Hypercube to hypersphere conversion. \end{DoxyCompactList}\item 
+{\footnotesize template$<$template$<$ unsigned int, class, typename $>$ class First, template$<$ unsigned int, class, typename $>$ class Second, unsigned int Dimension, class Vector , typename Scalar $>$ }\\static bool \hyperlink{exceptionUtility_a2873ecf6f0fbe93e4a621a9b18d2d7f4}{collide} (const First$<$ Dimension, Vector, Scalar $>$ \&first, const Second$<$ Dimension, Vector, Scalar $>$ \&second)
+\begin{DoxyCompactList}\small\item\em Collision between two hyperobjects. \end{DoxyCompactList}\item 
+{\footnotesize template$<$template$<$ unsigned int, class, typename $>$ class Object, unsigned int Dimension, class Vector , typename Scalar , class  = typename std\-::enable\-\_\-if$<$\-Dimension == 3$>$\-::type$>$ }\\static bool \hyperlink{exceptionUtility_a4f5ab383fe36397bdcad52efcd74e221}{collide} (const Object$<$ Dimension, Vector, Scalar $>$ \&object, const \hyperlink{exceptionCone}{Cone}$<$ Vector, Scalar $>$ \&cone, const double \&inspheresize)
+\begin{DoxyCompactList}\small\item\em Collision between an hyperobject and a cone. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Interpolation}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Type , class Container , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Type, typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Container$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type$>$\-::value$>$\-::type$>$ }\\static Type \hyperlink{exceptionUtility_a09c000a5e0430e44b33f237c33729b3f}{interpolate} (const Type x0, const Container \&x, const Container \&y)
+\begin{DoxyCompactList}\small\item\em Linear interpolation. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , class Container , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Type, typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Container$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type$>$\-::value$>$\-::type$>$ }\\static Type \hyperlink{exceptionUtility_aff6032e23a99ce0d9c340540eec60fb1}{interpolate2} (const Type x0, const Container \&x, const Container \&y)
+\begin{DoxyCompactList}\small\item\em Linear interpolation. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , class Container , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Type, typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Container$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type$>$\-::value$>$\-::type$>$ }\\static Type \hyperlink{exceptionUtility_ade50afc38a5d7233c38f909edd579302}{interpolate} (const Type x0, const Container \&x, const Container \&y, const Container \&dydx)
+\begin{DoxyCompactList}\small\item\em Cubic spline interpolation. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Container , class... Containers, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Containers) == 2 $|$$|$ sizeof...(\-Containers) == 3$>$\-::type$>$ }\\static Container \hyperlink{exceptionUtility_a449edb7f02ef05f0c1fe2e219b8929b6}{reinterpolate} (const Container \&x0, Containers \&\&...containers)
+\begin{DoxyCompactList}\small\item\em Container reinterpolation. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int Direction = 0, typename Type , class Container , typename T  = Type, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Type, typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Container$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type$>$\-::value$>$\-::type$>$ }\\static Type \hyperlink{exceptionUtility_a1eed714b7c2401dea0610e2d7e98b6de}{differentiate} (const Type x0, const Container \&x, const Container \&y, const unsigned int neighbourhood=1)
+\begin{DoxyCompactList}\small\item\em Fornberg differentiation. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int Derivative = 0, typename Type , class Container , typename T  = Type, class  = typename std\-::enable\-\_\-if$<$(\-Derivative $>$= 0$>$ }\\static\-::type Type \hyperlink{exceptionUtility_a1097fff224514bdabe48e44a414e997b}{filter} (const Type x0, const Container \&x, const Container \&y, const unsigned int neighbourhood=1)
+\begin{DoxyCompactList}\small\item\em Savitzky-\/\-Golay filter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Evolution}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Container , typename Type , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-same$<$\-Type, typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Container$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type$>$\-::value$>$\-::type$>$ }\\static Container \hyperlink{exceptionUtility_a2bb90553f0ec2abbe3c607acf0004e99}{reverse} (const Container \&container, const Type value)
+\begin{DoxyCompactList}\small\item\em Reverse. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Container , typename Type  = typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Container$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type, class Function , class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-function$<$typename std\-::result\-\_\-of$<$\-Function(\-Type, Type)$>$\-::type$>$\-::value$>$\-::type$>$ }\\static Container \hyperlink{exceptionUtility_a7e953fd91eb9a9a159f84e71d73dab01}{smooth} (const Container \&x, const Container \&y, Function \&\&kernel, const unsigned int window=0)
+\begin{DoxyCompactList}\small\item\em Kernel smoother. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Container , typename Type  = typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Container$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Type, typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Container$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type$>$\-::value$>$\-::type$>$ }\\static Container \hyperlink{exceptionUtility_afbcab706073359d7f0e80aa84bf99b54}{integrate} (const Container \&x, const Container \&y, const Type value=Type())
+\begin{DoxyCompactList}\small\item\em Integration. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int Direction = 0, class Container , typename Type  = typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Container$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Type, typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Container$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type$>$\-::value$>$\-::type$>$ }\\static Container \hyperlink{exceptionUtility_a3a9ac90134eb7653e888d6af4bc360a9}{derive} (const Container \&x, const Container \&y, const unsigned int neighbourhood=1)
+\begin{DoxyCompactList}\small\item\em Derivative. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Test}\par
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{exceptionUtility_af93737148b08bfc9cc51612ee986804a}{example} ()
+\begin{DoxyCompactList}\small\item\em Example function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+List of utilities for raytracing. 
+
+Provides a list of general purpose utilities for raytracing like parallelization, collision detection or interpolation. 
+
+\subsection{Member Function Documentation}
+\hypertarget{exceptionUtility_a7982ba3fafc912d50e00d2fd6d470d42}{\index{Utility@{Utility}!apply@{apply}}
+\index{apply@{apply}!Utility@{Utility}}
+\subsubsection[{apply}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Operator , unsigned int Dimension, unsigned int Index, class Vector , typename Scalar $>$ Vector Utility\-::apply (
+\begin{DoxyParamCaption}
+\item[{const Vector \&}]{first, }
+\item[{const Vector \&}]{second}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionUtility_a7982ba3fafc912d50e00d2fd6d470d42}
+
+
+Apply operator to all elements. 
+
+Computes the vector resulting from the application of an operator to all elements of two vectors. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Operator} & Operator type. \\
+\hline
+{\em Dimension} & Number of space dimension. \\
+\hline
+{\em Index} & Inner computation index. \\
+\hline
+{\em Vector} & Position vector type. \\
+\hline
+{\em Scalar} & Scalar data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & First point. \\
+\hline
+\mbox{\tt in}  & {\em second} & Second point. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Resulting vector. 
+\end{DoxyReturn}
+\hypertarget{exceptionUtility_a2873ecf6f0fbe93e4a621a9b18d2d7f4}{\index{Utility@{Utility}!collide@{collide}}
+\index{collide@{collide}!Utility@{Utility}}
+\subsubsection[{collide}]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ unsigned int, class, typename $>$ class First, template$<$ unsigned int, class, typename $>$ class Second, unsigned int Dimension, class Vector , typename Scalar $>$ bool Utility\-::collide (
+\begin{DoxyParamCaption}
+\item[{const First$<$ Dimension, Vector, Scalar $>$ \&}]{first, }
+\item[{const Second$<$ Dimension, Vector, Scalar $>$ \&}]{second}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionUtility_a2873ecf6f0fbe93e4a621a9b18d2d7f4}
+
+
+Collision between two hyperobjects. 
+
+Detects collision between two geometrical objects in arbitrary dimension treated as hyperspheres. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em First} & First object type. \\
+\hline
+{\em Second} & Second object type. \\
+\hline
+{\em Dimension} & Number of space dimension. \\
+\hline
+{\em Vector} & Position vector type. \\
+\hline
+{\em Scalar} & Scalar data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & First object. \\
+\hline
+\mbox{\tt in}  & {\em second} & Second object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if collision, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionUtility_a4f5ab383fe36397bdcad52efcd74e221}{\index{Utility@{Utility}!collide@{collide}}
+\index{collide@{collide}!Utility@{Utility}}
+\subsubsection[{collide}]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ unsigned int, class, typename $>$ class Object, unsigned int Dimension, class Vector, typename Scalar , class $>$ bool Utility\-::collide (
+\begin{DoxyParamCaption}
+\item[{const Object$<$ Dimension, Vector, Scalar $>$ \&}]{object, }
+\item[{const {\bf Cone}$<$ Vector, Scalar $>$ \&}]{cone, }
+\item[{const double \&}]{inspheresize}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionUtility_a4f5ab383fe36397bdcad52efcd74e221}
+
+
+Collision between an hyperobject and a cone. 
+
+Detects collision between a geometrical object and a three dimensional cone. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Object} & Object type. \\
+\hline
+{\em Dimension} & Number of space dimension. \\
+\hline
+{\em Vector} & Position vector type. \\
+\hline
+{\em Scalar} & Scalar data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em object} & Geometrical object. \\
+\hline
+\mbox{\tt in}  & {\em cone} & Three dimensional cone. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if collision, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionUtility_adeee291b41fae8cf2e8aee7260f03b0a}{\index{Utility@{Utility}!cross@{cross}}
+\index{cross@{cross}!Utility@{Utility}}
+\subsubsection[{cross}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Dimension, unsigned int Index, class Vector , typename Scalar $>$ Vector Utility\-::cross (
+\begin{DoxyParamCaption}
+\item[{const Vector \&}]{first, }
+\item[{const Vector \&}]{second}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionUtility_adeee291b41fae8cf2e8aee7260f03b0a}
+
+
+Three dimensional cross product. 
+
+Computes the cross product of two vectors in three dimensions. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Dimension} & Number of space dimension. \\
+\hline
+{\em Index} & Inner computation index. \\
+\hline
+{\em Vector} & Position vector type. \\
+\hline
+{\em Scalar} & Scalar data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & First point. \\
+\hline
+\mbox{\tt in}  & {\em second} & Second point. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Result of the cross product. 
+\end{DoxyReturn}
+\hypertarget{exceptionUtility_af3e3b0d101940f485211b1a8736c5f7e}{\index{Utility@{Utility}!cubify@{cubify}}
+\index{cubify@{cubify}!Utility@{Utility}}
+\subsubsection[{cubify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Dimension, class Vector , typename Scalar , typename Type $>$ {\bf magrathea\-::\-Hyper\-Cube}$<$ Dimension, Vector, Scalar $>$ Utility\-::cubify (
+\begin{DoxyParamCaption}
+\item[{const {\bf magrathea\-::\-Hyper\-Sphere}$<$ Dimension, Vector, Scalar $>$ \&}]{hypersphere, }
+\item[{Type}]{scale = {\ttfamily Type(1)}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionUtility_af3e3b0d101940f485211b1a8736c5f7e}
+
+
+Hypersphere to hypercube conversion. 
+
+Converts a hypersphere to a hypercubecube with its diagonal equals to the diameter with the provided scaling. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Dimension} & Number of space dimension. \\
+\hline
+{\em Vector} & Position vector type. \\
+\hline
+{\em Scalar} & Scalar data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em hypersphere} & \hyperlink{exceptionInput}{Input} hypersphere. \\
+\hline
+\mbox{\tt in}  & {\em scale} & Scaling factor. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Hypercube resulting from the hypersphere conversion. 
+\end{DoxyReturn}
+\hypertarget{exceptionUtility_a3a9ac90134eb7653e888d6af4bc360a9}{\index{Utility@{Utility}!derive@{derive}}
+\index{derive@{derive}!Utility@{Utility}}
+\subsubsection[{derive}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Direction, class Container , typename Type , class $>$ Container Utility\-::derive (
+\begin{DoxyParamCaption}
+\item[{const Container \&}]{x, }
+\item[{const Container \&}]{y, }
+\item[{const unsigned int}]{neighbourhood = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionUtility_a3a9ac90134eb7653e888d6af4bc360a9}
+
+
+Derivative. 
+
+Computes the derivative of the ordinates regarding to the abscissae. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Direction} & Sign for centered, backward or forward differentiation. \\
+\hline
+{\em Container} & Container type. \\
+\hline
+{\em Type} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & Abscissae. \\
+\hline
+\mbox{\tt in}  & {\em y} & Ordinates. \\
+\hline
+\mbox{\tt in}  & {\em neighbourhood} & Computing distance. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Derivative of ordinates regarding to the abscissae. 
+\end{DoxyReturn}
+\hypertarget{exceptionUtility_a1eed714b7c2401dea0610e2d7e98b6de}{\index{Utility@{Utility}!differentiate@{differentiate}}
+\index{differentiate@{differentiate}!Utility@{Utility}}
+\subsubsection[{differentiate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Direction, typename Type , class Container , typename T , class $>$ Type Utility\-::differentiate (
+\begin{DoxyParamCaption}
+\item[{const Type}]{x0, }
+\item[{const Container \&}]{x, }
+\item[{const Container \&}]{y, }
+\item[{const unsigned int}]{neighbourhood = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionUtility_a1eed714b7c2401dea0610e2d7e98b6de}
+
+
+Fornberg differentiation. 
+
+Computes the value of the derivative at the given position using a fourth order Fornberg algorithm. The greater the neighbourhood, the greater the computing distance is. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Direction} & Sign for centered, backward or forward differentiation. \\
+\hline
+{\em Type} & Data type. \\
+\hline
+{\em Container} & Container type. \\
+\hline
+{\em T} & Conversion type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x0} & Differentiation abscissa. \\
+\hline
+\mbox{\tt in}  & {\em x} & Abscissae. \\
+\hline
+\mbox{\tt in}  & {\em y} & Ordinates. \\
+\hline
+\mbox{\tt in}  & {\em neighbourhood} & Computing distance. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Derivative at the provided abscissa. 
+\end{DoxyReturn}
+\hypertarget{exceptionUtility_a97b7552f884347aa26480b84b65dc37f}{\index{Utility@{Utility}!distance@{distance}}
+\index{distance@{distance}!Utility@{Utility}}
+\subsubsection[{distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Dimension, unsigned int Index, class Vector , typename Scalar $>$ constexpr Scalar Utility\-::distance (
+\begin{DoxyParamCaption}
+\item[{const Vector \&}]{first, }
+\item[{const Vector \&}]{second}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionUtility_a97b7552f884347aa26480b84b65dc37f}
+
+
+Euclidian distance. 
+
+Computes the euclidian distance between two points. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Dimension} & Number of space dimension. \\
+\hline
+{\em Index} & Inner computation index. \\
+\hline
+{\em Vector} & Position vector type. \\
+\hline
+{\em Scalar} & Scalar data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & First point. \\
+\hline
+\mbox{\tt in}  & {\em second} & Second point. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Value of the distance. 
+\end{DoxyReturn}
+\hypertarget{exceptionUtility_a2bf5cac446ff15394d9b382b744b5f53}{\index{Utility@{Utility}!dot@{dot}}
+\index{dot@{dot}!Utility@{Utility}}
+\subsubsection[{dot}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Dimension, unsigned int Index, class Vector , typename Scalar $>$ constexpr Scalar Utility\-::dot (
+\begin{DoxyParamCaption}
+\item[{const Vector \&}]{first, }
+\item[{const Vector \&}]{second}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionUtility_a2bf5cac446ff15394d9b382b744b5f53}
+
+
+Dot product. 
+
+Computes the dot product of two vectors. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Dimension} & Number of space dimension. \\
+\hline
+{\em Index} & Inner computation index. \\
+\hline
+{\em Vector} & Position vector type. \\
+\hline
+{\em Scalar} & Scalar data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & First point. \\
+\hline
+\mbox{\tt in}  & {\em second} & Second point. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Value of the dot product. 
+\end{DoxyReturn}
+\hypertarget{exceptionUtility_af93737148b08bfc9cc51612ee986804a}{\index{Utility@{Utility}!example@{example}}
+\index{example@{example}!Utility@{Utility}}
+\subsubsection[{example}]{\setlength{\rightskip}{0pt plus 5cm}int Utility\-::example (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionUtility_af93737148b08bfc9cc51612ee986804a}
+
+
+Example function. 
+
+Tests and demonstrates the use of \hyperlink{exceptionUtility}{Utility}. \begin{DoxyReturn}{Returns}
+0 if no error. 
+\end{DoxyReturn}
+\hypertarget{exceptionUtility_a1097fff224514bdabe48e44a414e997b}{\index{Utility@{Utility}!filter@{filter}}
+\index{filter@{filter}!Utility@{Utility}}
+\subsubsection[{filter}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Derivative, typename Type , class Container , typename T , class $>$ Type Utility\-::filter (
+\begin{DoxyParamCaption}
+\item[{const Type}]{x0, }
+\item[{const Container \&}]{x, }
+\item[{const Container \&}]{y, }
+\item[{const unsigned int}]{neighbourhood = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionUtility_a1097fff224514bdabe48e44a414e997b}
+
+
+Savitzky-\/\-Golay filter. 
+
+Computes the smoothed value of the n-\/th derivative at the given position using a fourth order Savitzky-\/\-Golay algorithm. The greater the neighbourhood, the greater the computing distance is. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Derivative} & Order of the derivative. \\
+\hline
+{\em Type} & Data type. \\
+\hline
+{\em Container} & Container type. \\
+\hline
+{\em T} & Conversion type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x0} & Differentiation abscissa. \\
+\hline
+\mbox{\tt in}  & {\em x} & Abscissae. \\
+\hline
+\mbox{\tt in}  & {\em y} & Ordinates. \\
+\hline
+\mbox{\tt in}  & {\em neighbourhood} & Computing distance. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Filtered derivative at the provided abscissa. 
+\end{DoxyReturn}
+\hypertarget{exceptionUtility_afbcab706073359d7f0e80aa84bf99b54}{\index{Utility@{Utility}!integrate@{integrate}}
+\index{integrate@{integrate}!Utility@{Utility}}
+\subsubsection[{integrate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Container , typename Type , class $>$ Container Utility\-::integrate (
+\begin{DoxyParamCaption}
+\item[{const Container \&}]{x, }
+\item[{const Container \&}]{y, }
+\item[{const Type}]{value = {\ttfamily Type()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionUtility_afbcab706073359d7f0e80aa84bf99b54}
+
+
+Integration. 
+
+Computes the integral of the ordinates regarding to the abscissae and starting from the specified value. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container} & Container type. \\
+\hline
+{\em Type} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & Abscissae. \\
+\hline
+\mbox{\tt in}  & {\em y} & Ordinates. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Integral of ordinates regarding to the abscissae. 
+\end{DoxyReturn}
+\hypertarget{exceptionUtility_a09c000a5e0430e44b33f237c33729b3f}{\index{Utility@{Utility}!interpolate@{interpolate}}
+\index{interpolate@{interpolate}!Utility@{Utility}}
+\subsubsection[{interpolate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Container , class $>$ Type Utility\-::interpolate (
+\begin{DoxyParamCaption}
+\item[{const Type}]{x0, }
+\item[{const Container \&}]{x, }
+\item[{const Container \&}]{y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionUtility_a09c000a5e0430e44b33f237c33729b3f}
+
+
+Linear interpolation. 
+
+Interpolates the value at the given position linearly. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+{\em Container} & Container type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x0} & Interpolation abscissa. \\
+\hline
+\mbox{\tt in}  & {\em x} & Abscissae. \\
+\hline
+\mbox{\tt in}  & {\em y} & Ordinates. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Interpolated ordinate. 
+\end{DoxyReturn}
+\hypertarget{exceptionUtility_ade50afc38a5d7233c38f909edd579302}{\index{Utility@{Utility}!interpolate@{interpolate}}
+\index{interpolate@{interpolate}!Utility@{Utility}}
+\subsubsection[{interpolate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Container , class $>$ Type Utility\-::interpolate (
+\begin{DoxyParamCaption}
+\item[{const Type}]{x0, }
+\item[{const Container \&}]{x, }
+\item[{const Container \&}]{y, }
+\item[{const Container \&}]{dydx}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionUtility_ade50afc38a5d7233c38f909edd579302}
+
+
+Cubic spline interpolation. 
+
+Interpolates the value at the given position using a cubic spline with the specified derivative. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+{\em Container} & Container type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x0} & Interpolation abscissa. \\
+\hline
+\mbox{\tt in}  & {\em x} & Abscissae. \\
+\hline
+\mbox{\tt in}  & {\em y} & Ordinates. \\
+\hline
+\mbox{\tt in}  & {\em dydx} & Derivatives. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Interpolated ordinate. 
+\end{DoxyReturn}
+\hypertarget{exceptionUtility_aff6032e23a99ce0d9c340540eec60fb1}{\index{Utility@{Utility}!interpolate2@{interpolate2}}
+\index{interpolate2@{interpolate2}!Utility@{Utility}}
+\subsubsection[{interpolate2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class Container , class $>$ Type Utility\-::interpolate2 (
+\begin{DoxyParamCaption}
+\item[{const Type}]{x0, }
+\item[{const Container \&}]{x, }
+\item[{const Container \&}]{y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionUtility_aff6032e23a99ce0d9c340540eec60fb1}
+
+
+Linear interpolation. 
+
+Interpolates the value at the given position linearly, with decreasing x. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+{\em Container} & Container type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x0} & Interpolation abscissa. \\
+\hline
+\mbox{\tt in}  & {\em x} & Abscissae. \\
+\hline
+\mbox{\tt in}  & {\em y} & Ordinates. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Interpolated ordinate. 
+\end{DoxyReturn}
+\hypertarget{exceptionUtility_a1873b248b7e37b48532c512eb19d037b}{\index{Utility@{Utility}!inv\-Matrix2d@{inv\-Matrix2d}}
+\index{inv\-Matrix2d@{inv\-Matrix2d}!Utility@{Utility}}
+\subsubsection[{inv\-Matrix2d}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type $>$ std\-::array$<$ std\-::array$<$ Type, 2 $>$, 2 $>$ Utility\-::inv\-Matrix2d (
+\begin{DoxyParamCaption}
+\item[{const std\-::array$<$ std\-::array$<$ Type, 2 $>$, 2 $>$ \&}]{A}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionUtility_a1873b248b7e37b48532c512eb19d037b}
+
+
+Inverse matrix. 
+
+Inverse 2\-D matrix. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & type of matrix components. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em A} & array 2\-D Matrix. return Array 2\-D inverted matrix \\
+\hline
+\end{DoxyParams}
+\hypertarget{exceptionUtility_a3b7516865a1c4621f4b9807fea8ce67a}{\index{Utility@{Utility}!inv\-Matrix3d@{inv\-Matrix3d}}
+\index{inv\-Matrix3d@{inv\-Matrix3d}!Utility@{Utility}}
+\subsubsection[{inv\-Matrix3d}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type $>$ std\-::array$<$ std\-::array$<$ Type, 3 $>$, 3 $>$ Utility\-::inv\-Matrix3d (
+\begin{DoxyParamCaption}
+\item[{const std\-::array$<$ std\-::array$<$ Type, 3 $>$, 3 $>$ \&}]{A}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionUtility_a3b7516865a1c4621f4b9807fea8ce67a}
+
+
+Inverse matrix. 
+
+Inverse 3\-D matrix. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & type of matrix components. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em A} & array 3\-D Matrix. return Array 3\-D inverted matrix \\
+\hline
+\end{DoxyParams}
+\hypertarget{exceptionUtility_a837bb7d580a72127e1ba14bd59c41b54}{\index{Utility@{Utility}!join@{join}}
+\index{join@{join}!Utility@{Utility}}
+\subsubsection[{join}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Dimension, unsigned int Index, class Vector , typename Scalar $>$ Vector Utility\-::join (
+\begin{DoxyParamCaption}
+\item[{const Vector \&}]{first, }
+\item[{const Vector \&}]{second}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionUtility_a837bb7d580a72127e1ba14bd59c41b54}
+
+
+Join two points. 
+
+Computes the vector resulting from going from the first point to the second point. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Dimension} & Number of space dimension. \\
+\hline
+{\em Index} & Inner computation index. \\
+\hline
+{\em Vector} & Position vector type. \\
+\hline
+{\em Scalar} & Scalar data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & First point. \\
+\hline
+\mbox{\tt in}  & {\em second} & Second point. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Resulting joining vector. 
+\end{DoxyReturn}
+\hypertarget{exceptionUtility_a9b35ecb9385f2ebe5790603b68cd5fd2}{\index{Utility@{Utility}!parallelize@{parallelize}}
+\index{parallelize@{parallelize}!Utility@{Utility}}
+\subsubsection[{parallelize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Default, typename Type , class Function , class $>$ double Utility\-::parallelize (
+\begin{DoxyParamCaption}
+\item[{const Type}]{nsteps, }
+\item[{Function \&\&}]{function, }
+\item[{const int}]{nthreads = {\ttfamily (Default~!=~0)~?~(Default)~\-:~(std\-:\-:thread\-:\-:hardware\-\_\-concurrency())}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionUtility_a9b35ecb9385f2ebe5790603b68cd5fd2}
+
+
+Parallelize a loop. 
+
+Executes the provided function on each index of the loop using the specified number of threads. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Default} & Default concurrency where zero means hardware concurrency. \\
+\hline
+{\em Type} & Loop index type. \\
+\hline
+{\em Function} & Function type taking a loop index as argument. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em nsteps} & Total number of steps. \\
+\hline
+\mbox{\tt in}  & {\em function} & Function. \\
+\hline
+\mbox{\tt in}  & {\em nthreads} & Number of threads. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Elapsed time in seconds. 
+\end{DoxyReturn}
+\hypertarget{exceptionUtility_a9125993caa1c19cc24a92401773bf979}{\index{Utility@{Utility}!parallelize@{parallelize}}
+\index{parallelize@{parallelize}!Utility@{Utility}}
+\subsubsection[{parallelize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Default, typename Type , class Function , class $>$ double Utility\-::parallelize (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{first, }
+\item[{const Type \&}]{last, }
+\item[{const Type \&}]{increment, }
+\item[{Function \&\&}]{function, }
+\item[{const int}]{nthreads = {\ttfamily (Default~!=~0)~?~(Default)~\-:~(std\-:\-:thread\-:\-:hardware\-\_\-concurrency())}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionUtility_a9125993caa1c19cc24a92401773bf979}
+
+
+Parallelize an iteration over a range of values. 
+
+Executes the provided function on each values of the range using the provided increment and the specified number of threads. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Default} & Default concurrency where zero means hardware concurrency. \\
+\hline
+{\em Type} & Value type. \\
+\hline
+{\em Function} & Function type taking a value as argument. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & First value. \\
+\hline
+\mbox{\tt in}  & {\em last} & Last value. \\
+\hline
+\mbox{\tt in}  & {\em increment} & Increment. \\
+\hline
+\mbox{\tt in}  & {\em function} & Function. \\
+\hline
+\mbox{\tt in}  & {\em nthreads} & Number of threads. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Elapsed time in seconds. 
+\end{DoxyReturn}
+\hypertarget{exceptionUtility_a62d54b2aa4e6688976aff399e72c0021}{\index{Utility@{Utility}!parallelize@{parallelize}}
+\index{parallelize@{parallelize}!Utility@{Utility}}
+\subsubsection[{parallelize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Default, typename Iterator , class Function , class $>$ double Utility\-::parallelize (
+\begin{DoxyParamCaption}
+\item[{const Iterator \&}]{first, }
+\item[{const Iterator \&}]{last, }
+\item[{Function \&\&}]{function, }
+\item[{const int}]{nthreads = {\ttfamily (Default~!=~0)~?~(Default)~\-:~(std\-:\-:thread\-:\-:hardware\-\_\-concurrency())}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionUtility_a62d54b2aa4e6688976aff399e72c0021}
+
+
+Parallelize an iteration over a range of iterators. 
+
+Executes the provided function on each element of the iterator range using the specified number of threads. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Default} & Default concurrency where zero means hardware concurrency. \\
+\hline
+{\em Iterator} & Iterator type. \\
+\hline
+{\em Function} & Function type taking an element as argument. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & First iterator. \\
+\hline
+\mbox{\tt in}  & {\em last} & Last iterator. \\
+\hline
+\mbox{\tt in}  & {\em function} & Function. \\
+\hline
+\mbox{\tt in}  & {\em nthreads} & Number of threads. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Elapsed time in seconds. 
+\end{DoxyReturn}
+\hypertarget{exceptionUtility_ac0c6a5f0453a9599554949f06a8d116e}{\index{Utility@{Utility}!radius@{radius}}
+\index{radius@{radius}!Utility@{Utility}}
+\subsubsection[{radius}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Dimension, class Vector , typename Scalar $>$ constexpr Scalar Utility\-::radius (
+\begin{DoxyParamCaption}
+\item[{const {\bf magrathea\-::\-Hyper\-Sphere}$<$ Dimension, Vector, Scalar $>$ \&}]{hypersphere}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionUtility_ac0c6a5f0453a9599554949f06a8d116e}
+
+
+Radius of an hypersphere. 
+
+Computes the radius of the provided hypersphere. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Dimension} & Number of space dimension. \\
+\hline
+{\em Vector} & Position vector type. \\
+\hline
+{\em Scalar} & Scalar data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em hypersphere} & Hypersphere. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Value of the radius. 
+\end{DoxyReturn}
+\hypertarget{exceptionUtility_a64d223d506b4a5ab47a3e087412c5840}{\index{Utility@{Utility}!radius@{radius}}
+\index{radius@{radius}!Utility@{Utility}}
+\subsubsection[{radius}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Dimension, class Vector , typename Scalar $>$ constexpr Scalar Utility\-::radius (
+\begin{DoxyParamCaption}
+\item[{const {\bf magrathea\-::\-Hyper\-Cube}$<$ Dimension, Vector, Scalar $>$ \&}]{hypercube}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionUtility_a64d223d506b4a5ab47a3e087412c5840}
+
+
+Radius of an hypercube. 
+
+Computes the radius corresponding to half the diagonal of the provided hypercube. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Dimension} & Number of space dimension. \\
+\hline
+{\em Vector} & Position vector type. \\
+\hline
+{\em Scalar} & Scalar data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em hypercube} & Hypercube. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Value of the radius. 
+\end{DoxyReturn}
+\hypertarget{exceptionUtility_a449edb7f02ef05f0c1fe2e219b8929b6}{\index{Utility@{Utility}!reinterpolate@{reinterpolate}}
+\index{reinterpolate@{reinterpolate}!Utility@{Utility}}
+\subsubsection[{reinterpolate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Container , class... Containers, class $>$ Container Utility\-::reinterpolate (
+\begin{DoxyParamCaption}
+\item[{const Container \&}]{x0, }
+\item[{Containers \&\&...}]{containers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionUtility_a449edb7f02ef05f0c1fe2e219b8929b6}
+
+
+Container reinterpolation. 
+
+Interpolates each value of the container. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container} & Container type. \\
+\hline
+{\em Containers} & Containers types. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x0} & Interpolation abscissae. \\
+\hline
+\mbox{\tt in}  & {\em containers} & \hyperlink{exceptionInput}{Input} containers. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Interpolated ordinates. 
+\end{DoxyReturn}
+\hypertarget{exceptionUtility_a2bb90553f0ec2abbe3c607acf0004e99}{\index{Utility@{Utility}!reverse@{reverse}}
+\index{reverse@{reverse}!Utility@{Utility}}
+\subsubsection[{reverse}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Container , typename Type , class $>$ Container Utility\-::reverse (
+\begin{DoxyParamCaption}
+\item[{const Container \&}]{container, }
+\item[{const Type}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionUtility_a2bb90553f0ec2abbe3c607acf0004e99}
+
+
+Reverse. 
+
+Reverses a container by substracting a value. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container} & Container type. \\
+\hline
+{\em Type} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em container} & Container. \\
+\hline
+\mbox{\tt in}  & {\em value} & Value to be substracted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reversed vector. 
+\end{DoxyReturn}
+\hypertarget{exceptionUtility_a7e953fd91eb9a9a159f84e71d73dab01}{\index{Utility@{Utility}!smooth@{smooth}}
+\index{smooth@{smooth}!Utility@{Utility}}
+\subsubsection[{smooth}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Container , typename Type , class Function , class $>$ Container Utility\-::smooth (
+\begin{DoxyParamCaption}
+\item[{const Container \&}]{x, }
+\item[{const Container \&}]{y, }
+\item[{Function \&\&}]{kernel, }
+\item[{const unsigned int}]{window = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionUtility_a7e953fd91eb9a9a159f84e71d73dab01}
+
+
+Kernel smoother. 
+
+Smoothes a serie of data using a kernel smoother and a window function on the first neigbours. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container} & Container type. \\
+\hline
+{\em Type} & Data type. \\
+\hline
+{\em Function} & Function type taking two data as argument. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & Abscissae. \\
+\hline
+\mbox{\tt in}  & {\em y} & Ordinates. \\
+\hline
+\mbox{\tt in}  & {\em kernel} & Kernel function. \\
+\hline
+\mbox{\tt in}  & {\em window} & Cut on the provided number of neighbours. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Smoothed ordinates. 
+\end{DoxyReturn}
+\hypertarget{exceptionUtility_a70117b896ea38d46693ae3ab65138ac9}{\index{Utility@{Utility}!spherify@{spherify}}
+\index{spherify@{spherify}!Utility@{Utility}}
+\subsubsection[{spherify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Dimension, class Vector , typename Scalar , typename Type $>$ {\bf magrathea\-::\-Hyper\-Sphere}$<$ Dimension, Vector, Scalar $>$ Utility\-::spherify (
+\begin{DoxyParamCaption}
+\item[{const {\bf magrathea\-::\-Hyper\-Cube}$<$ Dimension, Vector, Scalar $>$ \&}]{hypercube, }
+\item[{Type}]{scale = {\ttfamily Type(1)}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionUtility_a70117b896ea38d46693ae3ab65138ac9}
+
+
+Hypercube to hypersphere conversion. 
+
+Converts a hypercube to a hypersphere with its diameter equals to the diagonal with the provided scaling. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Dimension} & Number of space dimension. \\
+\hline
+{\em Vector} & Position vector type. \\
+\hline
+{\em Scalar} & Scalar data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em hypercube} & \hyperlink{exceptionInput}{Input} hypercube. \\
+\hline
+\mbox{\tt in}  & {\em scale} & Scaling factor. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Hypersphere resulting from the hypercube conversion. 
+\end{DoxyReturn}
+
+
+The documentation for this exception was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/\hyperlink{utility_8h}{utility.\-h}\end{DoxyCompactItemize}

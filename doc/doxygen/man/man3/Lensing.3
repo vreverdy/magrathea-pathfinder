@@ -1,0 +1,303 @@
+.TH "Lensing" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Lensing \- 
+.PP
+Integration utilities for raytracing\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <lensing\&.h>\fP
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBInitialization\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<int Order = ORDER, bool RK4 = true, bool Verbose = false, class Parameter , class Point , class Cosmology , class Octree , class Type > static std::array< std::array
+.br
+< double, 2 >, 2 > \fBdbetadtheta\fP (const Parameter &\fBparameters\fP, const Point &kiTargets, const Type interpRef, const Point &observer, const Type phi, const Type theta, const Type dist, const Cosmology &cosmology, const Octree &octree, const Point &vobs, const Type length)"
+.br
+.RI "\fICompute the jacobian for lensing\&. \fP"
+.ti -1c
+.RI "template<int Order = ORDER, bool RK4 = true, bool Verbose = false, class Parameter , class Point , class Cosmology , class Octree , class Type > static std::vector< std::array
+.br
+< std::array< double, 2 >, 2 > > \fBdbetadtheta\fP (const Parameter &\fBparameters\fP, const std::vector< Point > &kiTargets, const std::vector< Type > &interpRef, const Point &observer, const Type phi, const Type theta, const std::vector< Type > &dist, const Cosmology &cosmology, const Octree &octree, const Point &vobs, const Type length)"
+.br
+.RI "\fICompute the jacobian for lensing\&. \fP"
+.ti -1c
+.RI "template<int Order = ORDER, bool RK4 = true, bool Verbose = false, class Type , class Trajectory , template< typename Kind, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Kind , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > static std::array< std::array
+.br
+< double, 2 >, 2 > \fBdbetadtheta_infinitesimal\fP (const Type distance, const Trajectory &trajectory, const Octree< Kind, Index, Data, Dimension, Position, Extent, Element, Container > &octree, const Type length)"
+.br
+.RI "\fICompute the jacobian for lensing\&. \fP"
+.ti -1c
+.RI "template<int Order = ORDER, bool RK4 = true, bool Verbose = false, class Type , class Trajectory , template< typename Kind, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Kind , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > static std::vector< std::array
+.br
+< std::array< double, 2 >, 2 > > \fBdbetadtheta_infinitesimal\fP (const std::vector< Type > &dist, const Trajectory &trajectory, const Octree< Kind, Index, Data, Dimension, Position, Extent, Element, Container > &octree, const Type length)"
+.br
+.RI "\fICompute the jacobian for lensing\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+Integration utilities for raytracing\&. 
+
+Provides a list of integration routines for geodesics integration\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "template<int Order, bool RK4, bool Verbose, class Parameter , class Point , class Cosmology , class Octree , class Type > std::array< std::array< double, 2 >, 2 > Lensing::dbetadtheta (const Parameter &parameters, const Point &kiTarget, const TypeinterpRef, const Point &observer, const TypephiInit, const TypethetaInit, const Typedist, const Cosmology &cosmology, const Octree &octree, const Point &vobs, const Typelength)\fC [static]\fP"
+
+.PP
+Compute the jacobian for lensing\&. Compute the jacobian for lensing 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOrder\fP Octree interpolation order : 0 for NGP, 1 for CIC, 2 for TSC or -1 for an homogeneous universe\&. 
+.br
+\fIRK4\fP Runge-kutta of fourth order or euler\&. 
+.br
+\fIVerbose\fP Verbose mode for debug purposes\&. 
+.br
+\fIParameter\fP Parameter type\&. 
+.br
+\fIPoint\fP point type\&. 
+.br
+\fICosmology\fP cosmology type 
+.br
+\fIOctree\fP octree type 
+.br
+\fIType\fP Scalar type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Parameter structure\&. 
+.br
+\fIkiTarget\fP Vector normal to the plane needed to compute the distortion matrix\&. 
+.br
+\fIinterpRef\fP value for interpolation of the bundle\&. 
+.br
+\fIobserver\fP Point observer position 
+.br
+\fIphiInit\fP initial trajectory angle 
+.br
+\fIthetaInit\fP initial trajectory angle 
+.br
+\fIdist\fP distance at different evaluations of the matrix 
+.br
+\fIcosmology\fP Cosmology evolution\&. 
+.br
+\fIoctree\fP Octree\&. 
+.br
+\fIvobs\fP Observer peculiar velocity, in SI 
+.br
+\fIlength\fP Spatial length in SI units\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+2x2 array Aij giving the jacobian from seen angles to true angles 
+.RE
+.PP
+
+.SS "template<int Order, bool RK4, bool Verbose, class Parameter , class Point , class Cosmology , class Octree , class Type > std::vector< std::array< std::array< double, 2 >, 2 > > Lensing::dbetadtheta (const Parameter &parameters, const std::vector< Point > &kiTargets, const std::vector< Type > &interpRefvec, const Point &observer, const TypephiInit, const TypethetaInit, const std::vector< Type > &dist, const Cosmology &cosmology, const Octree &octree, const Point &vobs, const Typelength)\fC [static]\fP"
+
+.PP
+Compute the jacobian for lensing\&. Compute the jacobian for lensing 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOrder\fP Octree interpolation order : 0 for NGP, 1 for CIC, 2 for TSC or -1 for an homogeneous universe\&. 
+.br
+\fIRK4\fP Runge-kutta of fourth order or euler\&. 
+.br
+\fIVerbose\fP Verbose mode for debug purposes\&. 
+.br
+\fIParameter\fP Parameter type\&. 
+.br
+\fIPoint\fP point type\&. 
+.br
+\fICosmology\fP cosmology type 
+.br
+\fIOctree\fP octree type 
+.br
+\fIType\fP Scalar type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Parameter structure\&. 
+.br
+\fIkiTargets\fP Vector of vectors normal to the plane needed to compute the distortion matrix at some given surface\&. 
+.br
+\fIinterpRefvec\fP values for interpolation of the bundle\&. 
+.br
+\fIobserver\fP Point observer position 
+.br
+\fIphiInit\fP initial trajectory angle 
+.br
+\fIthetaInit\fP initial trajectory angle 
+.br
+\fIdist\fP distance at different evaluations of the matrix 
+.br
+\fIinterpolation\fP String of a given interpolation 
+.br
+\fIcosmology\fP Cosmology evolution\&. 
+.br
+\fIoctree\fP Octree\&. 
+.br
+\fIvobs\fP Observer peculiar velocity, in SI 
+.br
+\fIlength\fP Spatial length in SI units\&. 
+.br
+\fInsteps\fP Number of lambda steps per grid\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+2x2 array Aij giving the jacobian from seen angles to true angles 
+.RE
+.PP
+
+.SS "template<int Order, bool RK4, bool Verbose, class Type , class Trajectory , template< typename Kind, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Kind , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > std::array< std::array< double, 2 >, 2 > Lensing::dbetadtheta_infinitesimal (const Typedistance, const Trajectory &trajectory, const Octree< Kind, Index, Data, Dimension, Position, Extent, Element, Container > &octree, const Typelength)\fC [static]\fP"
+
+.PP
+Compute the jacobian for lensing\&. Compute the jacobian for lensing 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOrder\fP Octree interpolation order : 0 for NGP, 1 for CIC, 2 for TSC or -1 for an homogeneous universe\&. 
+.br
+\fIRK4\fP Runge-kutta of fourth order or euler\&. 
+.br
+\fIVerbose\fP Verbose mode for debug purposes\&. 
+.br
+\fIType\fP Scalar type\&. 
+.br
+\fITrajectory\fP trajectory type\&. 
+.br
+\fIOctree\fP octree type 
+.br
+\fIType\fP type type 
+.br
+\fIKind\fP Kind type 
+.br
+\fIIndex\fP index type 
+.br
+\fIData\fP data type 
+.br
+\fIDimension\fP Number of dimensions 
+.br
+\fIPosition\fP position type 
+.br
+\fIExtent\fP extent type 
+.br
+\fIElement\fP element type 
+.br
+\fIContainer\fP container type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdistance\fP scalar comoving distance to stop lensing integration 
+.br
+\fIphi\fP initial trajectory angle 
+.br
+\fItheta\fP initial trajectory angle 
+.br
+\fItrajectory\fP \fBPhoton\fP trajectory used to compute the jacobian matrix\&. 
+.br
+\fIoctree\fP Octree\&. 
+.br
+\fIlength\fP Spatial length in SI units\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+2x2 array Aij giving the jacobian from seen angles to true angles 
+.RE
+.PP
+
+.SS "template<int Order, bool RK4, bool Verbose, class Type , class Trajectory , template< typename Kind, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container > class Octree, typename Kind , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container > std::vector< std::array< std::array< double, 2 >, 2 > > Lensing::dbetadtheta_infinitesimal (const std::vector< Type > &dist, const Trajectory &trajectory, const Octree< Kind, Index, Data, Dimension, Position, Extent, Element, Container > &octree, const Typelength)\fC [static]\fP"
+
+.PP
+Compute the jacobian for lensing\&. Compute the jacobian for lensing 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOrder\fP Octree interpolation order : 0 for NGP, 1 for CIC, 2 for TSC or -1 for an homogeneous universe\&. 
+.br
+\fIRK4\fP Runge-kutta of fourth order or euler\&. 
+.br
+\fIVerbose\fP Verbose mode for debug purposes\&. 
+.br
+\fIType\fP Scalar type\&. 
+.br
+\fITrajectory\fP trajectory type\&. 
+.br
+\fIOctree\fP octree type 
+.br
+\fIKind\fP Kind type 
+.br
+\fIType\fP type type 
+.br
+\fIIndex\fP index type 
+.br
+\fIData\fP data type 
+.br
+\fIDimension\fP Number of dimensions 
+.br
+\fIPosition\fP position type 
+.br
+\fIExtent\fP extent type 
+.br
+\fIElement\fP element type 
+.br
+\fIContainer\fP container type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdist\fP vector of comoving distances to stop lensing integrations 
+.br
+\fIphi\fP initial trajectory angle 
+.br
+\fItheta\fP initial trajectory angle 
+.br
+\fItrajectory\fP \fBPhoton\fP trajectory used to compute the jacobian matrix\&. 
+.br
+\fIoctree\fP Octree\&. 
+.br
+\fIlength\fP Spatial length in SI units\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+2x2 array Aij giving the jacobian from seen angles to true angles 
+.RE
+.PP
+
+.SS "static int Lensing::example ()\fC [static]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

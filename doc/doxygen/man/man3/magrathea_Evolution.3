@@ -1,0 +1,1267 @@
+.TH "magrathea::Evolution< Type, Container >" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::Evolution< Type, Container > \- 
+.PP
+Resizable container of steps dedicated to integration\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <evolution\&.h>\fP
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBLifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class OtherType > \fBEvolution\fP (const std::initializer_list< OtherType > &source)"
+.br
+.RI "\fIImplicit initializer list constructor\&. \fP"
+.ti -1c
+.RI "template<class OtherType , class OtherContainer > \fBEvolution\fP (const \fBEvolution\fP< OtherType, OtherContainer > &source)"
+.br
+.RI "\fIExplicit conversion constructor\&. \fP"
+.ti -1c
+.RI "template<class\&.\&.\&. Misc, class  = typename std::enable_if<std::is_constructible<Container, Misc\&.\&.\&.>::value>::type> \fBEvolution\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIExplicit generic constructor\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBOperators\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class OtherType > \fBEvolution\fP< Type, Container > & \fBoperator=\fP (const std::initializer_list< OtherType > &source)"
+.br
+.RI "\fIInitializer list assignment operator\&. \fP"
+.ti -1c
+.RI "template<class OtherType , class OtherContainer > \fBEvolution\fP< Type, Container > & \fBoperator=\fP (const \fBEvolution\fP< OtherType, OtherContainer > &source)"
+.br
+.RI "\fIConversion assignment operator\&. \fP"
+.ti -1c
+.RI "template<class Misc , class  = typename std::enable_if<std::is_convertible<Container, typename std::remove_cv<typename std::remove_reference<Misc>::type>::type>::value>::type> \fBEvolution\fP< Type, Container > & \fBoperator=\fP (Misc &&misc)"
+.br
+.RI "\fIGeneric assignment operator\&. \fP"
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBEvolution\fP< Type, Container > &rhs) const "
+.br
+.RI "\fIEqual to\&. \fP"
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBEvolution\fP< Type, Container > &rhs) const "
+.br
+.RI "\fINot equal to\&. \fP"
+.ti -1c
+.RI "bool \fBoperator>\fP (const \fBEvolution\fP< Type, Container > &rhs) const "
+.br
+.RI "\fIGreater than\&. \fP"
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBEvolution\fP< Type, Container > &rhs) const "
+.br
+.RI "\fILess than\&. \fP"
+.ti -1c
+.RI "bool \fBoperator>=\fP (const \fBEvolution\fP< Type, Container > &rhs) const "
+.br
+.RI "\fIGreater than or equal to\&. \fP"
+.ti -1c
+.RI "bool \fBoperator<=\fP (const \fBEvolution\fP< Type, Container > &rhs) const "
+.br
+.RI "\fILess than or equal to\&. \fP"
+.ti -1c
+.RI "Type & \fBoperator[]\fP (const unsigned int i)"
+.br
+.RI "\fIDirect access to the element\&. \fP"
+.ti -1c
+.RI "const Type & \fBoperator[]\fP (const unsigned int i) const "
+.br
+.RI "\fIImmutable direct access to the element\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBAssignment\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBEvolution\fP< Type, Container > & \fBassign\fP (const \fBEvolution\fP< Type, Container > &source)"
+.br
+.RI "\fICopy assignment\&. \fP"
+.ti -1c
+.RI "template<class OtherType > \fBEvolution\fP< Type, Container > & \fBassign\fP (const std::initializer_list< OtherType > &source)"
+.br
+.RI "\fIInitializer list assignment\&. \fP"
+.ti -1c
+.RI "template<class OtherType , class OtherContainer > \fBEvolution\fP< Type, Container > & \fBassign\fP (const \fBEvolution\fP< OtherType, OtherContainer > &source)"
+.br
+.RI "\fIConversion assignment\&. \fP"
+.ti -1c
+.RI "template<class\&.\&.\&. Misc, class  = typename std::enable_if<std::is_constructible<Container, Misc\&.\&.\&.>::value>::type> \fBEvolution\fP< Type, Container > & \fBassign\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIGeneric assignment\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBManagement\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBEvolution\fP< Type, Container > & \fBnullify\fP ()"
+.br
+.RI "\fINullify\&. \fP"
+.ti -1c
+.RI "\fBEvolution\fP< Type, Container > \fBcopy\fP () const "
+.br
+.RI "\fICopy\&. \fP"
+.ti -1c
+.RI "template<class OtherType  = Type, class OtherContainer  = std::vector<OtherType>> \fBEvolution\fP< OtherType, 
+.br
+OtherContainer > \fBcast\fP () const "
+.br
+.RI "\fICast\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBAccess\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "Type & \fBat\fP (const unsigned int i)"
+.br
+.RI "\fIAccess with range-check\&. \fP"
+.ti -1c
+.RI "const Type & \fBat\fP (const unsigned int i) const "
+.br
+.RI "\fIImmutable access with range-check\&. \fP"
+.ti -1c
+.RI "Type & \fBfront\fP (const unsigned int i=0)"
+.br
+.RI "\fIAccess to the i-th element from the beginning\&. \fP"
+.ti -1c
+.RI "const Type & \fBfront\fP (const unsigned int i=0) const "
+.br
+.RI "\fIImmutable access to the i-th element from the beginning\&. \fP"
+.ti -1c
+.RI "Type & \fBback\fP (const unsigned int i=0)"
+.br
+.RI "\fIAccess to the i-th element from the end\&. \fP"
+.ti -1c
+.RI "const Type & \fBback\fP (const unsigned int i=0) const "
+.br
+.RI "\fIImmutable access to the i-th element from the end\&. \fP"
+.ti -1c
+.RI "Type & \fBcycle\fP (const int i)"
+.br
+.RI "\fICyclic access to elements\&. \fP"
+.ti -1c
+.RI "const Type & \fBcycle\fP (const int i) const "
+.br
+.RI "\fIImmutable cyclic access to elements\&. \fP"
+.ti -1c
+.RI "Container & \fBcontainer\fP ()"
+.br
+.RI "\fIDirect access to the underlying container\&. \fP"
+.ti -1c
+.RI "const Container & \fBcontainer\fP () const "
+.br
+.RI "\fIDirect access to the underlying container\&. \fP"
+.ti -1c
+.RI "Type * \fBdata\fP ()"
+.br
+.RI "\fIDirect access to the underlying array\&. \fP"
+.ti -1c
+.RI "const Type * \fBdata\fP () const "
+.br
+.RI "\fIImmutable direct access to the underlying array\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBIterators\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "Type * \fBbegin\fP ()"
+.br
+.RI "\fIIterator to the beginning\&. \fP"
+.ti -1c
+.RI "const Type * \fBbegin\fP () const "
+.br
+.RI "\fIImmutable iterator to the beginning\&. \fP"
+.ti -1c
+.RI "const Type * \fBcbegin\fP () const "
+.br
+.RI "\fIForced immutable iterator to the beginning\&. \fP"
+.ti -1c
+.RI "Type * \fBend\fP ()"
+.br
+.RI "\fIIterator to the end\&. \fP"
+.ti -1c
+.RI "const Type * \fBend\fP () const "
+.br
+.RI "\fIImmutable iterator to the end\&. \fP"
+.ti -1c
+.RI "const Type * \fBcend\fP () const "
+.br
+.RI "\fIForced immutable iterator to the end\&. \fP"
+.ti -1c
+.RI "std::reverse_iterator< Type * > \fBrbegin\fP ()"
+.br
+.RI "\fIReverse iterator to the beginning\&. \fP"
+.ti -1c
+.RI "std::reverse_iterator< const 
+.br
+Type * > \fBrbegin\fP () const "
+.br
+.RI "\fIImmutable reverse iterator to the beginning\&. \fP"
+.ti -1c
+.RI "std::reverse_iterator< const 
+.br
+Type * > \fBcrbegin\fP () const "
+.br
+.RI "\fIForced immutable reverse iterator to the beginning\&. \fP"
+.ti -1c
+.RI "std::reverse_iterator< Type * > \fBrend\fP ()"
+.br
+.RI "\fIReverse iterator to the end\&. \fP"
+.ti -1c
+.RI "std::reverse_iterator< const 
+.br
+Type * > \fBrend\fP () const "
+.br
+.RI "\fIImmutable reverse iterator to the end\&. \fP"
+.ti -1c
+.RI "std::reverse_iterator< const 
+.br
+Type * > \fBcrend\fP () const "
+.br
+.RI "\fIForced immutable reverse iterator to the end\&. \fP"
+.ti -1c
+.RI "template<typename Iterator > unsigned int \fBindex\fP (const Iterator &it) const "
+.br
+.RI "\fIIndex of an iterator in the container\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBCapacity\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "bool \fBempty\fP () const "
+.br
+.RI "\fIEmptiness checking\&. \fP"
+.ti -1c
+.RI "unsigned int \fBsize\fP () const "
+.br
+.RI "\fINumber of elements\&. \fP"
+.ti -1c
+.RI "unsigned int \fBcapacity\fP () const "
+.br
+.RI "\fICapacity of the underlying storage\&. \fP"
+.ti -1c
+.RI "\fBEvolution\fP< Type, Container > & \fBreserve\fP (const unsigned int n)"
+.br
+.RI "\fIStorage reservation\&. \fP"
+.ti -1c
+.RI "\fBEvolution\fP< Type, Container > & \fBshrink\fP ()"
+.br
+.RI "\fIStorage shrinking\&. \fP"
+.ti -1c
+.RI "unsigned long long int \fBspace\fP () const "
+.br
+.RI "\fIAvailable space\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBModifiers\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBEvolution\fP< Type, Container > & \fBfullclear\fP ()"
+.br
+.RI "\fIFull clear the container\&. \fP"
+.ti -1c
+.RI "\fBEvolution\fP< Type, Container > & \fBclear\fP ()"
+.br
+.RI "\fIClear the contents\&. \fP"
+.ti -1c
+.RI "template<class\&.\&.\&. Misc> \fBEvolution\fP< Type, Container > & \fBresize\fP (const Misc &\&.\&.\&.misc)"
+.br
+.RI "\fIResize\&. \fP"
+.ti -1c
+.RI "\fBEvolution\fP< Type, Container > & \fBpop\fP ()"
+.br
+.RI "\fIPop back\&. \fP"
+.ti -1c
+.RI "template<class OtherType , class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> \fBEvolution\fP< Type, Container > & \fBappend\fP (const OtherType &value)"
+.br
+.RI "\fIAppend an element\&. \fP"
+.in -1c
+.in -1c
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SS "Protected Attributes"
+
+.PP
+.RI "\fBData members\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "Container \fB_container\fP"
+.br
+.RI "\fIInternal container\&. \fP"
+.in -1c
+.in -1c
+.SS "Friends"
+
+.PP
+.RI "\fBStream\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class SelfType , class SelfContainer > std::ostream & \fBoperator<<\fP (std::ostream &lhs, const \fBEvolution\fP< SelfType, SelfContainer > &rhs)"
+.br
+.RI "\fI\fBOutput\fP stream operator\&. \fP"
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class Type = Step<>, class Container = std::vector<Type>>exception magrathea::Evolution< Type, Container >"
+Resizable container of steps dedicated to integration\&. 
+
+An evolution container is an accumulator of integration steps\&. It has the standard functions of containers plus additional functions to interpolate and sort the results\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP \fBStep\fP type\&. 
+.br
+\fIContainer\fP Container type\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class Type , class Container > template<class OtherType > \fBmagrathea::Evolution\fP< Type, Container >::\fBEvolution\fP (const std::initializer_list< OtherType > &source)\fC [inline]\fP"
+
+.PP
+Implicit initializer list constructor\&. Provides an implicit conversion from an initializer list\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other step type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > template<class OtherType , class OtherContainer > \fBmagrathea::Evolution\fP< Type, Container >::\fBEvolution\fP (const \fBEvolution\fP< OtherType, OtherContainer > &source)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit conversion constructor\&. Provides an explicit construction from another type of evolution container\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other step type\&.) 
+.br
+\fIOtherContainer\fP (Other container type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > template<class\&.\&.\&. Misc, class > \fBmagrathea::Evolution\fP< Type, Container >::\fBEvolution\fP (Misc &&\&.\&.\&.misc)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit generic constructor\&. Provides a generic interface to all constructors of the container\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class Type , class Container > template<class OtherType , class > \fBEvolution\fP< Type, Container > & \fBmagrathea::Evolution\fP< Type, Container >::append (const OtherType &value)\fC [inline]\fP"
+
+.PP
+Append an element\&. Appends an element to the end of the container\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other step type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Value of the element to be pushed back\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > \fBEvolution\fP< Type, Container > & \fBmagrathea::Evolution\fP< Type, Container >::assign (const \fBEvolution\fP< Type, Container > &source)\fC [inline]\fP"
+
+.PP
+Copy assignment\&. Provides a copy assignment from another evolution container\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > template<class OtherType > \fBEvolution\fP< Type, Container > & \fBmagrathea::Evolution\fP< Type, Container >::assign (const std::initializer_list< OtherType > &source)\fC [inline]\fP"
+
+.PP
+Initializer list assignment\&. Provides an assignment from an initializer list equivalent to a call to the constructor\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other step type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > template<class OtherType , class OtherContainer > \fBEvolution\fP< Type, Container > & \fBmagrathea::Evolution\fP< Type, Container >::assign (const \fBEvolution\fP< OtherType, OtherContainer > &source)\fC [inline]\fP"
+
+.PP
+Conversion assignment\&. Provides an assignment from another type of evolution container\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other step type\&.) 
+.br
+\fIOtherContainer\fP (Other container type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > template<class\&.\&.\&. Misc, class > \fBEvolution\fP< Type, Container > & \fBmagrathea::Evolution\fP< Type, Container >::assign (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Generic assignment\&. Provides a generic interface to all assignments of the container\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > Type & \fBmagrathea::Evolution\fP< Type, Container >::at (const unsigned inti)\fC [inline]\fP"
+
+.PP
+Access with range-check\&. Provides an access to the element with a range-check\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index of the element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the element\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > const Type & \fBmagrathea::Evolution\fP< Type, Container >::at (const unsigned inti) const\fC [inline]\fP"
+
+.PP
+Immutable access with range-check\&. Provides an access to the element with a range-check\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index of the element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the element\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > Type & \fBmagrathea::Evolution\fP< Type, Container >::back (const unsigned inti = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Access to the i-th element from the end\&. Returns a reference to the i-th last element in the container without doing any range check\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index of the element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the element\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > const Type & \fBmagrathea::Evolution\fP< Type, Container >::back (const unsigned inti = \fC0\fP) const\fC [inline]\fP"
+
+.PP
+Immutable access to the i-th element from the end\&. Returns a reference to the i-th last element in the container without doing any range check\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index of the element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the element\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > Type * \fBmagrathea::Evolution\fP< Type, Container >::begin ()\fC [inline]\fP"
+
+.PP
+Iterator to the beginning\&. Returns a pointer to the first element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the beginning\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > const Type * \fBmagrathea::Evolution\fP< Type, Container >::begin () const\fC [inline]\fP"
+
+.PP
+Immutable iterator to the beginning\&. Returns a pointer to the first element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the beginning\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > unsigned int \fBmagrathea::Evolution\fP< Type, Container >::capacity () const\fC [inline]\fP"
+
+.PP
+Capacity of the underlying storage\&. Returns the number of elements that the container has currently allocated space for\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Capacity of the currently allocated storage\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > template<class OtherType , class OtherContainer > \fBEvolution\fP< OtherType, OtherContainer > \fBmagrathea::Evolution\fP< Type, Container >::cast () const\fC [inline]\fP"
+
+.PP
+Cast\&. Casts contents to another object type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP Other step type\&. 
+.br
+\fIOtherContainer\fP Other container type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Casted copy\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > const Type * \fBmagrathea::Evolution\fP< Type, Container >::cbegin () const\fC [inline]\fP"
+
+.PP
+Forced immutable iterator to the beginning\&. Returns a constant pointer to the first element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the beginning\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > const Type * \fBmagrathea::Evolution\fP< Type, Container >::cend () const\fC [inline]\fP"
+
+.PP
+Forced immutable iterator to the end\&. Returns a constant pointer to the position after the last element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the end\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > \fBEvolution\fP< Type, Container > & \fBmagrathea::Evolution\fP< Type, Container >::clear ()\fC [inline]\fP"
+
+.PP
+Clear the contents\&. Removes all elements from the container\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > Container & \fBmagrathea::Evolution\fP< Type, Container >::container ()\fC [inline]\fP"
+
+.PP
+Direct access to the underlying container\&. Provides a direct access to the underlying container by returning a reference to it\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the underlying container\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > const Container & \fBmagrathea::Evolution\fP< Type, Container >::container () const\fC [inline]\fP"
+
+.PP
+Direct access to the underlying container\&. Provides a direct access to the underlying container by returning a reference to it\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the underlying container\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > \fBEvolution\fP< Type, Container > \fBmagrathea::Evolution\fP< Type, Container >::copy () const\fC [inline]\fP"
+
+.PP
+Copy\&. Generates a copy of the object\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > std::reverse_iterator< const Type * > \fBmagrathea::Evolution\fP< Type, Container >::crbegin () const\fC [inline]\fP"
+
+.PP
+Forced immutable reverse iterator to the beginning\&. Returns a constant reversed pointer to the position after the last element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the end\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > std::reverse_iterator< const Type * > \fBmagrathea::Evolution\fP< Type, Container >::crend () const\fC [inline]\fP"
+
+.PP
+Forced immutable reverse iterator to the end\&. Returns a constant reversed pointer to the first element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the beginning\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > Type & \fBmagrathea::Evolution\fP< Type, Container >::cycle (const inti)\fC [inline]\fP"
+
+.PP
+Cyclic access to elements\&. Provides a cyclic access to the elements, using the index modulo\&. Negative indexes are supported\&. It allows to iterate several times over the contents just by incrementing the provided index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index of the element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the element\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > const Type & \fBmagrathea::Evolution\fP< Type, Container >::cycle (const inti) const\fC [inline]\fP"
+
+.PP
+Immutable cyclic access to elements\&. Provides a cyclic access to the elements, using the index modulo\&. Negative indexes are supported\&. It allows to iterate several times over the contents just by incrementing the provided index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index of the element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the element\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > Type * \fBmagrathea::Evolution\fP< Type, Container >::data ()\fC [inline]\fP"
+
+.PP
+Direct access to the underlying array\&. Provides a direct access to the underlying array by returning a pointer to the first element of storage\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the underlying element storage\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > const Type * \fBmagrathea::Evolution\fP< Type, Container >::data () const\fC [inline]\fP"
+
+.PP
+Immutable direct access to the underlying array\&. Provides a direct access to the underlying array by returning a pointer to the first element of storage\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the underlying element storage\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > bool \fBmagrathea::Evolution\fP< Type, Container >::empty () const\fC [inline]\fP"
+
+.PP
+Emptiness checking\&. Checks if the container has no elements\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True if empty, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > Type * \fBmagrathea::Evolution\fP< Type, Container >::end ()\fC [inline]\fP"
+
+.PP
+Iterator to the end\&. Returns a pointer to the position after the last element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the end\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > const Type * \fBmagrathea::Evolution\fP< Type, Container >::end () const\fC [inline]\fP"
+
+.PP
+Immutable iterator to the end\&. Returns a pointer to the position after the last element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the end\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > int \fBmagrathea::Evolution\fP< Type, Container >::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBEvolution\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > Type & \fBmagrathea::Evolution\fP< Type, Container >::front (const unsigned inti = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Access to the i-th element from the beginning\&. Returns a reference to the i-th first element in the container without doing any range check\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index of the element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the element\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > const Type & \fBmagrathea::Evolution\fP< Type, Container >::front (const unsigned inti = \fC0\fP) const\fC [inline]\fP"
+
+.PP
+Immutable access to the i-th element from the beginning\&. Returns a reference to the i-th first element in the container without doing any range check\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index of the element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the element\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > \fBEvolution\fP< Type, Container > & \fBmagrathea::Evolution\fP< Type, Container >::fullclear ()\fC [inline]\fP"
+
+.PP
+Full clear the container\&. Erase the container\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > template<typename Iterator > unsigned int \fBmagrathea::Evolution\fP< Type, Container >::index (const Iterator &it) const\fC [inline]\fP"
+
+.PP
+Index of an iterator in the container\&. Returns the index of the element pointed by an iterator or a pointer\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIterator\fP (Pointer or iterator type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIit\fP Iterator to the element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Index of the element\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::out_of_range\fP Out of range\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > \fBEvolution\fP< Type, Container > & \fBmagrathea::Evolution\fP< Type, Container >::nullify ()\fC [inline]\fP"
+
+.PP
+Nullify\&. Resets all data members to their default values\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > bool \fBmagrathea::Evolution\fP< Type, Container >::operator!= (const \fBEvolution\fP< Type, Container > &rhs) const\fC [inline]\fP"
+
+.PP
+Not equal to\&. Lexicographically compares the values in the container for difference\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if not equal, false if equal\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > bool \fBmagrathea::Evolution\fP< Type, Container >::operator< (const \fBEvolution\fP< Type, Container > &rhs) const\fC [inline]\fP"
+
+.PP
+Less than\&. Lexicographically compares the values in the container for the less than comparison operator\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if less than, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > bool \fBmagrathea::Evolution\fP< Type, Container >::operator<= (const \fBEvolution\fP< Type, Container > &rhs) const\fC [inline]\fP"
+
+.PP
+Less than or equal to\&. Lexicographically compares the values in the container for the less than or equal to comparison operator\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if less than or equal to, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > template<class OtherType > \fBEvolution\fP< Type, Container > & \fBmagrathea::Evolution\fP< Type, Container >::operator= (const std::initializer_list< OtherType > &source)\fC [inline]\fP"
+
+.PP
+Initializer list assignment operator\&. Provides an initializer list assignment\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other step type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > template<class OtherType , class OtherContainer > \fBEvolution\fP< Type, Container > & \fBmagrathea::Evolution\fP< Type, Container >::operator= (const \fBEvolution\fP< OtherType, OtherContainer > &source)\fC [inline]\fP"
+
+.PP
+Conversion assignment operator\&. Provides an assignment from another type of evolution container\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other step type\&.) 
+.br
+\fIOtherContainer\fP (Other container type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > template<class Misc , class > \fBEvolution\fP< Type, Container > & \fBmagrathea::Evolution\fP< Type, Container >::operator= (Misc &&misc)\fC [inline]\fP"
+
+.PP
+Generic assignment operator\&. Provides a generic interface to all assignment operators of the container 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMisc\fP (\fBMiscellaneous\fP type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP argument\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > bool \fBmagrathea::Evolution\fP< Type, Container >::operator== (const \fBEvolution\fP< Type, Container > &rhs) const\fC [inline]\fP"
+
+.PP
+Equal to\&. Lexicographically compares the values in the container for equality\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if equal, false if not equal\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > bool \fBmagrathea::Evolution\fP< Type, Container >::operator> (const \fBEvolution\fP< Type, Container > &rhs) const\fC [inline]\fP"
+
+.PP
+Greater than\&. Lexicographically compares the values in the container for the greater than comparison operator\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if greater than, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > bool \fBmagrathea::Evolution\fP< Type, Container >::operator>= (const \fBEvolution\fP< Type, Container > &rhs) const\fC [inline]\fP"
+
+.PP
+Greater than or equal to\&. Lexicographically compares the values in the container for the greater than or equal to comparison operator\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if greater than or equal to, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > Type & \fBmagrathea::Evolution\fP< Type, Container >::operator[] (const unsigned inti)\fC [inline]\fP"
+
+.PP
+Direct access to the element\&. Provides a direct access to the specified element\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index of the element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the element\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > const Type & \fBmagrathea::Evolution\fP< Type, Container >::operator[] (const unsigned inti) const\fC [inline]\fP"
+
+.PP
+Immutable direct access to the element\&. Provides a direct access to the specified element\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index of the element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the element\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > \fBEvolution\fP< Type, Container > & \fBmagrathea::Evolution\fP< Type, Container >::pop ()\fC [inline]\fP"
+
+.PP
+Pop back\&. Removes the last element of the container\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > std::reverse_iterator< Type * > \fBmagrathea::Evolution\fP< Type, Container >::rbegin ()\fC [inline]\fP"
+
+.PP
+Reverse iterator to the beginning\&. Returns a reversed pointer to the position after the last element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the end\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > std::reverse_iterator< const Type * > \fBmagrathea::Evolution\fP< Type, Container >::rbegin () const\fC [inline]\fP"
+
+.PP
+Immutable reverse iterator to the beginning\&. Returns a reversed pointer to the position after the last element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the end\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > std::reverse_iterator< Type * > \fBmagrathea::Evolution\fP< Type, Container >::rend ()\fC [inline]\fP"
+
+.PP
+Reverse iterator to the end\&. Returns a reversed pointer to the first element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the beginning\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > std::reverse_iterator< const Type * > \fBmagrathea::Evolution\fP< Type, Container >::rend () const\fC [inline]\fP"
+
+.PP
+Immutable reverse iterator to the end\&. Returns a reversed pointer to the first element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable pointer to the beginning\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > \fBEvolution\fP< Type, Container > & \fBmagrathea::Evolution\fP< Type, Container >::reserve (const unsigned intn)\fC [inline]\fP"
+
+.PP
+Storage reservation\&. Increases the capacity of the underlying storage\&. Existing elements are protected so it could not invalidate the actual contents\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIn\fP New size\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > template<class\&.\&.\&. Misc> \fBEvolution\fP< Type, Container > & \fBmagrathea::Evolution\fP< Type, Container >::resize (const Misc &\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Resize\&. Resizes the container to contain a new number of elements\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > \fBEvolution\fP< Type, Container > & \fBmagrathea::Evolution\fP< Type, Container >::shrink ()\fC [inline]\fP"
+
+.PP
+Storage shrinking\&. Reduces memory usage by freeing unused memory\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > unsigned int \fBmagrathea::Evolution\fP< Type, Container >::size () const\fC [inline]\fP"
+
+.PP
+Number of elements\&. Returns the distance between the first and the last element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The number of elements in the container\&. 
+.RE
+.PP
+
+.SS "template<class Type , class Container > unsigned long long int \fBmagrathea::Evolution\fP< Type, Container >::space () const\fC [inline]\fP"
+
+.PP
+Available space\&. Returns the maximum possible number of elements\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Maximum number of elements\&. 
+.RE
+.PP
+
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "template<class Type = Step<>, class Container = std::vector<Type>> template<class SelfType , class SelfContainer > std::ostream& operator<< (std::ostream &lhs, const \fBEvolution\fP< SelfType, SelfContainer > &rhs)\fC [friend]\fP"
+
+.PP
+\fBOutput\fP stream operator\&. Adds each element to the stream using the \fCfill()\fP character as a separator\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISelfType\fP (\fBStep\fP type\&.) 
+.br
+\fISelfContainer\fP (Container type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side stream\&. 
+.br
+\fIrhs\fP Right-hand side object\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBOutput\fP stream\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<class Type = Step<>, class Container = std::vector<Type>> Container \fBmagrathea::Evolution\fP< Type, Container >::_container\fC [protected]\fP"
+
+.PP
+Internal container\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

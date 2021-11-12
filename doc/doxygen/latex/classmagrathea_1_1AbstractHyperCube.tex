@@ -1,0 +1,486 @@
+\hypertarget{classmagrathea_1_1AbstractHyperCube}{\section{magrathea\-:\-:Abstract\-Hyper\-Cube$<$ Crtp, Dimension, Vector, Scalar $>$ Class Template Reference}
+\label{classmagrathea_1_1AbstractHyperCube}\index{magrathea\-::\-Abstract\-Hyper\-Cube$<$ Crtp, Dimension, Vector, Scalar $>$@{magrathea\-::\-Abstract\-Hyper\-Cube$<$ Crtp, Dimension, Vector, Scalar $>$}}
+}
+
+
+Abstract function provider for n-\/dimensional cubes.  
+
+
+
+
+{\ttfamily \#include $<$abstracthypercube.\-h$>$}
+
+Inheritance diagram for magrathea\-:\-:Abstract\-Hyper\-Cube$<$ Crtp, Dimension, Vector, Scalar $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmagrathea_1_1AbstractHyperCube}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Position}\par
+\begin{DoxyCompactItemize}
+\item 
+constexpr Scalar \hyperlink{classmagrathea_1_1AbstractHyperCube_a92d8e9710571e72fccd885ecedb4e075}{center} (const unsigned int idim) const 
+\begin{DoxyCompactList}\small\item\em Center coordinate. \end{DoxyCompactList}\item 
+Vector \hyperlink{classmagrathea_1_1AbstractHyperCube_a68e48d5ef5c0403770865b56c98a1494}{center} () const 
+\begin{DoxyCompactList}\small\item\em Center vector. \end{DoxyCompactList}\item 
+constexpr Scalar \hyperlink{classmagrathea_1_1AbstractHyperCube_a00245afe000222d837c1aa3cd09e08bd}{minimum} (const unsigned int idim) const 
+\begin{DoxyCompactList}\small\item\em Minimum coordinate. \end{DoxyCompactList}\item 
+Vector \hyperlink{classmagrathea_1_1AbstractHyperCube_a2efa04a1b5098cc7898f27aee16412fc}{minimum} () const 
+\begin{DoxyCompactList}\small\item\em Minimum vector. \end{DoxyCompactList}\item 
+constexpr Scalar \hyperlink{classmagrathea_1_1AbstractHyperCube_a1b36f49a44cecb681cc38e05a1a0c582}{maximum} (const unsigned int idim) const 
+\begin{DoxyCompactList}\small\item\em Maximum coordinate. \end{DoxyCompactList}\item 
+Vector \hyperlink{classmagrathea_1_1AbstractHyperCube_a3f589f4b3e788827941363ad9b97dc8e}{maximum} () const 
+\begin{DoxyCompactList}\small\item\em Maximum vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Measures}\par
+\begin{DoxyCompactItemize}
+\item 
+constexpr Scalar \hyperlink{classmagrathea_1_1AbstractHyperCube_a8534fd1643ba9e27a45a10a9526fc26e}{length} () const 
+\begin{DoxyCompactList}\small\item\em Length. \end{DoxyCompactList}\item 
+constexpr Scalar \hyperlink{classmagrathea_1_1AbstractHyperCube_a4f80c91ff6729500b69edc88107791aa}{volume} () const 
+\begin{DoxyCompactList}\small\item\em Volume. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Subdimension = Dimension-\/(\-Dimension != 0)$>$ }\\constexpr Scalar \hyperlink{classmagrathea_1_1AbstractHyperCube_ad4b1dded1b858ea3483e5af1113ed57e}{surface} () const 
+\begin{DoxyCompactList}\small\item\em Outer surface. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Subdimension = Dimension-\/(\-Dimension != 0)$>$ }\\constexpr Scalar \hyperlink{classmagrathea_1_1AbstractHyperCube_aa65ddc7ef856434b45aecff688390d4b}{area} () const 
+\begin{DoxyCompactList}\small\item\em Element area. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Subdimension = Dimension$>$ }\\constexpr Scalar \hyperlink{classmagrathea_1_1AbstractHyperCube_a698ec7f90b98f44f8149da7ad466419a}{diagonal} () const 
+\begin{DoxyCompactList}\small\item\em Diagonal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Distribution}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$unsigned int Subdimension = Dimension, class  = typename std\-::enable\-\_\-if$<$(\-Subdimension != 0) $|$$|$ (\-Subdimension == 0)$>$\-::type$>$ }\\Vector \hyperlink{classmagrathea_1_1AbstractHyperCube_aa071c3abcff00828d27f13454fcf604d}{random} () const 
+\begin{DoxyCompactList}\small\item\em Basic random location in the hypercube. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Subdimension = Dimension, class Engine , class Distribution , class  = typename std\-::enable\-\_\-if$<$((\-Subdimension != 0) $|$$|$ (\-Subdimension == 0)) \&\& (std\-::decay$<$\-Engine$>$\-::type\-::min() != std\-::decay$<$\-Engine$>$\-::type\-::max()) \&\& (!std\-::is\-\_\-void$<$typename std\-::decay$<$\-Distribution$>$\-::type\-::result\-\_\-type$>$\-::value)$>$\-::type$>$ }\\Vector \hyperlink{classmagrathea_1_1AbstractHyperCube_aa529bedcd503631825f7e21b893e3d7e}{random} (Engine \&\&engine, Distribution \&\&distribution) const 
+\begin{DoxyCompactList}\small\item\em Generic random location in the hypercube. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Collision}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Other\-Vector , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Other\-Vector$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type, Scalar$>$\-::value$>$\-::type$>$ }\\bool \hyperlink{classmagrathea_1_1AbstractHyperCube_a0fd1a2a8ee4af9823606cd4bfa0ba3a7}{inside} (const Other\-Vector \&\hyperlink{miscellaneous_8h_af4785a592bbb7b2a8882c18bb0101192}{point}) const 
+\begin{DoxyCompactList}\small\item\em Point inside. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Other\-Vector , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Other\-Vector$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type, Scalar$>$\-::value$>$\-::type$>$ }\\bool \hyperlink{classmagrathea_1_1AbstractHyperCube_a3d82e1fae74385b35ed4957b69b0d3ec}{outside} (const Other\-Vector \&\hyperlink{miscellaneous_8h_af4785a592bbb7b2a8882c18bb0101192}{point}) const 
+\begin{DoxyCompactList}\small\item\em Point outside. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Static Public Member Functions}
+\begin{Indent}{\bf Constants}\par
+\begin{DoxyCompactItemize}
+\item 
+static constexpr unsigned int \hyperlink{classmagrathea_1_1AbstractHyperCube_a9d9dbd803c06603fbd23058689f44cc7}{dimension} ()
+\begin{DoxyCompactList}\small\item\em Number of space dimension. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Subdimension = Dimension$>$ }\\static constexpr unsigned int \hyperlink{classmagrathea_1_1AbstractHyperCube_a72f398a8e3993826380cabc47aba7b8e}{elements} ()
+\begin{DoxyCompactList}\small\item\em Number of elements. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int First\-Subdimension = 0, unsigned int Last\-Subdimension = Dimension-\/(\-Dimension != 0)$>$ }\\static constexpr unsigned int \hyperlink{classmagrathea_1_1AbstractHyperCube_aa681927fa1b4ae8e940c618740ce6394}{subelements} ()
+\begin{DoxyCompactList}\small\item\em Sum of elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Test}\par
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{classmagrathea_1_1AbstractHyperCube_a906538ea22de1d67f1c3cada11f8df6f}{example} ()
+\begin{DoxyCompactList}\small\item\em Example function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Protected Member Functions}
+\begin{Indent}{\bf Protected lifecycle}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmagrathea_1_1AbstractHyperCube_a1d8df066cb99cde45bdc3707120c3d8c}{$\sim$\-Abstract\-Hyper\-Cube} ()
+\begin{DoxyCompactList}\small\item\em Protected destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Crtp, unsigned int Dimension, class Vector, typename Scalar$>$class magrathea\-::\-Abstract\-Hyper\-Cube$<$ Crtp, Dimension, Vector, Scalar $>$}
+
+Abstract function provider for n-\/dimensional cubes. 
+
+Provides a common base for n-\/dimensional cubes thanks to C\-R\-T\-P. To use it, one has to derive from this class and pass the derived class itself as the C\-R\-T\-P parameter. The derived classes should provide two immutable functions \-: 
+\begin{DoxyItemize}
+\item position() 
+\item extent()
+\end{DoxyItemize}in order to get the position of the center along one coordinate and the edge length of the hypercube. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Crtp} & Derived C\-R\-T\-P class. \\
+\hline
+{\em Dimension} & Number of space dimension. \\
+\hline
+{\em Vector} & Position vector type. \\
+\hline
+{\em Scalar} & Scalar data type. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmagrathea_1_1AbstractHyperCube_a1d8df066cb99cde45bdc3707120c3d8c}{\index{magrathea\-::\-Abstract\-Hyper\-Cube@{magrathea\-::\-Abstract\-Hyper\-Cube}!$\sim$\-Abstract\-Hyper\-Cube@{$\sim$\-Abstract\-Hyper\-Cube}}
+\index{$\sim$\-Abstract\-Hyper\-Cube@{$\sim$\-Abstract\-Hyper\-Cube}!magrathea::AbstractHyperCube@{magrathea\-::\-Abstract\-Hyper\-Cube}}
+\subsubsection[{$\sim$\-Abstract\-Hyper\-Cube}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ {\bf magrathea\-::\-Abstract\-Hyper\-Cube}$<$ Crtp, Dimension, Vector, Scalar $>$\-::$\sim${\bf Abstract\-Hyper\-Cube} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [default]}}}\label{classmagrathea_1_1AbstractHyperCube_a1d8df066cb99cde45bdc3707120c3d8c}
+
+
+Protected destructor. 
+
+Avoids direct instantiation of the class, and only allows it through its derived children. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classmagrathea_1_1AbstractHyperCube_aa65ddc7ef856434b45aecff688390d4b}{\index{magrathea\-::\-Abstract\-Hyper\-Cube@{magrathea\-::\-Abstract\-Hyper\-Cube}!area@{area}}
+\index{area@{area}!magrathea::AbstractHyperCube@{magrathea\-::\-Abstract\-Hyper\-Cube}}
+\subsubsection[{area}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ template$<$unsigned int Subdimension$>$ constexpr Scalar {\bf magrathea\-::\-Abstract\-Hyper\-Cube}$<$ Crtp, Dimension, Vector, Scalar $>$\-::area (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmagrathea_1_1AbstractHyperCube_aa65ddc7ef856434b45aecff688390d4b}
+
+
+Element area. 
+
+Computes the surface of a single element of the hypercube. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Subdimension} & Dimension of elements. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+$l^{D}$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperCube_a92d8e9710571e72fccd885ecedb4e075}{\index{magrathea\-::\-Abstract\-Hyper\-Cube@{magrathea\-::\-Abstract\-Hyper\-Cube}!center@{center}}
+\index{center@{center}!magrathea::AbstractHyperCube@{magrathea\-::\-Abstract\-Hyper\-Cube}}
+\subsubsection[{center}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ constexpr Scalar {\bf magrathea\-::\-Abstract\-Hyper\-Cube}$<$ Crtp, Dimension, Vector, Scalar $>$\-::center (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{idim}
+\end{DoxyParamCaption}
+) const}}\label{classmagrathea_1_1AbstractHyperCube_a92d8e9710571e72fccd885ecedb4e075}
+
+
+Center coordinate. 
+
+Computes the specified coordinate of the center of the hypercube. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em idim} & Index of the dimension. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The coordinate $x_{i}$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperCube_a68e48d5ef5c0403770865b56c98a1494}{\index{magrathea\-::\-Abstract\-Hyper\-Cube@{magrathea\-::\-Abstract\-Hyper\-Cube}!center@{center}}
+\index{center@{center}!magrathea::AbstractHyperCube@{magrathea\-::\-Abstract\-Hyper\-Cube}}
+\subsubsection[{center}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ Vector {\bf magrathea\-::\-Abstract\-Hyper\-Cube}$<$ Crtp, Dimension, Vector, Scalar $>$\-::center (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractHyperCube_a68e48d5ef5c0403770865b56c98a1494}
+
+
+Center vector. 
+
+Computes the position vector of the center of the hypercube. \begin{DoxyReturn}{Returns}
+The position vector $\vec{x}$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperCube_a698ec7f90b98f44f8149da7ad466419a}{\index{magrathea\-::\-Abstract\-Hyper\-Cube@{magrathea\-::\-Abstract\-Hyper\-Cube}!diagonal@{diagonal}}
+\index{diagonal@{diagonal}!magrathea::AbstractHyperCube@{magrathea\-::\-Abstract\-Hyper\-Cube}}
+\subsubsection[{diagonal}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ template$<$unsigned int Subdimension$>$ constexpr Scalar {\bf magrathea\-::\-Abstract\-Hyper\-Cube}$<$ Crtp, Dimension, Vector, Scalar $>$\-::diagonal (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmagrathea_1_1AbstractHyperCube_a698ec7f90b98f44f8149da7ad466419a}
+
+
+Diagonal. 
+
+Computes the length of the diagonal in the specified subdimension. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Subdimension} & Dimension of elements. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+$\sqrt{D} \times l$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperCube_a9d9dbd803c06603fbd23058689f44cc7}{\index{magrathea\-::\-Abstract\-Hyper\-Cube@{magrathea\-::\-Abstract\-Hyper\-Cube}!dimension@{dimension}}
+\index{dimension@{dimension}!magrathea::AbstractHyperCube@{magrathea\-::\-Abstract\-Hyper\-Cube}}
+\subsubsection[{dimension}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ constexpr unsigned int {\bf magrathea\-::\-Abstract\-Hyper\-Cube}$<$ Crtp, Dimension, Vector, Scalar $>$\-::dimension (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmagrathea_1_1AbstractHyperCube_a9d9dbd803c06603fbd23058689f44cc7}
+
+
+Number of space dimension. 
+
+Computes the number of space dimension of the hypercube. \begin{DoxyReturn}{Returns}
+Dimension. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperCube_a72f398a8e3993826380cabc47aba7b8e}{\index{magrathea\-::\-Abstract\-Hyper\-Cube@{magrathea\-::\-Abstract\-Hyper\-Cube}!elements@{elements}}
+\index{elements@{elements}!magrathea::AbstractHyperCube@{magrathea\-::\-Abstract\-Hyper\-Cube}}
+\subsubsection[{elements}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ template$<$unsigned int Subdimension$>$ constexpr unsigned int {\bf magrathea\-::\-Abstract\-Hyper\-Cube}$<$ Crtp, Dimension, Vector, Scalar $>$\-::elements (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmagrathea_1_1AbstractHyperCube_a72f398a8e3993826380cabc47aba7b8e}
+
+
+Number of elements. 
+
+Computes the number of elements of the specified subdimension in the hypercube. For example, for a specified subdimension 0, it computes the number of points. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Subdimension} & Dimension of elements. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+$2^{D-d}\binom{D}{d}$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperCube_a906538ea22de1d67f1c3cada11f8df6f}{\index{magrathea\-::\-Abstract\-Hyper\-Cube@{magrathea\-::\-Abstract\-Hyper\-Cube}!example@{example}}
+\index{example@{example}!magrathea::AbstractHyperCube@{magrathea\-::\-Abstract\-Hyper\-Cube}}
+\subsubsection[{example}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ int {\bf magrathea\-::\-Abstract\-Hyper\-Cube}$<$ Crtp, Dimension, Vector, Scalar $>$\-::example (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmagrathea_1_1AbstractHyperCube_a906538ea22de1d67f1c3cada11f8df6f}
+
+
+Example function. 
+
+Tests and demonstrates the use of \hyperlink{classmagrathea_1_1AbstractHyperCube}{Abstract\-Hyper\-Cube}. \begin{DoxyReturn}{Returns}
+0 if no error. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperCube_a0fd1a2a8ee4af9823606cd4bfa0ba3a7}{\index{magrathea\-::\-Abstract\-Hyper\-Cube@{magrathea\-::\-Abstract\-Hyper\-Cube}!inside@{inside}}
+\index{inside@{inside}!magrathea::AbstractHyperCube@{magrathea\-::\-Abstract\-Hyper\-Cube}}
+\subsubsection[{inside}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ template$<$class Other\-Vector , class $>$ bool {\bf magrathea\-::\-Abstract\-Hyper\-Cube}$<$ Crtp, Dimension, Vector, Scalar $>$\-::inside (
+\begin{DoxyParamCaption}
+\item[{const Other\-Vector \&}]{point}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractHyperCube_a0fd1a2a8ee4af9823606cd4bfa0ba3a7}
+
+
+Point inside. 
+
+Checks whether a point is inside the hypercube. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Vector} & Other position vector type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em point} & Position of the point. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the point is inside the hypercube, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperCube_a8534fd1643ba9e27a45a10a9526fc26e}{\index{magrathea\-::\-Abstract\-Hyper\-Cube@{magrathea\-::\-Abstract\-Hyper\-Cube}!length@{length}}
+\index{length@{length}!magrathea::AbstractHyperCube@{magrathea\-::\-Abstract\-Hyper\-Cube}}
+\subsubsection[{length}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ constexpr Scalar {\bf magrathea\-::\-Abstract\-Hyper\-Cube}$<$ Crtp, Dimension, Vector, Scalar $>$\-::length (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmagrathea_1_1AbstractHyperCube_a8534fd1643ba9e27a45a10a9526fc26e}
+
+
+Length. 
+
+Computes the edge length of the hypercube. \begin{DoxyReturn}{Returns}
+$l$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperCube_a1b36f49a44cecb681cc38e05a1a0c582}{\index{magrathea\-::\-Abstract\-Hyper\-Cube@{magrathea\-::\-Abstract\-Hyper\-Cube}!maximum@{maximum}}
+\index{maximum@{maximum}!magrathea::AbstractHyperCube@{magrathea\-::\-Abstract\-Hyper\-Cube}}
+\subsubsection[{maximum}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ constexpr Scalar {\bf magrathea\-::\-Abstract\-Hyper\-Cube}$<$ Crtp, Dimension, Vector, Scalar $>$\-::maximum (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{idim}
+\end{DoxyParamCaption}
+) const}}\label{classmagrathea_1_1AbstractHyperCube_a1b36f49a44cecb681cc38e05a1a0c582}
+
+
+Maximum coordinate. 
+
+Computes the specified coordinate of the maximum boundary of the hypercube. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em idim} & Index of the dimension. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The coordinate $x_{i}+\frac{l}{2}$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperCube_a3f589f4b3e788827941363ad9b97dc8e}{\index{magrathea\-::\-Abstract\-Hyper\-Cube@{magrathea\-::\-Abstract\-Hyper\-Cube}!maximum@{maximum}}
+\index{maximum@{maximum}!magrathea::AbstractHyperCube@{magrathea\-::\-Abstract\-Hyper\-Cube}}
+\subsubsection[{maximum}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ Vector {\bf magrathea\-::\-Abstract\-Hyper\-Cube}$<$ Crtp, Dimension, Vector, Scalar $>$\-::maximum (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractHyperCube_a3f589f4b3e788827941363ad9b97dc8e}
+
+
+Maximum vector. 
+
+Computes the position vector of the maximum boundary of the hypercube. \begin{DoxyReturn}{Returns}
+The position vector $\vec{x}+\frac{\vec{l}}{2}$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperCube_a00245afe000222d837c1aa3cd09e08bd}{\index{magrathea\-::\-Abstract\-Hyper\-Cube@{magrathea\-::\-Abstract\-Hyper\-Cube}!minimum@{minimum}}
+\index{minimum@{minimum}!magrathea::AbstractHyperCube@{magrathea\-::\-Abstract\-Hyper\-Cube}}
+\subsubsection[{minimum}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ constexpr Scalar {\bf magrathea\-::\-Abstract\-Hyper\-Cube}$<$ Crtp, Dimension, Vector, Scalar $>$\-::minimum (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{idim}
+\end{DoxyParamCaption}
+) const}}\label{classmagrathea_1_1AbstractHyperCube_a00245afe000222d837c1aa3cd09e08bd}
+
+
+Minimum coordinate. 
+
+Computes the specified coordinate of the minimum boundary of the hypercube. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em idim} & Index of the dimension. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The coordinate $x_{i}-\frac{l}{2}$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperCube_a2efa04a1b5098cc7898f27aee16412fc}{\index{magrathea\-::\-Abstract\-Hyper\-Cube@{magrathea\-::\-Abstract\-Hyper\-Cube}!minimum@{minimum}}
+\index{minimum@{minimum}!magrathea::AbstractHyperCube@{magrathea\-::\-Abstract\-Hyper\-Cube}}
+\subsubsection[{minimum}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ Vector {\bf magrathea\-::\-Abstract\-Hyper\-Cube}$<$ Crtp, Dimension, Vector, Scalar $>$\-::minimum (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractHyperCube_a2efa04a1b5098cc7898f27aee16412fc}
+
+
+Minimum vector. 
+
+Computes the position vector of the minimum boundary of the hypercube. \begin{DoxyReturn}{Returns}
+The position vector $\vec{x}-\frac{\vec{l}}{2}$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperCube_a3d82e1fae74385b35ed4957b69b0d3ec}{\index{magrathea\-::\-Abstract\-Hyper\-Cube@{magrathea\-::\-Abstract\-Hyper\-Cube}!outside@{outside}}
+\index{outside@{outside}!magrathea::AbstractHyperCube@{magrathea\-::\-Abstract\-Hyper\-Cube}}
+\subsubsection[{outside}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ template$<$class Other\-Vector , class $>$ bool {\bf magrathea\-::\-Abstract\-Hyper\-Cube}$<$ Crtp, Dimension, Vector, Scalar $>$\-::outside (
+\begin{DoxyParamCaption}
+\item[{const Other\-Vector \&}]{point}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractHyperCube_a3d82e1fae74385b35ed4957b69b0d3ec}
+
+
+Point outside. 
+
+Checks whether a point is outside the hypercube. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Vector} & Other position vector type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em point} & Position of the point. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the point is outside the hypercube, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperCube_aa071c3abcff00828d27f13454fcf604d}{\index{magrathea\-::\-Abstract\-Hyper\-Cube@{magrathea\-::\-Abstract\-Hyper\-Cube}!random@{random}}
+\index{random@{random}!magrathea::AbstractHyperCube@{magrathea\-::\-Abstract\-Hyper\-Cube}}
+\subsubsection[{random}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ template$<$unsigned int Subdimension, class $>$ Vector {\bf magrathea\-::\-Abstract\-Hyper\-Cube}$<$ Crtp, Dimension, Vector, Scalar $>$\-::random (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmagrathea_1_1AbstractHyperCube_aa071c3abcff00828d27f13454fcf604d}
+
+
+Basic random location in the hypercube. 
+
+Generates a random location, located on the subdimensional elements of the hypercube. For example for a subdimension of 2 of a 3-\/dimensional hypercube, the function will generates a random point located on the surface of the cube. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Subdimension} & Dimension space. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Random position vector. 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+As the internal engine is a static one, do not use this function in parallel. 
+\end{DoxyWarning}
+\hypertarget{classmagrathea_1_1AbstractHyperCube_aa529bedcd503631825f7e21b893e3d7e}{\index{magrathea\-::\-Abstract\-Hyper\-Cube@{magrathea\-::\-Abstract\-Hyper\-Cube}!random@{random}}
+\index{random@{random}!magrathea::AbstractHyperCube@{magrathea\-::\-Abstract\-Hyper\-Cube}}
+\subsubsection[{random}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ template$<$unsigned int Subdimension, class Engine , class Distribution , class $>$ Vector {\bf magrathea\-::\-Abstract\-Hyper\-Cube}$<$ Crtp, Dimension, Vector, Scalar $>$\-::random (
+\begin{DoxyParamCaption}
+\item[{Engine \&\&}]{engine, }
+\item[{Distribution \&\&}]{distribution}
+\end{DoxyParamCaption}
+) const}}\label{classmagrathea_1_1AbstractHyperCube_aa529bedcd503631825f7e21b893e3d7e}
+
+
+Generic random location in the hypercube. 
+
+Generates a random location, located on the subdimensional elements of the hypercube. For example for a subdimension of 2 of a 3-\/dimensional hypercube, the function will generates a random point located on the surface of the cube. As this function uses the passed random engine and distribution it is completely thread safe. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Subdimension} & Dimension space. \\
+\hline
+{\em Engine} & (Random engine type.) \\
+\hline
+{\em Distribution} & (Random distribution type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em engine} & Random engine. \\
+\hline
+\mbox{\tt in,out}  & {\em distribution} & Random distribution. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Random position vector. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperCube_aa681927fa1b4ae8e940c618740ce6394}{\index{magrathea\-::\-Abstract\-Hyper\-Cube@{magrathea\-::\-Abstract\-Hyper\-Cube}!subelements@{subelements}}
+\index{subelements@{subelements}!magrathea::AbstractHyperCube@{magrathea\-::\-Abstract\-Hyper\-Cube}}
+\subsubsection[{subelements}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ template$<$unsigned int First, unsigned int Last$>$ constexpr unsigned int {\bf magrathea\-::\-Abstract\-Hyper\-Cube}$<$ Crtp, Dimension, Vector, Scalar $>$\-::subelements (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmagrathea_1_1AbstractHyperCube_aa681927fa1b4ae8e940c618740ce6394}
+
+
+Sum of elements. 
+
+Computes the sum of the hypercube elements between the two given dimensions. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em First} & First dimension of elements. \\
+\hline
+{\em Last} & Last dimension of elements. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+$\sum_{d}2^{D-d}\binom{D}{d}$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperCube_ad4b1dded1b858ea3483e5af1113ed57e}{\index{magrathea\-::\-Abstract\-Hyper\-Cube@{magrathea\-::\-Abstract\-Hyper\-Cube}!surface@{surface}}
+\index{surface@{surface}!magrathea::AbstractHyperCube@{magrathea\-::\-Abstract\-Hyper\-Cube}}
+\subsubsection[{surface}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ template$<$unsigned int Subdimension$>$ constexpr Scalar {\bf magrathea\-::\-Abstract\-Hyper\-Cube}$<$ Crtp, Dimension, Vector, Scalar $>$\-::surface (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmagrathea_1_1AbstractHyperCube_ad4b1dded1b858ea3483e5af1113ed57e}
+
+
+Outer surface. 
+
+Computes the total outer surface of the hypercube. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Subdimension} & Dimension of elements. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+$2^{D-d}\binom{D}{d} \times l^{D}$. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractHyperCube_a4f80c91ff6729500b69edc88107791aa}{\index{magrathea\-::\-Abstract\-Hyper\-Cube@{magrathea\-::\-Abstract\-Hyper\-Cube}!volume@{volume}}
+\index{volume@{volume}!magrathea::AbstractHyperCube@{magrathea\-::\-Abstract\-Hyper\-Cube}}
+\subsubsection[{volume}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Crtp , unsigned int Dimension, class Vector , typename Scalar $>$ constexpr Scalar {\bf magrathea\-::\-Abstract\-Hyper\-Cube}$<$ Crtp, Dimension, Vector, Scalar $>$\-::volume (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmagrathea_1_1AbstractHyperCube_a4f80c91ff6729500b69edc88107791aa}
+
+
+Volume. 
+
+Computes the volume of the hypercube. \begin{DoxyReturn}{Returns}
+$l^{D}$. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/magrathea/\hyperlink{abstracthypercube_8h}{abstracthypercube.\-h}\end{DoxyCompactItemize}

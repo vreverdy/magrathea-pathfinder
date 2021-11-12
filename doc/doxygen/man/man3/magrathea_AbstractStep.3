@@ -1,0 +1,577 @@
+.TH "magrathea::AbstractStep< Crtp, Scalar, Array, Tuple >" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::AbstractStep< Crtp, Scalar, Array, Tuple > \- 
+.PP
+Abstraction of an evolution step\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <abstractstep\&.h>\fP
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBLifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBAbstractStep\fP ()"
+.br
+.RI "\fIImplicit empty constructor\&. \fP"
+.ti -1c
+.RI "template<class OtherCrtp , class OtherScalar , class OtherArray , class OtherTuple > \fBAbstractStep\fP (const \fBAbstractStep\fP< OtherCrtp, OtherScalar, OtherArray, OtherTuple > &source)"
+.br
+.RI "\fIExplicit conversion constructor\&. \fP"
+.ti -1c
+.RI "template<class OtherScalar , class OtherArray  = Array, class OtherTuple  = Tuple, class  = typename std::enable_if<(std::is_constructible<Scalar, OtherScalar>::value) && (std::is_constructible<Array, OtherArray>::value) && (std::is_constructible<Tuple, OtherTuple>::value)>::type> \fBAbstractStep\fP (const OtherScalar &scalar, const OtherArray &array=OtherArray(), const OtherTuple &tuple=OtherTuple())"
+.br
+.RI "\fIExplicit step constructor\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBOperators\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "Crtp & \fBoperator=\fP (const \fBAbstractStep\fP< Crtp, Scalar, Array, Tuple > &rhs)"
+.br
+.RI "\fICopy assignment operator\&. \fP"
+.ti -1c
+.RI "template<class OtherCrtp , class OtherScalar , class OtherArray , class OtherTuple > Crtp & \fBoperator=\fP (const \fBAbstractStep\fP< OtherCrtp, OtherScalar, OtherArray, OtherTuple > &rhs)"
+.br
+.RI "\fIConversion assignment operator\&. \fP"
+.ti -1c
+.RI "template<class OtherCrtp , class OtherScalar , class OtherArray , class OtherTuple > bool \fBoperator==\fP (const \fBAbstractStep\fP< OtherCrtp, OtherScalar, OtherArray, OtherTuple > &rhs) const "
+.br
+.RI "\fIEqual to\&. \fP"
+.ti -1c
+.RI "template<class OtherCrtp , class OtherScalar , class OtherArray , class OtherTuple > bool \fBoperator!=\fP (const \fBAbstractStep\fP< OtherCrtp, OtherScalar, OtherArray, OtherTuple > &rhs) const "
+.br
+.RI "\fINot equal to\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBAssignment\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "Crtp & \fBassign\fP ()"
+.br
+.RI "\fIEmpty assignment\&. \fP"
+.ti -1c
+.RI "Crtp & \fBassign\fP (const \fBAbstractStep\fP< Crtp, Scalar, Array, Tuple > &source)"
+.br
+.RI "\fICopy assignment\&. \fP"
+.ti -1c
+.RI "template<class OtherCrtp , class OtherScalar , class OtherArray , class OtherTuple > Crtp & \fBassign\fP (const \fBAbstractStep\fP< OtherCrtp, OtherScalar, OtherArray, OtherTuple > &source)"
+.br
+.RI "\fIConversion assignment\&. \fP"
+.ti -1c
+.RI "template<class OtherScalar , class OtherArray  = Array, class OtherTuple  = Tuple, class  = typename std::enable_if<(std::is_constructible<Scalar, OtherScalar>::value) && (std::is_constructible<Array, OtherArray>::value) && (std::is_constructible<Tuple, OtherTuple>::value)>::type> Crtp & \fBassign\fP (const OtherScalar &scalar, const OtherArray &array=OtherArray(), const OtherTuple &tuple=OtherTuple())"
+.br
+.RI "\fI\fBStep\fP assignment\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBManagement\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "Crtp & \fBnullify\fP ()"
+.br
+.RI "\fINullify\&. \fP"
+.ti -1c
+.RI "Crtp \fBcopy\fP () const "
+.br
+.RI "\fICopy\&. \fP"
+.ti -1c
+.RI "template<class OtherCrtp  = Crtp, class  = typename std::enable_if<std::is_constructible<OtherCrtp, Crtp>::value>::type> OtherCrtp \fBcast\fP () const "
+.br
+.RI "\fICast\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBData\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class\&.\&.\&. Dummy, class Type  = typename std::conditional<sizeof\&.\&.\&.(Dummy) == 0, std::tuple<Scalar, Array, Tuple>, void>::type, class  = typename std::enable_if<sizeof\&.\&.\&.(Dummy) == 0>::type, class  = typename std::enable_if<std::is_convertible<Type, typename std::conditional<sizeof\&.\&.\&.(Dummy) == 0, std::tuple<Scalar, Array, Tuple>, void>::type>::value>::type> Type & \fBdata\fP (Dummy\&.\&.\&.)"
+.br
+.RI "\fIUnified data access\&. \fP"
+.ti -1c
+.RI "template<class\&.\&.\&. Dummy, class Type  = typename std::conditional<sizeof\&.\&.\&.(Dummy) == 0, std::tuple<Scalar, Array, Tuple>, void>::type, class  = typename std::enable_if<sizeof\&.\&.\&.(Dummy) == 0>::type, class  = typename std::enable_if<std::is_convertible<Type, typename std::conditional<sizeof\&.\&.\&.(Dummy) == 0, std::tuple<Scalar, Array, Tuple>, void>::type>::value>::type> const Type & \fBdata\fP (Dummy\&.\&.\&.) const "
+.br
+.RI "\fIUnified data getter\&. \fP"
+.ti -1c
+.RI "template<class Type , class  = typename std::enable_if<std::is_convertible<Type, typename std::conditional<!std::is_void<Type>::value, std::tuple<Scalar, Array, Tuple>, void>::type>::value>::type> Crtp & \fBdata\fP (const Type &value)"
+.br
+.RI "\fIUnified data setter\&. \fP"
+.in -1c
+.in -1c
+.SS "Protected Member Functions"
+
+.PP
+.RI "\fBProtected lifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fB~AbstractStep\fP ()"
+.br
+.RI "\fIProtected destructor\&. \fP"
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class Crtp, class Scalar, class Array, class Tuple>class magrathea::AbstractStep< Crtp, Scalar, Array, Tuple >"
+Abstraction of an evolution step\&. 
+
+This class is an abstraction of an evolution step with common functions, like assignment, copy, getters and setters\&. A step object is basically a standard structure with additional features\&. The internal behaviour is based on three groups of quantities : 
+.PD 0
+
+.IP "\(bu" 2
+id : a scalar id of the step 
+.IP "\(bu" 2
+core : an array of basic quantities 
+.IP "\(bu" 2
+extra : a tuple of derived quantities
+.PP
+\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fICrtp\fP Derived CRTP class\&. 
+.br
+\fIScalar\fP Scalar type of id\&. 
+.br
+\fIArray\fP Array type of core quantities\&. 
+.br
+\fITuple\fP Tuple type of extra quantities\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class Crtp , class Scalar , class Array , class Tuple > \fBmagrathea::AbstractStep\fP< Crtp, Scalar, Array, Tuple >::~\fBAbstractStep\fP ()\fC [inline]\fP, \fC [protected]\fP, \fC [default]\fP"
+
+.PP
+Protected destructor\&. Avoids direct instantiation of the class, and only allows it through its derived children\&. 
+.SS "template<class Crtp , class Scalar , class Array , class Tuple > \fBmagrathea::AbstractStep\fP< Crtp, Scalar, Array, Tuple >::\fBAbstractStep\fP ()\fC [inline]\fP"
+
+.PP
+Implicit empty constructor\&. Provides an implicit construction of an object initialized to its default value\&. 
+.SS "template<class Crtp , class Scalar , class Array , class Tuple > template<class OtherCrtp , class OtherScalar , class OtherArray , class OtherTuple > \fBmagrathea::AbstractStep\fP< Crtp, Scalar, Array, Tuple >::\fBAbstractStep\fP (const \fBAbstractStep\fP< OtherCrtp, OtherScalar, OtherArray, OtherTuple > &source)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit conversion constructor\&. Provides an explicit construction from another type of object\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherCrtp\fP (Other derived CRTP class\&.) 
+.br
+\fIOtherScalar\fP (Other scalar type of id\&.) 
+.br
+\fIOtherArray\fP (Other array type of core quantities\&.) 
+.br
+\fIOtherTuple\fP (Other tuple type of extra quantities\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Scalar , class Array , class Tuple > template<class OtherScalar , class OtherArray , class OtherTuple , class > \fBmagrathea::AbstractStep\fP< Crtp, Scalar, Array, Tuple >::\fBAbstractStep\fP (const OtherScalar &scalar, const OtherArray &array = \fCOtherArray()\fP, const OtherTuple &tuple = \fCOtherTuple()\fP)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit step constructor\&. Provides an explicit construction from step components\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherScalar\fP (Other scalar type of id\&.) 
+.br
+\fIOtherArray\fP (Other array type of core quantities\&.) 
+.br
+\fIOtherTuple\fP (Other tuple type of extra quantities\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscalar\fP Source of the scalar\&. 
+.br
+\fIarray\fP Source of the array\&. 
+.br
+\fItuple\fP Source of the tuple\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class Crtp , class Scalar , class Array , class Tuple > Crtp & \fBmagrathea::AbstractStep\fP< Crtp, Scalar, Array, Tuple >::assign ()\fC [inline]\fP"
+
+.PP
+Empty assignment\&. Assigns contents from an object initialized to its default value\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Crtp, class Scalar, class Array, class Tuple> Crtp & \fBmagrathea::AbstractStep\fP< Crtp, Scalar, Array, Tuple >::assign (const \fBAbstractStep\fP< Crtp, Scalar, Array, Tuple > &source)\fC [inline]\fP"
+
+.PP
+Copy assignment\&. Assigns contents from the same type of object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Scalar , class Array , class Tuple > template<class OtherCrtp , class OtherScalar , class OtherArray , class OtherTuple > Crtp & \fBmagrathea::AbstractStep\fP< Crtp, Scalar, Array, Tuple >::assign (const \fBAbstractStep\fP< OtherCrtp, OtherScalar, OtherArray, OtherTuple > &source)\fC [inline]\fP"
+
+.PP
+Conversion assignment\&. Assigns contents from another type of object\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherCrtp\fP (Other derived CRTP class\&.) 
+.br
+\fIOtherScalar\fP (Other scalar type of id\&.) 
+.br
+\fIOtherArray\fP (Other array type of core quantities\&.) 
+.br
+\fIOtherTuple\fP (Other tuple type of extra quantities\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Scalar , class Array , class Tuple > template<class OtherScalar , class OtherArray , class OtherTuple , class > Crtp & \fBmagrathea::AbstractStep\fP< Crtp, Scalar, Array, Tuple >::assign (const OtherScalar &scalar, const OtherArray &array = \fCOtherArray()\fP, const OtherTuple &tuple = \fCOtherTuple()\fP)\fC [inline]\fP"
+
+.PP
+\fBStep\fP assignment\&. Assigns contents from step components\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherScalar\fP (Other scalar type of id\&.) 
+.br
+\fIOtherArray\fP (Other array type of core quantities\&.) 
+.br
+\fIOtherTuple\fP (Other tuple type of extra quantities\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscalar\fP Source of the scalar\&. 
+.br
+\fIarray\fP Source of the array\&. 
+.br
+\fItuple\fP Source of the tuple\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Scalar , class Array , class Tuple > template<class OtherCrtp , class > OtherCrtp \fBmagrathea::AbstractStep\fP< Crtp, Scalar, Array, Tuple >::cast () const\fC [inline]\fP"
+
+.PP
+Cast\&. Casts contents to another object type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherCrtp\fP Other derived CRTP class\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Casted copy\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Scalar , class Array , class Tuple > Crtp \fBmagrathea::AbstractStep\fP< Crtp, Scalar, Array, Tuple >::copy () const\fC [inline]\fP"
+
+.PP
+Copy\&. Generates a copy of the object\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Scalar , class Array , class Tuple > template<class\&.\&.\&. Dummy, class Type , class , class > Type & \fBmagrathea::AbstractStep\fP< Crtp, Scalar, Array, Tuple >::data (Dummy\&.\&.\&.)\fC [inline]\fP"
+
+.PP
+Unified data access\&. Unified data inner component access\&.
+.PP
+Unified data component access\&.
+.PP
+Provides a direct access to the data\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDummy\fP (Dummy types\&.) 
+.br
+\fIType\fP (Data std::tuple<Scalar, Array, Tuple> type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the data\&.
+.RE
+.PP
+Provides a direct access to the specified component of the data\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIndex\fP Index of the component\&. 
+.br
+\fIDummy\fP (Dummy types\&.) 
+.br
+\fIType\fP (Component type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the component of the data\&.
+.RE
+.PP
+Provides a direct access to the specified inner component of the specified component of the data\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIndex\fP Index of the component\&. 
+.br
+\fISubscript\fP Subscript of the inner component\&. 
+.br
+\fIDummy\fP (Dummy types\&.) 
+.br
+\fIType\fP (Inner component type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the inner component of the data\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Scalar , class Array , class Tuple > template<class\&.\&.\&. Dummy, class Type , class , class > const Type & \fBmagrathea::AbstractStep\fP< Crtp, Scalar, Array, Tuple >::data (Dummy\&.\&.\&.) const\fC [inline]\fP"
+
+.PP
+Unified data getter\&. Gets the data\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDummy\fP (Dummy types\&.) 
+.br
+\fIType\fP (Data std::tuple<Scalar, Array, Tuple> type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to the data\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Scalar , class Array , class Tuple > template<unsigned int Index, unsigned int Subscript, class Type , class , class , class > Crtp & \fBmagrathea::AbstractStep\fP< Crtp, Scalar, Array, Tuple >::data (const Type &value)\fC [inline]\fP"
+
+.PP
+Unified data setter\&. Unified data inner component setter\&.
+.PP
+Unified data component setter\&.
+.PP
+Sets the data\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Data value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&.
+.RE
+.PP
+Sets the specified component of the data\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIndex\fP Index of the component\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Component value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&.
+.RE
+.PP
+Sets the specified inner component of the specified component of the data\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIndex\fP Index of the component\&. 
+.br
+\fISubscript\fP Subscript of the inner component\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Inner component value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Scalar , class Array , class Tuple > Crtp & \fBmagrathea::AbstractStep\fP< Crtp, Scalar, Array, Tuple >::nullify ()\fC [inline]\fP"
+
+.PP
+Nullify\&. Resets all data members to their default values\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Scalar , class Array , class Tuple > template<class OtherCrtp , class OtherScalar , class OtherArray , class OtherTuple > bool \fBmagrathea::AbstractStep\fP< Crtp, Scalar, Array, Tuple >::operator!= (const \fBAbstractStep\fP< OtherCrtp, OtherScalar, OtherArray, OtherTuple > &rhs) const\fC [inline]\fP"
+
+.PP
+Not equal to\&. Compares for difference and returns true if the contents is different\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherCrtp\fP (Other derived CRTP class\&.) 
+.br
+\fIOtherScalar\fP (Other scalar type of id\&.) 
+.br
+\fIOtherArray\fP (Other array type of core quantities\&.) 
+.br
+\fIOtherTuple\fP (Other tuple type of extra quantities\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if not equal, false if equal\&. 
+.RE
+.PP
+
+.SS "template<class Crtp, class Scalar, class Array, class Tuple> Crtp & \fBmagrathea::AbstractStep\fP< Crtp, Scalar, Array, Tuple >::operator= (const \fBAbstractStep\fP< Crtp, Scalar, Array, Tuple > &rhs)\fC [inline]\fP"
+
+.PP
+Copy assignment operator\&. Assigns contents from the same type of object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Scalar , class Array , class Tuple > template<class OtherCrtp , class OtherScalar , class OtherArray , class OtherTuple > Crtp & \fBmagrathea::AbstractStep\fP< Crtp, Scalar, Array, Tuple >::operator= (const \fBAbstractStep\fP< OtherCrtp, OtherScalar, OtherArray, OtherTuple > &rhs)\fC [inline]\fP"
+
+.PP
+Conversion assignment operator\&. Assigns contents from another type of object\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherCrtp\fP (Other derived CRTP class\&.) 
+.br
+\fIOtherScalar\fP (Other scalar type of id\&.) 
+.br
+\fIOtherArray\fP (Other array type of core quantities\&.) 
+.br
+\fIOtherTuple\fP (Other tuple type of extra quantities\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , class Scalar , class Array , class Tuple > template<class OtherCrtp , class OtherScalar , class OtherArray , class OtherTuple > bool \fBmagrathea::AbstractStep\fP< Crtp, Scalar, Array, Tuple >::operator== (const \fBAbstractStep\fP< OtherCrtp, OtherScalar, OtherArray, OtherTuple > &rhs) const\fC [inline]\fP"
+
+.PP
+Equal to\&. Compares for equality and returns true if the contents is equal\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherCrtp\fP (Other derived CRTP class\&.) 
+.br
+\fIOtherScalar\fP (Other scalar type of id\&.) 
+.br
+\fIOtherArray\fP (Other array type of core quantities\&.) 
+.br
+\fIOtherTuple\fP (Other tuple type of extra quantities\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if equal, false if not equal\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

@@ -1,0 +1,1796 @@
+.TH "Photon< Type, Dimension >" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Photon< Type, Dimension > \- 
+.PP
+\fBPhoton\fP step implementation for raytracing\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <photon\&.h>\fP
+.PP
+Inherits \fBmagrathea::AbstractStep< Photon< Type, Dimension >, unsigned int, std::array< Type, 1+(1+Dimension)*2 >, std::tuple< Type, Type, Type, Type, std::array< Type, Dimension >, Type, Type, Type, Type, Type, Type, std::array< Type, 3 >, Type, Type, Type > >\fP\&.
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBLifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class\&.\&.\&. Misc> \fBPhoton\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIExplicit generic constructor\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBData\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template id<Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBindex\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the index data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template id<Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBindex\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the index data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template core<0, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBa\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the a data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template core<0, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBa\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the a data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template core<1, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBt\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the t data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template core<1, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBt\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the t data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template core<2, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBx\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the x data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template core<2, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBx\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the x data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template core<3, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBy\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the y data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template core<3, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBy\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the y data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template core<4, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBz\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the z data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template core<4, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBz\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the z data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template core<5, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdtdl\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the dtdl data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template core<5, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdtdl\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the dtdl data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template core<6, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdxdl\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the dxdl data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template core<6, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdxdl\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the dxdl data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template core<7, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdydl\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the dydl data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template core<7, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdydl\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the dydl data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template core<8, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdzdl\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the dzdl data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template core<8, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdzdl\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the dzdl data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<0, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBlevel\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the level data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<0, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBlevel\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the level data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<1, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBah\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the ah data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<1, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBah\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the ah data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<2, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBrho\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the rho data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<2, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBrho\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the rho data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<3, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBphi\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the phi data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<3, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBphi\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the phi data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<4, Values\&.\&.\&.>(0, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidx\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the dphidx data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<4, Values\&.\&.\&.>(0, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidx\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the dphidx data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<4, Values\&.\&.\&.>(1, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidy\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the dphidy data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<4, Values\&.\&.\&.>(1, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidy\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the dphidy data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<4, Values\&.\&.\&.>(2, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidz\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the dphidz data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<4, Values\&.\&.\&.>(2, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidz\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the dphidz data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<5, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidl\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the dphidl data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<5, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidl\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the dphidl data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<6, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBlaplacian\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the laplacian data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<6, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBlaplacian\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the laplacian data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<7, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBredshift\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the redshift data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<7, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBredshift\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the redshift data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<8, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdsdl2\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the dsdl2 data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<8, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdsdl2\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the dsdl2 data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<9, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBerror\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the error data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<9, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBerror\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the error data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<10, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdistance\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the distance data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<10, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdistance\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the distance data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<11, Values\&.\&.\&.>(0, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBisw\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the isw data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<11, Values\&.\&.\&.>(0, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBisw\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the isw data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<11, Values\&.\&.\&.>(1, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBiswold\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the iswold data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<11, Values\&.\&.\&.>(1, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBiswold\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the iswold data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<11, Values\&.\&.\&.>(2, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBchi\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the chi data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<11, Values\&.\&.\&.>(2, std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBchi\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the chi data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<12, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBlambda\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the lambda data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<12, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBlambda\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the lambda data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<13, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidt\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the dphidt data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<13, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBdphidt\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the dphidt data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<14, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBs\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the s data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1+(1+Dimension)*2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3> , Type, Type, Type> > >()\&.template extra<14, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBs\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the s data\&. \fP"
+.in -1c
+.in -1c
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "using \fBoperator\fP = typedef"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename Type = double, unsigned int Dimension = 3>exception Photon< Type, Dimension >"
+\fBPhoton\fP step implementation for raytracing\&. 
+
+A step of integration for a given photon\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Data type\&. 
+.br
+\fIDimension\fP Number of space dimension\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename Type , unsigned int Dimension> template<class\&.\&.\&. Misc> \fBPhoton\fP< Type, Dimension >::\fBPhoton\fP (Misc &&\&.\&.\&.misc)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit generic constructor\&. Provides a generic interface to all constructors of the base class\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::a (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the a data\&. Provides an access to the a data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::a (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the a data\&. Provides an immutable access to the a data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::ah (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the ah data\&. Provides an access to the ah data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::ah (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the ah data\&. Provides an immutable access to the ah data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::chi (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the chi data\&. Provides an access to the chi data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::chi (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the chi data\&. Provides an immutable access to the chi data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::distance (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the distance data\&. Provides an access to the distance data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::distance (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the distance data\&. Provides an immutable access to the distance data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::dphidl (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the dphidl data\&. Provides an access to the dphidl data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::dphidl (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the dphidl data\&. Provides an immutable access to the dphidl data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::dphidt (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the dphidt data\&. Provides an access to the dphidt data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::dphidt (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the dphidt data\&. Provides an immutable access to the dphidt data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::dphidx (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the dphidx data\&. Provides an access to the dphidx data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::dphidx (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the dphidx data\&. Provides an immutable access to the dphidx data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::dphidy (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the dphidy data\&. Provides an access to the dphidy data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::dphidy (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the dphidy data\&. Provides an immutable access to the dphidy data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::dphidz (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the dphidz data\&. Provides an access to the dphidz data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::dphidz (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the dphidz data\&. Provides an immutable access to the dphidz data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::dsdl2 (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the dsdl2 data\&. Provides an access to the dsdl2 data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::dsdl2 (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the dsdl2 data\&. Provides an immutable access to the dsdl2 data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::dtdl (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the dtdl data\&. Provides an access to the dtdl data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::dtdl (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the dtdl data\&. Provides an immutable access to the dtdl data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::dxdl (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the dxdl data\&. Provides an access to the dxdl data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::dxdl (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the dxdl data\&. Provides an immutable access to the dxdl data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::dydl (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the dydl data\&. Provides an access to the dydl data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::dydl (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the dydl data\&. Provides an immutable access to the dydl data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::dzdl (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the dzdl data\&. Provides an access to the dzdl data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::dzdl (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the dzdl data\&. Provides an immutable access to the dzdl data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::error (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the error data\&. Provides an access to the error data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::error (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the error data\&. Provides an immutable access to the error data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> int \fBPhoton\fP< Type, Dimension >::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBPhoton\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::index (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the index data\&. Provides an access to the index data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::index (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the index data\&. Provides an immutable access to the index data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::isw (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the isw data\&. Provides an access to the isw data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::isw (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the isw data\&. Provides an immutable access to the isw data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::iswold (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the iswold data\&. Provides an access to the iswold data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::iswold (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the iswold data\&. Provides an immutable access to the iswold data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::lambda (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the lambda data\&. Provides an access to the lambda data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::lambda (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the lambda data\&. Provides an immutable access to the lambda data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::laplacian (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the laplacian data\&. Provides an access to the laplacian data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::laplacian (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the laplacian data\&. Provides an immutable access to the laplacian data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::level (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the level data\&. Provides an access to the level data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::level (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the level data\&. Provides an immutable access to the level data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::phi (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the phi data\&. Provides an access to the phi data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::phi (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the phi data\&. Provides an immutable access to the phi data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::redshift (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the redshift data\&. Provides an access to the redshift data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::redshift (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the redshift data\&. Provides an immutable access to the redshift data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::rho (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the rho data\&. Provides an access to the rho data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::rho (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the rho data\&. Provides an immutable access to the rho data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::s (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the s data\&. Provides an access to the s data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::s (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the s data\&. Provides an immutable access to the s data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::t (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the t data\&. Provides an access to the t data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::t (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the t data\&. Provides an immutable access to the t data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::x (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the x data\&. Provides an access to the x data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::x (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the x data\&. Provides an immutable access to the x data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::y (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the y data\&. Provides an access to the y data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::y (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the y data\&. Provides an immutable access to the y data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::z (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the z data\&. Provides an access to the z data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension> template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBPhoton\fP< Type, Dimension >::z (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the z data\&. Provides an immutable access to the z data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename Type = double, unsigned int Dimension = 3> using \fBPhoton\fP< Type, Dimension >::operator = "
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

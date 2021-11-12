@@ -1,0 +1,747 @@
+.TH "magrathea::SimpleHyperOctreeIndex< Type, Dimension, Bits >" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::SimpleHyperOctreeIndex< Type, Dimension, Bits > \- 
+.PP
+A simple hyperoctree index based on an integer\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <simplehyperoctreeindex\&.h>\fP
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBLifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBSimpleHyperOctreeIndex\fP ()"
+.br
+.RI "\fIImplicit empty constructor\&. \fP"
+.ti -1c
+.RI "\fBSimpleHyperOctreeIndex\fP (const Type source)"
+.br
+.RI "\fIExplicit value constructor\&. \fP"
+.ti -1c
+.RI "template<class String , class  = typename std::enable_if<(std::is_convertible<String, std::string>::value) && (std::is_convertible<decltype(std::declval<String>()[0]), char>::value)>::type> \fBSimpleHyperOctreeIndex\fP (const String &source)"
+.br
+.RI "\fIExplicit string constructor\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBOperators\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBSimpleHyperOctreeIndex\fP< Type, 
+.br
+Dimension, Bits > & \fBoperator=\fP (const Type rhs)"
+.br
+.RI "\fIValue assignment operator\&. \fP"
+.ti -1c
+.RI "template<class String , class  = typename std::enable_if<(std::is_convertible<String, std::string>::value) && (std::is_convertible<decltype(std::declval<String>()[0]), char>::value)>::type> \fBSimpleHyperOctreeIndex\fP< Type, 
+.br
+Dimension, Bits > & \fBoperator=\fP (const String &rhs)"
+.br
+.RI "\fIString assignment operator\&. \fP"
+.ti -1c
+.RI "\fBoperator Type\fP () const "
+.br
+.RI "\fIImplicit cast operator\&. \fP"
+.ti -1c
+.RI "Type & \fBoperator()\fP ()"
+.br
+.RI "\fIData access operator\&. \fP"
+.ti -1c
+.RI "const Type & \fBoperator()\fP () const "
+.br
+.RI "\fIImmutable data access operator\&. \fP"
+.ti -1c
+.RI "bool \fBoperator[]\fP (const unsigned int ibit) const "
+.br
+.RI "\fIImmutable bit access\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBAssignment\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBSimpleHyperOctreeIndex\fP< Type, 
+.br
+Dimension, Bits > & \fBassign\fP ()"
+.br
+.RI "\fIEmpty assignment\&. \fP"
+.ti -1c
+.RI "\fBSimpleHyperOctreeIndex\fP< Type, 
+.br
+Dimension, Bits > & \fBassign\fP (const \fBSimpleHyperOctreeIndex\fP< Type, Dimension, Bits > &source)"
+.br
+.RI "\fICopy assignment\&. \fP"
+.ti -1c
+.RI "\fBSimpleHyperOctreeIndex\fP< Type, 
+.br
+Dimension, Bits > & \fBassign\fP (const Type source)"
+.br
+.RI "\fIValue assignment\&. \fP"
+.ti -1c
+.RI "template<class String , class  = typename std::enable_if<(std::is_convertible<String, std::string>::value) && (std::is_convertible<decltype(std::declval<String>()[0]), char>::value)>::type> \fBSimpleHyperOctreeIndex\fP< Type, 
+.br
+Dimension, Bits > & \fBassign\fP (const String &source)"
+.br
+.RI "\fIString assignment\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBManagement\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "Type & \fBdata\fP ()"
+.br
+.RI "\fIData access\&. \fP"
+.ti -1c
+.RI "const Type & \fBdata\fP () const "
+.br
+.RI "\fIImmutable data access\&. \fP"
+.ti -1c
+.RI "Type \fBget\fP () const "
+.br
+.RI "\fIData getter\&. \fP"
+.ti -1c
+.RI "\fBSimpleHyperOctreeIndex\fP< Type, 
+.br
+Dimension, Bits > & \fBset\fP (const Type value)"
+.br
+.RI "\fIData setter\&. \fP"
+.ti -1c
+.RI "\fBSimpleHyperOctreeIndex\fP< Type, 
+.br
+Dimension, Bits > & \fBnullify\fP ()"
+.br
+.RI "\fINullify\&. \fP"
+.ti -1c
+.RI "\fBSimpleHyperOctreeIndex\fP< Type, 
+.br
+Dimension, Bits > \fBcopy\fP () const "
+.br
+.RI "\fICopy\&. \fP"
+.ti -1c
+.RI "template<class OtherType  = SimpleHyperOctreeIndex<Type, Dimension, Bits>, class  = typename std::enable_if<std::is_constructible<OtherType, Type>::value>::type> OtherType \fBcast\fP () const "
+.br
+.RI "\fICast\&. \fP"
+.ti -1c
+.RI "template<typename Base  = std::true_type, class  = typename std::enable_if<((std::is_same<Base, std::true_type>::value) || (std::is_convertible<Base, int>::value)) && (!std::is_floating_point<Base>::value)>::type> std::string \fBstringify\fP (const Base base=Base()) const "
+.br
+.RI "\fIStringify\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBCore\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "unsigned int \fBlevel\fP () const "
+.br
+.RI "\fILevel\&. \fP"
+.ti -1c
+.RI "bool \fBcoarsest\fP () const "
+.br
+.RI "\fICoarsest level\&. \fP"
+.ti -1c
+.RI "bool \fBfinest\fP () const "
+.br
+.RI "\fIFinest level\&. \fP"
+.ti -1c
+.RI "bool \fBlimited\fP () const "
+.br
+.RI "\fILimited\&. \fP"
+.ti -1c
+.RI "bool \fBcheck\fP () const "
+.br
+.RI "\fICheck\&. \fP"
+.ti -1c
+.RI "bool \fBinvalidated\fP () const "
+.br
+.RI "\fIInvalidated\&. \fP"
+.ti -1c
+.RI "\fBSimpleHyperOctreeIndex\fP< Type, 
+.br
+Dimension, Bits > & \fBfix\fP ()"
+.br
+.RI "\fIFix\&. \fP"
+.ti -1c
+.RI "\fBSimpleHyperOctreeIndex\fP< Type, 
+.br
+Dimension, Bits > & \fBinvalidate\fP ()"
+.br
+.RI "\fIInvalidate\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBTree\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBSimpleHyperOctreeIndex\fP< Type, 
+.br
+Dimension, Bits > \fBparent\fP () const "
+.br
+.RI "\fIParent index\&. \fP"
+.ti -1c
+.RI "\fBSimpleHyperOctreeIndex\fP< Type, 
+.br
+Dimension, Bits > \fBchild\fP (const unsigned int isite) const "
+.br
+.RI "\fIChild index\&. \fP"
+.ti -1c
+.RI "\fBSimpleHyperOctreeIndex\fP< Type, 
+.br
+Dimension, Bits > \fBbrother\fP (const unsigned int isite) const "
+.br
+.RI "\fIBrother index\&. \fP"
+.ti -1c
+.RI "\fBSimpleHyperOctreeIndex\fP< Type, 
+.br
+Dimension, Bits > \fBpreceding\fP () const "
+.br
+.RI "\fIPreceding brother index\&. \fP"
+.ti -1c
+.RI "\fBSimpleHyperOctreeIndex\fP< Type, 
+.br
+Dimension, Bits > \fBfollowing\fP () const "
+.br
+.RI "\fIFollowing brother index\&. \fP"
+.ti -1c
+.RI "\fBSimpleHyperOctreeIndex\fP< Type, 
+.br
+Dimension, Bits > \fBprevious\fP (const unsigned int ilvl=0, const unsigned int nref=Bits/(Dimension+1)) const "
+.br
+.RI "\fIPrevious index\&. \fP"
+.ti -1c
+.RI "\fBSimpleHyperOctreeIndex\fP< Type, 
+.br
+Dimension, Bits > \fBnext\fP (const unsigned int ilvl=0, const unsigned int nref=Bits/(Dimension+1)) const "
+.br
+.RI "\fINext index\&. \fP"
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename Type = unsigned long long int, unsigned int Dimension = 3, unsigned int Bits = sizeof(Type)*std::numeric_limits<unsigned char>::digits>exception magrathea::SimpleHyperOctreeIndex< Type, Dimension, Bits >"
+A simple hyperoctree index based on an integer\&. 
+
+Implements a simple hyperoctree index with no dependency using a single integer and providing all standard operations to easily recover level and position\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Unsigned integer type\&. 
+.br
+\fIDimension\fP Number of dimensions\&. 
+.br
+\fIBits\fP Size of the type in bits\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::\fBSimpleHyperOctreeIndex\fP ()\fC [inline]\fP"
+
+.PP
+Implicit empty constructor\&. Provides an implicit construction of the index initialized to its default value\&. 
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::\fBSimpleHyperOctreeIndex\fP (const Typesource)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit value constructor\&. Provides an explicit construction of the index initialized to a particular value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> template<class String , class > \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::\fBSimpleHyperOctreeIndex\fP (const String &source)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit string constructor\&. Provide an explicit construction from a string of zeros and ones\&. The index is filled from the most significant bit\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIString\fP String type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> \fBSimpleHyperOctreeIndex\fP< Type, Dimension, Bits > & \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::assign ()\fC [inline]\fP"
+
+.PP
+Empty assignment\&. Assigns contents from an index initialized to its default value\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> \fBSimpleHyperOctreeIndex\fP< Type, Dimension, Bits > & \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::assign (const \fBSimpleHyperOctreeIndex\fP< Type, Dimension, Bits > &source)\fC [inline]\fP"
+
+.PP
+Copy assignment\&. Assigns contents from the same type of index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> \fBSimpleHyperOctreeIndex\fP< Type, Dimension, Bits > & \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::assign (const Typesource)\fC [inline]\fP"
+
+.PP
+Value assignment\&. Assigns contents from an index value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> template<class String , class > \fBSimpleHyperOctreeIndex\fP< Type, Dimension, Bits > & \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::assign (const String &source)\fC [inline]\fP"
+
+.PP
+String assignment\&. Assigns contents from a string of zeros and ones\&. The index is filled from the most significant bit\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIString\fP String type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> \fBSimpleHyperOctreeIndex\fP< Type, Dimension, Bits > \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::brother (const unsigned intisite) const\fC [inline]\fP"
+
+.PP
+Brother index\&. Computes the brother index in the tree, which is an index with the same final parent\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIisite\fP Site of the brother\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Index of the specified brother\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> template<class OtherType , class > OtherType \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::cast () const\fC [inline]\fP"
+
+.PP
+Cast\&. Casts the index to another object type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP Other data type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Casted copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> bool \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::check () const\fC [inline]\fP"
+
+.PP
+Check\&. Checks that the underlying integer represents an index with no error\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True if no error, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> \fBSimpleHyperOctreeIndex\fP< Type, Dimension, Bits > \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::child (const unsigned intisite) const\fC [inline]\fP"
+
+.PP
+Child index\&. Computes the child index in the tree\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIisite\fP Site of the child\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Index of the specified child\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> bool \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::coarsest () const\fC [inline]\fP"
+
+.PP
+Coarsest level\&. Checks whether the index corresponds to the coarsest, unrefined level\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True if coarsest level, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> \fBSimpleHyperOctreeIndex\fP< Type, Dimension, Bits > \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::copy () const\fC [inline]\fP"
+
+.PP
+Copy\&. Generates a copy of the index\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> Type & \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::data ()\fC [inline]\fP"
+
+.PP
+Data access\&. Provides direct access to internal data\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to underlying data\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> const Type & \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::data () const\fC [inline]\fP"
+
+.PP
+Immutable data access\&. Provides an immutable direct access to internal data\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to underlying data\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> bool \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::finest () const\fC [inline]\fP"
+
+.PP
+Finest level\&. Checks whether the index corresponds to the finest, most refined level\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True if finest level, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> \fBSimpleHyperOctreeIndex\fP< Type, Dimension, Bits > & \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::fix ()\fC [inline]\fP"
+
+.PP
+Fix\&. Fixes the underlying integer if it does not represents a correct index\&. To do so, every bit set after the last correct level is cleared\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> \fBSimpleHyperOctreeIndex\fP< Type, Dimension, Bits > \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::following () const\fC [inline]\fP"
+
+.PP
+Following brother index\&. Computes the index of the following brother in the tree, which is an index with the same final parent\&. A cyclic operation is performed if the last brother of this final parent has already been reached\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Index of the following brother\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> Type \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::get () const\fC [inline]\fP"
+
+.PP
+Data getter\&. Returns a copy of the internal data\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the underlying data\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> \fBSimpleHyperOctreeIndex\fP< Type, Dimension, Bits > & \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::invalidate ()\fC [inline]\fP"
+
+.PP
+Invalidate\&. Invalidates the index\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> bool \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::invalidated () const\fC [inline]\fP"
+
+.PP
+Invalidated\&. Checks whether the index is invalidated\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True if the index is invalidated, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> unsigned int \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::level () const\fC [inline]\fP"
+
+.PP
+Level\&. Computes the level of refinement according to the number of trailing zeros\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Refinement level\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> bool \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::limited () const\fC [inline]\fP"
+
+.PP
+Limited\&. Checks whether the index corresponds to the coarsest or finest level of refinement\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True if coarsest or finest level, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> \fBSimpleHyperOctreeIndex\fP< Type, Dimension, Bits > \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::next (const unsigned intilvl = \fC0\fP, const unsigned intnref = \fCBits/(Dimension+1)\fP) const\fC [inline]\fP"
+
+.PP
+Next index\&. Computes the next index in the tree from the specified level to the specified number of refinements\&. A cyclic operation is performed if the last index has been reached\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIilvl\fP Index of the first level\&. 
+.br
+\fInref\fP Number of refinements of the first level\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Index of the next element\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> \fBSimpleHyperOctreeIndex\fP< Type, Dimension, Bits > & \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::nullify ()\fC [inline]\fP"
+
+.PP
+Nullify\&. Resets the internal data to its default value\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::operator Type () const\fC [inline]\fP"
+
+.PP
+Implicit cast operator\&. Implicitely converts the index to an integer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the underlying data\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> Type & \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::operator() ()\fC [inline]\fP"
+
+.PP
+Data access operator\&. Provides direct access to internal data\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to underlying data\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> const Type & \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::operator() () const\fC [inline]\fP"
+
+.PP
+Immutable data access operator\&. Provides an immutable direct access to internal data\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to underlying data\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> \fBSimpleHyperOctreeIndex\fP< Type, Dimension, Bits > & \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::operator= (const Typerhs)\fC [inline]\fP"
+
+.PP
+Value assignment operator\&. Assigns data from a value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> template<class String , class > \fBSimpleHyperOctreeIndex\fP< Type, Dimension, Bits > & \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::operator= (const String &rhs)\fC [inline]\fP"
+
+.PP
+String assignment operator\&. Assigns data from a string of zeros and ones\&. The index is filled from the most significant bit\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIString\fP String type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> bool \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::operator[] (const unsigned intibit) const\fC [inline]\fP"
+
+.PP
+Immutable bit access\&. Provides an immutable access to the i-th bit\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIibit\fP Bit index\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the i-th bit\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> \fBSimpleHyperOctreeIndex\fP< Type, Dimension, Bits > \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::parent () const\fC [inline]\fP"
+
+.PP
+Parent index\&. Computes the parent index in the tree\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Index of the parent\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> \fBSimpleHyperOctreeIndex\fP< Type, Dimension, Bits > \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::preceding () const\fC [inline]\fP"
+
+.PP
+Preceding brother index\&. Computes the index of the preceding brother in the tree, which is an index with the same final parent\&. A cyclic operation is performed if the first brother of this final parent has already been reached\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Index of the preceding brother\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> \fBSimpleHyperOctreeIndex\fP< Type, Dimension, Bits > \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::previous (const unsigned intilvl = \fC0\fP, const unsigned intnref = \fCBits/(Dimension+1)\fP) const\fC [inline]\fP"
+
+.PP
+Previous index\&. Computes the previous index in the tree from the specified level to the specified number of refinements\&. A cyclic operation is performed if the first index has been reached\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIilvl\fP Index of the first level\&. 
+.br
+\fInref\fP Number of refinements of the first level\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Index of the previous element\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> \fBSimpleHyperOctreeIndex\fP< Type, Dimension, Bits > & \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::set (const Typevalue)\fC [inline]\fP"
+
+.PP
+Data setter\&. Sets the internal data to the provided value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP \fBInput\fP value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, unsigned int Bits> template<typename Base , class > std::string \fBmagrathea::SimpleHyperOctreeIndex\fP< Type, Dimension, Bits >::stringify (const Basebase = \fCBase()\fP) const"
+
+.PP
+Stringify\&. Converts the index to a string\&. If no base is specified, the standard display is used\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIBase\fP Integral base type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbase\fP Integral base value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+String corresponding to the index\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

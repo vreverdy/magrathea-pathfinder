@@ -1,0 +1,991 @@
+\hypertarget{exceptionGravity}{\section{Gravity$<$ Type, Dimension $>$ Exception Template Reference}
+\label{exceptionGravity}\index{Gravity$<$ Type, Dimension $>$@{Gravity$<$ Type, Dimension $>$}}
+}
+
+
+\hyperlink{exceptionGravity}{Gravity} cell implementation for raytracing.  
+
+
+
+
+{\ttfamily \#include $<$gravity.\-h$>$}
+
+Inheritance diagram for Gravity$<$ Type, Dimension $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.534351cm]{exceptionGravity}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Lifecycle}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class... Misc$>$ }\\\hyperlink{exceptionGravity_a7aafa23bc3ab24b4f034a2cfa522410c}{Gravity} (Misc \&\&...misc)
+\begin{DoxyCompactList}\small\item\em Explicit generic constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class... Misc$>$ }\\\hyperlink{exceptionGravity_a7aafa23bc3ab24b4f034a2cfa522410c}{Gravity} (Misc \&\&...misc)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Data}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type $>$ $>$().\-template data$<$0, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a2d44fd05ca6c4c530dc6080a1343ddb1}{rho} (Misc \&\&...misc)
+\begin{DoxyCompactList}\small\item\em Access to the rho data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type $>$ $>$().\-template data$<$0, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a1c46caab7acffb6df96b7c1dcc2973b2}{rho} (Misc \&\&...misc) const 
+\begin{DoxyCompactList}\small\item\em Immutable access to the rho data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type $>$ $>$().\-template data$<$1, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_adb0a25af2a240305c212eca3b0e6efac}{phi} (Misc \&\&...misc)
+\begin{DoxyCompactList}\small\item\em Access to the phi data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type $>$ $>$().\-template data$<$1, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a7d1bd776916ad1a88a0e2470d0e5b5e2}{phi} (Misc \&\&...misc) const 
+\begin{DoxyCompactList}\small\item\em Immutable access to the phi data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type $>$ $>$().\-template data$<$2, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a28b74bae68bdd45514753c8b3779f90c}{dphidxyz} (Misc \&\&...misc)
+\begin{DoxyCompactList}\small\item\em Access to the dphidxyz data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type $>$ $>$().\-template data$<$2, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a4f11fec6ecaff1b01821890457e66bd9}{dphidxyz} (Misc \&\&...misc) const 
+\begin{DoxyCompactList}\small\item\em Immutable access to the dphidxyz data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type $>$ $>$().\-template data$<$2, Values...$>$(0, std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a6c79d0fee6ef4d993d4a15eab5c04fd8}{dphidx} (Misc \&\&...misc)
+\begin{DoxyCompactList}\small\item\em Access to the dphidx data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type $>$ $>$().\-template data$<$2, Values...$>$(0, std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_aa2beccc3bed46958484f285af231d463}{dphidx} (Misc \&\&...misc) const 
+\begin{DoxyCompactList}\small\item\em Immutable access to the dphidx data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type $>$ $>$().\-template data$<$2, Values...$>$(1, std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a8cf27f2813e85ea1eebe12bcd6ad7195}{dphidy} (Misc \&\&...misc)
+\begin{DoxyCompactList}\small\item\em Access to the dphidy data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type $>$ $>$().\-template data$<$2, Values...$>$(1, std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_adfd468d2bc0e2552baa7ff8a5b193593}{dphidy} (Misc \&\&...misc) const 
+\begin{DoxyCompactList}\small\item\em Immutable access to the dphidy data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type $>$ $>$().\-template data$<$2, Values...$>$(2, std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a32e15efbb775e2628f5725ebe5aeee1a}{dphidz} (Misc \&\&...misc)
+\begin{DoxyCompactList}\small\item\em Access to the dphidz data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type $>$ $>$().\-template data$<$2, Values...$>$(2, std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a0f35a078d6741e273b982dad0bcb6934}{dphidz} (Misc \&\&...misc) const 
+\begin{DoxyCompactList}\small\item\em Immutable access to the dphidz data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type $>$ $>$().\-template data$<$3, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_ad037d5e27a7a8406a038a1e9938db264}{a} (Misc \&\&...misc)
+\begin{DoxyCompactList}\small\item\em Access to the a data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type $>$ $>$().\-template data$<$3, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a9e897f71820d3078589ea9738129a297}{a} (Misc \&\&...misc) const 
+\begin{DoxyCompactList}\small\item\em Immutable access to the a data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type $>$ $>$().\-template data$<$4, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_ae6ba904e0f30f22fa39097c1c45608db}{dphidt} (Misc \&\&...misc)
+\begin{DoxyCompactList}\small\item\em Access to the dphidt data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type $>$ $>$().\-template data$<$4, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a2e8404f5cd0be7af0ab9f227a4bb1bb5}{dphidt} (Misc \&\&...misc) const 
+\begin{DoxyCompactList}\small\item\em Immutable access to the dphidt data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$0, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a2d44fd05ca6c4c530dc6080a1343ddb1}{rho} (Misc \&\&...misc)
+\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$0, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a1c46caab7acffb6df96b7c1dcc2973b2}{rho} (Misc \&\&...misc) const 
+\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$1, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_adb0a25af2a240305c212eca3b0e6efac}{phi} (Misc \&\&...misc)
+\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$1, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a7d1bd776916ad1a88a0e2470d0e5b5e2}{phi} (Misc \&\&...misc) const 
+\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$2, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a28b74bae68bdd45514753c8b3779f90c}{dphidxyz} (Misc \&\&...misc)
+\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$2, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a4f11fec6ecaff1b01821890457e66bd9}{dphidxyz} (Misc \&\&...misc) const 
+\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$2, Values...$>$(0, std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a6c79d0fee6ef4d993d4a15eab5c04fd8}{dphidx} (Misc \&\&...misc)
+\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$2, Values...$>$(0, std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_aa2beccc3bed46958484f285af231d463}{dphidx} (Misc \&\&...misc) const 
+\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$2, Values...$>$(1, std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a8cf27f2813e85ea1eebe12bcd6ad7195}{dphidy} (Misc \&\&...misc)
+\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$2, Values...$>$(1, std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_adfd468d2bc0e2552baa7ff8a5b193593}{dphidy} (Misc \&\&...misc) const 
+\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$2, Values...$>$(2, std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a32e15efbb775e2628f5725ebe5aeee1a}{dphidz} (Misc \&\&...misc)
+\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$2, Values...$>$(2, std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a0f35a078d6741e273b982dad0bcb6934}{dphidz} (Misc \&\&...misc) const 
+\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$3, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_ad037d5e27a7a8406a038a1e9938db264}{a} (Misc \&\&...misc)
+\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$3, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a9e897f71820d3078589ea9738129a297}{a} (Misc \&\&...misc) const 
+\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$4, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_ae6ba904e0f30f22fa39097c1c45608db}{dphidt} (Misc \&\&...misc)
+\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$4, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a2e8404f5cd0be7af0ab9f227a4bb1bb5}{dphidt} (Misc \&\&...misc) const 
+\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$5, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a1253c513939ee58103a278706bb2c3e4}{vxyz} (Misc \&\&...misc)
+\begin{DoxyCompactList}\small\item\em Access to the vxyz data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$5, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a3746f229229b36e240a814f560413dda}{vxyz} (Misc \&\&...misc) const 
+\begin{DoxyCompactList}\small\item\em Immutable access to the vxyz data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$5, Values...$>$(0, std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a9c258849c389c80b17bec925689f95a4}{vx} (Misc \&\&...misc)
+\begin{DoxyCompactList}\small\item\em Access to the vx data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$5, Values...$>$(0, std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a2820a2282f768fa7ba04175a6d1f17cb}{vx} (Misc \&\&...misc) const 
+\begin{DoxyCompactList}\small\item\em Immutable access to the vx data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$5, Values...$>$(1, std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a29260804923540321b76561d5175867e}{vy} (Misc \&\&...misc)
+\begin{DoxyCompactList}\small\item\em Access to the vy data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$5, Values...$>$(1, std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a966c5d37ea1814ae2b6ef95cd8aee3de}{vy} (Misc \&\&...misc) const 
+\begin{DoxyCompactList}\small\item\em Immutable access to the vy data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$5, Values...$>$(2, std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_aef5c1f39e540d14a67202dd53fbe3d8e}{vz} (Misc \&\&...misc)
+\begin{DoxyCompactList}\small\item\em Access to the vz data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$5, Values...$>$(2, std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionGravity_a6aac165194a84e37389098fc6b0db201}{vz} (Misc \&\&...misc) const 
+\begin{DoxyCompactList}\small\item\em Immutable access to the vz data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Static Public Member Functions}
+\begin{Indent}{\bf Test}\par
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{exceptionGravity_a143fcf6fc8c3694d5640c2389d069002}{example} ()
+\begin{DoxyCompactList}\small\item\em Example function. \end{DoxyCompactList}\item 
+static int \hyperlink{exceptionGravity_a728ab297d21cc22fa5c1ae26fe75f284}{example} ()
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{exceptionGravity_a4e52df4c0e4c53d5e34331510c1083d7}{operator} = typedef
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Type = double, unsigned int Dimension = 3$>$exception Gravity$<$ Type, Dimension $>$}
+
+\hyperlink{exceptionGravity}{Gravity} cell implementation for raytracing. 
+
+A gravity cell containing the local density and the local potential. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+{\em Dimension} & Number of space dimension. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{exceptionGravity_a7aafa23bc3ab24b4f034a2cfa522410c}{\index{Gravity@{Gravity}!Gravity@{Gravity}}
+\index{Gravity@{Gravity}!Gravity@{Gravity}}
+\subsubsection[{Gravity}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ template$<$class... Misc$>$ {\bf Gravity}$<$ Type, Dimension $>$\-::{\bf Gravity} (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{exceptionGravity_a7aafa23bc3ab24b4f034a2cfa522410c}
+
+
+Explicit generic constructor. 
+
+Provides a generic interface to all constructors of the base class. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\hypertarget{exceptionGravity_a7aafa23bc3ab24b4f034a2cfa522410c}{\index{Gravity@{Gravity}!Gravity@{Gravity}}
+\index{Gravity@{Gravity}!Gravity@{Gravity}}
+\subsubsection[{Gravity}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type  = double, unsigned int Dimension = 3$>$ template$<$class... Misc$>$ {\bf Gravity}$<$ Type, Dimension $>$\-::{\bf Gravity} (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{exceptionGravity_a7aafa23bc3ab24b4f034a2cfa522410c}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{exceptionGravity_ad037d5e27a7a8406a038a1e9938db264}{\index{Gravity@{Gravity}!a@{a}}
+\index{a@{a}!Gravity@{Gravity}}
+\subsubsection[{a}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::a (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_ad037d5e27a7a8406a038a1e9938db264}
+
+
+Access to the a data. 
+
+Provides an access to the a data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionGravity_ad037d5e27a7a8406a038a1e9938db264}{\index{Gravity@{Gravity}!a@{a}}
+\index{a@{a}!Gravity@{Gravity}}
+\subsubsection[{a}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type  = double, unsigned int Dimension = 3$>$ template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$3, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::a (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_ad037d5e27a7a8406a038a1e9938db264}
+\hypertarget{exceptionGravity_a9e897f71820d3078589ea9738129a297}{\index{Gravity@{Gravity}!a@{a}}
+\index{a@{a}!Gravity@{Gravity}}
+\subsubsection[{a}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::a (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a9e897f71820d3078589ea9738129a297}
+
+
+Immutable access to the a data. 
+
+Provides an immutable access to the a data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionGravity_a9e897f71820d3078589ea9738129a297}{\index{Gravity@{Gravity}!a@{a}}
+\index{a@{a}!Gravity@{Gravity}}
+\subsubsection[{a}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type  = double, unsigned int Dimension = 3$>$ template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$3, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::a (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a9e897f71820d3078589ea9738129a297}
+\hypertarget{exceptionGravity_ae6ba904e0f30f22fa39097c1c45608db}{\index{Gravity@{Gravity}!dphidt@{dphidt}}
+\index{dphidt@{dphidt}!Gravity@{Gravity}}
+\subsubsection[{dphidt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type  = double, unsigned int Dimension = 3$>$ template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$4, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::dphidt (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_ae6ba904e0f30f22fa39097c1c45608db}
+\hypertarget{exceptionGravity_ae6ba904e0f30f22fa39097c1c45608db}{\index{Gravity@{Gravity}!dphidt@{dphidt}}
+\index{dphidt@{dphidt}!Gravity@{Gravity}}
+\subsubsection[{dphidt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::dphidt (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_ae6ba904e0f30f22fa39097c1c45608db}
+
+
+Access to the dphidt data. 
+
+Provides an access to the dphidt data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionGravity_a2e8404f5cd0be7af0ab9f227a4bb1bb5}{\index{Gravity@{Gravity}!dphidt@{dphidt}}
+\index{dphidt@{dphidt}!Gravity@{Gravity}}
+\subsubsection[{dphidt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::dphidt (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a2e8404f5cd0be7af0ab9f227a4bb1bb5}
+
+
+Immutable access to the dphidt data. 
+
+Provides an immutable access to the dphidt data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionGravity_a2e8404f5cd0be7af0ab9f227a4bb1bb5}{\index{Gravity@{Gravity}!dphidt@{dphidt}}
+\index{dphidt@{dphidt}!Gravity@{Gravity}}
+\subsubsection[{dphidt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type  = double, unsigned int Dimension = 3$>$ template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$4, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::dphidt (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a2e8404f5cd0be7af0ab9f227a4bb1bb5}
+\hypertarget{exceptionGravity_a6c79d0fee6ef4d993d4a15eab5c04fd8}{\index{Gravity@{Gravity}!dphidx@{dphidx}}
+\index{dphidx@{dphidx}!Gravity@{Gravity}}
+\subsubsection[{dphidx}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type  = double, unsigned int Dimension = 3$>$ template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$2, Values...$>$(0, std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::dphidx (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a6c79d0fee6ef4d993d4a15eab5c04fd8}
+\hypertarget{exceptionGravity_a6c79d0fee6ef4d993d4a15eab5c04fd8}{\index{Gravity@{Gravity}!dphidx@{dphidx}}
+\index{dphidx@{dphidx}!Gravity@{Gravity}}
+\subsubsection[{dphidx}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::dphidx (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a6c79d0fee6ef4d993d4a15eab5c04fd8}
+
+
+Access to the dphidx data. 
+
+Provides an access to the dphidx data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionGravity_aa2beccc3bed46958484f285af231d463}{\index{Gravity@{Gravity}!dphidx@{dphidx}}
+\index{dphidx@{dphidx}!Gravity@{Gravity}}
+\subsubsection[{dphidx}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::dphidx (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_aa2beccc3bed46958484f285af231d463}
+
+
+Immutable access to the dphidx data. 
+
+Provides an immutable access to the dphidx data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionGravity_aa2beccc3bed46958484f285af231d463}{\index{Gravity@{Gravity}!dphidx@{dphidx}}
+\index{dphidx@{dphidx}!Gravity@{Gravity}}
+\subsubsection[{dphidx}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type  = double, unsigned int Dimension = 3$>$ template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$2, Values...$>$(0, std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::dphidx (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_aa2beccc3bed46958484f285af231d463}
+\hypertarget{exceptionGravity_a28b74bae68bdd45514753c8b3779f90c}{\index{Gravity@{Gravity}!dphidxyz@{dphidxyz}}
+\index{dphidxyz@{dphidxyz}!Gravity@{Gravity}}
+\subsubsection[{dphidxyz}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type  = double, unsigned int Dimension = 3$>$ template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$2, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::dphidxyz (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a28b74bae68bdd45514753c8b3779f90c}
+\hypertarget{exceptionGravity_a28b74bae68bdd45514753c8b3779f90c}{\index{Gravity@{Gravity}!dphidxyz@{dphidxyz}}
+\index{dphidxyz@{dphidxyz}!Gravity@{Gravity}}
+\subsubsection[{dphidxyz}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::dphidxyz (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a28b74bae68bdd45514753c8b3779f90c}
+
+
+Access to the dphidxyz data. 
+
+Provides an access to the dphidxyz data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionGravity_a4f11fec6ecaff1b01821890457e66bd9}{\index{Gravity@{Gravity}!dphidxyz@{dphidxyz}}
+\index{dphidxyz@{dphidxyz}!Gravity@{Gravity}}
+\subsubsection[{dphidxyz}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type  = double, unsigned int Dimension = 3$>$ template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$2, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::dphidxyz (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a4f11fec6ecaff1b01821890457e66bd9}
+\hypertarget{exceptionGravity_a4f11fec6ecaff1b01821890457e66bd9}{\index{Gravity@{Gravity}!dphidxyz@{dphidxyz}}
+\index{dphidxyz@{dphidxyz}!Gravity@{Gravity}}
+\subsubsection[{dphidxyz}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::dphidxyz (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a4f11fec6ecaff1b01821890457e66bd9}
+
+
+Immutable access to the dphidxyz data. 
+
+Provides an immutable access to the dphidxyz data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionGravity_a8cf27f2813e85ea1eebe12bcd6ad7195}{\index{Gravity@{Gravity}!dphidy@{dphidy}}
+\index{dphidy@{dphidy}!Gravity@{Gravity}}
+\subsubsection[{dphidy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::dphidy (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a8cf27f2813e85ea1eebe12bcd6ad7195}
+
+
+Access to the dphidy data. 
+
+Provides an access to the dphidy data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionGravity_a8cf27f2813e85ea1eebe12bcd6ad7195}{\index{Gravity@{Gravity}!dphidy@{dphidy}}
+\index{dphidy@{dphidy}!Gravity@{Gravity}}
+\subsubsection[{dphidy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type  = double, unsigned int Dimension = 3$>$ template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$2, Values...$>$(1, std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::dphidy (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a8cf27f2813e85ea1eebe12bcd6ad7195}
+\hypertarget{exceptionGravity_adfd468d2bc0e2552baa7ff8a5b193593}{\index{Gravity@{Gravity}!dphidy@{dphidy}}
+\index{dphidy@{dphidy}!Gravity@{Gravity}}
+\subsubsection[{dphidy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::dphidy (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_adfd468d2bc0e2552baa7ff8a5b193593}
+
+
+Immutable access to the dphidy data. 
+
+Provides an immutable access to the dphidy data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionGravity_adfd468d2bc0e2552baa7ff8a5b193593}{\index{Gravity@{Gravity}!dphidy@{dphidy}}
+\index{dphidy@{dphidy}!Gravity@{Gravity}}
+\subsubsection[{dphidy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type  = double, unsigned int Dimension = 3$>$ template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$2, Values...$>$(1, std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::dphidy (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_adfd468d2bc0e2552baa7ff8a5b193593}
+\hypertarget{exceptionGravity_a32e15efbb775e2628f5725ebe5aeee1a}{\index{Gravity@{Gravity}!dphidz@{dphidz}}
+\index{dphidz@{dphidz}!Gravity@{Gravity}}
+\subsubsection[{dphidz}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::dphidz (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a32e15efbb775e2628f5725ebe5aeee1a}
+
+
+Access to the dphidz data. 
+
+Provides an access to the dphidz data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionGravity_a32e15efbb775e2628f5725ebe5aeee1a}{\index{Gravity@{Gravity}!dphidz@{dphidz}}
+\index{dphidz@{dphidz}!Gravity@{Gravity}}
+\subsubsection[{dphidz}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type  = double, unsigned int Dimension = 3$>$ template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$2, Values...$>$(2, std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::dphidz (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a32e15efbb775e2628f5725ebe5aeee1a}
+\hypertarget{exceptionGravity_a0f35a078d6741e273b982dad0bcb6934}{\index{Gravity@{Gravity}!dphidz@{dphidz}}
+\index{dphidz@{dphidz}!Gravity@{Gravity}}
+\subsubsection[{dphidz}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::dphidz (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a0f35a078d6741e273b982dad0bcb6934}
+
+
+Immutable access to the dphidz data. 
+
+Provides an immutable access to the dphidz data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionGravity_a0f35a078d6741e273b982dad0bcb6934}{\index{Gravity@{Gravity}!dphidz@{dphidz}}
+\index{dphidz@{dphidz}!Gravity@{Gravity}}
+\subsubsection[{dphidz}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type  = double, unsigned int Dimension = 3$>$ template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$2, Values...$>$(2, std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::dphidz (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a0f35a078d6741e273b982dad0bcb6934}
+\hypertarget{exceptionGravity_a143fcf6fc8c3694d5640c2389d069002}{\index{Gravity@{Gravity}!example@{example}}
+\index{example@{example}!Gravity@{Gravity}}
+\subsubsection[{example}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ int {\bf Gravity}$<$ Type, Dimension $>$\-::example (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionGravity_a143fcf6fc8c3694d5640c2389d069002}
+
+
+Example function. 
+
+Tests and demonstrates the use of \hyperlink{exceptionGravity}{Gravity}. \begin{DoxyReturn}{Returns}
+0 if no error. 
+\end{DoxyReturn}
+\hypertarget{exceptionGravity_a728ab297d21cc22fa5c1ae26fe75f284}{\index{Gravity@{Gravity}!example@{example}}
+\index{example@{example}!Gravity@{Gravity}}
+\subsubsection[{example}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type  = double, unsigned int Dimension = 3$>$ static int {\bf Gravity}$<$ Type, Dimension $>$\-::example (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionGravity_a728ab297d21cc22fa5c1ae26fe75f284}
+\hypertarget{exceptionGravity_adb0a25af2a240305c212eca3b0e6efac}{\index{Gravity@{Gravity}!phi@{phi}}
+\index{phi@{phi}!Gravity@{Gravity}}
+\subsubsection[{phi}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::phi (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_adb0a25af2a240305c212eca3b0e6efac}
+
+
+Access to the phi data. 
+
+Provides an access to the phi data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionGravity_adb0a25af2a240305c212eca3b0e6efac}{\index{Gravity@{Gravity}!phi@{phi}}
+\index{phi@{phi}!Gravity@{Gravity}}
+\subsubsection[{phi}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type  = double, unsigned int Dimension = 3$>$ template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$1, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::phi (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_adb0a25af2a240305c212eca3b0e6efac}
+\hypertarget{exceptionGravity_a7d1bd776916ad1a88a0e2470d0e5b5e2}{\index{Gravity@{Gravity}!phi@{phi}}
+\index{phi@{phi}!Gravity@{Gravity}}
+\subsubsection[{phi}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::phi (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a7d1bd776916ad1a88a0e2470d0e5b5e2}
+
+
+Immutable access to the phi data. 
+
+Provides an immutable access to the phi data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionGravity_a7d1bd776916ad1a88a0e2470d0e5b5e2}{\index{Gravity@{Gravity}!phi@{phi}}
+\index{phi@{phi}!Gravity@{Gravity}}
+\subsubsection[{phi}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type  = double, unsigned int Dimension = 3$>$ template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$1, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::phi (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a7d1bd776916ad1a88a0e2470d0e5b5e2}
+\hypertarget{exceptionGravity_a2d44fd05ca6c4c530dc6080a1343ddb1}{\index{Gravity@{Gravity}!rho@{rho}}
+\index{rho@{rho}!Gravity@{Gravity}}
+\subsubsection[{rho}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type  = double, unsigned int Dimension = 3$>$ template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$0, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::rho (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a2d44fd05ca6c4c530dc6080a1343ddb1}
+\hypertarget{exceptionGravity_a2d44fd05ca6c4c530dc6080a1343ddb1}{\index{Gravity@{Gravity}!rho@{rho}}
+\index{rho@{rho}!Gravity@{Gravity}}
+\subsubsection[{rho}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::rho (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a2d44fd05ca6c4c530dc6080a1343ddb1}
+
+
+Access to the rho data. 
+
+Provides an access to the rho data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionGravity_a1c46caab7acffb6df96b7c1dcc2973b2}{\index{Gravity@{Gravity}!rho@{rho}}
+\index{rho@{rho}!Gravity@{Gravity}}
+\subsubsection[{rho}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::rho (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a1c46caab7acffb6df96b7c1dcc2973b2}
+
+
+Immutable access to the rho data. 
+
+Provides an immutable access to the rho data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionGravity_a1c46caab7acffb6df96b7c1dcc2973b2}{\index{Gravity@{Gravity}!rho@{rho}}
+\index{rho@{rho}!Gravity@{Gravity}}
+\subsubsection[{rho}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type  = double, unsigned int Dimension = 3$>$ template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const magrathea\-::\-Abstract\-Contents$<$\-Gravity$<$\-Type, Dimension$>$, magrathea\-::\-Eulerian\-Category, Type, Type, std\-::array$<$\-Type, Dimension$>$, Type, Type, std\-::array$<$\-Type, Dimension$>$$>$ $>$().\-template data$<$0, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::rho (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a1c46caab7acffb6df96b7c1dcc2973b2}
+\hypertarget{exceptionGravity_a9c258849c389c80b17bec925689f95a4}{\index{Gravity@{Gravity}!vx@{vx}}
+\index{vx@{vx}!Gravity@{Gravity}}
+\subsubsection[{vx}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::vx (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a9c258849c389c80b17bec925689f95a4}
+
+
+Access to the vx data. 
+
+Provides an access to the vx data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionGravity_a2820a2282f768fa7ba04175a6d1f17cb}{\index{Gravity@{Gravity}!vx@{vx}}
+\index{vx@{vx}!Gravity@{Gravity}}
+\subsubsection[{vx}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::vx (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a2820a2282f768fa7ba04175a6d1f17cb}
+
+
+Immutable access to the vx data. 
+
+Provides an immutable access to the vx data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionGravity_a1253c513939ee58103a278706bb2c3e4}{\index{Gravity@{Gravity}!vxyz@{vxyz}}
+\index{vxyz@{vxyz}!Gravity@{Gravity}}
+\subsubsection[{vxyz}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::vxyz (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a1253c513939ee58103a278706bb2c3e4}
+
+
+Access to the vxyz data. 
+
+Provides an access to the vxyz data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionGravity_a3746f229229b36e240a814f560413dda}{\index{Gravity@{Gravity}!vxyz@{vxyz}}
+\index{vxyz@{vxyz}!Gravity@{Gravity}}
+\subsubsection[{vxyz}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::vxyz (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a3746f229229b36e240a814f560413dda}
+
+
+Immutable access to the vxyz data. 
+
+Provides an immutable access to the vxyz data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionGravity_a29260804923540321b76561d5175867e}{\index{Gravity@{Gravity}!vy@{vy}}
+\index{vy@{vy}!Gravity@{Gravity}}
+\subsubsection[{vy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::vy (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a29260804923540321b76561d5175867e}
+
+
+Access to the vy data. 
+
+Provides an access to the vy data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionGravity_a966c5d37ea1814ae2b6ef95cd8aee3de}{\index{Gravity@{Gravity}!vy@{vy}}
+\index{vy@{vy}!Gravity@{Gravity}}
+\subsubsection[{vy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::vy (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a966c5d37ea1814ae2b6ef95cd8aee3de}
+
+
+Immutable access to the vy data. 
+
+Provides an immutable access to the vy data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionGravity_aef5c1f39e540d14a67202dd53fbe3d8e}{\index{Gravity@{Gravity}!vz@{vz}}
+\index{vz@{vz}!Gravity@{Gravity}}
+\subsubsection[{vz}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::vz (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_aef5c1f39e540d14a67202dd53fbe3d8e}
+
+
+Access to the vz data. 
+
+Provides an access to the vz data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionGravity_a6aac165194a84e37389098fc6b0db201}{\index{Gravity@{Gravity}!vz@{vz}}
+\index{vz@{vz}!Gravity@{Gravity}}
+\subsubsection[{vz}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Dimension$>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf Gravity}$<$ Type, Dimension $>$\-::vz (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionGravity_a6aac165194a84e37389098fc6b0db201}
+
+
+Immutable access to the vz data. 
+
+Provides an immutable access to the vz data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{exceptionGravity_a4e52df4c0e4c53d5e34331510c1083d7}{\index{Gravity@{Gravity}!operator@{operator}}
+\index{operator@{operator}!Gravity@{Gravity}}
+\subsubsection[{operator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type  = double, unsigned int Dimension = 3$>$ typedef {\bf Gravity}$<$ Type, Dimension $>$\-::operator}}\label{exceptionGravity_a4e52df4c0e4c53d5e34331510c1083d7}
+
+
+The documentation for this exception was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/\hyperlink{gravity_8h}{gravity.\-h}\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/\hyperlink{gravity2_8h}{gravity2.\-h}\end{DoxyCompactItemize}

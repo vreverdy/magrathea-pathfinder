@@ -1,0 +1,487 @@
+.TH "Cone< Vector, Scalar >" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Cone< Vector, Scalar > \- 
+.PP
+Three-dimensional cone\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <cone\&.h>\fP
+.PP
+Inherits \fBmagrathea::AbstractShape\fP, and \fBmagrathea::AbstractSubstance< Cone< Vector, Scalar >, Vector, Vector, Scalar >\fP\&.
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBLifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class\&.\&.\&. Misc> \fBCone\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIExplicit generic constructor\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBData\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractSubstance<Cone<Vector, Scalar>, Vector, Vector, Scalar> >()\&.template data<0, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBvertex\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the vertex data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractSubstance<Cone<Vector, Scalar>, Vector, Vector, Scalar> >()\&.template data<0, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBvertex\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the vertex data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractSubstance<Cone<Vector, Scalar>, Vector, Vector, Scalar> >()\&.template data<1, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBbase\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the base data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractSubstance<Cone<Vector, Scalar>, Vector, Vector, Scalar> >()\&.template data<1, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBbase\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the base data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<magrathea::AbstractSubstance<Cone<Vector, Scalar>, Vector, Vector, Scalar> >()\&.template data<2, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBangle\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIAccess to the angle data\&. \fP"
+.ti -1c
+.RI "template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template  = decltype(std::declval<const magrathea::AbstractSubstance<Cone<Vector, Scalar>, Vector, Vector, Scalar> >()\&.template data<2, Values\&.\&.\&.>(std::declval<Misc>()\&.\&.\&.)), class  = typename std::enable_if<!std::is_void<Template>::value>::type> Template \fBangle\fP (Misc &&\&.\&.\&.misc) const "
+.br
+.RI "\fIImmutable access to the angle data\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBPosition\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "Scalar \fBdirection\fP (const unsigned int idim) const "
+.br
+.RI "\fIDirection coordinate\&. \fP"
+.ti -1c
+.RI "Vector \fBdirection\fP () const "
+.br
+.RI "\fIDirection vector\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBMeasures\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "Scalar \fBlength\fP () const "
+.br
+.RI "\fILength\&. \fP"
+.ti -1c
+.RI "Scalar \fBradius\fP () const "
+.br
+.RI "\fIRadius\&. \fP"
+.ti -1c
+.RI "Scalar \fBdiameter\fP () const "
+.br
+.RI "\fIDiameter\&. \fP"
+.ti -1c
+.RI "Scalar \fBcircle\fP () const "
+.br
+.RI "\fICircle\&. \fP"
+.ti -1c
+.RI "Scalar \fBsurface\fP () const "
+.br
+.RI "\fISurface\&. \fP"
+.ti -1c
+.RI "Scalar \fBvolume\fP () const "
+.br
+.RI "\fIVolume\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBCollision\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class OtherVector , class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(std::declval<OtherVector>()[0])>::type>::type, Scalar>::value>::type> bool \fBinside\fP (const OtherVector &\fBpoint\fP) const "
+.br
+.RI "\fIPoint inside\&. \fP"
+.ti -1c
+.RI "template<class OtherVector , class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(std::declval<OtherVector>()[0])>::type>::type, Scalar>::value>::type> bool \fBoutside\fP (const OtherVector &\fBpoint\fP) const "
+.br
+.RI "\fIPoint outside\&. \fP"
+.in -1c
+.in -1c
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "using \fBoperator\fP = typedef"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class Vector = std::array<double, 3>, typename Scalar = typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Vector>()[0])>::type>::type>exception Cone< Vector, Scalar >"
+Three-dimensional cone\&. 
+
+Implementation of a basic cone in three dimensions\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIVector\fP Position vector type\&. 
+.br
+\fIScalar\fP Scalar data type\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class Vector , typename Scalar > template<class\&.\&.\&. Misc> \fBCone\fP< Vector, Scalar >::\fBCone\fP (Misc &&\&.\&.\&.misc)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit generic constructor\&. Provides a generic interface to all constructors of the base class\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class Vector , typename Scalar > template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBCone\fP< Vector, Scalar >::angle (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the angle data\&. Provides an access to the angle data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<class Vector , typename Scalar > template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBCone\fP< Vector, Scalar >::angle (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the angle data\&. Provides an immutable access to the angle data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<class Vector , typename Scalar > template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBCone\fP< Vector, Scalar >::base (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the base data\&. Provides an access to the base data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<class Vector , typename Scalar > template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBCone\fP< Vector, Scalar >::base (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the base data\&. Provides an immutable access to the base data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<class Vector , typename Scalar > Scalar \fBCone\fP< Vector, Scalar >::circle () const\fC [inline]\fP"
+
+.PP
+Circle\&. Computes the base area of the cone\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+$B$\&. 
+.RE
+.PP
+
+.SS "template<class Vector , typename Scalar > Scalar \fBCone\fP< Vector, Scalar >::diameter () const\fC [inline]\fP"
+
+.PP
+Diameter\&. Computes the base diameter of the cone\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+$d$\&. 
+.RE
+.PP
+
+.SS "template<class Vector , typename Scalar > Scalar \fBCone\fP< Vector, Scalar >::direction (const unsigned intidim) const\fC [inline]\fP"
+
+.PP
+Direction coordinate\&. Computes the specified coordinate of the vector going from the vertex to the base center\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIidim\fP Index of the dimension\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The coordinate of $b_{i}-v_{i}$\&. 
+.RE
+.PP
+
+.SS "template<class Vector , typename Scalar > Vector \fBCone\fP< Vector, Scalar >::direction () const\fC [inline]\fP"
+
+.PP
+Direction vector\&. Computes the vector going from the vertex to the base center\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The vector $\vec{b}-\vec{v}$\&. 
+.RE
+.PP
+
+.SS "template<class Vector , typename Scalar > int \fBCone\fP< Vector, Scalar >::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBCone\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SS "template<class Vector , typename Scalar > template<class OtherVector , class > bool \fBCone\fP< Vector, Scalar >::inside (const OtherVector &point) const\fC [inline]\fP"
+
+.PP
+Point inside\&. Checks whether a point is inside the cone\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherVector\fP Other position vector type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpoint\fP Position of the point\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the point is inside the cone, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<class Vector , typename Scalar > Scalar \fBCone\fP< Vector, Scalar >::length () const\fC [inline]\fP"
+
+.PP
+Length\&. Computes the height length of the cone\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+$h$\&. 
+.RE
+.PP
+
+.SS "template<class Vector , typename Scalar > template<class OtherVector , class > bool \fBCone\fP< Vector, Scalar >::outside (const OtherVector &point) const\fC [inline]\fP"
+
+.PP
+Point outside\&. Checks whether a point is outside the cone\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherVector\fP Other position vector type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpoint\fP Position of the point\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the point is outside the cone, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<class Vector , typename Scalar > Scalar \fBCone\fP< Vector, Scalar >::radius () const\fC [inline]\fP"
+
+.PP
+Radius\&. Computes the base radius of the cone\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+$r$\&. 
+.RE
+.PP
+
+.SS "template<class Vector , typename Scalar > Scalar \fBCone\fP< Vector, Scalar >::surface () const\fC [inline]\fP"
+
+.PP
+Surface\&. Computes the outer surface of the cone\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+$\pi\times r^{2}+\pi\times r \times h$\&. 
+.RE
+.PP
+
+.SS "template<class Vector , typename Scalar > template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBCone\fP< Vector, Scalar >::vertex (Misc &&\&.\&.\&.misc)\fC [inline]\fP"
+
+.PP
+Access to the vertex data\&. Provides an access to the vertex data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<class Vector , typename Scalar > template<unsigned int\&.\&.\&. Values, class\&.\&.\&. Misc, class Template , class > Template \fBCone\fP< Vector, Scalar >::vertex (Misc &&\&.\&.\&.misc) const\fC [inline]\fP"
+
+.PP
+Immutable access to the vertex data\&. Provides an immutable access to the vertex data by forwarding parameters to the unified base accessor member\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValues\fP List of template values\&. 
+.br
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.br
+\fITemplate\fP (Deduced template type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Forwarded result\&. 
+.RE
+.PP
+
+.SS "template<class Vector , typename Scalar > Scalar \fBCone\fP< Vector, Scalar >::volume () const\fC [inline]\fP"
+
+.PP
+Volume\&. Computes the volume of the cone\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+$\frac{\pi\times r^{2}\times h}{3}$\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<class Vector = std::array<double, 3>, typename Scalar = typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Vector>()[0])>::type>::type> using \fBCone\fP< Vector, Scalar >::operator = "
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

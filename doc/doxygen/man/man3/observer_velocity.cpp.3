@@ -1,0 +1,125 @@
+.TH "/data/home/mbreton/magrathea_pathfinder/src/observer_velocity.cpp" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/data/home/mbreton/magrathea_pathfinder/src/observer_velocity.cpp \- 
+.PP
+Main function of the raytracer to compute the observer's velocity\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <ctime>\fP
+.br
+\fC#include <iostream>\fP
+.br
+\fC#include <iomanip>\fP
+.br
+\fC#include <fstream>\fP
+.br
+\fC#include <algorithm>\fP
+.br
+\fC#include <utility>\fP
+.br
+\fC#include <random>\fP
+.br
+\fC#include <string>\fP
+.br
+\fC#include <vector>\fP
+.br
+\fC#include <deque>\fP
+.br
+\fC#include <array>\fP
+.br
+\fC#include <tuple>\fP
+.br
+\fC#include <atomic>\fP
+.br
+\fC#include <mutex>\fP
+.br
+\fC#include <mpi\&.h>\fP
+.br
+\fC#include 'magrathea/simplehyperoctree\&.h'\fP
+.br
+\fC#include 'magrathea/simplehyperoctreeindex\&.h'\fP
+.br
+\fC#include 'magrathea/hypersphere\&.h'\fP
+.br
+\fC#include 'magrathea/hypercube\&.h'\fP
+.br
+\fC#include 'magrathea/constants\&.h'\fP
+.br
+\fC#include 'magrathea/evolution\&.h'\fP
+.br
+\fC#include 'magrathea/timer\&.h'\fP
+.br
+\fC#include 'cone\&.h'\fP
+.br
+\fC#include 'utility\&.h'\fP
+.br
+\fC#include 'input\&.h'\fP
+.br
+\fC#include 'output\&.h'\fP
+.br
+\fC#include 'integrator\&.h'\fP
+.br
+\fC#include 'miscellaneous\&.h'\fP
+.br
+\fC#include 'observer_velocity\&.h'\fP
+.br
+\fC#include 'gravity\&.h'\fP
+.br
+\fC#include 'TReadHDF5\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBmain\fP (int argc, char *argv[])"
+.br
+.RI "\fIMain function\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Main function of the raytracer to compute the observer's velocity\&. 
+
+\fBAuthor:\fP
+.RS 4
+Vincent Reverdy (vince.rev@gmail.com), Michel-Andrès Breton (michel-andres.breton@obspm.fr) 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+2012-2013, 2015-2021 
+.RE
+.PP
+\fBCopyright:\fP
+.RS 4
+CECILL-B License 
+.RE
+.PP
+
+.SH "Function Documentation"
+.PP 
+.SS "int main (intargc, char *argv[])"
+
+.PP
+Main function\&. Main function of the program\&. It takes a namelist as a parameter and run the raytracing using MPI parallelization\&. To compile it, use make To run it, use: mpirun -np NTASKS \&./raytracer raytracer\&.txt 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIargc\fP Number of arguments\&. 
+.br
+\fIargv\fP List of arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Zero on success, error code otherwise\&. 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

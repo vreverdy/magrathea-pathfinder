@@ -1,0 +1,251 @@
+\hypertarget{exceptionmagrathea_1_1HyperCube}{\section{magrathea\-:\-:Hyper\-Cube$<$ Dimension, Vector, Scalar $>$ Exception Template Reference}
+\label{exceptionmagrathea_1_1HyperCube}\index{magrathea\-::\-Hyper\-Cube$<$ Dimension, Vector, Scalar $>$@{magrathea\-::\-Hyper\-Cube$<$ Dimension, Vector, Scalar $>$}}
+}
+
+
+N-\/dimensional cube.  
+
+
+
+
+{\ttfamily \#include $<$hypercube.\-h$>$}
+
+Inheritance diagram for magrathea\-:\-:Hyper\-Cube$<$ Dimension, Vector, Scalar $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.352657cm]{exceptionmagrathea_1_1HyperCube}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Lifecycle}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class... Misc$>$ }\\\hyperlink{exceptionmagrathea_1_1HyperCube_ab990ea0b6d11329084d0202d3e7355f6}{Hyper\-Cube} (Misc \&\&...misc)
+\begin{DoxyCompactList}\small\item\em Explicit generic constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Data}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$\-Abstract\-Substance$<$\-Hyper\-Cube$<$\-Dimension, Vector, Scalar$>$, Vector, Scalar$>$ $>$().\-template data$<$0, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionmagrathea_1_1HyperCube_a2c7b0b6944e74adf993e43b6c915780a}{position} (Misc \&\&...misc)
+\begin{DoxyCompactList}\small\item\em Access to the position data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const Abstract\-Substance$<$\-Hyper\-Cube$<$\-Dimension, Vector, Scalar$>$, Vector, Scalar$>$ $>$().\-template data$<$0, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionmagrathea_1_1HyperCube_a6f00ee8b1af6757ab600abeea90cf745}{position} (Misc \&\&...misc) const 
+\begin{DoxyCompactList}\small\item\em Immutable access to the position data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$\-Abstract\-Substance$<$\-Hyper\-Cube$<$\-Dimension, Vector, Scalar$>$, Vector, Scalar$>$ $>$().\-template data$<$1, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionmagrathea_1_1HyperCube_aa37dca86c65f23784caa3f856637816c}{extent} (Misc \&\&...misc)
+\begin{DoxyCompactList}\small\item\em Access to the extent data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int... Values, class... Misc, class Template  = decltype(std\-::declval$<$const Abstract\-Substance$<$\-Hyper\-Cube$<$\-Dimension, Vector, Scalar$>$, Vector, Scalar$>$ $>$().\-template data$<$1, Values...$>$(std\-::declval$<$\-Misc$>$()...)), class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-void$<$\-Template$>$\-::value$>$\-::type$>$ }\\Template \hyperlink{exceptionmagrathea_1_1HyperCube_a4212f1eaaa72536c7bf9e1ac85e10359}{extent} (Misc \&\&...misc) const 
+\begin{DoxyCompactList}\small\item\em Immutable access to the extent data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Static Public Member Functions}
+\begin{Indent}{\bf Predefined}\par
+\begin{DoxyCompactItemize}
+\item 
+static constexpr \hyperlink{exceptionmagrathea_1_1HyperCube}{Hyper\-Cube}\\*
+$<$ Dimension, Vector, Scalar $>$ \hyperlink{exceptionmagrathea_1_1HyperCube_acba25838ca056f463417afc488342aa8}{unit} ()
+\begin{DoxyCompactList}\small\item\em Unit hypercube. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Test}\par
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{exceptionmagrathea_1_1HyperCube_aad39405bf632664757308e7b0465c398}{example} ()
+\begin{DoxyCompactList}\small\item\em Example function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{exceptionmagrathea_1_1HyperCube_aef38eae81fcb467a2019ddd215c14b1e}{operator} = typedef
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$unsigned int Dimension = 3, class Vector = std\-::array$<$double, Dimension$>$, typename Scalar = typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Vector$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type$>$exception magrathea\-::\-Hyper\-Cube$<$ Dimension, Vector, Scalar $>$}
+
+N-\/dimensional cube. 
+
+Implementation of a basic hypercube of arbitrary dimension. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Dimension} & Number of space dimension. \\
+\hline
+{\em Vector} & Position vector type. \\
+\hline
+{\em Scalar} & Scalar data type. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{exceptionmagrathea_1_1HyperCube_ab990ea0b6d11329084d0202d3e7355f6}{\index{magrathea\-::\-Hyper\-Cube@{magrathea\-::\-Hyper\-Cube}!Hyper\-Cube@{Hyper\-Cube}}
+\index{Hyper\-Cube@{Hyper\-Cube}!magrathea::HyperCube@{magrathea\-::\-Hyper\-Cube}}
+\subsubsection[{Hyper\-Cube}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Dimension, class Vector , typename Scalar $>$ template$<$class... Misc$>$ {\bf magrathea\-::\-Hyper\-Cube}$<$ Dimension, Vector, Scalar $>$\-::{\bf Hyper\-Cube} (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{exceptionmagrathea_1_1HyperCube_ab990ea0b6d11329084d0202d3e7355f6}
+
+
+Explicit generic constructor. 
+
+Provides a generic interface to all constructors of the base class. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{exceptionmagrathea_1_1HyperCube_aad39405bf632664757308e7b0465c398}{\index{magrathea\-::\-Hyper\-Cube@{magrathea\-::\-Hyper\-Cube}!example@{example}}
+\index{example@{example}!magrathea::HyperCube@{magrathea\-::\-Hyper\-Cube}}
+\subsubsection[{example}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Dimension, class Vector , typename Scalar $>$ int {\bf magrathea\-::\-Hyper\-Cube}$<$ Dimension, Vector, Scalar $>$\-::example (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1HyperCube_aad39405bf632664757308e7b0465c398}
+
+
+Example function. 
+
+Tests and demonstrates the use of \hyperlink{exceptionmagrathea_1_1HyperCube}{Hyper\-Cube}. \begin{DoxyReturn}{Returns}
+0 if no error. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1HyperCube_aa37dca86c65f23784caa3f856637816c}{\index{magrathea\-::\-Hyper\-Cube@{magrathea\-::\-Hyper\-Cube}!extent@{extent}}
+\index{extent@{extent}!magrathea::HyperCube@{magrathea\-::\-Hyper\-Cube}}
+\subsubsection[{extent}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Dimension, class Vector , typename Scalar $>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf magrathea\-::\-Hyper\-Cube}$<$ Dimension, Vector, Scalar $>$\-::extent (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1HyperCube_aa37dca86c65f23784caa3f856637816c}
+
+
+Access to the extent data. 
+
+Provides an access to the extent data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1HyperCube_a4212f1eaaa72536c7bf9e1ac85e10359}{\index{magrathea\-::\-Hyper\-Cube@{magrathea\-::\-Hyper\-Cube}!extent@{extent}}
+\index{extent@{extent}!magrathea::HyperCube@{magrathea\-::\-Hyper\-Cube}}
+\subsubsection[{extent}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Dimension, class Vector , typename Scalar $>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf magrathea\-::\-Hyper\-Cube}$<$ Dimension, Vector, Scalar $>$\-::extent (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1HyperCube_a4212f1eaaa72536c7bf9e1ac85e10359}
+
+
+Immutable access to the extent data. 
+
+Provides an immutable access to the extent data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1HyperCube_a2c7b0b6944e74adf993e43b6c915780a}{\index{magrathea\-::\-Hyper\-Cube@{magrathea\-::\-Hyper\-Cube}!position@{position}}
+\index{position@{position}!magrathea::HyperCube@{magrathea\-::\-Hyper\-Cube}}
+\subsubsection[{position}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Dimension, class Vector , typename Scalar $>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf magrathea\-::\-Hyper\-Cube}$<$ Dimension, Vector, Scalar $>$\-::position (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1HyperCube_a2c7b0b6944e74adf993e43b6c915780a}
+
+
+Access to the position data. 
+
+Provides an access to the position data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1HyperCube_a6f00ee8b1af6757ab600abeea90cf745}{\index{magrathea\-::\-Hyper\-Cube@{magrathea\-::\-Hyper\-Cube}!position@{position}}
+\index{position@{position}!magrathea::HyperCube@{magrathea\-::\-Hyper\-Cube}}
+\subsubsection[{position}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Dimension, class Vector , typename Scalar $>$ template$<$unsigned int... Values, class... Misc, class Template , class $>$ Template {\bf magrathea\-::\-Hyper\-Cube}$<$ Dimension, Vector, Scalar $>$\-::position (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1HyperCube_a6f00ee8b1af6757ab600abeea90cf745}
+
+
+Immutable access to the position data. 
+
+Provides an immutable access to the position data by forwarding parameters to the unified base accessor member. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Values} & List of template values. \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+{\em Template} & (Deduced template type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Forwarded result. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1HyperCube_acba25838ca056f463417afc488342aa8}{\index{magrathea\-::\-Hyper\-Cube@{magrathea\-::\-Hyper\-Cube}!unit@{unit}}
+\index{unit@{unit}!magrathea::HyperCube@{magrathea\-::\-Hyper\-Cube}}
+\subsubsection[{unit}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Dimension, class Vector , typename Scalar $>$ constexpr {\bf Hyper\-Cube}$<$ Dimension, Vector, Scalar $>$ {\bf magrathea\-::\-Hyper\-Cube}$<$ Dimension, Vector, Scalar $>$\-::unit (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1HyperCube_acba25838ca056f463417afc488342aa8}
+
+
+Unit hypercube. 
+
+Creates an hypercube with a position of zero and with an extent of one. \begin{DoxyReturn}{Returns}
+Copy of a unit hypercube. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{exceptionmagrathea_1_1HyperCube_aef38eae81fcb467a2019ddd215c14b1e}{\index{magrathea\-::\-Hyper\-Cube@{magrathea\-::\-Hyper\-Cube}!operator@{operator}}
+\index{operator@{operator}!magrathea::HyperCube@{magrathea\-::\-Hyper\-Cube}}
+\subsubsection[{operator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Dimension = 3, class Vector = std\-::array$<$double, Dimension$>$, typename Scalar = typename std\-::remove\-\_\-cv$<$typename std\-::remove\-\_\-reference$<$decltype(std\-::declval$<$\-Vector$>$()\mbox{[}0\mbox{]})$>$\-::type$>$\-::type$>$ using {\bf magrathea\-::\-Hyper\-Cube}$<$ Dimension, Vector, Scalar $>$\-::operator = }}\label{exceptionmagrathea_1_1HyperCube_aef38eae81fcb467a2019ddd215c14b1e}
+
+
+The documentation for this exception was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/magrathea/\hyperlink{hypercube_8h}{hypercube.\-h}\end{DoxyCompactItemize}

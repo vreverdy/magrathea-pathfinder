@@ -1,0 +1,327 @@
+.TH "Catalogues" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catalogues \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <catalogues\&.h>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<class Parameters , class Map > static void \fBReadParamFile\fP (Parameters &\fBparameters\fP, Map &parameter)"
+.br
+.RI "\fIRead parameter file\&. \fP"
+.ti -1c
+.RI "template<typename Integer , class Parameter > static void \fBReadParticlesHDF5\fP (const Integer rank, const Parameter &\fBparameters\fP, std::vector< std::array< double, 8 > > &caractVect_source)"
+.br
+.RI "\fIRead Particles from HDF5 files\&. \fP"
+.ti -1c
+.RI "template<typename Integer , class Parameter > static void \fBReadParticlesASCII\fP (const Integer rank, const Parameter &\fBparameters\fP, std::vector< std::array< double, 8 > > &caractVect_source)"
+.br
+.RI "\fIRead Particles from ASCII files\&. \fP"
+.ti -1c
+.RI "template<int Order = ORDER, bool RK4 = true, bool Verbose = false, class Point , class Cosmology , class Octree , class Type , class Parameter > static std::array< std::array
+.br
+< double, 2 >, 2 > \fBnewtonMethod2d\fP (const Point &vobs, const Point &observer, const Point &trueTarget, const std::array< double, 2 > &target, const Point &velocity, std::array< std::array< double, 2 >, 2 > &jacobian, const Parameter &\fBparameters\fP, const Cosmology &cosmology, const Octree &octree, const Type length, const Type h, std::vector< double > &redshifts, double &interpRef, const unsigned int iteration)"
+.br
+.RI "\fIIterate once using Newton Method\&. \fP"
+.ti -1c
+.RI "template<int Order = ORDER, bool RK4 = true, bool Verbose = false, class Point , class Cosmology , class Octree , class Type , class Parameter > static std::array< std::array
+.br
+< double, 2 >, 2 > \fBiterateNewtonMethod\fP (const Point &vobs, const Point &observer, const Type phi, const Type theta, const Point &target, const Point &velocity, std::array< std::array< double, 2 >, 2 > &jacobian, const Parameter &\fBparameters\fP, const Cosmology &cosmology, const Octree &octree, const Type length, const Type h, std::vector< double > &redshifts, double &interpRef)"
+.br
+.RI "\fIIterate Newton Method\&. \fP"
+.ti -1c
+.RI "template<class Point , class Cosmology , class Octree , class Type , class Parameter > static void \fBrelCat\fP (const Point &vobs, const std::array< std::array< double, 3 >, 3 > &rotm1, std::string &nomOutput, const Point &observer, const std::vector< std::array< double, 8 > > &targets_position, const std::vector< std::array< double, 18 > > &previous_catalogue, const Parameter &\fBparameters\fP, const Cosmology &cosmology, const Octree &octree, const Type length, const Type h)"
+.br
+.RI "\fIGive new position of points\&. \fP"
+.ti -1c
+.RI "template<class Point , class Cosmology , class Octree , class Type , class Parameter > static void \fBrelCat_with_previous_cat\fP (const Point &vobs, std::string &nomOutput, const Point &observer, std::vector< std::array< double, 18 > > &previous_catalogue, const Parameter &\fBparameters\fP, const Cosmology &cosmology, const Octree &octree, const Type length, const Type h)"
+.br
+.RI "\fIGive new position of points\&. \fP"
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "template<int Order, bool RK4, bool Verbose, class Point , class Cosmology , class Octree , class Type , class Parameter > std::array< std::array< double, 2 >, 2 > Catalogues::iterateNewtonMethod (const Point &vobs, const Point &observer, const Typephi, const Typetheta, const Point &target, const Point &velocity, std::array< std::array< double, 2 >, 2 > &jacobian, const Parameter &parameters, const Cosmology &cosmology, const Octree &octree, const Typelength, const Typeh, std::vector< double > &redshifts, double &interpRef)\fC [static]\fP"
+
+.PP
+Iterate Newton Method\&. Iterate Newton Method to a certain precision 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOrder\fP Octree interpolation order : 0 for NGP, 1 for CIC, 2 for TSC or -1 for a homogeneous universe\&. 
+.br
+\fIRK4\fP Runge-kutta of fourth order or euler\&. 
+.br
+\fIVerbose\fP Verbose mode for debug purposes\&. 
+.br
+\fIPoint\fP point type\&. 
+.br
+\fICosmology\fP Cosmology evolution type\&. 
+.br
+\fIOctree\fP Octree type\&. 
+.br
+\fIType\fP Scalar type\&. 
+.br
+\fIParameter\fP Parameter type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvobs\fP Observer peculiar velocity, in SI 
+.br
+\fIobserver\fP Observer position\&. 
+.br
+\fIphi\fP Source comoving angular coordinate phi\&. 
+.br
+\fItheta\fP Source comoving angular coordinate theta\&. 
+.br
+\fItarget\fP Comoving position of the source 
+.br
+\fIvelocity\fP Velocity of the target\&. 
+.br
+\fIjacobian\fP Jacobian matrix 
+.br
+\fIparameters\fP Parameter structure 
+.br
+\fIcosmology\fP Cosmology evolution\&. 
+.br
+\fIoctree\fP Octree\&. 
+.br
+\fIlength\fP Spatial length in SI units\&. 
+.br
+\fIh\fP Dimensionless Hubble parameter 
+.br
+\fIredshifts\fP Vector containing the redshift decomposition for a given source\&. 
+.br
+\fIinterpRef\fP value for interpolation of the bundle\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+2x2 array with NEW initial angles given after several iterations of newton method and errors in angles at same radius for the NEW initial angles\&. 
+.RE
+.PP
+
+.SS "template<int Order, bool RK4, bool Verbose, class Point , class Cosmology , class Octree , class Type , class Parameter > std::array< std::array< double, 2 >, 2 > Catalogues::newtonMethod2d (const Point &vobs, const Point &observer, const Point &trueTarget, const std::array< double, 2 > &target, const Point &velocity, std::array< std::array< double, 2 >, 2 > &jacobian, const Parameter &parameters, const Cosmology &cosmology, const Octree &octree, const Typelength, const Typeh, std::vector< double > &redshifts, double &interpRef, const unsigned intiteration)\fC [static]\fP"
+
+.PP
+Iterate once using Newton Method\&. Fit the better initial conditions for the photon that intersects the source\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOrder\fP Octree interpolation order : 0 for NGP, 1 for CIC, 2 for TSC or -1 for an homogeneous universe\&. 
+.br
+\fIRK4\fP Runge-kutta of fourth order or euler\&. 
+.br
+\fIVerbose\fP Verbose mode for debug purposes\&. 
+.br
+\fIPoint\fP point type\&. 
+.br
+\fICosmology\fP Cosmology evolution type\&. 
+.br
+\fIOctree\fP Octree type\&. 
+.br
+\fIType\fP Scalar type\&. 
+.br
+\fIParameter\fP Parameter type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvobs\fP Observer peculiar velocity, in SI 
+.br
+\fIobserver\fP Observer cartesian position\&. 
+.br
+\fItrueTarget\fP True cartesian target position\&. 
+.br
+\fItarget\fP Observed angular target position\&. 
+.br
+\fIvelocity\fP Target velocity\&. 
+.br
+\fIjacobian\fP Jacobian matrix 
+.br
+\fIparameters\fP Parameters structure 
+.br
+\fIcosmology\fP Cosmology evolution\&. 
+.br
+\fIoctree\fP Octree\&. 
+.br
+\fIlength\fP Spatial length in SI units\&. 
+.br
+\fIh\fP Dimensionless Hubble parameter 
+.br
+\fIredshifts\fP Vector containing the redshift decomposition for a given source\&. 
+.br
+\fIinterpRef\fP value for interpolation of the bundle\&. 
+.br
+\fIiteration\fP Number of iterations for the root-finder 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+2x2 array with NEW initial angles given by newton method and angle difference at the source between source and photon 
+.RE
+.PP
+
+.SS "template<class Parameters , class Map > void Catalogues::ReadParamFile (Parameters &parameters, Map &parameter)\fC [static]\fP"
+
+.PP
+Read parameter file\&. Read and put in a structure the parameters\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIParameters\fP structure type 
+.br
+\fIMap\fP map type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Structure containing the parameters\&. 
+.br
+\fIparameter\fP Contains parameters to be rewritten 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Filled parameters structure\&. 
+.RE
+.PP
+
+.SS "template<typename Integer , class Parameter > void Catalogues::ReadParticlesASCII (const Integerrank, const Parameter &parameters, std::vector< std::array< double, 8 > > &caractVect_source)\fC [static]\fP"
+
+.PP
+Read Particles from ASCII files\&. Read particles from ASCII files and put them in vectors 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIInteger\fP Integer type 
+.br
+\fIParameter\fP Parameter type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrank\fP Rank 
+.br
+\fIparameters\fP Parameters structure 
+.br
+\fIcaractVect_source\fP Source caracteristics 
+.RE
+.PP
+
+.SS "template<typename Integer , class Parameter > void Catalogues::ReadParticlesHDF5 (const Integerrank, const Parameter &parameters, std::vector< std::array< double, 8 > > &caractVect_source)\fC [static]\fP"
+
+.PP
+Read Particles from HDF5 files\&. Read particles from HDF5 files and put them in vectors 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIInteger\fP Integer type 
+.br
+\fIParameter\fP Parameter type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrank\fP Rank 
+.br
+\fIparameters\fP Parameters structure 
+.br
+\fIcaractVect_source\fP Source caracteristics 
+.RE
+.PP
+
+.SS "template<class Point , class Cosmology , class Octree , class Type , class Parameter > void Catalogues::relCat (const Point &vobs, const std::array< std::array< double, 3 >, 3 > &rotm1, std::string &filename, const Point &observer, const std::vector< std::array< double, 8 > > &targets_position, const std::vector< std::array< double, 18 > > &previous_catalogue, const Parameter &parameters, const Cosmology &cosmology, const Octree &octree, const Typelength, const Typeh)\fC [static]\fP"
+
+.PP
+Give new position of points\&. Give lensed position of points given points\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIPoint\fP point type\&. 
+.br
+\fICosmology\fP Cosmology evolution type\&. 
+.br
+\fIOctree\fP Octree type\&. 
+.br
+\fIType\fP Scalar type\&. 
+.br
+\fIParameter\fP Parameter type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvobs\fP Observer peculiar velocity, in SI 
+.br
+\fIrotm1\fP rotation matrix 
+.br
+\fIfilename\fP output file name\&. 
+.br
+\fIobserver\fP Observer position\&. 
+.br
+\fItargets_position\fP vector of target positions, velocities and radius\&. 
+.br
+\fIprevious_catalogue\fP Previously computed catalogue, used to re-run rejected sources\&. 
+.br
+\fIparameters\fP Parameter structure 
+.br
+\fIcosmology\fP Cosmology evolution\&. 
+.br
+\fIoctree\fP Octree\&. 
+.br
+\fIlength\fP Spatial length in SI units\&. 
+.br
+\fIh\fP Dimensionless Hubble parameter 
+.RE
+.PP
+
+.SS "template<class Point , class Cosmology , class Octree , class Type , class Parameter > void Catalogues::relCat_with_previous_cat (const Point &vobs, std::string &filename, const Point &observer, std::vector< std::array< double, 18 > > &previous_catalogue, const Parameter &parameters, const Cosmology &cosmology, const Octree &octree, const Typelength, const Typeh)\fC [static]\fP"
+
+.PP
+Give new position of points\&. Give lensed position of points given points\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIPoint\fP point type\&. 
+.br
+\fICosmology\fP Cosmology evolution type\&. 
+.br
+\fIOctree\fP Octree type\&. 
+.br
+\fIType\fP Scalar type\&. 
+.br
+\fIParameter\fP Parameter type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvobs\fP Observer peculiar velocity, in SI 
+.br
+\fIfilename\fP output file name\&. 
+.br
+\fIobserver\fP Observer position\&. 
+.br
+\fIprevious_catalogue\fP Previously computed catalogue, used to re-run rejected sources\&. 
+.br
+\fIparameters\fP Parameter structure 
+.br
+\fIcosmology\fP Cosmology evolution\&. 
+.br
+\fIoctree\fP Octree\&. 
+.br
+\fIlength\fP Spatial length in SI units\&. 
+.br
+\fIh\fP Dimensionless Hubble parameter 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

@@ -1,0 +1,3622 @@
+\hypertarget{exceptionmagrathea_1_1DataHandler}{\section{magrathea\-:\-:Data\-Handler Exception Reference}
+\label{exceptionmagrathea_1_1DataHandler}\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}}
+}
+
+
+Set of basic operations on binary data related to I\-O.  
+
+
+
+
+{\ttfamily \#include $<$datahandler.\-h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{Indent}{\bf Utilities}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Type $>$ }\\static constexpr bool \hyperlink{exceptionmagrathea_1_1DataHandler_a03a3af0a1f2adce31cd189191a420ac0}{array} (const Type \&)
+\begin{DoxyCompactList}\small\item\em Is not an array. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , std\-::size\-\_\-t Size$>$ }\\static constexpr bool \hyperlink{exceptionmagrathea_1_1DataHandler_ab9d06cd95b4986d4760c6650b1642b60}{array} (const std\-::array$<$ Type, Size $>$ \&)
+\begin{DoxyCompactList}\small\item\em Is an array. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\static constexpr bool \hyperlink{exceptionmagrathea_1_1DataHandler_a40c596c3e2059535c1649654fe8a7aa0}{tuple} (const Type \&)
+\begin{DoxyCompactList}\small\item\em Is not a tuple. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Types$>$ }\\static constexpr bool \hyperlink{exceptionmagrathea_1_1DataHandler_a2249708da73286fe5f5a695ed202fa8c}{tuple} (const std\-::tuple$<$ Types...$>$ \&)
+\begin{DoxyCompactList}\small\item\em Is a tuple. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Size}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename... Types$>$ }\\static constexpr unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_ac4e7131096c0eeb8f86b6d017ed1edb2}{size} ()
+\begin{DoxyCompactList}\small\item\em Number of elements of several types. \end{DoxyCompactList}\item 
+static constexpr unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_a46e1fde9798b019bc5b033e2e17fa7db}{size} (const std\-::tuple$<$$>$ \&)
+\begin{DoxyCompactList}\small\item\em Number of elements of an empty tuple. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\static constexpr unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_af8c18351676d2ac685b22524986bba92}{size} (const Type \&variable)
+\begin{DoxyCompactList}\small\item\em Number of elements of a single variable. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , typename... Types$>$ }\\static constexpr unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_a729d47a64d97ca03141eed087a0568d1}{size} (const Type \&variable, const Types \&...variables)
+\begin{DoxyCompactList}\small\item\em Number of elements of several variables. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , std\-::size\-\_\-t Size$>$ }\\static constexpr unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_aeb6e50e89fe939e797450f8428dc40dc}{size} (const std\-::array$<$ Type, Size $>$ \&container)
+\begin{DoxyCompactList}\small\item\em Number of elements of an array. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Current = 0, typename... Types$>$ }\\static constexpr unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_abe440e8dde8a25b9bdfbb64dbb2c26db}{size} (const std\-::tuple$<$ Types...$>$ \&container)
+\begin{DoxyCompactList}\small\item\em Number of elements of a tuple. \end{DoxyCompactList}\item 
+static unsigned long long int \hyperlink{exceptionmagrathea_1_1DataHandler_ae024501895c9baf0b3fee0b73f53405a}{rsize} (const std\-::nullptr\-\_\-t=nullptr, const std\-::nullptr\-\_\-t=nullptr)
+\begin{DoxyCompactList}\small\item\em Number of elements of an empty range. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\static unsigned long long int \hyperlink{exceptionmagrathea_1_1DataHandler_a453860a6574a579ae466ea72039b3946}{rsize} (const Type $\ast$const first, const Type $\ast$const last)
+\begin{DoxyCompactList}\small\item\em Number of elements of a range between pointers. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-pointer$<$\-Type$>$\-::value$>$\-::type$>$ }\\static unsigned long long int \hyperlink{exceptionmagrathea_1_1DataHandler_a5e965f35cd0f3950c21292f440f9da9f}{rsize} (const Type \&first, const Type \&last, typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$=nullptr)
+\begin{DoxyCompactList}\small\item\em Number of elements of a range between iterators. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Bytesize}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Type  = void$>$ }\\static constexpr unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_a9453a2836ff2573bc80e11f1de0cebe2}{bytesize} (const std\-::nullptr\-\_\-t=nullptr)
+\begin{DoxyCompactList}\small\item\em Size in bytes of a single type. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , typename... Types, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Types) != 0$>$\-::type$>$ }\\static constexpr unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_afb38de93a744c640d2642c53a01770d6}{bytesize} ()
+\begin{DoxyCompactList}\small\item\em Size in bytes of a single type. \end{DoxyCompactList}\item 
+static constexpr unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_a91a123543b345a2b8933a7ef121e48d7}{bytesize} (const std\-::tuple$<$$>$ \&)
+\begin{DoxyCompactList}\small\item\em Size in bytes of an empty tuple. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\static constexpr unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_a005235ea08efd9713579f41791145f79}{bytesize} (const Type \&variable)
+\begin{DoxyCompactList}\small\item\em Size in bytes of a single variable. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , typename... Types$>$ }\\static constexpr unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_aab076f5fed2b6c72e027aa4d8f9bd511}{bytesize} (const Type \&variable, const Types \&...variables)
+\begin{DoxyCompactList}\small\item\em Size in bytes of several variables. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , std\-::size\-\_\-t Size$>$ }\\static constexpr unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_a6707784777d7bf711da488edff8a084e}{bytesize} (const std\-::array$<$ Type, Size $>$ \&container)
+\begin{DoxyCompactList}\small\item\em Size in bytes of an array. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Current = 0, typename... Types$>$ }\\static constexpr unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_aa8ceabc79d0ed2e208614e77672b1a10}{bytesize} (const std\-::tuple$<$ Types...$>$ \&container)
+\begin{DoxyCompactList}\small\item\em Size in bytes of a tuple. \end{DoxyCompactList}\item 
+static unsigned long long int \hyperlink{exceptionmagrathea_1_1DataHandler_ae01a7da121ecba94a7bdc81fff5be3d5}{rbytesize} (const std\-::nullptr\-\_\-t=nullptr, const std\-::nullptr\-\_\-t=nullptr)
+\begin{DoxyCompactList}\small\item\em Size in bytes of an empty range. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\static unsigned long long int \hyperlink{exceptionmagrathea_1_1DataHandler_ae3bc23ee6136da25ec8d15bc875298cb}{rbytesize} (const Type $\ast$const first, const Type $\ast$const last)
+\begin{DoxyCompactList}\small\item\em Size in bytes of a range between pointers. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-pointer$<$\-Type$>$\-::value$>$\-::type$>$ }\\static unsigned long long int \hyperlink{exceptionmagrathea_1_1DataHandler_a2e7e977cac2277aa42a2fa52f84366a6}{rbytesize} (const Type \&first, const Type \&last, typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$=nullptr)
+\begin{DoxyCompactList}\small\item\em Size in bytes of a range between iterators. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Byteswap}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$bool Byteswap, typename... Types, class  = typename std\-::enable\-\_\-if$<$!\-Byteswap$>$\-::type$>$ }\\static unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_a2042e91ebc502db3edcf5256c0294c5f}{byteswap} (const Types \&...)
+\begin{DoxyCompactList}\small\item\em Do not swap bytes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap, typename... Types, class  = typename std\-::enable\-\_\-if$<$!\-Byteswap$>$\-::type$>$ }\\static unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_a1ab69b0bf24969449ee0b986f2a19139}{rbyteswap} (const Types \&...)
+\begin{DoxyCompactList}\small\item\em Do not swap bytes of a range. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = true, class  = typename std\-::enable\-\_\-if$<$\-Byteswap$>$\-::type$>$ }\\static unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_a4d89163c7346d993b9a17368c76673d2}{byteswap} ()
+\begin{DoxyCompactList}\small\item\em Swap bytes of nothing. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = true, class  = typename std\-::enable\-\_\-if$<$\-Byteswap$>$\-::type$>$ }\\static unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_a5c6338a9f2e899a72c9d28526a27b4d5}{byteswap} (std\-::tuple$<$$>$ \&)
+\begin{DoxyCompactList}\small\item\em Swap bytes of an empty tuple. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = true, typename Type , class  = typename std\-::enable\-\_\-if$<$\-Byteswap$>$\-::type$>$ }\\static unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_a8345c4082a891fc086d1030fc74750c8}{byteswap} (Type \&variable)
+\begin{DoxyCompactList}\small\item\em Swap bytes of a single variable. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = true, typename Type , typename... Types, class  = typename std\-::enable\-\_\-if$<$\-Byteswap$>$\-::type$>$ }\\static unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_aca66620abc29a4a2274a77426805f722}{byteswap} (Type \&variable, Types \&...variables)
+\begin{DoxyCompactList}\small\item\em Swap bytes of several variables. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = true, typename Type , std\-::size\-\_\-t Size, class  = typename std\-::enable\-\_\-if$<$\-Byteswap$>$\-::type$>$ }\\static unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_a3fb1384e1306c02a233b474e5af34378}{byteswap} (std\-::array$<$ Type, Size $>$ \&container)
+\begin{DoxyCompactList}\small\item\em Swap bytes of an array. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = true, unsigned int Current = 0, typename... Types, class  = typename std\-::enable\-\_\-if$<$\-Byteswap$>$\-::type$>$ }\\static unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_a46d3d574a4edcc3cd4f86a5e63fe7472}{byteswap} (std\-::tuple$<$ Types...$>$ \&container)
+\begin{DoxyCompactList}\small\item\em Swap bytes of a tuple. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = true, class  = typename std\-::enable\-\_\-if$<$\-Byteswap$>$\-::type$>$ }\\static unsigned long long int \hyperlink{exceptionmagrathea_1_1DataHandler_a177dfd5de3d487fe6324fac41c1f3871}{rbyteswap} (const std\-::nullptr\-\_\-t=nullptr, const std\-::nullptr\-\_\-t=nullptr)
+\begin{DoxyCompactList}\small\item\em Swap bytes of an empty range. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = true, typename Type , class  = typename std\-::enable\-\_\-if$<$\-Byteswap$>$\-::type$>$ }\\static unsigned long long int \hyperlink{exceptionmagrathea_1_1DataHandler_a97f17ea461a0969ff4a6e44723c3bfd7}{rbyteswap} (Type $\ast$const first, Type $\ast$const last)
+\begin{DoxyCompactList}\small\item\em Swap bytes of a range between pointers. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = true, typename Type , class  = typename std\-::enable\-\_\-if$<$(\-Byteswap) \&\& (!std\-::is\-\_\-pointer$<$\-Type$>$\-::value)$>$\-::type$>$ }\\static unsigned long long int \hyperlink{exceptionmagrathea_1_1DataHandler_a0c784af750a3869cd3f1d7c338c22e4e}{rbyteswap} (const Type \&first, const Type \&last, typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$=nullptr)
+\begin{DoxyCompactList}\small\item\em Swap bytes of a range between iterators. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Write stream}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$bool Byteswap = false$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_a39a75e50677e501aa45368fcd1a9072c}{write} (std\-::ostream \&stream)
+\begin{DoxyCompactList}\small\item\em Write nothing to stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_ac03218d9c590597427d31e8d7fe8820b}{write} (std\-::ostream \&stream, const std\-::tuple$<$$>$ \&)
+\begin{DoxyCompactList}\small\item\em Write an empty tuple to stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, typename Type $>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_a921c83976ebf7a55119f25d9589a6d71}{write} (std\-::ostream \&stream, const Type \&variable)
+\begin{DoxyCompactList}\small\item\em Write a single variable to stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, typename Type , typename... Types$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_aee67cc8c281a41a493d41a4a25f45bc9}{write} (std\-::ostream \&stream, const Type \&variable, const Types \&...variables)
+\begin{DoxyCompactList}\small\item\em Write several variables to stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, typename Type , std\-::size\-\_\-t Size$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_a1ab61e11c5cd55fa2652511507291435}{write} (std\-::ostream \&stream, const std\-::array$<$ Type, Size $>$ \&container)
+\begin{DoxyCompactList}\small\item\em Write an array to stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, unsigned int Current = 0, typename... Types$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_ab8fa581985c2e97824bb610459a4189f}{write} (std\-::ostream \&stream, const std\-::tuple$<$ Types...$>$ \&container)
+\begin{DoxyCompactList}\small\item\em Write a tuple to stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_a89a51db0939e9deba460b19b46f068c9}{rwrite} (std\-::ostream \&stream, const std\-::nullptr\-\_\-t=nullptr, const std\-::nullptr\-\_\-t=nullptr)
+\begin{DoxyCompactList}\small\item\em Write an empty range to stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, typename Type $>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_a31a3828a7b517b518fdbae8bc0662053}{rwrite} (std\-::ostream \&stream, const Type $\ast$const first, const Type $\ast$const last)
+\begin{DoxyCompactList}\small\item\em Write a range between pointers to stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, typename Type , class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-pointer$<$\-Type$>$\-::value$>$\-::type$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_aa317b2106da44890bd8743769a432852}{rwrite} (std\-::ostream \&stream, const Type \&first, const Type \&last, typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$=nullptr)
+\begin{DoxyCompactList}\small\item\em Write a range between iterators to stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Read stream}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$bool Byteswap = false$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_ae34eaeb6faf631309cb9000316771377}{read} (std\-::istream \&stream)
+\begin{DoxyCompactList}\small\item\em Read nothing from stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_a3b2d2a3c03f6fae7ce3fc7c54e3808aa}{read} (std\-::istream \&stream, std\-::tuple$<$$>$ \&)
+\begin{DoxyCompactList}\small\item\em Read an empty tuple from stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, typename Type $>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_a8a9ffe306dfa1cbc4dfc27d0bab1385f}{read} (std\-::istream \&stream, Type \&variable)
+\begin{DoxyCompactList}\small\item\em Read a single variable from stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, typename Type , typename... Types$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_a67649218acd759dde8b1d9617a36219f}{read} (std\-::istream \&stream, Type \&variable, Types \&...variables)
+\begin{DoxyCompactList}\small\item\em Read several variables from stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, typename Type , std\-::size\-\_\-t Size$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_a2bf9d85128f5bccff6f9d764120cd49f}{read} (std\-::istream \&stream, std\-::array$<$ Type, Size $>$ \&container)
+\begin{DoxyCompactList}\small\item\em Read an array from stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, unsigned int Current = 0, typename... Types$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_ac1b5efbb028f2464bfbe669707e57c8f}{read} (std\-::istream \&stream, std\-::tuple$<$ Types...$>$ \&container)
+\begin{DoxyCompactList}\small\item\em Read a tuple from stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_a309a1e2e9fa64e1fa5bcae1dbd9b1f86}{rread} (std\-::istream \&stream, const std\-::nullptr\-\_\-t=nullptr, const std\-::nullptr\-\_\-t=nullptr)
+\begin{DoxyCompactList}\small\item\em Read an empty range from stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, typename Type $>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_a5e4dc7bdf1e1ae704aafb92a1c3fe10e}{rread} (std\-::istream \&stream, Type $\ast$const first, Type $\ast$const last)
+\begin{DoxyCompactList}\small\item\em Read a range between pointers from stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, typename Type , class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-pointer$<$\-Type$>$\-::value$>$\-::type$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_a6a1f5e10ee3ccfbde1b7a0f0cdd9bcf2}{rread} (std\-::istream \&stream, const Type \&first, const Type \&last, typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$=nullptr)
+\begin{DoxyCompactList}\small\item\em Read a range between iterators from stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Write buffer}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$bool Byteswap = false$>$ }\\static char $\ast$\& \hyperlink{exceptionmagrathea_1_1DataHandler_a536f2b5c4b87cd899177ee5397df87b1}{write} (char $\ast$\&buffer)
+\begin{DoxyCompactList}\small\item\em Write nothing to buffer. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false$>$ }\\static char $\ast$\& \hyperlink{exceptionmagrathea_1_1DataHandler_a40bb3b3f12dbbfb56f0ae4949ab775dc}{write} (char $\ast$\&buffer, const std\-::tuple$<$$>$ \&)
+\begin{DoxyCompactList}\small\item\em Write an empty tuple to buffer. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, typename Type $>$ }\\static char $\ast$\& \hyperlink{exceptionmagrathea_1_1DataHandler_a50f7ac2d71d0a6e12b9142f0164e5010}{write} (char $\ast$\&buffer, const Type \&variable)
+\begin{DoxyCompactList}\small\item\em Write a single variable to buffer. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, typename Type , typename... Types$>$ }\\static char $\ast$\& \hyperlink{exceptionmagrathea_1_1DataHandler_abfa5fea125d9fc30fb1ead5d96a73b11}{write} (char $\ast$\&buffer, const Type \&variable, const Types \&...variables)
+\begin{DoxyCompactList}\small\item\em Write several variables to buffer. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, typename Type , std\-::size\-\_\-t Size$>$ }\\static char $\ast$\& \hyperlink{exceptionmagrathea_1_1DataHandler_aedc8c73ee5a6027286662b816435f953}{write} (char $\ast$\&buffer, const std\-::array$<$ Type, Size $>$ \&container)
+\begin{DoxyCompactList}\small\item\em Write an array to buffer. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, unsigned int Current = 0, typename... Types$>$ }\\static char $\ast$\& \hyperlink{exceptionmagrathea_1_1DataHandler_ade92542ca2ae7dac44c5b573aaaea63a}{write} (char $\ast$\&buffer, const std\-::tuple$<$ Types...$>$ \&container)
+\begin{DoxyCompactList}\small\item\em Write a tuple to buffer. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false$>$ }\\static char $\ast$\& \hyperlink{exceptionmagrathea_1_1DataHandler_a2fef7472281e81fbdca7a42a92b36fe9}{rwrite} (char $\ast$\&buffer, const std\-::nullptr\-\_\-t=nullptr, const std\-::nullptr\-\_\-t=nullptr)
+\begin{DoxyCompactList}\small\item\em Write an empty range to buffer. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, typename Type $>$ }\\static char $\ast$\& \hyperlink{exceptionmagrathea_1_1DataHandler_ac43856b9e64071b14be4be469381258f}{rwrite} (char $\ast$\&buffer, const Type $\ast$const first, const Type $\ast$const last)
+\begin{DoxyCompactList}\small\item\em Write a range between pointers to buffer. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, typename Type , class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-pointer$<$\-Type$>$\-::value$>$\-::type$>$ }\\static char $\ast$\& \hyperlink{exceptionmagrathea_1_1DataHandler_a5c2ce2134d220930333c6f6c2a7e2a73}{rwrite} (char $\ast$\&buffer, const Type \&first, const Type \&last, typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$=nullptr)
+\begin{DoxyCompactList}\small\item\em Write a range between iterators to buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Read buffer}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$bool Byteswap = false$>$ }\\static char $\ast$\& \hyperlink{exceptionmagrathea_1_1DataHandler_abb1758c0b2f72e48f5ef7db95b016ccf}{read} (char $\ast$\&buffer)
+\begin{DoxyCompactList}\small\item\em Read nothing from buffer. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false$>$ }\\static char $\ast$\& \hyperlink{exceptionmagrathea_1_1DataHandler_a4fb8e4a637b6f4c3c798b1b94e568007}{read} (char $\ast$\&buffer, std\-::tuple$<$$>$ \&)
+\begin{DoxyCompactList}\small\item\em Read an empty tuple from buffer. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, typename Type $>$ }\\static char $\ast$\& \hyperlink{exceptionmagrathea_1_1DataHandler_aa8fe6c9d3f4a56d178898ba64cdc93f8}{read} (char $\ast$\&buffer, Type \&variable)
+\begin{DoxyCompactList}\small\item\em Read a single variable from buffer. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, typename Type , typename... Types$>$ }\\static char $\ast$\& \hyperlink{exceptionmagrathea_1_1DataHandler_ae73602c0c41147651f1ce8c7cbc206f6}{read} (char $\ast$\&buffer, Type \&variable, Types \&...variables)
+\begin{DoxyCompactList}\small\item\em Read several variables from buffer. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, typename Type , std\-::size\-\_\-t Size$>$ }\\static char $\ast$\& \hyperlink{exceptionmagrathea_1_1DataHandler_a6d8fa8651ee32050d8eb6eaf435db2c7}{read} (char $\ast$\&buffer, std\-::array$<$ Type, Size $>$ \&container)
+\begin{DoxyCompactList}\small\item\em Read an array from buffer. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, unsigned int Current = 0, typename... Types$>$ }\\static char $\ast$\& \hyperlink{exceptionmagrathea_1_1DataHandler_a21f7805b4e77bb9ab70c5d2f2bee08f3}{read} (char $\ast$\&buffer, std\-::tuple$<$ Types...$>$ \&container)
+\begin{DoxyCompactList}\small\item\em Read a tuple from buffer. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false$>$ }\\static char $\ast$\& \hyperlink{exceptionmagrathea_1_1DataHandler_acdd7431815561c8616e157b6789afff0}{rread} (char $\ast$\&buffer, const std\-::nullptr\-\_\-t=nullptr, const std\-::nullptr\-\_\-t=nullptr)
+\begin{DoxyCompactList}\small\item\em Read an empty range from buffer. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, typename Type $>$ }\\static char $\ast$\& \hyperlink{exceptionmagrathea_1_1DataHandler_a6728414b1976483a9d82af54588e62b9}{rread} (char $\ast$\&buffer, Type $\ast$const first, Type $\ast$const last)
+\begin{DoxyCompactList}\small\item\em Read a range between pointers from buffer. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, typename Type , class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-pointer$<$\-Type$>$\-::value$>$\-::type$>$ }\\static char $\ast$\& \hyperlink{exceptionmagrathea_1_1DataHandler_aaef7aa4fc02e64ac7c2d02b413a6dffd}{rread} (char $\ast$\&buffer, const Type \&first, const Type \&last, typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$=nullptr)
+\begin{DoxyCompactList}\small\item\em Read a range between iterators from buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Nullification}\par
+\begin{DoxyCompactItemize}
+\item 
+static unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_a7958f101a7437fe5ada971be5eceef32}{nullify} ()
+\begin{DoxyCompactList}\small\item\em Nullify nothing. \end{DoxyCompactList}\item 
+static unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_ad0026082d808e1bba847e0abdb142d61}{nullify} (std\-::tuple$<$$>$ \&)
+\begin{DoxyCompactList}\small\item\em Nullify an empty tuple. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\static unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_aaa0ca7b9d5b2659fd567df2ceab1f0e7}{nullify} (Type \&variable)
+\begin{DoxyCompactList}\small\item\em Nullify a single variable. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , typename... Types$>$ }\\static unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_ab7f14c311ad2d5f0f6faaef4383db779}{nullify} (Type \&variable, Types \&...variables)
+\begin{DoxyCompactList}\small\item\em Nullify several variables. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , std\-::size\-\_\-t Size$>$ }\\static unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_a88ed5c28c8d5eb5b66338af0e1018852}{nullify} (std\-::array$<$ Type, Size $>$ \&container)
+\begin{DoxyCompactList}\small\item\em Nullify an array. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Current = 0, typename... Types$>$ }\\static unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_a87e291616af2fba57c18aa231eefd333}{nullify} (std\-::tuple$<$ Types...$>$ \&container)
+\begin{DoxyCompactList}\small\item\em Nullify a tuple. \end{DoxyCompactList}\item 
+static unsigned long long int \hyperlink{exceptionmagrathea_1_1DataHandler_abb826ede36fd580ea709a19fc71a3e90}{rnullify} (const std\-::nullptr\-\_\-t=nullptr, const std\-::nullptr\-\_\-t=nullptr)
+\begin{DoxyCompactList}\small\item\em Nullify an empty range. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\static unsigned long long int \hyperlink{exceptionmagrathea_1_1DataHandler_a370472a1aadc46f879801bf1132ab26b}{rnullify} (Type $\ast$const first, Type $\ast$const last)
+\begin{DoxyCompactList}\small\item\em Nullify a range between pointers. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-pointer$<$\-Type$>$\-::value$>$\-::type$>$ }\\static unsigned long long int \hyperlink{exceptionmagrathea_1_1DataHandler_a040f6e76e4af90f1e3b696172cfbe48a}{rnullify} (const Type \&first, const Type \&last, typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$=nullptr)
+\begin{DoxyCompactList}\small\item\em Nullify a range between iterators. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Equalization}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Reference $>$ }\\static unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_a51a6cff6e8a684d22e368ff56ca72fea}{equalize} (const Reference \&reference)
+\begin{DoxyCompactList}\small\item\em Equalize nothing. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Reference $>$ }\\static unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_a73254d7cfb56f9d49207670ce2f0bf46}{equalize} (const Reference \&reference, std\-::tuple$<$$>$ \&)
+\begin{DoxyCompactList}\small\item\em Equalize an empty tuple. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Reference , typename Type $>$ }\\static unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_a21aa49476bfdea5e3e1eb6db89610b6f}{equalize} (const Reference \&reference, Type \&variable)
+\begin{DoxyCompactList}\small\item\em Equalize a single variable. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Reference , typename Type , typename... Types$>$ }\\static unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_ac30aa6d5b117ee5af179dba30b59025f}{equalize} (const Reference \&reference, Type \&variable, Types \&...variables)
+\begin{DoxyCompactList}\small\item\em Equalize several variables. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Reference , typename Type , std\-::size\-\_\-t Size$>$ }\\static unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_a91eaaf11ba2d7d2c56cb365b1f4fae05}{equalize} (const Reference \&reference, std\-::array$<$ Type, Size $>$ \&container)
+\begin{DoxyCompactList}\small\item\em Equalize an array. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Current = 0, typename Reference , typename... Types$>$ }\\static unsigned int \hyperlink{exceptionmagrathea_1_1DataHandler_ac081445d6585ad93c1420826eeb923c7}{equalize} (const Reference \&reference, std\-::tuple$<$ Types...$>$ \&container)
+\begin{DoxyCompactList}\small\item\em Equalize a tuple. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Reference $>$ }\\static unsigned long long int \hyperlink{exceptionmagrathea_1_1DataHandler_afd9f3ea4fce203ea1aca7b855397d76a}{requalize} (const Reference \&reference, const std\-::nullptr\-\_\-t=nullptr, const std\-::nullptr\-\_\-t=nullptr)
+\begin{DoxyCompactList}\small\item\em Equalize an empty range. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Reference , typename Type $>$ }\\static unsigned long long int \hyperlink{exceptionmagrathea_1_1DataHandler_af9782498c2008f965392c3d497461bcb}{requalize} (const Reference \&reference, Type $\ast$const first, Type $\ast$const last)
+\begin{DoxyCompactList}\small\item\em Equalize a range between pointers. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Reference , typename Type , class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-pointer$<$\-Type$>$\-::value$>$\-::type$>$ }\\static unsigned long long int \hyperlink{exceptionmagrathea_1_1DataHandler_a199258bc8b5a5e25e696322722538bca}{requalize} (const Reference \&reference, const Type \&first, const Type \&last, typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$=nullptr)
+\begin{DoxyCompactList}\small\item\em Equalize a range between iterators. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Hexification}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$bool Byteswap = false, bool Uppercase = false$>$ }\\static std\-::string \hyperlink{exceptionmagrathea_1_1DataHandler_a2ced7c88930c8cb63f53ae8ccd7d8869}{hexify} ()
+\begin{DoxyCompactList}\small\item\em Convert nothing to a hexadecimal string. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, bool Uppercase = false$>$ }\\static std\-::string \hyperlink{exceptionmagrathea_1_1DataHandler_a5e509568af157f6b3fafaa6d7b77ee5d}{hexify} (const std\-::tuple$<$$>$ \&)
+\begin{DoxyCompactList}\small\item\em Convert an empty tuple to a hexadecimal string. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, bool Uppercase = false, typename Type $>$ }\\static std\-::string \hyperlink{exceptionmagrathea_1_1DataHandler_af6a8e6e71817c4ff9f3e09ffd2440713}{hexify} (const Type \&variable)
+\begin{DoxyCompactList}\small\item\em Convert a single variable to a hexadecimal string. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, bool Uppercase = false, typename Type , typename... Types$>$ }\\static std\-::string \hyperlink{exceptionmagrathea_1_1DataHandler_a87cdcecdb302b79db66f8781d92d2a38}{hexify} (const Type \&variable, const Types \&...variables)
+\begin{DoxyCompactList}\small\item\em Convert several variables to a hexadecimal string. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, bool Uppercase = false, typename Type , std\-::size\-\_\-t Size$>$ }\\static std\-::string \hyperlink{exceptionmagrathea_1_1DataHandler_a537df36d100df807e95e9fe4297ce788}{hexify} (const std\-::array$<$ Type, Size $>$ \&container)
+\begin{DoxyCompactList}\small\item\em Convert an array to a hexadecimal string. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, bool Uppercase = false, unsigned int Current = 0, typename... Types$>$ }\\static std\-::string \hyperlink{exceptionmagrathea_1_1DataHandler_a93de73e7027c2dee8564b1520f319d3a}{hexify} (const std\-::tuple$<$ Types...$>$ \&container)
+\begin{DoxyCompactList}\small\item\em Convert a tuple to a hexadecimal string. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, bool Uppercase = false$>$ }\\static std\-::string \hyperlink{exceptionmagrathea_1_1DataHandler_ad7bf3950e2fb436e59e3ad8d22630601}{rhexify} (const std\-::nullptr\-\_\-t=nullptr, const std\-::nullptr\-\_\-t=nullptr, const std\-::string \&separator=\char`\"{} \char`\"{})
+\begin{DoxyCompactList}\small\item\em Convert an empty range to a hexadecimal string. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, bool Uppercase = false, typename Type $>$ }\\static std\-::string \hyperlink{exceptionmagrathea_1_1DataHandler_ae12d94dd9d65f7e5ff945d33312f5d28}{rhexify} (const Type $\ast$const first, const Type $\ast$const last, const std\-::string \&separator=\char`\"{} \char`\"{})
+\begin{DoxyCompactList}\small\item\em Convert a range between pointers to a hexadecimal string. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool Byteswap = false, bool Uppercase = false, typename Type , class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-pointer$<$\-Type$>$\-::value$>$\-::type$>$ }\\static std\-::string \hyperlink{exceptionmagrathea_1_1DataHandler_a1e1f477485c16c5d5221288531453492}{rhexify} (const Type \&first, const Type \&last, const std\-::string \&separator=\char`\"{} \char`\"{}, typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$=nullptr)
+\begin{DoxyCompactList}\small\item\em Convert a range between iterators to a hexadecimal string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Stringification}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$unsigned int Base = 10, char Leading = char()$>$ }\\static std\-::string \hyperlink{exceptionmagrathea_1_1DataHandler_aabe5421ff733fe6beebb8c738d1fee63}{stringify} ()
+\begin{DoxyCompactList}\small\item\em Convert nothing to a string. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Base = 10, char Leading = char()$>$ }\\static std\-::string \hyperlink{exceptionmagrathea_1_1DataHandler_a7c4ab445f48e1aa494a404e904c54a66}{stringify} (const std\-::tuple$<$$>$ \&)
+\begin{DoxyCompactList}\small\item\em Convert an empty tuple to a string. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Base = 10, char Leading = char(), typename Type $>$ }\\static std\-::string \hyperlink{exceptionmagrathea_1_1DataHandler_a2dd735cedf604372d2942820919a2b0c}{stringify} (const Type \&variable)
+\begin{DoxyCompactList}\small\item\em Convert a single variable to a string. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Base = 10, char Leading = char(), typename Type , typename... Types$>$ }\\static std\-::string \hyperlink{exceptionmagrathea_1_1DataHandler_ab54ac4f7f22feb5b1e7361d321342746}{stringify} (const Type \&variable, const Types \&...variables)
+\begin{DoxyCompactList}\small\item\em Convert several variables to a string. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Base = 10, char Leading = char(), typename Type , std\-::size\-\_\-t Size$>$ }\\static std\-::string \hyperlink{exceptionmagrathea_1_1DataHandler_a71fe2f753a75d7367c34bd035e7e3d62}{stringify} (const std\-::array$<$ Type, Size $>$ \&container)
+\begin{DoxyCompactList}\small\item\em Convert an array to a string. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Base = 10, char Leading = char(), unsigned int Current = 0, typename... Types$>$ }\\static std\-::string \hyperlink{exceptionmagrathea_1_1DataHandler_a172045642951acb95fb0a84595aa9e56}{stringify} (const std\-::tuple$<$ Types...$>$ \&container)
+\begin{DoxyCompactList}\small\item\em Convert a tuple to a string. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Base = 10, char Leading = char()$>$ }\\static std\-::string \hyperlink{exceptionmagrathea_1_1DataHandler_a0db434fc9459ef0f11890cef1e222ad7}{rstringify} (const std\-::nullptr\-\_\-t=nullptr, const std\-::nullptr\-\_\-t=nullptr, const std\-::string \&separator=\char`\"{} \char`\"{})
+\begin{DoxyCompactList}\small\item\em Convert an empty range to a string. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Base = 10, char Leading = char(), typename Type $>$ }\\static std\-::string \hyperlink{exceptionmagrathea_1_1DataHandler_af9e7e01b71aa9f81babfbe16f623aa7b}{rstringify} (const Type $\ast$const first, const Type $\ast$const last, const std\-::string \&separator=\char`\"{} \char`\"{})
+\begin{DoxyCompactList}\small\item\em Convert a range between pointers to a string. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Base = 10, char Leading = char(), typename Type , class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-pointer$<$\-Type$>$\-::value$>$\-::type$>$ }\\static std\-::string \hyperlink{exceptionmagrathea_1_1DataHandler_ac55cfb860edddeed639be96c6bb6a83f}{rstringify} (const Type \&first, const Type \&last, const std\-::string \&separator=\char`\"{} \char`\"{}, typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$=nullptr)
+\begin{DoxyCompactList}\small\item\em Convert a range between iterators to a string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Print}\par
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{exceptionmagrathea_1_1DataHandler_a1e2ce163626bd93089e4f06ad7402eb5}{print} (std\-::ostream \&stream)
+\begin{DoxyCompactList}\small\item\em Print nothing to stream. \end{DoxyCompactList}\item 
+static bool \hyperlink{exceptionmagrathea_1_1DataHandler_a3517e714a8fb5b5e3bf426fb3a2b9e60}{print} (std\-::ostream \&stream, const std\-::tuple$<$$>$ \&)
+\begin{DoxyCompactList}\small\item\em Print an empty tuple to stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_a47a27564c6dc2ed89a013300f9fca57a}{print} (std\-::ostream \&stream, const Type \&variable)
+\begin{DoxyCompactList}\small\item\em Print a single variable to stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , typename... Types$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_a0e0717030f561af1bd430228d2344c52}{print} (std\-::ostream \&stream, const Type \&variable, const Types \&...variables)
+\begin{DoxyCompactList}\small\item\em Print several variables to stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , std\-::size\-\_\-t Size$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_a0a368733a11174f5cd268e7ccdd060d9}{print} (std\-::ostream \&stream, const std\-::array$<$ Type, Size $>$ \&container)
+\begin{DoxyCompactList}\small\item\em Print an array to stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Current = 0, typename... Types$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_a9b3a922b97c206664e1333240e82d9e2}{print} (std\-::ostream \&stream, const std\-::tuple$<$ Types...$>$ \&container)
+\begin{DoxyCompactList}\small\item\em Print a tuple to stream. \end{DoxyCompactList}\item 
+static bool \hyperlink{exceptionmagrathea_1_1DataHandler_a881ef2cae9609cbbb2f3e3f77443c0bb}{rprint} (std\-::ostream \&stream, const std\-::nullptr\-\_\-t=nullptr, const std\-::nullptr\-\_\-t=nullptr)
+\begin{DoxyCompactList}\small\item\em Print an empty range to stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_a4874d6bc840ee89a485fdcc3ce341031}{rprint} (std\-::ostream \&stream, const Type $\ast$const first, const Type $\ast$const last)
+\begin{DoxyCompactList}\small\item\em Print a range between pointers to stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-pointer$<$\-Type$>$\-::value$>$\-::type$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_a6677d3414ea7c4d76662ce56d4320801}{rprint} (std\-::ostream \&stream, const Type \&first, const Type \&last, typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$=nullptr)
+\begin{DoxyCompactList}\small\item\em Print a range between iterators to stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Scan}\par
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{exceptionmagrathea_1_1DataHandler_a5e26ce4a9478dcc7c83d904bf8c494f6}{scan} (std\-::istream \&stream)
+\begin{DoxyCompactList}\small\item\em Scan nothing from stream. \end{DoxyCompactList}\item 
+static bool \hyperlink{exceptionmagrathea_1_1DataHandler_a2694fc43019f85c66b1f88b4db924f85}{scan} (std\-::istream \&stream, std\-::tuple$<$$>$ \&)
+\begin{DoxyCompactList}\small\item\em Scan an empty tuple from stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_a2f0d2f234267a5c274662c6fe48fe988}{scan} (std\-::istream \&stream, Type \&variable)
+\begin{DoxyCompactList}\small\item\em Scan a single variable from stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , typename... Types$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_adefa5bd26a29d5b13d3f94a45bd99973}{scan} (std\-::istream \&stream, Type \&variable, Types \&...variables)
+\begin{DoxyCompactList}\small\item\em Scan several variables from stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , std\-::size\-\_\-t Size$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_abf322f4399f6008717153ca2338c1ab3}{scan} (std\-::istream \&stream, std\-::array$<$ Type, Size $>$ \&container)
+\begin{DoxyCompactList}\small\item\em Scan an array from stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Current = 0, typename... Types$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_afcdea61c7011b22539e783c9fb782e07}{scan} (std\-::istream \&stream, std\-::tuple$<$ Types...$>$ \&container)
+\begin{DoxyCompactList}\small\item\em Scan a tuple from stream. \end{DoxyCompactList}\item 
+static bool \hyperlink{exceptionmagrathea_1_1DataHandler_ab5f1d27ed688fd6886c19eebae03d4be}{rscan} (std\-::istream \&stream, const std\-::nullptr\-\_\-t=nullptr, const std\-::nullptr\-\_\-t=nullptr)
+\begin{DoxyCompactList}\small\item\em Scan an empty range from stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_a48cd90a288bcb730d481bf475d6918fa}{rscan} (std\-::istream \&stream, Type $\ast$const first, Type $\ast$const last)
+\begin{DoxyCompactList}\small\item\em Scan a range between pointers from stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , class  = typename std\-::enable\-\_\-if$<$!std\-::is\-\_\-pointer$<$\-Type$>$\-::value$>$\-::type$>$ }\\static bool \hyperlink{exceptionmagrathea_1_1DataHandler_ae8d23e8cc8b4ac2983e1e84c8120f30c}{rscan} (std\-::istream \&stream, const Type \&first, const Type \&last, typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$=nullptr)
+\begin{DoxyCompactList}\small\item\em Scan a range between iterators from stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Test}\par
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{exceptionmagrathea_1_1DataHandler_a480460d73295525655079a6a3a380660}{example} ()
+\begin{DoxyCompactList}\small\item\em Example function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+Set of basic operations on binary data related to I\-O. 
+
+Provides a wide range of overloaded utilities to handle and format data for reading and writing tasks \-: byteswap, size, extraction from tuples... 
+
+\subsection{Member Function Documentation}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a03a3af0a1f2adce31cd189191a420ac0}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!array@{array}}
+\index{array@{array}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{array}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr bool magrathea\-::\-Data\-Handler\-::array (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a03a3af0a1f2adce31cd189191a420ac0}
+
+
+Is not an array. 
+
+Returns false as the passed argument is not a standard array. \begin{DoxyReturn}{Returns}
+Whether the argument is a standard array. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_ab9d06cd95b4986d4760c6650b1642b60}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!array@{array}}
+\index{array@{array}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{array}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , std\-::size\-\_\-t Size$>$ constexpr bool magrathea\-::\-Data\-Handler\-::array (
+\begin{DoxyParamCaption}
+\item[{const std\-::array$<$ Type, Size $>$ \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_ab9d06cd95b4986d4760c6650b1642b60}
+
+
+Is an array. 
+
+Returns true as the passed argument is a standard array. \begin{DoxyReturn}{Returns}
+Whether the argument is a standard array. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a9453a2836ff2573bc80e11f1de0cebe2}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!bytesize@{bytesize}}
+\index{bytesize@{bytesize}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{bytesize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr unsigned int magrathea\-::\-Data\-Handler\-::bytesize (
+\begin{DoxyParamCaption}
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a9453a2836ff2573bc80e11f1de0cebe2}
+
+
+Size in bytes of a single type. 
+
+Computes the size in bytes of the passed type. The returned size is either the result of {\ttfamily sizeof()} or 0 if the type is void. Note that if the passed type is a templated type, like a tuple, the inner arguments are not extracted, and the result is simply the same as {\ttfamily sizeof()} . \begin{DoxyReturn}{Returns}
+Size in bytes. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_afb38de93a744c640d2642c53a01770d6}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!bytesize@{bytesize}}
+\index{bytesize@{bytesize}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{bytesize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , typename... Types, class $>$ constexpr unsigned int magrathea\-::\-Data\-Handler\-::bytesize (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_afb38de93a744c640d2642c53a01770d6}
+
+
+Size in bytes of a single type. 
+
+Computes the size in bytes of the passed types. The returned size is the sum of the sizes of each type. \begin{DoxyReturn}{Returns}
+Size in bytes. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a91a123543b345a2b8933a7ef121e48d7}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!bytesize@{bytesize}}
+\index{bytesize@{bytesize}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{bytesize}]{\setlength{\rightskip}{0pt plus 5cm}constexpr unsigned int magrathea\-::\-Data\-Handler\-::bytesize (
+\begin{DoxyParamCaption}
+\item[{const std\-::tuple$<$$>$ \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a91a123543b345a2b8933a7ef121e48d7}
+
+
+Size in bytes of an empty tuple. 
+
+Function overload that does nothing. \begin{DoxyReturn}{Returns}
+Size in bytes. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a005235ea08efd9713579f41791145f79}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!bytesize@{bytesize}}
+\index{bytesize@{bytesize}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{bytesize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr unsigned int magrathea\-::\-Data\-Handler\-::bytesize (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a005235ea08efd9713579f41791145f79}
+
+
+Size in bytes of a single variable. 
+
+Computes the size in bytes of the passed variable. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Variable type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em variable} & Variable. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Size in bytes. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_aab076f5fed2b6c72e027aa4d8f9bd511}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!bytesize@{bytesize}}
+\index{bytesize@{bytesize}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{bytesize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , typename... Types$>$ constexpr unsigned int magrathea\-::\-Data\-Handler\-::bytesize (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{variable, }
+\item[{const Types \&...}]{variables}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_aab076f5fed2b6c72e027aa4d8f9bd511}
+
+
+Size in bytes of several variables. 
+
+Computes the sum of the size in bytes of the passed variables. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Variable type.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em variable} & Variable. \\
+\hline
+\mbox{\tt in}  & {\em variables} & Variables. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Size in bytes. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a6707784777d7bf711da488edff8a084e}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!bytesize@{bytesize}}
+\index{bytesize@{bytesize}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{bytesize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , std\-::size\-\_\-t Size$>$ constexpr unsigned int magrathea\-::\-Data\-Handler\-::bytesize (
+\begin{DoxyParamCaption}
+\item[{const std\-::array$<$ Type, Size $>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a6707784777d7bf711da488edff8a084e}
+
+
+Size in bytes of an array. 
+
+Computes the sum of the size in bytes of elements of the passed array. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Array type.) \\
+\hline
+{\em Size} & (Array size.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em container} & Array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Size in bytes. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_aa8ceabc79d0ed2e208614e77672b1a10}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!bytesize@{bytesize}}
+\index{bytesize@{bytesize}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{bytesize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Current, typename... Types$>$ constexpr unsigned int magrathea\-::\-Data\-Handler\-::bytesize (
+\begin{DoxyParamCaption}
+\item[{const std\-::tuple$<$ Types...$>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_aa8ceabc79d0ed2e208614e77672b1a10}
+
+
+Size in bytes of a tuple. 
+
+Computes the sum of the size in bytes of elements of the passed tuple. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Current} & (Current level of recursion.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em container} & Tuple. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Size in bytes. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a2042e91ebc502db3edcf5256c0294c5f}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!byteswap@{byteswap}}
+\index{byteswap@{byteswap}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{byteswap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename... Types, class $>$ unsigned int magrathea\-::\-Data\-Handler\-::byteswap (
+\begin{DoxyParamCaption}
+\item[{const Types \&}]{...}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a2042e91ebc502db3edcf5256c0294c5f}
+
+
+Do not swap bytes. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Do not swap endianness if false. \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully byteswapped. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a4d89163c7346d993b9a17368c76673d2}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!byteswap@{byteswap}}
+\index{byteswap@{byteswap}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{byteswap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, class $>$ unsigned int magrathea\-::\-Data\-Handler\-::byteswap (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a4d89163c7346d993b9a17368c76673d2}
+
+
+Swap bytes of nothing. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness if true. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully byteswapped. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a5c6338a9f2e899a72c9d28526a27b4d5}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!byteswap@{byteswap}}
+\index{byteswap@{byteswap}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{byteswap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, class $>$ unsigned int magrathea\-::\-Data\-Handler\-::byteswap (
+\begin{DoxyParamCaption}
+\item[{std\-::tuple$<$$>$ \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a5c6338a9f2e899a72c9d28526a27b4d5}
+
+
+Swap bytes of an empty tuple. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness if true. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully byteswapped. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a8345c4082a891fc086d1030fc74750c8}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!byteswap@{byteswap}}
+\index{byteswap@{byteswap}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{byteswap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type, class $>$ unsigned int magrathea\-::\-Data\-Handler\-::byteswap (
+\begin{DoxyParamCaption}
+\item[{Type \&}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a8345c4082a891fc086d1030fc74750c8}
+
+
+Swap bytes of a single variable. 
+
+Inverts the order of bytes of the passed variable to change the endianness. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness if true. \\
+\hline
+{\em Type} & (Variable type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em variable} & Variable. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully byteswapped. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_aca66620abc29a4a2274a77426805f722}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!byteswap@{byteswap}}
+\index{byteswap@{byteswap}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{byteswap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type, typename... Types, class $>$ unsigned int magrathea\-::\-Data\-Handler\-::byteswap (
+\begin{DoxyParamCaption}
+\item[{Type \&}]{variable, }
+\item[{Types \&...}]{variables}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_aca66620abc29a4a2274a77426805f722}
+
+
+Swap bytes of several variables. 
+
+Inverts the order of bytes of the passed variables to change the endianness. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness if true. \\
+\hline
+{\em Type} & (Variable type.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em variable} & Variable. \\
+\hline
+\mbox{\tt in,out}  & {\em variables} & Variables. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully byteswapped. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a3fb1384e1306c02a233b474e5af34378}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!byteswap@{byteswap}}
+\index{byteswap@{byteswap}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{byteswap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type, std\-::size\-\_\-t Size, class $>$ unsigned int magrathea\-::\-Data\-Handler\-::byteswap (
+\begin{DoxyParamCaption}
+\item[{std\-::array$<$ Type, Size $>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a3fb1384e1306c02a233b474e5af34378}
+
+
+Swap bytes of an array. 
+
+Inverts the order of bytes of each element of the passed array to change the endianness. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness if true. \\
+\hline
+{\em Type} & (Array type.) \\
+\hline
+{\em Size} & (Array size.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em container} & Array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully byteswapped. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a46d3d574a4edcc3cd4f86a5e63fe7472}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!byteswap@{byteswap}}
+\index{byteswap@{byteswap}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{byteswap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, unsigned int Current, typename... Types, class $>$ unsigned int magrathea\-::\-Data\-Handler\-::byteswap (
+\begin{DoxyParamCaption}
+\item[{std\-::tuple$<$ Types...$>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a46d3d574a4edcc3cd4f86a5e63fe7472}
+
+
+Swap bytes of a tuple. 
+
+Inverts the order of bytes of each element of the passed tuple to change the endianness. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness if true. \\
+\hline
+{\em Current} & (Current level of recursion.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em container} & Tuple. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully byteswapped. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a51a6cff6e8a684d22e368ff56ca72fea}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!equalize@{equalize}}
+\index{equalize@{equalize}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{equalize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Reference $>$ unsigned int magrathea\-::\-Data\-Handler\-::equalize (
+\begin{DoxyParamCaption}
+\item[{const Reference \&}]{reference}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a51a6cff6e8a684d22e368ff56ca72fea}
+
+
+Equalize nothing. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Reference} & (Reference type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em reference} & Reference value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully set to the reference value. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a73254d7cfb56f9d49207670ce2f0bf46}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!equalize@{equalize}}
+\index{equalize@{equalize}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{equalize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Reference $>$ unsigned int magrathea\-::\-Data\-Handler\-::equalize (
+\begin{DoxyParamCaption}
+\item[{const Reference \&}]{reference, }
+\item[{std\-::tuple$<$$>$ \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a73254d7cfb56f9d49207670ce2f0bf46}
+
+
+Equalize an empty tuple. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Reference} & (Reference type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em reference} & Reference value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully set to the reference value. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a21aa49476bfdea5e3e1eb6db89610b6f}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!equalize@{equalize}}
+\index{equalize@{equalize}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{equalize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Reference , typename Type $>$ unsigned int magrathea\-::\-Data\-Handler\-::equalize (
+\begin{DoxyParamCaption}
+\item[{const Reference \&}]{reference, }
+\item[{Type \&}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a21aa49476bfdea5e3e1eb6db89610b6f}
+
+
+Equalize a single variable. 
+
+Set the passed variable to the reference value. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Reference} & (Reference type.) \\
+\hline
+{\em Type} & (Variable type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em reference} & Reference value. \\
+\hline
+\mbox{\tt out}  & {\em variable} & Variable. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully set to the reference value. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_ac30aa6d5b117ee5af179dba30b59025f}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!equalize@{equalize}}
+\index{equalize@{equalize}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{equalize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Reference , typename Type , typename... Types$>$ unsigned int magrathea\-::\-Data\-Handler\-::equalize (
+\begin{DoxyParamCaption}
+\item[{const Reference \&}]{reference, }
+\item[{Type \&}]{variable, }
+\item[{Types \&...}]{variables}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_ac30aa6d5b117ee5af179dba30b59025f}
+
+
+Equalize several variables. 
+
+Set the passed variables to the reference value. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Reference} & (Reference type.) \\
+\hline
+{\em Type} & (Variable type.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em reference} & Reference value. \\
+\hline
+\mbox{\tt out}  & {\em variable} & Variable. \\
+\hline
+\mbox{\tt out}  & {\em variables} & Variables. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully set to the reference value. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a91eaaf11ba2d7d2c56cb365b1f4fae05}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!equalize@{equalize}}
+\index{equalize@{equalize}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{equalize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Reference , typename Type , std\-::size\-\_\-t Size$>$ unsigned int magrathea\-::\-Data\-Handler\-::equalize (
+\begin{DoxyParamCaption}
+\item[{const Reference \&}]{reference, }
+\item[{std\-::array$<$ Type, Size $>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a91eaaf11ba2d7d2c56cb365b1f4fae05}
+
+
+Equalize an array. 
+
+Set each element of the passed array to the reference value. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Reference} & (Reference type.) \\
+\hline
+{\em Type} & (Array type.) \\
+\hline
+{\em Size} & (Array size.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em reference} & Reference value. \\
+\hline
+\mbox{\tt out}  & {\em container} & Array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully set to the reference value. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_ac081445d6585ad93c1420826eeb923c7}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!equalize@{equalize}}
+\index{equalize@{equalize}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{equalize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Current, typename Reference , typename... Types$>$ unsigned int magrathea\-::\-Data\-Handler\-::equalize (
+\begin{DoxyParamCaption}
+\item[{const Reference \&}]{reference, }
+\item[{std\-::tuple$<$ Types...$>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_ac081445d6585ad93c1420826eeb923c7}
+
+
+Equalize a tuple. 
+
+Set each element of the passed tuple to the reference value. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Current} & (Current level of recursion.) \\
+\hline
+{\em Reference} & (Reference type.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em reference} & Reference value. \\
+\hline
+\mbox{\tt out}  & {\em container} & Tuple. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully set to the reference value. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a480460d73295525655079a6a3a380660}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!example@{example}}
+\index{example@{example}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{example}]{\setlength{\rightskip}{0pt plus 5cm}int magrathea\-::\-Data\-Handler\-::example (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a480460d73295525655079a6a3a380660}
+
+
+Example function. 
+
+Tests and demonstrates the use of \hyperlink{exceptionmagrathea_1_1Timer}{Timer}. \begin{DoxyReturn}{Returns}
+0 if no error. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a2ced7c88930c8cb63f53ae8ccd7d8869}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!hexify@{hexify}}
+\index{hexify@{hexify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{hexify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, bool Uppercase$>$ std\-::string magrathea\-::\-Data\-Handler\-::hexify (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a2ced7c88930c8cb63f53ae8ccd7d8869}
+
+
+Convert nothing to a hexadecimal string. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap bytes of hexadecimal conversion if true. \\
+\hline
+{\em Uppercase} & Force uppercase letters for hexadecimal representation if true. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Hexadecimal representation of the input. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a5e509568af157f6b3fafaa6d7b77ee5d}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!hexify@{hexify}}
+\index{hexify@{hexify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{hexify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, bool Uppercase$>$ std\-::string magrathea\-::\-Data\-Handler\-::hexify (
+\begin{DoxyParamCaption}
+\item[{const std\-::tuple$<$$>$ \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a5e509568af157f6b3fafaa6d7b77ee5d}
+
+
+Convert an empty tuple to a hexadecimal string. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap bytes of hexadecimal conversion if true. \\
+\hline
+{\em Uppercase} & Force uppercase letters for hexadecimal representation if true. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Hexadecimal representation of the input. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_af6a8e6e71817c4ff9f3e09ffd2440713}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!hexify@{hexify}}
+\index{hexify@{hexify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{hexify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, bool Uppercase, typename Type $>$ std\-::string magrathea\-::\-Data\-Handler\-::hexify (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_af6a8e6e71817c4ff9f3e09ffd2440713}
+
+
+Convert a single variable to a hexadecimal string. 
+
+Converts bytes of the passed variable to their hexadecimal representation and returns the associated string. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap bytes of hexadecimal conversion if true. \\
+\hline
+{\em Uppercase} & Force uppercase letters for hexadecimal representation if true. \\
+\hline
+{\em Type} & (Variable type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em variable} & Variable. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Hexadecimal representation of the input. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a87cdcecdb302b79db66f8781d92d2a38}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!hexify@{hexify}}
+\index{hexify@{hexify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{hexify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, bool Uppercase, typename Type , typename... Types$>$ std\-::string magrathea\-::\-Data\-Handler\-::hexify (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{variable, }
+\item[{const Types \&...}]{variables}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a87cdcecdb302b79db66f8781d92d2a38}
+
+
+Convert several variables to a hexadecimal string. 
+
+Converts bytes of the passed variables to their hexadecimal representation and returns the associated string. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap bytes of hexadecimal conversion if true. \\
+\hline
+{\em Uppercase} & Force uppercase letters for hexadecimal representation if true. \\
+\hline
+{\em Type} & (Variable type.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em variable} & Variable. \\
+\hline
+\mbox{\tt in}  & {\em variables} & Variables. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Hexadecimal representation of the input. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a537df36d100df807e95e9fe4297ce788}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!hexify@{hexify}}
+\index{hexify@{hexify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{hexify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, bool Uppercase, typename Type , std\-::size\-\_\-t Size$>$ std\-::string magrathea\-::\-Data\-Handler\-::hexify (
+\begin{DoxyParamCaption}
+\item[{const std\-::array$<$ Type, Size $>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a537df36d100df807e95e9fe4297ce788}
+
+
+Convert an array to a hexadecimal string. 
+
+Converts bytes of each element of the passed array to their hexadecimal representation and returns the associated string. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap bytes of hexadecimal conversion if true. \\
+\hline
+{\em Uppercase} & Force uppercase letters for hexadecimal representation if true. \\
+\hline
+{\em Type} & (Array type.) \\
+\hline
+{\em Size} & (Array size.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em container} & Array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Hexadecimal representation of the input. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a93de73e7027c2dee8564b1520f319d3a}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!hexify@{hexify}}
+\index{hexify@{hexify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{hexify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, bool Uppercase, unsigned int Current, typename... Types$>$ std\-::string magrathea\-::\-Data\-Handler\-::hexify (
+\begin{DoxyParamCaption}
+\item[{const std\-::tuple$<$ Types...$>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a93de73e7027c2dee8564b1520f319d3a}
+
+
+Convert a tuple to a hexadecimal string. 
+
+Converts bytes of each element of the passed tuple to their hexadecimal representation and returns the associated string. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap bytes of hexadecimal conversion if true. \\
+\hline
+{\em Uppercase} & Force uppercase letters for hexadecimal representation if true. \\
+\hline
+{\em Current} & (Current level of recursion.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em container} & Tuple. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Hexadecimal representation of the input. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a7958f101a7437fe5ada971be5eceef32}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!nullify@{nullify}}
+\index{nullify@{nullify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{nullify}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int magrathea\-::\-Data\-Handler\-::nullify (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a7958f101a7437fe5ada971be5eceef32}
+
+
+Nullify nothing. 
+
+Function overload that does nothing. \begin{DoxyReturn}{Returns}
+Number of elements successfully set to zero. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_ad0026082d808e1bba847e0abdb142d61}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!nullify@{nullify}}
+\index{nullify@{nullify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{nullify}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int magrathea\-::\-Data\-Handler\-::nullify (
+\begin{DoxyParamCaption}
+\item[{std\-::tuple$<$$>$ \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_ad0026082d808e1bba847e0abdb142d61}
+
+
+Nullify an empty tuple. 
+
+Function overload that does nothing. \begin{DoxyReturn}{Returns}
+Number of elements successfully set to zero. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_aaa0ca7b9d5b2659fd567df2ceab1f0e7}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!nullify@{nullify}}
+\index{nullify@{nullify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{nullify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ unsigned int magrathea\-::\-Data\-Handler\-::nullify (
+\begin{DoxyParamCaption}
+\item[{Type \&}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_aaa0ca7b9d5b2659fd567df2ceab1f0e7}
+
+
+Nullify a single variable. 
+
+Calls the constructor of the passed variable to nullify it. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Variable type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em variable} & Variable. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully set to zero. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_ab7f14c311ad2d5f0f6faaef4383db779}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!nullify@{nullify}}
+\index{nullify@{nullify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{nullify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , typename... Types$>$ unsigned int magrathea\-::\-Data\-Handler\-::nullify (
+\begin{DoxyParamCaption}
+\item[{Type \&}]{variable, }
+\item[{Types \&...}]{variables}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_ab7f14c311ad2d5f0f6faaef4383db779}
+
+
+Nullify several variables. 
+
+Calls the constructor of the passed variables to nullify them. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Variable type.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em variable} & Variable. \\
+\hline
+\mbox{\tt out}  & {\em variables} & Variables. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully set to zero. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a88ed5c28c8d5eb5b66338af0e1018852}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!nullify@{nullify}}
+\index{nullify@{nullify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{nullify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , std\-::size\-\_\-t Size$>$ unsigned int magrathea\-::\-Data\-Handler\-::nullify (
+\begin{DoxyParamCaption}
+\item[{std\-::array$<$ Type, Size $>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a88ed5c28c8d5eb5b66338af0e1018852}
+
+
+Nullify an array. 
+
+Calls the constructor of each element of the passed array to nullify it. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Array type.) \\
+\hline
+{\em Size} & (Array size.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em container} & Array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully set to zero. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a87e291616af2fba57c18aa231eefd333}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!nullify@{nullify}}
+\index{nullify@{nullify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{nullify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Current, typename... Types$>$ unsigned int magrathea\-::\-Data\-Handler\-::nullify (
+\begin{DoxyParamCaption}
+\item[{std\-::tuple$<$ Types...$>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a87e291616af2fba57c18aa231eefd333}
+
+
+Nullify a tuple. 
+
+Calls the constructor of each element of the passed tuple to nullify it. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Current} & (Current level of recursion.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em container} & Tuple. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully set to zero. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a1e2ce163626bd93089e4f06ad7402eb5}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!print@{print}}
+\index{print@{print}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-Data\-Handler\-::print (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a1e2ce163626bd93089e4f06ad7402eb5}
+
+
+Print nothing to stream. 
+
+Function overload that does nothing. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionOutput}{Output} stream. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a3517e714a8fb5b5e3bf426fb3a2b9e60}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!print@{print}}
+\index{print@{print}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-Data\-Handler\-::print (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{const std\-::tuple$<$$>$ \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a3517e714a8fb5b5e3bf426fb3a2b9e60}
+
+
+Print an empty tuple to stream. 
+
+Function overload that does nothing. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionOutput}{Output} stream. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a47a27564c6dc2ed89a013300f9fca57a}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!print@{print}}
+\index{print@{print}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ bool magrathea\-::\-Data\-Handler\-::print (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{const Type \&}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a47a27564c6dc2ed89a013300f9fca57a}
+
+
+Print a single variable to stream. 
+
+Prints the next variable to the stream. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Variable type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionOutput}{Output} stream. \\
+\hline
+\mbox{\tt in}  & {\em variable} & Variable. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a0e0717030f561af1bd430228d2344c52}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!print@{print}}
+\index{print@{print}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , typename... Types$>$ bool magrathea\-::\-Data\-Handler\-::print (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{const Type \&}]{variable, }
+\item[{const Types \&...}]{variables}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a0e0717030f561af1bd430228d2344c52}
+
+
+Print several variables to stream. 
+
+Prints the next variables to the stream. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Variable type.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionOutput}{Output} stream. \\
+\hline
+\mbox{\tt in}  & {\em variable} & Variable. \\
+\hline
+\mbox{\tt in}  & {\em variables} & Variables. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a0a368733a11174f5cd268e7ccdd060d9}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!print@{print}}
+\index{print@{print}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , std\-::size\-\_\-t Size$>$ bool magrathea\-::\-Data\-Handler\-::print (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{const std\-::array$<$ Type, Size $>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a0a368733a11174f5cd268e7ccdd060d9}
+
+
+Print an array to stream. 
+
+Prints each element of the passed array to the stream. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Array type.) \\
+\hline
+{\em Size} & (Array size.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionOutput}{Output} stream. \\
+\hline
+\mbox{\tt in}  & {\em container} & Array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a9b3a922b97c206664e1333240e82d9e2}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!print@{print}}
+\index{print@{print}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Current, typename... Types$>$ bool magrathea\-::\-Data\-Handler\-::print (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{const std\-::tuple$<$ Types...$>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a9b3a922b97c206664e1333240e82d9e2}
+
+
+Print a tuple to stream. 
+
+Prints each element of the passed tuple to the stream. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Current} & (Current level of recursion.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionOutput}{Output} stream. \\
+\hline
+\mbox{\tt in}  & {\em container} & Tuple. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_ae01a7da121ecba94a7bdc81fff5be3d5}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rbytesize@{rbytesize}}
+\index{rbytesize@{rbytesize}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rbytesize}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long long int magrathea\-::\-Data\-Handler\-::rbytesize (
+\begin{DoxyParamCaption}
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}, }
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_ae01a7da121ecba94a7bdc81fff5be3d5}
+
+
+Size in bytes of an empty range. 
+
+Function overload that does nothing. \begin{DoxyReturn}{Returns}
+Size in bytes. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_ae3bc23ee6136da25ec8d15bc875298cb}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rbytesize@{rbytesize}}
+\index{rbytesize@{rbytesize}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rbytesize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ unsigned long long int magrathea\-::\-Data\-Handler\-::rbytesize (
+\begin{DoxyParamCaption}
+\item[{const Type $\ast$const}]{first, }
+\item[{const Type $\ast$const}]{last}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_ae3bc23ee6136da25ec8d15bc875298cb}
+
+
+Size in bytes of a range between pointers. 
+
+Computes the sum of the size in bytes of the elements of the range between the passed pointers. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Pointer type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & Pointer to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Pointer to the end. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Size in bytes. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a2e7e977cac2277aa42a2fa52f84366a6}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rbytesize@{rbytesize}}
+\index{rbytesize@{rbytesize}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rbytesize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class $>$ unsigned long long int magrathea\-::\-Data\-Handler\-::rbytesize (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{first, }
+\item[{const Type \&}]{last, }
+\item[{typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a2e7e977cac2277aa42a2fa52f84366a6}
+
+
+Size in bytes of a range between iterators. 
+
+Computes the sum of the size in bytes of the range between the passed iterators. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Iterator type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & Iterator to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Iterator to the end. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Size in bytes. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a1ab69b0bf24969449ee0b986f2a19139}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rbyteswap@{rbyteswap}}
+\index{rbyteswap@{rbyteswap}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rbyteswap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename... Types, class $>$ unsigned int magrathea\-::\-Data\-Handler\-::rbyteswap (
+\begin{DoxyParamCaption}
+\item[{const Types \&}]{...}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a1ab69b0bf24969449ee0b986f2a19139}
+
+
+Do not swap bytes of a range. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Do not swap endianness if false. \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully byteswapped. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a177dfd5de3d487fe6324fac41c1f3871}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rbyteswap@{rbyteswap}}
+\index{rbyteswap@{rbyteswap}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rbyteswap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, class $>$ unsigned long long int magrathea\-::\-Data\-Handler\-::rbyteswap (
+\begin{DoxyParamCaption}
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}, }
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a177dfd5de3d487fe6324fac41c1f3871}
+
+
+Swap bytes of an empty range. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness if true. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully byteswapped. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a97f17ea461a0969ff4a6e44723c3bfd7}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rbyteswap@{rbyteswap}}
+\index{rbyteswap@{rbyteswap}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rbyteswap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type, class $>$ unsigned long long int magrathea\-::\-Data\-Handler\-::rbyteswap (
+\begin{DoxyParamCaption}
+\item[{Type $\ast$const}]{first, }
+\item[{Type $\ast$const}]{last}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a97f17ea461a0969ff4a6e44723c3bfd7}
+
+
+Swap bytes of a range between pointers. 
+
+Inverts the order of bytes of each element of the range between the passed pointers. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness if true. \\
+\hline
+{\em Type} & (Pointer type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & Pointer to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Pointer to the end. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully byteswapped. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a0c784af750a3869cd3f1d7c338c22e4e}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rbyteswap@{rbyteswap}}
+\index{rbyteswap@{rbyteswap}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rbyteswap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type, class $>$ unsigned long long int magrathea\-::\-Data\-Handler\-::rbyteswap (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{first, }
+\item[{const Type \&}]{last, }
+\item[{typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a0c784af750a3869cd3f1d7c338c22e4e}
+
+
+Swap bytes of a range between iterators. 
+
+Inverts the order of bytes of each element of the range between the passed iterators. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness if true. \\
+\hline
+{\em Type} & (Iterator type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & Iterator to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Iterator to the end. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully byteswapped. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_ae34eaeb6faf631309cb9000316771377}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!read@{read}}
+\index{read@{read}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap$>$ bool magrathea\-::\-Data\-Handler\-::read (
+\begin{DoxyParamCaption}
+\item[{std\-::istream \&}]{stream}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_ae34eaeb6faf631309cb9000316771377}
+
+
+Read nothing from stream. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness after reading if true. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionInput}{Input} stream. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a3b2d2a3c03f6fae7ce3fc7c54e3808aa}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!read@{read}}
+\index{read@{read}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap$>$ bool magrathea\-::\-Data\-Handler\-::read (
+\begin{DoxyParamCaption}
+\item[{std\-::istream \&}]{stream, }
+\item[{std\-::tuple$<$$>$ \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a3b2d2a3c03f6fae7ce3fc7c54e3808aa}
+
+
+Read an empty tuple from stream. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness after reading if true. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionInput}{Input} stream. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a8a9ffe306dfa1cbc4dfc27d0bab1385f}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!read@{read}}
+\index{read@{read}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type $>$ bool magrathea\-::\-Data\-Handler\-::read (
+\begin{DoxyParamCaption}
+\item[{std\-::istream \&}]{stream, }
+\item[{Type \&}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a8a9ffe306dfa1cbc4dfc27d0bab1385f}
+
+
+Read a single variable from stream. 
+
+Reads the next variable from the stream and swap bytes if necessary. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness after reading if true. \\
+\hline
+{\em Type} & (Variable type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionInput}{Input} stream. \\
+\hline
+\mbox{\tt out}  & {\em variable} & Variable. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a67649218acd759dde8b1d9617a36219f}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!read@{read}}
+\index{read@{read}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type , typename... Types$>$ bool magrathea\-::\-Data\-Handler\-::read (
+\begin{DoxyParamCaption}
+\item[{std\-::istream \&}]{stream, }
+\item[{Type \&}]{variable, }
+\item[{Types \&...}]{variables}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a67649218acd759dde8b1d9617a36219f}
+
+
+Read several variables from stream. 
+
+Reads the next variables from the stream and swap bytes if necessary. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness after reading if true. \\
+\hline
+{\em Type} & (Variable type.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionInput}{Input} stream. \\
+\hline
+\mbox{\tt out}  & {\em variable} & Variable. \\
+\hline
+\mbox{\tt out}  & {\em variables} & Variables. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a2bf9d85128f5bccff6f9d764120cd49f}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!read@{read}}
+\index{read@{read}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type , std\-::size\-\_\-t Size$>$ bool magrathea\-::\-Data\-Handler\-::read (
+\begin{DoxyParamCaption}
+\item[{std\-::istream \&}]{stream, }
+\item[{std\-::array$<$ Type, Size $>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a2bf9d85128f5bccff6f9d764120cd49f}
+
+
+Read an array from stream. 
+
+Reads each element of the passed array from the stream and swap bytes if necessary. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness after reading if true. \\
+\hline
+{\em Type} & (Array type.) \\
+\hline
+{\em Size} & (Array size.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionInput}{Input} stream. \\
+\hline
+\mbox{\tt out}  & {\em container} & Array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_ac1b5efbb028f2464bfbe669707e57c8f}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!read@{read}}
+\index{read@{read}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, unsigned int Current, typename... Types$>$ bool magrathea\-::\-Data\-Handler\-::read (
+\begin{DoxyParamCaption}
+\item[{std\-::istream \&}]{stream, }
+\item[{std\-::tuple$<$ Types...$>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_ac1b5efbb028f2464bfbe669707e57c8f}
+
+
+Read a tuple from stream. 
+
+Reads each element of the passed tuple from the stream and swap bytes if necessary. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness after reading if true. \\
+\hline
+{\em Current} & (Current level of recursion.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionInput}{Input} stream. \\
+\hline
+\mbox{\tt out}  & {\em container} & Tuple. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_abb1758c0b2f72e48f5ef7db95b016ccf}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!read@{read}}
+\index{read@{read}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap$>$ char $\ast$\& magrathea\-::\-Data\-Handler\-::read (
+\begin{DoxyParamCaption}
+\item[{char $\ast$\&}]{buffer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_abb1758c0b2f72e48f5ef7db95b016ccf}
+
+
+Read nothing from buffer. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness after reading if true. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em buffer} & \hyperlink{exceptionInput}{Input} buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the new position in the buffer. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a4fb8e4a637b6f4c3c798b1b94e568007}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!read@{read}}
+\index{read@{read}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap$>$ char $\ast$\& magrathea\-::\-Data\-Handler\-::read (
+\begin{DoxyParamCaption}
+\item[{char $\ast$\&}]{buffer, }
+\item[{std\-::tuple$<$$>$ \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a4fb8e4a637b6f4c3c798b1b94e568007}
+
+
+Read an empty tuple from buffer. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness after reading if true. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em buffer} & \hyperlink{exceptionInput}{Input} buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the new position in the buffer. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_aa8fe6c9d3f4a56d178898ba64cdc93f8}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!read@{read}}
+\index{read@{read}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type $>$ char $\ast$\& magrathea\-::\-Data\-Handler\-::read (
+\begin{DoxyParamCaption}
+\item[{char $\ast$\&}]{buffer, }
+\item[{Type \&}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_aa8fe6c9d3f4a56d178898ba64cdc93f8}
+
+
+Read a single variable from buffer. 
+
+Reads the next variable from the buffer and swap bytes if necessary. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness after reading if true. \\
+\hline
+{\em Type} & (Variable type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em buffer} & \hyperlink{exceptionInput}{Input} buffer. \\
+\hline
+\mbox{\tt out}  & {\em variable} & Variable. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the new position in the buffer. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_ae73602c0c41147651f1ce8c7cbc206f6}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!read@{read}}
+\index{read@{read}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type , typename... Types$>$ char $\ast$\& magrathea\-::\-Data\-Handler\-::read (
+\begin{DoxyParamCaption}
+\item[{char $\ast$\&}]{buffer, }
+\item[{Type \&}]{variable, }
+\item[{Types \&...}]{variables}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_ae73602c0c41147651f1ce8c7cbc206f6}
+
+
+Read several variables from buffer. 
+
+Reads the next variables from the buffer and swap bytes if necessary. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness after reading if true. \\
+\hline
+{\em Type} & (Variable type.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em buffer} & \hyperlink{exceptionInput}{Input} buffer. \\
+\hline
+\mbox{\tt out}  & {\em variable} & Variable. \\
+\hline
+\mbox{\tt out}  & {\em variables} & Variables. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the new position in the buffer. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a6d8fa8651ee32050d8eb6eaf435db2c7}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!read@{read}}
+\index{read@{read}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type , std\-::size\-\_\-t Size$>$ char $\ast$\& magrathea\-::\-Data\-Handler\-::read (
+\begin{DoxyParamCaption}
+\item[{char $\ast$\&}]{buffer, }
+\item[{std\-::array$<$ Type, Size $>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a6d8fa8651ee32050d8eb6eaf435db2c7}
+
+
+Read an array from buffer. 
+
+Reads each element of the passed array from the buffer and swap bytes if necessary. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness after reading if true. \\
+\hline
+{\em Type} & (Array type.) \\
+\hline
+{\em Size} & (Array size.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em buffer} & \hyperlink{exceptionInput}{Input} buffer. \\
+\hline
+\mbox{\tt out}  & {\em container} & Array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the new position in the buffer. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a21f7805b4e77bb9ab70c5d2f2bee08f3}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!read@{read}}
+\index{read@{read}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, unsigned int Current, typename... Types$>$ char $\ast$\& magrathea\-::\-Data\-Handler\-::read (
+\begin{DoxyParamCaption}
+\item[{char $\ast$\&}]{buffer, }
+\item[{std\-::tuple$<$ Types...$>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a21f7805b4e77bb9ab70c5d2f2bee08f3}
+
+
+Read a tuple from buffer. 
+
+Reads each element of the passed tuple from the buffer and swap bytes if necessary. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness after reading if true. \\
+\hline
+{\em Current} & (Current level of recursion.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em buffer} & \hyperlink{exceptionInput}{Input} buffer. \\
+\hline
+\mbox{\tt out}  & {\em container} & Tuple. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the new position in the buffer. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_afd9f3ea4fce203ea1aca7b855397d76a}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!requalize@{requalize}}
+\index{requalize@{requalize}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{requalize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Reference $>$ unsigned long long int magrathea\-::\-Data\-Handler\-::requalize (
+\begin{DoxyParamCaption}
+\item[{const Reference \&}]{reference, }
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}, }
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_afd9f3ea4fce203ea1aca7b855397d76a}
+
+
+Equalize an empty range. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Reference} & (Reference type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em reference} & Reference value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully set to the reference value. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_af9782498c2008f965392c3d497461bcb}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!requalize@{requalize}}
+\index{requalize@{requalize}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{requalize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Reference , typename Type $>$ unsigned long long int magrathea\-::\-Data\-Handler\-::requalize (
+\begin{DoxyParamCaption}
+\item[{const Reference \&}]{reference, }
+\item[{Type $\ast$const}]{first, }
+\item[{Type $\ast$const}]{last}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_af9782498c2008f965392c3d497461bcb}
+
+
+Equalize a range between pointers. 
+
+Set each element of the range between the passed pointers to the reference value. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Reference} & (Reference type.) \\
+\hline
+{\em Type} & (Pointer type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em reference} & Reference value. \\
+\hline
+\mbox{\tt in}  & {\em first} & Pointer to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Pointer to the end. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully set to the reference value. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a199258bc8b5a5e25e696322722538bca}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!requalize@{requalize}}
+\index{requalize@{requalize}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{requalize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Reference , typename Type , class $>$ unsigned long long int magrathea\-::\-Data\-Handler\-::requalize (
+\begin{DoxyParamCaption}
+\item[{const Reference \&}]{reference, }
+\item[{const Type \&}]{first, }
+\item[{const Type \&}]{last, }
+\item[{typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a199258bc8b5a5e25e696322722538bca}
+
+
+Equalize a range between iterators. 
+
+Set each element of the range between the passed iterators to the reference value. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Reference} & (Reference type.) \\
+\hline
+{\em Type} & (Iterator type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em reference} & Reference value. \\
+\hline
+\mbox{\tt in}  & {\em first} & Iterator to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Iterator to the end. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully set to the reference value. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_ad7bf3950e2fb436e59e3ad8d22630601}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rhexify@{rhexify}}
+\index{rhexify@{rhexify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rhexify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, bool Uppercase$>$ std\-::string magrathea\-::\-Data\-Handler\-::rhexify (
+\begin{DoxyParamCaption}
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}, }
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}, }
+\item[{const std\-::string \&}]{separator = {\ttfamily \char`\"{}~\char`\"{}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_ad7bf3950e2fb436e59e3ad8d22630601}
+
+
+Convert an empty range to a hexadecimal string. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap bytes of hexadecimal conversion if true. \\
+\hline
+{\em Uppercase} & Force uppercase letters for hexadecimal representation if true. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em separator} & String used as a separator between elements. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Hexadecimal representation of the input. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_ae12d94dd9d65f7e5ff945d33312f5d28}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rhexify@{rhexify}}
+\index{rhexify@{rhexify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rhexify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, bool Uppercase, typename Type $>$ std\-::string magrathea\-::\-Data\-Handler\-::rhexify (
+\begin{DoxyParamCaption}
+\item[{const Type $\ast$const}]{first, }
+\item[{const Type $\ast$const}]{last, }
+\item[{const std\-::string \&}]{separator = {\ttfamily \char`\"{}~\char`\"{}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_ae12d94dd9d65f7e5ff945d33312f5d28}
+
+
+Convert a range between pointers to a hexadecimal string. 
+
+Converts bytes of each element of the range between the passed pointers to their hexadecimal representation and returns the associated string. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap bytes of hexadecimal conversion if true. \\
+\hline
+{\em Uppercase} & Force uppercase letters for hexadecimal representation if true. \\
+\hline
+{\em Type} & (Pointer type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & Pointer to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Pointer to the end. \\
+\hline
+\mbox{\tt in}  & {\em separator} & String used as a separator between elements. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Hexadecimal representation of the input. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a1e1f477485c16c5d5221288531453492}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rhexify@{rhexify}}
+\index{rhexify@{rhexify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rhexify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, bool Uppercase, typename Type , class $>$ std\-::string magrathea\-::\-Data\-Handler\-::rhexify (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{first, }
+\item[{const Type \&}]{last, }
+\item[{const std\-::string \&}]{separator = {\ttfamily \char`\"{}~\char`\"{}}, }
+\item[{typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a1e1f477485c16c5d5221288531453492}
+
+
+Convert a range between iterators to a hexadecimal string. 
+
+Converts bytes of each element of the range between the passed iterators to their hexadecimal representation and returns the associated string. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap bytes of hexadecimal conversion if true. \\
+\hline
+{\em Uppercase} & Force uppercase letters for hexadecimal representation if true. \\
+\hline
+{\em Type} & (Iterator type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & Iterator to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Iterator to the end. \\
+\hline
+\mbox{\tt in}  & {\em separator} & String used as a separator between elements. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Hexadecimal representation of the input. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_abb826ede36fd580ea709a19fc71a3e90}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rnullify@{rnullify}}
+\index{rnullify@{rnullify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rnullify}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long long int magrathea\-::\-Data\-Handler\-::rnullify (
+\begin{DoxyParamCaption}
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}, }
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_abb826ede36fd580ea709a19fc71a3e90}
+
+
+Nullify an empty range. 
+
+Function overload that does nothing. \begin{DoxyReturn}{Returns}
+Number of elements successfully set to zero. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a370472a1aadc46f879801bf1132ab26b}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rnullify@{rnullify}}
+\index{rnullify@{rnullify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rnullify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ unsigned long long int magrathea\-::\-Data\-Handler\-::rnullify (
+\begin{DoxyParamCaption}
+\item[{Type $\ast$const}]{first, }
+\item[{Type $\ast$const}]{last}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a370472a1aadc46f879801bf1132ab26b}
+
+
+Nullify a range between pointers. 
+
+Calls the constructor of each element of the range between the passed pointers. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Pointer type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & Pointer to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Pointer to the end. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully set to zero. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a040f6e76e4af90f1e3b696172cfbe48a}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rnullify@{rnullify}}
+\index{rnullify@{rnullify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rnullify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class $>$ unsigned long long int magrathea\-::\-Data\-Handler\-::rnullify (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{first, }
+\item[{const Type \&}]{last, }
+\item[{typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a040f6e76e4af90f1e3b696172cfbe48a}
+
+
+Nullify a range between iterators. 
+
+Calls the constructor of each element of the range between the passed iterators. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Iterator type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & Iterator to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Iterator to the end. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements successfully set to zero. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a881ef2cae9609cbbb2f3e3f77443c0bb}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rprint@{rprint}}
+\index{rprint@{rprint}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rprint}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-Data\-Handler\-::rprint (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}, }
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a881ef2cae9609cbbb2f3e3f77443c0bb}
+
+
+Print an empty range to stream. 
+
+Function overload that does nothing. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionOutput}{Output} stream. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a4874d6bc840ee89a485fdcc3ce341031}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rprint@{rprint}}
+\index{rprint@{rprint}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rprint}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ bool magrathea\-::\-Data\-Handler\-::rprint (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{const Type $\ast$const}]{first, }
+\item[{const Type $\ast$const}]{last}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a4874d6bc840ee89a485fdcc3ce341031}
+
+
+Print a range between pointers to stream. 
+
+Prints each element of the range between the passed pointers to the stream. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Pointer type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionOutput}{Output} stream. \\
+\hline
+\mbox{\tt in}  & {\em first} & Pointer to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Pointer to the end. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a6677d3414ea7c4d76662ce56d4320801}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rprint@{rprint}}
+\index{rprint@{rprint}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rprint}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class $>$ bool magrathea\-::\-Data\-Handler\-::rprint (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{const Type \&}]{first, }
+\item[{const Type \&}]{last, }
+\item[{typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a6677d3414ea7c4d76662ce56d4320801}
+
+
+Print a range between iterators to stream. 
+
+Prints each element of the range between the passed iterators to the stream. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Iterator type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionOutput}{Output} stream. \\
+\hline
+\mbox{\tt in}  & {\em first} & Iterator to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Iterator to the end. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a309a1e2e9fa64e1fa5bcae1dbd9b1f86}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rread@{rread}}
+\index{rread@{rread}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rread}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap$>$ bool magrathea\-::\-Data\-Handler\-::rread (
+\begin{DoxyParamCaption}
+\item[{std\-::istream \&}]{stream, }
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}, }
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a309a1e2e9fa64e1fa5bcae1dbd9b1f86}
+
+
+Read an empty range from stream. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness after reading if true. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionInput}{Input} stream. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a5e4dc7bdf1e1ae704aafb92a1c3fe10e}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rread@{rread}}
+\index{rread@{rread}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rread}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type $>$ bool magrathea\-::\-Data\-Handler\-::rread (
+\begin{DoxyParamCaption}
+\item[{std\-::istream \&}]{stream, }
+\item[{Type $\ast$const}]{first, }
+\item[{Type $\ast$const}]{last}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a5e4dc7bdf1e1ae704aafb92a1c3fe10e}
+
+
+Read a range between pointers from stream. 
+
+Reads each element of the range between the passed pointers from the stream and swap bytes if necessary. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness after reading if true. \\
+\hline
+{\em Type} & (Pointer type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionInput}{Input} stream. \\
+\hline
+\mbox{\tt in}  & {\em first} & Pointer to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Pointer to the end. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a6a1f5e10ee3ccfbde1b7a0f0cdd9bcf2}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rread@{rread}}
+\index{rread@{rread}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rread}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type , class $>$ bool magrathea\-::\-Data\-Handler\-::rread (
+\begin{DoxyParamCaption}
+\item[{std\-::istream \&}]{stream, }
+\item[{const Type \&}]{first, }
+\item[{const Type \&}]{last, }
+\item[{typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a6a1f5e10ee3ccfbde1b7a0f0cdd9bcf2}
+
+
+Read a range between iterators from stream. 
+
+Reads each element of the range between the passed iterators from the stream and swap bytes if necessary. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness after reading if true. \\
+\hline
+{\em Type} & (Iterator type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionInput}{Input} stream. \\
+\hline
+\mbox{\tt in}  & {\em first} & Iterator to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Iterator to the end. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_acdd7431815561c8616e157b6789afff0}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rread@{rread}}
+\index{rread@{rread}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rread}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap$>$ char $\ast$\& magrathea\-::\-Data\-Handler\-::rread (
+\begin{DoxyParamCaption}
+\item[{char $\ast$\&}]{buffer, }
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}, }
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_acdd7431815561c8616e157b6789afff0}
+
+
+Read an empty range from buffer. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness after reading if true. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em buffer} & \hyperlink{exceptionInput}{Input} buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the new position in the buffer. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a6728414b1976483a9d82af54588e62b9}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rread@{rread}}
+\index{rread@{rread}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rread}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type $>$ char $\ast$\& magrathea\-::\-Data\-Handler\-::rread (
+\begin{DoxyParamCaption}
+\item[{char $\ast$\&}]{buffer, }
+\item[{Type $\ast$const}]{first, }
+\item[{Type $\ast$const}]{last}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a6728414b1976483a9d82af54588e62b9}
+
+
+Read a range between pointers from buffer. 
+
+Reads each element of the range between the passed pointers from the buffer and swap bytes if necessary. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness after reading if true. \\
+\hline
+{\em Type} & (Pointer type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em buffer} & \hyperlink{exceptionInput}{Input} buffer. \\
+\hline
+\mbox{\tt in}  & {\em first} & Pointer to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Pointer to the end. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the new position in the buffer. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_aaef7aa4fc02e64ac7c2d02b413a6dffd}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rread@{rread}}
+\index{rread@{rread}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rread}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type , class $>$ char $\ast$\& magrathea\-::\-Data\-Handler\-::rread (
+\begin{DoxyParamCaption}
+\item[{char $\ast$\&}]{buffer, }
+\item[{const Type \&}]{first, }
+\item[{const Type \&}]{last, }
+\item[{typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_aaef7aa4fc02e64ac7c2d02b413a6dffd}
+
+
+Read a range between iterators from buffer. 
+
+Reads each element of the range between the passed iterators from the buffer and swap bytes if necessary. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness after reading if true. \\
+\hline
+{\em Type} & (Iterator type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em buffer} & \hyperlink{exceptionInput}{Input} buffer. \\
+\hline
+\mbox{\tt in}  & {\em first} & Iterator to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Iterator to the end. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the new position in the buffer. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_ab5f1d27ed688fd6886c19eebae03d4be}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rscan@{rscan}}
+\index{rscan@{rscan}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rscan}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-Data\-Handler\-::rscan (
+\begin{DoxyParamCaption}
+\item[{std\-::istream \&}]{stream, }
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}, }
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_ab5f1d27ed688fd6886c19eebae03d4be}
+
+
+Scan an empty range from stream. 
+
+Function overload that does nothing. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionInput}{Input} stream. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a48cd90a288bcb730d481bf475d6918fa}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rscan@{rscan}}
+\index{rscan@{rscan}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rscan}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ bool magrathea\-::\-Data\-Handler\-::rscan (
+\begin{DoxyParamCaption}
+\item[{std\-::istream \&}]{stream, }
+\item[{Type $\ast$const}]{first, }
+\item[{Type $\ast$const}]{last}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a48cd90a288bcb730d481bf475d6918fa}
+
+
+Scan a range between pointers from stream. 
+
+Scans each element of the range between the passed pointers from the stream. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Pointer type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionInput}{Input} stream. \\
+\hline
+\mbox{\tt in}  & {\em first} & Pointer to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Pointer to the end. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_ae8d23e8cc8b4ac2983e1e84c8120f30c}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rscan@{rscan}}
+\index{rscan@{rscan}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rscan}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class $>$ bool magrathea\-::\-Data\-Handler\-::rscan (
+\begin{DoxyParamCaption}
+\item[{std\-::istream \&}]{stream, }
+\item[{const Type \&}]{first, }
+\item[{const Type \&}]{last, }
+\item[{typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_ae8d23e8cc8b4ac2983e1e84c8120f30c}
+
+
+Scan a range between iterators from stream. 
+
+Scans each element of the range between the passed iterators from the stream. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Iterator type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionInput}{Input} stream. \\
+\hline
+\mbox{\tt in}  & {\em first} & Iterator to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Iterator to the end. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_ae024501895c9baf0b3fee0b73f53405a}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rsize@{rsize}}
+\index{rsize@{rsize}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rsize}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long long int magrathea\-::\-Data\-Handler\-::rsize (
+\begin{DoxyParamCaption}
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}, }
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_ae024501895c9baf0b3fee0b73f53405a}
+
+
+Number of elements of an empty range. 
+
+Function overload that does nothing. \begin{DoxyReturn}{Returns}
+Number of elements. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a453860a6574a579ae466ea72039b3946}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rsize@{rsize}}
+\index{rsize@{rsize}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rsize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ unsigned long long int magrathea\-::\-Data\-Handler\-::rsize (
+\begin{DoxyParamCaption}
+\item[{const Type $\ast$const}]{first, }
+\item[{const Type $\ast$const}]{last}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a453860a6574a579ae466ea72039b3946}
+
+
+Number of elements of a range between pointers. 
+
+Computes the number of elements of the range between the passed pointers. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Pointer type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & Pointer to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Pointer to the end. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a5e965f35cd0f3950c21292f440f9da9f}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rsize@{rsize}}
+\index{rsize@{rsize}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rsize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class $>$ unsigned long long int magrathea\-::\-Data\-Handler\-::rsize (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{first, }
+\item[{const Type \&}]{last, }
+\item[{typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a5e965f35cd0f3950c21292f440f9da9f}
+
+
+Number of elements of a range between iterators. 
+
+Computes the number of elements of the range between the passed iterators. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Iterator type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & Iterator to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Iterator to the end. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a0db434fc9459ef0f11890cef1e222ad7}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rstringify@{rstringify}}
+\index{rstringify@{rstringify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rstringify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Base, char Leading$>$ std\-::string magrathea\-::\-Data\-Handler\-::rstringify (
+\begin{DoxyParamCaption}
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}, }
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}, }
+\item[{const std\-::string \&}]{separator = {\ttfamily \char`\"{}~\char`\"{}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a0db434fc9459ef0f11890cef1e222ad7}
+
+
+Convert an empty range to a string. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Base} & Base representation for integers \-: 2, 8, 10 or 16. \\
+\hline
+{\em Leading} & Leading character for integers \-: 0, 9-\/13 or 32-\/126. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em separator} & String used as a separator between elements. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String conversion of arguments. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_af9e7e01b71aa9f81babfbe16f623aa7b}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rstringify@{rstringify}}
+\index{rstringify@{rstringify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rstringify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Base, char Leading, typename Type $>$ std\-::string magrathea\-::\-Data\-Handler\-::rstringify (
+\begin{DoxyParamCaption}
+\item[{const Type $\ast$const}]{first, }
+\item[{const Type $\ast$const}]{last, }
+\item[{const std\-::string \&}]{separator = {\ttfamily \char`\"{}~\char`\"{}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_af9e7e01b71aa9f81babfbe16f623aa7b}
+
+
+Convert a range between pointers to a string. 
+
+Converts each element of the range between the passed pointers to a string. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Base} & Base representation for integers \-: 2, 8, 10 or 16. \\
+\hline
+{\em Leading} & Leading character for integers \-: 0, 9-\/13 or 32-\/126. \\
+\hline
+{\em Type} & (Pointer type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & Pointer to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Pointer to the end. \\
+\hline
+\mbox{\tt in}  & {\em separator} & String used as a separator between elements. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String conversion of arguments. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_ac55cfb860edddeed639be96c6bb6a83f}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rstringify@{rstringify}}
+\index{rstringify@{rstringify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rstringify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Base, char Leading, typename Type , class $>$ std\-::string magrathea\-::\-Data\-Handler\-::rstringify (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{first, }
+\item[{const Type \&}]{last, }
+\item[{const std\-::string \&}]{separator = {\ttfamily \char`\"{}~\char`\"{}}, }
+\item[{typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_ac55cfb860edddeed639be96c6bb6a83f}
+
+
+Convert a range between iterators to a string. 
+
+Converts each element of the range between the passed iterators to a string. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Base} & Base representation for integers \-: 2, 8, 10 or 16. \\
+\hline
+{\em Leading} & Leading character for integers \-: 0, 9-\/13 or 32-\/126. \\
+\hline
+{\em Type} & (Iterator type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & Iterator to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Iterator to the end. \\
+\hline
+\mbox{\tt in}  & {\em separator} & String used as a separator between elements. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String conversion of arguments. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a89a51db0939e9deba460b19b46f068c9}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rwrite@{rwrite}}
+\index{rwrite@{rwrite}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rwrite}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap$>$ bool magrathea\-::\-Data\-Handler\-::rwrite (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}, }
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a89a51db0939e9deba460b19b46f068c9}
+
+
+Write an empty range to stream. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness for writing if true. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionOutput}{Output} stream. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a31a3828a7b517b518fdbae8bc0662053}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rwrite@{rwrite}}
+\index{rwrite@{rwrite}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rwrite}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type $>$ bool magrathea\-::\-Data\-Handler\-::rwrite (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{const Type $\ast$const}]{first, }
+\item[{const Type $\ast$const}]{last}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a31a3828a7b517b518fdbae8bc0662053}
+
+
+Write a range between pointers to stream. 
+
+Writes each element of the range between the passed pointers to the stream and swap bytes if necessary. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness for writing if true. \\
+\hline
+{\em Type} & (Pointer type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionOutput}{Output} stream. \\
+\hline
+\mbox{\tt in}  & {\em first} & Pointer to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Pointer to the end. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_aa317b2106da44890bd8743769a432852}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rwrite@{rwrite}}
+\index{rwrite@{rwrite}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rwrite}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type , class $>$ bool magrathea\-::\-Data\-Handler\-::rwrite (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{const Type \&}]{first, }
+\item[{const Type \&}]{last, }
+\item[{typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_aa317b2106da44890bd8743769a432852}
+
+
+Write a range between iterators to stream. 
+
+Writes each element of the range between the passed iterators to the stream and swap bytes if necessary. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness for writing if true. \\
+\hline
+{\em Type} & (Iterator type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionOutput}{Output} stream. \\
+\hline
+\mbox{\tt in}  & {\em first} & Iterator to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Iterator to the end. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a2fef7472281e81fbdca7a42a92b36fe9}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rwrite@{rwrite}}
+\index{rwrite@{rwrite}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rwrite}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap$>$ char $\ast$\& magrathea\-::\-Data\-Handler\-::rwrite (
+\begin{DoxyParamCaption}
+\item[{char $\ast$\&}]{buffer, }
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}, }
+\item[{const std\-::nullptr\-\_\-t}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a2fef7472281e81fbdca7a42a92b36fe9}
+
+
+Write an empty range to buffer. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness for writing if true. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em buffer} & \hyperlink{exceptionOutput}{Output} buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the new position in the buffer. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_ac43856b9e64071b14be4be469381258f}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rwrite@{rwrite}}
+\index{rwrite@{rwrite}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rwrite}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type $>$ char $\ast$\& magrathea\-::\-Data\-Handler\-::rwrite (
+\begin{DoxyParamCaption}
+\item[{char $\ast$\&}]{buffer, }
+\item[{const Type $\ast$const}]{first, }
+\item[{const Type $\ast$const}]{last}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_ac43856b9e64071b14be4be469381258f}
+
+
+Write a range between pointers to buffer. 
+
+Writes each element of the range between the passed pointers to the buffer and swap bytes if necessary. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness for writing if true. \\
+\hline
+{\em Type} & (Pointer type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em buffer} & \hyperlink{exceptionOutput}{Output} buffer. \\
+\hline
+\mbox{\tt in}  & {\em first} & Pointer to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Pointer to the end. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the new position in the buffer. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a5c2ce2134d220930333c6f6c2a7e2a73}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!rwrite@{rwrite}}
+\index{rwrite@{rwrite}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{rwrite}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type , class $>$ char $\ast$\& magrathea\-::\-Data\-Handler\-::rwrite (
+\begin{DoxyParamCaption}
+\item[{char $\ast$\&}]{buffer, }
+\item[{const Type \&}]{first, }
+\item[{const Type \&}]{last, }
+\item[{typename std\-::iterator\-\_\-traits$<$ Type $>$\-::iterator\-\_\-category $\ast$}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a5c2ce2134d220930333c6f6c2a7e2a73}
+
+
+Write a range between iterators to buffer. 
+
+Writes each element of the range between the passed iterators to the buffer and swap bytes if necessary. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness for writing if true. \\
+\hline
+{\em Type} & (Iterator type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em buffer} & \hyperlink{exceptionOutput}{Output} buffer. \\
+\hline
+\mbox{\tt in}  & {\em first} & Iterator to the beginning. \\
+\hline
+\mbox{\tt in}  & {\em last} & Iterator to the end. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the new position in the buffer. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a5e26ce4a9478dcc7c83d904bf8c494f6}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!scan@{scan}}
+\index{scan@{scan}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{scan}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-Data\-Handler\-::scan (
+\begin{DoxyParamCaption}
+\item[{std\-::istream \&}]{stream}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a5e26ce4a9478dcc7c83d904bf8c494f6}
+
+
+Scan nothing from stream. 
+
+Function overload that does nothing. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionInput}{Input} stream. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a2694fc43019f85c66b1f88b4db924f85}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!scan@{scan}}
+\index{scan@{scan}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{scan}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-Data\-Handler\-::scan (
+\begin{DoxyParamCaption}
+\item[{std\-::istream \&}]{stream, }
+\item[{std\-::tuple$<$$>$ \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a2694fc43019f85c66b1f88b4db924f85}
+
+
+Scan an empty tuple from stream. 
+
+Function overload that does nothing. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionInput}{Input} stream. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a2f0d2f234267a5c274662c6fe48fe988}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!scan@{scan}}
+\index{scan@{scan}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{scan}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ bool magrathea\-::\-Data\-Handler\-::scan (
+\begin{DoxyParamCaption}
+\item[{std\-::istream \&}]{stream, }
+\item[{Type \&}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a2f0d2f234267a5c274662c6fe48fe988}
+
+
+Scan a single variable from stream. 
+
+Scans the next variable from the stream. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Variable type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionInput}{Input} stream. \\
+\hline
+\mbox{\tt out}  & {\em variable} & Variable. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_adefa5bd26a29d5b13d3f94a45bd99973}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!scan@{scan}}
+\index{scan@{scan}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{scan}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , typename... Types$>$ bool magrathea\-::\-Data\-Handler\-::scan (
+\begin{DoxyParamCaption}
+\item[{std\-::istream \&}]{stream, }
+\item[{Type \&}]{variable, }
+\item[{Types \&...}]{variables}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_adefa5bd26a29d5b13d3f94a45bd99973}
+
+
+Scan several variables from stream. 
+
+Scans the next variables from the stream. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Variable type.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionInput}{Input} stream. \\
+\hline
+\mbox{\tt out}  & {\em variable} & Variable. \\
+\hline
+\mbox{\tt out}  & {\em variables} & Variables. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_abf322f4399f6008717153ca2338c1ab3}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!scan@{scan}}
+\index{scan@{scan}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{scan}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , std\-::size\-\_\-t Size$>$ bool magrathea\-::\-Data\-Handler\-::scan (
+\begin{DoxyParamCaption}
+\item[{std\-::istream \&}]{stream, }
+\item[{std\-::array$<$ Type, Size $>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_abf322f4399f6008717153ca2338c1ab3}
+
+
+Scan an array from stream. 
+
+Scans each element of the passed array from the stream. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Array type.) \\
+\hline
+{\em Size} & (Array size.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionInput}{Input} stream. \\
+\hline
+\mbox{\tt out}  & {\em container} & Array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_afcdea61c7011b22539e783c9fb782e07}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!scan@{scan}}
+\index{scan@{scan}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{scan}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Current, typename... Types$>$ bool magrathea\-::\-Data\-Handler\-::scan (
+\begin{DoxyParamCaption}
+\item[{std\-::istream \&}]{stream, }
+\item[{std\-::tuple$<$ Types...$>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_afcdea61c7011b22539e783c9fb782e07}
+
+
+Scan a tuple from stream. 
+
+Scans each element of the passed tuple from the stream. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Current} & (Current level of recursion.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionInput}{Input} stream. \\
+\hline
+\mbox{\tt out}  & {\em container} & Tuple. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_ac4e7131096c0eeb8f86b6d017ed1edb2}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!size@{size}}
+\index{size@{size}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename... Types$>$ constexpr unsigned int magrathea\-::\-Data\-Handler\-::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_ac4e7131096c0eeb8f86b6d017ed1edb2}
+
+
+Number of elements of several types. 
+
+Computes the number of elements of the passed types. Note that if the passed type is a templated type, like a tuple, the inner arguments are not extracted, and the result is simply the same as {\ttfamily sizeof...()} . \begin{DoxyReturn}{Returns}
+Number of elements. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a46e1fde9798b019bc5b033e2e17fa7db}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!size@{size}}
+\index{size@{size}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}constexpr unsigned int magrathea\-::\-Data\-Handler\-::size (
+\begin{DoxyParamCaption}
+\item[{const std\-::tuple$<$$>$ \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a46e1fde9798b019bc5b033e2e17fa7db}
+
+
+Number of elements of an empty tuple. 
+
+Function overload that does nothing. \begin{DoxyReturn}{Returns}
+Number of elements. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_af8c18351676d2ac685b22524986bba92}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!size@{size}}
+\index{size@{size}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr unsigned int magrathea\-::\-Data\-Handler\-::size (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_af8c18351676d2ac685b22524986bba92}
+
+
+Number of elements of a single variable. 
+
+Computes the number of elements of the passed variable. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Variable type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em variable} & Variable. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a729d47a64d97ca03141eed087a0568d1}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!size@{size}}
+\index{size@{size}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , typename... Types$>$ constexpr unsigned int magrathea\-::\-Data\-Handler\-::size (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{variable, }
+\item[{const Types \&...}]{variables}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a729d47a64d97ca03141eed087a0568d1}
+
+
+Number of elements of several variables. 
+
+Computes the number of elements of the passed variables. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Variable type.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em variable} & Variable. \\
+\hline
+\mbox{\tt in}  & {\em variables} & Variables. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_aeb6e50e89fe939e797450f8428dc40dc}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!size@{size}}
+\index{size@{size}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , std\-::size\-\_\-t Size$>$ constexpr unsigned int magrathea\-::\-Data\-Handler\-::size (
+\begin{DoxyParamCaption}
+\item[{const std\-::array$<$ Type, Size $>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_aeb6e50e89fe939e797450f8428dc40dc}
+
+
+Number of elements of an array. 
+
+Computes the number of elements of the passed array. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Array type.) \\
+\hline
+{\em Size} & (Array size.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em container} & Array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_abe440e8dde8a25b9bdfbb64dbb2c26db}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!size@{size}}
+\index{size@{size}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Current, typename... Types$>$ constexpr unsigned int magrathea\-::\-Data\-Handler\-::size (
+\begin{DoxyParamCaption}
+\item[{const std\-::tuple$<$ Types...$>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_abe440e8dde8a25b9bdfbb64dbb2c26db}
+
+
+Number of elements of a tuple. 
+
+Computes the number of elements of the passed tuple. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Current} & (Current level of recursion.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em container} & Tuple. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_aabe5421ff733fe6beebb8c738d1fee63}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!stringify@{stringify}}
+\index{stringify@{stringify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{stringify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Base, char Leading$>$ std\-::string magrathea\-::\-Data\-Handler\-::stringify (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_aabe5421ff733fe6beebb8c738d1fee63}
+
+
+Convert nothing to a string. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Base} & Base representation for integers \-: 2, 8, 10 or 16. \\
+\hline
+{\em Leading} & Leading character for integers \-: 0, 9-\/13 or 32-\/126. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+String conversion of arguments. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a7c4ab445f48e1aa494a404e904c54a66}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!stringify@{stringify}}
+\index{stringify@{stringify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{stringify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Base, char Leading$>$ std\-::string magrathea\-::\-Data\-Handler\-::stringify (
+\begin{DoxyParamCaption}
+\item[{const std\-::tuple$<$$>$ \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a7c4ab445f48e1aa494a404e904c54a66}
+
+
+Convert an empty tuple to a string. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Base} & Base representation for integers \-: 2, 8, 10 or 16. \\
+\hline
+{\em Leading} & Leading character for integers \-: 0, 9-\/13 or 32-\/126. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+String conversion of arguments. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a2dd735cedf604372d2942820919a2b0c}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!stringify@{stringify}}
+\index{stringify@{stringify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{stringify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Base, char Leading, typename Type $>$ std\-::string magrathea\-::\-Data\-Handler\-::stringify (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a2dd735cedf604372d2942820919a2b0c}
+
+
+Convert a single variable to a string. 
+
+Converts the passed variable to a string. The base of conversion can be specified for integral numbers, and it is possible to fill-\/in the result with leading characters. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Base} & Base representation for integers \-: 2, 8, 10 or 16. \\
+\hline
+{\em Leading} & Leading character for integers \-: 0, 9-\/13 or 32-\/126. \\
+\hline
+{\em Type} & (Variable type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em variable} & Variable. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String conversion of arguments. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_ab54ac4f7f22feb5b1e7361d321342746}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!stringify@{stringify}}
+\index{stringify@{stringify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{stringify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Base, char Leading, typename Type , typename... Types$>$ std\-::string magrathea\-::\-Data\-Handler\-::stringify (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{variable, }
+\item[{const Types \&...}]{variables}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_ab54ac4f7f22feb5b1e7361d321342746}
+
+
+Convert several variables to a string. 
+
+Converts the passed variables to a string. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Base} & Base representation for integers \-: 2, 8, 10 or 16. \\
+\hline
+{\em Leading} & Leading character for integers \-: 0, 9-\/13 or 32-\/126. \\
+\hline
+{\em Type} & (Variable type.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em variable} & Variable. \\
+\hline
+\mbox{\tt out}  & {\em variables} & Variables. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String conversion of arguments. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a71fe2f753a75d7367c34bd035e7e3d62}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!stringify@{stringify}}
+\index{stringify@{stringify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{stringify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Base, char Leading, typename Type , std\-::size\-\_\-t Size$>$ std\-::string magrathea\-::\-Data\-Handler\-::stringify (
+\begin{DoxyParamCaption}
+\item[{const std\-::array$<$ Type, Size $>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a71fe2f753a75d7367c34bd035e7e3d62}
+
+
+Convert an array to a string. 
+
+Converts each element of the passed array to a string. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Base} & Base representation for integers \-: 2, 8, 10 or 16. \\
+\hline
+{\em Leading} & Leading character for integers \-: 0, 9-\/13 or 32-\/126. \\
+\hline
+{\em Type} & (Array type.) \\
+\hline
+{\em Size} & (Array size.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em container} & Array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String conversion of arguments. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a172045642951acb95fb0a84595aa9e56}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!stringify@{stringify}}
+\index{stringify@{stringify}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{stringify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Base, char Leading, unsigned int Current, typename... Types$>$ std\-::string magrathea\-::\-Data\-Handler\-::stringify (
+\begin{DoxyParamCaption}
+\item[{const std\-::tuple$<$ Types...$>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a172045642951acb95fb0a84595aa9e56}
+
+
+Convert a tuple to a string. 
+
+Converts each element of the passed tuple to a string. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Base} & Base representation for integers \-: 2, 8, 10 or 16. \\
+\hline
+{\em Leading} & Leading character for integers \-: 0, 9-\/13 or 32-\/126. \\
+\hline
+{\em Current} & (Current level of recursion.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em container} & Tuple. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String conversion of arguments. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a40c596c3e2059535c1649654fe8a7aa0}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!tuple@{tuple}}
+\index{tuple@{tuple}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{tuple}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ constexpr bool magrathea\-::\-Data\-Handler\-::tuple (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a40c596c3e2059535c1649654fe8a7aa0}
+
+
+Is not a tuple. 
+
+Returns false as the passed argument is not a standard tuple. \begin{DoxyReturn}{Returns}
+Whether the argument is a standard tuple. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a2249708da73286fe5f5a695ed202fa8c}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!tuple@{tuple}}
+\index{tuple@{tuple}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{tuple}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename... Types$>$ constexpr bool magrathea\-::\-Data\-Handler\-::tuple (
+\begin{DoxyParamCaption}
+\item[{const std\-::tuple$<$ Types...$>$ \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a2249708da73286fe5f5a695ed202fa8c}
+
+
+Is a tuple. 
+
+Returns true as the passed argument is a standard tuple. \begin{DoxyReturn}{Returns}
+Whether the argument is a standard tuple. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a39a75e50677e501aa45368fcd1a9072c}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!write@{write}}
+\index{write@{write}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap$>$ bool magrathea\-::\-Data\-Handler\-::write (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a39a75e50677e501aa45368fcd1a9072c}
+
+
+Write nothing to stream. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness for writing if true. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionOutput}{Output} stream. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_ac03218d9c590597427d31e8d7fe8820b}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!write@{write}}
+\index{write@{write}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap$>$ bool magrathea\-::\-Data\-Handler\-::write (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{const std\-::tuple$<$$>$ \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_ac03218d9c590597427d31e8d7fe8820b}
+
+
+Write an empty tuple to stream. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness for writing if true. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionOutput}{Output} stream. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a921c83976ebf7a55119f25d9589a6d71}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!write@{write}}
+\index{write@{write}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type $>$ bool magrathea\-::\-Data\-Handler\-::write (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{const Type \&}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a921c83976ebf7a55119f25d9589a6d71}
+
+
+Write a single variable to stream. 
+
+Writes the next variable to the stream and swap bytes if necessary. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness for writing if true. \\
+\hline
+{\em Type} & (Variable type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionOutput}{Output} stream. \\
+\hline
+\mbox{\tt in}  & {\em variable} & Variable. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_aee67cc8c281a41a493d41a4a25f45bc9}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!write@{write}}
+\index{write@{write}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type , typename... Types$>$ bool magrathea\-::\-Data\-Handler\-::write (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{const Type \&}]{variable, }
+\item[{const Types \&...}]{variables}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_aee67cc8c281a41a493d41a4a25f45bc9}
+
+
+Write several variables to stream. 
+
+Writes the next variables to the stream and swap bytes if necessary. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness for writing if true. \\
+\hline
+{\em Type} & (Variable type.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionOutput}{Output} stream. \\
+\hline
+\mbox{\tt in}  & {\em variable} & Variable. \\
+\hline
+\mbox{\tt in}  & {\em variables} & Variables. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a1ab61e11c5cd55fa2652511507291435}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!write@{write}}
+\index{write@{write}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type , std\-::size\-\_\-t Size$>$ bool magrathea\-::\-Data\-Handler\-::write (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{const std\-::array$<$ Type, Size $>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a1ab61e11c5cd55fa2652511507291435}
+
+
+Write an array to stream. 
+
+Writes each element of the passed array to the stream and swap bytes if necessary. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness for writing if true. \\
+\hline
+{\em Type} & (Array type.) \\
+\hline
+{\em Size} & (Array size.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionOutput}{Output} stream. \\
+\hline
+\mbox{\tt in}  & {\em container} & Array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_ab8fa581985c2e97824bb610459a4189f}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!write@{write}}
+\index{write@{write}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, unsigned int Current, typename... Types$>$ bool magrathea\-::\-Data\-Handler\-::write (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{const std\-::tuple$<$ Types...$>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_ab8fa581985c2e97824bb610459a4189f}
+
+
+Write a tuple to stream. 
+
+Writes each element of the passed tuple to the stream and swap bytes if necessary. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness for writing if true. \\
+\hline
+{\em Current} & (Current level of recursion.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em stream} & \hyperlink{exceptionOutput}{Output} stream. \\
+\hline
+\mbox{\tt in}  & {\em container} & Tuple. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the stream has no failure, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a536f2b5c4b87cd899177ee5397df87b1}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!write@{write}}
+\index{write@{write}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap$>$ char $\ast$\& magrathea\-::\-Data\-Handler\-::write (
+\begin{DoxyParamCaption}
+\item[{char $\ast$\&}]{buffer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a536f2b5c4b87cd899177ee5397df87b1}
+
+
+Write nothing to buffer. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness for writing if true. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em buffer} & \hyperlink{exceptionOutput}{Output} buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the new position in the buffer. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a40bb3b3f12dbbfb56f0ae4949ab775dc}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!write@{write}}
+\index{write@{write}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap$>$ char $\ast$\& magrathea\-::\-Data\-Handler\-::write (
+\begin{DoxyParamCaption}
+\item[{char $\ast$\&}]{buffer, }
+\item[{const std\-::tuple$<$$>$ \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a40bb3b3f12dbbfb56f0ae4949ab775dc}
+
+
+Write an empty tuple to buffer. 
+
+Function overload that does nothing. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness for writing if true. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em buffer} & \hyperlink{exceptionOutput}{Output} buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the new position in the buffer. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_a50f7ac2d71d0a6e12b9142f0164e5010}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!write@{write}}
+\index{write@{write}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type $>$ char $\ast$\& magrathea\-::\-Data\-Handler\-::write (
+\begin{DoxyParamCaption}
+\item[{char $\ast$\&}]{buffer, }
+\item[{const Type \&}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_a50f7ac2d71d0a6e12b9142f0164e5010}
+
+
+Write a single variable to buffer. 
+
+Writes the next variable to the buffer and swap bytes if necessary. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness for writing if true. \\
+\hline
+{\em Type} & (Variable type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em buffer} & \hyperlink{exceptionOutput}{Output} buffer. \\
+\hline
+\mbox{\tt in}  & {\em variable} & Variable. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the new position in the buffer. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_abfa5fea125d9fc30fb1ead5d96a73b11}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!write@{write}}
+\index{write@{write}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type , typename... Types$>$ char $\ast$\& magrathea\-::\-Data\-Handler\-::write (
+\begin{DoxyParamCaption}
+\item[{char $\ast$\&}]{buffer, }
+\item[{const Type \&}]{variable, }
+\item[{const Types \&...}]{variables}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_abfa5fea125d9fc30fb1ead5d96a73b11}
+
+
+Write several variables to buffer. 
+
+Writes the next variables to the buffer and swap bytes if necessary. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness for writing if true. \\
+\hline
+{\em Type} & (Variable type.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em buffer} & \hyperlink{exceptionOutput}{Output} buffer. \\
+\hline
+\mbox{\tt in}  & {\em variable} & Variable. \\
+\hline
+\mbox{\tt in}  & {\em variables} & Variables. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the new position in the buffer. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_aedc8c73ee5a6027286662b816435f953}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!write@{write}}
+\index{write@{write}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, typename Type , std\-::size\-\_\-t Size$>$ char $\ast$\& magrathea\-::\-Data\-Handler\-::write (
+\begin{DoxyParamCaption}
+\item[{char $\ast$\&}]{buffer, }
+\item[{const std\-::array$<$ Type, Size $>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_aedc8c73ee5a6027286662b816435f953}
+
+
+Write an array to buffer. 
+
+Writes each element of the passed array to the buffer and swap bytes if necessary. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness for writing if true. \\
+\hline
+{\em Type} & (Array type.) \\
+\hline
+{\em Size} & (Array size.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em buffer} & \hyperlink{exceptionOutput}{Output} buffer. \\
+\hline
+\mbox{\tt in}  & {\em container} & Array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the new position in the buffer. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataHandler_ade92542ca2ae7dac44c5b573aaaea63a}{\index{magrathea\-::\-Data\-Handler@{magrathea\-::\-Data\-Handler}!write@{write}}
+\index{write@{write}!magrathea::DataHandler@{magrathea\-::\-Data\-Handler}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Byteswap, unsigned int Current, typename... Types$>$ char $\ast$\& magrathea\-::\-Data\-Handler\-::write (
+\begin{DoxyParamCaption}
+\item[{char $\ast$\&}]{buffer, }
+\item[{const std\-::tuple$<$ Types...$>$ \&}]{container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataHandler_ade92542ca2ae7dac44c5b573aaaea63a}
+
+
+Write a tuple to buffer. 
+
+Writes each element of the passed tuple to the buffer and swap bytes if necessary. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Byteswap} & Swap endianness for writing if true. \\
+\hline
+{\em Current} & (Current level of recursion.) \\
+\hline
+{\em Types} & (Variadic types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em buffer} & \hyperlink{exceptionOutput}{Output} buffer. \\
+\hline
+\mbox{\tt in}  & {\em container} & Tuple. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the new position in the buffer. 
+\end{DoxyReturn}
+
+
+The documentation for this exception was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/magrathea/\hyperlink{datahandler_8h}{datahandler.\-h}\end{DoxyCompactItemize}

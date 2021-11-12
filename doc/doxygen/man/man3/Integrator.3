@@ -1,0 +1,512 @@
+.TH "Integrator" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Integrator \- 
+.PP
+Integration utilities for raytracing\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <integrator\&.h>\fP
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBInitialization\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename Type  = double, class Sphere , class Vector , typename Scalar , class Engine , class Distribution , unsigned int Dimension = Sphere::dimension(), class  = typename std::enable_if<Dimension == 3>::type> static \fBPhoton\fP< Type, Dimension > \fBlaunch\fP (const Sphere &sphere, const \fBCone\fP< Vector, Scalar > &cone, Engine &engine, Distribution &distribution)"
+.br
+.RI "\fILaunch a photon in a cone\&. \fP"
+.ti -1c
+.RI "template<typename Type  = double, class Sphere , class Container , class Vector , typename Scalar , class Engine , class Distribution , unsigned int Dimension = Sphere::dimension(), class  = typename std::enable_if<(Dimension == 3) && (std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Container>()[0])>::type>::type, Cone<Vector, Scalar> >::value)>::type> static \fBPhoton\fP< Type, Dimension > \fBlaunch\fP (const Sphere &sphere, const \fBCone\fP< Vector, Scalar > &cone, const Container &cones, Engine &engine, Distribution &distribution)"
+.br
+.RI "\fILaunch a photon in a serie of cones\&. \fP"
+.ti -1c
+.RI "template<typename Type , unsigned int Dimension = 3, class  = typename std::enable_if<Dimension == 3>::type> static \fBPhoton\fP< Type, Dimension > \fBlaunch\fP (const Type xbegin, const Type ybegin, const Type zbegin, const Type xend, const Type yend, const Type zend)"
+.br
+.RI "\fILaunch a photon going from a position to another\&. \fP"
+.ti -1c
+.RI "template<typename Type , unsigned int Dimension = 3, class  = typename std::enable_if<Dimension == 3>::type> static \fBPhoton\fP< Type, Dimension > \fBlaunch\fP (const Type xbegin, const Type ybegin, const Type zbegin, const Type phi, const Type theta)"
+.br
+.RI "\fILaunch a photon going from a position to a specified direction\&. \fP"
+.ti -1c
+.RI "template<bool Center = false, typename Type , unsigned int Dimension, class Container  = std::vector<Photon<Type, Dimension> >, class  = typename std::enable_if<Dimension == 3>::type> static Container \fBlaunch\fP (const \fBPhoton\fP< Type, Dimension > &photon, const unsigned int count, const Type angle, const Type rotation=Type())"
+.br
+.RI "\fILaunch photons around one photon\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBComputation\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<int Order = ORDER, class Array , class Element , class Cosmology , class Octree , class Type , unsigned int Dimension = Octree::dimension(), class Data  = typename std::tuple_element<1, decltype(Octree::element())>::type, class Position  = decltype(Octree::position()), class Extent  = decltype(Octree::extent())> static Array & \fBdphotondl\fP (Array &output, const Array &input, const Cosmology &cosmology, const Octree &octree, const Type length, std::vector< Element > &elemsTsc)"
+.br
+.RI "\fIDerivative of a photon\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBEvolution\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<int Order = ORDER, bool RK4 = true, bool Verbose = false, class Cosmology , class Octree , class Type , class Trajectory , unsigned int Dimension = Octree::dimension(), class Element  = typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Trajectory>()[0])>::type>::type, class Data  = typename std::tuple_element<1, decltype(Octree::element())>::type, class Core  = decltype(Element::template type<1>()), unsigned int Size = std::tuple_size<Core>::value, class Position  = decltype(Octree::position()), class Extent  = decltype(Octree::extent()), class Point > static Trajectory & \fBintegrate\fP (Trajectory &trajectory, const Cosmology &cosmology, const Octree &octree, const Point &vobs, const Type length, const unsigned int nsteps=1)"
+.br
+.RI "\fIGeodesics integration\&. \fP"
+.ti -1c
+.RI "template<int Order = ORDER, bool RK4 = true, bool Verbose = false, class Cosmology , class Octree , class Type , class Trajectory , unsigned int Dimension = Octree::dimension(), class Element  = typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Trajectory>()[0])>::type>::type, class Data  = typename std::tuple_element<1, decltype(Octree::element())>::type, class Core  = decltype(Element::template type<1>()), unsigned int Size = std::tuple_size<Core>::value, class Position  = decltype(Octree::position()), class Extent  = decltype(Octree::extent()), class Point  = std::array<Type, 3>> static Trajectory & \fBintegrate\fP (Trajectory &trajectory, const std::string interpolation, const Type interpRef, const Cosmology &cosmology, const Octree &octree, const Point &vobs, const Type length, const unsigned int nsteps=1, const Point &kiTarget=Point())"
+.br
+.RI "\fIGeodesics integration\&. \fP"
+.ti -1c
+.RI "template<int Order = ORDER, bool RK4 = true, bool Verbose = false, class Cosmology , class Octree , class Type , unsigned int Dimension, class Homogeneous  = std::vector<Photon<Type, Dimension> >, class Point , class  = typename std::enable_if<(Dimension == 3) && (Dimension == Octree::dimension())>::type> static \fBmagrathea::Evolution\fP
+.br
+< \fBPhoton\fP< Type, Dimension > > \fBpropagate\fP (const \fBPhoton\fP< Type, Dimension > &photon, const unsigned int count, const Type angle, const Type rotation, const std::string &interpolation, const Cosmology &cosmology, const Octree &octree, const Point &vobs, const Type length, const unsigned int nsteps=1, const Type amin=Type(), const std::string &filenames=std::string(), const Homogeneous &homogeneous=Homogeneous())"
+.br
+.RI "\fIPropagation of a ray bundle\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+Integration utilities for raytracing\&. 
+
+Provides a list of integration routines for geodesics integration\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "template<int Order, class Array , class Element , class Cosmology , class Octree , class Type , unsigned int Dimension, class Data , class Position , class Extent > Array & Integrator::dphotondl (Array &output, const Array &input, const Cosmology &cosmology, const Octree &octree, const Typelength, std::vector< Element > &elemsTsc)\fC [static]\fP"
+
+.PP
+Derivative of a photon\&. Computes the derivative of the core components of a photon\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOrder\fP Octree interpolation order : 0 for NGP, 1 for CIC, 2 for TSC or -1 for an homogeneous universe\&. 
+.br
+\fIArray\fP Core array type\&. 
+.br
+\fIElement\fP data element for neighbouring cells 
+.br
+\fICosmology\fP Cosmology evolution type\&. 
+.br
+\fIOctree\fP Octree type\&. 
+.br
+\fIType\fP Scalar type\&. 
+.br
+\fIDimension\fP Number of space dimension\&. 
+.br
+\fIData\fP Data type\&. 
+.br
+\fIPosition\fP Position of the hyperoctree center\&. 
+.br
+\fIExtent\fP Extent of the hyperoctree\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoutput\fP \fBOutput\fP data\&. 
+.br
+\fIinput\fP \fBInput\fP data\&. 
+.br
+\fIcosmology\fP Cosmology evolution\&. 
+.br
+\fIoctree\fP Octree\&. 
+.br
+\fIlength\fP Spatial length\&. 
+.br
+\fIelemsTsc\fP Indexes of neighbouring cells 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the output data\&. 
+.RE
+.PP
+
+.SS "static int Integrator::example ()\fC [static]\fP"
+
+.SS "template<int Order, bool RK4, bool Verbose, class Cosmology , class Octree , class Type , class Trajectory , unsigned int Dimension, class Element , class Data , class Core , unsigned int Size, class Position , class Extent , class Point > Trajectory & Integrator::integrate (Trajectory &trajectory, const Cosmology &cosmology, const Octree &octree, const Point &vobs, const Typelength, const unsigned intnsteps = \fC1\fP)\fC [static]\fP"
+
+.PP
+Geodesics integration\&. Integrates the geodesics equation of a photon\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOrder\fP Octree interpolation order : 0 for NGP, 1 for CIC, 2 for TSC or -1 for an homogeneous universe\&. 
+.br
+\fIRK4\fP Runge-kutta of fourth order or euler\&. 
+.br
+\fIVerbose\fP Verbose mode for debug purposes\&. 
+.br
+\fICosmology\fP Cosmology evolution type\&. 
+.br
+\fIOctree\fP Octree type\&. 
+.br
+\fIType\fP Scalar type\&. 
+.br
+\fITrajectory\fP Trajectory type\&. 
+.br
+\fIDimension\fP Number of space dimension\&. 
+.br
+\fIElement\fP \fBPhoton\fP type\&. 
+.br
+\fIData\fP Data type\&. 
+.br
+\fICore\fP Core data type\&. 
+.br
+\fISize\fP Core size\&. 
+.br
+\fIPosition\fP Position of the hyperoctree center\&. 
+.br
+\fIExtent\fP Extent of the hyperoctree\&. 
+.br
+\fIPoint\fP Point type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fItrajectory\fP Trajectory\&. 
+.br
+\fIcosmology\fP Cosmology evolution\&. 
+.br
+\fIoctree\fP Octree\&. 
+.br
+\fIvobs\fP Observer peculiar velocity, in SI 
+.br
+\fIlength\fP Spatial length in SI units\&. 
+.br
+\fInsteps\fP Number of lambda steps per grid\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the trajectory data\&. 
+.RE
+.PP
+
+.SS "template<int Order, bool RK4, bool Verbose, class Cosmology , class Octree , class Type , class Trajectory , unsigned int Dimension, class Element , class Data , class Core , unsigned int Size, class Position , class Extent , class Point > Trajectory & Integrator::integrate (Trajectory &trajectory, const std::stringinterpolation, const TypeinterpRef, const Cosmology &cosmology, const Octree &octree, const Point &vobs, const Typelength, const unsigned intnsteps = \fC1\fP, const Point &kiTarget = \fCPoint()\fP)\fC [static]\fP"
+
+.PP
+Geodesics integration\&. Integrates the geodesics equation of a photon until some condition\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOrder\fP Octree interpolation order : 0 for NGP, 1 for CIC, 2 for TSC or -1 for an homogeneous universe\&. 
+.br
+\fIRK4\fP Runge-kutta of fourth order or euler\&. 
+.br
+\fIVerbose\fP Verbose mode for debug purposes\&. 
+.br
+\fICosmology\fP Cosmology evolution type\&. 
+.br
+\fIOctree\fP Octree type\&. 
+.br
+\fIType\fP Scalar type\&. 
+.br
+\fITrajectory\fP Trajectory type\&. 
+.br
+\fIDimension\fP Number of space dimension\&. 
+.br
+\fIElement\fP \fBPhoton\fP type\&. 
+.br
+\fIData\fP Data type\&. 
+.br
+\fICore\fP Core data type\&. 
+.br
+\fISize\fP Core size\&. 
+.br
+\fIPosition\fP Position of the hyperoctree center\&. 
+.br
+\fIExtent\fP Extent of the hyperoctree\&. 
+.br
+\fIPoint\fP Point type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fItrajectory\fP Trajectory\&. 
+.br
+\fIinterpolation\fP Which type of stop criterion for the integration 
+.br
+\fIinterpRef\fP Where to stop the integration 
+.br
+\fIcosmology\fP Cosmology evolution\&. 
+.br
+\fIoctree\fP Octree\&. 
+.br
+\fIvobs\fP Observer peculiar velocity, in SI 
+.br
+\fIlength\fP Spatial length in SI units\&. 
+.br
+\fInsteps\fP Number of lambda steps per grid\&. 
+.br
+\fIkiTarget\fP Normal to the plane needed for a given photon\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the trajectory data\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Sphere , class Vector , typename Scalar , class Engine , class Distribution , unsigned int Dimension, class > \fBPhoton\fP< Type, Dimension > Integrator::launch (const Sphere &sphere, const \fBCone\fP< Vector, Scalar > &cone, Engine &engine, Distribution &distribution)\fC [static]\fP"
+
+.PP
+Launch a photon in a cone\&. Launches a photon in the provided cone\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP \fBPhoton\fP type\&. 
+.br
+\fIDimension\fP Number of space dimension\&. 
+.br
+\fIVector\fP Position vector type\&. 
+.br
+\fIScalar\fP Scalar data type\&. 
+.br
+\fIEngine\fP Random engine type\&. 
+.br
+\fIDistribution\fP Random distribution type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsphere\fP Sphere to pick up the center and the surface\&. 
+.br
+\fIcone\fP Current cone\&. 
+.br
+\fIengine\fP Random engine\&. 
+.br
+\fIdistribution\fP Random distribution\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Initial photon in the cone\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Sphere , class Container , class Vector , typename Scalar , class Engine , class Distribution , unsigned int Dimension, class > \fBPhoton\fP< Type, Dimension > Integrator::launch (const Sphere &sphere, const \fBCone\fP< Vector, Scalar > &cone, const Container &cones, Engine &engine, Distribution &distribution)\fC [static]\fP"
+
+.PP
+Launch a photon in a serie of cones\&. Launches a photon in the provided cone with the guarantee that this cone is the closest one comparatively to a list of cones\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP \fBPhoton\fP type\&. 
+.br
+\fIDimension\fP Number of space dimension\&. 
+.br
+\fISphere\fP Sphere type\&. 
+.br
+\fIContainer\fP Container of cones type\&. 
+.br
+\fIVector\fP Position vector type\&. 
+.br
+\fIScalar\fP Scalar data type\&. 
+.br
+\fIEngine\fP Random engine type\&. 
+.br
+\fIDistribution\fP Random distribution type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsphere\fP Sphere to pick up the center and the surface\&. 
+.br
+\fIcone\fP Current cone\&. 
+.br
+\fIcones\fP List of cones to compare distance\&. 
+.br
+\fIengine\fP Random engine\&. 
+.br
+\fIdistribution\fP Random distribution\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Initial photon in the cone\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, class > \fBPhoton\fP< Type, Dimension > Integrator::launch (const Typexbegin, const Typeybegin, const Typezbegin, const Typexend, const Typeyend, const Typezend)\fC [static]\fP"
+
+.PP
+Launch a photon going from a position to another\&. Launches a photon starting from a point and going to another one\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP \fBPhoton\fP type\&. 
+.br
+\fIDimension\fP Number of space dimension\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxbegin\fP Starting x coordinate\&. 
+.br
+\fIybegin\fP Starting y coordinate\&. 
+.br
+\fIzbegin\fP Starting z coordinate\&. 
+.br
+\fIxend\fP Ending x coordinate\&. 
+.br
+\fIyend\fP Ending y coordinate\&. 
+.br
+\fIzend\fP Ending z coordinate\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Initial photon\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Dimension, class > \fBPhoton\fP< Type, Dimension > Integrator::launch (const Typexbegin, const Typeybegin, const Typezbegin, const Typephi, const Typetheta)\fC [static]\fP"
+
+.PP
+Launch a photon going from a position to a specified direction\&. Launches a photon starting from a point and going to specified direction\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP \fBPhoton\fP type\&. 
+.br
+\fIDimension\fP Number of space dimension\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxbegin\fP Starting x coordinate\&. 
+.br
+\fIybegin\fP Starting y coordinate\&. 
+.br
+\fIzbegin\fP Starting z coordinate\&. 
+.br
+\fIphi\fP Phi angular coordinate\&. 
+.br
+\fItheta\fP Theta angular coordinate\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Initial photon\&. 
+.RE
+.PP
+
+.SS "template<bool Center, typename Type , unsigned int Dimension, class Container , class > Container Integrator::launch (const \fBPhoton\fP< Type, Dimension > &photon, const unsigned intcount, const Typeangle, const Typerotation = \fCType()\fP)\fC [static]\fP"
+
+.PP
+Launch photons around one photon\&. Launches a group of photon on a cone around one photon\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fICenter\fP Adds the center photon in the resulting vector if true\&. 
+.br
+\fIType\fP \fBPhoton\fP type\&. 
+.br
+\fIDimension\fP Number of space dimension\&. 
+.br
+\fIContainer\fP Container of photons type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIphoton\fP Central photon\&. 
+.br
+\fIcount\fP Number of photons to return\&. 
+.br
+\fIangle\fP Half-angle at the cone vertex\&. 
+.br
+\fIrotation\fP Arbitrary rotation to optionally apply on the resulting circle of photons\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Circle of photons\&. 
+.RE
+.PP
+
+.SS "template<int Order, bool RK4, bool Verbose, class Cosmology , class Octree , class Type , unsigned int Dimension, class Homogeneous , class Point , class > \fBmagrathea::Evolution\fP< \fBPhoton\fP< Type, Dimension > > Integrator::propagate (const \fBPhoton\fP< Type, Dimension > &photon, const unsigned intcount, const Typeangle, const Typerotation, const std::string &interpolation, const Cosmology &cosmology, const Octree &octree, const Point &vobs, const Typelength, const unsigned intnsteps = \fC1\fP, const Typeamin = \fCType()\fP, const std::string &filenames = \fCstd::string()\fP, const Homogeneous &homogeneous = \fCHomogeneous()\fP)\fC [static]\fP"
+
+.PP
+Propagation of a ray bundle\&. Propagates a ray bundle calling the integrator for each photon\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOrder\fP Octree interpolation order : 0 for NGP, 1 for CIC, 2 for TSC or -1 for an homogeneous universe\&. 
+.br
+\fIRK4\fP Runge-kutta of fourth order or euler\&. 
+.br
+\fIVerbose\fP Verbose mode for debug purposes\&. 
+.br
+\fICosmology\fP Cosmology evolution type\&. 
+.br
+\fIOctree\fP Octree type\&. 
+.br
+\fIType\fP Scalar type\&. 
+.br
+\fIDimension\fP Number of space dimension\&. 
+.br
+\fIHomogeneous\fP Homogeneous reference\&. 
+.br
+\fIPoint\fP point type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIphoton\fP Central photon initial data\&. 
+.br
+\fIcount\fP Number of other photons to use\&. 
+.br
+\fIangle\fP Half-angle at the cone vertex\&. 
+.br
+\fIrotation\fP Arbitrary rotation to optionally apply on the resulting circle of photons\&. 
+.br
+\fIinterpolation\fP Stop condition : redshift, a, t, r\&. 
+.br
+\fIcosmology\fP Cosmology evolution\&. 
+.br
+\fIoctree\fP Octree\&. 
+.br
+\fIvobs\fP Observer peculiar velocity, in SI 
+.br
+\fIlength\fP Spatial length in SI units\&. 
+.br
+\fInsteps\fP Number of lambda steps per grid\&. 
+.br
+\fIamin\fP If different from zero, all photons should end by this value of a\&. 
+.br
+\fIfilenames\fP File names of the output\&. If empty, no output\&. If at least on percent sign, all trajectories are saved\&. Otherwise, only the central one is saved\&. 
+.br
+\fIHomogeneous\fP Optional homogeneous trajectory\&. If not provided the angular diameter distance use the inhomogeneous value of a\&. If provided, the homogeneous value of a for the given radius is used\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Central photon trajectory\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

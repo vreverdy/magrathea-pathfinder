@@ -1,0 +1,292 @@
+\hypertarget{classHmaps}{\section{Hmaps Class Reference}
+\label{classHmaps}\index{Hmaps@{Hmaps}}
+}
+
+
+{\ttfamily \#include $<$hmaps.\-h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Parameters , class Map $>$ }\\static void \hyperlink{classHmaps_a1742ac13044d46c9132a963475c0745a}{Read\-Param\-File} (Parameters \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, Map \&parameter)
+\begin{DoxyCompactList}\small\item\em Read parameter file. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Parameter , typename Integer , class Cones $>$ }\\static void \hyperlink{classHmaps_a6e341b26baa5cc36a1faaa7b1166a9e2}{get\-Pixels\-\_\-per\-\_\-cone} (const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, const Integer npix, std\-::vector$<$ Integer $>$ \&pixel, std\-::vector$<$ unsigned int $>$ \&ntrajectories, const unsigned int iconerank, const Cones \&cones)
+\begin{DoxyCompactList}\small\item\em Get targets. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Parameter , typename Integer , class Cones $>$ }\\static void \hyperlink{classHmaps_a037a8fd9c68555c04835fa12787121d6}{get\-Pixels\-\_\-per\-\_\-cone2} (const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, const Integer npix, std\-::vector$<$ Integer $>$ \&pixel, std\-::vector$<$ unsigned int $>$ \&ntrajectories, const unsigned int iconerank, const Cones \&cones)
+\begin{DoxyCompactList}\small\item\em Get targets. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Parameter , class Octree , class Map , class Pixel , class Cosmology , class Point , typename Integer , typename Real $>$ }\\static void \hyperlink{classHmaps_a2d730259558142f226ee3173933a8c8d}{Fill\-Map\-Propagate} (const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, const Integer ntrajectory, const Integer firsttrajectory, const Octree \&octree, const Point \&vobs, Map \&map, const Integer nmaps, const Pixel \&pixel, const Cosmology \&cosmology, const \hyperlink{miscellaneous_8h_af4785a592bbb7b2a8882c18bb0101192}{point} \&observer, const Real length, const std\-::vector$<$ Real $>$ \&z\-\_\-stop\-\_\-vec)
+\begin{DoxyCompactList}\small\item\em Produce Healpix maps using bundles. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Parameter , class Octree , class Map , class Pixel , class Cosmology , class Point , typename Integer , typename Real $>$ }\\static void \hyperlink{classHmaps_a663094978d63b65003d82d34536d8034}{Fill\-Map} (const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, const std\-::vector$<$ std\-::string $>$ \&map\-\_\-components, const std\-::vector$<$ unsigned int $>$ \&index\-\_\-components, const Integer ntrajectory, const Integer firsttrajectory, const Octree \&octree, const Point \&vobs, Map \&map, const unsigned int nmaps, const Pixel \&pixel, const Cosmology \&cosmology, const \hyperlink{miscellaneous_8h_af4785a592bbb7b2a8882c18bb0101192}{point} \&observer, const Real length, const std\-::vector$<$ Real $>$ \&interp\-Refvec, const std\-::vector$<$ Real $>$ \&rhomo, const std\-::vector$<$ Real $>$ \&thomo, const std\-::vector$<$ Real $>$ \&lambdahomo, const std\-::vector$<$ Real $>$ \&redshifthomo, const std\-::vector$<$ Real $>$ \&ahomo)
+\begin{DoxyCompactList}\small\item\em Produce Healpix maps. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classHmaps_a663094978d63b65003d82d34536d8034}{\index{Hmaps@{Hmaps}!Fill\-Map@{Fill\-Map}}
+\index{Fill\-Map@{Fill\-Map}!Hmaps@{Hmaps}}
+\subsubsection[{Fill\-Map}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Parameter , class Octree , class Map , class Pixel , class Cosmology , class Point , typename Integer , typename Real $>$ void Hmaps\-::\-Fill\-Map (
+\begin{DoxyParamCaption}
+\item[{const Parameter \&}]{parameters, }
+\item[{const std\-::vector$<$ std\-::string $>$ \&}]{map\-\_\-components, }
+\item[{const std\-::vector$<$ unsigned int $>$ \&}]{index\-\_\-components, }
+\item[{const Integer}]{ntrajectory, }
+\item[{const Integer}]{firsttrajectory, }
+\item[{const Octree \&}]{octree, }
+\item[{const Point \&}]{vobs, }
+\item[{Map \&}]{map, }
+\item[{const unsigned int}]{nmaps, }
+\item[{const Pixel \&}]{pixel, }
+\item[{const Cosmology \&}]{cosmology, }
+\item[{const {\bf point} \&}]{observer, }
+\item[{const Real}]{length, }
+\item[{const std\-::vector$<$ Real $>$ \&}]{interp\-Refvec, }
+\item[{const std\-::vector$<$ Real $>$ \&}]{rhomo, }
+\item[{const std\-::vector$<$ Real $>$ \&}]{thomo, }
+\item[{const std\-::vector$<$ Real $>$ \&}]{lambdahomo, }
+\item[{const std\-::vector$<$ Real $>$ \&}]{redshifthomo, }
+\item[{const std\-::vector$<$ Real $>$ \&}]{ahomo}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classHmaps_a663094978d63b65003d82d34536d8034}
+
+
+Produce Healpix maps. 
+
+Produce Healpix maps 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Parameter} & Parameter type \\
+\hline
+{\em Octree} & octree type \\
+\hline
+{\em Map} & map type \\
+\hline
+{\em Pixel} & pixel type \\
+\hline
+{\em Cosmology} & cosmology type \\
+\hline
+{\em Point} & Point type \\
+\hline
+{\em Integer} & integer type \\
+\hline
+{\em Real} & real/float type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em parameters} & Parameter structure. \\
+\hline
+\mbox{\tt in}  & {\em map\-\_\-components} & Vector of strings containing the map types. \\
+\hline
+\mbox{\tt in}  & {\em index\-\_\-components} & Vector containing the index relative to the map types. \\
+\hline
+\mbox{\tt in}  & {\em ntrajectory} & Number of pixels to be filled \\
+\hline
+\mbox{\tt in}  & {\em firsttrajectory} & first index for pixel for a given cone \\
+\hline
+\mbox{\tt in}  & {\em octree} & Octree \\
+\hline
+\mbox{\tt in}  & {\em vobs} & Observer velocity \\
+\hline
+\mbox{\tt in,out}  & {\em map} & Map \\
+\hline
+\mbox{\tt in}  & {\em nmaps} & Number of Healpix maps \\
+\hline
+\mbox{\tt in}  & {\em pixel} & Pixel vector \\
+\hline
+\mbox{\tt in}  & {\em cosmology} & Cosmological table \\
+\hline
+\mbox{\tt in}  & {\em observer} & Observer position \\
+\hline
+\mbox{\tt in}  & {\em length} & R.\-U to S.\-I units for length \\
+\hline
+\mbox{\tt in}  & {\em interp\-Refvec} & vector of interpolations at a given quantity for a given surface \\
+\hline
+\mbox{\tt in}  & {\em rhomo} & vector of F\-L\-R\-W distance at the redshifts of interest \\
+\hline
+\mbox{\tt in}  & {\em thomo} & vector of F\-L\-R\-W time at the redshifts of interest \\
+\hline
+\mbox{\tt in}  & {\em lambdahomo} & vector of F\-L\-R\-W affine parameter at the redshifts of interest \\
+\hline
+\mbox{\tt in}  & {\em redshifthomo} & vector of F\-L\-R\-W redshift at the redshifts of interest \\
+\hline
+\mbox{\tt in}  & {\em ahomo} & vector of F\-L\-R\-W scale factor at the redshifts of interest \\
+\hline
+\end{DoxyParams}
+\hypertarget{classHmaps_a2d730259558142f226ee3173933a8c8d}{\index{Hmaps@{Hmaps}!Fill\-Map\-Propagate@{Fill\-Map\-Propagate}}
+\index{Fill\-Map\-Propagate@{Fill\-Map\-Propagate}!Hmaps@{Hmaps}}
+\subsubsection[{Fill\-Map\-Propagate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Parameter , class Octree , class Map , class Pixel , class Cosmology , class Point , typename Integer , typename Real $>$ void Hmaps\-::\-Fill\-Map\-Propagate (
+\begin{DoxyParamCaption}
+\item[{const Parameter \&}]{parameters, }
+\item[{const Integer}]{ntrajectory, }
+\item[{const Integer}]{firsttrajectory, }
+\item[{const Octree \&}]{octree, }
+\item[{const Point \&}]{vobs, }
+\item[{Map \&}]{map, }
+\item[{const Integer}]{nmaps, }
+\item[{const Pixel \&}]{pixel, }
+\item[{const Cosmology \&}]{cosmology, }
+\item[{const {\bf point} \&}]{observer, }
+\item[{const Real}]{length, }
+\item[{const std\-::vector$<$ Real $>$ \&}]{z\-\_\-stop\-\_\-vec}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classHmaps_a2d730259558142f226ee3173933a8c8d}
+
+
+Produce Healpix maps using bundles. 
+
+Produce Healpix maps using bundles at constant F\-L\-R\-W redshift 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Parameter} & Parameter type \\
+\hline
+{\em Octree} & octree type \\
+\hline
+{\em Map} & map type \\
+\hline
+{\em Pixel} & pixel type \\
+\hline
+{\em Cosmology} & cosmology type \\
+\hline
+{\em Integer} & integer type \\
+\hline
+{\em Real} & real/float type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em parameters} & Parameter structure \\
+\hline
+\mbox{\tt in}  & {\em ntrajectory} & Number of pixels to be filled \\
+\hline
+\mbox{\tt in}  & {\em firsttrajectory} & first index for pixel for a given cone \\
+\hline
+\mbox{\tt in}  & {\em octree} & Octree \\
+\hline
+\mbox{\tt in}  & {\em vobs} & Observer velocity \\
+\hline
+\mbox{\tt in,out}  & {\em map} & Map \\
+\hline
+\mbox{\tt in}  & {\em nmaps} & Number of Healpix maps \\
+\hline
+\mbox{\tt in}  & {\em pixel} & Pixel vector \\
+\hline
+\mbox{\tt in}  & {\em cosmology} & Cosmological table \\
+\hline
+\mbox{\tt in}  & {\em observer} & Observer position \\
+\hline
+\mbox{\tt in}  & {\em length} & R.\-U to S.\-I units for length \\
+\hline
+\mbox{\tt in}  & {\em z\-\_\-stop\-\_\-vec} & Vector containing redshifts at which we compute scalar quantities \\
+\hline
+\end{DoxyParams}
+\hypertarget{classHmaps_a6e341b26baa5cc36a1faaa7b1166a9e2}{\index{Hmaps@{Hmaps}!get\-Pixels\-\_\-per\-\_\-cone@{get\-Pixels\-\_\-per\-\_\-cone}}
+\index{get\-Pixels\-\_\-per\-\_\-cone@{get\-Pixels\-\_\-per\-\_\-cone}!Hmaps@{Hmaps}}
+\subsubsection[{get\-Pixels\-\_\-per\-\_\-cone}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Parameter , typename Integer , class Cones $>$ void Hmaps\-::get\-Pixels\-\_\-per\-\_\-cone (
+\begin{DoxyParamCaption}
+\item[{const Parameter \&}]{parameters, }
+\item[{const Integer}]{npix, }
+\item[{std\-::vector$<$ Integer $>$ \&}]{pixel, }
+\item[{std\-::vector$<$ unsigned int $>$ \&}]{ntrajectories, }
+\item[{const unsigned int}]{iconerank, }
+\item[{const Cones \&}]{cones}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classHmaps_a6e341b26baa5cc36a1faaa7b1166a9e2}
+
+
+Get targets. 
+
+Get targets inside cone. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Parameter} & Parameter type \\
+\hline
+{\em Integer} & Integer type \\
+\hline
+{\em Cones} & Cones type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em parameters} & Parameter structure. \\
+\hline
+\mbox{\tt in}  & {\em npix} & Number of pixels. \\
+\hline
+\mbox{\tt in,out}  & {\em pixel} & Vector of pixels inside cones that are treated by the same M\-P\-I task. \\
+\hline
+\mbox{\tt in}  & {\em ntrajectories} & Number of pixels per cone. \\
+\hline
+\mbox{\tt in}  & {\em iconerank} & Number of the cone of interest. \\
+\hline
+\mbox{\tt in}  & {\em Cones} & Geometry of all the cones. return Filled vector of targets inside cones for a given M\-P\-I task \\
+\hline
+\end{DoxyParams}
+\hypertarget{classHmaps_a037a8fd9c68555c04835fa12787121d6}{\index{Hmaps@{Hmaps}!get\-Pixels\-\_\-per\-\_\-cone2@{get\-Pixels\-\_\-per\-\_\-cone2}}
+\index{get\-Pixels\-\_\-per\-\_\-cone2@{get\-Pixels\-\_\-per\-\_\-cone2}!Hmaps@{Hmaps}}
+\subsubsection[{get\-Pixels\-\_\-per\-\_\-cone2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Parameter , typename Integer , class Cones $>$ void Hmaps\-::get\-Pixels\-\_\-per\-\_\-cone2 (
+\begin{DoxyParamCaption}
+\item[{const Parameter \&}]{parameters, }
+\item[{const Integer}]{npix, }
+\item[{std\-::vector$<$ Integer $>$ \&}]{pixel, }
+\item[{std\-::vector$<$ unsigned int $>$ \&}]{ntrajectories, }
+\item[{const unsigned int}]{iconerank, }
+\item[{const Cones \&}]{cones}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classHmaps_a037a8fd9c68555c04835fa12787121d6}
+
+
+Get targets. 
+
+Get targets inside cone. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Parameter} & Parameter type \\
+\hline
+{\em Integer} & Integer type \\
+\hline
+{\em Cones} & Cones type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em parameters} & Parameter structure. \\
+\hline
+\mbox{\tt in}  & {\em npix} & Number of pixels. \\
+\hline
+\mbox{\tt in,out}  & {\em pixel} & Vector of pixels inside cones that are treated by the same M\-P\-I task. \\
+\hline
+\mbox{\tt in}  & {\em ntrajectories} & Number of pixels per cone. \\
+\hline
+\mbox{\tt in}  & {\em iconerank} & Number of the cone of interest. \\
+\hline
+\mbox{\tt in}  & {\em Cones} & Geometry of all the cones. return Filled vector of targets inside cones for a given M\-P\-I task \\
+\hline
+\end{DoxyParams}
+\hypertarget{classHmaps_a1742ac13044d46c9132a963475c0745a}{\index{Hmaps@{Hmaps}!Read\-Param\-File@{Read\-Param\-File}}
+\index{Read\-Param\-File@{Read\-Param\-File}!Hmaps@{Hmaps}}
+\subsubsection[{Read\-Param\-File}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Parameters , class Map $>$ void Hmaps\-::\-Read\-Param\-File (
+\begin{DoxyParamCaption}
+\item[{Parameters \&}]{parameters, }
+\item[{Map \&}]{parameter}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classHmaps_a1742ac13044d46c9132a963475c0745a}
+
+
+Read parameter file. 
+
+Read and put in a structure the parameters. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Parameters} & structure type \\
+\hline
+{\em Map} & map type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em parameters} & Structure containing the parameters. \\
+\hline
+\mbox{\tt in}  & {\em parameter} & Contains parameters to be rewritten \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Filled parameters structure. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/\hyperlink{hmaps_8h}{hmaps.\-h}\end{DoxyCompactItemize}

@@ -1,0 +1,106 @@
+\hypertarget{exceptionmagrathea_1_1Step}{\section{magrathea\-:\-:Step$<$ Scalar, Array, Tuple $>$ Exception Template Reference}
+\label{exceptionmagrathea_1_1Step}\index{magrathea\-::\-Step$<$ Scalar, Array, Tuple $>$@{magrathea\-::\-Step$<$ Scalar, Array, Tuple $>$}}
+}
+
+
+Basic implementation of an evolution step.  
+
+
+
+
+{\ttfamily \#include $<$step.\-h$>$}
+
+Inheritance diagram for magrathea\-:\-:Step$<$ Scalar, Array, Tuple $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{exceptionmagrathea_1_1Step}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Lifecycle}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class... Misc$>$ }\\\hyperlink{exceptionmagrathea_1_1Step_ac143df9cbe3e5791ac86c653a49ca02b}{Step} (Misc \&\&...misc)
+\begin{DoxyCompactList}\small\item\em Explicit generic constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Static Public Member Functions}
+\begin{Indent}{\bf Test}\par
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{exceptionmagrathea_1_1Step_a370057ab460a1568f615d26ae075d32d}{example} ()
+\begin{DoxyCompactList}\small\item\em Example function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{exceptionmagrathea_1_1Step_a9c3ad1ac4dff397aafecac1c5675a132}{operator} = typedef
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Scalar = unsigned int, class Array = std\-::array$<$double, 0$>$, class Tuple = std\-::tuple$<$$>$$>$exception magrathea\-::\-Step$<$ Scalar, Array, Tuple $>$}
+
+Basic implementation of an evolution step. 
+
+This class is the direct derivation of \hyperlink{classmagrathea_1_1AbstractStep}{Abstract\-Step}. It provides the most basic and generic contents object without adding new functionalities to the abstract class. It can be used in most cases as a generic container for evolution data. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Scalar} & Scalar type of id. \\
+\hline
+{\em Array} & Array type of core quantities. \\
+\hline
+{\em Tuple} & Tuple type of extra quantities. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{exceptionmagrathea_1_1Step_ac143df9cbe3e5791ac86c653a49ca02b}{\index{magrathea\-::\-Step@{magrathea\-::\-Step}!Step@{Step}}
+\index{Step@{Step}!magrathea::Step@{magrathea\-::\-Step}}
+\subsubsection[{Step}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Scalar , class Array , class Tuple $>$ template$<$class... Misc$>$ {\bf magrathea\-::\-Step}$<$ Scalar, Array, Tuple $>$\-::{\bf Step} (
+\begin{DoxyParamCaption}
+\item[{Misc \&\&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{exceptionmagrathea_1_1Step_ac143df9cbe3e5791ac86c653a49ca02b}
+
+
+Explicit generic constructor. 
+
+Provides a generic interface to all constructors of the base class. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{exceptionmagrathea_1_1Step_a370057ab460a1568f615d26ae075d32d}{\index{magrathea\-::\-Step@{magrathea\-::\-Step}!example@{example}}
+\index{example@{example}!magrathea::Step@{magrathea\-::\-Step}}
+\subsubsection[{example}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Scalar , class Array , class Tuple $>$ int {\bf magrathea\-::\-Step}$<$ Scalar, Array, Tuple $>$\-::example (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1Step_a370057ab460a1568f615d26ae075d32d}
+
+
+Example function. 
+
+Tests and demonstrates the use of \hyperlink{exceptionmagrathea_1_1Step}{Step}. \begin{DoxyReturn}{Returns}
+0 if no error. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{exceptionmagrathea_1_1Step_a9c3ad1ac4dff397aafecac1c5675a132}{\index{magrathea\-::\-Step@{magrathea\-::\-Step}!operator@{operator}}
+\index{operator@{operator}!magrathea::Step@{magrathea\-::\-Step}}
+\subsubsection[{operator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Scalar = unsigned int, class Array = std\-::array$<$double, 0$>$, class Tuple = std\-::tuple$<$$>$$>$ using {\bf magrathea\-::\-Step}$<$ Scalar, Array, Tuple $>$\-::operator = }}\label{exceptionmagrathea_1_1Step_a9c3ad1ac4dff397aafecac1c5675a132}
+
+
+The documentation for this exception was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/magrathea/\hyperlink{step_8h}{step.\-h}\end{DoxyCompactItemize}

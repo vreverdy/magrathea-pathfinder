@@ -1,0 +1,140 @@
+\hypertarget{classObserver__velocity}{\section{Observer\-\_\-velocity Class Reference}
+\label{classObserver__velocity}\index{Observer\-\_\-velocity@{Observer\-\_\-velocity}}
+}
+
+
+{\ttfamily \#include $<$observer\-\_\-velocity.\-h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Parameters , class Map $>$ }\\static void \hyperlink{classObserver__velocity_acafaae5aa6e6af9cadd712f54f08821e}{Read\-Param\-File} (Parameters \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, Map \&parameter)
+\begin{DoxyCompactList}\small\item\em Read parameter file. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type1 , template$<$ typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container $>$ class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container $>$ }\\static void \hyperlink{classObserver__velocity_a674b436ee4b99f2876e607c66332e63b}{Create\-Octree\-Velocity\-With\-C\-I\-C} (Octree$<$ Type, Index, Data, Dimension, Position, Extent, Element, Container $>$ \&octree, std\-::vector$<$ Type1 $>$ \&pos\-\_\-part, std\-::vector$<$ Type1 $>$ \&vel\-\_\-part)
+\begin{DoxyCompactList}\small\item\em Add velocity to Octree using C\-I\-C. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type1 , template$<$ typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container $>$ class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container $>$ }\\static void \hyperlink{classObserver__velocity_a5dbabc0da68e01d7290564d152d6292a}{Create\-Octree\-Velocity\-With\-T\-S\-C} (Octree$<$ Type, Index, Data, Dimension, Position, Extent, Element, Container $>$ \&octree, std\-::vector$<$ Type1 $>$ \&pos\-\_\-part, std\-::vector$<$ Type1 $>$ \&vel\-\_\-part)
+\begin{DoxyCompactList}\small\item\em Add velocity to Octree using T\-S\-C. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classObserver__velocity_a674b436ee4b99f2876e607c66332e63b}{\index{Observer\-\_\-velocity@{Observer\-\_\-velocity}!Create\-Octree\-Velocity\-With\-C\-I\-C@{Create\-Octree\-Velocity\-With\-C\-I\-C}}
+\index{Create\-Octree\-Velocity\-With\-C\-I\-C@{Create\-Octree\-Velocity\-With\-C\-I\-C}!Observer_velocity@{Observer\-\_\-velocity}}
+\subsubsection[{Create\-Octree\-Velocity\-With\-C\-I\-C}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type1 , template$<$ typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container $>$ class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container $>$ void Observer\-\_\-velocity\-::\-Create\-Octree\-Velocity\-With\-C\-I\-C (
+\begin{DoxyParamCaption}
+\item[{Octree$<$ Type, Index, Data, Dimension, Position, Extent, Element, Container $>$ \&}]{octree, }
+\item[{std\-::vector$<$ Type1 $>$ \&}]{pos\-\_\-part, }
+\item[{std\-::vector$<$ Type1 $>$ \&}]{vel\-\_\-part}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classObserver__velocity_a674b436ee4b99f2876e607c66332e63b}
+
+
+Add velocity to Octree using C\-I\-C. 
+
+Add velocity to Octree using C\-I\-C 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type1} & Type1 type \\
+\hline
+{\em Octree} & octree type \\
+\hline
+{\em Type} & type type \\
+\hline
+{\em Index} & index type \\
+\hline
+{\em Data} & data type \\
+\hline
+{\em Dimension} & Number of dimensions \\
+\hline
+{\em Position} & position type \\
+\hline
+{\em Extent} & extent type \\
+\hline
+{\em Element} & element type \\
+\hline
+{\em Container} & container type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em octree} & Octree be to filled with velocity field \\
+\hline
+\mbox{\tt in}  & {\em pos\-\_\-part} & Position of particles \\
+\hline
+\mbox{\tt in}  & {\em vel\-\_\-part} & Velocity of particles \\
+\hline
+\end{DoxyParams}
+\hypertarget{classObserver__velocity_a5dbabc0da68e01d7290564d152d6292a}{\index{Observer\-\_\-velocity@{Observer\-\_\-velocity}!Create\-Octree\-Velocity\-With\-T\-S\-C@{Create\-Octree\-Velocity\-With\-T\-S\-C}}
+\index{Create\-Octree\-Velocity\-With\-T\-S\-C@{Create\-Octree\-Velocity\-With\-T\-S\-C}!Observer_velocity@{Observer\-\_\-velocity}}
+\subsubsection[{Create\-Octree\-Velocity\-With\-T\-S\-C}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type1 , template$<$ typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container $>$ class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container $>$ void Observer\-\_\-velocity\-::\-Create\-Octree\-Velocity\-With\-T\-S\-C (
+\begin{DoxyParamCaption}
+\item[{Octree$<$ Type, Index, Data, Dimension, Position, Extent, Element, Container $>$ \&}]{octree, }
+\item[{std\-::vector$<$ Type1 $>$ \&}]{pos\-\_\-part, }
+\item[{std\-::vector$<$ Type1 $>$ \&}]{vel\-\_\-part}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classObserver__velocity_a5dbabc0da68e01d7290564d152d6292a}
+
+
+Add velocity to Octree using T\-S\-C. 
+
+Add velocity to Octree using T\-S\-C 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type1} & Type1 type \\
+\hline
+{\em Octree} & octree type \\
+\hline
+{\em Type} & type type \\
+\hline
+{\em Index} & index type \\
+\hline
+{\em Data} & data type \\
+\hline
+{\em Dimension} & Number of dimensions \\
+\hline
+{\em Position} & position type \\
+\hline
+{\em Extent} & extent type \\
+\hline
+{\em Element} & element type \\
+\hline
+{\em Container} & container type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em octree} & Octree be to filled with velocity field \\
+\hline
+\mbox{\tt in}  & {\em pos\-\_\-part} & Position of particles \\
+\hline
+\mbox{\tt in}  & {\em vel\-\_\-part} & Velocity of particles \\
+\hline
+\end{DoxyParams}
+\hypertarget{classObserver__velocity_acafaae5aa6e6af9cadd712f54f08821e}{\index{Observer\-\_\-velocity@{Observer\-\_\-velocity}!Read\-Param\-File@{Read\-Param\-File}}
+\index{Read\-Param\-File@{Read\-Param\-File}!Observer_velocity@{Observer\-\_\-velocity}}
+\subsubsection[{Read\-Param\-File}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Parameters , class Map $>$ void Observer\-\_\-velocity\-::\-Read\-Param\-File (
+\begin{DoxyParamCaption}
+\item[{Parameters \&}]{parameters, }
+\item[{Map \&}]{parameter}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classObserver__velocity_acafaae5aa6e6af9cadd712f54f08821e}
+
+
+Read parameter file. 
+
+Read and put in a structure the parameters. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Parameters} & structure type \\
+\hline
+{\em Map} & map type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em parameters} & Structure containing the parameters. \\
+\hline
+\mbox{\tt in}  & {\em parameter} & Contains parameters to be rewritten \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/\hyperlink{observer__velocity_8h}{observer\-\_\-velocity.\-h}\end{DoxyCompactItemize}

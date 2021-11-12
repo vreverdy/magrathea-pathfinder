@@ -1,0 +1,388 @@
+\hypertarget{exceptionmagrathea_1_1Vectorized}{\section{magrathea\-:\-:Vectorized$<$ Type, Size $>$ Exception Template Reference}
+\label{exceptionmagrathea_1_1Vectorized}\index{magrathea\-::\-Vectorized$<$ Type, Size $>$@{magrathea\-::\-Vectorized$<$ Type, Size $>$}}
+}
+
+
+Basic vectorized container.  
+
+
+
+
+{\ttfamily \#include $<$vectorized.\-h$>$}
+
+Inheritance diagram for magrathea\-:\-:Vectorized$<$ Type, Size $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{exceptionmagrathea_1_1Vectorized}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Lifecycle}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{exceptionmagrathea_1_1Vectorized_ac54dac541b6b47cb6453a1de0b3dc575}{Vectorized} ()
+\begin{DoxyCompactList}\small\item\em Implicit empty constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Fundamental\-Type  = Type, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-fundamental$<$\-Fundamental\-Type$>$\-::value$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1Vectorized_a19336c66bd5a1c9177a50be159eceae3}{Vectorized} (const \hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized}$<$ Fundamental\-Type, Size $>$ \&source)
+\begin{DoxyCompactList}\small\item\em Implicit conversion constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type  = Type, class... Misc, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Other\-Type, Type$>$\-::value$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1Vectorized_a8dd5b14cd9f879ad5472ba3f87e4f1d9}{Vectorized} (const std\-::initializer\-\_\-list$<$ Other\-Type $>$ \&source, const Misc \&...misc)
+\begin{DoxyCompactList}\small\item\em Implicit initializer list constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class... Misc, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Misc) != 0$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1Vectorized_a5143d9865051881aa79740df5c728f9e}{Vectorized} (const Misc \&...misc)
+\begin{DoxyCompactList}\small\item\em Explicit generic constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Vectorization}\par
+\begin{DoxyCompactItemize}
+\item 
+Type \& \hyperlink{exceptionmagrathea_1_1Vectorized_a0f3d97c9455a9471bf2a25ca23b43415}{operator\mbox{[}$\,$\mbox{]}} (const unsigned int i)
+\begin{DoxyCompactList}\small\item\em Direct access to the element. \end{DoxyCompactList}\item 
+const Type \& \hyperlink{exceptionmagrathea_1_1Vectorized_af11c4c126a67c88dc87eb4e363542a0e}{operator\mbox{[}$\,$\mbox{]}} (const unsigned int i) const 
+\begin{DoxyCompactList}\small\item\em Immutable direct access to the element. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized}$<$ Type, Size $>$ \& \hyperlink{exceptionmagrathea_1_1Vectorized_a8c12527eaae803374f413aff65141c3a}{resize} (const unsigned int n)
+\begin{DoxyCompactList}\small\item\em Resize the container. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized}$<$ Type, Size $>$ \& \hyperlink{exceptionmagrathea_1_1Vectorized_abd2af5679ec375ba7ece2dac64d4764d}{reserve} (const unsigned int n)
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Static Public Member Functions}
+\begin{Indent}{\bf Static vectorization}\par
+\begin{DoxyCompactItemize}
+\item 
+static constexpr unsigned int \hyperlink{exceptionmagrathea_1_1Vectorized_a69853d16152b7ac5d6b74c0a819745a0}{size} ()
+\begin{DoxyCompactList}\small\item\em Get the size of the container. \end{DoxyCompactList}\item 
+static constexpr unsigned int \hyperlink{exceptionmagrathea_1_1Vectorized_aa169da938d44f5b2b368429d2fcd5944}{capacity} ()
+\item 
+static constexpr bool \hyperlink{exceptionmagrathea_1_1Vectorized_a41efb27191ba62b4effdccb2394292f5}{constant} ()
+\begin{DoxyCompactList}\small\item\em Get whether the container has a constant size. \end{DoxyCompactList}\item 
+static constexpr bool \hyperlink{exceptionmagrathea_1_1Vectorized_acc636c7bf7d53ef854781fbc015e19bd}{boolean} ()
+\begin{DoxyCompactList}\small\item\em Get whether the container has a boolean type. \end{DoxyCompactList}\item 
+static constexpr std\-::array\\*
+$<$ unsigned int, 1 $>$ \hyperlink{exceptionmagrathea_1_1Vectorized_a587bd8b091c3a477bd7e9cec7d59b5aa}{parameters} ()
+\begin{DoxyCompactList}\small\item\em Get the template parameters. \end{DoxyCompactList}\item 
+static Type \hyperlink{exceptionmagrathea_1_1Vectorized_a39bb3943c9d25bf2701b57b8bf9953f0}{type} ()
+\begin{DoxyCompactList}\small\item\em Get the data type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Test}\par
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{exceptionmagrathea_1_1Vectorized_a345a5a4bc7ded7c4a9e61e5c6413bf8e}{example} ()
+\begin{DoxyCompactList}\small\item\em Example function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Protected Attributes}
+\begin{Indent}{\bf Data members}\par
+\begin{DoxyCompactItemize}
+\item 
+Type \hyperlink{exceptionmagrathea_1_1Vectorized_a807e70ab36b29bab3d7985120a741254}{\-\_\-data} \mbox{[}Size\mbox{]}
+\begin{DoxyCompactList}\small\item\em Data contents. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Friends}
+\begin{Indent}{\bf Stream}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Self\-Type , unsigned int Self\-Size$>$ }\\std\-::ostream \& \hyperlink{exceptionmagrathea_1_1Vectorized_a9028ffadf06611be8f9ed7ce9bb6b0c3}{operator$<$$<$} (std\-::ostream \&lhs, const \hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized}$<$ Self\-Type, Self\-Size $>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em \hyperlink{exceptionOutput}{Output} stream operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Type = double, unsigned int Size = 1$>$exception magrathea\-::\-Vectorized$<$ Type, Size $>$}
+
+Basic vectorized container. 
+
+This class is the direct derivation of \hyperlink{classmagrathea_1_1Vectorizer}{Vectorizer}. It provides the most basic vectorized container without adding new functionalities to the abstract class. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+{\em Size} & Number of elements. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{exceptionmagrathea_1_1Vectorized_ac54dac541b6b47cb6453a1de0b3dc575}{\index{magrathea\-::\-Vectorized@{magrathea\-::\-Vectorized}!Vectorized@{Vectorized}}
+\index{Vectorized@{Vectorized}!magrathea::Vectorized@{magrathea\-::\-Vectorized}}
+\subsubsection[{Vectorized}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ {\bf magrathea\-::\-Vectorized}$<$ Type, Size $>$\-::{\bf Vectorized} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Vectorized_ac54dac541b6b47cb6453a1de0b3dc575}
+
+
+Implicit empty constructor. 
+
+Does nothing. \hypertarget{exceptionmagrathea_1_1Vectorized_a19336c66bd5a1c9177a50be159eceae3}{\index{magrathea\-::\-Vectorized@{magrathea\-::\-Vectorized}!Vectorized@{Vectorized}}
+\index{Vectorized@{Vectorized}!magrathea::Vectorized@{magrathea\-::\-Vectorized}}
+\subsubsection[{Vectorized}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename Fundamental\-Type , class $>$ {\bf magrathea\-::\-Vectorized}$<$ Type, Size $>$\-::{\bf Vectorized} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Vectorized}$<$ Fundamental\-Type, Size $>$ \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Vectorized_a19336c66bd5a1c9177a50be159eceae3}
+
+
+Implicit conversion constructor. 
+
+Provides an implicit conversion from a fundamental type contents. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Fundamental\-Type} & (Fundamental data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\hypertarget{exceptionmagrathea_1_1Vectorized_a8dd5b14cd9f879ad5472ba3f87e4f1d9}{\index{magrathea\-::\-Vectorized@{magrathea\-::\-Vectorized}!Vectorized@{Vectorized}}
+\index{Vectorized@{Vectorized}!magrathea::Vectorized@{magrathea\-::\-Vectorized}}
+\subsubsection[{Vectorized}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$typename Other\-Type , class... Misc, class $>$ {\bf magrathea\-::\-Vectorized}$<$ Type, Size $>$\-::{\bf Vectorized} (
+\begin{DoxyParamCaption}
+\item[{const std\-::initializer\-\_\-list$<$ Other\-Type $>$ \&}]{source, }
+\item[{const Misc \&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Vectorized_a8dd5b14cd9f879ad5472ba3f87e4f1d9}
+
+
+Implicit initializer list constructor. 
+
+Provides an implicit conversion from an initializer list. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & (Other data type.) \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\hypertarget{exceptionmagrathea_1_1Vectorized_a5143d9865051881aa79740df5c728f9e}{\index{magrathea\-::\-Vectorized@{magrathea\-::\-Vectorized}!Vectorized@{Vectorized}}
+\index{Vectorized@{Vectorized}!magrathea::Vectorized@{magrathea\-::\-Vectorized}}
+\subsubsection[{Vectorized}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ template$<$class... Misc, class $>$ {\bf magrathea\-::\-Vectorized}$<$ Type, Size $>$\-::{\bf Vectorized} (
+\begin{DoxyParamCaption}
+\item[{const Misc \&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{exceptionmagrathea_1_1Vectorized_a5143d9865051881aa79740df5c728f9e}
+
+
+Explicit generic constructor. 
+
+Provides a generic interface to all constructors of the base class. Before calling the associated constructor of the base class, the contents is initialized. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{exceptionmagrathea_1_1Vectorized_acc636c7bf7d53ef854781fbc015e19bd}{\index{magrathea\-::\-Vectorized@{magrathea\-::\-Vectorized}!boolean@{boolean}}
+\index{boolean@{boolean}!magrathea::Vectorized@{magrathea\-::\-Vectorized}}
+\subsubsection[{boolean}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ constexpr bool {\bf magrathea\-::\-Vectorized}$<$ Type, Size $>$\-::boolean (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1Vectorized_acc636c7bf7d53ef854781fbc015e19bd}
+
+
+Get whether the container has a boolean type. 
+
+Returns true if the container has a boolean type, false otherwise. This function is required by the vectorization mechanism. \begin{DoxyReturn}{Returns}
+Copy of true if the container has a boolean type. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Vectorized_aa169da938d44f5b2b368429d2fcd5944}{\index{magrathea\-::\-Vectorized@{magrathea\-::\-Vectorized}!capacity@{capacity}}
+\index{capacity@{capacity}!magrathea::Vectorized@{magrathea\-::\-Vectorized}}
+\subsubsection[{capacity}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type = double, unsigned int Size = 1$>$ static constexpr unsigned int {\bf magrathea\-::\-Vectorized}$<$ Type, Size $>$\-::capacity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1Vectorized_aa169da938d44f5b2b368429d2fcd5944}
+\hypertarget{exceptionmagrathea_1_1Vectorized_a41efb27191ba62b4effdccb2394292f5}{\index{magrathea\-::\-Vectorized@{magrathea\-::\-Vectorized}!constant@{constant}}
+\index{constant@{constant}!magrathea::Vectorized@{magrathea\-::\-Vectorized}}
+\subsubsection[{constant}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ constexpr bool {\bf magrathea\-::\-Vectorized}$<$ Type, Size $>$\-::constant (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1Vectorized_a41efb27191ba62b4effdccb2394292f5}
+
+
+Get whether the container has a constant size. 
+
+Returns true if the container has a constant size, false otherwise. This function is required by the vectorization mechanism. \begin{DoxyReturn}{Returns}
+Copy of true. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Vectorized_a345a5a4bc7ded7c4a9e61e5c6413bf8e}{\index{magrathea\-::\-Vectorized@{magrathea\-::\-Vectorized}!example@{example}}
+\index{example@{example}!magrathea::Vectorized@{magrathea\-::\-Vectorized}}
+\subsubsection[{example}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ int {\bf magrathea\-::\-Vectorized}$<$ Type, Size $>$\-::example (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1Vectorized_a345a5a4bc7ded7c4a9e61e5c6413bf8e}
+
+
+Example function. 
+
+Tests and demonstrates the use of \hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized}. \begin{DoxyReturn}{Returns}
+0 if no error. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Vectorized_a0f3d97c9455a9471bf2a25ca23b43415}{\index{magrathea\-::\-Vectorized@{magrathea\-::\-Vectorized}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!magrathea::Vectorized@{magrathea\-::\-Vectorized}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ Type \& {\bf magrathea\-::\-Vectorized}$<$ Type, Size $>$\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Vectorized_a0f3d97c9455a9471bf2a25ca23b43415}
+
+
+Direct access to the element. 
+
+Provides a direct access to the specified element. This function is required by the vectorization mechanism. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index of the element. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the element. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Vectorized_af11c4c126a67c88dc87eb4e363542a0e}{\index{magrathea\-::\-Vectorized@{magrathea\-::\-Vectorized}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!magrathea::Vectorized@{magrathea\-::\-Vectorized}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ const Type \& {\bf magrathea\-::\-Vectorized}$<$ Type, Size $>$\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Vectorized_af11c4c126a67c88dc87eb4e363542a0e}
+
+
+Immutable direct access to the element. 
+
+Provides a constant direct access to the specified element. This function is required by the vectorization mechanism. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index of the element. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Const reference to the element. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Vectorized_a587bd8b091c3a477bd7e9cec7d59b5aa}{\index{magrathea\-::\-Vectorized@{magrathea\-::\-Vectorized}!parameters@{parameters}}
+\index{parameters@{parameters}!magrathea::Vectorized@{magrathea\-::\-Vectorized}}
+\subsubsection[{parameters}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ constexpr std\-::array$<$ unsigned int, 1 $>$ {\bf magrathea\-::\-Vectorized}$<$ Type, Size $>$\-::parameters (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1Vectorized_a587bd8b091c3a477bd7e9cec7d59b5aa}
+
+
+Get the template parameters. 
+
+Returns an array containing the template parameters. This function is required by the vectorization mechanism. \begin{DoxyReturn}{Returns}
+Copy of an array of parameters. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Vectorized_abd2af5679ec375ba7ece2dac64d4764d}{\index{magrathea\-::\-Vectorized@{magrathea\-::\-Vectorized}!reserve@{reserve}}
+\index{reserve@{reserve}!magrathea::Vectorized@{magrathea\-::\-Vectorized}}
+\subsubsection[{reserve}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type = double, unsigned int Size = 1$>$ {\bf Vectorized}$<$Type, Size$>$\& {\bf magrathea\-::\-Vectorized}$<$ Type, Size $>$\-::reserve (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Vectorized_abd2af5679ec375ba7ece2dac64d4764d}
+\hypertarget{exceptionmagrathea_1_1Vectorized_a8c12527eaae803374f413aff65141c3a}{\index{magrathea\-::\-Vectorized@{magrathea\-::\-Vectorized}!resize@{resize}}
+\index{resize@{resize}!magrathea::Vectorized@{magrathea\-::\-Vectorized}}
+\subsubsection[{resize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ {\bf Vectorized}$<$ Type, Size $>$ \& {\bf magrathea\-::\-Vectorized}$<$ Type, Size $>$\-::resize (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1Vectorized_a8c12527eaae803374f413aff65141c3a}
+
+
+Resize the container. 
+
+Resizes the container and returns a reference to it. This function is required by the vectorization mechanism. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em n} & New size. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::length\-\_\-error} & The container cannot be resized. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{exceptionmagrathea_1_1Vectorized_a69853d16152b7ac5d6b74c0a819745a0}{\index{magrathea\-::\-Vectorized@{magrathea\-::\-Vectorized}!size@{size}}
+\index{size@{size}!magrathea::Vectorized@{magrathea\-::\-Vectorized}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ constexpr unsigned int {\bf magrathea\-::\-Vectorized}$<$ Type, Size $>$\-::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1Vectorized_a69853d16152b7ac5d6b74c0a819745a0}
+
+
+Get the size of the container. 
+
+Returns the current number of elements. This function is required by the vectorization mechanism. \begin{DoxyReturn}{Returns}
+Copy of the size. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1Vectorized_a39bb3943c9d25bf2701b57b8bf9953f0}{\index{magrathea\-::\-Vectorized@{magrathea\-::\-Vectorized}!type@{type}}
+\index{type@{type}!magrathea::Vectorized@{magrathea\-::\-Vectorized}}
+\subsubsection[{type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , unsigned int Size$>$ Type {\bf magrathea\-::\-Vectorized}$<$ Type, Size $>$\-::type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1Vectorized_a39bb3943c9d25bf2701b57b8bf9953f0}
+
+
+Get the data type. 
+
+Returns a copy of the default value of the data type. \begin{DoxyReturn}{Returns}
+Copy of the default value of the data type. 
+\end{DoxyReturn}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{exceptionmagrathea_1_1Vectorized_a9028ffadf06611be8f9ed7ce9bb6b0c3}{\index{magrathea\-::\-Vectorized@{magrathea\-::\-Vectorized}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!magrathea::Vectorized@{magrathea\-::\-Vectorized}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type = double, unsigned int Size = 1$>$ template$<$typename Self\-Type , unsigned int Self\-Size$>$ std\-::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{lhs, }
+\item[{const {\bf Vectorized}$<$ Self\-Type, Self\-Size $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{exceptionmagrathea_1_1Vectorized_a9028ffadf06611be8f9ed7ce9bb6b0c3}
+
+
+\hyperlink{exceptionOutput}{Output} stream operator. 
+
+Adds each element to the stream using the fill character to separate the elements. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Self\-Type} & Data type. \\
+\hline
+{\em Self\-Size} & Number of elements. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em lhs} & Left-\/hand side stream. \\
+\hline
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side container. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{exceptionOutput}{Output} stream. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{exceptionmagrathea_1_1Vectorized_a807e70ab36b29bab3d7985120a741254}{\index{magrathea\-::\-Vectorized@{magrathea\-::\-Vectorized}!\-\_\-data@{\-\_\-data}}
+\index{\-\_\-data@{\-\_\-data}!magrathea::Vectorized@{magrathea\-::\-Vectorized}}
+\subsubsection[{\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type = double, unsigned int Size = 1$>$ Type {\bf magrathea\-::\-Vectorized}$<$ Type, Size $>$\-::\-\_\-data\mbox{[}Size\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}}\label{exceptionmagrathea_1_1Vectorized_a807e70ab36b29bab3d7985120a741254}
+
+
+Data contents. 
+
+
+
+The documentation for this exception was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/magrathea/\hyperlink{vectorized_8h}{vectorized.\-h}\end{DoxyCompactItemize}

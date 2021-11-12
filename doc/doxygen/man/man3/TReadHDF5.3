@@ -1,0 +1,802 @@
+.TH "TReadHDF5" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TReadHDF5 \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <TReadHDF5\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBdisplayAllInfos\fP (const std::string &fileName) const "
+.br
+.RI "\fIPrints informations\&. \fP"
+.ti -1c
+.RI "template<typename Type1 > void \fBfillVectors_part\fP (const double &fraction, const std::string &fileName, const std::string &fileSide, const std::string &output_name1, std::vector< Type1 > &output1)"
+.br
+.RI "\fIGet data from part cones\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static hid_t \fBh5t_native\fP (const int N)"
+.br
+.RI "\fIConverts Type to the corresponding hid_t\&. \fP"
+.ti -1c
+.RI "static hid_t \fBh5t_native\fP (const unsigned int N)"
+.br
+.RI "\fIConverts Type to the corresponding hid_t\&. \fP"
+.ti -1c
+.RI "static hid_t \fBh5t_native\fP (const float N)"
+.br
+.RI "\fIConverts Type to the corresponding hid_t\&. \fP"
+.ti -1c
+.RI "static hid_t \fBh5t_native\fP (const double N)"
+.br
+.RI "\fIConverts Type to the corresponding hid_t\&. \fP"
+.ti -1c
+.RI "static hid_t \fBh5t_native\fP (const unsigned long int N)"
+.br
+.RI "\fIConverts Type to the corresponding hid_t\&. \fP"
+.ti -1c
+.RI "template<typename T > static hid_t \fBh5t_native\fP (void)"
+.br
+.RI "\fIConverts Type to the corresponding hid_t\&. \fP"
+.ti -1c
+.RI "static void \fBpos_from_index_fullsky\fP (const std::string &str, const std::vector< int > &nctab, const std::vector< float > &dimtab, const float &cubesize, std::array< double, 3 > &point111)"
+.br
+.RI "\fIGet position from index\&. \fP"
+.ti -1c
+.RI "static void \fBpos_from_index_narrow\fP (const std::string &str, const std::vector< int > &nctab, const std::vector< float > &dimtab, const float &cubesize, const double &thetay, const double &thetaz, std::array< double, 3 > &point111)"
+.br
+.RI "\fIGet position from index\&. \fP"
+.ti -1c
+.RI "template<typename Type > static void \fBget_data_from_dataset\fP (const hid_t &gid, const std::string &output_name, std::vector< Type > &output)"
+.br
+.RI "\fIGet data from dataset\&. \fP"
+.ti -1c
+.RI "template<typename Type , typename\&.\&.\&. String, typename\&.\&.\&. Vector> static void \fBget_data_from_dataset\fP (const hid_t &gid, const std::string &output_name, std::vector< Type > &output, const String &\&.\&.\&.output_names, Vector &\&.\&.\&.outputs)"
+.br
+.RI "\fIGet data from dataset\&. \fP"
+.ti -1c
+.RI "template<typename Integer > static void \fBcellsPerLevels\fP (const std::string &fileName, std::vector< Integer > &count)"
+.br
+.RI "\fINumber of cells\&. \fP"
+.ti -1c
+.RI "template<class Parameter , typename Integer , class Conic > static void \fBcellsAndCubesPerLevels\fP (const Parameter &\fBparameters\fP, const std::string &fileName, std::vector< Integer > &count, std::vector< std::vector< std::string > > &cubeNumber, const double &thetay, const double &thetaz, const Conic &conic)"
+.br
+.RI "\fIGet cells per level\&. \fP"
+.ti -1c
+.RI "template<typename Type > static void \fBgetAttribute\fP (const std::string &fileName, const std::string &attributeName, Type &attributeValue)"
+.br
+.RI "\fIGet attribute\&. \fP"
+.ti -1c
+.RI "template<typename Type > static void \fBgetAttribute\fP (const std::string &fileName, const std::string &attributeName, std::vector< Type > &attributeValue)"
+.br
+.RI "\fIGet attribute\&. \fP"
+.ti -1c
+.RI "template<typename Type > static void \fBgetAttribute\fP (const std::string &fileName, const std::string &attributeName1, const std::string &attributeName2, Type &attributeValue)"
+.br
+.RI "\fIGet attribute\&. \fP"
+.ti -1c
+.RI "template<typename Type > static void \fBgetAttribute\fP (const std::string &fileName, const std::string &attributeName1, const std::string &attributeName2, std::vector< Type > &attributeValue)"
+.br
+.RI "\fIGet attribute\&. \fP"
+.ti -1c
+.RI "template<typename Type > static void \fBfillVectors_grav\fP (const std::string &fileName, const unsigned int &levelMin, const unsigned int &levelMax, const std::string &output_name, std::vector< Type > &output)"
+.br
+.RI "\fIGet data from grav cones\&. \fP"
+.ti -1c
+.RI "template<typename Type , typename\&.\&.\&. String, typename\&.\&.\&. Vector> static void \fBfillVectors_grav\fP (const std::string &fileName, const unsigned int &levelMin, const unsigned int &levelMax, const std::string &output_name, std::vector< Type > &output, const String &\&.\&.\&.output_names, Vector &\&.\&.\&.outputs)"
+.br
+.RI "\fIGet data from grav cones\&. \fP"
+.ti -1c
+.RI "template<typename Type > static void \fBfillVectors_grav\fP (const std::string &fileName, const unsigned int &levelMin, const unsigned int &levelMax, const std::vector< std::string > &cubeNumber, const std::string &output_name, std::vector< Type > &output)"
+.br
+.RI "\fIGet data from grave cones\&. \fP"
+.ti -1c
+.RI "template<typename Type , typename\&.\&.\&. String, typename\&.\&.\&. Vector> static void \fBfillVectors_grav\fP (const std::string &fileName, const unsigned int &levelMin, const unsigned int &levelMax, const std::vector< std::string > &cubeNumber, const std::string &output_name, std::vector< Type > &output, const String &\&.\&.\&.output_names, Vector &\&.\&.\&.outputs)"
+.br
+.RI "\fIGet data from grav cones\&. \fP"
+.ti -1c
+.RI "template<typename Type > static void \fBfillVectors_part\fP (const std::string &fileName, const std::string &fileSide, const std::string &output_name, std::vector< Type > &output)"
+.br
+.RI "\fIGet data from part cones\&. \fP"
+.ti -1c
+.RI "template<typename Type , typename\&.\&.\&. String, typename\&.\&.\&. Vector> static void \fBfillVectors_part\fP (const std::string &fileName, const std::string &fileSide, const std::string &output_name, std::vector< Type > &output, const String &\&.\&.\&.output_names, Vector &\&.\&.\&.outputs)"
+.br
+.RI "\fIGet data from part cones\&. \fP"
+.ti -1c
+.RI "template<typename Type > static void \fBfillVectors_part\fP (const double &fraction, const std::string &fileName, const std::string &fileSide, const std::string &output_name, std::vector< Type > &output)"
+.br
+.ti -1c
+.RI "template<typename Type1 , typename Type2 > static void \fBfillVectors_part\fP (const double &fraction, const std::string &fileName, const std::string &fileSide, const std::string &output_name1, std::vector< Type1 > &output1, const std::string &output_name2, std::vector< Type2 > &output2)"
+.br
+.RI "\fIGet data from part cones\&. \fP"
+.ti -1c
+.RI "template<typename Type1 , typename Type2 , typename Type3 > static void \fBfillVectors_part\fP (const double &fraction, const std::string &fileName, const std::string &fileSide, const std::string &output_name1, std::vector< Type1 > &output1, const std::string &output_name2, std::vector< Type2 > &output2, const std::string &output_name3, std::vector< Type3 > &output3)"
+.br
+.RI "\fIGet data from part cones\&. \fP"
+.ti -1c
+.RI "template<class Parameter , typename Type , class Conic > static void \fBfillVectors_part\fP (const Parameter &\fBparameters\fP, const std::string &fileName, const double &thetay, const double &thetaz, const Conic &conic, const std::string &fileSide, const std::string &output_name, std::vector< Type > &output)"
+.br
+.RI "\fIGet data from part cones\&. \fP"
+.ti -1c
+.RI "template<class Parameter , typename Type , typename\&.\&.\&. String, typename\&.\&.\&. Vector, class Conic > static void \fBfillVectors_part\fP (const Parameter &\fBparameters\fP, const std::string &fileName, const double &thetay, const double &thetaz, const Conic &conic, const std::string &fileSide, const std::string &output_name, std::vector< Type > &output, const String &\&.\&.\&.output_names, Vector &\&.\&.\&.outputs)"
+.br
+.RI "\fIGet data from part cones\&. \fP"
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class Parameter , typename Integer , class Conic > void TReadHDF5::cellsAndCubesPerLevels (const Parameter &parameters, const std::string &fileName, std::vector< Integer > &count, std::vector< std::vector< std::string > > &cubeNumber, const double &thetay, const double &thetaz, const Conic &conic)\fC [static]\fP"
+
+.PP
+Get cells per level\&. Get cells per level\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIParameter\fP Parameter type\&. 
+.br
+\fIInteger\fP Count type 
+.br
+\fIConic\fP \fBCone\fP type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Parameter structure\&. 
+.br
+\fIfileName\fP File name\&. 
+.br
+\fIcount\fP Number of cells per level 
+.br
+\fIcubeNumber\fP Name number of cubes per level\&. 
+.br
+\fIthetay\fP Semi-angle for solid angle in direction y 
+.br
+\fIthetaz\fP Semi-angle for solid angle in direction z 
+.br
+\fIconic\fP \fBCone\fP\&. 
+.RE
+.PP
+
+.SS "template<typename Integer > void TReadHDF5::cellsPerLevels (const std::string &fileName, std::vector< Integer > &count)\fC [static]\fP"
+
+.PP
+Number of cells\&. Number of cells per level 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIInteger\fP Count type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfileName\fP File name\&. 
+.br
+\fIcount\fP Number of cells per level\&. 
+.RE
+.PP
+
+.SS "void TReadHDF5::displayAllInfos (const std::string &fileName) const"
+
+.PP
+Prints informations\&. Prints the following informations on the HDF5 file :
+.IP "\(bu" 2
+File name
+.IP "\(bu" 2
+Group names
+.IP "\(bu" 2
+Number of subgroups 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfileName\fP File list\&. 
+.RE
+.PP
+
+.PP
+
+.SS "template<typename Type > void TReadHDF5::fillVectors_grav (const std::string &fileName, const unsigned int &levelMin, const unsigned int &levelMax, const std::string &output_name, std::vector< Type > &output)\fC [static]\fP"
+
+.PP
+Get data from grav cones\&. Get list of values of a dataset\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfileName\fP File name\&. 
+.br
+\fIlevelMin\fP int Minimum level\&. 
+.br
+\fIlevelMax\fP int Maximum level\&. 
+.br
+\fIoutput_name\fP Data name\&. 
+.br
+\fIoutput\fP Data vector\&. 
+.RE
+.PP
+
+.SS "template<typename Type , typename\&.\&.\&. String, typename\&.\&.\&. Vector> void TReadHDF5::fillVectors_grav (const std::string &fileName, const unsigned int &levelMin, const unsigned int &levelMax, const std::string &output_name, std::vector< Type > &output, const String &\&.\&.\&.output_names, Vector &\&.\&.\&.outputs)\fC [static]\fP"
+
+.PP
+Get data from grav cones\&. Get list of values of a dataset\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfileName\fP File name\&. 
+.br
+\fIlevelMin\fP int Minimum level\&. 
+.br
+\fIlevelMax\fP int Maximum level\&. 
+.br
+\fIoutput_name\fP Data name\&. 
+.br
+\fIoutput\fP Data vector\&. 
+.br
+\fIoutput_names\fP Variadic Data names\&. 
+.br
+\fIoutputs\fP Variadic Data vectors\&. 
+.RE
+.PP
+
+.SS "template<typename Type > void TReadHDF5::fillVectors_grav (const std::string &fileName, const unsigned int &levelMin, const unsigned int &levelMax, const std::vector< std::string > &cubeNumber, const std::string &output_name, std::vector< Type > &output)\fC [static]\fP"
+
+.PP
+Get data from grave cones\&. Get list of values of a dataset of a cube that intersects the cone GIVEN the list of cubes as inputs 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfileName\fP File name\&. 
+.br
+\fIlevelMin\fP Minimum level\&. 
+.br
+\fIlevelMax\fP Maximum level\&. 
+.br
+\fIcubeNumber\fP Name of cubes that intersects the cone\&. 
+.br
+\fIoutput_name\fP Data name\&. 
+.br
+\fIoutput\fP Data vector\&. 
+.RE
+.PP
+
+.SS "template<typename Type , typename\&.\&.\&. String, typename\&.\&.\&. Vector> void TReadHDF5::fillVectors_grav (const std::string &fileName, const unsigned int &levelMin, const unsigned int &levelMax, const std::vector< std::string > &cubeNumber, const std::string &output_name, std::vector< Type > &output, const String &\&.\&.\&.output_names, Vector &\&.\&.\&.outputs)\fC [static]\fP"
+
+.PP
+Get data from grav cones\&. Get lists of values of datasets of a cube that intersects the cone GIVEN the list of cubes as inputs 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType1\fP Data type\&. 
+.br
+\fIType2\fP Data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfileName\fP File name\&. 
+.br
+\fIlevelMin\fP Minimum level\&. 
+.br
+\fIlevelMax\fP Maximum level\&. 
+.br
+\fIcubeNumber\fP Name of cubes that intersects the cone\&. 
+.br
+\fIoutput_name\fP Data name\&. 
+.br
+\fIoutput\fP Data vector\&. 
+.br
+\fIoutput_names\fP Variadic Data names\&. 
+.br
+\fIoutputs\fP Variadic Data vectors\&. 
+.RE
+.PP
+
+.SS "template<typename Type > void TReadHDF5::fillVectors_part (const std::string &fileName, const std::string &fileSide, const std::string &output_name, std::vector< Type > &output)\fC [static]\fP"
+
+.PP
+Get data from part cones\&. Get lists of values of datasets 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP dataset type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfileName\fP File name\&. 
+.br
+\fIfileSide\fP side name('data' or 'metadata' in Raygal simulation HDF5 files)\&. 
+.br
+\fIoutput_name\fP Data name\&. 
+.br
+\fIoutput\fP Data vector\&. 
+.RE
+.PP
+
+.SS "template<typename Type , typename\&.\&.\&. String, typename\&.\&.\&. Vector> void TReadHDF5::fillVectors_part (const std::string &fileName, const std::string &fileSide, const std::string &output_name, std::vector< Type > &output, const String &\&.\&.\&.output_names, Vector &\&.\&.\&.outputs)\fC [static]\fP"
+
+.PP
+Get data from part cones\&. Get lists of values of datasets 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType1\fP Dataset type\&. 
+.br
+\fIType2\fP Dataset type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfileName\fP File name\&. 
+.br
+\fIfileSide\fP side name('data' or 'metadata' in Raygal simulation HDF5 files)\&. 
+.br
+\fIoutput_name\fP Data name\&. 
+.br
+\fIoutput\fP Data vector\&. 
+.br
+\fIoutput_names\fP Variadic Data names\&. 
+.br
+\fIoutputs\fP Variadic Data vectors\&. 
+.RE
+.PP
+
+.SS "template<typename Type > static void TReadHDF5::fillVectors_part (const double &fraction, const std::string &fileName, const std::string &fileSide, const std::string &output_name, std::vector< Type > &output)\fC [static]\fP"
+
+.SS "template<typename Type1 , typename Type2> void TReadHDF5::fillVectors_part (const double &fraction, const std::string &fileName, const std::string &fileSide, const std::string &output_name1, std::vector< Type1 > &output1, const std::string &output_name2, std::vector< Type2 > &output2)\fC [static]\fP"
+
+.PP
+Get data from part cones\&. Get lists of values of datasets 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType1\fP Dataset type\&. 
+.br
+\fIType2\fP Dataset type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfraction\fP probability under which we take the data 
+.br
+\fIfileName\fP File name\&. 
+.br
+\fIfileSide\fP side name( data or metadata )\&. 
+.br
+\fIoutput_name1\fP Data name\&. 
+.br
+\fIoutput1\fP Data vector\&. 
+.br
+\fIoutput_name2\fP Variadic Data name\&. 
+.br
+\fIoutput2\fP Variadic Data vector\&. 
+.RE
+.PP
+
+.SS "template<typename Type1 , typename Type2, typename Type3> void TReadHDF5::fillVectors_part (const double &fraction, const std::string &fileName, const std::string &fileSide, const std::string &output_name1, std::vector< Type1 > &output1, const std::string &output_name2, std::vector< Type2 > &output2, const std::string &output_name3, std::vector< Type3 > &output3)\fC [static]\fP"
+
+.PP
+Get data from part cones\&. Get lists of values of datasets 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType1\fP Dataset type\&. 
+.br
+\fIType2\fP Dataset type\&. 
+.br
+\fIType3\fP Dataset type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfraction\fP probability under which we take the data 
+.br
+\fIfileName\fP File name\&. 
+.br
+\fIfileSide\fP side name( data or metadata )\&. 
+.br
+\fIoutput_name1\fP Data name\&. 
+.br
+\fIoutput1\fP Data vector\&. 
+.br
+\fIoutput_name2\fP Data name\&. 
+.br
+\fIoutput2\fP Data vector\&. 
+.br
+\fIoutput_name3\fP Data name\&. 
+.br
+\fIoutput3\fP Data vector\&. 
+.RE
+.PP
+
+.SS "template<class Parameter , typename Type, class Conic> void TReadHDF5::fillVectors_part (const Parameter &parameters, const std::string &fileName, const double &thetay, const double &thetaz, const Conic &conic, const std::string &fileSide, const std::string &output_name, std::vector< Type > &output)\fC [static]\fP"
+
+.PP
+Get data from part cones\&. Get values of datasets 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIParameter\fP Parameter type\&. 
+.br
+\fIType1\fP Dataset type\&. 
+.br
+\fIType2\fP Dataset type\&. 
+.br
+\fIConic\fP \fBCone\fP type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Parameter structure\&. 
+.br
+\fIfileName\fP File name\&. 
+.br
+\fIthetay\fP Semi-angle for solid angle in direction y 
+.br
+\fIthetaz\fP Semi-angle for solid angle in direction z 
+.br
+\fIconic\fP \fBCone\fP\&. 
+.br
+\fIfileSide\fP side name( data or metadata )\&. 
+.br
+\fIoutput_name\fP Data name\&. 
+.br
+\fIoutput\fP Data vector\&. 
+.RE
+.PP
+
+.SS "template<class Parameter , typename Type, typename\&.\&.\&. String, typename\&.\&.\&. Vector, class Conic > void TReadHDF5::fillVectors_part (const Parameter &parameters, const std::string &fileName, const double &thetay, const double &thetaz, const Conic &conic, const std::string &fileSide, const std::string &output_name, std::vector< Type > &output, const String &\&.\&.\&.output_names, Vector &\&.\&.\&.outputs)\fC [static]\fP"
+
+.PP
+Get data from part cones\&. Get values of datasets 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIParameter\fP Parameter type\&. 
+.br
+\fIType1\fP Dataset type\&. 
+.br
+\fIType2\fP Dataset type\&. 
+.br
+\fIConic\fP \fBCone\fP type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Parameter structure\&. 
+.br
+\fIfileName\fP File name\&. 
+.br
+\fIthetay\fP Semi-angle for solid angle in direction y 
+.br
+\fIthetaz\fP Semi-angle for solid angle in direction z 
+.br
+\fIconic\fP \fBCone\fP\&. 
+.br
+\fIfileSide\fP side name( data or metadata )\&. 
+.br
+\fIoutput_name\fP Data name\&. 
+.br
+\fIoutput\fP Data vector\&. 
+.br
+\fIoutput_names\fP Variadic Data names\&. 
+.br
+\fIoutputs\fP Variadic Data vectors\&. 
+.RE
+.PP
+
+.SS "template<typename Type1 > void TReadHDF5::fillVectors_part (const double &fraction, const std::string &fileName, const std::string &fileSide, const std::string &output_name1, std::vector< Type1 > &output1)"
+
+.PP
+Get data from part cones\&. Get lists of values of datasets 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType1\fP Dataset type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfraction\fP Probability under which we take the data 
+.br
+\fIfileName\fP File name\&. 
+.br
+\fIfileSide\fP side name( data or metadata )\&. 
+.br
+\fIoutput_name1\fP Data name\&. 
+.br
+\fIoutput1\fP Data vector\&. 
+.RE
+.PP
+
+.SS "template<typename Type > void TReadHDF5::get_data_from_dataset (const hid_t &gid, const std::string &output_name, std::vector< Type > &output)\fC [static]\fP"
+
+.PP
+Get data from dataset\&. Get data from dataset 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Type type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgid\fP Group HDF5 id\&. 
+.br
+\fIoutput_name\fP Data name\&. 
+.br
+\fIoutput\fP Data vector\&. 
+.RE
+.PP
+
+.SS "template<typename Type , typename\&.\&.\&. String, typename\&.\&.\&. Vector> void TReadHDF5::get_data_from_dataset (const hid_t &gid, const std::string &output_name, std::vector< Type > &output, const String &\&.\&.\&.output_names, Vector &\&.\&.\&.outputs)\fC [static]\fP"
+
+.PP
+Get data from dataset\&. Get data from dataset 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Type type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgid\fP Group HDF5 id\&. 
+.br
+\fIoutput_name\fP Data name\&. 
+.br
+\fIoutput\fP Data vector\&. 
+.br
+\fIoutput_names\fP Variadic Data names\&. 
+.br
+\fIoutputs\fP Variadic Data vectors\&. 
+.RE
+.PP
+
+.SS "template<typename Type > void TReadHDF5::getAttribute (const std::string &fileName, const std::string &attributeName, Type &attributeValue)\fC [static]\fP"
+
+.PP
+Get attribute\&. Get attribute\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Attribute type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfileName\fP File name\&. 
+.br
+\fIattributeName\fP Attribute name\&. 
+.br
+\fIattributeValue\fP Value of attribute\&. 
+.RE
+.PP
+
+.SS "template<typename Type > void TReadHDF5::getAttribute (const std::string &fileName, const std::string &attributeName, std::vector< Type > &attributeValue)\fC [static]\fP"
+
+.PP
+Get attribute\&. Get attribute\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Attribute type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfileName\fP File name\&. 
+.br
+\fIattributeName\fP Attribute name\&. 
+.br
+\fIattributeValue\fP Values of attribute\&. 
+.RE
+.PP
+
+.SS "template<typename Type > void TReadHDF5::getAttribute (const std::string &fileName, const std::string &groupName, const std::string &attributeName, Type &attributeValue)\fC [static]\fP"
+
+.PP
+Get attribute\&. Get attribute\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Attribute type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfileName\fP File name\&. 
+.br
+\fIgroupName\fP Group name\&. 
+.br
+\fIattributeName\fP Attribute name 
+.br
+\fIattributeValue\fP Value of attribute\&. 
+.RE
+.PP
+
+.SS "template<typename Type > void TReadHDF5::getAttribute (const std::string &fileName, const std::string &groupName, const std::string &attributeName, std::vector< Type > &attributeValue)\fC [static]\fP"
+
+.PP
+Get attribute\&. Get attribute\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Attribute type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfileName\fP File name\&. 
+.br
+\fIgroupName\fP Group name\&. 
+.br
+\fIattributeName\fP Attribute name\&. 
+.br
+\fIattributeValueValues\fP of attribute\&. 
+.RE
+.PP
+
+.SS "hid_t TReadHDF5::h5t_native (const intN)\fC [static]\fP"
+
+.PP
+Converts Type to the corresponding hid_t\&. The HDF5 C routines use a hid_t type in order to get the data of a specified type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP (only the type matters, not the value) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+hid_t H5T_NATIVE of the intput type 
+.RE
+.PP
+
+.SS "hid_t TReadHDF5::h5t_native (const unsigned intN)\fC [static]\fP"
+
+.PP
+Converts Type to the corresponding hid_t\&. The HDF5 C routines use a hid_t type in order to get the data of a specified type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP (only the type matters, not the value) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+hid_t H5T_NATIVE of the intput type 
+.RE
+.PP
+
+.SS "hid_t TReadHDF5::h5t_native (const floatN)\fC [static]\fP"
+
+.PP
+Converts Type to the corresponding hid_t\&. The HDF5 C routines use a hid_t type in order to get the data of a specified type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP (only the type matters, not the value) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+hid_t H5T_NATIVE of the intput type 
+.RE
+.PP
+
+.SS "hid_t TReadHDF5::h5t_native (const doubleN)\fC [static]\fP"
+
+.PP
+Converts Type to the corresponding hid_t\&. The HDF5 C routines use a hid_t type in order to get the data of a specified type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP (only the type matters, not the value) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+hid_t H5T_NATIVE of the intput type 
+.RE
+.PP
+
+.SS "hid_t TReadHDF5::h5t_native (const unsigned long intN)\fC [static]\fP"
+
+.PP
+Converts Type to the corresponding hid_t\&. The HDF5 C routines use a hid_t type in order to get the data of a specified type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP (only the type matters, not the value) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+hid_t H5T_NATIVE of the intput type 
+.RE
+.PP
+
+.SS "template<class T > hid_t TReadHDF5::h5t_native (void)\fC [static]\fP"
+
+.PP
+Converts Type to the corresponding hid_t\&. The HDF5 C routines use a hid_t type in order to get the data of a specified type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP Type 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+hid_t H5T_NATIVE of the intput type 
+.RE
+.PP
+
+.SS "void TReadHDF5::pos_from_index_fullsky (const std::string &str, const std::vector< int > &nctab, const std::vector< float > &dimtab, const float &cubesize, std::array< double, 3 > &point111)\fC [static]\fP"
+
+.PP
+Get position from index\&. Get position from indexes in Raygal simulation fullsky data cubes 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstr\fP Cube name in HDF5 file\&. 
+.br
+\fInctab\fP Number of cubes in data 
+.br
+\fIdimtab\fP Dimensions of data\&. 
+.br
+\fIcubesize\fP Cube size\&. 
+.br
+\fIpoint111\fP Cube center position\&. 
+.RE
+.PP
+
+.SS "void TReadHDF5::pos_from_index_narrow (const std::string &str, const std::vector< int > &nctab, const std::vector< float > &dimtab, const float &cubesize, const double &thetay, const double &thetaz, std::array< double, 3 > &point111)\fC [static]\fP"
+
+.PP
+Get position from index\&. Get position from indexes in Raygal simulation narrow data cubes 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstr\fP Cube name in HDF5 file\&. 
+.br
+\fInctab\fP Number of cubes in every dimension\&. 
+.br
+\fIdimtab\fP Dimensions in Ramses units of the parallelepiped around the cone 
+.br
+\fIcubesize\fP Cube size\&. 
+.br
+\fIthetay\fP Semi-angle for solid angle in direction y 
+.br
+\fIthetaz\fP Semi-angle for solid angle in direction z 
+.br
+\fIpoint111\fP Cube center position\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

@@ -1,0 +1,1680 @@
+\hypertarget{classmagrathea_1_1AbstractNArray}{\section{magrathea\-:\-:Abstract\-N\-Array$<$ Kind, Size, Crtp, Type, Parameters $>$ Class Template Reference}
+\label{classmagrathea_1_1AbstractNArray}\index{magrathea\-::\-Abstract\-N\-Array$<$ Kind, Size, Crtp, Type, Parameters $>$@{magrathea\-::\-Abstract\-N\-Array$<$ Kind, Size, Crtp, Type, Parameters $>$}}
+}
+
+
+Abstract base class of n-\/dimensional mathematical arrays.  
+
+
+
+
+{\ttfamily \#include $<$abstractnarray.\-h$>$}
+
+Inheritance diagram for magrathea\-:\-:Abstract\-N\-Array$<$ Kind, Size, Crtp, Type, Parameters $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classmagrathea_1_1AbstractNArray}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Lifecycle}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmagrathea_1_1AbstractNArray_a411d3215457a0b6f89920c1d13da8563}{Abstract\-N\-Array} ()
+\begin{DoxyCompactList}\small\item\em Implicit empty constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Fundamental\-Type  = Type, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-fundamental$<$\-Fundamental\-Type$>$\-::value$>$\-::type$>$ }\\\hyperlink{classmagrathea_1_1AbstractNArray_afa10ddc178555f466782fafcfe9362cb}{Abstract\-N\-Array} (const \hyperlink{classmagrathea_1_1AbstractNArray}{Abstract\-N\-Array}$<$ Kind, Size, Crtp, Fundamental\-Type, Parameters...$>$ \&source)
+\begin{DoxyCompactList}\small\item\em Implicit conversion constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\-Type  = Type, class... Misc, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Other\-Type, Type$>$\-::value$>$\-::type$>$ }\\\hyperlink{classmagrathea_1_1AbstractNArray_ab8eca034b95c643337e5ad765ab701ce}{Abstract\-N\-Array} (const std\-::initializer\-\_\-list$<$ Other\-Type $>$ \&source, const Misc \&...misc)
+\begin{DoxyCompactList}\small\item\em Implicit initializer list constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class... Misc, class  = typename std\-::enable\-\_\-if$<$sizeof...(\-Misc) != 0$>$\-::type$>$ }\\\hyperlink{classmagrathea_1_1AbstractNArray_a38612c4f4779eefaf6e769b309a8ed10}{Abstract\-N\-Array} (const Misc \&...misc)
+\begin{DoxyCompactList}\small\item\em Explicit generic constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Vectorization}\par
+\begin{DoxyCompactItemize}
+\item 
+Type \& \hyperlink{classmagrathea_1_1AbstractNArray_a35ba1ecdedebc027a5361618782eeee5}{operator\mbox{[}$\,$\mbox{]}} (const unsigned int i)
+\begin{DoxyCompactList}\small\item\em Direct access to the element. \end{DoxyCompactList}\item 
+const Type \& \hyperlink{classmagrathea_1_1AbstractNArray_a1b76fbe570cae2a979abd2a6373ef336}{operator\mbox{[}$\,$\mbox{]}} (const unsigned int i) const 
+\begin{DoxyCompactList}\small\item\em Immutable direct access to the element. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Access}\par
+\begin{DoxyCompactItemize}
+\item 
+Type $\ast$ \hyperlink{classmagrathea_1_1AbstractNArray_a722c51fc3aa4622fd4d6913f93816158}{data} ()
+\begin{DoxyCompactList}\small\item\em Direct access to the underlying storage. \end{DoxyCompactList}\item 
+const Type $\ast$ \hyperlink{classmagrathea_1_1AbstractNArray_a7235dcbd62b86b5f1f4cedc1596728ee}{data} () const 
+\begin{DoxyCompactList}\small\item\em Immutable direct access to the underlying storage. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Iterators}\par
+\begin{DoxyCompactItemize}
+\item 
+Type $\ast$ \hyperlink{classmagrathea_1_1AbstractNArray_a79a29a8ec98fb3098df9ca2c4a3de915}{begin} ()
+\begin{DoxyCompactList}\small\item\em Iterator to the beginning. \end{DoxyCompactList}\item 
+const Type $\ast$ \hyperlink{classmagrathea_1_1AbstractNArray_a0f3f46ef1edf2f14a7b6cca3643e3cf6}{begin} () const 
+\begin{DoxyCompactList}\small\item\em Immutable iterator to the beginning. \end{DoxyCompactList}\item 
+const Type $\ast$ \hyperlink{classmagrathea_1_1AbstractNArray_a367265e9855bcf8cb848667060320c8b}{cbegin} () const 
+\begin{DoxyCompactList}\small\item\em Forced immutable iterator to the beginning. \end{DoxyCompactList}\item 
+Type $\ast$ \hyperlink{classmagrathea_1_1AbstractNArray_a5c8e36c3d2ef738b4630bf67556d5ff3}{end} ()
+\begin{DoxyCompactList}\small\item\em Iterator to the end. \end{DoxyCompactList}\item 
+const Type $\ast$ \hyperlink{classmagrathea_1_1AbstractNArray_a78dd98d89e3c5df6e0db4c4795da346f}{end} () const 
+\begin{DoxyCompactList}\small\item\em Immutable iterator to the end. \end{DoxyCompactList}\item 
+const Type $\ast$ \hyperlink{classmagrathea_1_1AbstractNArray_adbb87d74b1ae848c6a577195a7a33bfc}{cend} () const 
+\begin{DoxyCompactList}\small\item\em Forced immutable iterator to the end. \end{DoxyCompactList}\item 
+std\-::reverse\-\_\-iterator$<$ Type $\ast$ $>$ \hyperlink{classmagrathea_1_1AbstractNArray_a98292cd9ca5cc03c3a65f5314603c7fb}{rbegin} ()
+\begin{DoxyCompactList}\small\item\em Reverse iterator to the beginning. \end{DoxyCompactList}\item 
+std\-::reverse\-\_\-iterator$<$ const \\*
+Type $\ast$ $>$ \hyperlink{classmagrathea_1_1AbstractNArray_a8eb27b3bb2ed735aa1ef68d3a5f081ba}{rbegin} () const 
+\begin{DoxyCompactList}\small\item\em Immutable reverse iterator to the beginning. \end{DoxyCompactList}\item 
+std\-::reverse\-\_\-iterator$<$ const \\*
+Type $\ast$ $>$ \hyperlink{classmagrathea_1_1AbstractNArray_a37c7da2dfedecf54aba5fc6592c9165c}{crbegin} () const 
+\begin{DoxyCompactList}\small\item\em Forced immutable reverse iterator to the beginning. \end{DoxyCompactList}\item 
+std\-::reverse\-\_\-iterator$<$ Type $\ast$ $>$ \hyperlink{classmagrathea_1_1AbstractNArray_a8fb3024caf7a7151aa3c43d19d195d1b}{rend} ()
+\begin{DoxyCompactList}\small\item\em Reverse iterator to the end. \end{DoxyCompactList}\item 
+std\-::reverse\-\_\-iterator$<$ const \\*
+Type $\ast$ $>$ \hyperlink{classmagrathea_1_1AbstractNArray_a8761e168c2a4b03d363f4581b3db4bf2}{rend} () const 
+\begin{DoxyCompactList}\small\item\em Immutable reverse iterator to the end. \end{DoxyCompactList}\item 
+std\-::reverse\-\_\-iterator$<$ const \\*
+Type $\ast$ $>$ \hyperlink{classmagrathea_1_1AbstractNArray_a84ab575343099c09997d2bb903d4b7f4}{crend} () const 
+\begin{DoxyCompactList}\small\item\em Forced immutable reverse iterator to the end. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Iterator\-Type $>$ }\\unsigned int \hyperlink{classmagrathea_1_1AbstractNArray_a36e332beb5a644e884423077307cc5b9}{index} (const Iterator\-Type \&it, typename std\-::iterator\-\_\-traits$<$ Iterator\-Type $>$\-::iterator\-\_\-category $\ast$=nullptr) const 
+\begin{DoxyCompactList}\small\item\em Index of an iterator in the array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Comparison}\par
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classmagrathea_1_1AbstractNArray_a9420957a2c275a4eb7027d776cece234}{null} (const Type \&tolerance) const 
+\begin{DoxyCompactList}\small\item\em Check whether all elements are approximately null. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Generic\-Type $>$ }\\bool \hyperlink{classmagrathea_1_1AbstractNArray_aa945ee5d184d72a020af01fa6d2a733a}{eq} (const Generic\-Type \&rhs, const Type \&tolerance) const 
+\begin{DoxyCompactList}\small\item\em Compare for approximate equality. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Generic\-Type $>$ }\\bool \hyperlink{classmagrathea_1_1AbstractNArray_affd889aba3a3de7e9a6710b9f69bd933}{ne} (const Generic\-Type \&rhs, const Type \&tolerance) const 
+\begin{DoxyCompactList}\small\item\em Compare for noticeable difference. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Statistics}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Mask  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask$>$\-::value) $|$$|$ (std\-::is\-\_\-same$<$std\-::true\-\_\-type, Mask$>$\-::value)$>$\-::type$>$ }\\const Type \& \hyperlink{classmagrathea_1_1AbstractNArray_adae70c0a4e039fadd7f7f4465a0eb807}{amin} (const Mask \&bitmask=Mask()) const 
+\begin{DoxyCompactList}\small\item\em Absolute minimum element. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Mask  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask$>$\-::value) $|$$|$ (std\-::is\-\_\-same$<$std\-::true\-\_\-type, Mask$>$\-::value)$>$\-::type$>$ }\\const Type \& \hyperlink{classmagrathea_1_1AbstractNArray_a1d90cc2cfa8c89d68e9c7543ae76dba6}{amax} (const Mask \&bitmask=Mask()) const 
+\begin{DoxyCompactList}\small\item\em Maximum element. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Return  = typename std\-::conditional$<$std\-::is\-\_\-floating\-\_\-point$<$\-Type$>$\-::value, Type, double$>$\-::type, class Coefficient  = Type, class Mask  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-arithmetic$<$\-Return$>$\-::value) \&\& ((std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Coefficient$>$\-::value) $|$$|$ (std\-::is\-\_\-convertible$<$\-Coefficient, Type$>$\-::value)) \&\& ((std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask$>$\-::value) $|$$|$ (std\-::is\-\_\-same$<$std\-::true\-\_\-type, Mask$>$\-::value))$>$\-::type$>$ }\\Return \hyperlink{classmagrathea_1_1AbstractNArray_ad713b22a7477479c8e6163deb643d02f}{mean} (const Coefficient \&coefficient=Coefficient(1), const Mask \&bitmask=Mask()) const 
+\begin{DoxyCompactList}\small\item\em Mean value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Return  = typename std\-::conditional$<$std\-::is\-\_\-floating\-\_\-point$<$\-Type$>$\-::value, Type, double$>$\-::type, typename Correction  = Return, class Coefficient  = Type, class Mask  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-arithmetic$<$\-Return$>$\-::value) \&\& (std\-::is\-\_\-arithmetic$<$\-Correction$>$\-::value) \&\& ((std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Coefficient$>$\-::value) $|$$|$ (std\-::is\-\_\-convertible$<$\-Coefficient, Type$>$\-::value)) \&\& ((std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask$>$\-::value) $|$$|$ (std\-::is\-\_\-same$<$std\-::true\-\_\-type, Mask$>$\-::value))$>$\-::type$>$ }\\Return \hyperlink{classmagrathea_1_1AbstractNArray_a0e14dc15f2302a7dd49b5d559e0dece4}{sigma} (const Correction \&correction=Correction(0), const Coefficient \&coefficient=Coefficient(1), const Mask \&bitmask=Mask()) const 
+\begin{DoxyCompactList}\small\item\em Standard deviation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Application}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Return  = Type, typename First  = Type, class... Types, class... Args, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-convertible$<$typename std\-::decay$<$\-First$>$\-::type, typename std\-::decay$<$\-Type$>$\-::type$>$\-::value) \&\& (sizeof...(\-Types) == sizeof...(\-Args))$>$\-::type$>$ }\\Crtp$<$ Type, Parameters...$>$ \& \hyperlink{classmagrathea_1_1AbstractNArray_a8511c69b75098b4957dec00aa388a510}{modify} (Return($\ast$f)(First, Types...), Args \&\&...args)
+\begin{DoxyCompactList}\small\item\em Modification by a function pointer. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Return  = Type, typename First  = Type, class... Types, class... Args, class Mask , class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$typename std\-::decay$<$\-First$>$\-::type, typename std\-::decay$<$\-Type$>$\-::type$>$\-::value) \&\& (sizeof...(\-Types) == sizeof...(\-Args))$>$\-::type$>$ }\\Crtp$<$ Type, Parameters...$>$ \& \hyperlink{classmagrathea_1_1AbstractNArray_a4bd5fb03e3fc390876e41d998336c830}{modify} (const Mask \&bitmask, Return($\ast$f)(First, Types...), Args \&\&...args)
+\begin{DoxyCompactList}\small\item\em Masked modification by a function pointer. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Return  = Type, typename First  = Type, class... Types, class... Args, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-convertible$<$typename std\-::decay$<$\-First$>$\-::type, typename std\-::decay$<$\-Type$>$\-::type$>$\-::value) \&\& (sizeof...(\-Types) == sizeof...(\-Args))$>$\-::type$>$ }\\Crtp$<$ Return, Parameters...$>$ \hyperlink{classmagrathea_1_1AbstractNArray_aa950f534b052accbbcdf73a56d65c715}{apply} (Return($\ast$f)(First, Types...), Args \&\&...args) const 
+\begin{DoxyCompactList}\small\item\em Application of a function pointer. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Return  = Type, typename First  = Type, class... Types, class... Args, class Mask , class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$typename std\-::decay$<$\-First$>$\-::type, typename std\-::decay$<$\-Type$>$\-::type$>$\-::value) \&\& (sizeof...(\-Types) == sizeof...(\-Args))$>$\-::type$>$ }\\Crtp$<$ Return, Parameters...$>$ \hyperlink{classmagrathea_1_1AbstractNArray_a52d26db2f1a6b22ecf7a5807257f84ee}{apply} (const Mask \&bitmask, Return($\ast$f)(First, Types...), Args \&\&...args) const 
+\begin{DoxyCompactList}\small\item\em Masked application of a function pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Count}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Function  = std\-::equal\-\_\-to$<$\-Type$>$, class Mask  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, typename std\-::decay$<$\-Function$>$\-::type$>$\-::value) \&\& ((std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask$>$\-::value) $|$$|$ (std\-::is\-\_\-same$<$std\-::true\-\_\-type, Mask$>$\-::value))$>$\-::type$>$ }\\bool \hyperlink{classmagrathea_1_1AbstractNArray_a1e82438ed847b54ec390438fdaba49f8}{unicity} (Function \&\&f=Function(), const Mask \&bitmask=Mask()) const 
+\begin{DoxyCompactList}\small\item\em Unicity of elements. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Function  = std\-::equal\-\_\-to$<$\-Type$>$, class Mask  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, typename std\-::decay$<$\-Function$>$\-::type$>$\-::value) \&\& ((std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask$>$\-::value) $|$$|$ (std\-::is\-\_\-same$<$std\-::true\-\_\-type, Mask$>$\-::value))$>$\-::type$>$ }\\unsigned int \hyperlink{classmagrathea_1_1AbstractNArray_aaa8ea5e494c69f5c5874bfd30d6b9e4f}{distinct} (Function \&\&f=Function(), const Mask \&bitmask=Mask()) const 
+\begin{DoxyCompactList}\small\item\em Number of distincts elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Sort}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Function  = std\-::less$<$\-Type$>$, class Indexes  = Type, class Mask  = std\-::true\-\_\-type, class Pair  = std\-::pair$<$\-Type, typename std\-::remove\-\_\-const$<$typename std\-::remove\-\_\-reference$<$decltype(\-Vectorizer\-::get(std\-::declval$<$\-Indexes$>$(), 0))$>$\-::type$>$\-::type$>$, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, typename std\-::decay$<$\-Function$>$\-::type$>$\-::value) \&\& ((std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask$>$\-::value) $|$$|$ (std\-::is\-\_\-same$<$std\-::true\-\_\-type, Mask$>$\-::value))$>$\-::type$>$ }\\Crtp$<$ Type, Parameters...$>$ \& \hyperlink{classmagrathea_1_1AbstractNArray_a2b471ca82db6d9b73d9d52d39e825f87}{arrange} (Function \&\&f=Function(), Indexes \&\&indexes=Indexes(), const Mask \&bitmask=Mask())
+\begin{DoxyCompactList}\small\item\em Arrange the container. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Function  = std\-::less$<$\-Type$>$, class Indexes  = Type, class Mask  = std\-::true\-\_\-type, class Pair  = std\-::pair$<$\-Type, typename std\-::remove\-\_\-const$<$typename std\-::remove\-\_\-reference$<$decltype(\-Vectorizer\-::get(std\-::declval$<$\-Indexes$>$(), 0))$>$\-::type$>$\-::type$>$, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, typename std\-::decay$<$\-Function$>$\-::type$>$\-::value) \&\& ((std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask$>$\-::value) $|$$|$ (std\-::is\-\_\-same$<$std\-::true\-\_\-type, Mask$>$\-::value))$>$\-::type$>$ }\\Crtp$<$ Type, Parameters...$>$ \hyperlink{classmagrathea_1_1AbstractNArray_a82c7a90630df5481e60ce14aeb15a4b9}{sort} (Function \&\&f=Function(), Indexes \&\&indexes=Indexes(), const Mask \&bitmask=Mask()) const 
+\begin{DoxyCompactList}\small\item\em Sort. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Function  = std\-::less$<$\-Type$>$, class Indexes  = Type, class Mask  = std\-::true\-\_\-type, class Pair  = std\-::pair$<$\-Type, typename std\-::remove\-\_\-const$<$typename std\-::remove\-\_\-reference$<$decltype(\-Vectorizer\-::get(std\-::declval$<$\-Indexes$>$(), 0))$>$\-::type$>$\-::type$>$, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, typename std\-::decay$<$\-Function$>$\-::type$>$\-::value) \&\& ((std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask$>$\-::value) $|$$|$ (std\-::is\-\_\-same$<$std\-::true\-\_\-type, Mask$>$\-::value))$>$\-::type$>$ }\\Crtp$<$ Type, Parameters...$>$ \& \hyperlink{classmagrathea_1_1AbstractNArray_a389ab05c05a2d948ad2ba841c87478f4}{aarrange} (Function \&\&f=Function(), Indexes \&\&indexes=Indexes(), const Mask \&bitmask=Mask())
+\begin{DoxyCompactList}\small\item\em Absolute arrange the container. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Function  = std\-::less$<$\-Type$>$, class Indexes  = Type, class Mask  = std\-::true\-\_\-type, class Pair  = std\-::pair$<$\-Type, typename std\-::remove\-\_\-const$<$typename std\-::remove\-\_\-reference$<$decltype(\-Vectorizer\-::get(std\-::declval$<$\-Indexes$>$(), 0))$>$\-::type$>$\-::type$>$, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, typename std\-::decay$<$\-Function$>$\-::type$>$\-::value) \&\& ((std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask$>$\-::value) $|$$|$ (std\-::is\-\_\-same$<$std\-::true\-\_\-type, Mask$>$\-::value))$>$\-::type$>$ }\\Crtp$<$ Type, Parameters...$>$ \hyperlink{classmagrathea_1_1AbstractNArray_ab631e198d51c8e6ef185fae3b25015aa}{asort} (Function \&\&f=Function(), Indexes \&\&indexes=Indexes(), const Mask \&bitmask=Mask()) const 
+\begin{DoxyCompactList}\small\item\em Absolute sort. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Indexes  = Type, class Pair  = std\-::pair$<$typename std\-::remove\-\_\-const$<$typename std\-::remove\-\_\-reference$<$decltype(\-Vectorizer\-::get(std\-::declval$<$\-Indexes$>$(), 0))$>$\-::type$>$\-::type, unsigned int$>$$>$ }\\Crtp$<$ Type, Parameters...$>$ \& \hyperlink{classmagrathea_1_1AbstractNArray_aac3ab908e44ea21f0956b519e1900f11}{rearrange} (const Indexes \&indexes=Indexes())
+\begin{DoxyCompactList}\small\item\em Re-\/arrange as a function of indexes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Indexes  = Type, class Pair  = std\-::pair$<$typename std\-::remove\-\_\-const$<$typename std\-::remove\-\_\-reference$<$decltype(\-Vectorizer\-::get(std\-::declval$<$\-Indexes$>$(), 0))$>$\-::type$>$\-::type, unsigned int$>$$>$ }\\Crtp$<$ Type, Parameters...$>$ \hyperlink{classmagrathea_1_1AbstractNArray_a29c48a5284bc9ad7e11ac898d09cb941}{resort} (const Indexes \&indexes=Indexes()) const 
+\begin{DoxyCompactList}\small\item\em Re-\/sort as a function of indexes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Mathematical functions}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Mask  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask$>$\-::value) $|$$|$ (std\-::is\-\_\-same$<$std\-::true\-\_\-type, Mask$>$\-::value)$>$\-::type$>$ }\\Crtp$<$ Type, Parameters...$>$ \hyperlink{classmagrathea_1_1AbstractNArray_ac31ef0d0956a0a076f8fb47c98af4eaa}{abs} (const Mask \&bitmask=Mask()) const 
+\begin{DoxyCompactList}\small\item\em Absolute value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int Exponent = 1$>$ }\\Crtp$<$ Type, Parameters...$>$ \hyperlink{classmagrathea_1_1AbstractNArray_a502edc22924d0096c7929a9490174f81}{pow} () const 
+\begin{DoxyCompactList}\small\item\em Power metafunction. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Generic\-Type , class Mask  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask$>$\-::value) $|$$|$ (std\-::is\-\_\-same$<$std\-::true\-\_\-type, Mask$>$\-::value)$>$\-::type$>$ }\\Crtp$<$ Type, Parameters...$>$ \hyperlink{classmagrathea_1_1AbstractNArray_ad3097e7e24f9c1a2cfbaacef90da781e}{pow} (const Generic\-Type \&rhs, const Mask \&bitmask=Mask()) const 
+\begin{DoxyCompactList}\small\item\em Power. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int Degree = 1$>$ }\\Crtp$<$ Type, Parameters...$>$ \hyperlink{classmagrathea_1_1AbstractNArray_ac09fe9cfa8c3aa117fe860ec61ed8921}{rt} () const 
+\begin{DoxyCompactList}\small\item\em Root metafunction. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Generic\-Type , class Mask  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask$>$\-::value) $|$$|$ (std\-::is\-\_\-same$<$std\-::true\-\_\-type, Mask$>$\-::value)$>$\-::type$>$ }\\Crtp$<$ Type, Parameters...$>$ \hyperlink{classmagrathea_1_1AbstractNArray_a164906d4dc4c247201578fe4a917a471}{rt} (const Generic\-Type \&rhs, const Mask \&bitmask=Mask()) const 
+\begin{DoxyCompactList}\small\item\em Root. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Base = 0$>$ }\\Crtp$<$ Type, Parameters...$>$ \hyperlink{classmagrathea_1_1AbstractNArray_ada2bf3966f9fbc9d0767f36422d4be14}{log} () const 
+\begin{DoxyCompactList}\small\item\em Log metafunction. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Generic\-Type , class Mask  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask$>$\-::value) $|$$|$ (std\-::is\-\_\-same$<$std\-::true\-\_\-type, Mask$>$\-::value)$>$\-::type$>$ }\\Crtp$<$ Type, Parameters...$>$ \hyperlink{classmagrathea_1_1AbstractNArray_a5c8629cb10f4a247997b1b048f39fd01}{log} (const Generic\-Type \&rhs, const Mask \&bitmask=Mask()) const 
+\begin{DoxyCompactList}\small\item\em Logarithm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Norm}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$unsigned int Degree = 2, typename Norm\-Type  = typename std\-::conditional$<$std\-::is\-\_\-floating\-\_\-point$<$\-Type$>$\-::value, Type, double$>$\-::type, class Mask  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-arithmetic$<$\-Norm\-Type$>$\-::value) \&\& ((std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask$>$\-::value) $|$$|$ (std\-::is\-\_\-same$<$std\-::true\-\_\-type, Mask$>$\-::value))$>$\-::type$>$ }\\Norm\-Type \hyperlink{classmagrathea_1_1AbstractNArray_a569c11a7a0374d2a1015d284663a8aaf}{norm} (const Mask \&bitmask=Mask()) const 
+\begin{DoxyCompactList}\small\item\em Norm. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Degree = 2, typename Norm\-Type  = typename std\-::conditional$<$std\-::is\-\_\-floating\-\_\-point$<$\-Type$>$\-::value, Type, double$>$\-::type, class Mask  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-arithmetic$<$\-Norm\-Type$>$\-::value) \&\& ((std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask$>$\-::value) $|$$|$ (std\-::is\-\_\-same$<$std\-::true\-\_\-type, Mask$>$\-::value))$>$\-::type$>$ }\\Crtp$<$ Type, Parameters...$>$ \& \hyperlink{classmagrathea_1_1AbstractNArray_a42854d836926ec9c23574bb9767078e3}{renormalize} (const Mask \&bitmask=Mask())
+\begin{DoxyCompactList}\small\item\em Renormalize. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Degree = 2, typename Norm\-Type  = typename std\-::conditional$<$std\-::is\-\_\-floating\-\_\-point$<$\-Type$>$\-::value, Type, double$>$\-::type, class Mask  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-arithmetic$<$\-Norm\-Type$>$\-::value) \&\& ((std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask$>$\-::value) $|$$|$ (std\-::is\-\_\-same$<$std\-::true\-\_\-type, Mask$>$\-::value))$>$\-::type$>$ }\\Crtp$<$ Type, Parameters...$>$ \hyperlink{classmagrathea_1_1AbstractNArray_a0361019ef75cd07ff560d5ce7760eaef}{normalize} (const Mask \&bitmask=Mask()) const 
+\begin{DoxyCompactList}\small\item\em Normalize. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Static Public Member Functions}
+\begin{Indent}{\bf Predefined}\par
+\begin{DoxyCompactItemize}
+\item 
+static Crtp$<$ Type, Parameters...$>$ \hyperlink{classmagrathea_1_1AbstractNArray_a9e3e801b258247b8c3c1c576ad521775}{zero} ()
+\begin{DoxyCompactList}\small\item\em Zero array. \end{DoxyCompactList}\item 
+static Crtp$<$ Type, Parameters...$>$ \hyperlink{classmagrathea_1_1AbstractNArray_ad603ff336c72cdf527e12ca404158a8b}{one} ()
+\begin{DoxyCompactList}\small\item\em One array. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Mask  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask$>$\-::value) $|$$|$ (std\-::is\-\_\-same$<$std\-::true\-\_\-type, Mask$>$\-::value)$>$\-::type$>$ }\\static Crtp$<$ Type, Parameters...$>$ \hyperlink{classmagrathea_1_1AbstractNArray_ac382bb6cd34b432289442ca8da10ad4a}{value} (const Type \&source=Type(), const Mask \&bitmask=Mask())
+\begin{DoxyCompactList}\small\item\em Array from value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Mask  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask$>$\-::value) $|$$|$ (std\-::is\-\_\-same$<$std\-::true\-\_\-type, Mask$>$\-::value)$>$\-::type$>$ }\\static Crtp$<$ Type, Parameters...$>$ \hyperlink{classmagrathea_1_1AbstractNArray_a78a0f1efc65617fc711adb9f23b55368}{random} (const Type \&lowest=0, const Type \&highest=1, const Mask \&bitmask=Mask())
+\begin{DoxyCompactList}\small\item\em Basic random array creation. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Engine , class Distribution , class Mask  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(std\-::decay$<$\-Engine$>$\-::type\-::min() != std\-::decay$<$\-Engine$>$\-::type\-::max()) \&\& (!std\-::is\-\_\-void$<$typename std\-::decay$<$\-Distribution$>$\-::type\-::result\-\_\-type$>$\-::value) \&\& ((std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask$>$\-::value) $|$$|$ (std\-::is\-\_\-same$<$std\-::true\-\_\-type, Mask$>$\-::value))$>$\-::type$>$ }\\static Crtp$<$ Type, Parameters...$>$ \hyperlink{classmagrathea_1_1AbstractNArray_a81025fb12cb507c7904844e0c951544a}{random} (Engine \&\&engine, Distribution \&\&distribution, const Mask \&bitmask=Mask())
+\begin{DoxyCompactList}\small\item\em Generic random array creation. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Function  = unsigned int\&\& ($\ast$)(unsigned int\&), class Mask  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, typename std\-::decay$<$\-Function$>$\-::type$>$\-::value) \&\& ((std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask$>$\-::value) $|$$|$ (std\-::is\-\_\-same$<$std\-::true\-\_\-type, Mask$>$\-::value))$>$\-::type$>$ }\\static Crtp$<$ Type, Parameters...$>$ \hyperlink{classmagrathea_1_1AbstractNArray_ae57f7b55dfc54ba036993bf7ba86075a}{indexed} (Function \&\&f=std\-::forward$<$ unsigned int $>$, const Mask \&bitmask=Mask())
+\begin{DoxyCompactList}\small\item\em Indexed array. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Function  = std\-::plus$<$\-Type$>$, class Mask  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, typename std\-::decay$<$\-Function$>$\-::type$>$\-::value) \&\& ((std\-::is\-\_\-base\-\_\-of$<$\-Vectorizer, Mask$>$\-::value) $|$$|$ (std\-::is\-\_\-same$<$std\-::true\-\_\-type, Mask$>$\-::value))$>$\-::type$>$ }\\static Crtp$<$ Type, Parameters...$>$ \hyperlink{classmagrathea_1_1AbstractNArray_ade21ec1a302b2a206434b7a80e5b5450}{progressive} (const Type \&first=Type(0), const Type \&step=Type(1), Function \&\&f=Function(), const Mask \&bitmask=Mask())
+\begin{DoxyCompactList}\small\item\em Progressive array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Test}\par
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{classmagrathea_1_1AbstractNArray_a6b7fb6f428ef9b21d0eac659fc66c428}{example} ()
+\begin{DoxyCompactList}\small\item\em Example function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{classmagrathea_1_1AbstractNArray_ab941e2df51c9f6fe2d16cfc9a8178df9}{operator} = typedef
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{Indent}{\bf Protected lifecycle}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmagrathea_1_1AbstractNArray_af72664598f77c92a422607991ff73423}{$\sim$\-Abstract\-N\-Array} ()
+\begin{DoxyCompactList}\small\item\em Protected destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Protected Attributes}
+\begin{Indent}{\bf Data members}\par
+\begin{DoxyCompactItemize}
+\item 
+Type \hyperlink{classmagrathea_1_1AbstractNArray_a236c5f0a521ae3108e6e7754a1fe28c5}{\-\_\-data} \mbox{[}Size\mbox{]}
+\begin{DoxyCompactList}\small\item\em Data contents. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Kind, unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type, Kind... Parameters$>$class magrathea\-::\-Abstract\-N\-Array$<$ Kind, Size, Crtp, Type, Parameters $>$}
+
+Abstract base class of n-\/dimensional mathematical arrays. 
+
+Provides common base for n-\/dimensional order 1 mathematical containers thanks to the curiously recurring template pattern (C\-R\-T\-P) trick. The class derives from \hyperlink{classmagrathea_1_1StaticVectorizer}{Static\-Vectorizer}, provides the storage and adds functions specific to arithmetic types. To use it, one has to derive from this class and pass the derived class itself as the C\-R\-T\-P parameter. The derived classes have to satisfy the conditions required by the \hyperlink{classmagrathea_1_1Vectorizer}{Vectorizer} base class. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Kind} & Kind of arguments. \\
+\hline
+{\em Size} & Number of elements. \\
+\hline
+{\em Crtp} & Derived C\-R\-T\-P class. \\
+\hline
+{\em Type} & Arithmetic data type. \\
+\hline
+{\em Parameters} & List of parameters. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmagrathea_1_1AbstractNArray_af72664598f77c92a422607991ff73423}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!$\sim$\-Abstract\-N\-Array@{$\sim$\-Abstract\-N\-Array}}
+\index{$\sim$\-Abstract\-N\-Array@{$\sim$\-Abstract\-N\-Array}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{$\sim$\-Abstract\-N\-Array}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::$\sim${\bf Abstract\-N\-Array} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [default]}}}\label{classmagrathea_1_1AbstractNArray_af72664598f77c92a422607991ff73423}
+
+
+Protected destructor. 
+
+Does nothing. \hypertarget{classmagrathea_1_1AbstractNArray_a411d3215457a0b6f89920c1d13da8563}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!Abstract\-N\-Array@{Abstract\-N\-Array}}
+\index{Abstract\-N\-Array@{Abstract\-N\-Array}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{Abstract\-N\-Array}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::{\bf Abstract\-N\-Array} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a411d3215457a0b6f89920c1d13da8563}
+
+
+Implicit empty constructor. 
+
+Does nothing. \hypertarget{classmagrathea_1_1AbstractNArray_afa10ddc178555f466782fafcfe9362cb}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!Abstract\-N\-Array@{Abstract\-N\-Array}}
+\index{Abstract\-N\-Array@{Abstract\-N\-Array}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{Abstract\-N\-Array}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind, unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$typename Fundamental\-Type , class $>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::{\bf Abstract\-N\-Array} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Abstract\-N\-Array}$<$ Kind, Size, Crtp, Fundamental\-Type, Parameters...$>$ \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_afa10ddc178555f466782fafcfe9362cb}
+
+
+Implicit conversion constructor. 
+
+Provides an implicit conversion from a fundamental type contents. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Fundamental\-Type} & (Fundamental data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classmagrathea_1_1AbstractNArray_ab8eca034b95c643337e5ad765ab701ce}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!Abstract\-N\-Array@{Abstract\-N\-Array}}
+\index{Abstract\-N\-Array@{Abstract\-N\-Array}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{Abstract\-N\-Array}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind, unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$typename Other\-Type , class... Misc, class $>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::{\bf Abstract\-N\-Array} (
+\begin{DoxyParamCaption}
+\item[{const std\-::initializer\-\_\-list$<$ Other\-Type $>$ \&}]{source, }
+\item[{const Misc \&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_ab8eca034b95c643337e5ad765ab701ce}
+
+
+Implicit initializer list constructor. 
+
+Provides an implicit conversion from an initializer list. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\-Type} & (Other data type.) \\
+\hline
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classmagrathea_1_1AbstractNArray_a38612c4f4779eefaf6e769b309a8ed10}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!Abstract\-N\-Array@{Abstract\-N\-Array}}
+\index{Abstract\-N\-Array@{Abstract\-N\-Array}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{Abstract\-N\-Array}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind, unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$class... Misc, class $>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::{\bf Abstract\-N\-Array} (
+\begin{DoxyParamCaption}
+\item[{const Misc \&...}]{misc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{classmagrathea_1_1AbstractNArray_a38612c4f4779eefaf6e769b309a8ed10}
+
+
+Explicit generic constructor. 
+
+Provides a generic interface to all constructors of the base class. Before calling the associated constructor of the base class, the contents is initialized. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Misc} & (\hyperlink{classMiscellaneous}{Miscellaneous} types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em misc} & \hyperlink{classMiscellaneous}{Miscellaneous} arguments. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmagrathea_1_1AbstractNArray_a389ab05c05a2d948ad2ba841c87478f4}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!aarrange@{aarrange}}
+\index{aarrange@{aarrange}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{aarrange}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$class Function , class Indexes , class Mask , class Pair , class $>$ Crtp$<$ Type, Parameters...$>$ \& {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::aarrange (
+\begin{DoxyParamCaption}
+\item[{Function \&\&}]{f = {\ttfamily Function()}, }
+\item[{Indexes \&\&}]{indexes = {\ttfamily Indexes()}, }
+\item[{const Mask \&}]{bitmask = {\ttfamily Mask()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a389ab05c05a2d948ad2ba841c87478f4}
+
+
+Absolute arrange the container. 
+
+Sorts the contents by its absolute value and returns a sorted reference using {\ttfamily std\-::sort}. A comparison function, a list of indexes and a boolean mask can be passed. The list of indexes is a vectorized container which will be sorted in the same order as the array. If a scalar is passed, nothing is done on it. This is equivalent to the {\ttfamily \hyperlink{classmagrathea_1_1AbstractNArray_ab631e198d51c8e6ef185fae3b25015aa}{asort()}} function except that it works on the contents instead of a copy. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Function} & (Function type \-: {\ttfamily bool(\-Type, Type)}.) \\
+\hline
+{\em Indexes} & (\hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized} container type or dummy scalar.) \\
+\hline
+{\em Mask} & (Mask type.) \\
+\hline
+{\em Pair} & (Inner pair type for indexes.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & Function object {\ttfamily bool(\-Type, Type)}. \\
+\hline
+\mbox{\tt in,out}  & {\em indexes} & \hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized} container or dummy scalar to be sorted. \\
+\hline
+\mbox{\tt in}  & {\em bitmask} & Boolean mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_ac31ef0d0956a0a076f8fb47c98af4eaa}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!abs@{abs}}
+\index{abs@{abs}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{abs}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$class Mask , class $>$ Crtp$<$ Type, Parameters...$>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::abs (
+\begin{DoxyParamCaption}
+\item[{const Mask \&}]{bitmask = {\ttfamily Mask()}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_ac31ef0d0956a0a076f8fb47c98af4eaa}
+
+
+Absolute value. 
+
+Applies the {\ttfamily std\-::abs()} function to each element. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Mask} & (Mask type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em bitmask} & Boolean mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a1d90cc2cfa8c89d68e9c7543ae76dba6}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!amax@{amax}}
+\index{amax@{amax}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{amax}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$class Mask , class $>$ const Type \& {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::amax (
+\begin{DoxyParamCaption}
+\item[{const Mask \&}]{bitmask = {\ttfamily Mask()}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a1d90cc2cfa8c89d68e9c7543ae76dba6}
+
+
+Maximum element. 
+
+Returns a reference to the absolute maximum element of the container or masked container. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Mask} & (Mask type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em bitmask} & Boolean mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Immutable reference to the element. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::runtime\-\_\-error} & Empty search. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{classmagrathea_1_1AbstractNArray_adae70c0a4e039fadd7f7f4465a0eb807}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!amin@{amin}}
+\index{amin@{amin}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{amin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$class Mask , class $>$ const Type \& {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::amin (
+\begin{DoxyParamCaption}
+\item[{const Mask \&}]{bitmask = {\ttfamily Mask()}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_adae70c0a4e039fadd7f7f4465a0eb807}
+
+
+Absolute minimum element. 
+
+Returns a reference to the absolute minimum element of the container or masked container. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Mask} & (Mask type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em bitmask} & Boolean mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Immutable reference to the element. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::runtime\-\_\-error} & Empty search. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{classmagrathea_1_1AbstractNArray_aa950f534b052accbbcdf73a56d65c715}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!apply@{apply}}
+\index{apply@{apply}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{apply}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$typename Return , typename First , class... Types, class... Args, class $>$ Crtp$<$ Return, Parameters...$>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::apply (
+\begin{DoxyParamCaption}
+\item[{Return($\ast$)(First, Types...)}]{f, }
+\item[{Args \&\&...}]{args}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_aa950f534b052accbbcdf73a56d65c715}
+
+
+Application of a function pointer. 
+
+Applies a function pointer to each element of the container and returns a copy of the result. For a result {\ttfamily y}, an element {\ttfamily x}, a function {\ttfamily f} and for extra arguments {\ttfamily args...}, an equivalent expression is \-: {\ttfamily y = f(x, args...)}. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Return} & Return type.  \\
+\hline
+{\em First} & Type of the first argument of the function. \\
+\hline
+{\em Types} & Extra types of the function. \\
+\hline
+{\em Args} & (Extra types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & Function pointer {\ttfamily Return(First, Types...)}. \\
+\hline
+\mbox{\tt in}  & {\em args} & Extra arguments of the function.  \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+In case of implicit cast or extra arguments, types related to the function have to be specified manually as template parameters. 
+\end{DoxyWarning}
+\hypertarget{classmagrathea_1_1AbstractNArray_a52d26db2f1a6b22ecf7a5807257f84ee}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!apply@{apply}}
+\index{apply@{apply}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{apply}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$typename Return , typename First , class... Types, class... Args, class Mask , class $>$ Crtp$<$ Return, Parameters...$>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::apply (
+\begin{DoxyParamCaption}
+\item[{const Mask \&}]{bitmask, }
+\item[{Return($\ast$)(First, Types...)}]{f, }
+\item[{Args \&\&...}]{args}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a52d26db2f1a6b22ecf7a5807257f84ee}
+
+
+Masked application of a function pointer. 
+
+Applies a function pointer to each element of the container where the mask is true and returns a copy of the result. For a result {\ttfamily y}, an element {\ttfamily x}, a function {\ttfamily f} and for extra arguments {\ttfamily args...}, an equivalent expression is \-: {\ttfamily y = f(x, args...)}. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Return} & Return type.  \\
+\hline
+{\em First} & Type of the first argument of the function. \\
+\hline
+{\em Types} & Extra types of the function. \\
+\hline
+{\em Args} & (Extra types.) \\
+\hline
+{\em Mask} & (Mask type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em bitmask} & Boolean mask. \\
+\hline
+\mbox{\tt in}  & {\em f} & Function pointer {\ttfamily Return(First, Types...)}. \\
+\hline
+\mbox{\tt in}  & {\em args} & Extra arguments of the function.  \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+In case of implicit cast or extra arguments, types related to the function have to be specified manually as template parameters. 
+\end{DoxyWarning}
+\hypertarget{classmagrathea_1_1AbstractNArray_a2b471ca82db6d9b73d9d52d39e825f87}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!arrange@{arrange}}
+\index{arrange@{arrange}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{arrange}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$class Function , class Indexes , class Mask , class Pair , class $>$ Crtp$<$ Type, Parameters...$>$ \& {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::arrange (
+\begin{DoxyParamCaption}
+\item[{Function \&\&}]{f = {\ttfamily Function()}, }
+\item[{Indexes \&\&}]{indexes = {\ttfamily Indexes()}, }
+\item[{const Mask \&}]{bitmask = {\ttfamily Mask()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a2b471ca82db6d9b73d9d52d39e825f87}
+
+
+Arrange the container. 
+
+Sorts the contents and returns a sorted reference using {\ttfamily std\-::sort}. A comparison function, a list of indexes and a boolean mask can be passed. The list of indexes is a vectorized container which will be sorted in the same order as the array. If a scalar is passed, nothing is done on it. This is equivalent to the {\ttfamily \hyperlink{classmagrathea_1_1AbstractNArray_a82c7a90630df5481e60ce14aeb15a4b9}{sort()}} function except that it works on the contents instead of a copy. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Function} & (Function type \-: {\ttfamily bool(\-Type, Type)}.) \\
+\hline
+{\em Indexes} & (\hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized} container type or dummy scalar.) \\
+\hline
+{\em Mask} & (Mask type.) \\
+\hline
+{\em Pair} & (Inner pair type for indexes.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & Function object {\ttfamily bool(\-Type, Type)}. \\
+\hline
+\mbox{\tt in,out}  & {\em indexes} & \hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized} container or dummy scalar to be sorted. \\
+\hline
+\mbox{\tt in}  & {\em bitmask} & Boolean mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_ab631e198d51c8e6ef185fae3b25015aa}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!asort@{asort}}
+\index{asort@{asort}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{asort}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$class Function , class Indexes , class Mask , class Pair , class $>$ Crtp$<$ Type, Parameters...$>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::asort (
+\begin{DoxyParamCaption}
+\item[{Function \&\&}]{f = {\ttfamily Function()}, }
+\item[{Indexes \&\&}]{indexes = {\ttfamily Indexes()}, }
+\item[{const Mask \&}]{bitmask = {\ttfamily Mask()}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_ab631e198d51c8e6ef185fae3b25015aa}
+
+
+Absolute sort. 
+
+Sorts the contents by its absolute value and returns a sorted copy using {\ttfamily std\-::sort}. A comparison function, a list of indexes and a boolean mask can be passed. The list of indexes is a vectorized container which will be sorted in the same order as the array. If a scalar is passed, nothing is done on it. This is equivalent to the {\ttfamily \hyperlink{classmagrathea_1_1AbstractNArray_a389ab05c05a2d948ad2ba841c87478f4}{aarrange()}} function except that it works on a copy instead of the contents. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Function} & (Function type \-: {\ttfamily bool(\-Type, Type)}.) \\
+\hline
+{\em Indexes} & (\hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized} container type or dummy scalar.) \\
+\hline
+{\em Mask} & (Mask type.) \\
+\hline
+{\em Pair} & (Inner pair type for indexes.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & Function object {\ttfamily bool(\-Type, Type)}. \\
+\hline
+\mbox{\tt in,out}  & {\em indexes} & \hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized} container or dummy scalar to be sorted. \\
+\hline
+\mbox{\tt in}  & {\em bitmask} & Boolean mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a79a29a8ec98fb3098df9ca2c4a3de915}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!begin@{begin}}
+\index{begin@{begin}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{begin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ Type $\ast$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::begin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a79a29a8ec98fb3098df9ca2c4a3de915}
+
+
+Iterator to the beginning. 
+
+Returns a pointer to the first element. \begin{DoxyReturn}{Returns}
+Pointer to the beginning. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a0f3f46ef1edf2f14a7b6cca3643e3cf6}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!begin@{begin}}
+\index{begin@{begin}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{begin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ const Type $\ast$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::begin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a0f3f46ef1edf2f14a7b6cca3643e3cf6}
+
+
+Immutable iterator to the beginning. 
+
+Returns a pointer to the first element. \begin{DoxyReturn}{Returns}
+Immutable pointer to the beginning. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a367265e9855bcf8cb848667060320c8b}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!cbegin@{cbegin}}
+\index{cbegin@{cbegin}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{cbegin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ const Type $\ast$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::cbegin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a367265e9855bcf8cb848667060320c8b}
+
+
+Forced immutable iterator to the beginning. 
+
+Returns a constant pointer to the first element. \begin{DoxyReturn}{Returns}
+Immutable pointer to the beginning. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_adbb87d74b1ae848c6a577195a7a33bfc}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!cend@{cend}}
+\index{cend@{cend}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{cend}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ const Type $\ast$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::cend (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_adbb87d74b1ae848c6a577195a7a33bfc}
+
+
+Forced immutable iterator to the end. 
+
+Returns a constant pointer to the position after the last element. \begin{DoxyReturn}{Returns}
+Immutable pointer to the end. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a37c7da2dfedecf54aba5fc6592c9165c}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!crbegin@{crbegin}}
+\index{crbegin@{crbegin}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{crbegin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ std\-::reverse\-\_\-iterator$<$ const Type $\ast$ $>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::crbegin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a37c7da2dfedecf54aba5fc6592c9165c}
+
+
+Forced immutable reverse iterator to the beginning. 
+
+Returns a constant reversed pointer to the position after the last element. \begin{DoxyReturn}{Returns}
+Immutable pointer to the end. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a84ab575343099c09997d2bb903d4b7f4}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!crend@{crend}}
+\index{crend@{crend}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{crend}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ std\-::reverse\-\_\-iterator$<$ const Type $\ast$ $>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::crend (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a84ab575343099c09997d2bb903d4b7f4}
+
+
+Forced immutable reverse iterator to the end. 
+
+Returns a constant reversed pointer to the first element. \begin{DoxyReturn}{Returns}
+Immutable pointer to the beginning. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a722c51fc3aa4622fd4d6913f93816158}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!data@{data}}
+\index{data@{data}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ Type $\ast$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a722c51fc3aa4622fd4d6913f93816158}
+
+
+Direct access to the underlying storage. 
+
+Returns a pointer to the first element of the underlying array. \begin{DoxyReturn}{Returns}
+Pointer to the first element. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a7235dcbd62b86b5f1f4cedc1596728ee}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!data@{data}}
+\index{data@{data}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ const Type $\ast$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a7235dcbd62b86b5f1f4cedc1596728ee}
+
+
+Immutable direct access to the underlying storage. 
+
+Returns a pointer to the first element of the underlying array. \begin{DoxyReturn}{Returns}
+Immutable pointer to the first element. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_aaa8ea5e494c69f5c5874bfd30d6b9e4f}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!distinct@{distinct}}
+\index{distinct@{distinct}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{distinct}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$class Function , class Mask , class $>$ unsigned int {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::distinct (
+\begin{DoxyParamCaption}
+\item[{Function \&\&}]{f = {\ttfamily Function()}, }
+\item[{const Mask \&}]{bitmask = {\ttfamily Mask()}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_aaa8ea5e494c69f5c5874bfd30d6b9e4f}
+
+
+Number of distincts elements. 
+
+Counts the number of distincts elements using the provided function with the {\ttfamily std\-::unique()} algorithm. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Function} & (Function type \-: {\ttfamily bool(\-Type, Type)}.) \\
+\hline
+{\em Mask} & (Mask type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & Function object {\ttfamily bool(\-Type, Type)}. \\
+\hline
+\mbox{\tt in}  & {\em bitmask} & Boolean mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the result. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a5c8e36c3d2ef738b4630bf67556d5ff3}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!end@{end}}
+\index{end@{end}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{end}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ Type $\ast$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::end (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a5c8e36c3d2ef738b4630bf67556d5ff3}
+
+
+Iterator to the end. 
+
+Returns a pointer to the position after the last element. \begin{DoxyReturn}{Returns}
+Pointer to the end. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a78dd98d89e3c5df6e0db4c4795da346f}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!end@{end}}
+\index{end@{end}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{end}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ const Type $\ast$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::end (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a78dd98d89e3c5df6e0db4c4795da346f}
+
+
+Immutable iterator to the end. 
+
+Returns a pointer to the position after the last element. \begin{DoxyReturn}{Returns}
+Immutable pointer to the end. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_aa945ee5d184d72a020af01fa6d2a733a}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!eq@{eq}}
+\index{eq@{eq}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{eq}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type, Kind... Parameters$>$ template$<$class Generic\-Type $>$ bool {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::eq (
+\begin{DoxyParamCaption}
+\item[{const Generic\-Type \&}]{rhs, }
+\item[{const Type \&}]{tolerance}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_aa945ee5d184d72a020af01fa6d2a733a}
+
+
+Compare for approximate equality. 
+
+Returns true if all elements of the containers are approximately equal, returns false otherwise. The condition is that the difference of all elements of the containers has to be less or equal the absolute value of the tolerance. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Generic\-Type} & (Value or vectorized type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\mbox{\tt in}  & {\em tolerance} & Tolerance of approximation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the result. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a6b7fb6f428ef9b21d0eac659fc66c428}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!example@{example}}
+\index{example@{example}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{example}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ int {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::example (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmagrathea_1_1AbstractNArray_a6b7fb6f428ef9b21d0eac659fc66c428}
+
+
+Example function. 
+
+Tests and demonstrates the use of \hyperlink{classmagrathea_1_1AbstractNArray}{Abstract\-N\-Array}. \begin{DoxyReturn}{Returns}
+0 if no error. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a36e332beb5a644e884423077307cc5b9}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!index@{index}}
+\index{index@{index}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{index}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$typename Iterator\-Type $>$ unsigned int {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::index (
+\begin{DoxyParamCaption}
+\item[{const Iterator\-Type \&}]{it, }
+\item[{typename std\-::iterator\-\_\-traits$<$ Iterator\-Type $>$\-::iterator\-\_\-category $\ast$}]{ = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a36e332beb5a644e884423077307cc5b9}
+
+
+Index of an iterator in the array. 
+
+Returns the index of the element pointed by an iterator or a pointer. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Iterator\-Type} & (Pointer or iterator type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em it} & Iterator to the element. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the value of the index of the element. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::out\-\_\-of\-\_\-range} & Out of range. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{classmagrathea_1_1AbstractNArray_ae57f7b55dfc54ba036993bf7ba86075a}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!indexed@{indexed}}
+\index{indexed@{indexed}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{indexed}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$class Function , class Mask , class $>$ Crtp$<$ Type, Parameters...$>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::indexed (
+\begin{DoxyParamCaption}
+\item[{Function \&\&}]{f = {\ttfamily std\-:\-:forward$<$unsigned~int$>$}, }
+\item[{const Mask \&}]{bitmask = {\ttfamily Mask()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classmagrathea_1_1AbstractNArray_ae57f7b55dfc54ba036993bf7ba86075a}
+
+
+Indexed array. 
+
+Creates an array based on indexes. The passed function should take an index value and return the associated element value. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Function} & (Function type \-: {\ttfamily Type(unsigned int)}.) \\
+\hline
+{\em Mask} & (Mask type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & Function object {\ttfamily Type(unsigned int)}. \\
+\hline
+\mbox{\tt in}  & {\em bitmask} & Boolean mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_ada2bf3966f9fbc9d0767f36422d4be14}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!log@{log}}
+\index{log@{log}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{log}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$unsigned int Base$>$ Crtp$<$ Type, Parameters...$>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::log (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_ada2bf3966f9fbc9d0767f36422d4be14}
+
+
+Log metafunction. 
+
+Computes the logarithm with compile-\/time options. If the base is 0, then the natural base logarithm is called. If the data type is a floating point, and if the base is 2 or 10, then the {\ttfamily std\-::log2()} or {\ttfamily std\-::log10} function is called. For other bases, the division implying the logarithm of the base is used. If the data type is not a floating point, the exact integral part of the logarithm in the specified base is computed using loops. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Base} & Logarithm base. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::domain\-\_\-error} & Logarithm of a negative integer undefined. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{classmagrathea_1_1AbstractNArray_a5c8629cb10f4a247997b1b048f39fd01}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!log@{log}}
+\index{log@{log}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{log}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$class Generic\-Type , class Mask , class $>$ Crtp$<$ Type, Parameters...$>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::log (
+\begin{DoxyParamCaption}
+\item[{const Generic\-Type \&}]{rhs, }
+\item[{const Mask \&}]{bitmask = {\ttfamily Mask()}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a5c8629cb10f4a247997b1b048f39fd01}
+
+
+Logarithm. 
+
+Computes the logarithm in the specified base of each element using the {\ttfamily std\-::log()} function. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Generic\-Type} & (Value or vectorized type.) \\
+\hline
+{\em Mask} & (Mask type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\mbox{\tt in}  & {\em bitmask} & Boolean mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_ad713b22a7477479c8e6163deb643d02f}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!mean@{mean}}
+\index{mean@{mean}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{mean}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$typename Return , class Coefficient , class Mask , class $>$ Return {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::mean (
+\begin{DoxyParamCaption}
+\item[{const Coefficient \&}]{coefficient = {\ttfamily Coefficient(1)}, }
+\item[{const Mask \&}]{bitmask = {\ttfamily Mask()}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_ad713b22a7477479c8e6163deb643d02f}
+
+
+Mean value. 
+
+Computes the mean value of the container or masked container. If a coefficient container is provided, the weighted mean is computed \-: $\bar{x}=\frac{\sum_{i=1}^{n} w_{i}x_{i}}{\sum_{i=1}^{n}w_{i}}$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Return} & Return type. \\
+\hline
+{\em Coefficient} & (Coefficient type.) \\
+\hline
+{\em Mask} & (Mask type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em coefficient} & Coefficients of weighted mean. \\
+\hline
+\mbox{\tt in}  & {\em bitmask} & Boolean mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the mean value. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a8511c69b75098b4957dec00aa388a510}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!modify@{modify}}
+\index{modify@{modify}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{modify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$typename Return , typename First , class... Types, class... Args, class $>$ Crtp$<$ Type, Parameters...$>$ \& {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::modify (
+\begin{DoxyParamCaption}
+\item[{Return($\ast$)(First, Types...)}]{f, }
+\item[{Args \&\&...}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a8511c69b75098b4957dec00aa388a510}
+
+
+Modification by a function pointer. 
+
+Modifies the container by applying a function pointer to each element. For an element {\ttfamily x}, a function {\ttfamily f} and for extra arguments {\ttfamily args...}, an equivalent expression is \-: {\ttfamily x = f(x, args...)}. The return type is used as an internal cast before affectation. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Return} & Return type.  \\
+\hline
+{\em First} & Type of the first argument of the function. \\
+\hline
+{\em Types} & Extra types of the function. \\
+\hline
+{\em Args} & (Extra types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & Function pointer {\ttfamily Return(First, Types...)}. \\
+\hline
+\mbox{\tt in}  & {\em args} & Extra arguments of the function.  \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+In case of implicit cast or extra arguments, types related to the function have to be specified manually as template parameters. 
+\end{DoxyWarning}
+\hypertarget{classmagrathea_1_1AbstractNArray_a4bd5fb03e3fc390876e41d998336c830}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!modify@{modify}}
+\index{modify@{modify}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{modify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$typename Return , typename First , class... Types, class... Args, class Mask , class $>$ Crtp$<$ Type, Parameters...$>$ \& {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::modify (
+\begin{DoxyParamCaption}
+\item[{const Mask \&}]{bitmask, }
+\item[{Return($\ast$)(First, Types...)}]{f, }
+\item[{Args \&\&...}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a4bd5fb03e3fc390876e41d998336c830}
+
+
+Masked modification by a function pointer. 
+
+Modifies the container by applying a function pointer to each element where the mask is true. For an element {\ttfamily x}, a function {\ttfamily f} and for extra arguments {\ttfamily args...}, an equivalent expression is \-: {\ttfamily x = f(x, args...)}. The return type is used as an internal cast before affectation. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Return} & Return type.  \\
+\hline
+{\em First} & Type of the first argument of the function. \\
+\hline
+{\em Types} & Extra types of the function. \\
+\hline
+{\em Args} & (Extra types.) \\
+\hline
+{\em Mask} & (Mask type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em bitmask} & Boolean mask. \\
+\hline
+\mbox{\tt in}  & {\em f} & Function pointer {\ttfamily Return(First, Types...)}. \\
+\hline
+\mbox{\tt in}  & {\em args} & Extra arguments of the function.  \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+In case of implicit cast or extra arguments, types related to the function have to be specified manually as template parameters. 
+\end{DoxyWarning}
+\hypertarget{classmagrathea_1_1AbstractNArray_affd889aba3a3de7e9a6710b9f69bd933}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!ne@{ne}}
+\index{ne@{ne}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{ne}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type, Kind... Parameters$>$ template$<$class Generic\-Type $>$ bool {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::ne (
+\begin{DoxyParamCaption}
+\item[{const Generic\-Type \&}]{rhs, }
+\item[{const Type \&}]{tolerance}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_affd889aba3a3de7e9a6710b9f69bd933}
+
+
+Compare for noticeable difference. 
+
+Returns true if at least one element is noticeably different in the two containers, returns false otherwise. The condition is that at least one difference of two elements of the containers has to be strictly greater than the absolute value of the tolerance. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Generic\-Type} & (Value or vectorized type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\mbox{\tt in}  & {\em tolerance} & Tolerance of approximation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the result. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a569c11a7a0374d2a1015d284663a8aaf}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!norm@{norm}}
+\index{norm@{norm}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{norm}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$unsigned int Degree, typename Norm\-Type , class Mask , class $>$ Norm\-Type {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::norm (
+\begin{DoxyParamCaption}
+\item[{const Mask \&}]{bitmask = {\ttfamily Mask()}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a569c11a7a0374d2a1015d284663a8aaf}
+
+
+Norm. 
+
+Computes the p-\/norm of the array \-: $\|x\|_{p} = \left( \sum_{i=1}^n\left|x_{i}\right|^p\right)^{1/p}$ where $p$ is specified by the {\ttfamily Norm\-Type} template parameter. If it is equal to zero, then the infinite norm is taken. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Degree} & Norm degree. \\
+\hline
+{\em Norm\-Type} & Norm type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em bitmask} & Boolean mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the norm. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a0361019ef75cd07ff560d5ce7760eaef}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!normalize@{normalize}}
+\index{normalize@{normalize}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{normalize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$unsigned int Degree, typename Norm\-Type , class Mask , class $>$ Crtp$<$ Type, Parameters...$>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::normalize (
+\begin{DoxyParamCaption}
+\item[{const Mask \&}]{bitmask = {\ttfamily Mask()}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a0361019ef75cd07ff560d5ce7760eaef}
+
+
+Normalize. 
+
+Normalizes the contents using the the p-\/norm of the array \-: $\|x\|_{p} = \left(\sum_{i=1}^n\left|x_{i}\right|^p \right)^{1/p}$ where $p$ is specified by the {\ttfamily Norm\-Type} template parameter. If it is equal to zero, then the infinite norm is taken. This is equivalent to the {\ttfamily \hyperlink{classmagrathea_1_1AbstractNArray_a42854d836926ec9c23574bb9767078e3}{renormalize()}} function except that it works on a copy instead of the contents. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Degree} & Norm degree. \\
+\hline
+{\em Norm\-Type} & Norm type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em bitmask} & Boolean mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::domain\-\_\-error} & The norm is not normal. \\
+\hline
+{\em std\-::domain\-\_\-error} & The norm is not normal. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{classmagrathea_1_1AbstractNArray_a9420957a2c275a4eb7027d776cece234}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!null@{null}}
+\index{null@{null}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{null}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type, Kind... Parameters$>$ bool {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::null (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{tolerance}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a9420957a2c275a4eb7027d776cece234}
+
+
+Check whether all elements are approximately null. 
+
+Returns true if all elements are approximately set to their default value, returns false otherwise. The condition is that their absolute value is less or equal the absolute value of the tolerance. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tolerance} & Tolerance of approximation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the result of the test. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_ad603ff336c72cdf527e12ca404158a8b}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!one@{one}}
+\index{one@{one}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{one}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ Crtp$<$ Type, Parameters...$>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::one (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classmagrathea_1_1AbstractNArray_ad603ff336c72cdf527e12ca404158a8b}
+
+
+One array. 
+
+Creates an array filled with ones. \begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a35ba1ecdedebc027a5361618782eeee5}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ Type \& {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::{\bf operator}\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a35ba1ecdedebc027a5361618782eeee5}
+
+
+Direct access to the element. 
+
+Provides a direct access to the specified element. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index of the element. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the element. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a1b76fbe570cae2a979abd2a6373ef336}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ const Type \& {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::{\bf operator}\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a1b76fbe570cae2a979abd2a6373ef336}
+
+
+Immutable direct access to the element. 
+
+Provides a constant direct access to the specified element. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index of the element. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Immutable reference to the element. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a502edc22924d0096c7929a9490174f81}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!pow@{pow}}
+\index{pow@{pow}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{pow}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$int Exponent$>$ Crtp$<$ Type, Parameters...$>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::pow (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a502edc22924d0096c7929a9490174f81}
+
+
+Power metafunction. 
+
+Recursively calls the multiplication operator at compile-\/time computing the integer exponentiation of the array. Negative exponent inverses the result. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Exponent} & Exponent of the power function. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_ad3097e7e24f9c1a2cfbaacef90da781e}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!pow@{pow}}
+\index{pow@{pow}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{pow}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$class Generic\-Type , class Mask , class $>$ Crtp$<$ Type, Parameters...$>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::pow (
+\begin{DoxyParamCaption}
+\item[{const Generic\-Type \&}]{rhs, }
+\item[{const Mask \&}]{bitmask = {\ttfamily Mask()}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_ad3097e7e24f9c1a2cfbaacef90da781e}
+
+
+Power. 
+
+Computes the power for the specified exponent of each element using the {\ttfamily std\-::pow()} function. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Generic\-Type} & (Value or vectorized type.) \\
+\hline
+{\em Mask} & (Mask type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\mbox{\tt in}  & {\em bitmask} & Boolean mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_ade21ec1a302b2a206434b7a80e5b5450}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!progressive@{progressive}}
+\index{progressive@{progressive}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{progressive}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type, Kind... Parameters$>$ template$<$class Function , class Mask , class $>$ Crtp$<$ Type, Parameters...$>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::progressive (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{init = {\ttfamily Type(0)}, }
+\item[{const Type \&}]{step = {\ttfamily Type(1)}, }
+\item[{Function \&\&}]{f = {\ttfamily Function()}, }
+\item[{const Mask \&}]{bitmask = {\ttfamily Mask()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classmagrathea_1_1AbstractNArray_ade21ec1a302b2a206434b7a80e5b5450}
+
+
+Progressive array. 
+
+Creates an array filled with progressive values. The next non-\/masked element is equal to the result of the function applied to the previous non-\/masked element and the step. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Function} & (Function type \-: {\ttfamily Type(\-Type, Type)}.) \\
+\hline
+{\em Mask} & (Mask type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em init} & Initial value. \\
+\hline
+\mbox{\tt in}  & {\em step} & \hyperlink{exceptionmagrathea_1_1Step}{Step} of progression. \\
+\hline
+\mbox{\tt in}  & {\em f} & Function object {\ttfamily Type(\-Type, Type)}. \\
+\hline
+\mbox{\tt in}  & {\em bitmask} & Boolean mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a78a0f1efc65617fc711adb9f23b55368}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!random@{random}}
+\index{random@{random}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{random}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type, Kind... Parameters$>$ template$<$class Mask , class $>$ Crtp$<$ Type, Parameters...$>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::random (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{minimum = {\ttfamily 0}, }
+\item[{const Type \&}]{maximum = {\ttfamily 1}, }
+\item[{const Mask \&}]{bitmask = {\ttfamily Mask()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classmagrathea_1_1AbstractNArray_a78a0f1efc65617fc711adb9f23b55368}
+
+
+Basic random array creation. 
+
+Creates a random array filled with random values generated with a uniform distribution over the provided interval. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Mask} & (Mask type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em minimum} & Minimum value of the distribution. \\
+\hline
+\mbox{\tt in}  & {\em maximum} & Maximum value of the distribution. \\
+\hline
+\mbox{\tt in}  & {\em bitmask} & Boolean mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+As the internal engine is a static one, do not use this function in parallel. 
+\end{DoxyWarning}
+\hypertarget{classmagrathea_1_1AbstractNArray_a81025fb12cb507c7904844e0c951544a}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!random@{random}}
+\index{random@{random}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{random}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type, Kind... Parameters$>$ template$<$class Engine , class Distribution , class Mask , class $>$ Crtp$<$ Type, Parameters...$>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::random (
+\begin{DoxyParamCaption}
+\item[{Engine \&\&}]{engine, }
+\item[{Distribution \&\&}]{distribution, }
+\item[{const Mask \&}]{bitmask = {\ttfamily Mask()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classmagrathea_1_1AbstractNArray_a81025fb12cb507c7904844e0c951544a}
+
+
+Generic random array creation. 
+
+Creates a random array filled with random values generated from the provided distribution and engine. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Engine} & (Random engine type.) \\
+\hline
+{\em Distribution} & (Random distribution type.) \\
+\hline
+{\em Mask} & (Mask type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em engine} & Random engine. \\
+\hline
+\mbox{\tt in,out}  & {\em distribution} & Random distribution. \\
+\hline
+\mbox{\tt in}  & {\em bitmask} & Boolean mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a98292cd9ca5cc03c3a65f5314603c7fb}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!rbegin@{rbegin}}
+\index{rbegin@{rbegin}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{rbegin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ std\-::reverse\-\_\-iterator$<$ Type $\ast$ $>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::rbegin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a98292cd9ca5cc03c3a65f5314603c7fb}
+
+
+Reverse iterator to the beginning. 
+
+Returns a reversed pointer to the position after the last element. \begin{DoxyReturn}{Returns}
+Pointer to the end. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a8eb27b3bb2ed735aa1ef68d3a5f081ba}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!rbegin@{rbegin}}
+\index{rbegin@{rbegin}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{rbegin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ std\-::reverse\-\_\-iterator$<$ const Type $\ast$ $>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::rbegin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a8eb27b3bb2ed735aa1ef68d3a5f081ba}
+
+
+Immutable reverse iterator to the beginning. 
+
+Returns a reversed pointer to the position after the last element. \begin{DoxyReturn}{Returns}
+Immutable pointer to the end. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_aac3ab908e44ea21f0956b519e1900f11}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!rearrange@{rearrange}}
+\index{rearrange@{rearrange}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{rearrange}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$class Indexes , class Pair $>$ Crtp$<$ Type, Parameters...$>$ \& {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::rearrange (
+\begin{DoxyParamCaption}
+\item[{const Indexes \&}]{indexes = {\ttfamily Indexes()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_aac3ab908e44ea21f0956b519e1900f11}
+
+
+Re-\/arrange as a function of indexes. 
+
+Sorts the contents by the provided indexes previously generated by an {\ttfamily \hyperlink{classmagrathea_1_1AbstractNArray_a2b471ca82db6d9b73d9d52d39e825f87}{arrange()}} or a {\ttfamily \hyperlink{classmagrathea_1_1AbstractNArray_a82c7a90630df5481e60ce14aeb15a4b9}{sort()}} function. It can be used to sort several arrays in the same order of a single one. If no indexes or a scalar is provided, the container is randomly shuffled. This is equivalent to the {\ttfamily \hyperlink{classmagrathea_1_1AbstractNArray_a29c48a5284bc9ad7e11ac898d09cb941}{resort()}} function except that it works on the contents instead of a copy. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Indexes} & (\hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized} container type or dummy scalar.) \\
+\hline
+{\em Pair} & (Inner pair type for indexes.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em indexes} & \hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized} container of indexes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a8fb3024caf7a7151aa3c43d19d195d1b}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!rend@{rend}}
+\index{rend@{rend}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{rend}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ std\-::reverse\-\_\-iterator$<$ Type $\ast$ $>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::rend (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a8fb3024caf7a7151aa3c43d19d195d1b}
+
+
+Reverse iterator to the end. 
+
+Returns a reversed pointer to the first element. \begin{DoxyReturn}{Returns}
+Pointer to the beginning. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a8761e168c2a4b03d363f4581b3db4bf2}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!rend@{rend}}
+\index{rend@{rend}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{rend}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ std\-::reverse\-\_\-iterator$<$ const Type $\ast$ $>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::rend (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a8761e168c2a4b03d363f4581b3db4bf2}
+
+
+Immutable reverse iterator to the end. 
+
+Returns a reversed pointer to the first element. \begin{DoxyReturn}{Returns}
+Immutable pointer to the beginning. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a42854d836926ec9c23574bb9767078e3}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!renormalize@{renormalize}}
+\index{renormalize@{renormalize}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{renormalize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$unsigned int Degree, typename Norm\-Type , class Mask , class $>$ Crtp$<$ Type, Parameters...$>$ \& {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::renormalize (
+\begin{DoxyParamCaption}
+\item[{const Mask \&}]{bitmask = {\ttfamily Mask()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a42854d836926ec9c23574bb9767078e3}
+
+
+Renormalize. 
+
+Renormalizes the contents using the the p-\/norm of the array \-: $\|x\|_{p} = \left(\sum_{i=1}^n\left|x_{i}\right|^p \right)^{1/p}$ where $p$ is specified by the {\ttfamily Norm\-Type} template parameter. If it is equal to zero, then the infinite norm is taken. This is equivalent to the {\ttfamily \hyperlink{classmagrathea_1_1AbstractNArray_a0361019ef75cd07ff560d5ce7760eaef}{normalize()}} function except that it works on the contents instead of a copy. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Degree} & Norm degree. \\
+\hline
+{\em Norm\-Type} & Norm type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em bitmask} & Boolean mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::domain\-\_\-error} & The norm is not normal. \\
+\hline
+{\em std\-::domain\-\_\-error} & The norm is not normal. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{classmagrathea_1_1AbstractNArray_a29c48a5284bc9ad7e11ac898d09cb941}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!resort@{resort}}
+\index{resort@{resort}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{resort}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$class Indexes , class Pair $>$ Crtp$<$ Type, Parameters...$>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::resort (
+\begin{DoxyParamCaption}
+\item[{const Indexes \&}]{indexes = {\ttfamily Indexes()}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a29c48a5284bc9ad7e11ac898d09cb941}
+
+
+Re-\/sort as a function of indexes. 
+
+Sorts a copy by the provided indexes previously generated by an {\ttfamily \hyperlink{classmagrathea_1_1AbstractNArray_a2b471ca82db6d9b73d9d52d39e825f87}{arrange()}} or a {\ttfamily \hyperlink{classmagrathea_1_1AbstractNArray_a82c7a90630df5481e60ce14aeb15a4b9}{sort()}} function. It can be used to sort several arrays in the same order of a single one. If no indexes or a scalar is provided, the container is randomly shuffled. This is equivalent to the {\ttfamily \hyperlink{classmagrathea_1_1AbstractNArray_aac3ab908e44ea21f0956b519e1900f11}{rearrange()}} function except that it works on a copy instead of the contents. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Indexes} & (\hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized} container type or dummy scalar.) \\
+\hline
+{\em Pair} & (Inner pair type for indexes.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em indexes} & \hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized} container of indexes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_ac09fe9cfa8c3aa117fe860ec61ed8921}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!rt@{rt}}
+\index{rt@{rt}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{rt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$int Degree$>$ Crtp$<$ Type, Parameters...$>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::rt (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_ac09fe9cfa8c3aa117fe860ec61ed8921}
+
+
+Root metafunction. 
+
+Calls the inverse of the power function for each element at compile-\/time. For 2 and 3 exponents, the {\ttfamily std\-::sqrt()} and {\ttfamily std\-::cbrt()} functions are called, otherwise {\ttfamily std\-::pow()} with the inverse exponent is called. At the end, the result is casted to the array type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Degree} & Root degree. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a164906d4dc4c247201578fe4a917a471}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!rt@{rt}}
+\index{rt@{rt}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{rt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$class Generic\-Type , class Mask , class $>$ Crtp$<$ Type, Parameters...$>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::rt (
+\begin{DoxyParamCaption}
+\item[{const Generic\-Type \&}]{rhs, }
+\item[{const Mask \&}]{bitmask = {\ttfamily Mask()}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a164906d4dc4c247201578fe4a917a471}
+
+
+Root. 
+
+Computes the root for the specified degree of each element using the {\ttfamily std\-::pow()} function. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Generic\-Type} & (Value or vectorized type.) \\
+\hline
+{\em Mask} & (Mask type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\mbox{\tt in}  & {\em bitmask} & Boolean mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a0e14dc15f2302a7dd49b5d559e0dece4}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!sigma@{sigma}}
+\index{sigma@{sigma}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{sigma}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$typename Return , typename Correction , class Coefficient , class Mask , class $>$ Return {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::sigma (
+\begin{DoxyParamCaption}
+\item[{const Correction \&}]{correction = {\ttfamily Correction(0)}, }
+\item[{const Coefficient \&}]{coefficient = {\ttfamily Coefficient(1)}, }
+\item[{const Mask \&}]{bitmask = {\ttfamily Mask()}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a0e14dc15f2302a7dd49b5d559e0dece4}
+
+
+Standard deviation. 
+
+Computes the standard deviation of the container or masked container. The correction, oftenly equals to $0$ or $-1$, allows to correct the standard deviation from the bias. If a coefficient container is provided, the standard deviation of the weighted mean is computed \-: $\sigma=\sqrt {\frac{\sum_{i=1}^{n}w_{i}\left(x_{i}-\bar{x}\right)^{2}} {\sum_{i=1}^{n}w_{i}+c}}$. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Return} & Return type. \\
+\hline
+{\em Correction} & (Correction arithmetic type.) \\
+\hline
+{\em Coefficient} & (Coefficient type.) \\
+\hline
+{\em Mask} & (Mask type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em correction} & Additive term at denominator for bias control. \\
+\hline
+\mbox{\tt in}  & {\em coefficient} & Coefficients of weighted mean. \\
+\hline
+\mbox{\tt in}  & {\em bitmask} & Boolean mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the mean value. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a82c7a90630df5481e60ce14aeb15a4b9}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!sort@{sort}}
+\index{sort@{sort}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{sort}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$class Function , class Indexes , class Mask , class Pair , class $>$ Crtp$<$ Type, Parameters...$>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::sort (
+\begin{DoxyParamCaption}
+\item[{Function \&\&}]{f = {\ttfamily Function()}, }
+\item[{Indexes \&\&}]{indexes = {\ttfamily Indexes()}, }
+\item[{const Mask \&}]{bitmask = {\ttfamily Mask()}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a82c7a90630df5481e60ce14aeb15a4b9}
+
+
+Sort. 
+
+Sorts the contents and returns a sorted copy using {\ttfamily std\-::sort}. A comparison function, a list of indexes and a boolean mask can be passed. The list of indexes is a vectorized container which will be sorted in the same order as the array. If a scalar is passed, nothing is done on it. This is equivalent to the {\ttfamily \hyperlink{classmagrathea_1_1AbstractNArray_a2b471ca82db6d9b73d9d52d39e825f87}{arrange()}} function except that it works on a copy instead of the contents. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Function} & (Function type \-: {\ttfamily bool(\-Type, Type)}.) \\
+\hline
+{\em Indexes} & (\hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized} container type or dummy scalar.) \\
+\hline
+{\em Mask} & (Mask type.) \\
+\hline
+{\em Pair} & (Inner pair type for indexes.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & Function object {\ttfamily bool(\-Type, Type)}. \\
+\hline
+\mbox{\tt in,out}  & {\em indexes} & \hyperlink{exceptionmagrathea_1_1Vectorized}{Vectorized} container or dummy scalar to be sorted. \\
+\hline
+\mbox{\tt in}  & {\em bitmask} & Boolean mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a1e82438ed847b54ec390438fdaba49f8}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!unicity@{unicity}}
+\index{unicity@{unicity}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{unicity}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ template$<$class Function , class Mask , class $>$ bool {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::unicity (
+\begin{DoxyParamCaption}
+\item[{Function \&\&}]{f = {\ttfamily Function()}, }
+\item[{const Mask \&}]{bitmask = {\ttfamily Mask()}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmagrathea_1_1AbstractNArray_a1e82438ed847b54ec390438fdaba49f8}
+
+
+Unicity of elements. 
+
+Checks for unicity of elements using the provided function with the {\ttfamily std\-::unique()} algorithm. If two elements are equal, the function returns false, and true otherwise. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Function} & (Function type \-: {\ttfamily bool(\-Type, Type)}.) \\
+\hline
+{\em Mask} & (Mask type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & Function object {\ttfamily bool(\-Type, Type)}. \\
+\hline
+\mbox{\tt in}  & {\em bitmask} & Boolean mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the result. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_ac382bb6cd34b432289442ca8da10ad4a}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!value@{value}}
+\index{value@{value}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{value}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type, Kind... Parameters$>$ template$<$class Mask , class $>$ Crtp$<$ Type, Parameters...$>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::value (
+\begin{DoxyParamCaption}
+\item[{const Type \&}]{source = {\ttfamily Type()}, }
+\item[{const Mask \&}]{bitmask = {\ttfamily Mask()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classmagrathea_1_1AbstractNArray_ac382bb6cd34b432289442ca8da10ad4a}
+
+
+Array from value. 
+
+Creates an array filled with values. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Mask} & (Mask type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source value. \\
+\hline
+\mbox{\tt in}  & {\em bitmask} & Boolean mask. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{classmagrathea_1_1AbstractNArray_a9e3e801b258247b8c3c1c576ad521775}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!zero@{zero}}
+\index{zero@{zero}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{zero}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind , unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type , Kind... Parameters$>$ Crtp$<$ Type, Parameters...$>$ {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::zero (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classmagrathea_1_1AbstractNArray_a9e3e801b258247b8c3c1c576ad521775}
+
+
+Zero array. 
+
+Creates an array filled with zeroes. \begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classmagrathea_1_1AbstractNArray_a236c5f0a521ae3108e6e7754a1fe28c5}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!\-\_\-data@{\-\_\-data}}
+\index{\-\_\-data@{\-\_\-data}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind, unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type, Kind... Parameters$>$ Type {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::\-\_\-data\mbox{[}Size\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmagrathea_1_1AbstractNArray_a236c5f0a521ae3108e6e7754a1fe28c5}
+
+
+Data contents. 
+
+\hypertarget{classmagrathea_1_1AbstractNArray_ab941e2df51c9f6fe2d16cfc9a8178df9}{\index{magrathea\-::\-Abstract\-N\-Array@{magrathea\-::\-Abstract\-N\-Array}!operator@{operator}}
+\index{operator@{operator}!magrathea::AbstractNArray@{magrathea\-::\-Abstract\-N\-Array}}
+\subsubsection[{operator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kind, unsigned int Size, template$<$ typename, Kind...$>$ class Crtp, typename Type, Kind... Parameters$>$ using {\bf magrathea\-::\-Abstract\-N\-Array}$<$ Kind, Size, Crtp, Type, Parameters $>$\-::operator = }}\label{classmagrathea_1_1AbstractNArray_ab941e2df51c9f6fe2d16cfc9a8178df9}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/magrathea/\hyperlink{abstractnarray_8h}{abstractnarray.\-h}\end{DoxyCompactItemize}

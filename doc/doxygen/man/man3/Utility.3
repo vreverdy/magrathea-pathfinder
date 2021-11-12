@@ -1,0 +1,915 @@
+.TH "Utility" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Utility \- 
+.PP
+List of utilities for raytracing\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <utility\&.h>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<class Type > static std::array< std::array
+.br
+< Type, 2 >, 2 > \fBinvMatrix2d\fP (const std::array< std::array< Type, 2 >, 2 > &A)"
+.br
+.RI "\fIInverse matrix\&. \fP"
+.ti -1c
+.RI "template<class Type > static std::array< std::array
+.br
+< Type, 3 >, 3 > \fBinvMatrix3d\fP (const std::array< std::array< Type, 3 >, 3 > &A)"
+.br
+.RI "\fIInverse matrix\&. \fP"
+.in -1c
+.PP
+.RI "\fBParallelization\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<int Default = 0, typename Type , class Function , class  = typename std::enable_if<(std::is_convertible<decltype(std::declval<Type>()+std::declval<Type>()), int>::value) && (!std::is_function<typename std::result_of<Function(Type)>::type>::value)>::type> static double \fBparallelize\fP (const Type nsteps, Function &&function, const int nthreads=(Default!=0)?(Default):(std::thread::hardware_concurrency()))"
+.br
+.RI "\fIParallelize a loop\&. \fP"
+.ti -1c
+.RI "template<int Default = 0, typename Type , class Function , class  = typename std::enable_if<(!std::is_void<decltype(std::declval<Type>()/std::declval<Type>())>::value) && (!std::is_function<typename std::result_of<Function(Type)>::type>::value)>::type> static double \fBparallelize\fP (const Type &first, const Type &last, const Type &increment, Function &&function, const int nthreads=(Default!=0)?(Default):(std::thread::hardware_concurrency()))"
+.br
+.RI "\fIParallelize an iteration over a range of values\&. \fP"
+.ti -1c
+.RI "template<int Default = 0, typename Iterator , class Function , class  = typename std::enable_if<(!std::is_void<decltype(*std::declval<Iterator>())>::value) && (!std::is_function<typename std::result_of<Function(decltype(*std::declval<Iterator>()))>::type>::value)>::type> static double \fBparallelize\fP (const Iterator &first, const Iterator &last, Function &&function, const int nthreads=(Default!=0)?(Default):(std::thread::hardware_concurrency()))"
+.br
+.RI "\fIParallelize an iteration over a range of iterators\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBGeometry\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<unsigned int Dimension, unsigned int Index = 0, class Vector , typename Scalar  = typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Vector>()[0])>::type>::type> static constexpr Scalar \fBdistance\fP (const Vector &first, const Vector &second)"
+.br
+.RI "\fIEuclidian distance\&. \fP"
+.ti -1c
+.RI "template<unsigned int Dimension, unsigned int Index = 0, class Vector , typename Scalar  = typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Vector>()[0])>::type>::type> static constexpr Scalar \fBdot\fP (const Vector &first, const Vector &second)"
+.br
+.RI "\fIDot product\&. \fP"
+.ti -1c
+.RI "template<unsigned int Dimension, unsigned int Index = 0, class Vector , typename Scalar  = typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Vector>()[0])>::type>::type> static Vector \fBcross\fP (const Vector &first, const Vector &second)"
+.br
+.RI "\fIThree dimensional cross product\&. \fP"
+.ti -1c
+.RI "template<unsigned int Dimension, unsigned int Index = 0, class Vector , typename Scalar  = typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Vector>()[0])>::type>::type> static Vector \fBjoin\fP (const Vector &first, const Vector &second)"
+.br
+.RI "\fIJoin two points\&. \fP"
+.ti -1c
+.RI "template<class Operator , unsigned int Dimension, unsigned int Index = 0, class Vector , typename Scalar  = typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Vector>()[0])>::type>::type> static Vector \fBapply\fP (const Vector &first, const Vector &second)"
+.br
+.RI "\fIApply operator to all elements\&. \fP"
+.ti -1c
+.RI "template<unsigned int Dimension, class Vector , typename Scalar > static constexpr Scalar \fBradius\fP (const \fBmagrathea::HyperSphere\fP< Dimension, Vector, Scalar > &hypersphere)"
+.br
+.RI "\fIRadius of an hypersphere\&. \fP"
+.ti -1c
+.RI "template<unsigned int Dimension, class Vector , typename Scalar > static constexpr Scalar \fBradius\fP (const \fBmagrathea::HyperCube\fP< Dimension, Vector, Scalar > &hypercube)"
+.br
+.RI "\fIRadius of an hypercube\&. \fP"
+.ti -1c
+.RI "template<unsigned int Dimension, class Vector , typename Scalar , typename Type  = Scalar> static \fBmagrathea::HyperCube\fP
+.br
+< Dimension, Vector, Scalar > \fBcubify\fP (const \fBmagrathea::HyperSphere\fP< Dimension, Vector, Scalar > &hypersphere, Type factor=Type(1))"
+.br
+.RI "\fIHypersphere to hypercube conversion\&. \fP"
+.ti -1c
+.RI "template<unsigned int Dimension, class Vector , typename Scalar , typename Type  = Scalar> static \fBmagrathea::HyperSphere\fP
+.br
+< Dimension, Vector, Scalar > \fBspherify\fP (const \fBmagrathea::HyperCube\fP< Dimension, Vector, Scalar > &hypercube, Type factor=Type(1))"
+.br
+.RI "\fIHypercube to hypersphere conversion\&. \fP"
+.ti -1c
+.RI "template<template< unsigned int, class, typename > class First, template< unsigned int, class, typename > class Second, unsigned int Dimension, class Vector , typename Scalar > static bool \fBcollide\fP (const First< Dimension, Vector, Scalar > &first, const Second< Dimension, Vector, Scalar > &second)"
+.br
+.RI "\fICollision between two hyperobjects\&. \fP"
+.ti -1c
+.RI "template<template< unsigned int, class, typename > class Object, unsigned int Dimension, class Vector , typename Scalar , class  = typename std::enable_if<Dimension == 3>::type> static bool \fBcollide\fP (const Object< Dimension, Vector, Scalar > &object, const \fBCone\fP< Vector, Scalar > &cone, const double &inspheresize)"
+.br
+.RI "\fICollision between an hyperobject and a cone\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBInterpolation\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename Type , class Container , class  = typename std::enable_if<std::is_convertible<Type, typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Container>()[0])>::type>::type>::value>::type> static Type \fBinterpolate\fP (const Type x0, const Container &x, const Container &y)"
+.br
+.RI "\fILinear interpolation\&. \fP"
+.ti -1c
+.RI "template<typename Type , class Container , class  = typename std::enable_if<std::is_convertible<Type, typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Container>()[0])>::type>::type>::value>::type> static Type \fBinterpolate2\fP (const Type x0, const Container &x, const Container &y)"
+.br
+.RI "\fILinear interpolation\&. \fP"
+.ti -1c
+.RI "template<typename Type , class Container , class  = typename std::enable_if<std::is_convertible<Type, typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Container>()[0])>::type>::type>::value>::type> static Type \fBinterpolate\fP (const Type x0, const Container &x, const Container &y, const Container &dydx)"
+.br
+.RI "\fICubic spline interpolation\&. \fP"
+.ti -1c
+.RI "template<class Container , class\&.\&.\&. Containers, class  = typename std::enable_if<sizeof\&.\&.\&.(Containers) == 2 || sizeof\&.\&.\&.(Containers) == 3>::type> static Container \fBreinterpolate\fP (const Container &x0, Containers &&\&.\&.\&.containers)"
+.br
+.RI "\fIContainer reinterpolation\&. \fP"
+.ti -1c
+.RI "template<int Direction = 0, typename Type , class Container , typename T  = Type, class  = typename std::enable_if<std::is_convertible<Type, typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Container>()[0])>::type>::type>::value>::type> static Type \fBdifferentiate\fP (const Type x0, const Container &x, const Container &y, const unsigned int neighbourhood=1)"
+.br
+.RI "\fIFornberg differentiation\&. \fP"
+.ti -1c
+.RI "template<int Derivative = 0, typename Type , class Container , typename T  = Type, class  = typename std::enable_if<(Derivative >= 0> static::type Type \fBfilter\fP (const Type x0, const Container &x, const Container &y, const unsigned int neighbourhood=1)"
+.br
+.RI "\fISavitzky-Golay filter\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBEvolution\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class Container , typename Type , class  = typename std::enable_if<std::is_same<Type, typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Container>()[0])>::type>::type>::value>::type> static Container \fBreverse\fP (const Container &container, const Type value)"
+.br
+.RI "\fIReverse\&. \fP"
+.ti -1c
+.RI "template<class Container , typename Type  = typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Container>()[0])>::type>::type, class Function , class  = typename std::enable_if<!std::is_function<typename std::result_of<Function(Type, Type)>::type>::value>::type> static Container \fBsmooth\fP (const Container &x, const Container &y, Function &&kernel, const unsigned int window=0)"
+.br
+.RI "\fIKernel smoother\&. \fP"
+.ti -1c
+.RI "template<class Container , typename Type  = typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Container>()[0])>::type>::type, class  = typename std::enable_if<std::is_convertible<Type, typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Container>()[0])>::type>::type>::value>::type> static Container \fBintegrate\fP (const Container &x, const Container &y, const Type value=Type())"
+.br
+.RI "\fIIntegration\&. \fP"
+.ti -1c
+.RI "template<int Direction = 0, class Container , typename Type  = typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Container>()[0])>::type>::type, class  = typename std::enable_if<std::is_convertible<Type, typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Container>()[0])>::type>::type>::value>::type> static Container \fBderive\fP (const Container &x, const Container &y, const unsigned int neighbourhood=1)"
+.br
+.RI "\fIDerivative\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+List of utilities for raytracing\&. 
+
+Provides a list of general purpose utilities for raytracing like parallelization, collision detection or interpolation\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class Operator , unsigned int Dimension, unsigned int Index, class Vector , typename Scalar > Vector Utility::apply (const Vector &first, const Vector &second)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Apply operator to all elements\&. Computes the vector resulting from the application of an operator to all elements of two vectors\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOperator\fP Operator type\&. 
+.br
+\fIDimension\fP Number of space dimension\&. 
+.br
+\fIIndex\fP Inner computation index\&. 
+.br
+\fIVector\fP Position vector type\&. 
+.br
+\fIScalar\fP Scalar data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP First point\&. 
+.br
+\fIsecond\fP Second point\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Resulting vector\&. 
+.RE
+.PP
+
+.SS "template<template< unsigned int, class, typename > class First, template< unsigned int, class, typename > class Second, unsigned int Dimension, class Vector , typename Scalar > bool Utility::collide (const First< Dimension, Vector, Scalar > &first, const Second< Dimension, Vector, Scalar > &second)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Collision between two hyperobjects\&. Detects collision between two geometrical objects in arbitrary dimension treated as hyperspheres\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFirst\fP First object type\&. 
+.br
+\fISecond\fP Second object type\&. 
+.br
+\fIDimension\fP Number of space dimension\&. 
+.br
+\fIVector\fP Position vector type\&. 
+.br
+\fIScalar\fP Scalar data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP First object\&. 
+.br
+\fIsecond\fP Second object\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if collision, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<template< unsigned int, class, typename > class Object, unsigned int Dimension, class Vector, typename Scalar , class > bool Utility::collide (const Object< Dimension, Vector, Scalar > &object, const \fBCone\fP< Vector, Scalar > &cone, const double &inspheresize)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Collision between an hyperobject and a cone\&. Detects collision between a geometrical object and a three dimensional cone\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIObject\fP Object type\&. 
+.br
+\fIDimension\fP Number of space dimension\&. 
+.br
+\fIVector\fP Position vector type\&. 
+.br
+\fIScalar\fP Scalar data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobject\fP Geometrical object\&. 
+.br
+\fIcone\fP Three dimensional cone\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if collision, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Dimension, unsigned int Index, class Vector , typename Scalar > Vector Utility::cross (const Vector &first, const Vector &second)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Three dimensional cross product\&. Computes the cross product of two vectors in three dimensions\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDimension\fP Number of space dimension\&. 
+.br
+\fIIndex\fP Inner computation index\&. 
+.br
+\fIVector\fP Position vector type\&. 
+.br
+\fIScalar\fP Scalar data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP First point\&. 
+.br
+\fIsecond\fP Second point\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Result of the cross product\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Dimension, class Vector , typename Scalar , typename Type > \fBmagrathea::HyperCube\fP< Dimension, Vector, Scalar > Utility::cubify (const \fBmagrathea::HyperSphere\fP< Dimension, Vector, Scalar > &hypersphere, Typescale = \fCType(1)\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Hypersphere to hypercube conversion\&. Converts a hypersphere to a hypercubecube with its diagonal equals to the diameter with the provided scaling\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDimension\fP Number of space dimension\&. 
+.br
+\fIVector\fP Position vector type\&. 
+.br
+\fIScalar\fP Scalar data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhypersphere\fP \fBInput\fP hypersphere\&. 
+.br
+\fIscale\fP Scaling factor\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Hypercube resulting from the hypersphere conversion\&. 
+.RE
+.PP
+
+.SS "template<int Direction, class Container , typename Type , class > Container Utility::derive (const Container &x, const Container &y, const unsigned intneighbourhood = \fC1\fP)\fC [static]\fP"
+
+.PP
+Derivative\&. Computes the derivative of the ordinates regarding to the abscissae\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDirection\fP Sign for centered, backward or forward differentiation\&. 
+.br
+\fIContainer\fP Container type\&. 
+.br
+\fIType\fP Data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP Abscissae\&. 
+.br
+\fIy\fP Ordinates\&. 
+.br
+\fIneighbourhood\fP Computing distance\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Derivative of ordinates regarding to the abscissae\&. 
+.RE
+.PP
+
+.SS "template<int Direction, typename Type , class Container , typename T , class > Type Utility::differentiate (const Typex0, const Container &x, const Container &y, const unsigned intneighbourhood = \fC1\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Fornberg differentiation\&. Computes the value of the derivative at the given position using a fourth order Fornberg algorithm\&. The greater the neighbourhood, the greater the computing distance is\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDirection\fP Sign for centered, backward or forward differentiation\&. 
+.br
+\fIType\fP Data type\&. 
+.br
+\fIContainer\fP Container type\&. 
+.br
+\fIT\fP Conversion type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx0\fP Differentiation abscissa\&. 
+.br
+\fIx\fP Abscissae\&. 
+.br
+\fIy\fP Ordinates\&. 
+.br
+\fIneighbourhood\fP Computing distance\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Derivative at the provided abscissa\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Dimension, unsigned int Index, class Vector , typename Scalar > constexpr Scalar Utility::distance (const Vector &first, const Vector &second)\fC [static]\fP"
+
+.PP
+Euclidian distance\&. Computes the euclidian distance between two points\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDimension\fP Number of space dimension\&. 
+.br
+\fIIndex\fP Inner computation index\&. 
+.br
+\fIVector\fP Position vector type\&. 
+.br
+\fIScalar\fP Scalar data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP First point\&. 
+.br
+\fIsecond\fP Second point\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Value of the distance\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Dimension, unsigned int Index, class Vector , typename Scalar > constexpr Scalar Utility::dot (const Vector &first, const Vector &second)\fC [static]\fP"
+
+.PP
+Dot product\&. Computes the dot product of two vectors\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDimension\fP Number of space dimension\&. 
+.br
+\fIIndex\fP Inner computation index\&. 
+.br
+\fIVector\fP Position vector type\&. 
+.br
+\fIScalar\fP Scalar data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP First point\&. 
+.br
+\fIsecond\fP Second point\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Value of the dot product\&. 
+.RE
+.PP
+
+.SS "int Utility::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBUtility\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SS "template<int Derivative, typename Type , class Container , typename T , class > Type Utility::filter (const Typex0, const Container &x, const Container &y, const unsigned intneighbourhood = \fC1\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Savitzky-Golay filter\&. Computes the smoothed value of the n-th derivative at the given position using a fourth order Savitzky-Golay algorithm\&. The greater the neighbourhood, the greater the computing distance is\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDerivative\fP Order of the derivative\&. 
+.br
+\fIType\fP Data type\&. 
+.br
+\fIContainer\fP Container type\&. 
+.br
+\fIT\fP Conversion type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx0\fP Differentiation abscissa\&. 
+.br
+\fIx\fP Abscissae\&. 
+.br
+\fIy\fP Ordinates\&. 
+.br
+\fIneighbourhood\fP Computing distance\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Filtered derivative at the provided abscissa\&. 
+.RE
+.PP
+
+.SS "template<class Container , typename Type , class > Container Utility::integrate (const Container &x, const Container &y, const Typevalue = \fCType()\fP)\fC [static]\fP"
+
+.PP
+Integration\&. Computes the integral of the ordinates regarding to the abscissae and starting from the specified value\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIContainer\fP Container type\&. 
+.br
+\fIType\fP Data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP Abscissae\&. 
+.br
+\fIy\fP Ordinates\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Integral of ordinates regarding to the abscissae\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Container , class > Type Utility::interpolate (const Typex0, const Container &x, const Container &y)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Linear interpolation\&. Interpolates the value at the given position linearly\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Data type\&. 
+.br
+\fIContainer\fP Container type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx0\fP Interpolation abscissa\&. 
+.br
+\fIx\fP Abscissae\&. 
+.br
+\fIy\fP Ordinates\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Interpolated ordinate\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Container , class > Type Utility::interpolate (const Typex0, const Container &x, const Container &y, const Container &dydx)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Cubic spline interpolation\&. Interpolates the value at the given position using a cubic spline with the specified derivative\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Data type\&. 
+.br
+\fIContainer\fP Container type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx0\fP Interpolation abscissa\&. 
+.br
+\fIx\fP Abscissae\&. 
+.br
+\fIy\fP Ordinates\&. 
+.br
+\fIdydx\fP Derivatives\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Interpolated ordinate\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Container , class > Type Utility::interpolate2 (const Typex0, const Container &x, const Container &y)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Linear interpolation\&. Interpolates the value at the given position linearly, with decreasing x\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Data type\&. 
+.br
+\fIContainer\fP Container type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx0\fP Interpolation abscissa\&. 
+.br
+\fIx\fP Abscissae\&. 
+.br
+\fIy\fP Ordinates\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Interpolated ordinate\&. 
+.RE
+.PP
+
+.SS "template<class Type > std::array< std::array< Type, 2 >, 2 > Utility::invMatrix2d (const std::array< std::array< Type, 2 >, 2 > &A)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Inverse matrix\&. Inverse 2D matrix\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP type of matrix components\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIA\fP array 2D Matrix\&. return Array 2D inverted matrix 
+.RE
+.PP
+
+.SS "template<class Type > std::array< std::array< Type, 3 >, 3 > Utility::invMatrix3d (const std::array< std::array< Type, 3 >, 3 > &A)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Inverse matrix\&. Inverse 3D matrix\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP type of matrix components\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIA\fP array 3D Matrix\&. return Array 3D inverted matrix 
+.RE
+.PP
+
+.SS "template<unsigned int Dimension, unsigned int Index, class Vector , typename Scalar > Vector Utility::join (const Vector &first, const Vector &second)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Join two points\&. Computes the vector resulting from going from the first point to the second point\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDimension\fP Number of space dimension\&. 
+.br
+\fIIndex\fP Inner computation index\&. 
+.br
+\fIVector\fP Position vector type\&. 
+.br
+\fIScalar\fP Scalar data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP First point\&. 
+.br
+\fIsecond\fP Second point\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Resulting joining vector\&. 
+.RE
+.PP
+
+.SS "template<int Default, typename Type , class Function , class > double Utility::parallelize (const Typensteps, Function &&function, const intnthreads = \fC(Default != 0) ? (Default) : (std::thread::hardware_concurrency())\fP)\fC [static]\fP"
+
+.PP
+Parallelize a loop\&. Executes the provided function on each index of the loop using the specified number of threads\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDefault\fP Default concurrency where zero means hardware concurrency\&. 
+.br
+\fIType\fP Loop index type\&. 
+.br
+\fIFunction\fP Function type taking a loop index as argument\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fInsteps\fP Total number of steps\&. 
+.br
+\fIfunction\fP Function\&. 
+.br
+\fInthreads\fP Number of threads\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Elapsed time in seconds\&. 
+.RE
+.PP
+
+.SS "template<int Default, typename Type , class Function , class > double Utility::parallelize (const Type &first, const Type &last, const Type &increment, Function &&function, const intnthreads = \fC(Default != 0) ? (Default) : (std::thread::hardware_concurrency())\fP)\fC [static]\fP"
+
+.PP
+Parallelize an iteration over a range of values\&. Executes the provided function on each values of the range using the provided increment and the specified number of threads\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDefault\fP Default concurrency where zero means hardware concurrency\&. 
+.br
+\fIType\fP Value type\&. 
+.br
+\fIFunction\fP Function type taking a value as argument\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP First value\&. 
+.br
+\fIlast\fP Last value\&. 
+.br
+\fIincrement\fP Increment\&. 
+.br
+\fIfunction\fP Function\&. 
+.br
+\fInthreads\fP Number of threads\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Elapsed time in seconds\&. 
+.RE
+.PP
+
+.SS "template<int Default, typename Iterator , class Function , class > double Utility::parallelize (const Iterator &first, const Iterator &last, Function &&function, const intnthreads = \fC(Default != 0) ? (Default) : (std::thread::hardware_concurrency())\fP)\fC [static]\fP"
+
+.PP
+Parallelize an iteration over a range of iterators\&. Executes the provided function on each element of the iterator range using the specified number of threads\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDefault\fP Default concurrency where zero means hardware concurrency\&. 
+.br
+\fIIterator\fP Iterator type\&. 
+.br
+\fIFunction\fP Function type taking an element as argument\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP First iterator\&. 
+.br
+\fIlast\fP Last iterator\&. 
+.br
+\fIfunction\fP Function\&. 
+.br
+\fInthreads\fP Number of threads\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Elapsed time in seconds\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Dimension, class Vector , typename Scalar > constexpr Scalar Utility::radius (const \fBmagrathea::HyperSphere\fP< Dimension, Vector, Scalar > &hypersphere)\fC [static]\fP"
+
+.PP
+Radius of an hypersphere\&. Computes the radius of the provided hypersphere\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDimension\fP Number of space dimension\&. 
+.br
+\fIVector\fP Position vector type\&. 
+.br
+\fIScalar\fP Scalar data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhypersphere\fP Hypersphere\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Value of the radius\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Dimension, class Vector , typename Scalar > constexpr Scalar Utility::radius (const \fBmagrathea::HyperCube\fP< Dimension, Vector, Scalar > &hypercube)\fC [static]\fP"
+
+.PP
+Radius of an hypercube\&. Computes the radius corresponding to half the diagonal of the provided hypercube\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDimension\fP Number of space dimension\&. 
+.br
+\fIVector\fP Position vector type\&. 
+.br
+\fIScalar\fP Scalar data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhypercube\fP Hypercube\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Value of the radius\&. 
+.RE
+.PP
+
+.SS "template<class Container , class\&.\&.\&. Containers, class > Container Utility::reinterpolate (const Container &x0, Containers &&\&.\&.\&.containers)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Container reinterpolation\&. Interpolates each value of the container\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIContainer\fP Container type\&. 
+.br
+\fIContainers\fP Containers types\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx0\fP Interpolation abscissae\&. 
+.br
+\fIcontainers\fP \fBInput\fP containers\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Interpolated ordinates\&. 
+.RE
+.PP
+
+.SS "template<class Container , typename Type , class > Container Utility::reverse (const Container &container, const Typevalue)\fC [static]\fP"
+
+.PP
+Reverse\&. Reverses a container by substracting a value\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIContainer\fP Container type\&. 
+.br
+\fIType\fP Data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontainer\fP Container\&. 
+.br
+\fIvalue\fP Value to be substracted\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reversed vector\&. 
+.RE
+.PP
+
+.SS "template<class Container , typename Type , class Function , class > Container Utility::smooth (const Container &x, const Container &y, Function &&kernel, const unsigned intwindow = \fC0\fP)\fC [static]\fP"
+
+.PP
+Kernel smoother\&. Smoothes a serie of data using a kernel smoother and a window function on the first neigbours\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIContainer\fP Container type\&. 
+.br
+\fIType\fP Data type\&. 
+.br
+\fIFunction\fP Function type taking two data as argument\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP Abscissae\&. 
+.br
+\fIy\fP Ordinates\&. 
+.br
+\fIkernel\fP Kernel function\&. 
+.br
+\fIwindow\fP Cut on the provided number of neighbours\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Smoothed ordinates\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Dimension, class Vector , typename Scalar , typename Type > \fBmagrathea::HyperSphere\fP< Dimension, Vector, Scalar > Utility::spherify (const \fBmagrathea::HyperCube\fP< Dimension, Vector, Scalar > &hypercube, Typescale = \fCType(1)\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Hypercube to hypersphere conversion\&. Converts a hypercube to a hypersphere with its diameter equals to the diagonal with the provided scaling\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDimension\fP Number of space dimension\&. 
+.br
+\fIVector\fP Position vector type\&. 
+.br
+\fIScalar\fP Scalar data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhypercube\fP \fBInput\fP hypercube\&. 
+.br
+\fIscale\fP Scaling factor\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Hypersphere resulting from the hypercube conversion\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

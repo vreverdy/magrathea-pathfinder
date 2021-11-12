@@ -1,0 +1,1889 @@
+.TH "magrathea::Constant< Type, Size >" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::Constant< Type, Size > \- 
+.PP
+Numerical constant with constexpr constructor\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <constant\&.h>\fP
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBLifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "constexpr \fBConstant\fP (const Type source)"
+.br
+.RI "\fIImplicit constexpr value constructor\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != 1>::type> constexpr \fBConstant\fP (const Types\&.\&.\&.source)"
+.br
+.RI "\fIImplicit constexpr values constructor\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> constexpr \fBConstant\fP (const OtherType source)"
+.br
+.RI "\fIImplicit constexpr value conversion constructor\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> constexpr \fBConstant\fP (const \fBConstant\fP< OtherType, Size > source)"
+.br
+.RI "\fIImplicit constexpr constant conversion constructor\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<std::is_convertible<OtherType, Type>::value>::type> constexpr \fBConstant\fP (const std::array< OtherType, Size > source)"
+.br
+.RI "\fIImplicit constexpr array conversion constructor\&. \fP"
+.ti -1c
+.RI "constexpr \fBConstant\fP (const std::array< Type, Size > source)"
+.br
+.RI "\fIImplicit constexpr array constructor\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBOperators\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBoperator()\fP (const Types &\&.\&.\&.values) const "
+.br
+.RI "\fIIncomplete setter operator\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) == Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBoperator()\fP (const Types\&.\&.\&.values) const "
+.br
+.RI "\fISetter operator\&. \fP"
+.ti -1c
+.RI "constexpr Type \fBoperator()\fP () const "
+.br
+.RI "\fIDefault getter operator\&. \fP"
+.ti -1c
+.RI "constexpr Type \fBoperator[]\fP (const unsigned int i) const "
+.br
+.RI "\fISubscript operator\&. \fP"
+.ti -1c
+.RI "constexpr \fBoperator Type\fP () const "
+.br
+.RI "\fIValue cast operator\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBManagement\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "constexpr unsigned int \fBsize\fP () const "
+.br
+.RI "\fISize\&. \fP"
+.ti -1c
+.RI "template<unsigned int OtherSize> constexpr const \fBConstant\fP< Type, 
+.br
+OtherSize > \fBresize\fP () const "
+.br
+.RI "\fIResize\&. \fP"
+.ti -1c
+.RI "constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBnullify\fP () const "
+.br
+.RI "\fINullify\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBset\fP (const Types &\&.\&.\&.values) const "
+.br
+.RI "\fIIncomplete value setter\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) == Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBset\fP (const Types\&.\&.\&.values) const "
+.br
+.RI "\fIValue setter\&. \fP"
+.ti -1c
+.RI "template<typename OtherType  = Type> constexpr OtherType \fBget\fP (const unsigned int i=0) const "
+.br
+.RI "\fIValue getter\&. \fP"
+.ti -1c
+.RI "template<typename OtherType  = Type> constexpr OtherType \fBvalue\fP (const unsigned int i=0) const "
+.br
+.RI "\fIAccess a value\&. \fP"
+.ti -1c
+.RI "template<typename OtherType  = Type> constexpr const std::array
+.br
+< OtherType, Size > \fBdata\fP () const "
+.br
+.RI "\fIAccess data\&. \fP"
+.ti -1c
+.RI "template<typename OtherType > constexpr const \fBConstant\fP
+.br
+< OtherType, Size > \fBcast\fP () const "
+.br
+.RI "\fICast\&. \fP"
+.ti -1c
+.RI "constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBcopy\fP () const "
+.br
+.RI "\fICopy\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBUnary operations\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBinv\fP (const Types &\&.\&.\&.values) const "
+.br
+.RI "\fIStart calculation of the inverse\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) == Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBinv\fP (const Types\&.\&.\&.values) const "
+.br
+.RI "\fIStop calculation of the inverse\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBopp\fP (const Types &\&.\&.\&.values) const "
+.br
+.RI "\fIStart calculation of the opposite\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) == Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBopp\fP (const Types\&.\&.\&.values) const "
+.br
+.RI "\fIStop calculation of opposite\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBabs\fP (const Types &\&.\&.\&.values) const "
+.br
+.RI "\fIStart calculation of the absolute value\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) == Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBabs\fP (const Types\&.\&.\&.values) const "
+.br
+.RI "\fIStop calculation of the absolute value\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBsgn\fP (const Types &\&.\&.\&.values) const "
+.br
+.RI "\fIStart calculation of the the signum function\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) == Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBsgn\fP (const Types\&.\&.\&.values) const "
+.br
+.RI "\fIStop calculation of the the signum function\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBsq\fP (const Types &\&.\&.\&.values) const "
+.br
+.RI "\fIStart calculation of the square\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) == Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBsq\fP (const Types\&.\&.\&.values) const "
+.br
+.RI "\fIStop calculation of the square\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBcb\fP (const Types &\&.\&.\&.values) const "
+.br
+.RI "\fIStart calculation of the cube\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) == Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBcb\fP (const Types\&.\&.\&.values) const "
+.br
+.RI "\fIStop calculation of the cube\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBisqrt\fP (const Types &\&.\&.\&.values) const "
+.br
+.RI "\fIStart calculation of the integer square root\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) == Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBisqrt\fP (const Types\&.\&.\&.values) const "
+.br
+.RI "\fIStop calculation of the integer square root\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBicbrt\fP (const Types &\&.\&.\&.values) const "
+.br
+.RI "\fIStart calculation of the integer cube root\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) == Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBicbrt\fP (const Types\&.\&.\&.values) const "
+.br
+.RI "\fIStop calculation of the integer cube root\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBilog2\fP (const Types &\&.\&.\&.values) const "
+.br
+.RI "\fIStart calculation of the integer base 2 logarithm\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) == Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBilog2\fP (const Types\&.\&.\&.values) const "
+.br
+.RI "\fIStop calculation of the integer base 2 logarithm\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBilog10\fP (const Types &\&.\&.\&.values) const "
+.br
+.RI "\fIStart calculation of the integer base 10 logarithm\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) == Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBilog10\fP (const Types\&.\&.\&.values) const "
+.br
+.RI "\fIStop calculation of the integer base 10 logarithm\&. \fP"
+.ti -1c
+.RI "template<class Ratio  = std::ratio<1>, typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBsi\fP (const Types &\&.\&.\&.values) const "
+.br
+.RI "\fIStart multiplication by a SI prefix\&. \fP"
+.ti -1c
+.RI "template<class Ratio  = std::ratio<1>, typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) == Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBsi\fP (const Types\&.\&.\&.values) const "
+.br
+.RI "\fIStop multiplication by a SI prefix\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBArithmetic operations\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBadd\fP (const Type rhs, const Types &\&.\&.\&.values) const "
+.br
+.RI "\fIStart addition\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) == Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBadd\fP (const Type, const Types\&.\&.\&.values) const "
+.br
+.RI "\fIStop addition\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBsub\fP (const Type rhs, const Types &\&.\&.\&.values) const "
+.br
+.RI "\fIStart substraction\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) == Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBsub\fP (const Type, const Types\&.\&.\&.values) const "
+.br
+.RI "\fIStop substraction\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBmul\fP (const Type rhs, const Types &\&.\&.\&.values) const "
+.br
+.RI "\fIStart multiplication\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) == Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBmul\fP (const Type, const Types\&.\&.\&.values) const "
+.br
+.RI "\fIStop multiplication\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBdiv\fP (const Type rhs, const Types &\&.\&.\&.values) const "
+.br
+.RI "\fIStart division\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) == Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBdiv\fP (const Type, const Types\&.\&.\&.values) const "
+.br
+.RI "\fIStop division\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBmod\fP (const Type rhs, const Types &\&.\&.\&.values) const "
+.br
+.RI "\fIStart modulo calculation\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) == Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBmod\fP (const Type, const Types\&.\&.\&.values) const "
+.br
+.RI "\fIStop modulo calculation\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBMathematical functions\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBratio\fP (const Type num, const Type den, const Types &\&.\&.\&.values) const "
+.br
+.RI "\fIStart ratio multiplication\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) == Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBratio\fP (const Type, const Type, const Types\&.\&.\&.values) const "
+.br
+.RI "\fIStop ratio multiplication\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBpow\fP (const int n, const Types &\&.\&.\&.values) const "
+.br
+.RI "\fIStart power calculation\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) == Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBpow\fP (const int, const Types\&.\&.\&.values) const "
+.br
+.RI "\fIStop power calculation\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBirt\fP (const int n, const Types &\&.\&.\&.values) const "
+.br
+.RI "\fIStart integer part root calculation\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) == Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBirt\fP (const int, const Types\&.\&.\&.values) const "
+.br
+.RI "\fIStop integer root calculation\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBilog\fP (const int b, const Types &\&.\&.\&.values) const "
+.br
+.RI "\fIStart integer logarithm calculation\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) == Size>::type> constexpr const \fBConstant\fP< Type, 
+.br
+Size > \fBilog\fP (const int, const Types\&.\&.\&.values) const "
+.br
+.RI "\fIStop integer logarithm calculation\&. \fP"
+.in -1c
+.in -1c
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBHelpers\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename OtherType , unsigned int OtherSize, class Array , typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != OtherSize>::type> static constexpr const 
+.br
+std::array< OtherType, 
+.br
+OtherSize > \fBtransmute\fP (const Array source, const Types &\&.\&.\&.values)"
+.br
+.RI "\fIStart conversion of array data types\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , unsigned int OtherSize, class Array , typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) == OtherSize>::type> static constexpr const 
+.br
+std::array< OtherType, 
+.br
+OtherSize > \fBtransmute\fP (const Array, const Types\&.\&.\&.values)"
+.br
+.RI "\fIStop conversion of array data types\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<std::is_arithmetic<OtherType>::value>::type> static constexpr OtherType \fBmetapow\fP (const OtherType x, const int n)"
+.br
+.RI "\fICompile-time exponentiation\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , typename IntegralType  = std::true_type, class  = typename std::enable_if<(std::is_arithmetic<OtherType>::value) && ((std::is_same<IntegralType, std::true_type>::value) || (std::is_integral<IntegralType>::value))>::type> static constexpr OtherType \fBmetairt\fP (const OtherType x, const int n, const IntegralType low=IntegralType(), const IntegralType high=IntegralType(), const IntegralType mid=IntegralType())"
+.br
+.RI "\fICompile-time integer root\&. \fP"
+.ti -1c
+.RI "template<typename OtherType , class  = typename std::enable_if<std::is_arithmetic<OtherType>::value>::type> static constexpr OtherType \fBmetailog\fP (const OtherType x, const int b)"
+.br
+.RI "\fICompile-time integer logarithm\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SS "Protected Attributes"
+
+.PP
+.RI "\fBData members\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "const std::array< Type, Size > \fB_data\fP"
+.br
+.RI "\fISet of numerical constants\&. \fP"
+.in -1c
+.in -1c
+.SS "Friends"
+
+.PP
+.RI "\fBStream\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename SelfType , unsigned int SelfSize> std::ostream & \fBoperator<<\fP (std::ostream &lhs, const \fBConstant\fP< SelfType, SelfSize > &rhs)"
+.br
+.RI "\fI\fBOutput\fP stream operator\&. \fP"
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename Type = double, unsigned int Size = 1>exception magrathea::Constant< Type, Size >"
+Numerical constant with constexpr constructor\&. 
+
+Provides a class for integral and numerical constants based on the structure of \fCstd::integral_constant\fP with some extra mathematical functions\&. It accepts single or a set of constants internally stored in an array\&. As all is done at compile-time, all members works with copies of arithmetic values instead of references\&. Finally, one should define a constant to the maximum precision and calls the cast function to convert to a smaller precision\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Numerical type of the constant, that should have a constexpr constructor\&. 
+.br
+\fISize\fP Size of the set of constants, which is equal to one per default for a single value\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename Type , unsigned int Size> constexpr \fBmagrathea::Constant\fP< Type, Size >::\fBConstant\fP (const Typesource)"
+
+.PP
+Implicit constexpr value constructor\&. Implicitely constructs the constant from a single constant arithmetic value of the same type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Single constant arithmetic value\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr \fBmagrathea::Constant\fP< Type, Size >::\fBConstant\fP (const Types\&.\&.\&.source)"
+\fBInitial value:\fP
+.PP
+.nf
+{
+    static_assert(1 == Size, 'ERROR = Constant::Constant() : not compatible size')
+.fi
+.PP
+Implicit constexpr values constructor\&. Implicitely constructs the constant from a set of constant arithmetic values\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Set of constant arithmetic values\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename OtherType, class > constexpr \fBmagrathea::Constant\fP< Type, Size >::\fBConstant\fP (const OtherTypesource)"
+\fBInitial value:\fP
+.PP
+.nf
+{
+    static_assert(sizeof\&.\&.\&.(source) == Size, 'ERROR = Constant::Constant() : not compatible size')
+.fi
+.PP
+Implicit constexpr value conversion constructor\&. Implicitely constructs the constant from a single constant arithmetic value of another type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Single constant arithmetic value\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename OtherType, class > constexpr \fBmagrathea::Constant\fP< Type, Size >::\fBConstant\fP (const \fBConstant\fP< OtherType, Size >source)"
+\fBInitial value:\fP
+.PP
+.nf
+{
+    static_assert(1 == Size, 'ERROR = Constant::Constant() : not compatible size')
+.fi
+.PP
+Implicit constexpr constant conversion constructor\&. Implicitely constructs the constant from a constant of another type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Other constant\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename OtherType, class > constexpr \fBmagrathea::Constant\fP< Type, Size >::\fBConstant\fP (const std::array< OtherType, Size >source)"
+
+.PP
+Implicit constexpr array conversion constructor\&. Implicitely constructs the constant from a constant array of another type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Array\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> constexpr \fBmagrathea::Constant\fP< Type, Size >::\fBConstant\fP (const std::array< Type, Size >source)"
+
+.PP
+Implicit constexpr array constructor\&. Implicitely constructs the constant from a constant array of the same type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Array\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::abs (const Types &\&.\&.\&.values) const"
+
+.PP
+Start calculation of the absolute value\&. Starts recursive calculation of the absolute constant value : $\left|x\right|$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::abs (const Types\&.\&.\&.values) const"
+
+.PP
+Stop calculation of the absolute value\&. Stops recursive calculation of the absolute constant value : $\left|x\right|$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::add (const Typerhs, const Types &\&.\&.\&.values) const"
+
+.PP
+Start addition\&. Starts recursive addition of a value : $x+y$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.br
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::add (const Type, const Types\&.\&.\&.values) const"
+
+.PP
+Stop addition\&. Stops recursive addition of a value : $x+y$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename OtherType > constexpr const \fBConstant\fP< OtherType, Size > \fBmagrathea::Constant\fP< Type, Size >::cast () const"
+
+.PP
+Cast\&. Casts to another constant type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP Other data type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::cb (const Types &\&.\&.\&.values) const"
+
+.PP
+Start calculation of the cube\&. Starts recursive calculation of the cubed constant value : $x^{3}$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::cb (const Types\&.\&.\&.values) const"
+
+.PP
+Stop calculation of the cube\&. Stops recursive calculation of the cubed constant value : $x^{3}$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::copy () const"
+
+.PP
+Copy\&. Copies the constant\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename OtherType > constexpr const std::array< OtherType, Size > \fBmagrathea::Constant\fP< Type, Size >::data () const"
+
+.PP
+Access data\&. Returns the internal constant array casted to the desired type\&.  
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP Other data type\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the array\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::div (const Typerhs, const Types &\&.\&.\&.values) const"
+
+.PP
+Start division\&. Starts recursive division by a value : $\frac{x}{y}$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.br
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::div (const Type, const Types\&.\&.\&.values) const"
+
+.PP
+Stop division\&. Stops recursive division by a value : $\frac{x}{y}$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> int \fBmagrathea::Constant\fP< Type, Size >::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBConstant\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename OtherType > constexpr OtherType \fBmagrathea::Constant\fP< Type, Size >::get (const unsigned inti = \fC0\fP) const"
+
+.PP
+Value getter\&. Returns the specified value casted to the desired type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP Other data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index of the value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Value\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::icbrt (const Types &\&.\&.\&.values) const"
+
+.PP
+Start calculation of the integer cube root\&. Starts recursive calculation of the integer cube root constant value : $\left[\sqrt[3]{\left[x\right]}\right] $\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::icbrt (const Types\&.\&.\&.values) const"
+
+.PP
+Stop calculation of the integer cube root\&. Stops recursive calculation of the integer cube root constant value : $\left[\sqrt[3]{\left[x\right]}\right] $\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::ilog (const intb, const Types &\&.\&.\&.values) const"
+
+.PP
+Start integer logarithm calculation\&. Starts recursive integer logarithm calculation in the given base for integral arguments : $\left[\log_{b}\left(\left[ x\right]\right)\right]$\&. For non-compatible arguments, the function returns 0\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIb\fP Logarithm integral base\&. 
+.br
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::ilog (const int, const Types\&.\&.\&.values) const"
+
+.PP
+Stop integer logarithm calculation\&. Stops recursive integer logarithm calculation in the given base for integral arguments : $\left[\log_{b}\left(\left[ x\right]\right)\right]$\&. For non-compatible arguments, the function returns 0\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::ilog10 (const Types &\&.\&.\&.values) const"
+
+.PP
+Start calculation of the integer base 10 logarithm\&. Starts recursive calculation of the integer base 10 logarithm constant value : $\left[\log_{10}\left(\left[x \right]\right)\right]$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::ilog10 (const Types\&.\&.\&.values) const"
+
+.PP
+Stop calculation of the integer base 10 logarithm\&. Stops recursive calculation of the integer base 10 logarithm constant value : $\left[\log_{10}\left(\left[x \right]\right)\right]$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::ilog2 (const Types &\&.\&.\&.values) const"
+
+.PP
+Start calculation of the integer base 2 logarithm\&. Starts recursive calculation of the integer base 2 logarithm constant value : $\left[\log_{2}\left(\left[x \right]\right)\right]$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::ilog2 (const Types\&.\&.\&.values) const"
+
+.PP
+Stop calculation of the integer base 2 logarithm\&. Stops recursive calculation of the integer base 2 logarithm constant value : $\left[\log_{2}\left(\left[x \right]\right)\right]$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::inv (const Types &\&.\&.\&.values) const"
+
+.PP
+Start calculation of the inverse\&. Starts recursive calculation of the inverse constant value : $\frac{1}{x}$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::inv (const Types\&.\&.\&.values) const"
+
+.PP
+Stop calculation of the inverse\&. Stops recursive calculation of the inverse constant value : $\frac{1}{x}$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::irt (const intn, const Types &\&.\&.\&.values) const"
+
+.PP
+Start integer part root calculation\&. Starts recursive integer root calculation for integral arguments : $\left[\sqrt[n]{\left[x\right]}\right]$\&. For non-compatible arguments, the function returns 0\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIn\fP Root order\&. 
+.br
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::irt (const int, const Types\&.\&.\&.values) const"
+
+.PP
+Stop integer root calculation\&. Stops recursive integer root calculation for integral arguments : $\left[\sqrt[n]{\left[x\right]}\right]$\&. For non-compatible arguments, the function returns 0\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::isqrt (const Types &\&.\&.\&.values) const"
+
+.PP
+Start calculation of the integer square root\&. Starts recursive calculation of the integer square root constant value : $\left[\sqrt{\left[x\right]}\right]$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::isqrt (const Types\&.\&.\&.values) const"
+
+.PP
+Stop calculation of the integer square root\&. Stops recursive calculation of the integer square root constant value : $\left[\sqrt{\left[x\right]}\right]$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename OtherType , class > constexpr OtherType \fBmagrathea::Constant\fP< Type, Size >::metailog (const OtherTypex, const intb)\fC [static]\fP"
+
+.PP
+Compile-time integer logarithm\&. Returns the value of the integer logarithm in the given base for integral arguments at compile-time : $\left[\log_{b} \left(\left[x\right]\right)\right]$\&. For non-compatible arguments, the function returns 0\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP Value\&. 
+.br
+\fIb\fP Logarithm integral base\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Value of the result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename OtherType , typename IntegralType , class > constexpr OtherType \fBmagrathea::Constant\fP< Type, Size >::metairt (const OtherTypex, const intn, const IntegralTypelow = \fCIntegralType()\fP, const IntegralTypehigh = \fCIntegralType()\fP, const IntegralTypemid = \fCIntegralType()\fP)\fC [static]\fP"
+
+.PP
+Compile-time integer root\&. Returns the value of the integer root for integral arguments at compile-time : $\left[\sqrt[n]{\left[x\right]}\right] $\&. For non-compatible arguments, the function returns 0\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.br
+\fIIntegralType\fP (Integer type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP Value\&. 
+.br
+\fIn\fP Root order\&. 
+.br
+\fIlow\fP (Lower bound for binary recursive search\&.) 
+.br
+\fIhigh\fP (Higher bound for binary recursive search\&.) 
+.br
+\fImid\fP (Mid value for binary recursive search\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Value of the result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename OtherType , class > constexpr OtherType \fBmagrathea::Constant\fP< Type, Size >::metapow (const OtherTypex, const intn)\fC [static]\fP"
+
+.PP
+Compile-time exponentiation\&. Returns the value of the integral power of the argument : $x^{n}$\&. For negative exponents, the function returns the inverse of the integral power\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP (Other data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP Value\&. 
+.br
+\fIn\fP Exponent of the power\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Value of the result\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::mod (const Typerhs, const Types &\&.\&.\&.values) const"
+
+.PP
+Start modulo calculation\&. Starts recursive modulo calculation : $x\%y$\&. For floating-point types, it computes the floating-point modulo\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.br
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::mod (const Type, const Types\&.\&.\&.values) const"
+
+.PP
+Stop modulo calculation\&. Stops recursive modulo calculation : $x\%y$\&. For floating-point types, it computes the floating-point modulo\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::mul (const Typerhs, const Types &\&.\&.\&.values) const"
+
+.PP
+Start multiplication\&. Starts recursive multiplication by a value : $x \times y$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.br
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::mul (const Type, const Types\&.\&.\&.values) const"
+
+.PP
+Stop multiplication\&. Stops recursive multiplication by a value : $x \times y$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::nullify () const"
+
+.PP
+Nullify\&. Returns a copy of the constant filled with null values\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> constexpr \fBmagrathea::Constant\fP< Type, Size >::operator Type () const"
+
+.PP
+Value cast operator\&. Implicitely returns the first value of the underlying array of constants\&. This should be used with caution in case of a set of constants as it only operates on the first element\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Value\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::operator() (const Types &\&.\&.\&.values) const"
+
+.PP
+Incomplete setter operator\&. Starts recursive extraction of the missing values from the current array\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP Set of constant arithmetic values\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::operator() (const Types\&.\&.\&.values) const"
+
+.PP
+Setter operator\&. Sets the values\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP Set of constant arithmetic values\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> constexpr Type \fBmagrathea::Constant\fP< Type, Size >::operator() () const"
+
+.PP
+Default getter operator\&. Returns the first value\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Value\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> constexpr Type \fBmagrathea::Constant\fP< Type, Size >::operator[] (const unsigned inti) const"
+
+.PP
+Subscript operator\&. Returns the specified value of the underlying array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index of the value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Value\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::opp (const Types &\&.\&.\&.values) const"
+
+.PP
+Start calculation of the opposite\&. Starts recursive calculation of the opposite constant value : $-x$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::opp (const Types\&.\&.\&.values) const"
+
+.PP
+Stop calculation of opposite\&. Stops recursive calculation of the opposite constant value : $-x$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::pow (const intn, const Types &\&.\&.\&.values) const"
+
+.PP
+Start power calculation\&. Starts recursive power calculation for integral exponent : $x^{n}$\&. For negative exponents, the function returns the inverse of the integral power\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIn\fP Exponent of the power\&. 
+.br
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::pow (const int, const Types\&.\&.\&.values) const"
+
+.PP
+Stop power calculation\&. Stops recursive power calculation for integral exponent : $x^{n}$\&. For negative exponents, the function returns the inverse of the integral power\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::ratio (const Typenum, const Typeden, const Types &\&.\&.\&.values) const"
+
+.PP
+Start ratio multiplication\&. Starts recursive ratio multiplication : $\frac{x\times num }{den}$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fInum\fP Numerator\&. 
+.br
+\fIden\fP Denominator\&. 
+.br
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::ratio (const Type, const Type, const Types\&.\&.\&.values) const"
+
+.PP
+Stop ratio multiplication\&. Stops recursive ratio multiplication : $\frac{x\times num }{den}$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<unsigned int OtherSize> constexpr const \fBConstant\fP< Type, OtherSize > \fBmagrathea::Constant\fP< Type, Size >::resize () const"
+
+.PP
+Resize\&. Returns a copy of the constant with a new size\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::set (const Types &\&.\&.\&.values) const"
+
+.PP
+Incomplete value setter\&. Starts recursive extraction of the missing values from the current array\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP Set of constant arithmetic values\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::set (const Types\&.\&.\&.values) const"
+
+.PP
+Value setter\&. Sets the values\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP Set of constant arithmetic values\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::sgn (const Types &\&.\&.\&.values) const"
+
+.PP
+Start calculation of the the signum function\&. Starts recursive calculation of the signum constant value : $sgn\left(x = 0\right) = 0 $, $sgn\left(x < 0 \right) = -1 $, $sgn\left(x > 0\right) = 1$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::sgn (const Types\&.\&.\&.values) const"
+
+.PP
+Stop calculation of the the signum function\&. Stops recursive calculation of the signum constant value : $sgn\left(x = 0\right) = 0 $, $sgn\left(x < 0 \right) = -1 $, $sgn\left(x > 0\right) = 1$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<class Ratio , typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::si (const Types &\&.\&.\&.values) const"
+
+.PP
+Start multiplication by a SI prefix\&. Starts recursive multiplication by a SI prefix ratio : $\frac{x\times num}{den}$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIRatio\fP Standard ratio type\&. 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<class Ratio , typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::si (const Types\&.\&.\&.values) const"
+
+.PP
+Stop multiplication by a SI prefix\&. Stops recursive multiplication by a SI prefix ratio : $\frac{x\times num}{den}$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIRatio\fP Standard ratio type\&. 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> constexpr unsigned int \fBmagrathea::Constant\fP< Type, Size >::size () const"
+
+.PP
+Size\&. Returns the size of the constant\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Value of the size\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::sq (const Types &\&.\&.\&.values) const"
+
+.PP
+Start calculation of the square\&. Starts recursive calculation of the squared constant value : $x^{2}$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::sq (const Types\&.\&.\&.values) const"
+
+.PP
+Stop calculation of the square\&. Stops recursive calculation of the squared constant value : $x^{2}$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::sub (const Typerhs, const Types &\&.\&.\&.values) const"
+
+.PP
+Start substraction\&. Starts recursive substraction of a value : $x-y$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Right-hand side\&. 
+.br
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename\&.\&.\&. Types, class > constexpr const \fBConstant\fP< Type, Size > \fBmagrathea::Constant\fP< Type, Size >::sub (const Type, const Types\&.\&.\&.values) const"
+
+.PP
+Stop substraction\&. Stops recursive substraction of a value : $x-y$\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename OtherType , unsigned int OtherSize, class Array , typename\&.\&.\&. Types, class > constexpr const std::array< OtherType, OtherSize > \fBmagrathea::Constant\fP< Type, Size >::transmute (const Arraysource, const Types &\&.\&.\&.values)\fC [static]\fP"
+
+.PP
+Start conversion of array data types\&. Recursively extracts and casts data from source to construct an array of another type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP Other data type\&. 
+.br
+\fIOtherSize\fP Other size\&. 
+.br
+\fIArray\fP (Array type\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Array to convert\&. 
+.br
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Casted array\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename OtherType , unsigned int OtherSize, class Array , typename\&.\&.\&. Types, class > constexpr const std::array< OtherType, OtherSize > \fBmagrathea::Constant\fP< Type, Size >::transmute (const Array, const Types\&.\&.\&.values)\fC [static]\fP"
+
+.PP
+Stop conversion of array data types\&. Stops the recursive extraction and constructs the final array from data\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP Other data type\&. 
+.br
+\fIOtherSize\fP Other size\&. 
+.br
+\fIArray\fP (Array type\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP (Recursively extracted values\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Casted array\&. 
+.RE
+.PP
+
+.SS "template<typename Type , unsigned int Size> template<typename OtherType > constexpr OtherType \fBmagrathea::Constant\fP< Type, Size >::value (const unsigned inti = \fC0\fP) const"
+
+.PP
+Access a value\&. Returns the specified value casted to the desired type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherType\fP Other data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index of the value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Value\&. 
+.RE
+.PP
+
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "template<typename Type = double, unsigned int Size = 1> template<typename SelfType , unsigned int SelfSize> std::ostream& operator<< (std::ostream &lhs, const \fBConstant\fP< SelfType, SelfSize > &rhs)\fC [friend]\fP"
+
+.PP
+\fBOutput\fP stream operator\&. Adds each element to the stream using the \fCfill()\fP character as a separator\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISelfType\fP (Numerical type of the constant\&.) 
+.br
+\fISelfSize\fP (Size of the set of constants\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP Left-hand side stream\&. 
+.br
+\fIrhs\fP Right-hand side constant\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBOutput\fP stream\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename Type = double, unsigned int Size = 1> const std::array<Type, Size> \fBmagrathea::Constant\fP< Type, Size >::_data\fC [protected]\fP"
+
+.PP
+Set of numerical constants\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

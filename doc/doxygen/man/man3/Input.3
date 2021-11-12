@@ -1,0 +1,1031 @@
+.TH "Input" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Input \- 
+.PP
+\fBInput\fP utilities for raytracing\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <input\&.h>\fP
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBUtilities\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static std::string \fBtrim\fP (const std::string &text, const std::string &comment='#')"
+.br
+.RI "\fITrim string\&. \fP"
+.ti -1c
+.RI "static std::pair< std::string, 
+.br
+std::string > \fBpartition\fP (const std::string &text, const std::string &separator='=')"
+.br
+.RI "\fIPartition string\&. \fP"
+.ti -1c
+.RI "template<class Octree , class Source , class Data  = typename std::tuple_element<1, decltype(Octree::element())>::type, class Element  = decltype(Source::element()), class  = typename std::enable_if<(Octree::dimension() == Source::dimension()) && (std::is_integral<Data>::value)>::type> static unsigned int \fBcount\fP (Octree &octree, const Source &source)"
+.br
+.RI "\fICount tree\&. \fP"
+.ti -1c
+.RI "template<class Octree , class Sphere , class Conic , typename Type  = decltype(Octree::type()), class Element  = decltype(Octree::element()), class Index  = typename std::tuple_element<0, Element>::type, unsigned int Dimension = Octree::dimension(), class Position  = decltype(Octree::position()), class Extent  = decltype(Octree::extent()), class  = typename std::enable_if<(Dimension == 3) && (Dimension == Sphere::dimension())>::type> static bool \fBcollide\fP (const Octree &octree, const Index &index, const Sphere &sphere, const Conic &conic)"
+.br
+.RI "\fICollision between an octree index and a sphere or a cone\&. \fP"
+.ti -1c
+.RI "template<unsigned int Selection = 0, class Octree , unsigned int Dimension = Octree::dimension(), class Element  = decltype(Octree::element()), class Index  = typename std::tuple_element<0, Element>::type, class Data  = typename std::tuple_element<1, Element>::type, class Type  = decltype(Data::template type<Selection>()), class  = typename std::enable_if<(Dimension == 3)>::type> static Type \fBmean\fP (const Octree &octree, const Element &element, int level=-1)"
+.br
+.RI "\fIMean value over cells\&. \fP"
+.ti -1c
+.RI "template<unsigned int Selection = 0, class Octree , unsigned int Dimension = Octree::dimension(), class Element  = decltype(Octree::element()), class Index  = typename std::tuple_element<0, Element>::type, class Data  = typename std::tuple_element<1, Element>::type, class Type  = decltype(Data::template type<Selection>()), class  = typename std::enable_if<(Dimension == 3)>::type> static Data \fBmeanAll\fP (const Octree &octree, const Element &element, int level=-1)"
+.br
+.RI "\fIMean value over cells\&. \fP"
+.ti -1c
+.RI "template<typename Type , class Cosmology  = std::array<std::vector<double>, 4>, class  = typename std::enable_if<std::is_convertible<Type, typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Cosmology>()[0][0])>::type>::type>::value>::type> static Cosmology \fBconstantify\fP (const unsigned int size, const Type tmin, const Type tmax, const Type a=Type(1), const Type dadt=Type(), const Type d2adt2=Type())"
+.br
+.RI "\fIConstant cosmology\&. \fP"
+.ti -1c
+.RI "template<class Parameter , class Data , typename Type , class  = typename std::enable_if<Data::types() != 0>::type> static Data \fBsistemize\fP (const Parameter &\fBparameters\fP, const Data &data, const Type a, const Type h, const Type omegam, const Type lboxmpch)"
+.br
+.RI "\fIData conversion to SI units\&. \fP"
+.ti -1c
+.RI "template<class Parameter , class Octree , typename Type , class Element  = decltype(Octree::element()), class Data  = typename std::tuple_element<1, Element>::type, class  = typename std::enable_if<(!std::is_void<Data>::value) && (Octree::dimension() != 0)>::type> static unsigned int \fBsistemize\fP (const Parameter &\fBparameters\fP, Octree &octree, const Type h, const Type omegam, const Type lboxmpch)"
+.br
+.RI "\fIOctree conversion to SI units\&. \fP"
+.ti -1c
+.RI "template<class Data , class  = typename std::enable_if<Data::types() != 0>::type> static Data \fBhomogenize\fP (const Data &data)"
+.br
+.RI "\fIData homogenization\&. \fP"
+.ti -1c
+.RI "template<class Octree , class\&.\&.\&. Dummy, class Element  = decltype(Octree::element()), class Data  = typename std::tuple_element<1, Element>::type, class  = typename std::enable_if<(!std::is_void<Data>::value) && (Octree::dimension() != 0) && (sizeof\&.\&.\&.(Dummy) == 0)>::type> static unsigned int \fBhomogenize\fP (Octree &octree, Dummy\&.\&.\&.)"
+.br
+.RI "\fIOctree homogenization\&. \fP"
+.ti -1c
+.RI "template<class Extent  = std::ratio<1>, class Data , class Vector , typename Type , unsigned int Dimension = 3, class  = typename std::enable_if<(Data::types() != 0) && (std::is_convertible<Type, typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Vector>()[0])>::type>::type>::value)>::type> static Data \fBschwarzschildify\fP (const Data &data, const Vector &center, const Vector &position, const Type mass, const Type length)"
+.br
+.RI "\fIData schwarzschild setup\&. \fP"
+.ti -1c
+.RI "template<class Octree , class Vector , typename Type , class Function , class\&.\&.\&. Dummy, class Element  = decltype(Octree::element()), unsigned int Dimension = Octree::dimension(), class Extent  = decltype(Octree::extent()), class  = typename std::enable_if<(sizeof\&.\&.\&.(Dummy) == 0) && (Dimension == 3)>::type> static unsigned int \fBschwarzschildify\fP (Octree &octree, const Vector &position, const Type mass, const Type length, Function &&refiner, Dummy\&.\&.\&.)"
+.br
+.RI "\fIOctree schwarzschild setup\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBFiles\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class Octree , class Element  = decltype(Octree::element()), class Index  = typename std::tuple_element<0, Element>::type, class Data  = typename std::tuple_element<1, Element>::type, unsigned int Dimension = Octree::dimension(), class  = typename std::enable_if<Dimension != 0>::type> static unsigned int \fBfiletree\fP (Octree &octree, const std::string &directory, const std::string &format)"
+.br
+.RI "\fIFile tree\&. \fP"
+.ti -1c
+.RI "template<class List , class Octree , class Sphere , class Conic , unsigned int Dimension = Octree::dimension(), class  = typename std::enable_if<(Dimension == 3) && (Dimension == Sphere::dimension())>::type> static bool \fBprepare\fP (List &list, const Octree &octree, const Sphere &sphere, const Conic &conic)"
+.br
+.RI "\fIFile list preparation\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBData\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename Integral  = unsigned int, typename Real  = float, class Parameter , class Octree , class Function , class Element  = decltype(Octree::element()), class Index  = typename std::tuple_element<0, Element>::type, class Data  = typename std::tuple_element<1, Element>::type, unsigned int Dimension = Octree::dimension(), class  = typename std::enable_if<std::is_convertible<typename std::result_of<Function(Element)>::type, bool>::value>::type> static bool \fBimport\fP (const Parameter &\fBparameters\fP, Octree &octree, const std::string &filename, Function &&filter)"
+.br
+.RI "\fIRamses importation\&. \fP"
+.ti -1c
+.RI "template<typename Type , class Parameter , class Cosmology  = std::array<std::vector<Type>, 4>, class Element  = typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Cosmology>()[0])>::type>::type, class  = typename std::enable_if<std::is_convertible<Element, typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Cosmology>()[0])>::type>::type>::value>::type> static Cosmology \fBacquire\fP (const Parameter &\fBparameters\fP, Type &h, Type &omegam, Type &lboxmpch, const std::string &outfile=std::string())"
+.br
+.RI "\fICosmology acquisition\&. \fP"
+.ti -1c
+.RI "template<class Container  = std::map<std::string, std::string>, class Element  = std::pair<std::string, std::string>, class  = typename std::enable_if<(std::is_convertible<Container, std::map<std::string, std::string> >::value) && (std::is_convertible<Element, std::pair<std::string, std::string> >::value)>::type> static Container \fBparse\fP (const std::string &filename, const std::string &separator='=', const std::string &comment='#')"
+.br
+.RI "\fIParameter file parsing\&. \fP"
+.ti -1c
+.RI "template<class Position , class Extent , typename Integral  = unsigned int, typename Real  = float, class Parameter , class Conic , class Octree , class Function , class Element  = decltype(Octree::element()), class Index  = typename std::tuple_element<0, Element>::type, class Data  = typename std::tuple_element<1, Element>::type, unsigned int Dimension = Octree::dimension(), class  = typename std::enable_if<std::is_convertible<typename std::result_of<Function(Element)>::type, bool>::value>::type> static bool \fBimporthdf5\fP (const Parameter &\fBparameters\fP, unsigned int &rank, const std::array< std::array< double, 3 >, 3 > &rotm1, const double &thetay, const double &thetaz, const Conic &conic, Octree &octree, const std::string &filename, Function &&filter)"
+.br
+.RI "\fIRamses importation\&. \fP"
+.ti -1c
+.RI "template<class Position , class Extent , typename Integral  = unsigned int, typename Real  = float, class Parameter , class Octree , class Function , class Element  = decltype(Octree::element()), class Index  = typename std::tuple_element<0, Element>::type, class Data  = typename std::tuple_element<1, Element>::type, unsigned int Dimension = Octree::dimension(), class  = typename std::enable_if<std::is_convertible<typename std::result_of<Function(Element)>::type, bool>::value>::type> static bool \fBimportfullhdf5\fP (const Parameter &\fBparameters\fP, Octree &octree, const std::string &filename, Function &&filter)"
+.br
+.RI "\fIRamses importation\&. \fP"
+.ti -1c
+.RI "template<class Position , class Extent , typename Integral  = unsigned int, typename Real  = float, class Parameter , class Octree , class Function , class Element  = decltype(Octree::element()), class Index  = typename std::tuple_element<0, Element>::type, class Data  = typename std::tuple_element<1, Element>::type, unsigned int Dimension = Octree::dimension(), class  = typename std::enable_if<std::is_convertible<typename std::result_of<Function(Element)>::type, bool>::value>::type> static bool \fBimportascii\fP (const Parameter &\fBparameters\fP, const std::array< std::array< double, 3 >, 3 > &rotm1, Octree &octree, const std::string &filename, Function &&filter)"
+.br
+.RI "\fIRamses importation\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBCones\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class Octree , class  = typename std::enable_if<Octree::dimension() != 0>::type> static bool \fBsave\fP (Octree &octree, const std::string &filename)"
+.br
+.RI "\fISave temporary cone file\&. \fP"
+.ti -1c
+.RI "template<class Octree , class  = typename std::enable_if<Octree::dimension() != 0>::type> static bool \fBload\fP (Octree &octree, const std::string &filename)"
+.br
+.RI "\fILoad temporary cone file\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBCorrection\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class Cosmology , class Trajectory , class Type  = typename std::remove_cv<typename std::remove_reference<decltype(std::declval<typename std::tuple_element<0, Cosmology>::type>()[0])>::type>::type, class  = typename std::enable_if<std::is_convertible<Type, typename std::remove_cv<typename std::remove_reference<decltype(std::declval<typename std::tuple_element<0, Cosmology>::type>()[0])>::type>::type>::value>::type> static Cosmology \fBcorrect\fP (const Cosmology &cosmology, const Trajectory &trajectory)"
+.br
+.RI "\fICosmology correction\&. \fP"
+.ti -1c
+.RI "template<class Parameter , int Check = 0, unsigned int Selection = Check*(Check >= 0), class Octree , typename Kind  = double, unsigned int Dimension = Octree::dimension(), class Element  = decltype(Octree::element()), class Index  = typename std::tuple_element<0, Element>::type, class Data  = typename std::tuple_element<1, Element>::type, class Type  = decltype(Data::template type<Selection>()), class Position  = decltype(Octree::position()), class Extent  = decltype(Octree::extent()), class  = typename std::enable_if<(Dimension == 3)>::type> static Octree & \fBcorrect\fP (const Parameter &\fBparameters\fP, Octree &octree, Kind &&amin=Kind())"
+.br
+.RI "\fIOctree correction\&. \fP"
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBInput\fP utilities for raytracing\&. 
+
+Provides a list of importation routines to load data for raytracing\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename Type , class Parameter , class Cosmology , class Element , class > Cosmology Input::acquire (const Parameter &parameters, Type &h, Type &omegam, Type &lboxmpch, const std::string &outfile = \fCstd::string()\fP)\fC [static]\fP"
+
+.PP
+Cosmology acquisition\&. Acquires cosmology parameters and cosmology from input files: the Hubble parameter, the density parameter of matter and the size of the box\&. It returns a container with t, a(t), its first and second derivatives (where t can be either the cosmic time or the conformal time eta)\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP Arithmetic type\&. 
+.br
+\fICosmology\fP Cosmology container type\&. 
+.br
+\fIElement\fP Element type of the container\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsimfile\fP Name of a simulation file or directory to extract the box size\&. 
+.br
+\fIparamfile\fP Name of a file of cosmological parameters\&. 
+.br
+\fIevolfile\fP Name of a file of cosmological evolution\&. 
+.br
+\fIh\fP Hubble parameter\&. 
+.br
+\fIomegam\fP Density parameter of matter\&. 
+.br
+\fIlboxmpch\fP Box size in megaparsecs times h\&. 
+.br
+\fImpc\fP Value of one megaparsec in SI units\&. 
+.br
+\fIoutfile\fP Name of an output file for debugging purposes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Container of cosmology evolution and derivatives\&. Contains t, a, H, int Hdot, Hdot 
+.RE
+.PP
+
+.SS "template<class Octree , class Sphere , class Conic , typename Type , class Element , class Index , unsigned int Dimension, class Position , class Extent , class > bool Input::collide (const Octree &octree, const Index &index, const Sphere &sphere, const Conic &conic)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Collision between an octree index and a sphere or a cone\&. Detects collision between an index of an octree and a sphere or a cone\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOctree\fP Octree type\&. 
+.br
+\fISphere\fP Sphere type\&. 
+.br
+\fIConic\fP \fBCone\fP type\&. 
+.br
+\fIType\fP Scalar position type\&. 
+.br
+\fIElement\fP Underlying element type\&. 
+.br
+\fIIndex\fP Index type\&. 
+.br
+\fIDimension\fP Number of dimensions\&. 
+.br
+\fIPosition\fP Position of the hyperoctree center\&. 
+.br
+\fIExtent\fP Extent of the hyperoctree\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoctree\fP \fBInput\fP octree\&. 
+.br
+\fIindex\fP Index of one element\&. 
+.br
+\fIsphere\fP Geometrical sphere\&. 
+.br
+\fIcone\fP Three dimensional cone\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if collision, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class Cosmology , class > Cosmology Input::constantify (const unsigned intsize, const Typetmin, const Typetmax, const Typea = \fCType(1)\fP, const Typedadt = \fCType()\fP, const Typed2adt2 = \fCType()\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Constant cosmology\&. Produces a constant cosmology of the provided size\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fICosmology\fP Cosmology container type\&. 
+.br
+\fIType\fP Data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsize\fP Size of the cosmology tables\&. 
+.br
+\fItmin\fP First value of time\&. 
+.br
+\fItmax\fP Last value of time\&. 
+.br
+\fIa\fP Scale factor\&. 
+.br
+\fIdadt\fP Value of the first derivative of the scale factor\&. 
+.br
+\fId2adt2\fP Value of the second derivative of the scale factor\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Constant cosmology\&. 
+.RE
+.PP
+
+.SS "template<class Cosmology , class Trajectory , class Type , class > Cosmology Input::correct (const Cosmology &cosmology, const Trajectory &trajectory)\fC [static]\fP"
+
+.PP
+Cosmology correction\&. Produces another cosmology based on interpolation of an homogeneous trajectory\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fICosmology\fP Cosmology container type\&. 
+.br
+\fITrajectory\fP Trajectory container\&. 
+.br
+\fIType\fP Data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcosmology\fP Cosmology\&. 
+.br
+\fItrajectory\fP Homogeneous trajectory\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Corrected cosmology\&. 
+.RE
+.PP
+
+.SS "template<class Parameter , int Check, unsigned int Selection, class Octree , typename Kind , unsigned int Dimension, class Element , class Index , class Data , class Type , class Position , class Extent , class > Octree & Input::correct (const Parameter &parameters, Octree &octree, Kind &&amin = \fCKind()\fP)\fC [static]\fP"
+
+.PP
+Octree correction\&. Corrects uncomplete tree and zones with empty rho\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIParameter\fP Parameter type\&. 
+.br
+\fICheck\fP Check mode\&. 
+.br
+\fISelection\fP Index of the data to be corrected\&. 
+.br
+\fIOctree\fP Octree type\&. 
+.br
+\fIKind\fP Kind of amin\&. 
+.br
+\fIDimension\fP Number of dimensions\&. 
+.br
+\fIElement\fP Underlying element type\&. 
+.br
+\fIIndex\fP Index type\&. 
+.br
+\fIData\fP Data type\&. 
+.br
+\fIType\fP Selected data type\&. 
+.br
+\fIPosition\fP Position of the hyperoctree center\&. 
+.br
+\fIExtent\fP Extent of the hyperoctree\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Parameter structure\&. 
+.br
+\fIoctree\fP \fBInput\fP octree\&. 
+.br
+\fIamin\fP Outputs the lowest value of a\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the octree\&. 
+.RE
+.PP
+
+.SS "template<class Octree , class Source , class Data , class Element , class > unsigned int Input::count (Octree &octree, const Source &source)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Count tree\&. Counts the number of input cells in each output cells\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOctree\fP \fBOutput\fP octree type\&. 
+.br
+\fISource\fP \fBInput\fP octree type\&. 
+.br
+\fIData\fP \fBOutput\fP data type\&. 
+.br
+\fIElement\fP Underlying input element type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoctree\fP \fBOutput\fP octree\&. 
+.br
+\fIsource\fP \fBInput\fP octree\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Octree with count of input cells per output cell\&. 
+.RE
+.PP
+
+.SS "template<class Octree , class Element , class Index , class Data , unsigned int Dimension, class > unsigned int Input::filetree (Octree &octree, const std::string &directory, const std::string &format)\fC [static]\fP"
+
+.PP
+File tree\&. Fills in an octree with the names of the existing ramses files\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOctree\fP Octree type\&. 
+.br
+\fIElement\fP Underlying element type\&. 
+.br
+\fIIndex\fP Index type\&. 
+.br
+\fIData\fP Data type\&. 
+.br
+\fIDimension\fP Number of dimensions\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoctree\fP Octree of file names\&. 
+.br
+\fIdirectory\fP \fBInput\fP directory\&. 
+.br
+\fIformat\fP \fBInput\fP file format\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of detected files\&. 
+.RE
+.PP
+
+.SS "template<class Data , class > Data Input::homogenize (const Data &data)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Data homogenization\&. Converts a data to one of a homogeneous empty Universe\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIData\fP Data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP \fBInput\fP data\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Homogeneous empty data\&. 
+.RE
+.PP
+
+.SS "template<class Octree , class\&.\&.\&. Dummy, class Element , class Data , class > unsigned int Input::homogenize (Octree &octree, Dummy\&.\&.\&.)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Octree homogenization\&. Converts each data of the octree to one of a homogeneous empty Universe\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOctree\fP Octree type\&. 
+.br
+\fIDummy\fP Dummy type\&. 
+.br
+\fIElement\fP Underlying element type\&. 
+.br
+\fIData\fP Data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoctree\fP Octree of data\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Homogeneous empty octree\&. 
+.RE
+.PP
+
+.SS "template<typename Integral , typename Real , class Parameter , class Octree , class Function , class Element , class Index , class Data , unsigned int Dimension, class > bool Input::import (const Parameter &parameters, Octree &octree, const std::string &filename, Function &&filter)\fC [static]\fP"
+
+.PP
+Ramses importation\&. Imports raw data from ramses gravity files\&. All cells selected by the provided filter are added to the octree\&. As there is no way to detect the coarse level, it should be specified as an argument\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIntegral\fP Integral type of the file\&. 
+.br
+\fIReal\fP Real type of the file\&. 
+.br
+\fIParameter\fP Parameter type\&. 
+.br
+\fIOctree\fP Octree type\&. 
+.br
+\fIFunction\fP Function type taking an element as argument and returning a boolean\&. 
+.br
+\fIElement\fP Underlying element type\&. 
+.br
+\fIIndex\fP Index type\&. 
+.br
+\fIData\fP Data type\&. 
+.br
+\fIDimension\fP Number of dimensions\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Parameter structure\&. 
+.br
+\fIoctree\fP Octree of data\&. 
+.br
+\fIfilename\fP \fBInput\fP file name\&. 
+.br
+\fIfilter\fP Filtering algorithm of cells\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false on error\&. 
+.RE
+.PP
+
+.SS "template<class Position , class Extent , typename Integral , typename Real , class Parameter , class Octree , class Function , class Element , class Index , class Data , unsigned int Dimension, class > bool Input::importascii (const Parameter &parameters, const std::array< std::array< double, 3 >, 3 > &rotm1, Octree &octree, const std::string &filename, Function &&filter)\fC [static]\fP"
+
+.PP
+Ramses importation\&. Imports ASCII data from ramses gravity files\&. All cells selected by the provided filter are added to the octree\&. As there is no way to detect the coarse level, it should be specified as an argument\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIPosition\fP Position type\&. 
+.br
+\fIExtent\fP Extent type\&. 
+.br
+\fIIntegral\fP Integral type of the file\&. 
+.br
+\fIReal\fP Real type of the file\&. 
+.br
+\fIOctree\fP Octree type\&. 
+.br
+\fIFunction\fP Function type taking an element as argument and returning a boolean\&. 
+.br
+\fIElement\fP Underlying element type\&. 
+.br
+\fIIndex\fP Index type\&. 
+.br
+\fIData\fP Data type\&. 
+.br
+\fIDimension\fP Number of dimensions\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Parameter structure 
+.br
+\fIrotm1\fP rotation matrix for narrow cones 
+.br
+\fIoctree\fP Octree of data\&. 
+.br
+\fIfilename\fP \fBInput\fP file name\&. 
+.br
+\fIfilter\fP Filtering algorithm of cells\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false on error\&. 
+.RE
+.PP
+
+.SS "template<class Position , class Extent , typename Integral , typename Real , class Parameter , class Octree , class Function , class Element , class Index , class Data , unsigned int Dimension, class > bool Input::importfullhdf5 (const Parameter &parameters, Octree &octree, const std::string &filename, Function &&filter)\fC [static]\fP"
+
+.PP
+Ramses importation\&. Imports HDF5 data from ramses gravity files\&. Used for small spherical buffer zone in narrow cones\&. All cells selected by the provided filter are added to the octree\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIPosition\fP Position type\&. 
+.br
+\fIExtent\fP Extent type\&. 
+.br
+\fIIntegral\fP Integral type of the file\&. 
+.br
+\fIReal\fP Real type of the file\&. 
+.br
+\fIParameter\fP Parameter type\&. 
+.br
+\fIOctree\fP Octree type\&. 
+.br
+\fIFunction\fP Function type taking an element as argument and returning a boolean\&. 
+.br
+\fIElement\fP Underlying element type\&. 
+.br
+\fIIndex\fP Index type\&. 
+.br
+\fIData\fP Data type\&. 
+.br
+\fIDimension\fP Number of dimensions\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Parameter structure\&. 
+.br
+\fIoctree\fP Octree of data\&. 
+.br
+\fIfilename\fP \fBInput\fP file name\&. 
+.br
+\fIfilter\fP Filtering algorithm of cells\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false on error\&. 
+.RE
+.PP
+
+.SS "template<class Position , class Extent , typename Integral , typename Real , class Parameter , class Conic , class Octree , class Function , class Element , class Index , class Data , unsigned int Dimension, class > bool Input::importhdf5 (const Parameter &parameters, unsigned int &rank, const std::array< std::array< double, 3 >, 3 > &rotm1, const double &thetay, const double &thetaz, const Conic &conic, Octree &octree, const std::string &filename, Function &&filter)\fC [static]\fP"
+
+.PP
+Ramses importation\&. Imports HDF5 data from ramses gravity files\&. All cells selected by the provided filter are added to the octree\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIPosition\fP Position\&. 
+.br
+\fIExtent\fP Extent type\&. 
+.br
+\fIIntegral\fP Integral type of the file\&. 
+.br
+\fIReal\fP Real type of the file\&. 
+.br
+\fIConic\fP \fBCone\fP type\&. 
+.br
+\fIOctree\fP Octree type\&. 
+.br
+\fIFunction\fP Function type taking an element as argument and returning a boolean\&. 
+.br
+\fIElement\fP Underlying element type\&. 
+.br
+\fIIndex\fP Index type\&. 
+.br
+\fIData\fP Data type\&. 
+.br
+\fIDimension\fP Number of dimensions\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Parameter structure\&. 
+.br
+\fIrank\fP Rank\&. 
+.br
+\fIrotm1\fP rotation matrix for narrow cones 
+.br
+\fIthetay\fP Semi-angle for solid angle in direction y 
+.br
+\fIthetaz\fP Semi-angle for solid angle in direction z 
+.br
+\fIconic\fP \fBCone\fP characteristics 
+.br
+\fIoctree\fP Octree of data\&. 
+.br
+\fIfilename\fP \fBInput\fP file name\&. 
+.br
+\fIfilter\fP Filtering algorithm of cells\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false on error\&. 
+.RE
+.PP
+
+.SS "template<class Octree , class > bool Input::load (Octree &octree, const std::string &filename)\fC [static]\fP"
+
+.PP
+Load temporary cone file\&. Loads a temporary cone file into an octree\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOctree\fP Octree type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoctree\fP Destination octree\&. 
+.br
+\fIfilename\fP File name\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Selection, class Octree , unsigned int Dimension, class Element , class Index , class Data , class Type , class > Type Input::mean (const Octree &octree, const Element &element, intlevel = \fC-1\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Mean value over cells\&. Computes the average of the provided data in all surrounding cells which are normal\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISelection\fP Index of the data to be computed\&. 
+.br
+\fIOctree\fP Octree type\&. 
+.br
+\fIDimension\fP Number of dimensions\&. 
+.br
+\fIElement\fP Underlying element type\&. 
+.br
+\fIIndex\fP Index type\&. 
+.br
+\fIData\fP Data type\&. 
+.br
+\fIType\fP Selected data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoctree\fP \fBInput\fP octree\&. 
+.br
+\fIelement\fP \fBInput\fP element\&. 
+.br
+\fIlevel\fP Cell level for computation\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Averaged value\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Selection, class Octree , unsigned int Dimension, class Element , class Index , class Data , class Type , class > Data Input::meanAll (const Octree &octree, const Element &element, intlevel = \fC-1\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Mean value over cells\&. Computes the average of cell tuple information all surrounding cells which are normal\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISelection\fP Index of the data to be computed\&. 
+.br
+\fIOctree\fP Octree type\&. 
+.br
+\fIDimension\fP Number of dimensions\&. 
+.br
+\fIElement\fP Underlying element type\&. 
+.br
+\fIIndex\fP Index type\&. 
+.br
+\fIData\fP Data type\&. 
+.br
+\fIType\fP Selected data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoctree\fP \fBInput\fP octree\&. 
+.br
+\fIelement\fP \fBInput\fP element\&. 
+.br
+\fIlevel\fP Cell level for computation\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Averaged value of tuple\&. 
+.RE
+.PP
+
+.SS "template<class Container , class Element , class > Container Input::parse (const std::string &filename, const std::string &separator = \fC'='\fP, const std::string &comment = \fC'#'\fP)\fC [static]\fP"
+
+.PP
+Parameter file parsing\&. Parses the provided parameter file and returns a map of parameters\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIContainer\fP \fBOutput\fP map type\&. 
+.br
+\fIElement\fP Element type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP File name\&. 
+.br
+\fIseparator\fP Separator string\&. 
+.br
+\fIcomment\fP Comment string\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Map of parameters\&. 
+.RE
+.PP
+
+.SS "std::pair< std::string, std::string > Input::partition (const std::string &text, const std::string &separator = \fC'='\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Partition string\&. Splits the string in two parts before and after the provided separator\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP \fBInput\fP text\&. 
+.br
+\fIseparator\fP Separator string\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Partitioned string\&. 
+.RE
+.PP
+
+.SS "template<class List , class Octree , class Sphere , class Conic , unsigned int Dimension, class > bool Input::prepare (List &list, const Octree &octree, const Sphere &sphere, const Conic &conic)\fC [static]\fP"
+
+.PP
+File list preparation\&. Adds to the list, the octree files which intersects the provided sphere and cone\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIList\fP File list type\&. 
+.br
+\fIOctree\fP Octree type\&. 
+.br
+\fISphere\fP Sphere type\&. 
+.br
+\fIConic\fP \fBCone\fP type\&. 
+.br
+\fIDimension\fP Number of dimensions\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlist\fP File list\&. 
+.br
+\fIoctree\fP \fBInput\fP octree\&. 
+.br
+\fIsphere\fP Geometrical sphere\&. 
+.br
+\fIcone\fP Three dimensional cone\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if some files have been added to the list, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<class Octree , class > bool Input::save (Octree &octree, const std::string &filename)\fC [static]\fP"
+
+.PP
+Save temporary cone file\&. Saves the octree in a temporary cone file\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOctree\fP Octree type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoctree\fP Source octree\&. 
+.br
+\fIfilename\fP File name\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True on success, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<class Extent , class Data , class Vector , typename Type , unsigned int Dimension, class > Data Input::schwarzschildify (const Data &data, const Vector &center, const Vector &position, const Typemass, const Typelength)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Data schwarzschild setup\&. Converts a data to one of a schwarzschild configuration\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIExtent\fP Extent of the hyperoctree\&. 
+.br
+\fIData\fP Data type\&. 
+.br
+\fIVector\fP Vector type\&. 
+.br
+\fIType\fP Arithmetic type\&. 
+.br
+\fIDimension\fP Number of dimensions\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP \fBInput\fP data\&. 
+.br
+\fIcenter\fP Cell center\&. 
+.br
+\fIposition\fP Mass position\&. 
+.br
+\fImass\fP Mass in SI units\&. 
+.br
+\fIlength\fP Spatial length in SI units\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Schwarzschild data\&. 
+.RE
+.PP
+
+.SS "template<class Octree , class Vector , typename Type , class Function , class\&.\&.\&. Dummy, class Element , unsigned int Dimension, class Extent , class > unsigned int Input::schwarzschildify (Octree &octree, const Vector &position, const Typemass, const Typelength, Function &&refiner, Dummy\&.\&.\&.)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Octree schwarzschild setup\&. Converts each data of the octree to one of a schwarzschild configuration\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOctree\fP Octree type\&. 
+.br
+\fIVector\fP Vector type\&. 
+.br
+\fIType\fP Arithmetic type\&. 
+.br
+\fIFunction\fP Function type\&. 
+.br
+\fIDummy\fP Dummy type\&. 
+.br
+\fIElement\fP Underlying element type\&. 
+.br
+\fIDimension\fP Number of dimensions\&. 
+.br
+\fIExtent\fP Extent of the hyperoctree\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoctree\fP Octree of data\&. 
+.br
+\fIposition\fP Mass position in the octree\&. 
+.br
+\fImass\fP Mass in SI units\&. 
+.br
+\fIlength\fP Spatial length in SI units\&. 
+.br
+\fIrefiner\fP Refinement function taking a data and a level as arguments and returning true when a refinement should be triggered 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Schwarzschild octree\&. 
+.RE
+.PP
+
+.SS "template<class Parameter , class Data , typename Type , class > Data Input::sistemize (const Parameter &parameters, const Data &data, const Typea, const Typeh, const Typeomegam, const Typelboxmpch)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Data conversion to SI units\&. Converts a data to one expressed in SI units\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIData\fP Data type\&. 
+.br
+\fIType\fP Arithmetic type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP \fBInput\fP data\&. 
+.br
+\fIa\fP Scale factor\&. 
+.br
+\fIh\fP Hubble parameter\&. 
+.br
+\fIomegam\fP Density parameter of matter\&. 
+.br
+\fIlboxmpch\fP Box size in megaparsecs times h\&. 
+.br
+\fImpc\fP Value of one megaparsec in SI units\&. 
+.br
+\fIrhoch2\fP Value of critical density times h squared in SI units\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Data in SI units\&. 
+.RE
+.PP
+
+.SS "template<class Parameter , class Octree , typename Type , class Element , class Data , class > unsigned int Input::sistemize (const Parameter &parameters, Octree &octree, const Typeh, const Typeomegam, const Typelboxmpch)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Octree conversion to SI units\&. Converts each element of the octree to one based on data expressed in SI units\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOctree\fP Octree type\&. 
+.br
+\fIType\fP Arithmetic type\&. 
+.br
+\fIElement\fP Underlying element type\&. 
+.br
+\fIData\fP Data type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoctree\fP Octree of data\&. 
+.br
+\fIh\fP Hubble parameter\&. 
+.br
+\fIomegam\fP Density parameter of matter\&. 
+.br
+\fIlboxmpch\fP Box size in megaparsecs times h\&. 
+.br
+\fImpc\fP Value of one megaparsec in SI units\&. 
+.br
+\fIrhoch2\fP Value of critical density times h squared in SI units\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Octree in SI units\&. 
+.RE
+.PP
+
+.SS "std::string Input::trim (const std::string &text, const std::string &comment = \fC'#'\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Trim string\&. Trims string from leading and trailing white spaces, from comments, and from inner multi white spaces\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP \fBInput\fP text\&. 
+.br
+\fIcomment\fP Comment string\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Trimmed string\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

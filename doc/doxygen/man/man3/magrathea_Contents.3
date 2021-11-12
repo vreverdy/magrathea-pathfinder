@@ -1,0 +1,106 @@
+.TH "magrathea::Contents< Category, Types >" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::Contents< Category, Types > \- 
+.PP
+Basic implementation of numerical simulation contents\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <contents\&.h>\fP
+.PP
+Inherits \fBmagrathea::AbstractContents< Contents< Category, Types\&.\&.\&.>, Category, Types\&.\&.\&.>\fP\&.
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBLifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class\&.\&.\&. Misc> \fBContents\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIExplicit generic constructor\&. \fP"
+.in -1c
+.in -1c
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "using \fBoperator\fP = typedef"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class Category = void, class\&.\&.\&. Types>exception magrathea::Contents< Category, Types >"
+Basic implementation of numerical simulation contents\&. 
+
+This class is the direct derivation of \fBAbstractContents\fP\&. It provides the most basic and generic contents object without adding new functionalities to the abstract class\&. It can be used in most cases as a generic container of groups of physical quantities\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fICategory\fP \fBContents\fP category (Lagrangian, Eulerian, Grid\&.\&.\&.)\&. 
+.br
+\fITypes\fP Variadic list of components types\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class Category , class\&.\&.\&. Types> template<class\&.\&.\&. Misc> \fBmagrathea::Contents\fP< Category, Types >::\fBContents\fP (Misc &&\&.\&.\&.misc)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit generic constructor\&. Provides a generic interface to all constructors of the base class\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class Category , class\&.\&.\&. Types> int \fBmagrathea::Contents\fP< Category, Types >::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBContents\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<class Category = void, class\&.\&.\&. Types> using \fBmagrathea::Contents\fP< Category, Types >::operator = "
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

@@ -1,0 +1,200 @@
+\form#0:$b_{i}-v_{i}$
+\form#1:$\vec{b}-\vec{v}$
+\form#2:$h$
+\form#3:$r$
+\form#4:$d$
+\form#5:$B$
+\form#6:$\pi\times r^{2}+\pi\times r \times h$
+\form#7:$\frac{\pi\times r^{2}\times h}{3}$
+\form#8:$n$
+\form#9:$c$
+\form#10:$x$
+\form#11:$ \left(x^{n}\right) \times c$
+\form#12:$\left(c \times x\right)^{n}$
+\form#13:$x_{i}$
+\form#14:$\vec{x}$
+\form#15:$x_{i}-\frac{l}{2}$
+\form#16:$\vec{x}-\frac{\vec{l}}{2}$
+\form#17:$x_{i}+\frac{l}{2}$
+\form#18:$\vec{x}+\frac{\vec{l}}{2}$
+\form#19:$l$
+\form#20:$l^{D}$
+\form#21:$2^{D-d}\binom{D}{d} \times l^{D}$
+\form#22:$\sqrt{D} \times l$
+\form#23:$2^{D-d}\binom{D}{d}$
+\form#24:$\sum_{d}2^{D-d}\binom{D}{d}$
+\form#25:$x_{i}-r$
+\form#26:$\vec{x}-\vec{r}$
+\form#27:$x_{i}+r$
+\form#28:$\vec{x}+\vec{r}$
+\form#29:$2r$
+\form#30:$\frac{s_{n}r^{n}}{n}$
+\form#31:$s_{n}r^{n-1}$
+\form#32:$s_{n}$
+\form#33:$\bar{x}=\frac{\sum_{i=1}^{n} w_{i}x_{i}}{\sum_{i=1}^{n}w_{i}}$
+\form#34:$0$
+\form#35:$-1$
+\form#36:$\sigma=\sqrt {\frac{\sum_{i=1}^{n}w_{i}\left(x_{i}-\bar{x}\right)^{2}} {\sum_{i=1}^{n}w_{i}+c}}$
+\form#37:$\|x\|_{p} = \left( \sum_{i=1}^n\left|x_{i}\right|^p\right)^{1/p}$
+\form#38:$p$
+\form#39:$\|x\|_{p} = \left(\sum_{i=1}^n\left|x_{i}\right|^p \right)^{1/p}$
+\form#40:$x^{n}$
+\form#41:$\sqrt[n]{x}$
+\form#42:$n!$
+\form#43:$n!!$
+\form#44:$k$
+\form#45:$\binom{n}{k}$
+\form#46:$C^{k}_{n}$
+\form#47:${}^{R}C^{k}_{n}$
+\form#48:$V^{k}_{n}$
+\form#49:${}^{R}V^{k}_{n}$
+\form#50:$n_{0}$
+\form#51:$n_{1}$
+\form#52:$\varphi = \frac{1+\sqrt{5}}{2}$
+\form#53:$varphi^{n}$
+\form#54:$pi$
+\form#55:$\pi^{n}$
+\form#56:$\left(\sqrt{\pi}\right)^{n}$
+\form#57:$\frac{1}{x}$
+\form#58:$-x$
+\form#59:$\left|x\right|$
+\form#60:$sgn\left(x = 0\right) = 0 $
+\form#61:$sgn\left(x < 0 \right) = -1 $
+\form#62:$sgn\left(x > 0\right) = 1$
+\form#63:$x^{2}$
+\form#64:$x^{3}$
+\form#65:$\left[\sqrt{\left[x\right]}\right]$
+\form#66:$\left[\sqrt[3]{\left[x\right]}\right] $
+\form#67:$\left[\log_{2}\left(\left[x \right]\right)\right]$
+\form#68:$\left[\log_{10}\left(\left[x \right]\right)\right]$
+\form#69:$\frac{x\times num}{den}$
+\form#70:$x+y$
+\form#71:$x-y$
+\form#72:$x \times y$
+\form#73:$\frac{x}{y}$
+\form#74:$x\%y$
+\form#75:$\frac{x\times num }{den}$
+\form#76:$\left[\sqrt[n]{\left[x\right]}\right]$
+\form#77:$\left[\log_{b}\left(\left[ x\right]\right)\right]$
+\form#78:$\left[\sqrt[n]{\left[x\right]}\right] $
+\form#79:$\left[\log_{b} \left(\left[x\right]\right)\right]$
+\form#80:$\pi$
+\form#81:$e$
+\form#82:$\gamma$
+\form#83:$\sqrt{2}$
+\form#84:$\sqrt{3}$
+\form#85:$A$
+\form#86:$K_{0}$
+\form#87:$\mu$
+\form#88:$M_{1}$
+\form#89:$\rho$
+\form#90:$K$
+\form#91:$\delta$
+\form#92:$\alpha$
+\form#93:$\Omega$
+\form#94:$\tan\left(arcsec\right)$
+\form#95:$\sqrt{\pi}$
+\form#96:$\pi^{2}$
+\form#97:$G$
+\form#98:$\bar{h}$
+\form#99:$c^{2}$
+\form#100:$g^{2}$
+\form#101:$h^{2}$
+\form#102:$\bar{h}^{2}$
+\form#103:$c^{4}$
+\form#104:$^{\circ}C$
+\form#105:$u$
+\form#106:$atm$
+\form#107:$g_{n}$
+\form#108:$au$
+\form#109:$eV$
+\form#110:$\frac{eV}{c^{2}}$
+\form#111:$deg$
+\form#112:$arcmin$
+\form#113:$arcsec$
+\form#114:$deg^{2}$
+\form#115:$arcmin^{2}$
+\form#116:$arcsec^{2}$
+\form#117:$4 \pi sr$
+\form#118:$s$
+\form#119:$min$
+\form#120:$year$
+\form#121:$ly$
+\form#122:$pc$
+\form#123:$m_{u}$
+\form#124:$m_{d}$
+\form#125:$m_{c}$
+\form#126:$m_{s}$
+\form#127:$m_{t}$
+\form#128:$m_{b}$
+\form#129:$m_{e}$
+\form#130:$m_{\mu}$
+\form#131:$m_{\tau}$
+\form#132:$m_{\nu_{e}}$
+\form#133:$m_{\nu_{\mu}}$
+\form#134:$m_{\nu_{\tau}}$
+\form#135:$m_{\gamma}$
+\form#136:$m_{W}$
+\form#137:$m_{Z}$
+\form#138:$m_{g}$
+\form#139:$m_{H}$
+\form#140:$m_{graviton}$
+\form#141:$m_{p}$
+\form#142:$m_{n}$
+\form#143:$\nu_{cd}$
+\form#144:$K_{cd}$
+\form#145:$e^{2}$
+\form#146:$\mu_{0}$
+\form#147:$\epsilon_{0}$
+\form#148:$Z_{0}$
+\form#149:$k_{e}$
+\form#150:$\mu_{B}$
+\form#151:$\mu_{N}$
+\form#152:$G_{0}$
+\form#153:$\phi_{0}$
+\form#154:$K_{J}$
+\form#155:$R_{K}$
+\form#156:$N_{A}$
+\form#157:$b$
+\form#158:$k_{B}$
+\form#159:$k_{B}^{2}$
+\form#160:$R$
+\form#161:$c_{1}$
+\form#162:$c_{2}$
+\form#163:$F$
+\form#164:$\sigma$
+\form#165:$\Delta\nu(^{133}Cs)_{hfs}$
+\form#166:$\alpha^{2}$
+\form#167:$R_{\infty}$
+\form#168:$r_{e}$
+\form#169:$a_{0}$
+\form#170:$E_{h}$
+\form#171:$\sigma_{T}$
+\form#172:$q_{P}$
+\form#173:$l_{P}$
+\form#174:$m_{P}$
+\form#175:$t_{P}$
+\form#176:$F_{P}$
+\form#177:$E_{P}$
+\form#178:$P_{P}$
+\form#179:$\theta_{P}$
+\form#180:$m_{\odot}$
+\form#181:$m_{E}$
+\form#182:$m_{Me}$
+\form#183:$m_{Ve}$
+\form#184:$m_{Ma}$
+\form#185:$m_{J}$
+\form#186:$m_{Sa}$
+\form#187:$m_{U}$
+\form#188:$m_{N}$
+\form#189:$m_{Moon}$
+\form#190:$r_{\odot}$
+\form#191:$r_{E}$
+\form#192:$r_{Me}$
+\form#193:$r_{Ve}$
+\form#194:$r_{Ma}$
+\form#195:$r_{J}$
+\form#196:$r_{Sa}$
+\form#197:$r_{U}$
+\form#198:$r_{N}$
+\form#199:$r_{Moon}$

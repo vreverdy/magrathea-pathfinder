@@ -1,0 +1,387 @@
+\hypertarget{classCatalogues}{\section{Catalogues Class Reference}
+\label{classCatalogues}\index{Catalogues@{Catalogues}}
+}
+
+
+{\ttfamily \#include $<$catalogues.\-h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Parameters , class Map $>$ }\\static void \hyperlink{classCatalogues_a6badfce6f6a1923394b53bdcdcaf5d02}{Read\-Param\-File} (Parameters \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, Map \&parameter)
+\begin{DoxyCompactList}\small\item\em Read parameter file. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Integer , class Parameter $>$ }\\static void \hyperlink{classCatalogues_a6d2964caadb435debe199808a09e493a}{Read\-Particles\-H\-D\-F5} (const Integer rank, const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, std\-::vector$<$ std\-::array$<$ double, 8 $>$ $>$ \&caract\-Vect\-\_\-source)
+\begin{DoxyCompactList}\small\item\em Read Particles from H\-D\-F5 files. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Integer , class Parameter $>$ }\\static void \hyperlink{classCatalogues_a626e9b0a136c8f9aa5ef556ad84ba477}{Read\-Particles\-A\-S\-C\-I\-I} (const Integer rank, const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, std\-::vector$<$ std\-::array$<$ double, 8 $>$ $>$ \&caract\-Vect\-\_\-source)
+\begin{DoxyCompactList}\small\item\em Read Particles from A\-S\-C\-I\-I files. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int Order = O\-R\-D\-E\-R, bool R\-K4 = true, bool Verbose = false, class Point , class Cosmology , class Octree , class Type , class Parameter $>$ }\\static std\-::array$<$ std\-::array\\*
+$<$ double, 2 $>$, 2 $>$ \hyperlink{classCatalogues_a8f6459496f108e69812ab20cfff613e8}{newton\-Method2d} (const Point \&vobs, const Point \&observer, const Point \&true\-Target, const std\-::array$<$ double, 2 $>$ \&target, const Point \&velocity, std\-::array$<$ std\-::array$<$ double, 2 $>$, 2 $>$ \&jacobian, const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, const Cosmology \&cosmology, const Octree \&octree, const Type length, const Type h, std\-::vector$<$ double $>$ \&redshifts, double \&interp\-Ref, const unsigned int iteration)
+\begin{DoxyCompactList}\small\item\em Iterate once using Newton Method. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int Order = O\-R\-D\-E\-R, bool R\-K4 = true, bool Verbose = false, class Point , class Cosmology , class Octree , class Type , class Parameter $>$ }\\static std\-::array$<$ std\-::array\\*
+$<$ double, 2 $>$, 2 $>$ \hyperlink{classCatalogues_a71bb381e7c748cb60ac46aaed3f59490}{iterate\-Newton\-Method} (const Point \&vobs, const Point \&observer, const Type phi, const Type theta, const Point \&target, const Point \&velocity, std\-::array$<$ std\-::array$<$ double, 2 $>$, 2 $>$ \&jacobian, const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, const Cosmology \&cosmology, const Octree \&octree, const Type length, const Type h, std\-::vector$<$ double $>$ \&redshifts, double \&interp\-Ref)
+\begin{DoxyCompactList}\small\item\em Iterate Newton Method. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Point , class Cosmology , class Octree , class Type , class Parameter $>$ }\\static void \hyperlink{classCatalogues_a6ce823be2d00ce5fbc609c36585d749c}{rel\-Cat} (const Point \&vobs, const std\-::array$<$ std\-::array$<$ double, 3 $>$, 3 $>$ \&rotm1, std\-::string \&nom\-Output, const Point \&observer, const std\-::vector$<$ std\-::array$<$ double, 8 $>$ $>$ \&targets\-\_\-position, const std\-::vector$<$ std\-::array$<$ double, 18 $>$ $>$ \&previous\-\_\-catalogue, const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, const Cosmology \&cosmology, const Octree \&octree, const Type length, const Type h)
+\begin{DoxyCompactList}\small\item\em Give new position of points. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Point , class Cosmology , class Octree , class Type , class Parameter $>$ }\\static void \hyperlink{classCatalogues_ac5d47e6c03ca41a96a1168f417dcb753}{rel\-Cat\-\_\-with\-\_\-previous\-\_\-cat} (const Point \&vobs, std\-::string \&nom\-Output, const Point \&observer, std\-::vector$<$ std\-::array$<$ double, 18 $>$ $>$ \&previous\-\_\-catalogue, const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, const Cosmology \&cosmology, const Octree \&octree, const Type length, const Type h)
+\begin{DoxyCompactList}\small\item\em Give new position of points. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCatalogues_a71bb381e7c748cb60ac46aaed3f59490}{\index{Catalogues@{Catalogues}!iterate\-Newton\-Method@{iterate\-Newton\-Method}}
+\index{iterate\-Newton\-Method@{iterate\-Newton\-Method}!Catalogues@{Catalogues}}
+\subsubsection[{iterate\-Newton\-Method}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Order, bool R\-K4, bool Verbose, class Point , class Cosmology , class Octree , class Type , class Parameter $>$ std\-::array$<$ std\-::array$<$ double, 2 $>$, 2 $>$ Catalogues\-::iterate\-Newton\-Method (
+\begin{DoxyParamCaption}
+\item[{const Point \&}]{vobs, }
+\item[{const Point \&}]{observer, }
+\item[{const Type}]{phi, }
+\item[{const Type}]{theta, }
+\item[{const Point \&}]{target, }
+\item[{const Point \&}]{velocity, }
+\item[{std\-::array$<$ std\-::array$<$ double, 2 $>$, 2 $>$ \&}]{jacobian, }
+\item[{const Parameter \&}]{parameters, }
+\item[{const Cosmology \&}]{cosmology, }
+\item[{const Octree \&}]{octree, }
+\item[{const Type}]{length, }
+\item[{const Type}]{h, }
+\item[{std\-::vector$<$ double $>$ \&}]{redshifts, }
+\item[{double \&}]{interp\-Ref}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classCatalogues_a71bb381e7c748cb60ac46aaed3f59490}
+
+
+Iterate Newton Method. 
+
+Iterate Newton Method to a certain precision 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Order} & Octree interpolation order \-: 0 for N\-G\-P, 1 for C\-I\-C, 2 for T\-S\-C or -\/1 for a homogeneous universe. \\
+\hline
+{\em R\-K4} & Runge-\/kutta of fourth order or euler. \\
+\hline
+{\em Verbose} & Verbose mode for debug purposes. \\
+\hline
+{\em Point} & point type. \\
+\hline
+{\em Cosmology} & Cosmology evolution type. \\
+\hline
+{\em Octree} & Octree type. \\
+\hline
+{\em Type} & Scalar type. \\
+\hline
+{\em Parameter} & Parameter type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em vobs} & Observer peculiar velocity, in S\-I \\
+\hline
+\mbox{\tt in}  & {\em observer} & Observer position. \\
+\hline
+\mbox{\tt in}  & {\em phi} & Source comoving angular coordinate phi. \\
+\hline
+\mbox{\tt in}  & {\em theta} & Source comoving angular coordinate theta. \\
+\hline
+\mbox{\tt in}  & {\em target} & Comoving position of the source \\
+\hline
+\mbox{\tt in}  & {\em velocity} & Velocity of the target. \\
+\hline
+\mbox{\tt in,out}  & {\em jacobian} & Jacobian matrix \\
+\hline
+\mbox{\tt in}  & {\em parameters} & Parameter structure \\
+\hline
+\mbox{\tt in}  & {\em cosmology} & Cosmology evolution. \\
+\hline
+\mbox{\tt in}  & {\em octree} & Octree. \\
+\hline
+\mbox{\tt in}  & {\em length} & Spatial length in S\-I units. \\
+\hline
+\mbox{\tt in}  & {\em h} & Dimensionless Hubble parameter \\
+\hline
+\mbox{\tt in,out}  & {\em redshifts} & Vector containing the redshift decomposition for a given source. \\
+\hline
+\mbox{\tt in}  & {\em interp\-Ref} & value for interpolation of the bundle. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+2x2 array with N\-E\-W initial angles given after several iterations of newton method and errors in angles at same radius for the N\-E\-W initial angles. 
+\end{DoxyReturn}
+\hypertarget{classCatalogues_a8f6459496f108e69812ab20cfff613e8}{\index{Catalogues@{Catalogues}!newton\-Method2d@{newton\-Method2d}}
+\index{newton\-Method2d@{newton\-Method2d}!Catalogues@{Catalogues}}
+\subsubsection[{newton\-Method2d}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Order, bool R\-K4, bool Verbose, class Point , class Cosmology , class Octree , class Type , class Parameter $>$ std\-::array$<$ std\-::array$<$ double, 2 $>$, 2 $>$ Catalogues\-::newton\-Method2d (
+\begin{DoxyParamCaption}
+\item[{const Point \&}]{vobs, }
+\item[{const Point \&}]{observer, }
+\item[{const Point \&}]{true\-Target, }
+\item[{const std\-::array$<$ double, 2 $>$ \&}]{target, }
+\item[{const Point \&}]{velocity, }
+\item[{std\-::array$<$ std\-::array$<$ double, 2 $>$, 2 $>$ \&}]{jacobian, }
+\item[{const Parameter \&}]{parameters, }
+\item[{const Cosmology \&}]{cosmology, }
+\item[{const Octree \&}]{octree, }
+\item[{const Type}]{length, }
+\item[{const Type}]{h, }
+\item[{std\-::vector$<$ double $>$ \&}]{redshifts, }
+\item[{double \&}]{interp\-Ref, }
+\item[{const unsigned int}]{iteration}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classCatalogues_a8f6459496f108e69812ab20cfff613e8}
+
+
+Iterate once using Newton Method. 
+
+Fit the better initial conditions for the photon that intersects the source. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Order} & Octree interpolation order \-: 0 for N\-G\-P, 1 for C\-I\-C, 2 for T\-S\-C or -\/1 for an homogeneous universe. \\
+\hline
+{\em R\-K4} & Runge-\/kutta of fourth order or euler. \\
+\hline
+{\em Verbose} & Verbose mode for debug purposes. \\
+\hline
+{\em Point} & point type. \\
+\hline
+{\em Cosmology} & Cosmology evolution type. \\
+\hline
+{\em Octree} & Octree type. \\
+\hline
+{\em Type} & Scalar type. \\
+\hline
+{\em Parameter} & Parameter type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em vobs} & Observer peculiar velocity, in S\-I \\
+\hline
+\mbox{\tt in}  & {\em observer} & Observer cartesian position. \\
+\hline
+\mbox{\tt in}  & {\em true\-Target} & True cartesian target position. \\
+\hline
+\mbox{\tt in}  & {\em target} & Observed angular target position. \\
+\hline
+\mbox{\tt in}  & {\em velocity} & Target velocity. \\
+\hline
+\mbox{\tt in,out}  & {\em jacobian} & Jacobian matrix \\
+\hline
+\mbox{\tt in}  & {\em parameters} & Parameters structure \\
+\hline
+\mbox{\tt in}  & {\em cosmology} & Cosmology evolution. \\
+\hline
+\mbox{\tt in}  & {\em octree} & Octree. \\
+\hline
+\mbox{\tt in}  & {\em length} & Spatial length in S\-I units. \\
+\hline
+\mbox{\tt in}  & {\em h} & Dimensionless Hubble parameter \\
+\hline
+\mbox{\tt in,out}  & {\em redshifts} & Vector containing the redshift decomposition for a given source. \\
+\hline
+\mbox{\tt in,out}  & {\em interp\-Ref} & value for interpolation of the bundle. \\
+\hline
+\mbox{\tt in}  & {\em iteration} & Number of iterations for the root-\/finder \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+2x2 array with N\-E\-W initial angles given by newton method and angle difference at the source between source and photon 
+\end{DoxyReturn}
+\hypertarget{classCatalogues_a6badfce6f6a1923394b53bdcdcaf5d02}{\index{Catalogues@{Catalogues}!Read\-Param\-File@{Read\-Param\-File}}
+\index{Read\-Param\-File@{Read\-Param\-File}!Catalogues@{Catalogues}}
+\subsubsection[{Read\-Param\-File}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Parameters , class Map $>$ void Catalogues\-::\-Read\-Param\-File (
+\begin{DoxyParamCaption}
+\item[{Parameters \&}]{parameters, }
+\item[{Map \&}]{parameter}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classCatalogues_a6badfce6f6a1923394b53bdcdcaf5d02}
+
+
+Read parameter file. 
+
+Read and put in a structure the parameters. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Parameters} & structure type \\
+\hline
+{\em Map} & map type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em parameters} & Structure containing the parameters. \\
+\hline
+\mbox{\tt in}  & {\em parameter} & Contains parameters to be rewritten \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Filled parameters structure. 
+\end{DoxyReturn}
+\hypertarget{classCatalogues_a626e9b0a136c8f9aa5ef556ad84ba477}{\index{Catalogues@{Catalogues}!Read\-Particles\-A\-S\-C\-I\-I@{Read\-Particles\-A\-S\-C\-I\-I}}
+\index{Read\-Particles\-A\-S\-C\-I\-I@{Read\-Particles\-A\-S\-C\-I\-I}!Catalogues@{Catalogues}}
+\subsubsection[{Read\-Particles\-A\-S\-C\-I\-I}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Integer , class Parameter $>$ void Catalogues\-::\-Read\-Particles\-A\-S\-C\-I\-I (
+\begin{DoxyParamCaption}
+\item[{const Integer}]{rank, }
+\item[{const Parameter \&}]{parameters, }
+\item[{std\-::vector$<$ std\-::array$<$ double, 8 $>$ $>$ \&}]{caract\-Vect\-\_\-source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classCatalogues_a626e9b0a136c8f9aa5ef556ad84ba477}
+
+
+Read Particles from A\-S\-C\-I\-I files. 
+
+Read particles from A\-S\-C\-I\-I files and put them in vectors 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Integer} & Integer type \\
+\hline
+{\em Parameter} & Parameter type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rank} & Rank \\
+\hline
+\mbox{\tt in}  & {\em parameters} & Parameters structure \\
+\hline
+\mbox{\tt in}  & {\em caract\-Vect\-\_\-source} & Source caracteristics \\
+\hline
+\end{DoxyParams}
+\hypertarget{classCatalogues_a6d2964caadb435debe199808a09e493a}{\index{Catalogues@{Catalogues}!Read\-Particles\-H\-D\-F5@{Read\-Particles\-H\-D\-F5}}
+\index{Read\-Particles\-H\-D\-F5@{Read\-Particles\-H\-D\-F5}!Catalogues@{Catalogues}}
+\subsubsection[{Read\-Particles\-H\-D\-F5}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Integer , class Parameter $>$ void Catalogues\-::\-Read\-Particles\-H\-D\-F5 (
+\begin{DoxyParamCaption}
+\item[{const Integer}]{rank, }
+\item[{const Parameter \&}]{parameters, }
+\item[{std\-::vector$<$ std\-::array$<$ double, 8 $>$ $>$ \&}]{caract\-Vect\-\_\-source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classCatalogues_a6d2964caadb435debe199808a09e493a}
+
+
+Read Particles from H\-D\-F5 files. 
+
+Read particles from H\-D\-F5 files and put them in vectors 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Integer} & Integer type \\
+\hline
+{\em Parameter} & Parameter type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rank} & Rank \\
+\hline
+\mbox{\tt in}  & {\em parameters} & Parameters structure \\
+\hline
+\mbox{\tt in}  & {\em caract\-Vect\-\_\-source} & Source caracteristics \\
+\hline
+\end{DoxyParams}
+\hypertarget{classCatalogues_a6ce823be2d00ce5fbc609c36585d749c}{\index{Catalogues@{Catalogues}!rel\-Cat@{rel\-Cat}}
+\index{rel\-Cat@{rel\-Cat}!Catalogues@{Catalogues}}
+\subsubsection[{rel\-Cat}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Point , class Cosmology , class Octree , class Type , class Parameter $>$ void Catalogues\-::rel\-Cat (
+\begin{DoxyParamCaption}
+\item[{const Point \&}]{vobs, }
+\item[{const std\-::array$<$ std\-::array$<$ double, 3 $>$, 3 $>$ \&}]{rotm1, }
+\item[{std\-::string \&}]{filename, }
+\item[{const Point \&}]{observer, }
+\item[{const std\-::vector$<$ std\-::array$<$ double, 8 $>$ $>$ \&}]{targets\-\_\-position, }
+\item[{const std\-::vector$<$ std\-::array$<$ double, 18 $>$ $>$ \&}]{previous\-\_\-catalogue, }
+\item[{const Parameter \&}]{parameters, }
+\item[{const Cosmology \&}]{cosmology, }
+\item[{const Octree \&}]{octree, }
+\item[{const Type}]{length, }
+\item[{const Type}]{h}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classCatalogues_a6ce823be2d00ce5fbc609c36585d749c}
+
+
+Give new position of points. 
+
+Give lensed position of points given points. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Point} & point type. \\
+\hline
+{\em Cosmology} & Cosmology evolution type. \\
+\hline
+{\em Octree} & Octree type. \\
+\hline
+{\em Type} & Scalar type. \\
+\hline
+{\em Parameter} & Parameter type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em vobs} & Observer peculiar velocity, in S\-I \\
+\hline
+\mbox{\tt in}  & {\em rotm1} & rotation matrix \\
+\hline
+\mbox{\tt in}  & {\em filename} & output file name. \\
+\hline
+\mbox{\tt in}  & {\em observer} & Observer position. \\
+\hline
+\mbox{\tt in}  & {\em targets\-\_\-position} & vector of target positions, velocities and radius. \\
+\hline
+\mbox{\tt in}  & {\em previous\-\_\-catalogue} & Previously computed catalogue, used to re-\/run rejected sources. \\
+\hline
+\mbox{\tt in}  & {\em parameters} & Parameter structure \\
+\hline
+\mbox{\tt in}  & {\em cosmology} & Cosmology evolution. \\
+\hline
+\mbox{\tt in}  & {\em octree} & Octree. \\
+\hline
+\mbox{\tt in}  & {\em length} & Spatial length in S\-I units. \\
+\hline
+\mbox{\tt in}  & {\em h} & Dimensionless Hubble parameter \\
+\hline
+\end{DoxyParams}
+\hypertarget{classCatalogues_ac5d47e6c03ca41a96a1168f417dcb753}{\index{Catalogues@{Catalogues}!rel\-Cat\-\_\-with\-\_\-previous\-\_\-cat@{rel\-Cat\-\_\-with\-\_\-previous\-\_\-cat}}
+\index{rel\-Cat\-\_\-with\-\_\-previous\-\_\-cat@{rel\-Cat\-\_\-with\-\_\-previous\-\_\-cat}!Catalogues@{Catalogues}}
+\subsubsection[{rel\-Cat\-\_\-with\-\_\-previous\-\_\-cat}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Point , class Cosmology , class Octree , class Type , class Parameter $>$ void Catalogues\-::rel\-Cat\-\_\-with\-\_\-previous\-\_\-cat (
+\begin{DoxyParamCaption}
+\item[{const Point \&}]{vobs, }
+\item[{std\-::string \&}]{filename, }
+\item[{const Point \&}]{observer, }
+\item[{std\-::vector$<$ std\-::array$<$ double, 18 $>$ $>$ \&}]{previous\-\_\-catalogue, }
+\item[{const Parameter \&}]{parameters, }
+\item[{const Cosmology \&}]{cosmology, }
+\item[{const Octree \&}]{octree, }
+\item[{const Type}]{length, }
+\item[{const Type}]{h}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classCatalogues_ac5d47e6c03ca41a96a1168f417dcb753}
+
+
+Give new position of points. 
+
+Give lensed position of points given points. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Point} & point type. \\
+\hline
+{\em Cosmology} & Cosmology evolution type. \\
+\hline
+{\em Octree} & Octree type. \\
+\hline
+{\em Type} & Scalar type. \\
+\hline
+{\em Parameter} & Parameter type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em vobs} & Observer peculiar velocity, in S\-I \\
+\hline
+\mbox{\tt in}  & {\em filename} & output file name. \\
+\hline
+\mbox{\tt in}  & {\em observer} & Observer position. \\
+\hline
+\mbox{\tt in}  & {\em previous\-\_\-catalogue} & Previously computed catalogue, used to re-\/run rejected sources. \\
+\hline
+\mbox{\tt in}  & {\em parameters} & Parameter structure \\
+\hline
+\mbox{\tt in}  & {\em cosmology} & Cosmology evolution. \\
+\hline
+\mbox{\tt in}  & {\em octree} & Octree. \\
+\hline
+\mbox{\tt in}  & {\em length} & Spatial length in S\-I units. \\
+\hline
+\mbox{\tt in}  & {\em h} & Dimensionless Hubble parameter \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/\hyperlink{catalogues_8h}{catalogues.\-h}\end{DoxyCompactItemize}

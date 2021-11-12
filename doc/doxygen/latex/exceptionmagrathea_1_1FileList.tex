@@ -1,0 +1,1473 @@
+\hypertarget{exceptionmagrathea_1_1FileList}{\section{magrathea\-:\-:File\-List Exception Reference}
+\label{exceptionmagrathea_1_1FileList}\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}}
+}
+
+
+List of files based on a function or a vector.  
+
+
+
+
+{\ttfamily \#include $<$filelist.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Lifecycle}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Type  = std\-::string, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Type, std\-::string$>$\-::value$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1FileList_ad6617ba6789e48198f7a80e8d7dbd9cf}{File\-List} (const std\-::initializer\-\_\-list$<$ Type $>$ \&source=std\-::initializer\-\_\-list$<$ Type $>$())
+\begin{DoxyCompactList}\small\item\em Impliticit initializer list constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Container\-Type , class Prefix\-Type  = std\-::string, class  = typename std\-::enable\-\_\-if$<$!(std\-::is\-\_\-convertible$<$\-Container\-Type, std\-::string$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$typename std\-::remove\-\_\-reference$<$decltype($\ast$std\-::begin(std\-::declval$<$\-Container\-Type$>$()))$>$\-::type, std\-::string$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Prefix\-Type, std\-::string$>$\-::value)$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1FileList_a3f6de8ac76c7cd568aa2eb9ea78ec9ef}{File\-List} (const Container\-Type \&source, const Prefix\-Type \&prefix=Prefix\-Type())
+\begin{DoxyCompactList}\small\item\em Explicit container constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Iterator\-Type , class Prefix\-Type  = std\-::string, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-convertible$<$typename std\-::remove\-\_\-reference$<$decltype($\ast$std\-::declval$<$\-Iterator\-Type$>$())$>$\-::type, std\-::string$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Prefix\-Type, std\-::string$>$\-::value)$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1FileList_aed2961e12314fb53bd8350d87921d9e7}{File\-List} (const Iterator\-Type \&begin, const Iterator\-Type \&end, const Prefix\-Type \&prefix=Prefix\-Type())
+\begin{DoxyCompactList}\small\item\em Explicit iterator constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Format\-Type , class Prefix\-Type  = std\-::string, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-convertible$<$\-Format\-Type, std\-::string$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Prefix\-Type, std\-::string$>$\-::value)$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1FileList_ab615c7d5cd3b7969715ad8b97dfe21b6}{File\-List} (const Format\-Type \&cformat, const int width=0, const unsigned int amount=1, const unsigned int shift=0, const Prefix\-Type \&prefix=Prefix\-Type())
+\begin{DoxyCompactList}\small\item\em Explicit format constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Function , class Prefix\-Type  = std\-::string, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-convertible$<$typename std\-::remove\-\_\-reference$<$typename std\-::result\-\_\-of$<$\-Function(const unsigned int)$>$\-::type$>$\-::type, std\-::string$>$\-::value) \&\& !(std\-::is\-\_\-same$<$typename std\-::decay$<$\-Function$>$\-::type, File\-List$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Prefix\-Type, std\-::string$>$\-::value)$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1FileList_ad78496380a867bd6b712b0ad3385eb25}{File\-List} (Function \&\&f, const unsigned int amount=1, const unsigned int shift=0, const Prefix\-Type \&prefix=Prefix\-Type())
+\begin{DoxyCompactList}\small\item\em Explicit generator constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Operators}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Container\-Type , class  = typename std\-::enable\-\_\-if$<$!(std\-::is\-\_\-convertible$<$\-Container\-Type, std\-::string$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$typename std\-::remove\-\_\-reference$<$decltype($\ast$std\-::begin(std\-::declval$<$\-Container\-Type$>$()))$>$\-::type, std\-::string$>$\-::value)$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \& \hyperlink{exceptionmagrathea_1_1FileList_a168863bbc6389aeef94c461eb30d0ee5}{operator=} (const Container\-Type \&source)
+\begin{DoxyCompactList}\small\item\em Container assignment operator. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Format\-Type , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$\-Format\-Type, std\-::string$>$\-::value$>$\-::type, class  = void$>$ }\\\hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \& \hyperlink{exceptionmagrathea_1_1FileList_ae9120946db37a191724012232c1023eb}{operator=} (const Format\-Type \&cformat)
+\begin{DoxyCompactList}\small\item\em Format assignment operator. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Function , class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-convertible$<$typename std\-::remove\-\_\-reference$<$typename std\-::result\-\_\-of$<$\-Function(const unsigned int)$>$\-::type$>$\-::type, std\-::string$>$\-::value) \&\& !(std\-::is\-\_\-same$<$typename std\-::decay$<$\-Function$>$\-::type, File\-List$>$\-::value)$>$\-::type, class  = void, class  = void$>$ }\\\hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \& \hyperlink{exceptionmagrathea_1_1FileList_adad7c6e58b07916e2c40a98d1f0c99e1}{operator=} (Function \&\&f)
+\begin{DoxyCompactList}\small\item\em Generator assignment operator. \end{DoxyCompactList}\item 
+bool \hyperlink{exceptionmagrathea_1_1FileList_a6de76e018a840cf8a4198aeaef91ccff}{operator==} (const \hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \&rhs) const 
+\begin{DoxyCompactList}\small\item\em Equal to. \end{DoxyCompactList}\item 
+bool \hyperlink{exceptionmagrathea_1_1FileList_a6a5cb99a9913d62825e9e99e2c5458dc}{operator!=} (const \hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \&rhs) const 
+\begin{DoxyCompactList}\small\item\em Not equal to. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Assignment}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \& \hyperlink{exceptionmagrathea_1_1FileList_a5c620a1ac6dd06d07d49ff6a8c5483e1}{assign} (const \hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \&source)
+\begin{DoxyCompactList}\small\item\em Copy assignment. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Container\-Type  = std\-::initializer\-\_\-list$<$std\-::string$>$, class Prefix\-Type  = std\-::string, class  = typename std\-::enable\-\_\-if$<$!(std\-::is\-\_\-convertible$<$\-Container\-Type, std\-::string$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$typename std\-::remove\-\_\-reference$<$decltype($\ast$std\-::begin(std\-::declval$<$\-Container\-Type$>$()))$>$\-::type, std\-::string$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Prefix\-Type, std\-::string$>$\-::value)$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \& \hyperlink{exceptionmagrathea_1_1FileList_a5d40cefba8be8de976a0451ef5fcde2f}{assign} (const Container\-Type \&source=Container\-Type(), const Prefix\-Type \&prefix=Prefix\-Type())
+\begin{DoxyCompactList}\small\item\em Container assignment. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Iterator\-Type , class Prefix\-Type  = std\-::string, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-convertible$<$typename std\-::remove\-\_\-reference$<$decltype($\ast$std\-::declval$<$\-Iterator\-Type$>$())$>$\-::type, std\-::string$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Prefix\-Type, std\-::string$>$\-::value)$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \& \hyperlink{exceptionmagrathea_1_1FileList_a1072fa43580701fd40f88f244114cad6}{assign} (const Iterator\-Type \&begin, const Iterator\-Type \&end, const Prefix\-Type \&prefix=Prefix\-Type())
+\begin{DoxyCompactList}\small\item\em Iterator assignment. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Format\-Type , class Prefix\-Type  = std\-::string, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-convertible$<$\-Format\-Type, std\-::string$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Prefix\-Type, std\-::string$>$\-::value)$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \& \hyperlink{exceptionmagrathea_1_1FileList_a1b56964f57ed5e90fe43023eb8da9de7}{assign} (const Format\-Type \&cformat, const int width=0, const unsigned int amount=1, const unsigned int shift=0, const Prefix\-Type \&prefix=Prefix\-Type())
+\begin{DoxyCompactList}\small\item\em Format assignment. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Function , class Prefix\-Type  = std\-::string, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-convertible$<$typename std\-::remove\-\_\-reference$<$typename std\-::result\-\_\-of$<$\-Function(const unsigned int)$>$\-::type$>$\-::type, std\-::string$>$\-::value) \&\& !(std\-::is\-\_\-same$<$typename std\-::decay$<$\-Function$>$\-::type, File\-List$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Prefix\-Type, std\-::string$>$\-::value)$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \& \hyperlink{exceptionmagrathea_1_1FileList_a3eecce3b3f230b72111b361cc187618a}{assign} (Function \&\&f, const unsigned int amount=1, const unsigned int shift=0, const Prefix\-Type \&prefix=Prefix\-Type())
+\begin{DoxyCompactList}\small\item\em Generator assignment. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Management}\par
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{exceptionmagrathea_1_1FileList_a2252143ee3dc5bf6c5d3559c0170f9f6}{empty} () const 
+\begin{DoxyCompactList}\small\item\em Empty. \end{DoxyCompactList}\item 
+bool \hyperlink{exceptionmagrathea_1_1FileList_a9ad9c5f5f7129b7ad2df7e7464ef8eb7}{cleared} () const 
+\begin{DoxyCompactList}\small\item\em Cleared. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{exceptionmagrathea_1_1FileList_aa798f0615743b3582534de6946d96e60}{capacity} () const 
+\begin{DoxyCompactList}\small\item\em Capacity. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \& \hyperlink{exceptionmagrathea_1_1FileList_a6626f610662eb22c1fc4a5a831d2e027}{resize} (const unsigned int amount)
+\begin{DoxyCompactList}\small\item\em Resize. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \& \hyperlink{exceptionmagrathea_1_1FileList_a6ecbff3a46caed2a057da82f2236e54d}{reserve} (const unsigned int amount)
+\begin{DoxyCompactList}\small\item\em Reserve space for the container. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \& \hyperlink{exceptionmagrathea_1_1FileList_a9e7fe8d4825a57fdc36a31b50c6c1792}{shrink} ()
+\begin{DoxyCompactList}\small\item\em Shrink the container. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \& \hyperlink{exceptionmagrathea_1_1FileList_ac1a9fc96a04bf54baea5bd0c852d0318}{clear} ()
+\begin{DoxyCompactList}\small\item\em Clear. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \hyperlink{exceptionmagrathea_1_1FileList_a952b38164c5261dc27468a92cc787568}{copy} () const 
+\begin{DoxyCompactList}\small\item\em Copy. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Type  = File\-List, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-constructible$<$\-Type, File\-List$>$\-::value$>$\-::type$>$ }\\Type \hyperlink{exceptionmagrathea_1_1FileList_a787a43310a04b8e857061c7bb5fabd15}{cast} () const 
+\begin{DoxyCompactList}\small\item\em Cast. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Getters}\par
+\begin{DoxyCompactItemize}
+\item 
+const std\-::vector$<$ std\-::string $>$ \& \hyperlink{exceptionmagrathea_1_1FileList_a1df56f9bc877fd3ad69633de8429ac3b}{container} () const 
+\begin{DoxyCompactList}\small\item\em Container getter. \end{DoxyCompactList}\item 
+const std\-::string \& \hyperlink{exceptionmagrathea_1_1FileList_aaf94353623e478ac6fcddab7c7ab39ae}{format} () const 
+\begin{DoxyCompactList}\small\item\em Format getter. \end{DoxyCompactList}\item 
+const std\-::function\\*
+$<$ std\-::string(const unsigned \\*
+int)$>$ \& \hyperlink{exceptionmagrathea_1_1FileList_aa2808f957f41c703a6244a189d675359}{generator} () const 
+\begin{DoxyCompactList}\small\item\em Generator getter. \end{DoxyCompactList}\item 
+const std\-::string \& \hyperlink{exceptionmagrathea_1_1FileList_a185c0749fed177bfabefb1f64be97a77}{root} () const 
+\begin{DoxyCompactList}\small\item\em Root getter. \end{DoxyCompactList}\item 
+const int \& \hyperlink{exceptionmagrathea_1_1FileList_a2941419afd68830b3913da11d92c5a8a}{length} () const 
+\begin{DoxyCompactList}\small\item\em Length getter. \end{DoxyCompactList}\item 
+const unsigned int \& \hyperlink{exceptionmagrathea_1_1FileList_a010996bd1083955ffaa3824a586d8a9e}{size} () const 
+\begin{DoxyCompactList}\small\item\em Size getter. \end{DoxyCompactList}\item 
+const unsigned int \& \hyperlink{exceptionmagrathea_1_1FileList_a28342ebcbdc8e3bf04ef9fc97544edf4}{offset} () const 
+\begin{DoxyCompactList}\small\item\em Offset getter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Files}\par
+\begin{DoxyCompactItemize}
+\item 
+std\-::string \hyperlink{exceptionmagrathea_1_1FileList_a565d85f1e3c563f876965ba4126d0625}{operator\mbox{[}$\,$\mbox{]}} (const unsigned int i) const 
+\begin{DoxyCompactList}\small\item\em Subscript operator. \end{DoxyCompactList}\item 
+std\-::string \hyperlink{exceptionmagrathea_1_1FileList_ac6b696190d9c53ea364245c3c7e18634}{at} (const unsigned int i) const 
+\begin{DoxyCompactList}\small\item\em Range check access. \end{DoxyCompactList}\item 
+std\-::string \hyperlink{exceptionmagrathea_1_1FileList_a089dc4227aaac25165c4d861c723a4e8}{front} (const unsigned int i=0) const 
+\begin{DoxyCompactList}\small\item\em Access from the beginning. \end{DoxyCompactList}\item 
+std\-::string \hyperlink{exceptionmagrathea_1_1FileList_a9c05777243b3664c7038c1f42b5daccc}{back} (const unsigned int i=0) const 
+\begin{DoxyCompactList}\small\item\em Access from the end. \end{DoxyCompactList}\item 
+std\-::string \hyperlink{exceptionmagrathea_1_1FileList_aa79f022c679f4761987915688e3b7f7f}{operator()} (const unsigned int i) const 
+\begin{DoxyCompactList}\small\item\em Generator operator. \end{DoxyCompactList}\item 
+std\-::string \hyperlink{exceptionmagrathea_1_1FileList_a867eab1ceefcc1b7e3190ce4af5fbb83}{get} (const unsigned int i) const 
+\begin{DoxyCompactList}\small\item\em Generator getter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Manipulations}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Type  = std\-::vector$<$std\-::string$>$, class  = typename std\-::enable\-\_\-if$<$((std\-::is\-\_\-void$<$decltype(std\-::declval$<$\-Type$>$().\-resize(0))$>$\-::value) $|$$|$ (!std\-::is\-\_\-void$<$decltype(std\-::declval$<$\-Type$>$().\-resize(0))$>$\-::value)) \&\& (!std\-::is\-\_\-const$<$decltype(std\-::declval$<$\-Type$>$()\mbox{[}0\mbox{]})$>$\-::value) \&\& (std\-::is\-\_\-reference$<$decltype(std\-::declval$<$\-Type$>$()\mbox{[}0\mbox{]})$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$decltype(std\-::declval$<$\-Type$>$()\mbox{[}0\mbox{]}), std\-::string$>$\-::value)$>$\-::type$>$ }\\Type \hyperlink{exceptionmagrathea_1_1FileList_ac9890bbe8cd72a12476da5613dcb1fb6}{convert} () const 
+\begin{DoxyCompactList}\small\item\em Convert. \end{DoxyCompactList}\item 
+std\-::string \hyperlink{exceptionmagrathea_1_1FileList_aacc9ee4d2e9aa81f4b47871a34dff04a}{common} () const 
+\begin{DoxyCompactList}\small\item\em Common file part. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \hyperlink{exceptionmagrathea_1_1FileList_a2e48d515e291aad0b29506f02a4e18c4}{formatify} () const 
+\begin{DoxyCompactList}\small\item\em Detect common format. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Algorithms}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Function , class... Args, class  = typename std\-::result\-\_\-of$<$\-Function(std\-::string, Args...)$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \& \hyperlink{exceptionmagrathea_1_1FileList_a234293368eca6af440e8eac6c12e0b05}{apply} (Function \&\&f, Args \&\&...args)
+\begin{DoxyCompactList}\small\item\em Application of a function on each file. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{exceptionmagrathea_1_1FileList_acc2fab8065e767ba21efdc94d9f9746e}{count} () const 
+\begin{DoxyCompactList}\small\item\em Count existing files. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Function , class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$typename std\-::result\-\_\-of$<$\-Function(std\-::string)$>$\-::type, bool$>$\-::value$>$\-::type$>$ }\\unsigned int \hyperlink{exceptionmagrathea_1_1FileList_a6e3447e6a2a10d116d3a04be506cf506}{count} (Function \&\&f) const 
+\begin{DoxyCompactList}\small\item\em Count files satisfying a condition. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Function , typename First\-Type  = std\-::true\-\_\-type, typename Amount\-Type  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-convertible$<$typename std\-::result\-\_\-of$<$\-Function(std\-::string)$>$\-::type, bool$>$\-::value) \&\& ((std\-::is\-\_\-same$<$\-Amount\-Type, std\-::true\-\_\-type$>$\-::value) $|$$|$ (std\-::is\-\_\-convertible$<$\-First\-Type, unsigned int$>$\-::value)) \&\& ((std\-::is\-\_\-same$<$\-Amount\-Type, std\-::true\-\_\-type$>$\-::value) $|$$|$ (std\-::is\-\_\-convertible$<$\-Amount\-Type, int$>$\-::value))$>$\-::type$>$ }\\unsigned int \hyperlink{exceptionmagrathea_1_1FileList_af9dc78ac2cdb9fb8fd7274f22a657d31}{find} (Function \&\&f, const First\-Type first=First\-Type(), const Amount\-Type amount=Amount\-Type()) const 
+\begin{DoxyCompactList}\small\item\em Find first file satisfying a condition. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Function  = std\-::less$<$std\-::string$>$, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$typename std\-::result\-\_\-of$<$\-Function(std\-::string, std\-::string)$>$\-::type, bool$>$\-::value$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \& \hyperlink{exceptionmagrathea_1_1FileList_acc7f1d6850562a3057c11a91af056845}{sort} (Function \&\&f=Function())
+\begin{DoxyCompactList}\small\item\em Sort file names. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Function  = std\-::less$<$std\-::string$>$, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$typename std\-::result\-\_\-of$<$\-Function(std\-::string, std\-::string)$>$\-::type, bool$>$\-::value$>$\-::type$>$ }\\bool \hyperlink{exceptionmagrathea_1_1FileList_ad85d77b9c3f5176e3d61866eedcfbadb}{sorted} (Function \&\&f=Function()) const 
+\begin{DoxyCompactList}\small\item\em Check sorting. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Function  = std\-::equal\-\_\-to$<$std\-::string$>$, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$typename std\-::result\-\_\-of$<$\-Function(std\-::string, std\-::string)$>$\-::type, bool$>$\-::value$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \& \hyperlink{exceptionmagrathea_1_1FileList_ab3320f9edc092dbe8a2f5dd6f9f2bb69}{unique} (Function \&\&f=Function())
+\begin{DoxyCompactList}\small\item\em Unique file names. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Function  = std\-::equal\-\_\-to$<$std\-::string$>$, class  = typename std\-::enable\-\_\-if$<$std\-::is\-\_\-convertible$<$typename std\-::result\-\_\-of$<$\-Function(std\-::string, std\-::string)$>$\-::type, bool$>$\-::value$>$\-::type$>$ }\\bool \hyperlink{exceptionmagrathea_1_1FileList_a72c4b328ee2c982eafecf26005dda989}{unicity} (Function \&\&f=Function()) const 
+\begin{DoxyCompactList}\small\item\em Check unicity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Static Public Member Functions}
+\begin{Indent}{\bf Helpers}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Index\-Type  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-same$<$\-Index\-Type, std\-::true\-\_\-type$>$\-::value) $|$$|$ (std\-::is\-\_\-convertible$<$\-Index\-Type, unsigned int$>$\-::value)$>$\-::type$>$ }\\static std\-::string \hyperlink{exceptionmagrathea_1_1FileList_aa8b8bcd9831bf39e357270f2db99ff09}{generate} (const Index\-Type i=Index\-Type())
+\begin{DoxyCompactList}\small\item\em Temporary file name generator. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Container\-Type , class  = typename std\-::enable\-\_\-if$<$!(std\-::is\-\_\-convertible$<$\-Container\-Type, std\-::string$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$typename std\-::remove\-\_\-reference$<$decltype($\ast$std\-::begin(std\-::declval$<$\-Container\-Type$>$()))$>$\-::type, std\-::string$>$\-::value)$>$\-::type$>$ }\\static std\-::string \hyperlink{exceptionmagrathea_1_1FileList_a3bef23c9e62770cd22b169117f32f3d4}{generate} (const unsigned int i, const Container\-Type \&source)
+\begin{DoxyCompactList}\small\item\em Container-\/based file name generator. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned int Buffer\-Size = std\-::numeric\-\_\-limits$<$unsigned char$>$\-::max()$\ast$std\-::numeric\-\_\-limits$<$unsigned char$>$\-::digits, typename Width\-Type  = std\-::true\-\_\-type, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-same$<$\-Width\-Type, std\-::true\-\_\-type$>$\-::value) $|$$|$ (std\-::is\-\_\-convertible$<$\-Width\-Type, int$>$\-::value)$>$\-::type$>$ }\\static std\-::string \hyperlink{exceptionmagrathea_1_1FileList_a416c3f6db95610900f338f26f948de34}{generate} (const unsigned int i, const std\-::string \&cformat, const Width\-Type width=Width\-Type())
+\begin{DoxyCompactList}\small\item\em Format-\/based file name generator. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Function , class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-convertible$<$typename std\-::remove\-\_\-reference$<$typename std\-::result\-\_\-of$<$\-Function(const unsigned int)$>$\-::type$>$\-::type, std\-::string$>$\-::value) \&\& !(std\-::is\-\_\-same$<$typename std\-::decay$<$\-Function$>$\-::type, File\-List$>$\-::value)$>$\-::type$>$ }\\static std\-::string \hyperlink{exceptionmagrathea_1_1FileList_a7ad27d1f6e7dd0703419de9afc5629d2}{generate} (const unsigned int i, Function \&\&f)
+\begin{DoxyCompactList}\small\item\em Format-\/based file name generator. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Dir  = unsigned int, typename Min  = unsigned int, typename Num  = unsigned int, typename Max  = unsigned int, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-convertible$<$\-Dir, unsigned int$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Min, unsigned int$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Num, unsigned int$>$\-::value) \&\& (std\-::is\-\_\-convertible$<$\-Max, unsigned int$>$\-::value)$>$\-::type$>$ }\\static unsigned int \hyperlink{exceptionmagrathea_1_1FileList_a7b586f219889272fa2c4d2d66316145f}{numberify} (const std\-::string \&str, unsigned int pos=std\-::numeric\-\_\-limits$<$ unsigned int $>$\-::max(), Dir \&\&dir=Dir(), Min \&\&min=Min(), Num \&\&num=Num(), Max \&\&max=Max())
+\begin{DoxyCompactList}\small\item\em Parse number in a string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Test}\par
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{exceptionmagrathea_1_1FileList_a60d6b038b7affeb0e430e4b9aa2d4959}{example} ()
+\begin{DoxyCompactList}\small\item\em Example function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Public Attributes}
+\begin{Indent}{\bf Data members}\par
+\begin{DoxyCompactItemize}
+\item 
+std\-::vector$<$ std\-::string $>$ \hyperlink{exceptionmagrathea_1_1FileList_aa43c55ce940c12b9f5930986a02d8eac}{\-\_\-container}
+\begin{DoxyCompactList}\small\item\em Container of file names. \end{DoxyCompactList}\item 
+std\-::string \hyperlink{exceptionmagrathea_1_1FileList_aee95bf2eba7d038aaa758cd95377718d}{\-\_\-format}
+\begin{DoxyCompactList}\small\item\em Format of file names. \end{DoxyCompactList}\item 
+std\-::function$<$ std\-::string(const \\*
+unsigned int)$>$ \hyperlink{exceptionmagrathea_1_1FileList_ae48041c20b9fa235eabddb669d46e7ff}{\-\_\-generator}
+\begin{DoxyCompactList}\small\item\em Generator of file names. \end{DoxyCompactList}\item 
+std\-::string \hyperlink{exceptionmagrathea_1_1FileList_ade7181de1eb09d72b7f31dc23706543e}{\-\_\-root}
+\begin{DoxyCompactList}\small\item\em Common root prefix. \end{DoxyCompactList}\item 
+int \hyperlink{exceptionmagrathea_1_1FileList_a5cf636b1b4d2779dc42f19a55cef64b8}{\-\_\-length}
+\begin{DoxyCompactList}\small\item\em Optional width of the format field. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{exceptionmagrathea_1_1FileList_a23c0c6219ba569c2851ac0c63557c4d0}{\-\_\-size}
+\begin{DoxyCompactList}\small\item\em Total file list size. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{exceptionmagrathea_1_1FileList_a134bb92386ba0ca11879f66c534eecc1}{\-\_\-offset}
+\begin{DoxyCompactList}\small\item\em Offset between file identificator and list index. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Friends}
+\begin{Indent}{\bf Stream}\par
+\begin{DoxyCompactItemize}
+\item 
+std\-::ostream \& \hyperlink{exceptionmagrathea_1_1FileList_a1e324c3cf5bb7c00fc9c40530251ef2f}{operator$<$$<$} (std\-::ostream \&lhs, const \hyperlink{exceptionmagrathea_1_1FileList}{File\-List} \&rhs)
+\begin{DoxyCompactList}\small\item\em \hyperlink{exceptionOutput}{Output} stream operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+List of files based on a function or a vector. 
+
+Class to hold a list of paths to files. Internally, the list can be stored as a container of strings, a C-\/like format or a function object that will generate the file names on the fly. An offset allows to shift the real identificator of the files regarding the list index. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{exceptionmagrathea_1_1FileList_ad6617ba6789e48198f7a80e8d7dbd9cf}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!File\-List@{File\-List}}
+\index{File\-List@{File\-List}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{File\-List}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class $>$ magrathea\-::\-File\-List\-::\-File\-List (
+\begin{DoxyParamCaption}
+\item[{const std\-::initializer\-\_\-list$<$ Type $>$ \&}]{source = {\ttfamily std\-:\-:initializer\-\_\-list$<$Type$>$()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_ad6617ba6789e48198f7a80e8d7dbd9cf}
+
+
+Impliticit initializer list constructor. 
+
+Implicitely constructs the file list from an initializer list of paths. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & (Data type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\hypertarget{exceptionmagrathea_1_1FileList_a3f6de8ac76c7cd568aa2eb9ea78ec9ef}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!File\-List@{File\-List}}
+\index{File\-List@{File\-List}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{File\-List}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Container\-Type , class Prefix\-Type , class $>$ magrathea\-::\-File\-List\-::\-File\-List (
+\begin{DoxyParamCaption}
+\item[{const Container\-Type \&}]{source, }
+\item[{const Prefix\-Type \&}]{prefix = {\ttfamily PrefixType()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{exceptionmagrathea_1_1FileList_a3f6de8ac76c7cd568aa2eb9ea78ec9ef}
+
+
+Explicit container constructor. 
+
+Explicitely constructs the file list from a container of paths. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container\-Type} & (Container type.) \\
+\hline
+{\em Prefix\-Type} & (Prefix type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\mbox{\tt in}  & {\em prefix} & Common root prefix. \\
+\hline
+\end{DoxyParams}
+\hypertarget{exceptionmagrathea_1_1FileList_aed2961e12314fb53bd8350d87921d9e7}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!File\-List@{File\-List}}
+\index{File\-List@{File\-List}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{File\-List}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Iterator\-Type , class Prefix\-Type , class $>$ magrathea\-::\-File\-List\-::\-File\-List (
+\begin{DoxyParamCaption}
+\item[{const Iterator\-Type \&}]{begin, }
+\item[{const Iterator\-Type \&}]{end, }
+\item[{const Prefix\-Type \&}]{prefix = {\ttfamily PrefixType()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{exceptionmagrathea_1_1FileList_aed2961e12314fb53bd8350d87921d9e7}
+
+
+Explicit iterator constructor. 
+
+Explicitely constructs the file list from a range of iterators. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Iterator\-Type} & (Iterator or pointer type.) \\
+\hline
+{\em Prefix\-Type} & (Prefix type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em begin} & Iterator to the beginning of the range. \\
+\hline
+\mbox{\tt in}  & {\em end} & Iterator to the end of the range. \\
+\hline
+\mbox{\tt in}  & {\em prefix} & Common root prefix. \\
+\hline
+\end{DoxyParams}
+\hypertarget{exceptionmagrathea_1_1FileList_ab615c7d5cd3b7969715ad8b97dfe21b6}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!File\-List@{File\-List}}
+\index{File\-List@{File\-List}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{File\-List}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Format\-Type , class Prefix\-Type , class $>$ magrathea\-::\-File\-List\-::\-File\-List (
+\begin{DoxyParamCaption}
+\item[{const Format\-Type \&}]{cformat, }
+\item[{const int}]{width = {\ttfamily 0}, }
+\item[{const unsigned int}]{amount = {\ttfamily 1}, }
+\item[{const unsigned int}]{shift = {\ttfamily 0}, }
+\item[{const Prefix\-Type \&}]{prefix = {\ttfamily PrefixType()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{exceptionmagrathea_1_1FileList_ab615c7d5cd3b7969715ad8b97dfe21b6}
+
+
+Explicit format constructor. 
+
+Explicitely constructs the file list from a C-\/like format string and its width if required. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Format\-Type} & (Type of the format string.) \\
+\hline
+{\em Prefix\-Type} & (Prefix type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cformat} & Format of file names. \\
+\hline
+\mbox{\tt in}  & {\em width} & Optional width of the format field. \\
+\hline
+\mbox{\tt in}  & {\em amount} & Total file list size. \\
+\hline
+\mbox{\tt in}  & {\em shift} & Offset between file identificator and list index. \\
+\hline
+\mbox{\tt in}  & {\em prefix} & Common root prefix. \\
+\hline
+\end{DoxyParams}
+\hypertarget{exceptionmagrathea_1_1FileList_ad78496380a867bd6b712b0ad3385eb25}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!File\-List@{File\-List}}
+\index{File\-List@{File\-List}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{File\-List}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class Prefix\-Type , class $>$ magrathea\-::\-File\-List\-::\-File\-List (
+\begin{DoxyParamCaption}
+\item[{Function \&\&}]{f, }
+\item[{const unsigned int}]{amount = {\ttfamily 1}, }
+\item[{const unsigned int}]{shift = {\ttfamily 0}, }
+\item[{const Prefix\-Type \&}]{prefix = {\ttfamily PrefixType()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{exceptionmagrathea_1_1FileList_ad78496380a867bd6b712b0ad3385eb25}
+
+
+Explicit generator constructor. 
+
+Explicitely constructs the file list from a generator function. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Function} & (Function type \-: {\ttfamily std\-::string(const unsigned int)}.) \\
+\hline
+{\em Prefix\-Type} & (Prefix type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & Function object {\ttfamily std\-::string(const unsigned int)}. \\
+\hline
+\mbox{\tt in}  & {\em amount} & Total file list size. \\
+\hline
+\mbox{\tt in}  & {\em shift} & Offset between file identificator and list index. \\
+\hline
+\mbox{\tt in}  & {\em prefix} & Common root prefix. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{exceptionmagrathea_1_1FileList_a234293368eca6af440e8eac6c12e0b05}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!apply@{apply}}
+\index{apply@{apply}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{apply}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class... Args, class $>$ {\bf File\-List} \& magrathea\-::\-File\-List\-::apply (
+\begin{DoxyParamCaption}
+\item[{Function \&\&}]{f, }
+\item[{Args \&\&...}]{args}
+\end{DoxyParamCaption}
+)}}\label{exceptionmagrathea_1_1FileList_a234293368eca6af440e8eac6c12e0b05}
+
+
+Application of a function on each file. 
+
+Applies the provided algorithm on each file of the list, passing the extra arguments as extra function parameters if specified. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Function} & (Function type \-: {\ttfamily Type(std\-::string, Args...) }.) \\
+\hline
+{\em Args} & (Extra types.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & Function object {\ttfamily Type(std\-::string, Args...)}. \\
+\hline
+\mbox{\tt in}  & {\em args} & Extra arguments of the function. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a5c620a1ac6dd06d07d49ff6a8c5483e1}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!assign@{assign}}
+\index{assign@{assign}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}{\bf File\-List} \& magrathea\-::\-File\-List\-::assign (
+\begin{DoxyParamCaption}
+\item[{const {\bf File\-List} \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_a5c620a1ac6dd06d07d49ff6a8c5483e1}
+
+
+Copy assignment. 
+
+Assigns the file list contents using another file list. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a5d40cefba8be8de976a0451ef5fcde2f}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!assign@{assign}}
+\index{assign@{assign}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Container\-Type , class Prefix\-Type , class $>$ {\bf File\-List} \& magrathea\-::\-File\-List\-::assign (
+\begin{DoxyParamCaption}
+\item[{const Container\-Type \&}]{source = {\ttfamily ContainerType()}, }
+\item[{const Prefix\-Type \&}]{prefix = {\ttfamily PrefixType()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_a5d40cefba8be8de976a0451ef5fcde2f}
+
+
+Container assignment. 
+
+Assigns the file list contents using a container of paths. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container\-Type} & (Container type.) \\
+\hline
+{\em Prefix\-Type} & (Prefix type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\mbox{\tt in}  & {\em prefix} & Common root prefix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a1072fa43580701fd40f88f244114cad6}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!assign@{assign}}
+\index{assign@{assign}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Iterator\-Type , class Prefix\-Type , class $>$ {\bf File\-List} \& magrathea\-::\-File\-List\-::assign (
+\begin{DoxyParamCaption}
+\item[{const Iterator\-Type \&}]{begin, }
+\item[{const Iterator\-Type \&}]{end, }
+\item[{const Prefix\-Type \&}]{prefix = {\ttfamily PrefixType()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_a1072fa43580701fd40f88f244114cad6}
+
+
+Iterator assignment. 
+
+Assigns the file list contents using a range of iterators. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Iterator\-Type} & (Iterator or pointer type.) \\
+\hline
+{\em Prefix\-Type} & (Prefix type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em begin} & Iterator to the beginning of the range. \\
+\hline
+\mbox{\tt in}  & {\em end} & Iterator to the end of the range. \\
+\hline
+\mbox{\tt in}  & {\em prefix} & Common root prefix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a1b56964f57ed5e90fe43023eb8da9de7}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!assign@{assign}}
+\index{assign@{assign}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Format\-Type , class Prefix\-Type , class $>$ {\bf File\-List} \& magrathea\-::\-File\-List\-::assign (
+\begin{DoxyParamCaption}
+\item[{const Format\-Type \&}]{cformat, }
+\item[{const int}]{width = {\ttfamily 0}, }
+\item[{const unsigned int}]{amount = {\ttfamily 1}, }
+\item[{const unsigned int}]{shift = {\ttfamily 0}, }
+\item[{const Prefix\-Type \&}]{prefix = {\ttfamily PrefixType()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_a1b56964f57ed5e90fe43023eb8da9de7}
+
+
+Format assignment. 
+
+Assigns the file list contents using a C-\/like format string and its width if required. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Format\-Type} & (Type of the format string.) \\
+\hline
+{\em Prefix\-Type} & (Prefix type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cformat} & Format of file names. \\
+\hline
+\mbox{\tt in}  & {\em width} & Optional width of the format field. \\
+\hline
+\mbox{\tt in}  & {\em amount} & Total file list size. \\
+\hline
+\mbox{\tt in}  & {\em shift} & Offset between file identificator and list index. \\
+\hline
+\mbox{\tt in}  & {\em prefix} & Common root prefix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a3eecce3b3f230b72111b361cc187618a}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!assign@{assign}}
+\index{assign@{assign}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class Prefix\-Type , class $>$ {\bf File\-List} \& magrathea\-::\-File\-List\-::assign (
+\begin{DoxyParamCaption}
+\item[{Function \&\&}]{f, }
+\item[{const unsigned int}]{amount = {\ttfamily 1}, }
+\item[{const unsigned int}]{shift = {\ttfamily 0}, }
+\item[{const Prefix\-Type \&}]{prefix = {\ttfamily PrefixType()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_a3eecce3b3f230b72111b361cc187618a}
+
+
+Generator assignment. 
+
+Assigns the file list contents usign a generator function. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Function} & (Function type \-: {\ttfamily std\-::string(const unsigned int)}.) \\
+\hline
+{\em Prefix\-Type} & (Prefix type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & Function object {\ttfamily std\-::string(const unsigned int)}. \\
+\hline
+\mbox{\tt in}  & {\em amount} & Total file list size. \\
+\hline
+\mbox{\tt in}  & {\em shift} & Offset between file identificator and list index. \\
+\hline
+\mbox{\tt in}  & {\em prefix} & Common root prefix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_ac6b696190d9c53ea364245c3c7e18634}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!at@{at}}
+\index{at@{at}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{at}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string magrathea\-::\-File\-List\-::at (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_ac6b696190d9c53ea364245c3c7e18634}
+
+
+Range check access. 
+
+Returns the file name at the specified position in the file list or throws an error if the index cannot be reached. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the specified element. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::out\-\_\-of\-\_\-range} & Out of range. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{exceptionmagrathea_1_1FileList_a9c05777243b3664c7038c1f42b5daccc}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!back@{back}}
+\index{back@{back}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{back}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string magrathea\-::\-File\-List\-::back (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_a9c05777243b3664c7038c1f42b5daccc}
+
+
+Access from the end. 
+
+Returns the file name at the specified position in the file list starting from the end and without any range check. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the specified element. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_aa798f0615743b3582534de6946d96e60}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!capacity@{capacity}}
+\index{capacity@{capacity}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{capacity}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int magrathea\-::\-File\-List\-::capacity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_aa798f0615743b3582534de6946d96e60}
+
+
+Capacity. 
+
+Returns the current capacity of the underlying container if it is used to store the file names, or returns the size if a format or a generator function is used. \begin{DoxyReturn}{Returns}
+Current capacity. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a787a43310a04b8e857061c7bb5fabd15}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!cast@{cast}}
+\index{cast@{cast}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{cast}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class $>$ Type magrathea\-::\-File\-List\-::cast (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_a787a43310a04b8e857061c7bb5fabd15}
+
+
+Cast. 
+
+Returns a copy of the file list casted to the provided type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Casted copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_ac1a9fc96a04bf54baea5bd0c852d0318}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!clear@{clear}}
+\index{clear@{clear}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}{\bf File\-List} \& magrathea\-::\-File\-List\-::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_ac1a9fc96a04bf54baea5bd0c852d0318}
+
+
+Clear. 
+
+Clears the whole contents of the file list. \begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a9ad9c5f5f7129b7ad2df7e7464ef8eb7}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!cleared@{cleared}}
+\index{cleared@{cleared}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{cleared}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-File\-List\-::cleared (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_a9ad9c5f5f7129b7ad2df7e7464ef8eb7}
+
+
+Cleared. 
+
+Returns true if the file list is equal to a cleared one. It corresponds to an empty size, an empty format and an empty function. \begin{DoxyReturn}{Returns}
+True if the file list is cleared, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_aacc9ee4d2e9aa81f4b47871a34dff04a}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!common@{common}}
+\index{common@{common}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{common}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string magrathea\-::\-File\-List\-::common (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1FileList_aacc9ee4d2e9aa81f4b47871a34dff04a}
+
+
+Common file part. 
+
+Detects the longest common character sequence within the whole list, starting from the beginning. \begin{DoxyReturn}{Returns}
+Longest common part. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a1df56f9bc877fd3ad69633de8429ac3b}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!container@{container}}
+\index{container@{container}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{container}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ std\-::string $>$ \& magrathea\-::\-File\-List\-::container (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_a1df56f9bc877fd3ad69633de8429ac3b}
+
+
+Container getter. 
+
+Gets the container of file names. \begin{DoxyReturn}{Returns}
+Immutable reference to the container. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_ac9890bbe8cd72a12476da5613dcb1fb6}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!convert@{convert}}
+\index{convert@{convert}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{convert}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type , class $>$ Type magrathea\-::\-File\-List\-::convert (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1FileList_ac9890bbe8cd72a12476da5613dcb1fb6}
+
+
+Convert. 
+
+Converts data to the specified type of container. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Container of file names. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a952b38164c5261dc27468a92cc787568}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!copy@{copy}}
+\index{copy@{copy}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{copy}]{\setlength{\rightskip}{0pt plus 5cm}{\bf File\-List} magrathea\-::\-File\-List\-::copy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_a952b38164c5261dc27468a92cc787568}
+
+
+Copy. 
+
+Returns a copy of the file list. \begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_acc2fab8065e767ba21efdc94d9f9746e}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!count@{count}}
+\index{count@{count}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{count}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int magrathea\-::\-File\-List\-::count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1FileList_acc2fab8065e767ba21efdc94d9f9746e}
+
+
+Count existing files. 
+
+Counts the number of existing files in the list. \begin{DoxyReturn}{Returns}
+Number of existing files. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a6e3447e6a2a10d116d3a04be506cf506}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!count@{count}}
+\index{count@{count}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{count}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class $>$ unsigned int magrathea\-::\-File\-List\-::count (
+\begin{DoxyParamCaption}
+\item[{Function \&\&}]{f}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1FileList_a6e3447e6a2a10d116d3a04be506cf506}
+
+
+Count files satisfying a condition. 
+
+Counts the number of files in the list that satisfy the provided condition. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Function} & (Function type \-: {\ttfamily bool(std\-::string)}.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & Function object {\ttfamily bool(std\-::string)}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of files satisfying the condition. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a2252143ee3dc5bf6c5d3559c0170f9f6}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!empty@{empty}}
+\index{empty@{empty}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{empty}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-File\-List\-::empty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_a2252143ee3dc5bf6c5d3559c0170f9f6}
+
+
+Empty. 
+
+Returns true if the file list size is equal to zero. \begin{DoxyReturn}{Returns}
+True if the file list is empty, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a60d6b038b7affeb0e430e4b9aa2d4959}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!example@{example}}
+\index{example@{example}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{example}]{\setlength{\rightskip}{0pt plus 5cm}int magrathea\-::\-File\-List\-::example (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileList_a60d6b038b7affeb0e430e4b9aa2d4959}
+
+
+Example function. 
+
+Tests and demonstrates the use of \hyperlink{exceptionmagrathea_1_1FileList}{File\-List}. \begin{DoxyReturn}{Returns}
+0 if no error. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_af9dc78ac2cdb9fb8fd7274f22a657d31}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!find@{find}}
+\index{find@{find}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{find}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , typename First\-Type , typename Amount\-Type , class $>$ unsigned int magrathea\-::\-File\-List\-::find (
+\begin{DoxyParamCaption}
+\item[{Function \&\&}]{f, }
+\item[{const First\-Type}]{first = {\ttfamily FirstType()}, }
+\item[{const Amount\-Type}]{amount = {\ttfamily AmountType()}}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1FileList_af9dc78ac2cdb9fb8fd7274f22a657d31}
+
+
+Find first file satisfying a condition. 
+
+Computes the index of the first file satisfying the specified predicate. The first and amount arguments allows to specify the first file to test and the amount of file to test. As an example, an amount of zero file do not test any file, and an amount of -\/2 file tests the first file and the previous one. If no file satisfy the predicate, the function returns the size of the list. Boundary overflows and unsigned substractions are correctly handled. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Function} & (Function type \-: {\ttfamily bool(std\-::string)}.) \\
+\hline
+{\em First\-Type} & (Integral type of the first index.) \\
+\hline
+{\em Amount\-Type} & (Integral type of the first index.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & Function object {\ttfamily bool(std\-::string)}. \\
+\hline
+\mbox{\tt in}  & {\em first} & First file index to test. \\
+\hline
+\mbox{\tt in}  & {\em amount} & Amount of file to test in the corresponding direction. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Index of the first file satisfying the predicate. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_aaf94353623e478ac6fcddab7c7ab39ae}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!format@{format}}
+\index{format@{format}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{format}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::string \& magrathea\-::\-File\-List\-::format (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_aaf94353623e478ac6fcddab7c7ab39ae}
+
+
+Format getter. 
+
+Gets the format of file names. \begin{DoxyReturn}{Returns}
+Immutable reference to the format. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a2e48d515e291aad0b29506f02a4e18c4}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!formatify@{formatify}}
+\index{formatify@{formatify}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{formatify}]{\setlength{\rightskip}{0pt plus 5cm}{\bf File\-List} magrathea\-::\-File\-List\-::formatify (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1FileList_a2e48d515e291aad0b29506f02a4e18c4}
+
+
+Detect common format. 
+
+Computes whether a common format can be deduced from the file list and returns a format based file list on success or an empty one on failure. Note that in case of a function or a container based list with a single element, the last number of the string is converted to a format. \begin{DoxyReturn}{Returns}
+Formatted file list. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a089dc4227aaac25165c4d861c723a4e8}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!front@{front}}
+\index{front@{front}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{front}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string magrathea\-::\-File\-List\-::front (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_a089dc4227aaac25165c4d861c723a4e8}
+
+
+Access from the beginning. 
+
+Returns the file name at the specified position in the file list starting from the beginning and without any range check. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the specified element. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_aa8b8bcd9831bf39e357270f2db99ff09}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!generate@{generate}}
+\index{generate@{generate}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{generate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Index\-Type , class $>$ std\-::string magrathea\-::\-File\-List\-::generate (
+\begin{DoxyParamCaption}
+\item[{const Index\-Type}]{i = {\ttfamily IndexType()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileList_aa8b8bcd9831bf39e357270f2db99ff09}
+
+
+Temporary file name generator. 
+
+Generates a temporary file name based on the specified index. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Index\-Type} & (Integral type corresponding to the index.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+File name. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a3bef23c9e62770cd22b169117f32f3d4}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!generate@{generate}}
+\index{generate@{generate}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{generate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Container\-Type , class $>$ std\-::string magrathea\-::\-File\-List\-::generate (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i, }
+\item[{const Container\-Type \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileList_a3bef23c9e62770cd22b169117f32f3d4}
+
+
+Container-\/based file name generator. 
+
+Gets the specified element of the passed container. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container\-Type} & (Container type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index. \\
+\hline
+\mbox{\tt in}  & {\em source} & Source container. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+File name. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a416c3f6db95610900f338f26f948de34}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!generate@{generate}}
+\index{generate@{generate}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{generate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$unsigned int Buffer\-Size, typename Width\-Type , class $>$ std\-::string magrathea\-::\-File\-List\-::generate (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i, }
+\item[{const std\-::string \&}]{cformat, }
+\item[{const Width\-Type}]{width = {\ttfamily WidthType()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileList_a416c3f6db95610900f338f26f948de34}
+
+
+Format-\/based file name generator. 
+
+Generates a file name using the specified C-\/style format. If this format requires a width specifier, it can be passed as an optional parameter. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Buffer\-Size} & Value of the internal buffer size. \\
+\hline
+{\em Width\-Type} & (Integral type corresponding to the format width.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index. \\
+\hline
+\mbox{\tt in}  & {\em cformat} & C-\/like format string. \\
+\hline
+\mbox{\tt in}  & {\em width} & Optional width of the format field. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+File name. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a7ad27d1f6e7dd0703419de9afc5629d2}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!generate@{generate}}
+\index{generate@{generate}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{generate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class $>$ std\-::string magrathea\-::\-File\-List\-::generate (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i, }
+\item[{Function \&\&}]{f}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileList_a7ad27d1f6e7dd0703419de9afc5629d2}
+
+
+Format-\/based file name generator. 
+
+Generates a file name passing the index to the specified function. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Function} & (Function type \-: {\ttfamily std\-::string(const unsigned int)}.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index. \\
+\hline
+\mbox{\tt in}  & {\em f} & Function object {\ttfamily std\-::string(const unsigned int)}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+File name. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_aa2808f957f41c703a6244a189d675359}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!generator@{generator}}
+\index{generator@{generator}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{generator}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::function$<$ std\-::string(const unsigned int)$>$ \& magrathea\-::\-File\-List\-::generator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_aa2808f957f41c703a6244a189d675359}
+
+
+Generator getter. 
+
+Gets the generator of file names. \begin{DoxyReturn}{Returns}
+Immutable reference to the generator. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a867eab1ceefcc1b7e3190ce4af5fbb83}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!get@{get}}
+\index{get@{get}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string magrathea\-::\-File\-List\-::get (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_a867eab1ceefcc1b7e3190ce4af5fbb83}
+
+
+Generator getter. 
+
+Generates the file name using the specified index and ignoring the root, the size limit (except if the list is based on a container) and the offset. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the generated element. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a2941419afd68830b3913da11d92c5a8a}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!length@{length}}
+\index{length@{length}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{length}]{\setlength{\rightskip}{0pt plus 5cm}const int \& magrathea\-::\-File\-List\-::length (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_a2941419afd68830b3913da11d92c5a8a}
+
+
+Length getter. 
+
+Gets the optional width of the format field. \begin{DoxyReturn}{Returns}
+Immutable reference to the length. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a7b586f219889272fa2c4d2d66316145f}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!numberify@{numberify}}
+\index{numberify@{numberify}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{numberify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Dir , typename Min , typename Num , typename Max , class $>$ unsigned int magrathea\-::\-File\-List\-::numberify (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{str, }
+\item[{unsigned int}]{pos = {\ttfamily std\-:\-:numeric\-\_\-limits$<$unsigned~int$>$\-:\-:max()}, }
+\item[{Dir \&\&}]{dir = {\ttfamily Dir()}, }
+\item[{Min \&\&}]{min = {\ttfamily Min()}, }
+\item[{Num \&\&}]{num = {\ttfamily Num()}, }
+\item[{Max \&\&}]{max = {\ttfamily Max()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1FileList_a7b586f219889272fa2c4d2d66316145f}
+
+
+Parse number in a string. 
+
+Detects positions of specific markers around a digit in a string. If the specified position is greater than the string length, it is first adjusted to the last character of the string. If the character at the provided position is not a digit, the function starts by searching the last digit before the position. In case of failure, all the markers are set equal to the end of the string. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Dir} & (Directory type.) \\
+\hline
+{\em Min} & (Minimum type.) \\
+\hline
+{\em Num} & (Number type.) \\
+\hline
+{\em Max} & (Maximum type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em str} & \hyperlink{exceptionInput}{Input} string containing the number to parse. \\
+\hline
+\mbox{\tt in}  & {\em pos} & Position of a digit inside the string. \\
+\hline
+\mbox{\tt out}  & {\em dir} & First character after the last slash before the specified position. \\
+\hline
+\mbox{\tt out}  & {\em min} & First digit of the number around the specified position, including preceding zeroes. \\
+\hline
+\mbox{\tt out}  & {\em num} & First digit of the number around the specified position, excluding preceding zeroes. \\
+\hline
+\mbox{\tt out}  & {\em max} & First position after the number around the specified position. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Value of the number around the specified position. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a28342ebcbdc8e3bf04ef9fc97544edf4}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!offset@{offset}}
+\index{offset@{offset}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{offset}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned int \& magrathea\-::\-File\-List\-::offset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_a28342ebcbdc8e3bf04ef9fc97544edf4}
+
+
+Offset getter. 
+
+Gets the offset between file identificator and list index. \begin{DoxyReturn}{Returns}
+Immutable reference to the offset. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a6a5cb99a9913d62825e9e99e2c5458dc}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!operator!=@{operator!=}}
+\index{operator!=@{operator!=}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{operator!=}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-File\-List\-::operator!= (
+\begin{DoxyParamCaption}
+\item[{const {\bf File\-List} \&}]{rhs}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_a6a5cb99a9913d62825e9e99e2c5458dc}
+
+
+Not equal to. 
+
+Compares for difference and returns true if two elements returned by the subscript operator differs\-: the internal storage is not compared. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if not equal, false if equal. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_aa79f022c679f4761987915688e3b7f7f}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!operator()@{operator()}}
+\index{operator()@{operator()}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string magrathea\-::\-File\-List\-::operator() (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_aa79f022c679f4761987915688e3b7f7f}
+
+
+Generator operator. 
+
+Generates the file name using the specified index and ignoring the root, the size limit (except if the list is based on a container) and the offset. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the generated element. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a168863bbc6389aeef94c461eb30d0ee5}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!operator=@{operator=}}
+\index{operator=@{operator=}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Container\-Type , class $>$ {\bf File\-List} \& magrathea\-::\-File\-List\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const Container\-Type \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_a168863bbc6389aeef94c461eb30d0ee5}
+
+
+Container assignment operator. 
+
+Assigns the file list contents using a container of paths and without any root prefix. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container\-Type} & (Container type.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_ae9120946db37a191724012232c1023eb}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!operator=@{operator=}}
+\index{operator=@{operator=}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Format\-Type , class , class $>$ {\bf File\-List} \& magrathea\-::\-File\-List\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const Format\-Type \&}]{cformat}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_ae9120946db37a191724012232c1023eb}
+
+
+Format assignment operator. 
+
+Assigns the file list contents using a C-\/like format string without any root prefix and with a size of one element. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Format\-Type} & (Type of the format string.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cformat} & Format of file names. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_adad7c6e58b07916e2c40a98d1f0c99e1}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!operator=@{operator=}}
+\index{operator=@{operator=}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class , class , class $>$ {\bf File\-List} \& magrathea\-::\-File\-List\-::operator= (
+\begin{DoxyParamCaption}
+\item[{Function \&\&}]{f}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_adad7c6e58b07916e2c40a98d1f0c99e1}
+
+
+Generator assignment operator. 
+
+Assigns the file list contents usign a generator function without any root prefix and with a size of one element. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Function} & (Function type \-: {\ttfamily std\-::string(const unsigned int)}.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & Function object {\ttfamily std\-::string(const unsigned int)}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a6de76e018a840cf8a4198aeaef91ccff}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!operator==@{operator==}}
+\index{operator==@{operator==}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-File\-List\-::operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf File\-List} \&}]{rhs}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_a6de76e018a840cf8a4198aeaef91ccff}
+
+
+Equal to. 
+
+Compares for equality and returns true if all elements returned by the subscript operator are equal\-: the internal storage is not compared and consequently a container-\/based file list can be equal to a format-\/based file list. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if equal, false if not equal. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a565d85f1e3c563f876965ba4126d0625}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string magrathea\-::\-File\-List\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_a565d85f1e3c563f876965ba4126d0625}
+
+
+Subscript operator. 
+
+Returns the file name at the specified position in the file list or returns an empty string if it does not exist. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Index. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Copy of the specified element. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a6ecbff3a46caed2a057da82f2236e54d}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!reserve@{reserve}}
+\index{reserve@{reserve}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{reserve}]{\setlength{\rightskip}{0pt plus 5cm}{\bf File\-List} \& magrathea\-::\-File\-List\-::reserve (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{amount}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_a6ecbff3a46caed2a057da82f2236e54d}
+
+
+Reserve space for the container. 
+
+Increases the capacity of the container if the specified size is greater than the current one. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & New capacity. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a6626f610662eb22c1fc4a5a831d2e027}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!resize@{resize}}
+\index{resize@{resize}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{resize}]{\setlength{\rightskip}{0pt plus 5cm}{\bf File\-List} \& magrathea\-::\-File\-List\-::resize (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{amount}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_a6626f610662eb22c1fc4a5a831d2e027}
+
+
+Resize. 
+
+Resizes the current list and returns it. In case of a container based list, the new contents is initialized as empty. Note that setting a null size, empties the list but does not clear it. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & New size. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a185c0749fed177bfabefb1f64be97a77}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!root@{root}}
+\index{root@{root}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{root}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::string \& magrathea\-::\-File\-List\-::root (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_a185c0749fed177bfabefb1f64be97a77}
+
+
+Root getter. 
+
+Gets the common root prefix. \begin{DoxyReturn}{Returns}
+Immutable reference to the root. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a9e7fe8d4825a57fdc36a31b50c6c1792}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!shrink@{shrink}}
+\index{shrink@{shrink}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{shrink}]{\setlength{\rightskip}{0pt plus 5cm}{\bf File\-List} \& magrathea\-::\-File\-List\-::shrink (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_a9e7fe8d4825a57fdc36a31b50c6c1792}
+
+
+Shrink the container. 
+
+Shrinks the container capacity to fit its size. \begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a010996bd1083955ffaa3824a586d8a9e}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!size@{size}}
+\index{size@{size}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned int \& magrathea\-::\-File\-List\-::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1FileList_a010996bd1083955ffaa3824a586d8a9e}
+
+
+Size getter. 
+
+Gets the total file list size. \begin{DoxyReturn}{Returns}
+Immutable reference to the size. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_acc7f1d6850562a3057c11a91af056845}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!sort@{sort}}
+\index{sort@{sort}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{sort}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class $>$ {\bf File\-List} \& magrathea\-::\-File\-List\-::sort (
+\begin{DoxyParamCaption}
+\item[{Function \&\&}]{f = {\ttfamily Function()}}
+\end{DoxyParamCaption}
+)}}\label{exceptionmagrathea_1_1FileList_acc7f1d6850562a3057c11a91af056845}
+
+
+Sort file names. 
+
+Sorts the file names using the provided comparator function if the file list is based on a container. If the file list is based on a format, it is checked whether the two first files are sorted and an error is thrown if they are not. Finally, if the file list is based on a generator function, the order is checked and an error is thrown in case of non sorted list. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Function} & (Function type \-: {\ttfamily bool(std\-::string, std\-::string) }.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & Function object {\ttfamily bool(std\-::string, std\-::string)}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::runtime\-\_\-error} & Generator based list cannot be modified. \\
+\hline
+{\em std\-::runtime\-\_\-error} & \hyperlink{exceptionmagrathea_1_1Constant}{Constant} format based list cannot be modified. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{exceptionmagrathea_1_1FileList_ad85d77b9c3f5176e3d61866eedcfbadb}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!sorted@{sorted}}
+\index{sorted@{sorted}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{sorted}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class $>$ bool magrathea\-::\-File\-List\-::sorted (
+\begin{DoxyParamCaption}
+\item[{Function \&\&}]{f = {\ttfamily Function()}}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1FileList_ad85d77b9c3f5176e3d61866eedcfbadb}
+
+
+Check sorting. 
+
+Checks whether the file names are sorted using the provided comparator function. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Function} & (Function type \-: {\ttfamily bool(std\-::string, std\-::string) }.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & Function object {\ttfamily bool(std\-::string, std\-::string)}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the contents is sorted, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_a72c4b328ee2c982eafecf26005dda989}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!unicity@{unicity}}
+\index{unicity@{unicity}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{unicity}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class $>$ bool magrathea\-::\-File\-List\-::unicity (
+\begin{DoxyParamCaption}
+\item[{Function \&\&}]{f = {\ttfamily Function()}}
+\end{DoxyParamCaption}
+) const}}\label{exceptionmagrathea_1_1FileList_a72c4b328ee2c982eafecf26005dda989}
+
+
+Check unicity. 
+
+Checks whether the file names are unique using the provided comparator function. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Function} & (Function type \-: {\ttfamily bool(std\-::string, std\-::string) }.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & Function object {\ttfamily bool(std\-::string, std\-::string)}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the contents is unique, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1FileList_ab3320f9edc092dbe8a2f5dd6f9f2bb69}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!unique@{unique}}
+\index{unique@{unique}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{unique}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class $>$ {\bf File\-List} \& magrathea\-::\-File\-List\-::unique (
+\begin{DoxyParamCaption}
+\item[{Function \&\&}]{f = {\ttfamily Function()}}
+\end{DoxyParamCaption}
+)}}\label{exceptionmagrathea_1_1FileList_ab3320f9edc092dbe8a2f5dd6f9f2bb69}
+
+
+Unique file names. 
+
+Erases consecutive equal file names using the provided comparator function if the file list is based on a container. If the file list is based on a format, it is checked whether the two first files are unique and if they are not, the file size is set equals to one. Finally, if the file list is based on a generator function, the unicity is checked and an error is thrown in case of non unique names. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Function} & (Function type \-: {\ttfamily bool(std\-::string, std\-::string) }.) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & Function object {\ttfamily bool(std\-::string, std\-::string)}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::runtime\-\_\-error} & Generator based list cannot be modified. \\
+\hline
+\end{DoxyExceptions}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{exceptionmagrathea_1_1FileList_a1e324c3cf5bb7c00fc9c40530251ef2f}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{lhs, }
+\item[{const {\bf File\-List} \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{exceptionmagrathea_1_1FileList_a1e324c3cf5bb7c00fc9c40530251ef2f}
+
+
+\hyperlink{exceptionOutput}{Output} stream operator. 
+
+Adds each file name to the stream using the filling character as a separator. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em lhs} & Left-\/hand side stream. \\
+\hline
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side file list. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{exceptionOutput}{Output} stream. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{exceptionmagrathea_1_1FileList_aa43c55ce940c12b9f5930986a02d8eac}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!\-\_\-container@{\-\_\-container}}
+\index{\-\_\-container@{\-\_\-container}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{\-\_\-container}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$std\-::string$>$ magrathea\-::\-File\-List\-::\-\_\-container}}\label{exceptionmagrathea_1_1FileList_aa43c55ce940c12b9f5930986a02d8eac}
+
+
+Container of file names. 
+
+\hypertarget{exceptionmagrathea_1_1FileList_aee95bf2eba7d038aaa758cd95377718d}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!\-\_\-format@{\-\_\-format}}
+\index{\-\_\-format@{\-\_\-format}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{\-\_\-format}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string magrathea\-::\-File\-List\-::\-\_\-format}}\label{exceptionmagrathea_1_1FileList_aee95bf2eba7d038aaa758cd95377718d}
+
+
+Format of file names. 
+
+\hypertarget{exceptionmagrathea_1_1FileList_ae48041c20b9fa235eabddb669d46e7ff}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!\-\_\-generator@{\-\_\-generator}}
+\index{\-\_\-generator@{\-\_\-generator}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{\-\_\-generator}]{\setlength{\rightskip}{0pt plus 5cm}std\-::function$<$std\-::string(const unsigned int)$>$ magrathea\-::\-File\-List\-::\-\_\-generator}}\label{exceptionmagrathea_1_1FileList_ae48041c20b9fa235eabddb669d46e7ff}
+
+
+Generator of file names. 
+
+\hypertarget{exceptionmagrathea_1_1FileList_a5cf636b1b4d2779dc42f19a55cef64b8}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!\-\_\-length@{\-\_\-length}}
+\index{\-\_\-length@{\-\_\-length}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{\-\_\-length}]{\setlength{\rightskip}{0pt plus 5cm}int magrathea\-::\-File\-List\-::\-\_\-length}}\label{exceptionmagrathea_1_1FileList_a5cf636b1b4d2779dc42f19a55cef64b8}
+
+
+Optional width of the format field. 
+
+\hypertarget{exceptionmagrathea_1_1FileList_a134bb92386ba0ca11879f66c534eecc1}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!\-\_\-offset@{\-\_\-offset}}
+\index{\-\_\-offset@{\-\_\-offset}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{\-\_\-offset}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int magrathea\-::\-File\-List\-::\-\_\-offset}}\label{exceptionmagrathea_1_1FileList_a134bb92386ba0ca11879f66c534eecc1}
+
+
+Offset between file identificator and list index. 
+
+\hypertarget{exceptionmagrathea_1_1FileList_ade7181de1eb09d72b7f31dc23706543e}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!\-\_\-root@{\-\_\-root}}
+\index{\-\_\-root@{\-\_\-root}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{\-\_\-root}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string magrathea\-::\-File\-List\-::\-\_\-root}}\label{exceptionmagrathea_1_1FileList_ade7181de1eb09d72b7f31dc23706543e}
+
+
+Common root prefix. 
+
+\hypertarget{exceptionmagrathea_1_1FileList_a23c0c6219ba569c2851ac0c63557c4d0}{\index{magrathea\-::\-File\-List@{magrathea\-::\-File\-List}!\-\_\-size@{\-\_\-size}}
+\index{\-\_\-size@{\-\_\-size}!magrathea::FileList@{magrathea\-::\-File\-List}}
+\subsubsection[{\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int magrathea\-::\-File\-List\-::\-\_\-size}}\label{exceptionmagrathea_1_1FileList_a23c0c6219ba569c2851ac0c63557c4d0}
+
+
+Total file list size. 
+
+
+
+The documentation for this exception was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/magrathea/\hyperlink{filelist_8h}{filelist.\-h}\end{DoxyCompactItemize}

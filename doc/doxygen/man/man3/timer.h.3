@@ -1,0 +1,78 @@
+.TH "/data/home/mbreton/magrathea_pathfinder/src/magrathea/timer.h" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/data/home/mbreton/magrathea_pathfinder/src/magrathea/timer.h \- 
+.PP
+A timer to manage time measurements and benchmarks\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <iostream>\fP
+.br
+\fC#include <iomanip>\fP
+.br
+\fC#include <type_traits>\fP
+.br
+\fC#include <functional>\fP
+.br
+\fC#include <ratio>\fP
+.br
+\fC#include <chrono>\fP
+.br
+\fC#include <ctime>\fP
+.br
+\fC#include <cmath>\fP
+.br
+\fC#include <utility>\fP
+.br
+\fC#include 'timer\&.h'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "exception \fBmagrathea::Timer< Type, Period, Clock >\fP"
+.br
+.RI "\fIA timer to manage time measurements and benchmarks\&. \fP"
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBmagrathea\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename SelfType , class SelfPeriod , class SelfClock > std::ostream & \fBmagrathea::operator<<\fP (std::ostream &lhs, const Timer< SelfType, SelfPeriod, SelfClock > &rhs)"
+.br
+.RI "\fI\fBOutput\fP stream operator\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A timer to manage time measurements and benchmarks\&. 
+
+\fBAuthor:\fP
+.RS 4
+Vincent Reverdy (vince.rev@gmail.com) 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+2012-2013 
+.RE
+.PP
+\fBCopyright:\fP
+.RS 4
+CECILL-B License 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

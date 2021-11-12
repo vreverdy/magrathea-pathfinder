@@ -1,0 +1,491 @@
+\hypertarget{classMiscellaneous}{\section{Miscellaneous Class Reference}
+\label{classMiscellaneous}\index{Miscellaneous@{Miscellaneous}}
+}
+
+
+{\ttfamily \#include $<$miscellaneous.\-h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classMiscellaneous_ab2e7e14c71f55175408771dc8203ba37}{get\-Filesin\-Dir} (const std\-::string dir\-Name, std\-::vector$<$ std\-::string $>$ \&file\-Names)
+\begin{DoxyCompactList}\small\item\em Get list of files. \end{DoxyCompactList}\item 
+static void \hyperlink{classMiscellaneous_afec3bd8996aef65aa8f7decd1012cf2f}{Tokenize} (const std\-::string \&str, std\-::vector$<$ std\-::string $>$ \&tokens, const std\-::string \&delimiters=\char`\"{} \char`\"{})
+\begin{DoxyCompactList}\small\item\em Tokenize string. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Vectored $>$ }\\static void \hyperlink{classMiscellaneous_a1ff6af49b68e17d0713d97602788b978}{clear\-\_\-shrink} (Vectored \&vector)
+\begin{DoxyCompactList}\small\item\em Clear and shrink vector. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type $>$ }\\static void \hyperlink{classMiscellaneous_a8b1c5459f07c92139c14bc8adeac597e}{fullclear\-\_\-vector} (std\-::vector$<$ Type $>$ \&vector)
+\begin{DoxyCompactList}\small\item\em Erase vector. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Function , typename Integer $>$ }\\static void \hyperlink{classMiscellaneous_a9048b321c011475a6399550bcdd9346b}{Ticketize\-Function} (const Integer rank, const Integer ntasks, Function \&\&function)
+\begin{DoxyCompactList}\small\item\em I\-O ticket funtion. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Cone , template$<$ unsigned int, class, typename $>$ class Sphere, unsigned int Dimension, class Vector , typename Scalar , typename Integer $>$ }\\static void \hyperlink{classMiscellaneous_a778d3849588f691aee744494cad9d6f3}{Generate\-Fullsky\-Cones} (const Integer ncones, std\-::vector$<$ \hyperlink{exceptionCone}{Cone} $>$ \&cone, std\-::vector$<$ \hyperlink{exceptionCone}{Cone} $>$ \&cone\-If\-Rot, Sphere$<$ Dimension, Vector, Scalar $>$ \&sphere)
+\begin{DoxyCompactList}\small\item\em Generate fullsky cones. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Parameter , class Cone , template$<$ unsigned int, class, typename $>$ class Sphere, unsigned int Dimension, class Vector , typename Scalar $>$ }\\static void \hyperlink{classMiscellaneous_a2c23a764d6444a004f05cf946b9d323b}{Generate\-Narrow\-Cones} (const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, std\-::vector$<$ \hyperlink{exceptionCone}{Cone} $>$ \&cone, std\-::vector$<$ \hyperlink{exceptionCone}{Cone} $>$ \&cone\-If\-Rot, Sphere$<$ Dimension, Vector, Scalar $>$ \&sphere, std\-::array$<$ std\-::array$<$ double, 3 $>$, 3 $>$ \&rotm1, Scalar \&thetay, Scalar \&thetaz)
+\begin{DoxyCompactList}\small\item\em Generate narrow cones. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Octree , class Filelist , typename Integer $>$ }\\static void \hyperlink{classMiscellaneous_a3c3ccb25be62b21d59c596194dec2f51}{load\-Octree} (const Integer icone, Octree \&octree, Filelist \&conefile)
+\begin{DoxyCompactList}\small\item\em Load octree. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Octree , class Cosmology , class Parameters , typename Real $>$ }\\static void \hyperlink{classMiscellaneous_a06da9d999b2700f784502ba93899029b}{correct\-Octree} (Octree \&octree, const Cosmology \&cosmology, Parameters \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, const Real h, const Real omegam, const Real lboxmpch, Real \&amin)
+\begin{DoxyCompactList}\small\item\em Correct octree. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Vector , typename Scalar , class Container $>$ }\\static std\-::vector$<$ std\-::array\\*
+$<$ double, 8 $>$ $>$ \hyperlink{classMiscellaneous_a058e76b7b91f1b5bc7d4edc76a262ebd}{get\-Targets} (const std\-::vector$<$ std\-::array$<$ double, 8 $>$ $>$ \&pos\-Targets, const \hyperlink{exceptionCone}{Cone}$<$ Vector, Scalar $>$ \&cone, const Container \&cones)
+\begin{DoxyCompactList}\small\item\em Get target. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Parameter , class Cone , typename Type1 $>$ }\\static void \hyperlink{classMiscellaneous_af7fffb6f0670a220c5fbb681f8924907}{fill\-\_\-particles\-\_\-vectors} (const Parameter \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, const \hyperlink{exceptionCone}{Cone} \&cone, const std\-::vector$<$ std\-::string $>$ \&shell\-List, std\-::vector$<$ Type1 $>$ \&pos\-\_\-part, std\-::vector$<$ Type1 $>$ \&force\-\_\-part, std\-::vector$<$ Type1 $>$ \&potential\-\_\-part, std\-::vector$<$ Type1 $>$ \&a\-\_\-part, const double thetay, const double thetaz)
+\begin{DoxyCompactList}\small\item\em Rewrite particle in vector. \end{DoxyCompactList}\item 
+{\footnotesize template$<$template$<$ typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container $>$ class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container $>$ }\\static void \hyperlink{classMiscellaneous_a0bb2f69dd72da5316415e36c36d4322e}{Vizualize\-Octree} (const Octree$<$ Type, Index, Data, Dimension, Position, Extent, Element, Container $>$ \&octree, const Type radius)
+\begin{DoxyCompactList}\small\item\em Write position of cells. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Integer , class Parameters $>$ }\\static void \hyperlink{classMiscellaneous_a6bf1192c0219a02dd019c6d451d6f705}{Read\-From\-Cat} (const Integer icone, const Parameters \&\hyperlink{rays_8h_ae1bc8b0b8c8b9f8e4cc61a5cc7c4ce9e}{parameters}, std\-::vector$<$ std\-::array$<$ double, 18 $>$ $>$ \&catalogue)
+\begin{DoxyCompactList}\small\item\em Read magrathea source catalogue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classMiscellaneous_a1ff6af49b68e17d0713d97602788b978}{\index{Miscellaneous@{Miscellaneous}!clear\-\_\-shrink@{clear\-\_\-shrink}}
+\index{clear\-\_\-shrink@{clear\-\_\-shrink}!Miscellaneous@{Miscellaneous}}
+\subsubsection[{clear\-\_\-shrink}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vectored $>$ void Miscellaneous\-::clear\-\_\-shrink (
+\begin{DoxyParamCaption}
+\item[{Vectored \&}]{vector}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classMiscellaneous_a1ff6af49b68e17d0713d97602788b978}
+
+
+Clear and shrink vector. 
+
+Clear and shrink vector. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Vectored} & vector type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em vector} & Vector to be cleared. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Empty vector 
+\end{DoxyReturn}
+\hypertarget{classMiscellaneous_a06da9d999b2700f784502ba93899029b}{\index{Miscellaneous@{Miscellaneous}!correct\-Octree@{correct\-Octree}}
+\index{correct\-Octree@{correct\-Octree}!Miscellaneous@{Miscellaneous}}
+\subsubsection[{correct\-Octree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Octree , class Cosmology , class Parameters , typename Real $>$ void Miscellaneous\-::correct\-Octree (
+\begin{DoxyParamCaption}
+\item[{Octree \&}]{octree, }
+\item[{const Cosmology \&}]{cosmology, }
+\item[{Parameters \&}]{parameters, }
+\item[{const Real}]{h, }
+\item[{const Real}]{omegam, }
+\item[{const Real}]{lboxmpch, }
+\item[{Real \&}]{amin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classMiscellaneous_a06da9d999b2700f784502ba93899029b}
+
+
+Correct octree. 
+
+Process a loaded Octree. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Octree} & octree type \\
+\hline
+{\em Cosmology} & cosmology type \\
+\hline
+{\em Parameters} & parameters type \\
+\hline
+{\em Real} & float/real type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em octree} & Octree to be filled \\
+\hline
+\mbox{\tt in}  & {\em cosmology} & Cosmological tables \\
+\hline
+\mbox{\tt in}  & {\em conefile} & \hyperlink{exceptionCone}{Cone} names in conedir \\
+\hline
+\mbox{\tt in}  & {\em parameters} & Parameters structure \\
+\hline
+\mbox{\tt in}  & {\em h} & dimensionless Hubble parameter \\
+\hline
+\mbox{\tt in}  & {\em omegam} & Matter density fraction \\
+\hline
+\mbox{\tt in}  & {\em lboxmpch} & Size of simulation box \\
+\hline
+\mbox{\tt in,out}  & {\em amin} & minimum value scale factor \\
+\hline
+\end{DoxyParams}
+\hypertarget{classMiscellaneous_af7fffb6f0670a220c5fbb681f8924907}{\index{Miscellaneous@{Miscellaneous}!fill\-\_\-particles\-\_\-vectors@{fill\-\_\-particles\-\_\-vectors}}
+\index{fill\-\_\-particles\-\_\-vectors@{fill\-\_\-particles\-\_\-vectors}!Miscellaneous@{Miscellaneous}}
+\subsubsection[{fill\-\_\-particles\-\_\-vectors}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Parameter , class Cone , typename Type1 $>$ void Miscellaneous\-::fill\-\_\-particles\-\_\-vectors (
+\begin{DoxyParamCaption}
+\item[{const Parameter \&}]{parameters, }
+\item[{const {\bf Cone} \&}]{cone, }
+\item[{const std\-::vector$<$ std\-::string $>$ \&}]{shell\-List, }
+\item[{std\-::vector$<$ Type1 $>$ \&}]{pos\-\_\-part, }
+\item[{std\-::vector$<$ Type1 $>$ \&}]{force\-\_\-part, }
+\item[{std\-::vector$<$ Type1 $>$ \&}]{potential\-\_\-part, }
+\item[{std\-::vector$<$ Type1 $>$ \&}]{a\-\_\-part, }
+\item[{const double}]{thetay, }
+\item[{const double}]{thetaz}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classMiscellaneous_af7fffb6f0670a220c5fbb681f8924907}
+
+
+Rewrite particle in vector. 
+
+Rewrite particle position/velocity from H\-D\-F5 in a vector. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Parameter} & Parameter type \\
+\hline
+{\em \hyperlink{exceptionCone}{Cone}} & cone type \\
+\hline
+{\em Type1} & type1 type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em parameters} & Parameter structure \\
+\hline
+\mbox{\tt in}  & {\em cone} & \hyperlink{exceptionCone}{Cone} parameters \\
+\hline
+\mbox{\tt in}  & {\em shell\-List} & List of H\-D\-F5 files containing particles \\
+\hline
+\mbox{\tt in,out}  & {\em pos\-\_\-part} & Position of particles \\
+\hline
+\mbox{\tt in,out}  & {\em force\-\_\-part} & Force of particles \\
+\hline
+\mbox{\tt in,out}  & {\em potential\-\_\-part} & Potential of particles \\
+\hline
+\mbox{\tt in,out}  & {\em a\-\_\-part} & scale factor of particles \\
+\hline
+\mbox{\tt in}  & {\em thetay} & Semi-\/angle for solid angle in direction y \\
+\hline
+\mbox{\tt in}  & {\em thetaz} & Semi-\/angle for solid angle in direction z \\
+\hline
+\end{DoxyParams}
+\hypertarget{classMiscellaneous_a8b1c5459f07c92139c14bc8adeac597e}{\index{Miscellaneous@{Miscellaneous}!fullclear\-\_\-vector@{fullclear\-\_\-vector}}
+\index{fullclear\-\_\-vector@{fullclear\-\_\-vector}!Miscellaneous@{Miscellaneous}}
+\subsubsection[{fullclear\-\_\-vector}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ void Miscellaneous\-::fullclear\-\_\-vector (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ Type $>$ \&}]{vector}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classMiscellaneous_a8b1c5459f07c92139c14bc8adeac597e}
+
+
+Erase vector. 
+
+Erase vector. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Type type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em vector} & Vector to be erased. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Empty vector 
+\end{DoxyReturn}
+\hypertarget{classMiscellaneous_a778d3849588f691aee744494cad9d6f3}{\index{Miscellaneous@{Miscellaneous}!Generate\-Fullsky\-Cones@{Generate\-Fullsky\-Cones}}
+\index{Generate\-Fullsky\-Cones@{Generate\-Fullsky\-Cones}!Miscellaneous@{Miscellaneous}}
+\subsubsection[{Generate\-Fullsky\-Cones}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Cone , template$<$ unsigned int, class, typename $>$ class Sphere, unsigned int Dimension, class Vector , typename Scalar , typename Integer $>$ void Miscellaneous\-::\-Generate\-Fullsky\-Cones (
+\begin{DoxyParamCaption}
+\item[{const Integer}]{ncones, }
+\item[{std\-::vector$<$ {\bf Cone} $>$ \&}]{cone, }
+\item[{std\-::vector$<$ {\bf Cone} $>$ \&}]{cone\-If\-Rot, }
+\item[{Sphere$<$ Dimension, Vector, Scalar $>$ \&}]{sphere}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classMiscellaneous_a778d3849588f691aee744494cad9d6f3}
+
+
+Generate fullsky cones. 
+
+Generate fullsky cones. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \hyperlink{exceptionCone}{Cone}} & cone type \\
+\hline
+{\em Sphere} & sphere type \\
+\hline
+{\em Dimension} & dimension \\
+\hline
+{\em Vector} & vector type \\
+\hline
+{\em Scalar} & scalar type \\
+\hline
+{\em Integer} & integer type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ncones} & Number of cones . \\
+\hline
+\mbox{\tt in,out}  & {\em cone} & Cones generated \\
+\hline
+\mbox{\tt in}  & {\em cone\-If\-Rot} & Cones generated \\
+\hline
+\mbox{\tt in}  & {\em sphere} & Central sphere \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Generate the shape of fullsky cones. 
+\end{DoxyReturn}
+\hypertarget{classMiscellaneous_a2c23a764d6444a004f05cf946b9d323b}{\index{Miscellaneous@{Miscellaneous}!Generate\-Narrow\-Cones@{Generate\-Narrow\-Cones}}
+\index{Generate\-Narrow\-Cones@{Generate\-Narrow\-Cones}!Miscellaneous@{Miscellaneous}}
+\subsubsection[{Generate\-Narrow\-Cones}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Parameter , class Cone , template$<$ unsigned int, class, typename $>$ class Sphere, unsigned int Dimension, class Vector , typename Scalar $>$ void Miscellaneous\-::\-Generate\-Narrow\-Cones (
+\begin{DoxyParamCaption}
+\item[{const Parameter \&}]{parameters, }
+\item[{std\-::vector$<$ {\bf Cone} $>$ \&}]{cone, }
+\item[{std\-::vector$<$ {\bf Cone} $>$ \&}]{cone\-If\-Rot, }
+\item[{Sphere$<$ Dimension, Vector, Scalar $>$ \&}]{sphere, }
+\item[{std\-::array$<$ std\-::array$<$ double, 3 $>$, 3 $>$ \&}]{rotm1, }
+\item[{Scalar \&}]{thetay, }
+\item[{Scalar \&}]{thetaz}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classMiscellaneous_a2c23a764d6444a004f05cf946b9d323b}
+
+
+Generate narrow cones. 
+
+Generate narrow cones. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Parameter} & Parameter type. \\
+\hline
+{\em \hyperlink{exceptionCone}{Cone}} & cone type \\
+\hline
+{\em Sphere} & sphere type \\
+\hline
+{\em Dimension} & dimension \\
+\hline
+{\em Vector} & vector type \\
+\hline
+{\em Scalar} & scalar type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em parameters} & Parameter structure \\
+\hline
+\mbox{\tt in,out}  & {\em cone} & Cones generated \\
+\hline
+\mbox{\tt in,out}  & {\em cone\-If\-Rot} & Cones generated \\
+\hline
+\mbox{\tt in}  & {\em sphere} & Central sphere \\
+\hline
+\mbox{\tt in,out}  & {\em rotm1} & Rotation matrix for narrow cone cells \\
+\hline
+\mbox{\tt in,out}  & {\em thetay} & Semi-\/angle for solid angle in direction y \\
+\hline
+\mbox{\tt in,out}  & {\em thetaz} & Semi-\/angle for solid angle in direction z \\
+\hline
+\end{DoxyParams}
+\hypertarget{classMiscellaneous_ab2e7e14c71f55175408771dc8203ba37}{\index{Miscellaneous@{Miscellaneous}!get\-Filesin\-Dir@{get\-Filesin\-Dir}}
+\index{get\-Filesin\-Dir@{get\-Filesin\-Dir}!Miscellaneous@{Miscellaneous}}
+\subsubsection[{get\-Filesin\-Dir}]{\setlength{\rightskip}{0pt plus 5cm}void Miscellaneous\-::get\-Filesin\-Dir (
+\begin{DoxyParamCaption}
+\item[{const std\-::string}]{dir\-Name, }
+\item[{std\-::vector$<$ std\-::string $>$ \&}]{file\-Names}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classMiscellaneous_ab2e7e14c71f55175408771dc8203ba37}
+
+
+Get list of files. 
+
+Get list of files and directories. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em String} & Directory name. \\
+\hline
+\mbox{\tt in,out}  & {\em vector$<$string$>$} & List of files and directories. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classMiscellaneous_a058e76b7b91f1b5bc7d4edc76a262ebd}{\index{Miscellaneous@{Miscellaneous}!get\-Targets@{get\-Targets}}
+\index{get\-Targets@{get\-Targets}!Miscellaneous@{Miscellaneous}}
+\subsubsection[{get\-Targets}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Vector , typename Scalar , class Container $>$ std\-::vector$<$ std\-::array$<$ double, 8 $>$ $>$ Miscellaneous\-::get\-Targets (
+\begin{DoxyParamCaption}
+\item[{const std\-::vector$<$ std\-::array$<$ double, 8 $>$ $>$ \&}]{pos\-Targets, }
+\item[{const {\bf Cone}$<$ Vector, Scalar $>$ \&}]{cone, }
+\item[{const Container \&}]{cones}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classMiscellaneous_a058e76b7b91f1b5bc7d4edc76a262ebd}
+
+
+Get target. 
+
+Get target if inside cone. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Vector} & Position vector type. \\
+\hline
+{\em Scalar} & Scalar data type \\
+\hline
+{\em Container} & Container of cone type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em pos\-Targets} & vector of halo positions. \\
+\hline
+\mbox{\tt in}  & {\em \hyperlink{exceptionCone}{Cone}} & current cone. \\
+\hline
+\mbox{\tt in}  & {\em Cones} & to compare distances. return Vector vector of targets inside cone \\
+\hline
+\end{DoxyParams}
+\hypertarget{classMiscellaneous_a3c3ccb25be62b21d59c596194dec2f51}{\index{Miscellaneous@{Miscellaneous}!load\-Octree@{load\-Octree}}
+\index{load\-Octree@{load\-Octree}!Miscellaneous@{Miscellaneous}}
+\subsubsection[{load\-Octree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Octree , class Filelist , typename Integer $>$ void Miscellaneous\-::load\-Octree (
+\begin{DoxyParamCaption}
+\item[{const Integer}]{icone, }
+\item[{Octree \&}]{octree, }
+\item[{Filelist \&}]{conefile}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classMiscellaneous_a3c3ccb25be62b21d59c596194dec2f51}
+
+
+Load octree. 
+
+Load binary octree from preparation phase. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Octree} & octree type \\
+\hline
+{\em Filelist} & cone file type \\
+\hline
+{\em Integer} & integer type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em icone} & cone number \\
+\hline
+\mbox{\tt in,out}  & {\em octree} & Octree to be filled \\
+\hline
+\mbox{\tt in}  & {\em conefile} & \hyperlink{exceptionCone}{Cone} names in conedir \\
+\hline
+\end{DoxyParams}
+\hypertarget{classMiscellaneous_a6bf1192c0219a02dd019c6d451d6f705}{\index{Miscellaneous@{Miscellaneous}!Read\-From\-Cat@{Read\-From\-Cat}}
+\index{Read\-From\-Cat@{Read\-From\-Cat}!Miscellaneous@{Miscellaneous}}
+\subsubsection[{Read\-From\-Cat}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Integer , class Parameters $>$ void Miscellaneous\-::\-Read\-From\-Cat (
+\begin{DoxyParamCaption}
+\item[{const Integer}]{icone, }
+\item[{const Parameters \&}]{parameters, }
+\item[{std\-::vector$<$ std\-::array$<$ double, 18 $>$ $>$ \&}]{catalogue}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classMiscellaneous_a6bf1192c0219a02dd019c6d451d6f705}
+
+
+Read magrathea source catalogue. 
+
+Read magrathea source catalogue. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Integer} & Integer type \\
+\hline
+{\em Parameter} & Parameter type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em parameters} & Parameter structure \\
+\hline
+\mbox{\tt in}  & {\em icone} & cone number \\
+\hline
+\mbox{\tt in,out}  & {\em Catalogue} & Vector containing the source catalogue \\
+\hline
+\end{DoxyParams}
+\hypertarget{classMiscellaneous_a9048b321c011475a6399550bcdd9346b}{\index{Miscellaneous@{Miscellaneous}!Ticketize\-Function@{Ticketize\-Function}}
+\index{Ticketize\-Function@{Ticketize\-Function}!Miscellaneous@{Miscellaneous}}
+\subsubsection[{Ticketize\-Function}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , typename Integer $>$ void Miscellaneous\-::\-Ticketize\-Function (
+\begin{DoxyParamCaption}
+\item[{const Integer}]{rank, }
+\item[{const Integer}]{ntasks, }
+\item[{Function \&\&}]{function}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classMiscellaneous_a9048b321c011475a6399550bcdd9346b}
+
+
+I\-O ticket funtion. 
+
+I\-O ticket system for heavy I\-O computations. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Function} & lambda function \\
+\hline
+{\em Integer} & integer type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rank} & Process rank . \\
+\hline
+\mbox{\tt in}  & {\em ntasks} & Number of tasks \\
+\hline
+\mbox{\tt in}  & {\em function} & Lambda function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Operation using ticketing system. 
+\end{DoxyReturn}
+\hypertarget{classMiscellaneous_afec3bd8996aef65aa8f7decd1012cf2f}{\index{Miscellaneous@{Miscellaneous}!Tokenize@{Tokenize}}
+\index{Tokenize@{Tokenize}!Miscellaneous@{Miscellaneous}}
+\subsubsection[{Tokenize}]{\setlength{\rightskip}{0pt plus 5cm}void Miscellaneous\-::\-Tokenize (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{str, }
+\item[{std\-::vector$<$ std\-::string $>$ \&}]{tokens, }
+\item[{const std\-::string \&}]{delimiters = {\ttfamily \char`\"{}~\char`\"{}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classMiscellaneous_afec3bd8996aef65aa8f7decd1012cf2f}
+
+
+Tokenize string. 
+
+Tokenize strings with delimiters. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em str} & String to tokenize \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em tokens} & Vector of strings. \\
+\hline
+\mbox{\tt in}  & {\em delimiters} & Delimiters used to tokenize String. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+tokenized vector 
+\end{DoxyReturn}
+\hypertarget{classMiscellaneous_a0bb2f69dd72da5316415e36c36d4322e}{\index{Miscellaneous@{Miscellaneous}!Vizualize\-Octree@{Vizualize\-Octree}}
+\index{Vizualize\-Octree@{Vizualize\-Octree}!Miscellaneous@{Miscellaneous}}
+\subsubsection[{Vizualize\-Octree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container $>$ class Octree, typename Type , class Index , class Data , unsigned int Dimension, class Position , class Extent , class Element , class Container $>$ void Miscellaneous\-::\-Vizualize\-Octree (
+\begin{DoxyParamCaption}
+\item[{const Octree$<$ Type, Index, Data, Dimension, Position, Extent, Element, Container $>$ \&}]{octree, }
+\item[{const Type}]{radius}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classMiscellaneous_a0bb2f69dd72da5316415e36c36d4322e}
+
+
+Write position of cells. 
+
+Write position of cells under a given radius. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Octree} & octree type \\
+\hline
+{\em Type} & type type \\
+\hline
+{\em Index} & index type \\
+\hline
+{\em Data} & data type \\
+\hline
+{\em Dimension} & Number of dimensions \\
+\hline
+{\em Position} & position type \\
+\hline
+{\em Extent} & extent type \\
+\hline
+{\em Element} & element type \\
+\hline
+{\em Container} & container type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em octree} & Octree to be filled \\
+\hline
+\mbox{\tt in}  & {\em radius} & Maximum radius at which we write cells (in Ramses Units) \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/\hyperlink{miscellaneous_8h}{miscellaneous.\-h}\end{DoxyCompactItemize}

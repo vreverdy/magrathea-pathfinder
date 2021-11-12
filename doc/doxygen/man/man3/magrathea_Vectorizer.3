@@ -1,0 +1,807 @@
+.TH "magrathea::Vectorizer" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::Vectorizer \- 
+.PP
+Helper base class for generic vectorization\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <vectorizer\&.h>\fP
+.PP
+Inherited by \fBmagrathea::StaticVectorizer< Kind, Size, Crtp, Type, Parameters >\fP, \fBmagrathea::Vectorized< Type, Size >\fP, \fBmagrathea::StaticVectorizer< Kind, Size, Crtp, Type, Parameters\&.\&.\&.>\fP, \fBmagrathea::StaticVectorizer< unsigned int, Size, NArray, Type, Parameters\&.\&.\&.>\fP, and \fBmagrathea::StaticVectorizer< unsigned int, Size, StaticVector, Type, Size >\fP\&.
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBVectorization\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBVectorizer\fP & \fBoperator[]\fP (const unsigned int i)"
+.br
+.RI "\fIDirect access to the element\&. \fP"
+.ti -1c
+.RI "const \fBVectorizer\fP & \fBoperator[]\fP (const unsigned int i) const "
+.br
+.RI "\fIImmutable direct access to the element\&. \fP"
+.ti -1c
+.RI "\fBVectorizer\fP & \fBresize\fP (const unsigned int n)"
+.br
+.RI "\fIResize the container\&. \fP"
+.ti -1c
+.RI "unsigned int \fBsize\fP () const "
+.br
+.RI "\fIGet the size of the container\&. \fP"
+.ti -1c
+.RI "bool \fBconstant\fP () const "
+.br
+.RI "\fIGet whether the container has a constant size\&. \fP"
+.ti -1c
+.RI "bool \fBboolean\fP () const "
+.br
+.RI "\fIGet whether the container has a boolean type\&. \fP"
+.ti -1c
+.RI "std::array< unsigned int, 0 > \fBparameters\fP () const "
+.br
+.RI "\fIGet the template parameters\&. \fP"
+.ti -1c
+.RI "void \fBtype\fP () const "
+.br
+.RI "\fIGet the data type\&. \fP"
+.in -1c
+.in -1c
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBCheck\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<bool Exception = true, class FirstType , class SecondType , class  = typename std::enable_if<(!std::is_base_of<Vectorizer, FirstType>::value) || (!std::is_base_of<Vectorizer, SecondType>::value)>::type> static constexpr bool \fBcheck\fP (const FirstType &, const SecondType &)"
+.br
+.RI "\fICheck compatibility with at least one non-vectorized type\&. \fP"
+.ti -1c
+.RI "template<bool Exception = true, class FirstType , class SecondType , class  = typename std::enable_if<(std::is_base_of<Vectorizer, FirstType>::value) && (std::is_base_of<Vectorizer, SecondType>::value)>::type, class  = typename std::enable_if<(FirstType::constant()) && (SecondType::constant())>::type> static constexpr bool \fBcheck\fP (const FirstType &, const SecondType &)"
+.br
+.ti -1c
+.RI "template<bool Exception = true, class FirstType , class SecondType , class  = typename std::enable_if<(std::is_base_of<Vectorizer, FirstType>::value) && (std::is_base_of<Vectorizer, SecondType>::value)>::type, class  = typename std::enable_if<(!FirstType::constant()) || (!SecondType::constant())>::type, class  = void> static bool \fBcheck\fP (const FirstType &first, const SecondType &second)"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fBGetters\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename IntegralType , IntegralType Value, typename DummyType  = unsigned int, class  = typename std::enable_if<(std::is_integral<IntegralType>::value) && (std::is_convertible<DummyType, unsigned int>::value)>::type> static constexpr IntegralType \fBget\fP (const std::integral_constant< IntegralType, Value >, const DummyType=DummyType())"
+.br
+.RI "\fIIntegral constant getter\&. \fP"
+.ti -1c
+.RI "template<typename DataType , typename DummyType  = unsigned int, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, DataType>::value) && (std::is_convertible<DummyType, unsigned int>::value)>::type> static DataType & \fBget\fP (DataType &source, const DummyType=DummyType())"
+.br
+.RI "\fINon-vectorized getter\&. \fP"
+.ti -1c
+.RI "template<typename DataType , typename DummyType  = unsigned int, class  = typename std::enable_if<(!std::is_base_of<Vectorizer, DataType>::value) && (std::is_convertible<DummyType, unsigned int>::value)>::type> static const DataType & \fBget\fP (const DataType &source, const DummyType=DummyType())"
+.br
+.RI "\fIImmutable non-vectorized getter\&. \fP"
+.ti -1c
+.RI "template<class VectorizedType , class  = typename std::enable_if<std::is_base_of<Vectorizer, VectorizedType>::value>::type, typename DataType  = typename std::remove_reference<decltype(VectorizedType::type())>::type> static DataType & \fBget\fP (VectorizedType &source, const unsigned int i)"
+.br
+.RI "\fIVector element getter\&. \fP"
+.ti -1c
+.RI "template<class VectorizedType , class  = typename std::enable_if<std::is_base_of<Vectorizer, VectorizedType>::value>::type, typename DataType  = typename std::remove_reference<decltype(VectorizedType::type())>::type> static const DataType & \fBget\fP (const VectorizedType &source, const unsigned int i)"
+.br
+.RI "\fIImmutable vector element getter\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBSetters\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class VectorizedType , class  = typename std::enable_if<std::is_base_of<Vectorizer, VectorizedType>::value>::type> static VectorizedType & \fBset\fP (VectorizedType &destination)"
+.br
+.RI "\fIEmpty setter\&. \fP"
+.ti -1c
+.RI "template<class VectorizedType , class  = typename std::enable_if<std::is_base_of<Vectorizer, VectorizedType>::value>::type, class GenericType > static VectorizedType & \fBset\fP (VectorizedType &destination, const GenericType &source)"
+.br
+.RI "\fICopy setter\&. \fP"
+.ti -1c
+.RI "template<class VectorizedType , class  = typename std::enable_if<std::is_base_of<Vectorizer, VectorizedType>::value>::type, class GenericType , class First , class Second , class\&.\&.\&. Others, class  = typename std::enable_if<(sizeof\&.\&.\&.(Others) != 0) && (sizeof\&.\&.\&.(Others) != 1)>::type> static VectorizedType & \fBset\fP (VectorizedType &destination, const GenericType &source, const First &first, const Second &second, const Others &\&.\&.\&.others)"
+.br
+.RI "\fIVariadic setter\&. \fP"
+.ti -1c
+.RI "template<class VectorizedType , class  = typename std::enable_if<std::is_base_of<Vectorizer, VectorizedType>::value>::type, class GenericType , typename SizeType  = std::true_type, class  = typename std::enable_if<(std::is_same<SizeType, std::true_type>::value) || (std::is_convertible<SizeType, unsigned int>::value)>::type> static VectorizedType & \fBset\fP (VectorizedType &destination, const GenericType &source, const unsigned int pos, const SizeType num=SizeType())"
+.br
+.RI "\fIPartial setter\&. \fP"
+.ti -1c
+.RI "template<class VectorizedType , class  = typename std::enable_if<std::is_base_of<Vectorizer, VectorizedType>::value>::type, typename DataType  = typename std::remove_reference<decltype(VectorizedType::type())>::type, typename SizeType  = std::true_type, class  = typename std::enable_if<(std::is_convertible<DataType, typename std::remove_reference<decltype(std::declval<VectorizedType>()[0])>::type>::value) && ((std::is_same<SizeType, std::true_type>::value) || (std::is_convertible<SizeType, unsigned int>::value))>::type> static VectorizedType & \fBset\fP (VectorizedType &destination, const std::initializer_list< DataType > &source, const unsigned int pos=0, const SizeType num=SizeType())"
+.br
+.RI "\fIPartial list setter\&. \fP"
+.ti -1c
+.RI "template<class VectorizedType , class  = typename std::enable_if<std::is_base_of<Vectorizer, VectorizedType>::value>::type, typename IteratorType , typename SizeType  = std::true_type, class  = typename std::enable_if<(std::is_same<SizeType, std::true_type>::value) || (std::is_convertible<SizeType, unsigned int>::value)>::type> static VectorizedType & \fBset\fP (VectorizedType &destination, const IteratorType &first, const IteratorType &last, const unsigned int pos=0, const SizeType num=SizeType(), typename std::iterator_traits< IteratorType >::iterator_category *=nullptr)"
+.br
+.RI "\fIPartial range setter\&. \fP"
+.ti -1c
+.RI "template<class VectorizedType , class  = typename std::enable_if<std::is_base_of<Vectorizer, VectorizedType>::value>::type, class GenericType , class MaskType , typename DummyType  = unsigned int, class  = typename std::enable_if<(std::is_base_of<Vectorizer, MaskType>::value) && (std::is_convertible<DummyType, unsigned int>::value)>::type> static VectorizedType & \fBset\fP (VectorizedType &destination, const GenericType &source, const MaskType &mask, const DummyType=DummyType())"
+.br
+.RI "\fIMasked setter\&. \fP"
+.ti -1c
+.RI "template<class VectorizedType , class  = typename std::enable_if<std::is_base_of<Vectorizer, VectorizedType>::value>::type, typename DataType  = typename std::remove_reference<decltype(VectorizedType::type())>::type, class MaskType , typename DummyType  = unsigned int, class  = typename std::enable_if<(std::is_base_of<Vectorizer, MaskType>::value) && (std::is_convertible<DummyType, unsigned int>::value)>::type> static VectorizedType & \fBset\fP (VectorizedType &destination, const std::initializer_list< DataType > &source, const MaskType &mask, const DummyType=DummyType())"
+.br
+.RI "\fIMasked list setter\&. \fP"
+.ti -1c
+.RI "template<class VectorizedType , class  = typename std::enable_if<std::is_base_of<Vectorizer, VectorizedType>::value>::type, typename IteratorType , class MaskType , typename DummyType  = unsigned int, class  = typename std::enable_if<(std::is_base_of<Vectorizer, MaskType>::value) && (std::is_convertible<DummyType, unsigned int>::value)>::type> static VectorizedType & \fBset\fP (VectorizedType &destination, const IteratorType &first, const IteratorType &last, const MaskType &mask, const DummyType=DummyType(), typename std::iterator_traits< IteratorType >::iterator_category *=nullptr)"
+.br
+.RI "\fIMasked range setter\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SS "Protected Member Functions"
+
+.PP
+.RI "\fBProtected lifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fB~Vectorizer\fP ()"
+.br
+.RI "\fIProtected destructor\&. \fP"
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+Helper base class for generic vectorization\&. 
+
+Provides global functions for vectorization implementation\&. \fBVectorizer\fP helpers (like \fBStaticVectorizer\fP or DynamicVectorizer) are derived from this class and have to implement the following functions required by CRTP : 
+.PD 0
+
+.IP "\(bu" 2
+\fCoperator[]\fP 
+.IP "\(bu" 2
+\fC\fBresize()\fP\fP 
+.IP "\(bu" 2
+\fC\fBsize()\fP\fP 
+.IP "\(bu" 2
+\fC\fBconstant()\fP\fP 
+.IP "\(bu" 2
+\fC\fBboolean()\fP\fP 
+.IP "\(bu" 2
+\fC\fBparameters()\fP\fP 
+.IP "\(bu" 2
+\fC\fBtype()\fP\fP 
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "magrathea::Vectorizer::~Vectorizer ()\fC [inline]\fP, \fC [protected]\fP, \fC [default]\fP"
+
+.PP
+Protected destructor\&. Does nothing\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "bool magrathea::Vectorizer::boolean () const\fC [inline]\fP"
+
+.PP
+Get whether the container has a boolean type\&. Returns true if the container has a boolean type size, false otherwise\&. This function is required by the vectorization mechanism\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of true if the container has a boolean type\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::logic_error\fP This function should be overloaded by derived classes\&. 
+.RE
+.PP
+
+.SS "template<bool Exception, class FirstType , class SecondType , class , class , class > bool magrathea::Vectorizer::check (const FirstType &first, const SecondType &second)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Check compatibility with at least one non-vectorized type\&. Check compatibility between two vectorized types\&.
+.PP
+Check compatibility between two static vectorized types\&.
+.PP
+Checks whether the two provided vectorizer have compatible properties\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIException\fP Throw exception or assertion on error\&. 
+.br
+\fIFirstType\fP (First type\&.) 
+.br
+\fISecondType\fP (Second type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True whether the two types are compatible, false otherwise\&.
+.RE
+.PP
+Checks whether the two provided vectorizer have compatible properties\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIException\fP Throw exception or assertion on error\&. 
+.br
+\fIFirstType\fP (First type\&.) 
+.br
+\fISecondType\fP (Second type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP First argument\&. 
+.br
+\fIsecond\fP Second argument\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True whether the two types are compatible, false otherwise\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::length_error\fP \fBVectorizer\fP sizes are not equal\&. 
+.RE
+.PP
+
+.SS "template<bool Exception = true, class FirstType , class SecondType , class  = typename std::enable_if<(std::is_base_of<Vectorizer, FirstType>::value) && (std::is_base_of<Vectorizer, SecondType>::value)>::type, class  = typename std::enable_if<(FirstType::constant()) && (SecondType::constant())>::type> static constexpr bool magrathea::Vectorizer::check (const FirstType &, const SecondType &)\fC [static]\fP"
+
+.SS "template<bool Exception = true, class FirstType , class SecondType , class  = typename std::enable_if<(std::is_base_of<Vectorizer, FirstType>::value) && (std::is_base_of<Vectorizer, SecondType>::value)>::type, class  = typename std::enable_if<(!FirstType::constant()) || (!SecondType::constant())>::type, class  = void> static bool magrathea::Vectorizer::check (const FirstType &first, const SecondType &second)\fC [inline]\fP, \fC [static]\fP"
+
+.SS "bool magrathea::Vectorizer::constant () const\fC [inline]\fP"
+
+.PP
+Get whether the container has a constant size\&. Returns true if the container has a constant size, false otherwise\&. This function is required by the vectorization mechanism\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of true if the container has a constant size\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::logic_error\fP This function should be overloaded by derived classes\&. 
+.RE
+.PP
+
+.SS "int magrathea::Vectorizer::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBVectorizer\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SS "template<typename IntegralType , IntegralType Value, typename DummyType , class > constexpr IntegralType magrathea::Vectorizer::get (const std::integral_constant< IntegralType, Value >, const DummyType = \fCDummyType()\fP)\fC [static]\fP"
+
+.PP
+Integral constant getter\&. Returns the value of the provided integral constant\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIIntegralType\fP (Integral type\&.) 
+.br
+\fIDummyType\fP (Dummy parameter type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Value of the integral constant\&. 
+.RE
+.PP
+
+.SS "template<typename DataType , typename DummyType, class > DataType & magrathea::Vectorizer::get (DataType &source, const DummyType = \fCDummyType()\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Non-vectorized getter\&. Returns a reference to the provided non-vectorized source\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDataType\fP (Data type\&.) 
+.br
+\fIDummyType\fP (Dummy parameter type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Argument to get\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the argument\&. 
+.RE
+.PP
+
+.SS "template<typename DataType , typename DummyType, class > const DataType & magrathea::Vectorizer::get (const DataType &source, const DummyType = \fCDummyType()\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Immutable non-vectorized getter\&. Returns a constant reference to the provided non-vectorized source\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDataType\fP (Data type\&.) 
+.br
+\fIDummyType\fP (Dummy parameter type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Argument to get\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Const reference to the argument\&. 
+.RE
+.PP
+
+.SS "template<class VectorizedType , class , typename DataType > DataType & magrathea::Vectorizer::get (VectorizedType &source, const unsigned inti)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Vector element getter\&. Returns a reference to the i-th element of the provided vectorized source\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIVectorizedType\fP (\fBVectorized\fP type\&.) 
+.br
+\fIDataType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source container\&. 
+.br
+\fIi\fP Index of the element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the specified element\&. 
+.RE
+.PP
+
+.SS "template<class VectorizedType , class , typename DataType > const DataType & magrathea::Vectorizer::get (const VectorizedType &source, const unsigned inti)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Immutable vector element getter\&. Returns a constant reference to the i-th element of the provided vectorized source\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIVectorizedType\fP (\fBVectorized\fP type\&.) 
+.br
+\fIDataType\fP (Data type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Source container\&. 
+.br
+\fIi\fP Index of the element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Const reference to the specified element\&. 
+.RE
+.PP
+
+.SS "\fBVectorizer\fP & magrathea::Vectorizer::operator[] (const unsigned inti)\fC [inline]\fP"
+
+.PP
+Direct access to the element\&. Provides a direct access to the specified element\&. This function is required by the vectorization mechanism\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index of the element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the element\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::logic_error\fP This function should be overloaded by derived classes\&. 
+.RE
+.PP
+
+.SS "const \fBVectorizer\fP & magrathea::Vectorizer::operator[] (const unsigned inti) const\fC [inline]\fP"
+
+.PP
+Immutable direct access to the element\&. Provides a constant direct access to the specified element\&. This function is required by the vectorization mechanism\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Index of the element\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Const reference to the element\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::logic_error\fP This function should be overloaded by derived classes\&. 
+.RE
+.PP
+
+.SS "std::array< unsigned int, 0 > magrathea::Vectorizer::parameters () const\fC [inline]\fP"
+
+.PP
+Get the template parameters\&. Returns an array containing the template parameters\&. This function is required by the vectorization mechanism\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of an array of parameters\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::logic_error\fP This function should be overloaded by derived classes\&. 
+.RE
+.PP
+
+.SS "\fBVectorizer\fP & magrathea::Vectorizer::resize (const unsigned intn)\fC [inline]\fP"
+
+.PP
+Resize the container\&. Resizes the container and returns a reference to it\&. This function is required by the vectorization mechanism\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIn\fP New size\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::logic_error\fP This function should be overloaded by derived classes\&. 
+.RE
+.PP
+
+.SS "template<class VectorizedType , class > VectorizedType & magrathea::Vectorizer::set (VectorizedType &destination)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Empty setter\&. Does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIVectorizedType\fP (\fBVectorized\fP type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdestination\fP Destination of the copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the destination\&. 
+.RE
+.PP
+
+.SS "template<class VectorizedType , class , class GenericType > VectorizedType & magrathea::Vectorizer::set (VectorizedType &destination, const GenericType &source)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Copy setter\&. Copies the whole contents of the source to the destination\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIVectorizedType\fP (\fBVectorized\fP type\&.) 
+.br
+\fIGenericType\fP (Generic type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdestination\fP Destination of the copy\&. 
+.br
+\fIsource\fP Source of the copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the destination\&. 
+.RE
+.PP
+
+.SS "template<class VectorizedType , class , class GenericType , class First , class Second , class\&.\&.\&. Others, class > VectorizedType & magrathea::Vectorizer::set (VectorizedType &destination, const GenericType &source, const First &first, const Second &second, const Others &\&.\&.\&.others)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Variadic setter\&. Calls recursively the setters for a long list of arguments\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIVectorizedType\fP (\fBVectorized\fP type\&.) 
+.br
+\fIGenericType\fP (Generic type\&.) 
+.br
+\fIFirst\fP (First type\&.) 
+.br
+\fISecond\fP (Second type\&.) 
+.br
+\fIOthers\fP (Other types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdestination\fP Destination of the copy\&. 
+.br
+\fIsource\fP Source of the copy\&. 
+.br
+\fIfirst\fP First extra argument\&.  
+.br
+\fIsecond\fP Second extra argument\&. 
+.br
+\fIothers\fP Other arguments\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the destination\&. 
+.RE
+.PP
+
+.SS "template<class VectorizedType , class , class GenericType , typename SizeType , class > VectorizedType & magrathea::Vectorizer::set (VectorizedType &destination, const GenericType &source, const unsigned intpos, const SizeTypenum = \fCSizeType()\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Partial setter\&. Copies the contents of the source to a part of the destination\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIVectorizedType\fP (\fBVectorized\fP type\&.) 
+.br
+\fIGenericType\fP (Generic type\&.) 
+.br
+\fISizeType\fP (Size type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdestination\fP Destination of the copy\&. 
+.br
+\fIsource\fP Source of the copy\&. 
+.br
+\fIpos\fP Starting position of the copy\&. 
+.br
+\fInum\fP Number of elements to copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the destination\&. 
+.RE
+.PP
+
+.SS "template<class VectorizedType , class , typename DataType , typename SizeType , class > VectorizedType & magrathea::Vectorizer::set (VectorizedType &destination, const std::initializer_list< DataType > &source, const unsigned intpos = \fC0\fP, const SizeTypenum = \fCSizeType()\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Partial list setter\&. Copies the contents of the source to a part of the destination\&. The first element of the list is copied at the provided position, and the next elements are copied after it\&. If the list is too small, empty values are added to its end\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIVectorizedType\fP (\fBVectorized\fP type\&.) 
+.br
+\fIDataType\fP (Data type\&.) 
+.br
+\fISizeType\fP (Size type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdestination\fP Destination of the copy\&. 
+.br
+\fIsource\fP Source of the copy\&. 
+.br
+\fIpos\fP Starting position of the copy\&. 
+.br
+\fInum\fP Number of elements to copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the destination\&. 
+.RE
+.PP
+
+.SS "template<class VectorizedType , class , typename IteratorType , typename SizeType , class > VectorizedType & magrathea::Vectorizer::set (VectorizedType &destination, const IteratorType &first, const IteratorType &last, const unsigned intpos = \fC0\fP, const SizeTypenum = \fCSizeType()\fP, typename std::iterator_traits< IteratorType >::iterator_category * = \fCnullptr\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Partial range setter\&. Copies the values from the range to a part of the destination\&. The first element of the range is copied at the provided position, and the next elements are copied after it\&. The copy stops as soon as the end of the range is encountered or if the number of elements to copy is reached\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIVectorizedType\fP (\fBVectorized\fP type\&.) 
+.br
+\fIIteratorType\fP (Iterator or pointer type\&.) 
+.br
+\fISizeType\fP (Size type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdestination\fP Destination of the copy\&. 
+.br
+\fIfirst\fP Iterator to the beginning of the range\&. 
+.br
+\fIlast\fP Iterator to the end of the range\&. 
+.br
+\fIpos\fP Starting position of the copy\&. 
+.br
+\fInum\fP Number of elements to copy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the destination\&. 
+.RE
+.PP
+
+.SS "template<class VectorizedType , class , class GenericType , class MaskType , typename DummyType , class > VectorizedType & magrathea::Vectorizer::set (VectorizedType &destination, const GenericType &source, const MaskType &mask, const DummyType = \fCDummyType()\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Masked setter\&. Copies elements of the source to the destination using a mask of boolean values : the values are copied only where the mask is true\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIVectorizedType\fP (\fBVectorized\fP type\&.) 
+.br
+\fIGenericType\fP (Generic type\&.) 
+.br
+\fIMaskType\fP (Mask Type\&.) 
+.br
+\fIDummyType\fP (Dummy parameter type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdestination\fP Destination of the copy\&. 
+.br
+\fIsource\fP Source of the copy\&. 
+.br
+\fImask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the destination\&. 
+.RE
+.PP
+
+.SS "template<class VectorizedType , class , typename DataType , class MaskType , typename DummyType , class > VectorizedType & magrathea::Vectorizer::set (VectorizedType &destination, const std::initializer_list< DataType > &source, const MaskType &mask, const DummyType = \fCDummyType()\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Masked list setter\&. Copies the contents of the source to the destination using a mask of boolean values : the values are copied only where the mask is true\&. The iteration over values in the destination and in the source list are independant : the n-th element of the list is copied to the n-th true element of the destination\&. If the list is too small, empty values are added to its end\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIVectorizedType\fP (\fBVectorized\fP type\&.) 
+.br
+\fIDataType\fP (Data type\&.) 
+.br
+\fIMaskType\fP (Mask Type\&.) 
+.br
+\fIDummyType\fP (Dummy parameter type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdestination\fP Destination of the copy\&. 
+.br
+\fIsource\fP Source of the copy\&. 
+.br
+\fImask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the destination\&. 
+.RE
+.PP
+
+.SS "template<class VectorizedType , class , typename IteratorType , class MaskType , typename DummyType , class > VectorizedType & magrathea::Vectorizer::set (VectorizedType &destination, const IteratorType &first, const IteratorType &last, const MaskType &mask, const DummyType = \fCDummyType()\fP, typename std::iterator_traits< IteratorType >::iterator_category * = \fCnullptr\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Masked range setter\&. Copies the values from the range to the destination using a mask of boolean values : the values are copied only where the mask is true\&. The iteration over values in the destination and in the range list are independant : the n-th element of the range is copied to the n-th true element of the destination\&. The copy stops as soon as the end of the range is encountered or if the number of elements to copy is reached\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIVectorizedType\fP (\fBVectorized\fP type\&.) 
+.br
+\fIIterator\fP (Iterator or pointer type\&.) 
+.br
+\fIMaskType\fP (Mask Type\&.) 
+.br
+\fIDummyType\fP (Dummy parameter type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdestination\fP Destination of the copy\&. 
+.br
+\fIfirst\fP Iterator to the beginning of the range\&. 
+.br
+\fIlast\fP Iterator to the end of the range\&. 
+.br
+\fImask\fP Boolean mask\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to the destination\&. 
+.RE
+.PP
+
+.SS "unsigned int magrathea::Vectorizer::size () const\fC [inline]\fP"
+
+.PP
+Get the size of the container\&. Returns the current number of elements\&. This function is required by the vectorization mechanism\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the size\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::logic_error\fP This function should be overloaded by derived classes\&. 
+.RE
+.PP
+
+.SS "void magrathea::Vectorizer::type () const\fC [inline]\fP"
+
+.PP
+Get the data type\&. Returns a copy of the default value of the data type\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the default value of the data type\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::logic_error\fP This function should be overloaded by derived classes\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

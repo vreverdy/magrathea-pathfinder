@@ -1,0 +1,3430 @@
+.TH "magrathea::DataHandler" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::DataHandler \- 
+.PP
+Set of basic operations on binary data related to IO\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <datahandler\&.h>\fP
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBUtilities\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename Type > static constexpr bool \fBarray\fP (const Type &)"
+.br
+.RI "\fIIs not an array\&. \fP"
+.ti -1c
+.RI "template<typename Type , std::size_t Size> static constexpr bool \fBarray\fP (const std::array< Type, Size > &)"
+.br
+.RI "\fIIs an array\&. \fP"
+.ti -1c
+.RI "template<typename Type > static constexpr bool \fBtuple\fP (const Type &)"
+.br
+.RI "\fIIs not a tuple\&. \fP"
+.ti -1c
+.RI "template<typename\&.\&.\&. Types> static constexpr bool \fBtuple\fP (const std::tuple< Types\&.\&.\&.> &)"
+.br
+.RI "\fIIs a tuple\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBSize\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename\&.\&.\&. Types> static constexpr unsigned int \fBsize\fP ()"
+.br
+.RI "\fINumber of elements of several types\&. \fP"
+.ti -1c
+.RI "static constexpr unsigned int \fBsize\fP (const std::tuple<> &)"
+.br
+.RI "\fINumber of elements of an empty tuple\&. \fP"
+.ti -1c
+.RI "template<typename Type > static constexpr unsigned int \fBsize\fP (const Type &variable)"
+.br
+.RI "\fINumber of elements of a single variable\&. \fP"
+.ti -1c
+.RI "template<typename Type , typename\&.\&.\&. Types> static constexpr unsigned int \fBsize\fP (const Type &variable, const Types &\&.\&.\&.variables)"
+.br
+.RI "\fINumber of elements of several variables\&. \fP"
+.ti -1c
+.RI "template<typename Type , std::size_t Size> static constexpr unsigned int \fBsize\fP (const std::array< Type, Size > &container)"
+.br
+.RI "\fINumber of elements of an array\&. \fP"
+.ti -1c
+.RI "template<unsigned int Current = 0, typename\&.\&.\&. Types> static constexpr unsigned int \fBsize\fP (const std::tuple< Types\&.\&.\&.> &container)"
+.br
+.RI "\fINumber of elements of a tuple\&. \fP"
+.ti -1c
+.RI "static unsigned long long int \fBrsize\fP (const std::nullptr_t=nullptr, const std::nullptr_t=nullptr)"
+.br
+.RI "\fINumber of elements of an empty range\&. \fP"
+.ti -1c
+.RI "template<typename Type > static unsigned long long int \fBrsize\fP (const Type *const first, const Type *const last)"
+.br
+.RI "\fINumber of elements of a range between pointers\&. \fP"
+.ti -1c
+.RI "template<typename Type , class  = typename std::enable_if<!std::is_pointer<Type>::value>::type> static unsigned long long int \fBrsize\fP (const Type &first, const Type &last, typename std::iterator_traits< Type >::iterator_category *=nullptr)"
+.br
+.RI "\fINumber of elements of a range between iterators\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBBytesize\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename Type  = void> static constexpr unsigned int \fBbytesize\fP (const std::nullptr_t=nullptr)"
+.br
+.RI "\fISize in bytes of a single type\&. \fP"
+.ti -1c
+.RI "template<typename Type , typename\&.\&.\&. Types, class  = typename std::enable_if<sizeof\&.\&.\&.(Types) != 0>::type> static constexpr unsigned int \fBbytesize\fP ()"
+.br
+.RI "\fISize in bytes of a single type\&. \fP"
+.ti -1c
+.RI "static constexpr unsigned int \fBbytesize\fP (const std::tuple<> &)"
+.br
+.RI "\fISize in bytes of an empty tuple\&. \fP"
+.ti -1c
+.RI "template<typename Type > static constexpr unsigned int \fBbytesize\fP (const Type &variable)"
+.br
+.RI "\fISize in bytes of a single variable\&. \fP"
+.ti -1c
+.RI "template<typename Type , typename\&.\&.\&. Types> static constexpr unsigned int \fBbytesize\fP (const Type &variable, const Types &\&.\&.\&.variables)"
+.br
+.RI "\fISize in bytes of several variables\&. \fP"
+.ti -1c
+.RI "template<typename Type , std::size_t Size> static constexpr unsigned int \fBbytesize\fP (const std::array< Type, Size > &container)"
+.br
+.RI "\fISize in bytes of an array\&. \fP"
+.ti -1c
+.RI "template<unsigned int Current = 0, typename\&.\&.\&. Types> static constexpr unsigned int \fBbytesize\fP (const std::tuple< Types\&.\&.\&.> &container)"
+.br
+.RI "\fISize in bytes of a tuple\&. \fP"
+.ti -1c
+.RI "static unsigned long long int \fBrbytesize\fP (const std::nullptr_t=nullptr, const std::nullptr_t=nullptr)"
+.br
+.RI "\fISize in bytes of an empty range\&. \fP"
+.ti -1c
+.RI "template<typename Type > static unsigned long long int \fBrbytesize\fP (const Type *const first, const Type *const last)"
+.br
+.RI "\fISize in bytes of a range between pointers\&. \fP"
+.ti -1c
+.RI "template<typename Type , class  = typename std::enable_if<!std::is_pointer<Type>::value>::type> static unsigned long long int \fBrbytesize\fP (const Type &first, const Type &last, typename std::iterator_traits< Type >::iterator_category *=nullptr)"
+.br
+.RI "\fISize in bytes of a range between iterators\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBByteswap\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<bool Byteswap, typename\&.\&.\&. Types, class  = typename std::enable_if<!Byteswap>::type> static unsigned int \fBbyteswap\fP (const Types &\&.\&.\&.)"
+.br
+.RI "\fIDo not swap bytes\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap, typename\&.\&.\&. Types, class  = typename std::enable_if<!Byteswap>::type> static unsigned int \fBrbyteswap\fP (const Types &\&.\&.\&.)"
+.br
+.RI "\fIDo not swap bytes of a range\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = true, class  = typename std::enable_if<Byteswap>::type> static unsigned int \fBbyteswap\fP ()"
+.br
+.RI "\fISwap bytes of nothing\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = true, class  = typename std::enable_if<Byteswap>::type> static unsigned int \fBbyteswap\fP (std::tuple<> &)"
+.br
+.RI "\fISwap bytes of an empty tuple\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = true, typename Type , class  = typename std::enable_if<Byteswap>::type> static unsigned int \fBbyteswap\fP (Type &variable)"
+.br
+.RI "\fISwap bytes of a single variable\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = true, typename Type , typename\&.\&.\&. Types, class  = typename std::enable_if<Byteswap>::type> static unsigned int \fBbyteswap\fP (Type &variable, Types &\&.\&.\&.variables)"
+.br
+.RI "\fISwap bytes of several variables\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = true, typename Type , std::size_t Size, class  = typename std::enable_if<Byteswap>::type> static unsigned int \fBbyteswap\fP (std::array< Type, Size > &container)"
+.br
+.RI "\fISwap bytes of an array\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = true, unsigned int Current = 0, typename\&.\&.\&. Types, class  = typename std::enable_if<Byteswap>::type> static unsigned int \fBbyteswap\fP (std::tuple< Types\&.\&.\&.> &container)"
+.br
+.RI "\fISwap bytes of a tuple\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = true, class  = typename std::enable_if<Byteswap>::type> static unsigned long long int \fBrbyteswap\fP (const std::nullptr_t=nullptr, const std::nullptr_t=nullptr)"
+.br
+.RI "\fISwap bytes of an empty range\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = true, typename Type , class  = typename std::enable_if<Byteswap>::type> static unsigned long long int \fBrbyteswap\fP (Type *const first, Type *const last)"
+.br
+.RI "\fISwap bytes of a range between pointers\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = true, typename Type , class  = typename std::enable_if<(Byteswap) && (!std::is_pointer<Type>::value)>::type> static unsigned long long int \fBrbyteswap\fP (const Type &first, const Type &last, typename std::iterator_traits< Type >::iterator_category *=nullptr)"
+.br
+.RI "\fISwap bytes of a range between iterators\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBWrite stream\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<bool Byteswap = false> static bool \fBwrite\fP (std::ostream &stream)"
+.br
+.RI "\fIWrite nothing to stream\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false> static bool \fBwrite\fP (std::ostream &stream, const std::tuple<> &)"
+.br
+.RI "\fIWrite an empty tuple to stream\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, typename Type > static bool \fBwrite\fP (std::ostream &stream, const Type &variable)"
+.br
+.RI "\fIWrite a single variable to stream\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, typename Type , typename\&.\&.\&. Types> static bool \fBwrite\fP (std::ostream &stream, const Type &variable, const Types &\&.\&.\&.variables)"
+.br
+.RI "\fIWrite several variables to stream\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, typename Type , std::size_t Size> static bool \fBwrite\fP (std::ostream &stream, const std::array< Type, Size > &container)"
+.br
+.RI "\fIWrite an array to stream\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, unsigned int Current = 0, typename\&.\&.\&. Types> static bool \fBwrite\fP (std::ostream &stream, const std::tuple< Types\&.\&.\&.> &container)"
+.br
+.RI "\fIWrite a tuple to stream\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false> static bool \fBrwrite\fP (std::ostream &stream, const std::nullptr_t=nullptr, const std::nullptr_t=nullptr)"
+.br
+.RI "\fIWrite an empty range to stream\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, typename Type > static bool \fBrwrite\fP (std::ostream &stream, const Type *const first, const Type *const last)"
+.br
+.RI "\fIWrite a range between pointers to stream\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, typename Type , class  = typename std::enable_if<!std::is_pointer<Type>::value>::type> static bool \fBrwrite\fP (std::ostream &stream, const Type &first, const Type &last, typename std::iterator_traits< Type >::iterator_category *=nullptr)"
+.br
+.RI "\fIWrite a range between iterators to stream\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBRead stream\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<bool Byteswap = false> static bool \fBread\fP (std::istream &stream)"
+.br
+.RI "\fIRead nothing from stream\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false> static bool \fBread\fP (std::istream &stream, std::tuple<> &)"
+.br
+.RI "\fIRead an empty tuple from stream\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, typename Type > static bool \fBread\fP (std::istream &stream, Type &variable)"
+.br
+.RI "\fIRead a single variable from stream\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, typename Type , typename\&.\&.\&. Types> static bool \fBread\fP (std::istream &stream, Type &variable, Types &\&.\&.\&.variables)"
+.br
+.RI "\fIRead several variables from stream\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, typename Type , std::size_t Size> static bool \fBread\fP (std::istream &stream, std::array< Type, Size > &container)"
+.br
+.RI "\fIRead an array from stream\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, unsigned int Current = 0, typename\&.\&.\&. Types> static bool \fBread\fP (std::istream &stream, std::tuple< Types\&.\&.\&.> &container)"
+.br
+.RI "\fIRead a tuple from stream\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false> static bool \fBrread\fP (std::istream &stream, const std::nullptr_t=nullptr, const std::nullptr_t=nullptr)"
+.br
+.RI "\fIRead an empty range from stream\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, typename Type > static bool \fBrread\fP (std::istream &stream, Type *const first, Type *const last)"
+.br
+.RI "\fIRead a range between pointers from stream\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, typename Type , class  = typename std::enable_if<!std::is_pointer<Type>::value>::type> static bool \fBrread\fP (std::istream &stream, const Type &first, const Type &last, typename std::iterator_traits< Type >::iterator_category *=nullptr)"
+.br
+.RI "\fIRead a range between iterators from stream\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBWrite buffer\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<bool Byteswap = false> static char *& \fBwrite\fP (char *&buffer)"
+.br
+.RI "\fIWrite nothing to buffer\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false> static char *& \fBwrite\fP (char *&buffer, const std::tuple<> &)"
+.br
+.RI "\fIWrite an empty tuple to buffer\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, typename Type > static char *& \fBwrite\fP (char *&buffer, const Type &variable)"
+.br
+.RI "\fIWrite a single variable to buffer\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, typename Type , typename\&.\&.\&. Types> static char *& \fBwrite\fP (char *&buffer, const Type &variable, const Types &\&.\&.\&.variables)"
+.br
+.RI "\fIWrite several variables to buffer\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, typename Type , std::size_t Size> static char *& \fBwrite\fP (char *&buffer, const std::array< Type, Size > &container)"
+.br
+.RI "\fIWrite an array to buffer\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, unsigned int Current = 0, typename\&.\&.\&. Types> static char *& \fBwrite\fP (char *&buffer, const std::tuple< Types\&.\&.\&.> &container)"
+.br
+.RI "\fIWrite a tuple to buffer\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false> static char *& \fBrwrite\fP (char *&buffer, const std::nullptr_t=nullptr, const std::nullptr_t=nullptr)"
+.br
+.RI "\fIWrite an empty range to buffer\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, typename Type > static char *& \fBrwrite\fP (char *&buffer, const Type *const first, const Type *const last)"
+.br
+.RI "\fIWrite a range between pointers to buffer\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, typename Type , class  = typename std::enable_if<!std::is_pointer<Type>::value>::type> static char *& \fBrwrite\fP (char *&buffer, const Type &first, const Type &last, typename std::iterator_traits< Type >::iterator_category *=nullptr)"
+.br
+.RI "\fIWrite a range between iterators to buffer\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBRead buffer\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<bool Byteswap = false> static char *& \fBread\fP (char *&buffer)"
+.br
+.RI "\fIRead nothing from buffer\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false> static char *& \fBread\fP (char *&buffer, std::tuple<> &)"
+.br
+.RI "\fIRead an empty tuple from buffer\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, typename Type > static char *& \fBread\fP (char *&buffer, Type &variable)"
+.br
+.RI "\fIRead a single variable from buffer\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, typename Type , typename\&.\&.\&. Types> static char *& \fBread\fP (char *&buffer, Type &variable, Types &\&.\&.\&.variables)"
+.br
+.RI "\fIRead several variables from buffer\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, typename Type , std::size_t Size> static char *& \fBread\fP (char *&buffer, std::array< Type, Size > &container)"
+.br
+.RI "\fIRead an array from buffer\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, unsigned int Current = 0, typename\&.\&.\&. Types> static char *& \fBread\fP (char *&buffer, std::tuple< Types\&.\&.\&.> &container)"
+.br
+.RI "\fIRead a tuple from buffer\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false> static char *& \fBrread\fP (char *&buffer, const std::nullptr_t=nullptr, const std::nullptr_t=nullptr)"
+.br
+.RI "\fIRead an empty range from buffer\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, typename Type > static char *& \fBrread\fP (char *&buffer, Type *const first, Type *const last)"
+.br
+.RI "\fIRead a range between pointers from buffer\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, typename Type , class  = typename std::enable_if<!std::is_pointer<Type>::value>::type> static char *& \fBrread\fP (char *&buffer, const Type &first, const Type &last, typename std::iterator_traits< Type >::iterator_category *=nullptr)"
+.br
+.RI "\fIRead a range between iterators from buffer\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBNullification\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static unsigned int \fBnullify\fP ()"
+.br
+.RI "\fINullify nothing\&. \fP"
+.ti -1c
+.RI "static unsigned int \fBnullify\fP (std::tuple<> &)"
+.br
+.RI "\fINullify an empty tuple\&. \fP"
+.ti -1c
+.RI "template<typename Type > static unsigned int \fBnullify\fP (Type &variable)"
+.br
+.RI "\fINullify a single variable\&. \fP"
+.ti -1c
+.RI "template<typename Type , typename\&.\&.\&. Types> static unsigned int \fBnullify\fP (Type &variable, Types &\&.\&.\&.variables)"
+.br
+.RI "\fINullify several variables\&. \fP"
+.ti -1c
+.RI "template<typename Type , std::size_t Size> static unsigned int \fBnullify\fP (std::array< Type, Size > &container)"
+.br
+.RI "\fINullify an array\&. \fP"
+.ti -1c
+.RI "template<unsigned int Current = 0, typename\&.\&.\&. Types> static unsigned int \fBnullify\fP (std::tuple< Types\&.\&.\&.> &container)"
+.br
+.RI "\fINullify a tuple\&. \fP"
+.ti -1c
+.RI "static unsigned long long int \fBrnullify\fP (const std::nullptr_t=nullptr, const std::nullptr_t=nullptr)"
+.br
+.RI "\fINullify an empty range\&. \fP"
+.ti -1c
+.RI "template<typename Type > static unsigned long long int \fBrnullify\fP (Type *const first, Type *const last)"
+.br
+.RI "\fINullify a range between pointers\&. \fP"
+.ti -1c
+.RI "template<typename Type , class  = typename std::enable_if<!std::is_pointer<Type>::value>::type> static unsigned long long int \fBrnullify\fP (const Type &first, const Type &last, typename std::iterator_traits< Type >::iterator_category *=nullptr)"
+.br
+.RI "\fINullify a range between iterators\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBEqualization\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename Reference > static unsigned int \fBequalize\fP (const Reference &reference)"
+.br
+.RI "\fIEqualize nothing\&. \fP"
+.ti -1c
+.RI "template<typename Reference > static unsigned int \fBequalize\fP (const Reference &reference, std::tuple<> &)"
+.br
+.RI "\fIEqualize an empty tuple\&. \fP"
+.ti -1c
+.RI "template<typename Reference , typename Type > static unsigned int \fBequalize\fP (const Reference &reference, Type &variable)"
+.br
+.RI "\fIEqualize a single variable\&. \fP"
+.ti -1c
+.RI "template<typename Reference , typename Type , typename\&.\&.\&. Types> static unsigned int \fBequalize\fP (const Reference &reference, Type &variable, Types &\&.\&.\&.variables)"
+.br
+.RI "\fIEqualize several variables\&. \fP"
+.ti -1c
+.RI "template<typename Reference , typename Type , std::size_t Size> static unsigned int \fBequalize\fP (const Reference &reference, std::array< Type, Size > &container)"
+.br
+.RI "\fIEqualize an array\&. \fP"
+.ti -1c
+.RI "template<unsigned int Current = 0, typename Reference , typename\&.\&.\&. Types> static unsigned int \fBequalize\fP (const Reference &reference, std::tuple< Types\&.\&.\&.> &container)"
+.br
+.RI "\fIEqualize a tuple\&. \fP"
+.ti -1c
+.RI "template<typename Reference > static unsigned long long int \fBrequalize\fP (const Reference &reference, const std::nullptr_t=nullptr, const std::nullptr_t=nullptr)"
+.br
+.RI "\fIEqualize an empty range\&. \fP"
+.ti -1c
+.RI "template<typename Reference , typename Type > static unsigned long long int \fBrequalize\fP (const Reference &reference, Type *const first, Type *const last)"
+.br
+.RI "\fIEqualize a range between pointers\&. \fP"
+.ti -1c
+.RI "template<typename Reference , typename Type , class  = typename std::enable_if<!std::is_pointer<Type>::value>::type> static unsigned long long int \fBrequalize\fP (const Reference &reference, const Type &first, const Type &last, typename std::iterator_traits< Type >::iterator_category *=nullptr)"
+.br
+.RI "\fIEqualize a range between iterators\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBHexification\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<bool Byteswap = false, bool Uppercase = false> static std::string \fBhexify\fP ()"
+.br
+.RI "\fIConvert nothing to a hexadecimal string\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, bool Uppercase = false> static std::string \fBhexify\fP (const std::tuple<> &)"
+.br
+.RI "\fIConvert an empty tuple to a hexadecimal string\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, bool Uppercase = false, typename Type > static std::string \fBhexify\fP (const Type &variable)"
+.br
+.RI "\fIConvert a single variable to a hexadecimal string\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, bool Uppercase = false, typename Type , typename\&.\&.\&. Types> static std::string \fBhexify\fP (const Type &variable, const Types &\&.\&.\&.variables)"
+.br
+.RI "\fIConvert several variables to a hexadecimal string\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, bool Uppercase = false, typename Type , std::size_t Size> static std::string \fBhexify\fP (const std::array< Type, Size > &container)"
+.br
+.RI "\fIConvert an array to a hexadecimal string\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, bool Uppercase = false, unsigned int Current = 0, typename\&.\&.\&. Types> static std::string \fBhexify\fP (const std::tuple< Types\&.\&.\&.> &container)"
+.br
+.RI "\fIConvert a tuple to a hexadecimal string\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, bool Uppercase = false> static std::string \fBrhexify\fP (const std::nullptr_t=nullptr, const std::nullptr_t=nullptr, const std::string &separator=' ')"
+.br
+.RI "\fIConvert an empty range to a hexadecimal string\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, bool Uppercase = false, typename Type > static std::string \fBrhexify\fP (const Type *const first, const Type *const last, const std::string &separator=' ')"
+.br
+.RI "\fIConvert a range between pointers to a hexadecimal string\&. \fP"
+.ti -1c
+.RI "template<bool Byteswap = false, bool Uppercase = false, typename Type , class  = typename std::enable_if<!std::is_pointer<Type>::value>::type> static std::string \fBrhexify\fP (const Type &first, const Type &last, const std::string &separator=' ', typename std::iterator_traits< Type >::iterator_category *=nullptr)"
+.br
+.RI "\fIConvert a range between iterators to a hexadecimal string\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBStringification\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<unsigned int Base = 10, char Leading = char()> static std::string \fBstringify\fP ()"
+.br
+.RI "\fIConvert nothing to a string\&. \fP"
+.ti -1c
+.RI "template<unsigned int Base = 10, char Leading = char()> static std::string \fBstringify\fP (const std::tuple<> &)"
+.br
+.RI "\fIConvert an empty tuple to a string\&. \fP"
+.ti -1c
+.RI "template<unsigned int Base = 10, char Leading = char(), typename Type > static std::string \fBstringify\fP (const Type &variable)"
+.br
+.RI "\fIConvert a single variable to a string\&. \fP"
+.ti -1c
+.RI "template<unsigned int Base = 10, char Leading = char(), typename Type , typename\&.\&.\&. Types> static std::string \fBstringify\fP (const Type &variable, const Types &\&.\&.\&.variables)"
+.br
+.RI "\fIConvert several variables to a string\&. \fP"
+.ti -1c
+.RI "template<unsigned int Base = 10, char Leading = char(), typename Type , std::size_t Size> static std::string \fBstringify\fP (const std::array< Type, Size > &container)"
+.br
+.RI "\fIConvert an array to a string\&. \fP"
+.ti -1c
+.RI "template<unsigned int Base = 10, char Leading = char(), unsigned int Current = 0, typename\&.\&.\&. Types> static std::string \fBstringify\fP (const std::tuple< Types\&.\&.\&.> &container)"
+.br
+.RI "\fIConvert a tuple to a string\&. \fP"
+.ti -1c
+.RI "template<unsigned int Base = 10, char Leading = char()> static std::string \fBrstringify\fP (const std::nullptr_t=nullptr, const std::nullptr_t=nullptr, const std::string &separator=' ')"
+.br
+.RI "\fIConvert an empty range to a string\&. \fP"
+.ti -1c
+.RI "template<unsigned int Base = 10, char Leading = char(), typename Type > static std::string \fBrstringify\fP (const Type *const first, const Type *const last, const std::string &separator=' ')"
+.br
+.RI "\fIConvert a range between pointers to a string\&. \fP"
+.ti -1c
+.RI "template<unsigned int Base = 10, char Leading = char(), typename Type , class  = typename std::enable_if<!std::is_pointer<Type>::value>::type> static std::string \fBrstringify\fP (const Type &first, const Type &last, const std::string &separator=' ', typename std::iterator_traits< Type >::iterator_category *=nullptr)"
+.br
+.RI "\fIConvert a range between iterators to a string\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBPrint\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static bool \fBprint\fP (std::ostream &stream)"
+.br
+.RI "\fIPrint nothing to stream\&. \fP"
+.ti -1c
+.RI "static bool \fBprint\fP (std::ostream &stream, const std::tuple<> &)"
+.br
+.RI "\fIPrint an empty tuple to stream\&. \fP"
+.ti -1c
+.RI "template<typename Type > static bool \fBprint\fP (std::ostream &stream, const Type &variable)"
+.br
+.RI "\fIPrint a single variable to stream\&. \fP"
+.ti -1c
+.RI "template<typename Type , typename\&.\&.\&. Types> static bool \fBprint\fP (std::ostream &stream, const Type &variable, const Types &\&.\&.\&.variables)"
+.br
+.RI "\fIPrint several variables to stream\&. \fP"
+.ti -1c
+.RI "template<typename Type , std::size_t Size> static bool \fBprint\fP (std::ostream &stream, const std::array< Type, Size > &container)"
+.br
+.RI "\fIPrint an array to stream\&. \fP"
+.ti -1c
+.RI "template<unsigned int Current = 0, typename\&.\&.\&. Types> static bool \fBprint\fP (std::ostream &stream, const std::tuple< Types\&.\&.\&.> &container)"
+.br
+.RI "\fIPrint a tuple to stream\&. \fP"
+.ti -1c
+.RI "static bool \fBrprint\fP (std::ostream &stream, const std::nullptr_t=nullptr, const std::nullptr_t=nullptr)"
+.br
+.RI "\fIPrint an empty range to stream\&. \fP"
+.ti -1c
+.RI "template<typename Type > static bool \fBrprint\fP (std::ostream &stream, const Type *const first, const Type *const last)"
+.br
+.RI "\fIPrint a range between pointers to stream\&. \fP"
+.ti -1c
+.RI "template<typename Type , class  = typename std::enable_if<!std::is_pointer<Type>::value>::type> static bool \fBrprint\fP (std::ostream &stream, const Type &first, const Type &last, typename std::iterator_traits< Type >::iterator_category *=nullptr)"
+.br
+.RI "\fIPrint a range between iterators to stream\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBScan\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static bool \fBscan\fP (std::istream &stream)"
+.br
+.RI "\fIScan nothing from stream\&. \fP"
+.ti -1c
+.RI "static bool \fBscan\fP (std::istream &stream, std::tuple<> &)"
+.br
+.RI "\fIScan an empty tuple from stream\&. \fP"
+.ti -1c
+.RI "template<typename Type > static bool \fBscan\fP (std::istream &stream, Type &variable)"
+.br
+.RI "\fIScan a single variable from stream\&. \fP"
+.ti -1c
+.RI "template<typename Type , typename\&.\&.\&. Types> static bool \fBscan\fP (std::istream &stream, Type &variable, Types &\&.\&.\&.variables)"
+.br
+.RI "\fIScan several variables from stream\&. \fP"
+.ti -1c
+.RI "template<typename Type , std::size_t Size> static bool \fBscan\fP (std::istream &stream, std::array< Type, Size > &container)"
+.br
+.RI "\fIScan an array from stream\&. \fP"
+.ti -1c
+.RI "template<unsigned int Current = 0, typename\&.\&.\&. Types> static bool \fBscan\fP (std::istream &stream, std::tuple< Types\&.\&.\&.> &container)"
+.br
+.RI "\fIScan a tuple from stream\&. \fP"
+.ti -1c
+.RI "static bool \fBrscan\fP (std::istream &stream, const std::nullptr_t=nullptr, const std::nullptr_t=nullptr)"
+.br
+.RI "\fIScan an empty range from stream\&. \fP"
+.ti -1c
+.RI "template<typename Type > static bool \fBrscan\fP (std::istream &stream, Type *const first, Type *const last)"
+.br
+.RI "\fIScan a range between pointers from stream\&. \fP"
+.ti -1c
+.RI "template<typename Type , class  = typename std::enable_if<!std::is_pointer<Type>::value>::type> static bool \fBrscan\fP (std::istream &stream, const Type &first, const Type &last, typename std::iterator_traits< Type >::iterator_category *=nullptr)"
+.br
+.RI "\fIScan a range between iterators from stream\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+Set of basic operations on binary data related to IO\&. 
+
+Provides a wide range of overloaded utilities to handle and format data for reading and writing tasks : byteswap, size, extraction from tuples\&.\&.\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename Type > constexpr bool magrathea::DataHandler::array (const Type &)\fC [static]\fP"
+
+.PP
+Is not an array\&. Returns false as the passed argument is not a standard array\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Whether the argument is a standard array\&. 
+.RE
+.PP
+
+.SS "template<typename Type , std::size_t Size> constexpr bool magrathea::DataHandler::array (const std::array< Type, Size > &)\fC [static]\fP"
+
+.PP
+Is an array\&. Returns true as the passed argument is a standard array\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Whether the argument is a standard array\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr unsigned int magrathea::DataHandler::bytesize (const std::nullptr_t = \fCnullptr\fP)\fC [static]\fP"
+
+.PP
+Size in bytes of a single type\&. Computes the size in bytes of the passed type\&. The returned size is either the result of \fCsizeof()\fP or 0 if the type is void\&. Note that if the passed type is a templated type, like a tuple, the inner arguments are not extracted, and the result is simply the same as \fCsizeof()\fP \&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Size in bytes\&. 
+.RE
+.PP
+
+.SS "template<typename Type , typename\&.\&.\&. Types, class > constexpr unsigned int magrathea::DataHandler::bytesize ()\fC [static]\fP"
+
+.PP
+Size in bytes of a single type\&. Computes the size in bytes of the passed types\&. The returned size is the sum of the sizes of each type\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Size in bytes\&. 
+.RE
+.PP
+
+.SS "constexpr unsigned int magrathea::DataHandler::bytesize (const std::tuple<> &)\fC [static]\fP"
+
+.PP
+Size in bytes of an empty tuple\&. Function overload that does nothing\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Size in bytes\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr unsigned int magrathea::DataHandler::bytesize (const Type &variable)\fC [static]\fP"
+
+.PP
+Size in bytes of a single variable\&. Computes the size in bytes of the passed variable\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Variable type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvariable\fP Variable\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Size in bytes\&. 
+.RE
+.PP
+
+.SS "template<typename Type , typename\&.\&.\&. Types> constexpr unsigned int magrathea::DataHandler::bytesize (const Type &variable, const Types &\&.\&.\&.variables)\fC [static]\fP"
+
+.PP
+Size in bytes of several variables\&. Computes the sum of the size in bytes of the passed variables\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Variable type\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvariable\fP Variable\&. 
+.br
+\fIvariables\fP Variables\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Size in bytes\&. 
+.RE
+.PP
+
+.SS "template<typename Type , std::size_t Size> constexpr unsigned int magrathea::DataHandler::bytesize (const std::array< Type, Size > &container)\fC [static]\fP"
+
+.PP
+Size in bytes of an array\&. Computes the sum of the size in bytes of elements of the passed array\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Array type\&.) 
+.br
+\fISize\fP (Array size\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontainer\fP Array\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Size in bytes\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Current, typename\&.\&.\&. Types> constexpr unsigned int magrathea::DataHandler::bytesize (const std::tuple< Types\&.\&.\&.> &container)\fC [static]\fP"
+
+.PP
+Size in bytes of a tuple\&. Computes the sum of the size in bytes of elements of the passed tuple\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fICurrent\fP (Current level of recursion\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontainer\fP Tuple\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Size in bytes\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename\&.\&.\&. Types, class > unsigned int magrathea::DataHandler::byteswap (const Types &\&.\&.\&.)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Do not swap bytes\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Do not swap endianness if false\&. 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully byteswapped\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, class > unsigned int magrathea::DataHandler::byteswap ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Swap bytes of nothing\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness if true\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully byteswapped\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, class > unsigned int magrathea::DataHandler::byteswap (std::tuple<> &)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Swap bytes of an empty tuple\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness if true\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully byteswapped\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type, class > unsigned int magrathea::DataHandler::byteswap (Type &variable)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Swap bytes of a single variable\&. Inverts the order of bytes of the passed variable to change the endianness\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness if true\&. 
+.br
+\fIType\fP (Variable type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvariable\fP Variable\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully byteswapped\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type, typename\&.\&.\&. Types, class > unsigned int magrathea::DataHandler::byteswap (Type &variable, Types &\&.\&.\&.variables)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Swap bytes of several variables\&. Inverts the order of bytes of the passed variables to change the endianness\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness if true\&. 
+.br
+\fIType\fP (Variable type\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvariable\fP Variable\&. 
+.br
+\fIvariables\fP Variables\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully byteswapped\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type, std::size_t Size, class > unsigned int magrathea::DataHandler::byteswap (std::array< Type, Size > &container)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Swap bytes of an array\&. Inverts the order of bytes of each element of the passed array to change the endianness\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness if true\&. 
+.br
+\fIType\fP (Array type\&.) 
+.br
+\fISize\fP (Array size\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontainer\fP Array\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully byteswapped\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, unsigned int Current, typename\&.\&.\&. Types, class > unsigned int magrathea::DataHandler::byteswap (std::tuple< Types\&.\&.\&.> &container)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Swap bytes of a tuple\&. Inverts the order of bytes of each element of the passed tuple to change the endianness\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness if true\&. 
+.br
+\fICurrent\fP (Current level of recursion\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontainer\fP Tuple\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully byteswapped\&. 
+.RE
+.PP
+
+.SS "template<typename Reference > unsigned int magrathea::DataHandler::equalize (const Reference &reference)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Equalize nothing\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIReference\fP (Reference type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreference\fP Reference value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully set to the reference value\&. 
+.RE
+.PP
+
+.SS "template<typename Reference > unsigned int magrathea::DataHandler::equalize (const Reference &reference, std::tuple<> &)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Equalize an empty tuple\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIReference\fP (Reference type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreference\fP Reference value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully set to the reference value\&. 
+.RE
+.PP
+
+.SS "template<typename Reference , typename Type > unsigned int magrathea::DataHandler::equalize (const Reference &reference, Type &variable)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Equalize a single variable\&. Set the passed variable to the reference value\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIReference\fP (Reference type\&.) 
+.br
+\fIType\fP (Variable type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreference\fP Reference value\&. 
+.br
+\fIvariable\fP Variable\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully set to the reference value\&. 
+.RE
+.PP
+
+.SS "template<typename Reference , typename Type , typename\&.\&.\&. Types> unsigned int magrathea::DataHandler::equalize (const Reference &reference, Type &variable, Types &\&.\&.\&.variables)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Equalize several variables\&. Set the passed variables to the reference value\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIReference\fP (Reference type\&.) 
+.br
+\fIType\fP (Variable type\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreference\fP Reference value\&. 
+.br
+\fIvariable\fP Variable\&. 
+.br
+\fIvariables\fP Variables\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully set to the reference value\&. 
+.RE
+.PP
+
+.SS "template<typename Reference , typename Type , std::size_t Size> unsigned int magrathea::DataHandler::equalize (const Reference &reference, std::array< Type, Size > &container)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Equalize an array\&. Set each element of the passed array to the reference value\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIReference\fP (Reference type\&.) 
+.br
+\fIType\fP (Array type\&.) 
+.br
+\fISize\fP (Array size\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreference\fP Reference value\&. 
+.br
+\fIcontainer\fP Array\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully set to the reference value\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Current, typename Reference , typename\&.\&.\&. Types> unsigned int magrathea::DataHandler::equalize (const Reference &reference, std::tuple< Types\&.\&.\&.> &container)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Equalize a tuple\&. Set each element of the passed tuple to the reference value\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fICurrent\fP (Current level of recursion\&.) 
+.br
+\fIReference\fP (Reference type\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreference\fP Reference value\&. 
+.br
+\fIcontainer\fP Tuple\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully set to the reference value\&. 
+.RE
+.PP
+
+.SS "int magrathea::DataHandler::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBTimer\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, bool Uppercase> std::string magrathea::DataHandler::hexify ()\fC [static]\fP"
+
+.PP
+Convert nothing to a hexadecimal string\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap bytes of hexadecimal conversion if true\&. 
+.br
+\fIUppercase\fP Force uppercase letters for hexadecimal representation if true\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Hexadecimal representation of the input\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, bool Uppercase> std::string magrathea::DataHandler::hexify (const std::tuple<> &)\fC [static]\fP"
+
+.PP
+Convert an empty tuple to a hexadecimal string\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap bytes of hexadecimal conversion if true\&. 
+.br
+\fIUppercase\fP Force uppercase letters for hexadecimal representation if true\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Hexadecimal representation of the input\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, bool Uppercase, typename Type > std::string magrathea::DataHandler::hexify (const Type &variable)\fC [static]\fP"
+
+.PP
+Convert a single variable to a hexadecimal string\&. Converts bytes of the passed variable to their hexadecimal representation and returns the associated string\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap bytes of hexadecimal conversion if true\&. 
+.br
+\fIUppercase\fP Force uppercase letters for hexadecimal representation if true\&. 
+.br
+\fIType\fP (Variable type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvariable\fP Variable\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Hexadecimal representation of the input\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, bool Uppercase, typename Type , typename\&.\&.\&. Types> std::string magrathea::DataHandler::hexify (const Type &variable, const Types &\&.\&.\&.variables)\fC [static]\fP"
+
+.PP
+Convert several variables to a hexadecimal string\&. Converts bytes of the passed variables to their hexadecimal representation and returns the associated string\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap bytes of hexadecimal conversion if true\&. 
+.br
+\fIUppercase\fP Force uppercase letters for hexadecimal representation if true\&. 
+.br
+\fIType\fP (Variable type\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvariable\fP Variable\&. 
+.br
+\fIvariables\fP Variables\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Hexadecimal representation of the input\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, bool Uppercase, typename Type , std::size_t Size> std::string magrathea::DataHandler::hexify (const std::array< Type, Size > &container)\fC [static]\fP"
+
+.PP
+Convert an array to a hexadecimal string\&. Converts bytes of each element of the passed array to their hexadecimal representation and returns the associated string\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap bytes of hexadecimal conversion if true\&. 
+.br
+\fIUppercase\fP Force uppercase letters for hexadecimal representation if true\&. 
+.br
+\fIType\fP (Array type\&.) 
+.br
+\fISize\fP (Array size\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontainer\fP Array\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Hexadecimal representation of the input\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, bool Uppercase, unsigned int Current, typename\&.\&.\&. Types> std::string magrathea::DataHandler::hexify (const std::tuple< Types\&.\&.\&.> &container)\fC [static]\fP"
+
+.PP
+Convert a tuple to a hexadecimal string\&. Converts bytes of each element of the passed tuple to their hexadecimal representation and returns the associated string\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap bytes of hexadecimal conversion if true\&. 
+.br
+\fIUppercase\fP Force uppercase letters for hexadecimal representation if true\&. 
+.br
+\fICurrent\fP (Current level of recursion\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontainer\fP Tuple\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Hexadecimal representation of the input\&. 
+.RE
+.PP
+
+.SS "unsigned int magrathea::DataHandler::nullify ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Nullify nothing\&. Function overload that does nothing\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully set to zero\&. 
+.RE
+.PP
+
+.SS "unsigned int magrathea::DataHandler::nullify (std::tuple<> &)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Nullify an empty tuple\&. Function overload that does nothing\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully set to zero\&. 
+.RE
+.PP
+
+.SS "template<typename Type > unsigned int magrathea::DataHandler::nullify (Type &variable)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Nullify a single variable\&. Calls the constructor of the passed variable to nullify it\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Variable type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvariable\fP Variable\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully set to zero\&. 
+.RE
+.PP
+
+.SS "template<typename Type , typename\&.\&.\&. Types> unsigned int magrathea::DataHandler::nullify (Type &variable, Types &\&.\&.\&.variables)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Nullify several variables\&. Calls the constructor of the passed variables to nullify them\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Variable type\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvariable\fP Variable\&. 
+.br
+\fIvariables\fP Variables\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully set to zero\&. 
+.RE
+.PP
+
+.SS "template<typename Type , std::size_t Size> unsigned int magrathea::DataHandler::nullify (std::array< Type, Size > &container)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Nullify an array\&. Calls the constructor of each element of the passed array to nullify it\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Array type\&.) 
+.br
+\fISize\fP (Array size\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontainer\fP Array\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully set to zero\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Current, typename\&.\&.\&. Types> unsigned int magrathea::DataHandler::nullify (std::tuple< Types\&.\&.\&.> &container)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Nullify a tuple\&. Calls the constructor of each element of the passed tuple to nullify it\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fICurrent\fP (Current level of recursion\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontainer\fP Tuple\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully set to zero\&. 
+.RE
+.PP
+
+.SS "bool magrathea::DataHandler::print (std::ostream &stream)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Print nothing to stream\&. Function overload that does nothing\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBOutput\fP stream\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "bool magrathea::DataHandler::print (std::ostream &stream, const std::tuple<> &)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Print an empty tuple to stream\&. Function overload that does nothing\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBOutput\fP stream\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<typename Type > bool magrathea::DataHandler::print (std::ostream &stream, const Type &variable)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Print a single variable to stream\&. Prints the next variable to the stream\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Variable type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBOutput\fP stream\&. 
+.br
+\fIvariable\fP Variable\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<typename Type , typename\&.\&.\&. Types> bool magrathea::DataHandler::print (std::ostream &stream, const Type &variable, const Types &\&.\&.\&.variables)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Print several variables to stream\&. Prints the next variables to the stream\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Variable type\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBOutput\fP stream\&. 
+.br
+\fIvariable\fP Variable\&. 
+.br
+\fIvariables\fP Variables\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<typename Type , std::size_t Size> bool magrathea::DataHandler::print (std::ostream &stream, const std::array< Type, Size > &container)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Print an array to stream\&. Prints each element of the passed array to the stream\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Array type\&.) 
+.br
+\fISize\fP (Array size\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBOutput\fP stream\&. 
+.br
+\fIcontainer\fP Array\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Current, typename\&.\&.\&. Types> bool magrathea::DataHandler::print (std::ostream &stream, const std::tuple< Types\&.\&.\&.> &container)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Print a tuple to stream\&. Prints each element of the passed tuple to the stream\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fICurrent\fP (Current level of recursion\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBOutput\fP stream\&. 
+.br
+\fIcontainer\fP Tuple\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "unsigned long long int magrathea::DataHandler::rbytesize (const std::nullptr_t = \fCnullptr\fP, const std::nullptr_t = \fCnullptr\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Size in bytes of an empty range\&. Function overload that does nothing\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Size in bytes\&. 
+.RE
+.PP
+
+.SS "template<typename Type > unsigned long long int magrathea::DataHandler::rbytesize (const Type *constfirst, const Type *constlast)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Size in bytes of a range between pointers\&. Computes the sum of the size in bytes of the elements of the range between the passed pointers\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Pointer type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP Pointer to the beginning\&. 
+.br
+\fIlast\fP Pointer to the end\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Size in bytes\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class > unsigned long long int magrathea::DataHandler::rbytesize (const Type &first, const Type &last, typename std::iterator_traits< Type >::iterator_category * = \fCnullptr\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Size in bytes of a range between iterators\&. Computes the sum of the size in bytes of the range between the passed iterators\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Iterator type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP Iterator to the beginning\&. 
+.br
+\fIlast\fP Iterator to the end\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Size in bytes\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename\&.\&.\&. Types, class > unsigned int magrathea::DataHandler::rbyteswap (const Types &\&.\&.\&.)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Do not swap bytes of a range\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Do not swap endianness if false\&. 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully byteswapped\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, class > unsigned long long int magrathea::DataHandler::rbyteswap (const std::nullptr_t = \fCnullptr\fP, const std::nullptr_t = \fCnullptr\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Swap bytes of an empty range\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness if true\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully byteswapped\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type, class > unsigned long long int magrathea::DataHandler::rbyteswap (Type *constfirst, Type *constlast)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Swap bytes of a range between pointers\&. Inverts the order of bytes of each element of the range between the passed pointers\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness if true\&. 
+.br
+\fIType\fP (Pointer type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP Pointer to the beginning\&. 
+.br
+\fIlast\fP Pointer to the end\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully byteswapped\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type, class > unsigned long long int magrathea::DataHandler::rbyteswap (const Type &first, const Type &last, typename std::iterator_traits< Type >::iterator_category * = \fCnullptr\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Swap bytes of a range between iterators\&. Inverts the order of bytes of each element of the range between the passed iterators\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness if true\&. 
+.br
+\fIType\fP (Iterator type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP Iterator to the beginning\&. 
+.br
+\fIlast\fP Iterator to the end\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully byteswapped\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap> bool magrathea::DataHandler::read (std::istream &stream)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Read nothing from stream\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness after reading if true\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBInput\fP stream\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap> bool magrathea::DataHandler::read (std::istream &stream, std::tuple<> &)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Read an empty tuple from stream\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness after reading if true\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBInput\fP stream\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type > bool magrathea::DataHandler::read (std::istream &stream, Type &variable)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Read a single variable from stream\&. Reads the next variable from the stream and swap bytes if necessary\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness after reading if true\&. 
+.br
+\fIType\fP (Variable type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBInput\fP stream\&. 
+.br
+\fIvariable\fP Variable\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type , typename\&.\&.\&. Types> bool magrathea::DataHandler::read (std::istream &stream, Type &variable, Types &\&.\&.\&.variables)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Read several variables from stream\&. Reads the next variables from the stream and swap bytes if necessary\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness after reading if true\&. 
+.br
+\fIType\fP (Variable type\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBInput\fP stream\&. 
+.br
+\fIvariable\fP Variable\&. 
+.br
+\fIvariables\fP Variables\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type , std::size_t Size> bool magrathea::DataHandler::read (std::istream &stream, std::array< Type, Size > &container)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Read an array from stream\&. Reads each element of the passed array from the stream and swap bytes if necessary\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness after reading if true\&. 
+.br
+\fIType\fP (Array type\&.) 
+.br
+\fISize\fP (Array size\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBInput\fP stream\&. 
+.br
+\fIcontainer\fP Array\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, unsigned int Current, typename\&.\&.\&. Types> bool magrathea::DataHandler::read (std::istream &stream, std::tuple< Types\&.\&.\&.> &container)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Read a tuple from stream\&. Reads each element of the passed tuple from the stream and swap bytes if necessary\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness after reading if true\&. 
+.br
+\fICurrent\fP (Current level of recursion\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBInput\fP stream\&. 
+.br
+\fIcontainer\fP Tuple\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap> char *& magrathea::DataHandler::read (char *&buffer)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Read nothing from buffer\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness after reading if true\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP \fBInput\fP buffer\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the new position in the buffer\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap> char *& magrathea::DataHandler::read (char *&buffer, std::tuple<> &)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Read an empty tuple from buffer\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness after reading if true\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP \fBInput\fP buffer\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the new position in the buffer\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type > char *& magrathea::DataHandler::read (char *&buffer, Type &variable)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Read a single variable from buffer\&. Reads the next variable from the buffer and swap bytes if necessary\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness after reading if true\&. 
+.br
+\fIType\fP (Variable type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP \fBInput\fP buffer\&. 
+.br
+\fIvariable\fP Variable\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the new position in the buffer\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type , typename\&.\&.\&. Types> char *& magrathea::DataHandler::read (char *&buffer, Type &variable, Types &\&.\&.\&.variables)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Read several variables from buffer\&. Reads the next variables from the buffer and swap bytes if necessary\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness after reading if true\&. 
+.br
+\fIType\fP (Variable type\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP \fBInput\fP buffer\&. 
+.br
+\fIvariable\fP Variable\&. 
+.br
+\fIvariables\fP Variables\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the new position in the buffer\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type , std::size_t Size> char *& magrathea::DataHandler::read (char *&buffer, std::array< Type, Size > &container)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Read an array from buffer\&. Reads each element of the passed array from the buffer and swap bytes if necessary\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness after reading if true\&. 
+.br
+\fIType\fP (Array type\&.) 
+.br
+\fISize\fP (Array size\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP \fBInput\fP buffer\&. 
+.br
+\fIcontainer\fP Array\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the new position in the buffer\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, unsigned int Current, typename\&.\&.\&. Types> char *& magrathea::DataHandler::read (char *&buffer, std::tuple< Types\&.\&.\&.> &container)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Read a tuple from buffer\&. Reads each element of the passed tuple from the buffer and swap bytes if necessary\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness after reading if true\&. 
+.br
+\fICurrent\fP (Current level of recursion\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP \fBInput\fP buffer\&. 
+.br
+\fIcontainer\fP Tuple\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the new position in the buffer\&. 
+.RE
+.PP
+
+.SS "template<typename Reference > unsigned long long int magrathea::DataHandler::requalize (const Reference &reference, const std::nullptr_t = \fCnullptr\fP, const std::nullptr_t = \fCnullptr\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Equalize an empty range\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIReference\fP (Reference type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreference\fP Reference value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully set to the reference value\&. 
+.RE
+.PP
+
+.SS "template<typename Reference , typename Type > unsigned long long int magrathea::DataHandler::requalize (const Reference &reference, Type *constfirst, Type *constlast)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Equalize a range between pointers\&. Set each element of the range between the passed pointers to the reference value\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIReference\fP (Reference type\&.) 
+.br
+\fIType\fP (Pointer type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreference\fP Reference value\&. 
+.br
+\fIfirst\fP Pointer to the beginning\&. 
+.br
+\fIlast\fP Pointer to the end\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully set to the reference value\&. 
+.RE
+.PP
+
+.SS "template<typename Reference , typename Type , class > unsigned long long int magrathea::DataHandler::requalize (const Reference &reference, const Type &first, const Type &last, typename std::iterator_traits< Type >::iterator_category * = \fCnullptr\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Equalize a range between iterators\&. Set each element of the range between the passed iterators to the reference value\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIReference\fP (Reference type\&.) 
+.br
+\fIType\fP (Iterator type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreference\fP Reference value\&. 
+.br
+\fIfirst\fP Iterator to the beginning\&. 
+.br
+\fIlast\fP Iterator to the end\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully set to the reference value\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, bool Uppercase> std::string magrathea::DataHandler::rhexify (const std::nullptr_t = \fCnullptr\fP, const std::nullptr_t = \fCnullptr\fP, const std::string &separator = \fC' '\fP)\fC [static]\fP"
+
+.PP
+Convert an empty range to a hexadecimal string\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap bytes of hexadecimal conversion if true\&. 
+.br
+\fIUppercase\fP Force uppercase letters for hexadecimal representation if true\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIseparator\fP String used as a separator between elements\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Hexadecimal representation of the input\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, bool Uppercase, typename Type > std::string magrathea::DataHandler::rhexify (const Type *constfirst, const Type *constlast, const std::string &separator = \fC' '\fP)\fC [static]\fP"
+
+.PP
+Convert a range between pointers to a hexadecimal string\&. Converts bytes of each element of the range between the passed pointers to their hexadecimal representation and returns the associated string\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap bytes of hexadecimal conversion if true\&. 
+.br
+\fIUppercase\fP Force uppercase letters for hexadecimal representation if true\&. 
+.br
+\fIType\fP (Pointer type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP Pointer to the beginning\&. 
+.br
+\fIlast\fP Pointer to the end\&. 
+.br
+\fIseparator\fP String used as a separator between elements\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Hexadecimal representation of the input\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, bool Uppercase, typename Type , class > std::string magrathea::DataHandler::rhexify (const Type &first, const Type &last, const std::string &separator = \fC' '\fP, typename std::iterator_traits< Type >::iterator_category * = \fCnullptr\fP)\fC [static]\fP"
+
+.PP
+Convert a range between iterators to a hexadecimal string\&. Converts bytes of each element of the range between the passed iterators to their hexadecimal representation and returns the associated string\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap bytes of hexadecimal conversion if true\&. 
+.br
+\fIUppercase\fP Force uppercase letters for hexadecimal representation if true\&. 
+.br
+\fIType\fP (Iterator type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP Iterator to the beginning\&. 
+.br
+\fIlast\fP Iterator to the end\&. 
+.br
+\fIseparator\fP String used as a separator between elements\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Hexadecimal representation of the input\&. 
+.RE
+.PP
+
+.SS "unsigned long long int magrathea::DataHandler::rnullify (const std::nullptr_t = \fCnullptr\fP, const std::nullptr_t = \fCnullptr\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Nullify an empty range\&. Function overload that does nothing\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully set to zero\&. 
+.RE
+.PP
+
+.SS "template<typename Type > unsigned long long int magrathea::DataHandler::rnullify (Type *constfirst, Type *constlast)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Nullify a range between pointers\&. Calls the constructor of each element of the range between the passed pointers\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Pointer type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP Pointer to the beginning\&. 
+.br
+\fIlast\fP Pointer to the end\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully set to zero\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class > unsigned long long int magrathea::DataHandler::rnullify (const Type &first, const Type &last, typename std::iterator_traits< Type >::iterator_category * = \fCnullptr\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Nullify a range between iterators\&. Calls the constructor of each element of the range between the passed iterators\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Iterator type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP Iterator to the beginning\&. 
+.br
+\fIlast\fP Iterator to the end\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements successfully set to zero\&. 
+.RE
+.PP
+
+.SS "bool magrathea::DataHandler::rprint (std::ostream &stream, const std::nullptr_t = \fCnullptr\fP, const std::nullptr_t = \fCnullptr\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Print an empty range to stream\&. Function overload that does nothing\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBOutput\fP stream\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<typename Type > bool magrathea::DataHandler::rprint (std::ostream &stream, const Type *constfirst, const Type *constlast)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Print a range between pointers to stream\&. Prints each element of the range between the passed pointers to the stream\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Pointer type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBOutput\fP stream\&. 
+.br
+\fIfirst\fP Pointer to the beginning\&. 
+.br
+\fIlast\fP Pointer to the end\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class > bool magrathea::DataHandler::rprint (std::ostream &stream, const Type &first, const Type &last, typename std::iterator_traits< Type >::iterator_category * = \fCnullptr\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Print a range between iterators to stream\&. Prints each element of the range between the passed iterators to the stream\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Iterator type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBOutput\fP stream\&. 
+.br
+\fIfirst\fP Iterator to the beginning\&. 
+.br
+\fIlast\fP Iterator to the end\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap> bool magrathea::DataHandler::rread (std::istream &stream, const std::nullptr_t = \fCnullptr\fP, const std::nullptr_t = \fCnullptr\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Read an empty range from stream\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness after reading if true\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBInput\fP stream\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type > bool magrathea::DataHandler::rread (std::istream &stream, Type *constfirst, Type *constlast)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Read a range between pointers from stream\&. Reads each element of the range between the passed pointers from the stream and swap bytes if necessary\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness after reading if true\&. 
+.br
+\fIType\fP (Pointer type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBInput\fP stream\&. 
+.br
+\fIfirst\fP Pointer to the beginning\&. 
+.br
+\fIlast\fP Pointer to the end\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type , class > bool magrathea::DataHandler::rread (std::istream &stream, const Type &first, const Type &last, typename std::iterator_traits< Type >::iterator_category * = \fCnullptr\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Read a range between iterators from stream\&. Reads each element of the range between the passed iterators from the stream and swap bytes if necessary\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness after reading if true\&. 
+.br
+\fIType\fP (Iterator type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBInput\fP stream\&. 
+.br
+\fIfirst\fP Iterator to the beginning\&. 
+.br
+\fIlast\fP Iterator to the end\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap> char *& magrathea::DataHandler::rread (char *&buffer, const std::nullptr_t = \fCnullptr\fP, const std::nullptr_t = \fCnullptr\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Read an empty range from buffer\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness after reading if true\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP \fBInput\fP buffer\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the new position in the buffer\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type > char *& magrathea::DataHandler::rread (char *&buffer, Type *constfirst, Type *constlast)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Read a range between pointers from buffer\&. Reads each element of the range between the passed pointers from the buffer and swap bytes if necessary\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness after reading if true\&. 
+.br
+\fIType\fP (Pointer type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP \fBInput\fP buffer\&. 
+.br
+\fIfirst\fP Pointer to the beginning\&. 
+.br
+\fIlast\fP Pointer to the end\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the new position in the buffer\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type , class > char *& magrathea::DataHandler::rread (char *&buffer, const Type &first, const Type &last, typename std::iterator_traits< Type >::iterator_category * = \fCnullptr\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Read a range between iterators from buffer\&. Reads each element of the range between the passed iterators from the buffer and swap bytes if necessary\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness after reading if true\&. 
+.br
+\fIType\fP (Iterator type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP \fBInput\fP buffer\&. 
+.br
+\fIfirst\fP Iterator to the beginning\&. 
+.br
+\fIlast\fP Iterator to the end\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the new position in the buffer\&. 
+.RE
+.PP
+
+.SS "bool magrathea::DataHandler::rscan (std::istream &stream, const std::nullptr_t = \fCnullptr\fP, const std::nullptr_t = \fCnullptr\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Scan an empty range from stream\&. Function overload that does nothing\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBInput\fP stream\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<typename Type > bool magrathea::DataHandler::rscan (std::istream &stream, Type *constfirst, Type *constlast)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Scan a range between pointers from stream\&. Scans each element of the range between the passed pointers from the stream\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Pointer type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBInput\fP stream\&. 
+.br
+\fIfirst\fP Pointer to the beginning\&. 
+.br
+\fIlast\fP Pointer to the end\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class > bool magrathea::DataHandler::rscan (std::istream &stream, const Type &first, const Type &last, typename std::iterator_traits< Type >::iterator_category * = \fCnullptr\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Scan a range between iterators from stream\&. Scans each element of the range between the passed iterators from the stream\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Iterator type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBInput\fP stream\&. 
+.br
+\fIfirst\fP Iterator to the beginning\&. 
+.br
+\fIlast\fP Iterator to the end\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "unsigned long long int magrathea::DataHandler::rsize (const std::nullptr_t = \fCnullptr\fP, const std::nullptr_t = \fCnullptr\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Number of elements of an empty range\&. Function overload that does nothing\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements\&. 
+.RE
+.PP
+
+.SS "template<typename Type > unsigned long long int magrathea::DataHandler::rsize (const Type *constfirst, const Type *constlast)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Number of elements of a range between pointers\&. Computes the number of elements of the range between the passed pointers\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Pointer type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP Pointer to the beginning\&. 
+.br
+\fIlast\fP Pointer to the end\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements\&. 
+.RE
+.PP
+
+.SS "template<typename Type , class > unsigned long long int magrathea::DataHandler::rsize (const Type &first, const Type &last, typename std::iterator_traits< Type >::iterator_category * = \fCnullptr\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Number of elements of a range between iterators\&. Computes the number of elements of the range between the passed iterators\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Iterator type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP Iterator to the beginning\&. 
+.br
+\fIlast\fP Iterator to the end\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Base, char Leading> std::string magrathea::DataHandler::rstringify (const std::nullptr_t = \fCnullptr\fP, const std::nullptr_t = \fCnullptr\fP, const std::string &separator = \fC' '\fP)\fC [static]\fP"
+
+.PP
+Convert an empty range to a string\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIBase\fP Base representation for integers : 2, 8, 10 or 16\&. 
+.br
+\fILeading\fP Leading character for integers : 0, 9-13 or 32-126\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIseparator\fP String used as a separator between elements\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+String conversion of arguments\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Base, char Leading, typename Type > std::string magrathea::DataHandler::rstringify (const Type *constfirst, const Type *constlast, const std::string &separator = \fC' '\fP)\fC [static]\fP"
+
+.PP
+Convert a range between pointers to a string\&. Converts each element of the range between the passed pointers to a string\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIBase\fP Base representation for integers : 2, 8, 10 or 16\&. 
+.br
+\fILeading\fP Leading character for integers : 0, 9-13 or 32-126\&. 
+.br
+\fIType\fP (Pointer type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP Pointer to the beginning\&. 
+.br
+\fIlast\fP Pointer to the end\&. 
+.br
+\fIseparator\fP String used as a separator between elements\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+String conversion of arguments\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Base, char Leading, typename Type , class > std::string magrathea::DataHandler::rstringify (const Type &first, const Type &last, const std::string &separator = \fC' '\fP, typename std::iterator_traits< Type >::iterator_category * = \fCnullptr\fP)\fC [static]\fP"
+
+.PP
+Convert a range between iterators to a string\&. Converts each element of the range between the passed iterators to a string\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIBase\fP Base representation for integers : 2, 8, 10 or 16\&. 
+.br
+\fILeading\fP Leading character for integers : 0, 9-13 or 32-126\&. 
+.br
+\fIType\fP (Iterator type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP Iterator to the beginning\&. 
+.br
+\fIlast\fP Iterator to the end\&. 
+.br
+\fIseparator\fP String used as a separator between elements\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+String conversion of arguments\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap> bool magrathea::DataHandler::rwrite (std::ostream &stream, const std::nullptr_t = \fCnullptr\fP, const std::nullptr_t = \fCnullptr\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Write an empty range to stream\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness for writing if true\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBOutput\fP stream\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type > bool magrathea::DataHandler::rwrite (std::ostream &stream, const Type *constfirst, const Type *constlast)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Write a range between pointers to stream\&. Writes each element of the range between the passed pointers to the stream and swap bytes if necessary\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness for writing if true\&. 
+.br
+\fIType\fP (Pointer type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBOutput\fP stream\&. 
+.br
+\fIfirst\fP Pointer to the beginning\&. 
+.br
+\fIlast\fP Pointer to the end\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type , class > bool magrathea::DataHandler::rwrite (std::ostream &stream, const Type &first, const Type &last, typename std::iterator_traits< Type >::iterator_category * = \fCnullptr\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Write a range between iterators to stream\&. Writes each element of the range between the passed iterators to the stream and swap bytes if necessary\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness for writing if true\&. 
+.br
+\fIType\fP (Iterator type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBOutput\fP stream\&. 
+.br
+\fIfirst\fP Iterator to the beginning\&. 
+.br
+\fIlast\fP Iterator to the end\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap> char *& magrathea::DataHandler::rwrite (char *&buffer, const std::nullptr_t = \fCnullptr\fP, const std::nullptr_t = \fCnullptr\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Write an empty range to buffer\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness for writing if true\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP \fBOutput\fP buffer\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the new position in the buffer\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type > char *& magrathea::DataHandler::rwrite (char *&buffer, const Type *constfirst, const Type *constlast)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Write a range between pointers to buffer\&. Writes each element of the range between the passed pointers to the buffer and swap bytes if necessary\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness for writing if true\&. 
+.br
+\fIType\fP (Pointer type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP \fBOutput\fP buffer\&. 
+.br
+\fIfirst\fP Pointer to the beginning\&. 
+.br
+\fIlast\fP Pointer to the end\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the new position in the buffer\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type , class > char *& magrathea::DataHandler::rwrite (char *&buffer, const Type &first, const Type &last, typename std::iterator_traits< Type >::iterator_category * = \fCnullptr\fP)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Write a range between iterators to buffer\&. Writes each element of the range between the passed iterators to the buffer and swap bytes if necessary\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness for writing if true\&. 
+.br
+\fIType\fP (Iterator type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP \fBOutput\fP buffer\&. 
+.br
+\fIfirst\fP Iterator to the beginning\&. 
+.br
+\fIlast\fP Iterator to the end\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the new position in the buffer\&. 
+.RE
+.PP
+
+.SS "bool magrathea::DataHandler::scan (std::istream &stream)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Scan nothing from stream\&. Function overload that does nothing\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBInput\fP stream\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "bool magrathea::DataHandler::scan (std::istream &stream, std::tuple<> &)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Scan an empty tuple from stream\&. Function overload that does nothing\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBInput\fP stream\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<typename Type > bool magrathea::DataHandler::scan (std::istream &stream, Type &variable)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Scan a single variable from stream\&. Scans the next variable from the stream\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Variable type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBInput\fP stream\&. 
+.br
+\fIvariable\fP Variable\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<typename Type , typename\&.\&.\&. Types> bool magrathea::DataHandler::scan (std::istream &stream, Type &variable, Types &\&.\&.\&.variables)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Scan several variables from stream\&. Scans the next variables from the stream\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Variable type\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBInput\fP stream\&. 
+.br
+\fIvariable\fP Variable\&. 
+.br
+\fIvariables\fP Variables\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<typename Type , std::size_t Size> bool magrathea::DataHandler::scan (std::istream &stream, std::array< Type, Size > &container)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Scan an array from stream\&. Scans each element of the passed array from the stream\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Array type\&.) 
+.br
+\fISize\fP (Array size\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBInput\fP stream\&. 
+.br
+\fIcontainer\fP Array\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Current, typename\&.\&.\&. Types> bool magrathea::DataHandler::scan (std::istream &stream, std::tuple< Types\&.\&.\&.> &container)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Scan a tuple from stream\&. Scans each element of the passed tuple from the stream\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fICurrent\fP (Current level of recursion\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBInput\fP stream\&. 
+.br
+\fIcontainer\fP Tuple\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<typename\&.\&.\&. Types> constexpr unsigned int magrathea::DataHandler::size ()\fC [static]\fP"
+
+.PP
+Number of elements of several types\&. Computes the number of elements of the passed types\&. Note that if the passed type is a templated type, like a tuple, the inner arguments are not extracted, and the result is simply the same as \fCsizeof\&.\&.\&.()\fP \&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements\&. 
+.RE
+.PP
+
+.SS "constexpr unsigned int magrathea::DataHandler::size (const std::tuple<> &)\fC [static]\fP"
+
+.PP
+Number of elements of an empty tuple\&. Function overload that does nothing\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr unsigned int magrathea::DataHandler::size (const Type &variable)\fC [static]\fP"
+
+.PP
+Number of elements of a single variable\&. Computes the number of elements of the passed variable\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Variable type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvariable\fP Variable\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements\&. 
+.RE
+.PP
+
+.SS "template<typename Type , typename\&.\&.\&. Types> constexpr unsigned int magrathea::DataHandler::size (const Type &variable, const Types &\&.\&.\&.variables)\fC [static]\fP"
+
+.PP
+Number of elements of several variables\&. Computes the number of elements of the passed variables\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Variable type\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvariable\fP Variable\&. 
+.br
+\fIvariables\fP Variables\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements\&. 
+.RE
+.PP
+
+.SS "template<typename Type , std::size_t Size> constexpr unsigned int magrathea::DataHandler::size (const std::array< Type, Size > &container)\fC [static]\fP"
+
+.PP
+Number of elements of an array\&. Computes the number of elements of the passed array\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIType\fP (Array type\&.) 
+.br
+\fISize\fP (Array size\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontainer\fP Array\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Current, typename\&.\&.\&. Types> constexpr unsigned int magrathea::DataHandler::size (const std::tuple< Types\&.\&.\&.> &container)\fC [static]\fP"
+
+.PP
+Number of elements of a tuple\&. Computes the number of elements of the passed tuple\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fICurrent\fP (Current level of recursion\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontainer\fP Tuple\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of elements\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Base, char Leading> std::string magrathea::DataHandler::stringify ()\fC [static]\fP"
+
+.PP
+Convert nothing to a string\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIBase\fP Base representation for integers : 2, 8, 10 or 16\&. 
+.br
+\fILeading\fP Leading character for integers : 0, 9-13 or 32-126\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+String conversion of arguments\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Base, char Leading> std::string magrathea::DataHandler::stringify (const std::tuple<> &)\fC [static]\fP"
+
+.PP
+Convert an empty tuple to a string\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIBase\fP Base representation for integers : 2, 8, 10 or 16\&. 
+.br
+\fILeading\fP Leading character for integers : 0, 9-13 or 32-126\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+String conversion of arguments\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Base, char Leading, typename Type > std::string magrathea::DataHandler::stringify (const Type &variable)\fC [static]\fP"
+
+.PP
+Convert a single variable to a string\&. Converts the passed variable to a string\&. The base of conversion can be specified for integral numbers, and it is possible to fill-in the result with leading characters\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIBase\fP Base representation for integers : 2, 8, 10 or 16\&. 
+.br
+\fILeading\fP Leading character for integers : 0, 9-13 or 32-126\&. 
+.br
+\fIType\fP (Variable type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvariable\fP Variable\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+String conversion of arguments\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Base, char Leading, typename Type , typename\&.\&.\&. Types> std::string magrathea::DataHandler::stringify (const Type &variable, const Types &\&.\&.\&.variables)\fC [static]\fP"
+
+.PP
+Convert several variables to a string\&. Converts the passed variables to a string\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIBase\fP Base representation for integers : 2, 8, 10 or 16\&. 
+.br
+\fILeading\fP Leading character for integers : 0, 9-13 or 32-126\&. 
+.br
+\fIType\fP (Variable type\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvariable\fP Variable\&. 
+.br
+\fIvariables\fP Variables\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+String conversion of arguments\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Base, char Leading, typename Type , std::size_t Size> std::string magrathea::DataHandler::stringify (const std::array< Type, Size > &container)\fC [static]\fP"
+
+.PP
+Convert an array to a string\&. Converts each element of the passed array to a string\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIBase\fP Base representation for integers : 2, 8, 10 or 16\&. 
+.br
+\fILeading\fP Leading character for integers : 0, 9-13 or 32-126\&. 
+.br
+\fIType\fP (Array type\&.) 
+.br
+\fISize\fP (Array size\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontainer\fP Array\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+String conversion of arguments\&. 
+.RE
+.PP
+
+.SS "template<unsigned int Base, char Leading, unsigned int Current, typename\&.\&.\&. Types> std::string magrathea::DataHandler::stringify (const std::tuple< Types\&.\&.\&.> &container)\fC [static]\fP"
+
+.PP
+Convert a tuple to a string\&. Converts each element of the passed tuple to a string\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIBase\fP Base representation for integers : 2, 8, 10 or 16\&. 
+.br
+\fILeading\fP Leading character for integers : 0, 9-13 or 32-126\&. 
+.br
+\fICurrent\fP (Current level of recursion\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontainer\fP Tuple\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+String conversion of arguments\&. 
+.RE
+.PP
+
+.SS "template<typename Type > constexpr bool magrathea::DataHandler::tuple (const Type &)\fC [static]\fP"
+
+.PP
+Is not a tuple\&. Returns false as the passed argument is not a standard tuple\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Whether the argument is a standard tuple\&. 
+.RE
+.PP
+
+.SS "template<typename\&.\&.\&. Types> constexpr bool magrathea::DataHandler::tuple (const std::tuple< Types\&.\&.\&.> &)\fC [static]\fP"
+
+.PP
+Is a tuple\&. Returns true as the passed argument is a standard tuple\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Whether the argument is a standard tuple\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap> bool magrathea::DataHandler::write (std::ostream &stream)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Write nothing to stream\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness for writing if true\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBOutput\fP stream\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap> bool magrathea::DataHandler::write (std::ostream &stream, const std::tuple<> &)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Write an empty tuple to stream\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness for writing if true\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBOutput\fP stream\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type > bool magrathea::DataHandler::write (std::ostream &stream, const Type &variable)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Write a single variable to stream\&. Writes the next variable to the stream and swap bytes if necessary\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness for writing if true\&. 
+.br
+\fIType\fP (Variable type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBOutput\fP stream\&. 
+.br
+\fIvariable\fP Variable\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type , typename\&.\&.\&. Types> bool magrathea::DataHandler::write (std::ostream &stream, const Type &variable, const Types &\&.\&.\&.variables)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Write several variables to stream\&. Writes the next variables to the stream and swap bytes if necessary\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness for writing if true\&. 
+.br
+\fIType\fP (Variable type\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBOutput\fP stream\&. 
+.br
+\fIvariable\fP Variable\&. 
+.br
+\fIvariables\fP Variables\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type , std::size_t Size> bool magrathea::DataHandler::write (std::ostream &stream, const std::array< Type, Size > &container)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Write an array to stream\&. Writes each element of the passed array to the stream and swap bytes if necessary\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness for writing if true\&. 
+.br
+\fIType\fP (Array type\&.) 
+.br
+\fISize\fP (Array size\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBOutput\fP stream\&. 
+.br
+\fIcontainer\fP Array\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, unsigned int Current, typename\&.\&.\&. Types> bool magrathea::DataHandler::write (std::ostream &stream, const std::tuple< Types\&.\&.\&.> &container)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Write a tuple to stream\&. Writes each element of the passed tuple to the stream and swap bytes if necessary\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness for writing if true\&. 
+.br
+\fICurrent\fP (Current level of recursion\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP \fBOutput\fP stream\&. 
+.br
+\fIcontainer\fP Tuple\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the stream has no failure, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap> char *& magrathea::DataHandler::write (char *&buffer)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Write nothing to buffer\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness for writing if true\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP \fBOutput\fP buffer\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the new position in the buffer\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap> char *& magrathea::DataHandler::write (char *&buffer, const std::tuple<> &)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Write an empty tuple to buffer\&. Function overload that does nothing\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness for writing if true\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP \fBOutput\fP buffer\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the new position in the buffer\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type > char *& magrathea::DataHandler::write (char *&buffer, const Type &variable)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Write a single variable to buffer\&. Writes the next variable to the buffer and swap bytes if necessary\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness for writing if true\&. 
+.br
+\fIType\fP (Variable type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP \fBOutput\fP buffer\&. 
+.br
+\fIvariable\fP Variable\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the new position in the buffer\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type , typename\&.\&.\&. Types> char *& magrathea::DataHandler::write (char *&buffer, const Type &variable, const Types &\&.\&.\&.variables)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Write several variables to buffer\&. Writes the next variables to the buffer and swap bytes if necessary\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness for writing if true\&. 
+.br
+\fIType\fP (Variable type\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP \fBOutput\fP buffer\&. 
+.br
+\fIvariable\fP Variable\&. 
+.br
+\fIvariables\fP Variables\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the new position in the buffer\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, typename Type , std::size_t Size> char *& magrathea::DataHandler::write (char *&buffer, const std::array< Type, Size > &container)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Write an array to buffer\&. Writes each element of the passed array to the buffer and swap bytes if necessary\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness for writing if true\&. 
+.br
+\fIType\fP (Array type\&.) 
+.br
+\fISize\fP (Array size\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP \fBOutput\fP buffer\&. 
+.br
+\fIcontainer\fP Array\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the new position in the buffer\&. 
+.RE
+.PP
+
+.SS "template<bool Byteswap, unsigned int Current, typename\&.\&.\&. Types> char *& magrathea::DataHandler::write (char *&buffer, const std::tuple< Types\&.\&.\&.> &container)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Write a tuple to buffer\&. Writes each element of the passed tuple to the buffer and swap bytes if necessary\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIByteswap\fP Swap endianness for writing if true\&. 
+.br
+\fICurrent\fP (Current level of recursion\&.) 
+.br
+\fITypes\fP (Variadic types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP \fBOutput\fP buffer\&. 
+.br
+\fIcontainer\fP Tuple\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the new position in the buffer\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

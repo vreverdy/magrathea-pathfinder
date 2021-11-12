@@ -1,0 +1,841 @@
+\hypertarget{exceptionmagrathea_1_1DataModel}{\section{magrathea\-:\-:Data\-Model Exception Reference}
+\label{exceptionmagrathea_1_1DataModel}\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}}
+}
+
+
+Management of fundamental types representation.  
+
+
+
+
+{\ttfamily \#include $<$datamodel.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Lifecycle}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{exceptionmagrathea_1_1DataModel_ac94861dfefb3ad45c592ad61e73307a0}{Data\-Model} (const unsigned long long int source=0)
+\begin{DoxyCompactList}\small\item\em Explicit value constructor. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1DataModel_a23d5a4932ec97532cfd0ac404d5ca038}{Data\-Model} (const bool big, const bool twos, const bool fieee754, const bool dieee754, const bool ldieee754, const unsigned int psize, const unsigned int bsize, const unsigned int csize, const unsigned int sisize, const unsigned int isize, const unsigned int lisize, const unsigned int llisize, const unsigned int fsize, const unsigned int dsize, const unsigned int ldsize)
+\begin{DoxyCompactList}\small\item\em Explicit detailed constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Operators}\par
+\begin{DoxyCompactItemize}
+\item 
+unsigned long long int \hyperlink{exceptionmagrathea_1_1DataModel_a241087e5a976e940b1a9ae44c5129e02}{operator()} ()
+\begin{DoxyCompactList}\small\item\em Access operator. \end{DoxyCompactList}\item 
+bool \hyperlink{exceptionmagrathea_1_1DataModel_a4500d9d456de747c4647a58059587e15}{operator==} (const \hyperlink{exceptionmagrathea_1_1DataModel}{Data\-Model} \&rhs)
+\begin{DoxyCompactList}\small\item\em Equal to comparison. \end{DoxyCompactList}\item 
+bool \hyperlink{exceptionmagrathea_1_1DataModel_ab08bda2cc90b157d37b8e8e862d53d3a}{operator!=} (const \hyperlink{exceptionmagrathea_1_1DataModel}{Data\-Model} \&rhs)
+\begin{DoxyCompactList}\small\item\em Not equal to comparison. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Assignment}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{exceptionmagrathea_1_1DataModel}{Data\-Model} \& \hyperlink{exceptionmagrathea_1_1DataModel_a21712d7526ced1fe1798c322abe68700}{assign} (const \hyperlink{exceptionmagrathea_1_1DataModel}{Data\-Model} \&source)
+\begin{DoxyCompactList}\small\item\em Copy assignment. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1DataModel}{Data\-Model} \& \hyperlink{exceptionmagrathea_1_1DataModel_a24cec68e6e74ef2416f9b43f4b3f7391}{assign} (const unsigned long long int source=0)
+\begin{DoxyCompactList}\small\item\em Value assignment. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1DataModel}{Data\-Model} \& \hyperlink{exceptionmagrathea_1_1DataModel_afffe5054115091f2670e3f00f903333e}{assign} (const bool big, const bool twos, const bool fieee754, const bool dieee754, const bool ldieee754, const unsigned int psize, const unsigned int bsize, const unsigned int csize, const unsigned int sisize, const unsigned int isize, const unsigned int lisize, const unsigned int llisize, const unsigned int fsize, const unsigned int dsize, const unsigned int ldsize)
+\begin{DoxyCompactList}\small\item\em Detailed assignment. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Management}\par
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \hyperlink{exceptionmagrathea_1_1DataModel_a41f5039949948165f96ffb81d5cdc65d}{size} () const 
+\begin{DoxyCompactList}\small\item\em Get the size of the code. \end{DoxyCompactList}\item 
+const unsigned long long int \& \hyperlink{exceptionmagrathea_1_1DataModel_acfe055f888655546b9bc7e876a01b5d8}{data} () const 
+\begin{DoxyCompactList}\small\item\em Access data. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1DataModel}{Data\-Model} \& \hyperlink{exceptionmagrathea_1_1DataModel_aaa411894243b0fca04e1f6439498bbc6}{clear} ()
+\begin{DoxyCompactList}\small\item\em Clear code. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1DataModel}{Data\-Model} \hyperlink{exceptionmagrathea_1_1DataModel_a43e322632113d3899e4d206781e8e8c9}{copy} () const 
+\begin{DoxyCompactList}\small\item\em Copy. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type  = Data\-Model$>$ }\\Type \hyperlink{exceptionmagrathea_1_1DataModel_a7caed4e9f904de1305501774544b89fd}{cast} () const 
+\begin{DoxyCompactList}\small\item\em Cast. \end{DoxyCompactList}\item 
+bool \hyperlink{exceptionmagrathea_1_1DataModel_a0742b7941dd3fef82eaaabf27b99844b}{check} ()
+\begin{DoxyCompactList}\small\item\em Check if standard. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Getters}\par
+\begin{DoxyCompactItemize}
+\item 
+unsigned long long int \hyperlink{exceptionmagrathea_1_1DataModel_a9d1149889f77dbc33b92ca95dbd14c9f}{get} () const 
+\begin{DoxyCompactList}\small\item\em Global getter. \end{DoxyCompactList}\item 
+bool \hyperlink{exceptionmagrathea_1_1DataModel_aa5ca71372ba0dc99d0cd7fb3b1356cb9}{endianness} () const 
+\begin{DoxyCompactList}\small\item\em Get endianness. \end{DoxyCompactList}\item 
+bool \hyperlink{exceptionmagrathea_1_1DataModel_a420667dddd99b173f0c3a0838f488ecf}{complement} () const 
+\begin{DoxyCompactList}\small\item\em Get complement. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-pointer$<$\-Type$>$\-::value) \&\& (std\-::is\-\_\-floating\-\_\-point$<$typename std\-::decay$<$\-Type$>$\-::type$>$\-::value)$>$\-::type$>$ }\\bool \hyperlink{exceptionmagrathea_1_1DataModel_af5f475b80c0e36acd57bbddfd1672967}{ieee754} () const 
+\begin{DoxyCompactList}\small\item\em Get I\-E\-E\-E-\/754 compatibility.   \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-pointer$<$\-Type$>$\-::value) $|$$|$ (std\-::is\-\_\-integral$<$typename std\-::decay$<$\-Type$>$\-::type$>$\-::value) $|$$|$ (std\-::is\-\_\-floating\-\_\-point$<$typename std\-::decay$<$\-Type$>$\-::type$>$\-::value)$>$\-::type$>$ }\\unsigned int \hyperlink{exceptionmagrathea_1_1DataModel_a80bfba6f4da62a6d92cdffe62eee168f}{size} () const 
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Setters}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{exceptionmagrathea_1_1DataModel}{Data\-Model} \& \hyperlink{exceptionmagrathea_1_1DataModel_a5cead3b283ecf5605623d986348afe5b}{set} (const bool big, const bool twos, const bool fieee754, const bool dieee754, const bool ldieee754, const unsigned int psize, const unsigned int bsize, const unsigned int csize, const unsigned int sisize, const unsigned int isize, const unsigned int lisize, const unsigned int llisize, const unsigned int fsize, const unsigned int dsize, const unsigned int ldsize)
+\begin{DoxyCompactList}\small\item\em Global setter. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1DataModel}{Data\-Model} \& \hyperlink{exceptionmagrathea_1_1DataModel_aad8c14017de1019eea73162146746817}{endianness} (const bool value)
+\begin{DoxyCompactList}\small\item\em Set endianness. \end{DoxyCompactList}\item 
+\hyperlink{exceptionmagrathea_1_1DataModel}{Data\-Model} \& \hyperlink{exceptionmagrathea_1_1DataModel_a12ceb490498520e8965ffc86769cd84e}{complement} (const bool value)
+\begin{DoxyCompactList}\small\item\em Set complement. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-pointer$<$\-Type$>$\-::value) \&\& (std\-::is\-\_\-floating\-\_\-point$<$typename std\-::decay$<$\-Type$>$\-::type$>$\-::value)$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1DataModel}{Data\-Model} \& \hyperlink{exceptionmagrathea_1_1DataModel_a7836281a871011107e5060ad12f080d3}{ieee754} (const bool value)
+\begin{DoxyCompactList}\small\item\em Set I\-E\-E\-E-\/754 compatibility. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-pointer$<$\-Type$>$\-::value) $|$$|$ (std\-::is\-\_\-integral$<$typename std\-::decay$<$\-Type$>$\-::type$>$\-::value) $|$$|$ (std\-::is\-\_\-floating\-\_\-point$<$typename std\-::decay$<$\-Type$>$\-::type$>$\-::value)$>$\-::type$>$ }\\\hyperlink{exceptionmagrathea_1_1DataModel}{Data\-Model} \& \hyperlink{exceptionmagrathea_1_1DataModel_ad5204f209e5a2de2a2c1664ce10b2bb6}{size} (const unsigned int value)
+\begin{DoxyCompactList}\small\item\em Set type size.   \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Static Public Member Functions}
+\begin{Indent}{\bf Helpers}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Type , typename Decayed  = typename std\-::decay$<$\-Type$>$\-::type, typename Signed  = typename std\-::make\-\_\-signed$<$typename std\-::conditional$<$(std\-::is\-\_\-integral$<$\-Decayed$>$\-::value) \&\& (!std\-::is\-\_\-same$<$\-Decayed, bool$>$\-::value), Decayed, int$>$\-::type$>$\-::type, typename Fundamental  = typename std\-::conditional$<$std\-::is\-\_\-pointer$<$\-Type$>$\-::value, void$\ast$, typename std\-::conditional$<$(std\-::is\-\_\-integral$<$\-Decayed$>$\-::value) \&\& (!std\-::is\-\_\-same$<$\-Decayed, bool$>$\-::value), typename std\-::conditional$<$std\-::is\-\_\-same$<$\-Signed, signed char$>$\-::value, char, Signed$>$\-::type, Decayed$>$\-::type$>$\-::type, class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-pointer$<$\-Fundamental$>$\-::value) $|$$|$ (std\-::is\-\_\-integral$<$\-Fundamental$>$\-::value) $|$$|$ (std\-::is\-\_\-floating\-\_\-point$<$\-Fundamental$>$\-::value)$>$\-::type$>$ }\\static constexpr Fundamental \hyperlink{exceptionmagrathea_1_1DataModel_a74cd4bf3739bb5dbf2983e1612ac931d}{fundamental} ()
+\begin{DoxyCompactList}\small\item\em Get the associated fundamental type. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Type , class  = typename std\-::enable\-\_\-if$<$(!std\-::is\-\_\-pointer$<$\-Type$>$\-::value) \&\& (std\-::is\-\_\-floating\-\_\-point$<$typename std\-::decay$<$\-Type$>$\-::type$>$\-::value)$>$\-::type$>$ }\\static constexpr bool \hyperlink{exceptionmagrathea_1_1DataModel_add330c2a8784b741d7c245ed09f3f0aa}{control754} ()
+\begin{DoxyCompactList}\small\item\em Control I\-E\-E\-E-\/754 system compatibility. \end{DoxyCompactList}\item 
+static constexpr bool \hyperlink{exceptionmagrathea_1_1DataModel_a797174c507ea162e7e0edd1cefc4c5c0}{control} ()
+\begin{DoxyCompactList}\small\item\em Control if standard. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Predefined}\par
+\begin{DoxyCompactItemize}
+\item 
+static const \hyperlink{exceptionmagrathea_1_1DataModel}{Data\-Model} \& \hyperlink{exceptionmagrathea_1_1DataModel_afe0d6833ef51966156c9e60ee3feb6d3}{system} ()
+\begin{DoxyCompactList}\small\item\em System data model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Test}\par
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{exceptionmagrathea_1_1DataModel_a0cb85bca28b5ff833a07650d79546e85}{example} ()
+\begin{DoxyCompactList}\small\item\em Example function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Protected Attributes}
+\begin{Indent}{\bf Data members}\par
+\begin{DoxyCompactItemize}
+\item 
+unsigned long long int \hyperlink{exceptionmagrathea_1_1DataModel_abfe65488bb9c1dd84a1fb3be5f10b3b2}{\-\_\-code}
+\begin{DoxyCompactList}\small\item\em Internal encoding of data types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Friends}
+\begin{Indent}{\bf Stream}\par
+\begin{DoxyCompactItemize}
+\item 
+std\-::ostream \& \hyperlink{exceptionmagrathea_1_1DataModel_a1047ea9e865adf05583b8da31fa6042d}{operator$<$$<$} (std\-::ostream \&lhs, const \hyperlink{exceptionmagrathea_1_1DataModel}{Data\-Model} \&rhs)
+\begin{DoxyCompactList}\small\item\em \hyperlink{exceptionOutput}{Output} stream operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+Management of fundamental types representation. 
+
+Class to hold the data representation of fundamental types on a system. The information is encoded in an {\ttfamily unsigned long long int} in the following way where {\ttfamily \mbox{[}B\-Xb\-Y-\/\-Z\mbox{]} } means the information starts at the bit {\ttfamily Y} of the byte {\ttfamily X} and its size is {\ttfamily Z} bits \-: 
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}B0b0-\/1\mbox{]}} endianness 
+\item {\ttfamily \mbox{[}B0b1-\/1\mbox{]}} complement 
+\item {\ttfamily \mbox{[}B1b0-\/1\mbox{]}} {\ttfamily float} compatibility to the I\-E\-E\-E-\/754 {\ttfamily binary32} representation 
+\item {\ttfamily \mbox{[}B1b1-\/1\mbox{]}} {\ttfamily double} compatibility to the I\-E\-E\-E-\/754 {\ttfamily binary64} representation 
+\item {\ttfamily \mbox{[}B1b2-\/1\mbox{]}} {\ttfamily long double} compatibility to the I\-E\-E\-E-\/754 {\ttfamily binary128} representation 
+\item {\ttfamily \mbox{[}B2b0-\/4\mbox{]}} {\ttfamily void$\ast$} size 
+\item {\ttfamily \mbox{[}B2b4-\/4\mbox{]}} {\ttfamily bool} size 
+\item {\ttfamily \mbox{[}B3b0-\/4\mbox{]}} {\ttfamily char} size 
+\item {\ttfamily \mbox{[}B3b4-\/4\mbox{]}} {\ttfamily short int} size 
+\item {\ttfamily \mbox{[}B4b0-\/4\mbox{]}} {\ttfamily int} size 
+\item {\ttfamily \mbox{[}B4b4-\/4\mbox{]}} {\ttfamily long int} size 
+\item {\ttfamily \mbox{[}B5b0-\/4\mbox{]}} {\ttfamily long long int} size 
+\item {\ttfamily \mbox{[}B6b0-\/4\mbox{]}} {\ttfamily float} size 
+\item {\ttfamily \mbox{[}B6b4-\/4\mbox{]}} {\ttfamily double} size 
+\item {\ttfamily \mbox{[}B7b0-\/4\mbox{]}} {\ttfamily long double} size
+\end{DoxyItemize}Specified sizes cannot be equal to zero and are defaulted to one. Futhermore, the I\-E\-E\-E-\/754 compatibility corresponds to correct byte size, I\-E\-C-\/559 compatibility, denormalization, correct radix and correct number of mantissa digits. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{exceptionmagrathea_1_1DataModel_ac94861dfefb3ad45c592ad61e73307a0}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!Data\-Model@{Data\-Model}}
+\index{Data\-Model@{Data\-Model}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{Data\-Model}]{\setlength{\rightskip}{0pt plus 5cm}magrathea\-::\-Data\-Model\-::\-Data\-Model (
+\begin{DoxyParamCaption}
+\item[{const unsigned long long int}]{source = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{exceptionmagrathea_1_1DataModel_ac94861dfefb3ad45c592ad61e73307a0}
+
+
+Explicit value constructor. 
+
+Explicitely constructs the data model from an {\ttfamily unsigned long long int} code. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Code to be used for construction. \\
+\hline
+\end{DoxyParams}
+\hypertarget{exceptionmagrathea_1_1DataModel_a23d5a4932ec97532cfd0ac404d5ca038}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!Data\-Model@{Data\-Model}}
+\index{Data\-Model@{Data\-Model}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{Data\-Model}]{\setlength{\rightskip}{0pt plus 5cm}magrathea\-::\-Data\-Model\-::\-Data\-Model (
+\begin{DoxyParamCaption}
+\item[{const bool}]{big, }
+\item[{const bool}]{twos, }
+\item[{const bool}]{fieee754, }
+\item[{const bool}]{dieee754, }
+\item[{const bool}]{ldieee754, }
+\item[{const unsigned int}]{psize, }
+\item[{const unsigned int}]{bsize, }
+\item[{const unsigned int}]{csize, }
+\item[{const unsigned int}]{sisize, }
+\item[{const unsigned int}]{isize, }
+\item[{const unsigned int}]{lisize, }
+\item[{const unsigned int}]{llisize, }
+\item[{const unsigned int}]{fsize, }
+\item[{const unsigned int}]{dsize, }
+\item[{const unsigned int}]{ldsize}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{exceptionmagrathea_1_1DataModel_a23d5a4932ec97532cfd0ac404d5ca038}
+
+
+Explicit detailed constructor. 
+
+Explicitely constructs the data model using all the needed values. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em big} & False for little-\/endian, true for big-\/endian. \\
+\hline
+\mbox{\tt in}  & {\em twos} & True for two's complement, false otherwise. \\
+\hline
+\mbox{\tt in}  & {\em fieee754} & I\-E\-E\-E-\/754 {\ttfamily binary32} compatibility of {\ttfamily float}. \\
+\hline
+\mbox{\tt in}  & {\em dieee754} & I\-E\-E\-E-\/754 {\ttfamily binary64} compatibility of {\ttfamily double}. \\
+\hline
+\mbox{\tt in}  & {\em ldieee754} & I\-E\-E\-E-\/754 {\ttfamily binary128} compatibility of {\ttfamily long double}. \\
+\hline
+\mbox{\tt in}  & {\em psize} & Byte size of pointers. \\
+\hline
+\mbox{\tt in}  & {\em bsize} & Byte size of {\ttfamily bool}. \\
+\hline
+\mbox{\tt in}  & {\em csize} & Byte size of {\ttfamily char}. \\
+\hline
+\mbox{\tt in}  & {\em sisize} & Byte size of {\ttfamily short int}. \\
+\hline
+\mbox{\tt in}  & {\em isize} & Byte size of {\ttfamily int}. \\
+\hline
+\mbox{\tt in}  & {\em lisize} & Byte size of {\ttfamily long int}. \\
+\hline
+\mbox{\tt in}  & {\em llisize} & Byte size of {\ttfamily long long int}. \\
+\hline
+\mbox{\tt in}  & {\em fsize} & Byte size of {\ttfamily float}. \\
+\hline
+\mbox{\tt in}  & {\em dsize} & Byte size of {\ttfamily double}. \\
+\hline
+\mbox{\tt in}  & {\em ldsize} & Byte size of {\ttfamily long double}. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{exceptionmagrathea_1_1DataModel_a21712d7526ced1fe1798c322abe68700}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!assign@{assign}}
+\index{assign@{assign}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Data\-Model} \& magrathea\-::\-Data\-Model\-::assign (
+\begin{DoxyParamCaption}
+\item[{const {\bf Data\-Model} \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataModel_a21712d7526ced1fe1798c322abe68700}
+
+
+Copy assignment. 
+
+Assign the code from another data model. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataModel_a24cec68e6e74ef2416f9b43f4b3f7391}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!assign@{assign}}
+\index{assign@{assign}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Data\-Model} \& magrathea\-::\-Data\-Model\-::assign (
+\begin{DoxyParamCaption}
+\item[{const unsigned long long int}]{source = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataModel_a24cec68e6e74ef2416f9b43f4b3f7391}
+
+
+Value assignment. 
+
+Assigns a code to the data model. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & Source of the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataModel_afffe5054115091f2670e3f00f903333e}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!assign@{assign}}
+\index{assign@{assign}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{assign}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Data\-Model} \& magrathea\-::\-Data\-Model\-::assign (
+\begin{DoxyParamCaption}
+\item[{const bool}]{big, }
+\item[{const bool}]{twos, }
+\item[{const bool}]{fieee754, }
+\item[{const bool}]{dieee754, }
+\item[{const bool}]{ldieee754, }
+\item[{const unsigned int}]{psize, }
+\item[{const unsigned int}]{bsize, }
+\item[{const unsigned int}]{csize, }
+\item[{const unsigned int}]{sisize, }
+\item[{const unsigned int}]{isize, }
+\item[{const unsigned int}]{lisize, }
+\item[{const unsigned int}]{llisize, }
+\item[{const unsigned int}]{fsize, }
+\item[{const unsigned int}]{dsize, }
+\item[{const unsigned int}]{ldsize}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataModel_afffe5054115091f2670e3f00f903333e}
+
+
+Detailed assignment. 
+
+Assigns the contents of the data model using all the needed values. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em big} & False for little-\/endian, true for big-\/endian. \\
+\hline
+\mbox{\tt in}  & {\em twos} & True for two's complement, false otherwise. \\
+\hline
+\mbox{\tt in}  & {\em fieee754} & I\-E\-E\-E-\/754 {\ttfamily binary32} compatibility of {\ttfamily float}. \\
+\hline
+\mbox{\tt in}  & {\em dieee754} & I\-E\-E\-E-\/754 {\ttfamily binary64} compatibility of {\ttfamily double}. \\
+\hline
+\mbox{\tt in}  & {\em ldieee754} & I\-E\-E\-E-\/754 {\ttfamily binary128} compatibility of {\ttfamily long double}. \\
+\hline
+\mbox{\tt in}  & {\em psize} & Byte size of pointers. \\
+\hline
+\mbox{\tt in}  & {\em bsize} & Byte size of {\ttfamily bool}. \\
+\hline
+\mbox{\tt in}  & {\em csize} & Byte size of {\ttfamily char}. \\
+\hline
+\mbox{\tt in}  & {\em sisize} & Byte size of {\ttfamily short int}. \\
+\hline
+\mbox{\tt in}  & {\em isize} & Byte size of {\ttfamily int}. \\
+\hline
+\mbox{\tt in}  & {\em lisize} & Byte size of {\ttfamily long int}. \\
+\hline
+\mbox{\tt in}  & {\em llisize} & Byte size of {\ttfamily long long int}. \\
+\hline
+\mbox{\tt in}  & {\em fsize} & Byte size of {\ttfamily float}. \\
+\hline
+\mbox{\tt in}  & {\em dsize} & Byte size of {\ttfamily double}. \\
+\hline
+\mbox{\tt in}  & {\em ldsize} & Byte size of {\ttfamily long double}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataModel_a7caed4e9f904de1305501774544b89fd}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!cast@{cast}}
+\index{cast@{cast}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{cast}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ Type magrathea\-::\-Data\-Model\-::cast (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataModel_a7caed4e9f904de1305501774544b89fd}
+
+
+Cast. 
+
+Returns a copy of the data model casted to the provided type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Data type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Casted copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataModel_a0742b7941dd3fef82eaaabf27b99844b}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!check@{check}}
+\index{check@{check}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-Data\-Model\-::check (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataModel_a0742b7941dd3fef82eaaabf27b99844b}
+
+
+Check if standard. 
+
+Checks whether the data model is a standard one. It means that it has all the following properties \-: 
+\begin{DoxyItemize}
+\item it uses two's complement 
+\item {\ttfamily float} and {\ttfamily double} are I\-E\-E\-E-\/754 compliant 
+\item pointer size is 4 or 8 
+\item {\ttfamily bool} size is 1 
+\item {\ttfamily char} size is 1 
+\item {\ttfamily short int} size is 2 
+\item {\ttfamily int} size is 4 
+\item {\ttfamily long int} size is 4 or 8 
+\item {\ttfamily long long int} size is 8 
+\item {\ttfamily float} size is 4 
+\item {\ttfamily double} size is 8 
+\item {\ttfamily long double} size is 8, 10, 12 or 16
+\end{DoxyItemize}\begin{DoxyReturn}{Returns}
+True if the data model is standard, false if not. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataModel_aaa411894243b0fca04e1f6439498bbc6}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!clear@{clear}}
+\index{clear@{clear}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Data\-Model} \& magrathea\-::\-Data\-Model\-::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataModel_aaa411894243b0fca04e1f6439498bbc6}
+
+
+Clear code. 
+
+Clears the whole contents and sets the flags to zero, and the sizes to one. \begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataModel_a420667dddd99b173f0c3a0838f488ecf}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!complement@{complement}}
+\index{complement@{complement}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{complement}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-Data\-Model\-::complement (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataModel_a420667dddd99b173f0c3a0838f488ecf}
+
+
+Get complement. 
+
+Returns whether the system use two's complement encoding or not according to the data model. \begin{DoxyReturn}{Returns}
+True for two's complement, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataModel_a12ceb490498520e8965ffc86769cd84e}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!complement@{complement}}
+\index{complement@{complement}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{complement}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Data\-Model} \& magrathea\-::\-Data\-Model\-::complement (
+\begin{DoxyParamCaption}
+\item[{const bool}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataModel_a12ceb490498520e8965ffc86769cd84e}
+
+
+Set complement. 
+
+Sets the complement of the data model. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & True for two's complement, false otherwise. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataModel_a797174c507ea162e7e0edd1cefc4c5c0}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!control@{control}}
+\index{control@{control}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{control}]{\setlength{\rightskip}{0pt plus 5cm}constexpr bool magrathea\-::\-Data\-Model\-::control (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataModel_a797174c507ea162e7e0edd1cefc4c5c0}
+
+
+Control if standard. 
+
+Controls whether the system data model is a standard one. It means that it has all the following properties \-: 
+\begin{DoxyItemize}
+\item it uses two's complement 
+\item {\ttfamily float} and {\ttfamily double} are I\-E\-E\-E-\/754 compliant 
+\item {\ttfamily long double} is I\-E\-C-\/559 compliant, can be denormalized and has a binary radix 
+\item pointer size is 4 or 8 
+\item {\ttfamily bool} size is 1 
+\item {\ttfamily char} size is 1 
+\item {\ttfamily short int} size is 2 
+\item {\ttfamily int} size is 4 
+\item {\ttfamily long int} size is 4 or 8 
+\item {\ttfamily long long int} size is 8 
+\item {\ttfamily float} size is 4 
+\item {\ttfamily double} size is 8 
+\item {\ttfamily long double} size is 8, 10, 12 or 16
+\end{DoxyItemize}\begin{DoxyReturn}{Returns}
+True if the data model is standard, false if not. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataModel_add330c2a8784b741d7c245ed09f3f0aa}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!control754@{control754}}
+\index{control754@{control754}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{control754}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class $>$ constexpr bool magrathea\-::\-Data\-Model\-::control754 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataModel_add330c2a8784b741d7c245ed09f3f0aa}
+
+
+Control I\-E\-E\-E-\/754 system compatibility. 
+
+Control whether the floating-\/point type is compatible with the I\-E\-E\-E-\/754 standard on the current architecture \-: correct byte size, I\-E\-C-\/559 compatibility, denormalization, correct radix and correct number of mantissa digits. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Floating-\/point type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+True if the type is compliant to I\-E\-E\-E-\/754, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataModel_a43e322632113d3899e4d206781e8e8c9}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!copy@{copy}}
+\index{copy@{copy}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{copy}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Data\-Model} magrathea\-::\-Data\-Model\-::copy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataModel_a43e322632113d3899e4d206781e8e8c9}
+
+
+Copy. 
+
+Returns a copy of the data model. \begin{DoxyReturn}{Returns}
+Copy. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataModel_acfe055f888655546b9bc7e876a01b5d8}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!data@{data}}
+\index{data@{data}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned long long int \& magrathea\-::\-Data\-Model\-::data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataModel_acfe055f888655546b9bc7e876a01b5d8}
+
+
+Access data. 
+
+Returns a constant reference to the internal underlying data which is the data model code. \begin{DoxyReturn}{Returns}
+Immutable reference to the code. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataModel_aa5ca71372ba0dc99d0cd7fb3b1356cb9}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!endianness@{endianness}}
+\index{endianness@{endianness}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{endianness}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-Data\-Model\-::endianness (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataModel_aa5ca71372ba0dc99d0cd7fb3b1356cb9}
+
+
+Get endianness. 
+
+Returns the endianness from data model. \begin{DoxyReturn}{Returns}
+False for little-\/endian, true for big-\/endian. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataModel_aad8c14017de1019eea73162146746817}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!endianness@{endianness}}
+\index{endianness@{endianness}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{endianness}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Data\-Model} \& magrathea\-::\-Data\-Model\-::endianness (
+\begin{DoxyParamCaption}
+\item[{const bool}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataModel_aad8c14017de1019eea73162146746817}
+
+
+Set endianness. 
+
+Sets the endianness of the data model. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & False for little-\/endian, true for big-\/endian. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataModel_a0cb85bca28b5ff833a07650d79546e85}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!example@{example}}
+\index{example@{example}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{example}]{\setlength{\rightskip}{0pt plus 5cm}int magrathea\-::\-Data\-Model\-::example (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataModel_a0cb85bca28b5ff833a07650d79546e85}
+
+
+Example function. 
+
+Tests and demonstrates the use of \hyperlink{exceptionmagrathea_1_1DataModel}{Data\-Model}. \begin{DoxyReturn}{Returns}
+0 if no error. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataModel_a74cd4bf3739bb5dbf2983e1612ac931d}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!fundamental@{fundamental}}
+\index{fundamental@{fundamental}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{fundamental}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , typename Decayed , typename Signed , typename Fundamental , class $>$ constexpr Fundamental magrathea\-::\-Data\-Model\-::fundamental (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataModel_a74cd4bf3739bb5dbf2983e1612ac931d}
+
+
+Get the associated fundamental type. 
+
+Converts the type passed as first template argument to an associated fundamental type \-: 
+\begin{DoxyItemize}
+\item {\ttfamily void$\ast$} if the type is a pointer 
+\item {\ttfamily bool} if the type is a cv-\/qualified boolean 
+\item {\ttfamily char} if the type is a cv-\/qualified plain, signed or unsigned character 
+\item signed decayed type if the type is an integral type 
+\item decayed type if the type is a floating-\/point type 
+\end{DoxyItemize}. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Type to convert. \\
+\hline
+{\em Decayed} & (Decayed version of the type.) \\
+\hline
+{\em Signed} & (Signed version of the type.) \\
+\hline
+{\em Fundamental} & (Fundamental version of the type.) \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Default value of the fundamental type. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataModel_a9d1149889f77dbc33b92ca95dbd14c9f}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!get@{get}}
+\index{get@{get}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long long int magrathea\-::\-Data\-Model\-::get (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataModel_a9d1149889f77dbc33b92ca95dbd14c9f}
+
+
+Global getter. 
+
+Returns a copy of the underlying complete code of the data model. \begin{DoxyReturn}{Returns}
+Copy of the code. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataModel_af5f475b80c0e36acd57bbddfd1672967}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!ieee754@{ieee754}}
+\index{ieee754@{ieee754}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{ieee754}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class $>$ bool magrathea\-::\-Data\-Model\-::ieee754 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataModel_af5f475b80c0e36acd57bbddfd1672967}
+
+
+Get I\-E\-E\-E-\/754 compatibility.   
+
+Returns whether the specified floating-\/point type is compliant to the I\-E\-E\-E-\/754 standard according to the data model. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Floating-\/point type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+True if compliant, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataModel_a7836281a871011107e5060ad12f080d3}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!ieee754@{ieee754}}
+\index{ieee754@{ieee754}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{ieee754}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class $>$ {\bf Data\-Model} \& magrathea\-::\-Data\-Model\-::ieee754 (
+\begin{DoxyParamCaption}
+\item[{const bool}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataModel_a7836281a871011107e5060ad12f080d3}
+
+
+Set I\-E\-E\-E-\/754 compatibility. 
+
+Sets whether the specified floating-\/point type is compliant to the I\-E\-E\-E-\/754 standard. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Floating-\/point type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & True if compliant, false otherwise. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataModel_ab08bda2cc90b157d37b8e8e862d53d3a}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!operator!=@{operator!=}}
+\index{operator!=@{operator!=}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{operator!=}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-Data\-Model\-::operator!= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Data\-Model} \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataModel_ab08bda2cc90b157d37b8e8e862d53d3a}
+
+
+Not equal to comparison. 
+
+Compares two data models for difference. \begin{DoxyReturn}{Returns}
+True if the two data models are not equal, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataModel_a241087e5a976e940b1a9ae44c5129e02}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!operator()@{operator()}}
+\index{operator()@{operator()}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long long int magrathea\-::\-Data\-Model\-::operator() (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataModel_a241087e5a976e940b1a9ae44c5129e02}
+
+
+Access operator. 
+
+Returns a copy of the underlying complete code of the data model. \begin{DoxyReturn}{Returns}
+Copy of the code. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataModel_a4500d9d456de747c4647a58059587e15}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!operator==@{operator==}}
+\index{operator==@{operator==}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}bool magrathea\-::\-Data\-Model\-::operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf Data\-Model} \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataModel_a4500d9d456de747c4647a58059587e15}
+
+
+Equal to comparison. 
+
+Compares two data models for equality. \begin{DoxyReturn}{Returns}
+True if the two data models are equal, false otherwise. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataModel_a5cead3b283ecf5605623d986348afe5b}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!set@{set}}
+\index{set@{set}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Data\-Model} \& magrathea\-::\-Data\-Model\-::set (
+\begin{DoxyParamCaption}
+\item[{const bool}]{big, }
+\item[{const bool}]{twos, }
+\item[{const bool}]{fieee754, }
+\item[{const bool}]{dieee754, }
+\item[{const bool}]{ldieee754, }
+\item[{const unsigned int}]{psize, }
+\item[{const unsigned int}]{bsize, }
+\item[{const unsigned int}]{csize, }
+\item[{const unsigned int}]{sisize, }
+\item[{const unsigned int}]{isize, }
+\item[{const unsigned int}]{lisize, }
+\item[{const unsigned int}]{llisize, }
+\item[{const unsigned int}]{fsize, }
+\item[{const unsigned int}]{dsize, }
+\item[{const unsigned int}]{ldsize}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataModel_a5cead3b283ecf5605623d986348afe5b}
+
+
+Global setter. 
+
+Sets the content using all the needed values. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em big} & False for little-\/endian, true for big-\/endian. \\
+\hline
+\mbox{\tt in}  & {\em twos} & True for two's complement, false otherwise. \\
+\hline
+\mbox{\tt in}  & {\em fieee754} & I\-E\-E\-E-\/754 {\ttfamily binary32} compatibility of {\ttfamily float}. \\
+\hline
+\mbox{\tt in}  & {\em dieee754} & I\-E\-E\-E-\/754 {\ttfamily binary64} compatibility of {\ttfamily double}. \\
+\hline
+\mbox{\tt in}  & {\em ldieee754} & I\-E\-E\-E-\/754 {\ttfamily binary128} compatibility of {\ttfamily long double}. \\
+\hline
+\mbox{\tt in}  & {\em psize} & Byte size of pointers. \\
+\hline
+\mbox{\tt in}  & {\em bsize} & Byte size of {\ttfamily bool}. \\
+\hline
+\mbox{\tt in}  & {\em csize} & Byte size of {\ttfamily char}. \\
+\hline
+\mbox{\tt in}  & {\em sisize} & Byte size of {\ttfamily short int}. \\
+\hline
+\mbox{\tt in}  & {\em isize} & Byte size of {\ttfamily int}. \\
+\hline
+\mbox{\tt in}  & {\em lisize} & Byte size of {\ttfamily long int}. \\
+\hline
+\mbox{\tt in}  & {\em llisize} & Byte size of {\ttfamily long long int}. \\
+\hline
+\mbox{\tt in}  & {\em fsize} & Byte size of {\ttfamily float}. \\
+\hline
+\mbox{\tt in}  & {\em dsize} & Byte size of {\ttfamily double}. \\
+\hline
+\mbox{\tt in}  & {\em ldsize} & Byte size of {\ttfamily long double}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataModel_a41f5039949948165f96ffb81d5cdc65d}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!size@{size}}
+\index{size@{size}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int magrathea\-::\-Data\-Model\-::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataModel_a41f5039949948165f96ffb81d5cdc65d}
+
+
+Get the size of the code. 
+
+Get type size.  
+
+Returns the result of the {\ttfamily sizeof} operator on the underlying code. \begin{DoxyReturn}{Returns}
+Size of the code in bytes.
+\end{DoxyReturn}
+Returns the size of the provided fundamental type according to the data model. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Pointer, integral of floating-\/point type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Type size in bytes. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataModel_a80bfba6f4da62a6d92cdffe62eee168f}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!size@{size}}
+\index{size@{size}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class  = typename std\-::enable\-\_\-if$<$(std\-::is\-\_\-pointer$<$\-Type$>$\-::value) $|$$|$ (std\-::is\-\_\-integral$<$typename std\-::decay$<$\-Type$>$\-::type$>$\-::value) $|$$|$ (std\-::is\-\_\-floating\-\_\-point$<$typename std\-::decay$<$\-Type$>$\-::type$>$\-::value)$>$\-::type$>$ unsigned int magrathea\-::\-Data\-Model\-::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataModel_a80bfba6f4da62a6d92cdffe62eee168f}
+\hypertarget{exceptionmagrathea_1_1DataModel_ad5204f209e5a2de2a2c1664ce10b2bb6}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!size@{size}}
+\index{size@{size}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type , class $>$ {\bf Data\-Model} \& magrathea\-::\-Data\-Model\-::size (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{exceptionmagrathea_1_1DataModel_ad5204f209e5a2de2a2c1664ce10b2bb6}
+
+
+Set type size.   
+
+Sets the size of the provided fundamental type of the data model. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Pointer, integral of floating-\/point type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & Type size in bytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Self reference. 
+\end{DoxyReturn}
+\hypertarget{exceptionmagrathea_1_1DataModel_afe0d6833ef51966156c9e60ee3feb6d3}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!system@{system}}
+\index{system@{system}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{system}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Data\-Model} \& magrathea\-::\-Data\-Model\-::system (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{exceptionmagrathea_1_1DataModel_afe0d6833ef51966156c9e60ee3feb6d3}
+
+
+System data model. 
+
+Returns an immutable reference to singleton representing the data model of the current architecture. \begin{DoxyReturn}{Returns}
+Immutable reference to system data model singleton. 
+\end{DoxyReturn}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{exceptionmagrathea_1_1DataModel_a1047ea9e865adf05583b8da31fa6042d}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{lhs, }
+\item[{const {\bf Data\-Model} \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{exceptionmagrathea_1_1DataModel_a1047ea9e865adf05583b8da31fa6042d}
+
+
+\hyperlink{exceptionOutput}{Output} stream operator. 
+
+Prints out the data model. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em lhs} & Left-\/hand side stream. \\
+\hline
+\mbox{\tt in}  & {\em rhs} & Right-\/hand side data model. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{exceptionOutput}{Output} stream. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{exceptionmagrathea_1_1DataModel_abfe65488bb9c1dd84a1fb3be5f10b3b2}{\index{magrathea\-::\-Data\-Model@{magrathea\-::\-Data\-Model}!\-\_\-code@{\-\_\-code}}
+\index{\-\_\-code@{\-\_\-code}!magrathea::DataModel@{magrathea\-::\-Data\-Model}}
+\subsubsection[{\-\_\-code}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long long int magrathea\-::\-Data\-Model\-::\-\_\-code\hspace{0.3cm}{\ttfamily [protected]}}}\label{exceptionmagrathea_1_1DataModel_abfe65488bb9c1dd84a1fb3be5f10b3b2}
+
+
+Internal encoding of data types. 
+
+
+
+The documentation for this exception was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/data/home/mbreton/magrathea\-\_\-pathfinder/src/magrathea/\hyperlink{datamodel_8h}{datamodel.\-h}\end{DoxyCompactItemize}

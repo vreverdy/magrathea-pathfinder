@@ -1,0 +1,481 @@
+.TH "magrathea::AbstractHyperSphere< Crtp, Dimension, Vector, Scalar >" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::AbstractHyperSphere< Crtp, Dimension, Vector, Scalar > \- 
+.PP
+Abstract function provider for n-dimensional spheres\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <abstracthypersphere\&.h>\fP
+.PP
+Inherits \fBmagrathea::AbstractShape\fP\&.
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBPosition\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "constexpr Scalar \fBcenter\fP (const unsigned int idim) const "
+.br
+.RI "\fICenter coordinate\&. \fP"
+.ti -1c
+.RI "Vector \fBcenter\fP () const "
+.br
+.RI "\fICenter vector\&. \fP"
+.ti -1c
+.RI "constexpr Scalar \fBminimum\fP (const unsigned int idim) const "
+.br
+.RI "\fIMinimum coordinate\&. \fP"
+.ti -1c
+.RI "Vector \fBminimum\fP () const "
+.br
+.RI "\fIMinimum vector\&. \fP"
+.ti -1c
+.RI "constexpr Scalar \fBmaximum\fP (const unsigned int idim) const "
+.br
+.RI "\fIMaximum coordinate\&. \fP"
+.ti -1c
+.RI "Vector \fBmaximum\fP () const "
+.br
+.RI "\fIMaximum vector\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBMeasures\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "constexpr Scalar \fBradius\fP () const "
+.br
+.RI "\fIRadius\&. \fP"
+.ti -1c
+.RI "constexpr Scalar \fBdiameter\fP () const "
+.br
+.RI "\fIDiameter\&. \fP"
+.ti -1c
+.RI "constexpr Scalar \fBvolume\fP () const "
+.br
+.RI "\fIVolume\&. \fP"
+.ti -1c
+.RI "constexpr Scalar \fBsurface\fP () const "
+.br
+.RI "\fIOuter surface\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBDistribution\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<unsigned int Subdimension = Dimension, class  = typename std::enable_if<(Subdimension+1 == Dimension) || (Subdimension == Dimension)>::type> Vector \fBrandom\fP () const "
+.br
+.RI "\fIBasic random location in the hypersphere\&. \fP"
+.ti -1c
+.RI "template<unsigned int Subdimension = Dimension, class Engine , class Distribution , class  = typename std::enable_if<((Subdimension+1 == Dimension) || (Subdimension == Dimension)) && (std::decay<Engine>::type::min() != std::decay<Engine>::type::max()) && (!std::is_void<typename std::decay<Distribution>::type::result_type>::value)>::type> Vector \fBrandom\fP (Engine &&engine, Distribution &&distribution) const "
+.br
+.RI "\fIGeneric random location in the hypersphere\&. \fP"
+.ti -1c
+.RI "template<unsigned int Subdimension = Dimension, typename Iterator , class  = typename std::enable_if<(Subdimension+1 == Dimension) && (Subdimension >= 1> ::type std::pair< Scalar, Scalar > \fBuniform\fP (const Iterator &first, const Iterator &last) const "
+.br
+.RI "\fIUniform distribution\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBCollision\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class OtherVector , class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(std::declval<OtherVector>()[0])>::type>::type, Scalar>::value>::type> bool \fBinside\fP (const OtherVector &\fBpoint\fP) const "
+.br
+.RI "\fIPoint inside\&. \fP"
+.ti -1c
+.RI "template<class OtherVector , class  = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(std::declval<OtherVector>()[0])>::type>::type, Scalar>::value>::type> bool \fBoutside\fP (const OtherVector &\fBpoint\fP) const "
+.br
+.RI "\fIPoint outside\&. \fP"
+.in -1c
+.in -1c
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBConstants\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static constexpr unsigned int \fBdimension\fP ()"
+.br
+.RI "\fINumber of space dimension\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBHelpers\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<unsigned int OtherDimension = Dimension, typename OtherScalar  = Scalar> static constexpr OtherScalar \fBsn\fP ()"
+.br
+.RI "\fISurface of a n-dimensional unit sphere\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SS "Protected Member Functions"
+
+.PP
+.RI "\fBProtected lifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fB~AbstractHyperSphere\fP ()"
+.br
+.RI "\fIProtected destructor\&. \fP"
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class Crtp, unsigned int Dimension, class Vector, typename Scalar>class magrathea::AbstractHyperSphere< Crtp, Dimension, Vector, Scalar >"
+Abstract function provider for n-dimensional spheres\&. 
+
+Provides a common base for n-dimensional spheres thanks to CRTP\&. To use it, one has to derive from this class and pass the derived class itself as the CRTP parameter\&. The derived classes should provide two immutable functions : 
+.PD 0
+
+.IP "\(bu" 2
+position() 
+.IP "\(bu" 2
+extent()
+.PP
+in order to get the position of the center along one coordinate and the radius length of the hypersphere\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fICrtp\fP Derived CRTP class\&. 
+.br
+\fIDimension\fP Number of space dimension\&. 
+.br
+\fIVector\fP Position vector type\&. 
+.br
+\fIScalar\fP Scalar data type\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > \fBmagrathea::AbstractHyperSphere\fP< Crtp, Dimension, Vector, Scalar >::~\fBAbstractHyperSphere\fP ()\fC [inline]\fP, \fC [protected]\fP, \fC [default]\fP"
+
+.PP
+Protected destructor\&. Avoids direct instantiation of the class, and only allows it through its derived children\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > constexpr Scalar \fBmagrathea::AbstractHyperSphere\fP< Crtp, Dimension, Vector, Scalar >::center (const unsigned intidim) const"
+
+.PP
+Center coordinate\&. Computes the specified coordinate of the center of the hypersphere\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIidim\fP Index of the dimension\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The coordinate $x_{i}$\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > Vector \fBmagrathea::AbstractHyperSphere\fP< Crtp, Dimension, Vector, Scalar >::center () const\fC [inline]\fP"
+
+.PP
+Center vector\&. Computes the position vector of the center of the hypersphere\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The position vector $\vec{x}$\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > constexpr Scalar \fBmagrathea::AbstractHyperSphere\fP< Crtp, Dimension, Vector, Scalar >::diameter () const"
+
+.PP
+Diameter\&. Computes the diameter of the hypersphere\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+$2r$\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > constexpr unsigned int \fBmagrathea::AbstractHyperSphere\fP< Crtp, Dimension, Vector, Scalar >::dimension ()\fC [static]\fP"
+
+.PP
+Number of space dimension\&. Computes the number of space dimension of the hypercube\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Dimension\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > int \fBmagrathea::AbstractHyperSphere\fP< Crtp, Dimension, Vector, Scalar >::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBAbstractHyperSphere\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > template<class OtherVector , class > bool \fBmagrathea::AbstractHyperSphere\fP< Crtp, Dimension, Vector, Scalar >::inside (const OtherVector &point) const\fC [inline]\fP"
+
+.PP
+Point inside\&. Checks whether a point is inside the hypersphere\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherVector\fP Other position vector type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpoint\fP Position of the point\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the point is inside the hypersphere, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > constexpr Scalar \fBmagrathea::AbstractHyperSphere\fP< Crtp, Dimension, Vector, Scalar >::maximum (const unsigned intidim) const"
+
+.PP
+Maximum coordinate\&. Computes the specified coordinate of the maximum boundary of the hypersphere\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIidim\fP Index of the dimension\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The coordinate $x_{i}+r$\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > Vector \fBmagrathea::AbstractHyperSphere\fP< Crtp, Dimension, Vector, Scalar >::maximum () const\fC [inline]\fP"
+
+.PP
+Maximum vector\&. Computes the position vector of the maximum boundary of the hypersphere\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The position vector $\vec{x}+\vec{r}$\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > constexpr Scalar \fBmagrathea::AbstractHyperSphere\fP< Crtp, Dimension, Vector, Scalar >::minimum (const unsigned intidim) const"
+
+.PP
+Minimum coordinate\&. Computes the specified coordinate of the minimum boundary of the hypersphere\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIidim\fP Index of the dimension\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The coordinate $x_{i}-r$\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > Vector \fBmagrathea::AbstractHyperSphere\fP< Crtp, Dimension, Vector, Scalar >::minimum () const\fC [inline]\fP"
+
+.PP
+Minimum vector\&. Computes the position vector of the minimum boundary of the hypersphere\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The position vector $\vec{x}-\vec{r}$\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > template<class OtherVector , class > bool \fBmagrathea::AbstractHyperSphere\fP< Crtp, Dimension, Vector, Scalar >::outside (const OtherVector &point) const\fC [inline]\fP"
+
+.PP
+Point outside\&. Checks whether a point is outside the hypersphere\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherVector\fP Other position vector type\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpoint\fP Position of the point\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the point is outside the hypersphere, false otherwise\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > constexpr Scalar \fBmagrathea::AbstractHyperSphere\fP< Crtp, Dimension, Vector, Scalar >::radius () const"
+
+.PP
+Radius\&. Computes the radius of the hypersphere\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+$r$\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > template<unsigned int Subdimension, class > Vector \fBmagrathea::AbstractHyperSphere\fP< Crtp, Dimension, Vector, Scalar >::random () const"
+
+.PP
+Basic random location in the hypersphere\&. Generates a random location, located in the volume or on the surface of the hypersphere\&. For example for a subdimension of 2 of a 3-dimensional hypersphere, the function will generates a random point located on the surface of the sphere\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISubdimension\fP Dimension space\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Random position vector\&. 
+.RE
+.PP
+\fBWarning:\fP
+.RS 4
+As the internal engine is a static one, do not use this function in parallel\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > template<unsigned int Subdimension, class Engine , class Distribution , class > Vector \fBmagrathea::AbstractHyperSphere\fP< Crtp, Dimension, Vector, Scalar >::random (Engine &&engine, Distribution &&distribution) const"
+
+.PP
+Generic random location in the hypersphere\&. Generates a random location, located in the volume or on the surface of the hypersphere\&. For example for a subdimension of 2 of a 3-dimensional hypersphere, the function will generates a random point located on the surface of the sphere\&. As this function uses the passed random engine and distribution it is completely thread safe\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISubdimension\fP Dimension space\&. 
+.br
+\fIEngine\fP (Random engine type\&.) 
+.br
+\fIDistribution\fP (Random distribution type\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIengine\fP Random engine\&. 
+.br
+\fIdistribution\fP Random distribution\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Random position vector\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > template<unsigned int OtherDimension, typename OtherScalar > constexpr OtherScalar \fBmagrathea::AbstractHyperSphere\fP< Crtp, Dimension, Vector, Scalar >::sn ()\fC [static]\fP"
+
+.PP
+Surface of a n-dimensional unit sphere\&. Computes the surface of a n-dimensional sphere with a unit radius\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIOtherDimension\fP Other number of space dimension\&. 
+.br
+\fIOtherScalar\fP (Other scalar data type\&.) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+$s_{n}$\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > constexpr Scalar \fBmagrathea::AbstractHyperSphere\fP< Crtp, Dimension, Vector, Scalar >::surface () const"
+
+.PP
+Outer surface\&. Computes the total outer surface of the hypercube\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+$s_{n}r^{n-1}$\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > template<unsigned int Subdimension, typename Iterator , class > std::pair< Scalar, Scalar > \fBmagrathea::AbstractHyperSphere\fP< Crtp, Dimension, Vector, Scalar >::uniform (const Iterator &first, const Iterator &last) const"
+
+.PP
+Uniform distribution\&. Generates a random distribution of points located on the surface of the hypersphere\&. Currently the function only works in two or three dimension corresponding to a value of one or two for the subdimension\&. In three dimensions, it uses a spiral to approximately distribute the points\&. The function eventually returns a pair of distance corresponding to the minimum and maximum distances between two generated points\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISubdimension\fP Dimension space\&. 
+.br
+\fIIterator\fP (Pointer or iterator to vector types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirst\fP Beginning of the interval\&. 
+.br
+\fIend\fP End of the interval\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Minimum and maximum distance between two points\&. 
+.RE
+.PP
+
+.SS "template<class Crtp , unsigned int Dimension, class Vector , typename Scalar > constexpr Scalar \fBmagrathea::AbstractHyperSphere\fP< Crtp, Dimension, Vector, Scalar >::volume () const"
+
+.PP
+Volume\&. Computes the volume of the hypersphere\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+$\frac{s_{n}r^{n}}{n}$\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

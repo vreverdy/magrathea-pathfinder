@@ -1,0 +1,647 @@
+.TH "magrathea::AboutLicense" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+magrathea::AboutLicense \- 
+.PP
+Information about the license of a code\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <aboutlicense\&.h>\fP
+.PP
+Inherits \fBmagrathea::AbstractAboutObject< AboutLicense, std::string, std::string, std::string, bool, double, std::string, std::string, std::string >\fP\&.
+.SS "Public Member Functions"
+
+.PP
+.RI "\fBLifecycle\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<class\&.\&.\&. Misc> \fBAboutLicense\fP (Misc &&\&.\&.\&.misc)"
+.br
+.RI "\fIExplicit generic constructor\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBAccessors\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "std::string \fBtext\fP (const std::string &program, const std::string &date='', const std::string &owner='', const std::string &contact='', const std::string &organization='', const std::string &purpose='') const "
+.br
+.RI "\fILicense text of the program accessor\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBGetters\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "const std::string & \fBtitle\fP () const "
+.br
+.RI "\fILicense title, name or acronym getter\&. \fP"
+.ti -1c
+.RI "const std::string & \fBname\fP () const "
+.br
+.RI "\fIComplete name getter\&. \fP"
+.ti -1c
+.RI "const std::string & \fBlink\fP () const "
+.br
+.RI "\fIWeb link getter\&. \fP"
+.ti -1c
+.RI "bool \fBproprietary\fP () const "
+.br
+.RI "\fIProprietary or free/open-source flag getter\&. \fP"
+.ti -1c
+.RI "double \fBversion\fP () const "
+.br
+.RI "\fIVersion number getter\&. \fP"
+.ti -1c
+.RI "const std::string & \fBdescription\fP () const "
+.br
+.RI "\fIShort description or summary of the license getter\&. \fP"
+.ti -1c
+.RI "const std::string & \fBtext\fP () const "
+.br
+.RI "\fILicense text of the program getter\&. \fP"
+.ti -1c
+.RI "const std::string & \fBreference\fP () const "
+.br
+.RI "\fIComplete license reference getter\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBSetters\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBAboutLicense\fP & \fBtitle\fP (const std::string &value)"
+.br
+.RI "\fILicense title, name or acronym setter\&. \fP"
+.ti -1c
+.RI "\fBAboutLicense\fP & \fBname\fP (const std::string &value)"
+.br
+.RI "\fIComplete name setter\&. \fP"
+.ti -1c
+.RI "\fBAboutLicense\fP & \fBlink\fP (const std::string &value)"
+.br
+.RI "\fIWeb link setter\&. \fP"
+.ti -1c
+.RI "\fBAboutLicense\fP & \fBproprietary\fP (const bool value)"
+.br
+.RI "\fIProprietary or free/open-source flag setter\&. \fP"
+.ti -1c
+.RI "\fBAboutLicense\fP & \fBversion\fP (const double value)"
+.br
+.RI "\fIVersion number setter\&. \fP"
+.ti -1c
+.RI "\fBAboutLicense\fP & \fBdescription\fP (const std::string &value)"
+.br
+.RI "\fIShort description or summary of the license setter\&. \fP"
+.ti -1c
+.RI "\fBAboutLicense\fP & \fBtext\fP (const std::string &value)"
+.br
+.RI "\fILicense text of the program setter\&. \fP"
+.ti -1c
+.RI "\fBAboutLicense\fP & \fBreference\fP (const std::string &value)"
+.br
+.RI "\fIComplete license reference setter\&. \fP"
+.in -1c
+.in -1c
+.SS "Static Public Member Functions"
+
+.PP
+.RI "\fBPredefined\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static const \fBAboutLicense\fP & \fBgplv3\fP ()"
+.br
+.RI "\fIPredefined GPLv3 license\&. \fP"
+.ti -1c
+.RI "static const \fBAboutLicense\fP & \fBlgplv3\fP ()"
+.br
+.RI "\fIPredefined LGPLv3 license\&. \fP"
+.ti -1c
+.RI "static const \fBAboutLicense\fP & \fBbsd\fP ()"
+.br
+.RI "\fIPredefined BSD license\&. \fP"
+.ti -1c
+.RI "static const \fBAboutLicense\fP & \fBmodifiedbsd\fP ()"
+.br
+.RI "\fIPredefined modified BSD license\&. \fP"
+.ti -1c
+.RI "static const \fBAboutLicense\fP & \fBfreebsd\fP ()"
+.br
+.RI "\fIPredefined FreeBSD license\&. \fP"
+.ti -1c
+.RI "static const \fBAboutLicense\fP & \fBcecill\fP ()"
+.br
+.RI "\fIPredefined CeCILL license\&. \fP"
+.ti -1c
+.RI "static const \fBAboutLicense\fP & \fBcecillb\fP ()"
+.br
+.RI "\fIPredefined CeCILL-B license\&. \fP"
+.ti -1c
+.RI "static const \fBAboutLicense\fP & \fBcecillc\fP ()"
+.br
+.RI "\fIPredefined CeCILL-C license\&. \fP"
+.ti -1c
+.RI "static const \fBAboutLicense\fP & \fBccbyv3\fP ()"
+.br
+.RI "\fIPredefined CC-BY v3 license\&. \fP"
+.ti -1c
+.RI "static const \fBAboutLicense\fP & \fBccbysav3\fP ()"
+.br
+.RI "\fIPredefined CC-BY-SA v3 license\&. \fP"
+.ti -1c
+.RI "static const \fBAboutLicense\fP & \fBccbyndv3\fP ()"
+.br
+.RI "\fIPredefined CC-BY-ND v3 license\&. \fP"
+.ti -1c
+.RI "static const \fBAboutLicense\fP & \fBccbyncv3\fP ()"
+.br
+.RI "\fIPredefined CC-BY-NC v3 license\&. \fP"
+.ti -1c
+.RI "static const \fBAboutLicense\fP & \fBccbyncsav3\fP ()"
+.br
+.RI "\fIPredefined CC-BY-NC-SA v3 license\&. \fP"
+.ti -1c
+.RI "static const \fBAboutLicense\fP & \fBccbyncndv3\fP ()"
+.br
+.RI "\fIPredefined CC-BY-NC-ND v3 license\&. \fP"
+.ti -1c
+.RI "static const \fBAboutLicense\fP & \fBcc0v1\fP ()"
+.br
+.RI "\fIPredefined CC0 v1 license\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBTest\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "static int \fBexample\fP ()"
+.br
+.RI "\fIExample function\&. \fP"
+.in -1c
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "using \fBoperator\fP = typedef"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Information about the license of a code\&. 
+
+Name, link, text and documentation on the license of a code or a library\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class\&.\&.\&. Misc> magrathea::AboutLicense::AboutLicense (Misc &&\&.\&.\&.misc)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Explicit generic constructor\&. Provides a generic interface to all constructors of the base class\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMisc\fP (\fBMiscellaneous\fP types\&.) 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fImisc\fP \fBMiscellaneous\fP arguments\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "const \fBAboutLicense\fP & magrathea::AboutLicense::bsd ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined BSD license\&. Original BSD license\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to license singleton\&. 
+.RE
+.PP
+
+.SS "const \fBAboutLicense\fP & magrathea::AboutLicense::cc0v1 ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined CC0 v1 license\&. Creative Commons CC0 1\&.0 Universal Public Domain Dedication\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to license singleton\&. 
+.RE
+.PP
+
+.SS "const \fBAboutLicense\fP & magrathea::AboutLicense::ccbyncndv3 ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined CC-BY-NC-ND v3 license\&. Creative Commons Attribution-NonCommercial-NoDerivs 3\&.0 Unported (CC BY-NC-ND 3\&.0)\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to license singleton\&. 
+.RE
+.PP
+
+.SS "const \fBAboutLicense\fP & magrathea::AboutLicense::ccbyncsav3 ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined CC-BY-NC-SA v3 license\&. Creative Commons Attribution-NonCommercial-ShareAlike 3\&.0 Unported (CC BY-NC-SA 3\&.0)\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to license singleton\&. 
+.RE
+.PP
+
+.SS "const \fBAboutLicense\fP & magrathea::AboutLicense::ccbyncv3 ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined CC-BY-NC v3 license\&. Creative Commons Attribution-NonCommercial 3\&.0 Unported (CC BY-NC 3\&.0)\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to license singleton\&. 
+.RE
+.PP
+
+.SS "const \fBAboutLicense\fP & magrathea::AboutLicense::ccbyndv3 ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined CC-BY-ND v3 license\&. Creative Commons Attribution-NoDerivs 3\&.0 Unported (CC BY-ND 3\&.0)\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to license singleton\&. 
+.RE
+.PP
+
+.SS "const \fBAboutLicense\fP & magrathea::AboutLicense::ccbysav3 ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined CC-BY-SA v3 license\&. Creative Commons Attribution-ShareAlike 3\&.0 Unported (CC BY-SA 3\&.0)\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to license singleton\&. 
+.RE
+.PP
+
+.SS "const \fBAboutLicense\fP & magrathea::AboutLicense::ccbyv3 ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined CC-BY v3 license\&. Creative Commons Attribution 3\&.0 Unported (CC BY 3\&.0)\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to license singleton\&. 
+.RE
+.PP
+
+.SS "const \fBAboutLicense\fP & magrathea::AboutLicense::cecill ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined CeCILL license\&. CeCILL license\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to license singleton\&. 
+.RE
+.PP
+
+.SS "const \fBAboutLicense\fP & magrathea::AboutLicense::cecillb ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined CeCILL-B license\&. CeCILL-B license\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to license singleton\&. 
+.RE
+.PP
+
+.SS "const \fBAboutLicense\fP & magrathea::AboutLicense::cecillc ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined CeCILL-C license\&. CeCILL-C license\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to license singleton\&. 
+.RE
+.PP
+
+.SS "const std::string & magrathea::AboutLicense::description () const\fC [inline]\fP"
+
+.PP
+Short description or summary of the license getter\&. Gets the value of the description property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Description\&. 
+.RE
+.PP
+
+.SS "\fBAboutLicense\fP & magrathea::AboutLicense::description (const std::string &value)\fC [inline]\fP"
+
+.PP
+Short description or summary of the license setter\&. Sets the value of the description property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Description\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "int magrathea::AboutLicense::example ()\fC [static]\fP"
+
+.PP
+Example function\&. Tests and demonstrates the use of \fBAboutLicense\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no error\&. 
+.RE
+.PP
+
+.SS "const \fBAboutLicense\fP & magrathea::AboutLicense::freebsd ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined FreeBSD license\&. FreeBSD license\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to license singleton\&. 
+.RE
+.PP
+
+.SS "const \fBAboutLicense\fP & magrathea::AboutLicense::gplv3 ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined GPLv3 license\&. GNU General Public License Version 3\&.0\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to license singleton\&. 
+.RE
+.PP
+
+.SS "const \fBAboutLicense\fP & magrathea::AboutLicense::lgplv3 ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined LGPLv3 license\&. GNU Lesser General Public License Version 3\&.0\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to license singleton\&. 
+.RE
+.PP
+
+.SS "const std::string & magrathea::AboutLicense::link () const\fC [inline]\fP"
+
+.PP
+Web link getter\&. Gets the value of the link property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Link\&. 
+.RE
+.PP
+
+.SS "\fBAboutLicense\fP & magrathea::AboutLicense::link (const std::string &value)\fC [inline]\fP"
+
+.PP
+Web link setter\&. Sets the value of the link property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Link\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "const \fBAboutLicense\fP & magrathea::AboutLicense::modifiedbsd ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Predefined modified BSD license\&. Modified BSD license\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Immutable reference to license singleton\&. 
+.RE
+.PP
+
+.SS "const std::string & magrathea::AboutLicense::name () const\fC [inline]\fP"
+
+.PP
+Complete name getter\&. Gets the value of the name property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Name\&. 
+.RE
+.PP
+
+.SS "\fBAboutLicense\fP & magrathea::AboutLicense::name (const std::string &value)\fC [inline]\fP"
+
+.PP
+Complete name setter\&. Sets the value of the name property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Name\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "bool magrathea::AboutLicense::proprietary () const\fC [inline]\fP"
+
+.PP
+Proprietary or free/open-source flag getter\&. Gets the value of the proprietary property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Proprietary\&. 
+.RE
+.PP
+
+.SS "\fBAboutLicense\fP & magrathea::AboutLicense::proprietary (const boolvalue)\fC [inline]\fP"
+
+.PP
+Proprietary or free/open-source flag setter\&. Sets the value of the proprietary property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Proprietary\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "const std::string & magrathea::AboutLicense::reference () const\fC [inline]\fP"
+
+.PP
+Complete license reference getter\&. Gets the value of the reference property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Reference\&. 
+.RE
+.PP
+
+.SS "\fBAboutLicense\fP & magrathea::AboutLicense::reference (const std::string &value)\fC [inline]\fP"
+
+.PP
+Complete license reference setter\&. Sets the value of the reference property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Reference\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "std::string magrathea::AboutLicense::text (const std::string &program, const std::string &date = \fC''\fP, const std::string &owner = \fC''\fP, const std::string &contact = \fC''\fP, const std::string &organization = \fC''\fP, const std::string &purpose = \fC''\fP) const\fC [inline]\fP"
+
+.PP
+License text of the program accessor\&. Gets the value of the text property with correctly replaced keywords\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Text\&. 
+.RE
+.PP
+
+.SS "const std::string & magrathea::AboutLicense::text () const\fC [inline]\fP"
+
+.PP
+License text of the program getter\&. Gets the value of the text property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Text\&. 
+.RE
+.PP
+
+.SS "\fBAboutLicense\fP & magrathea::AboutLicense::text (const std::string &value)\fC [inline]\fP"
+
+.PP
+License text of the program setter\&. Sets the value of the text property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Text\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "const std::string & magrathea::AboutLicense::title () const\fC [inline]\fP"
+
+.PP
+License title, name or acronym getter\&. Gets the value of the title property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Title\&. 
+.RE
+.PP
+
+.SS "\fBAboutLicense\fP & magrathea::AboutLicense::title (const std::string &value)\fC [inline]\fP"
+
+.PP
+License title, name or acronym setter\&. Sets the value of the title property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Title\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SS "double magrathea::AboutLicense::version () const\fC [inline]\fP"
+
+.PP
+Version number getter\&. Gets the value of the version property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Version\&. 
+.RE
+.PP
+
+.SS "\fBAboutLicense\fP & magrathea::AboutLicense::version (const doublevalue)\fC [inline]\fP"
+
+.PP
+Version number setter\&. Sets the value of the version property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Version\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Self reference\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "using magrathea::AboutLicense::operator = "
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

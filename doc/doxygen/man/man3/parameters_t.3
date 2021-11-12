@@ -1,0 +1,320 @@
+.TH "parameters_t" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+parameters_t \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <catalogues\&.h>\fP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBcelldir\fP"
+.br
+.ti -1c
+.RI "std::string \fBconedir\fP"
+.br
+.ti -1c
+.RI "std::string \fBconefmt\fP"
+.br
+.ti -1c
+.RI "std::string \fBevolfile\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBisfullsky\fP"
+.br
+.ti -1c
+.RI "\fBreal\fP \fBmpc\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBncoarse\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBncones\fP"
+.br
+.ti -1c
+.RI "std::string \fBparamfile\fP"
+.br
+.ti -1c
+.RI "\fBreal\fP \fBrhoch2\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBseed\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBtypefile\fP"
+.br
+.ti -1c
+.RI "std::string \fBbase\fP"
+.br
+.ti -1c
+.RI "\fBreal\fP \fBcat_accuracy\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBfirstcone\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBhalos\fP"
+.br
+.ti -1c
+.RI "std::string \fBjacobiantype\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBlastcone\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBnpart\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBnsteps\fP"
+.br
+.ti -1c
+.RI "\fBreal\fP \fBopeningmin\fP"
+.br
+.ti -1c
+.RI "std::string \fBoutputdir\fP"
+.br
+.ti -1c
+.RI "std::string \fBoutputprefix\fP"
+.br
+.ti -1c
+.RI "std::string \fBplane\fP"
+.br
+.ti -1c
+.RI "std::string \fBsourcedir\fP"
+.br
+.ti -1c
+.RI "std::string \fBstop_bundle\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBuse_previous_catalogues\fP"
+.br
+.ti -1c
+.RI "\fBreal\fP \fBv0x\fP"
+.br
+.ti -1c
+.RI "\fBreal\fP \fBv0y\fP"
+.br
+.ti -1c
+.RI "\fBreal\fP \fBv0z\fP"
+.br
+.ti -1c
+.RI "\fBreal\fP \fBzmin\fP"
+.br
+.ti -1c
+.RI "\fBreal\fP \fBzmax\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBacorrection\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBallocation\fP"
+.br
+.ti -1c
+.RI "std::string \fBcellfmt\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBcoarsecorrection\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBcoarseonly\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBcorrection\fP"
+.br
+.ti -1c
+.RI "std::string \fBinputtype\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBmicrocoeff\fP"
+.br
+.ti -1c
+.RI "std::string \fBminicone\fP"
+.br
+.ti -1c
+.RI "std::string \fBpartdir\fP"
+.br
+.ti -1c
+.RI "std::string \fBmap_components\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBnb_z_maps\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBnbundlemin\fP"
+.br
+.ti -1c
+.RI "long \fBnside\fP"
+.br
+.ti -1c
+.RI "std::string \fBstop_ray\fP"
+.br
+.ti -1c
+.RI "\fBreal\fP \fBz_stop_min\fP"
+.br
+.ti -1c
+.RI "\fBreal\fP \fBz_stop_max\fP"
+.br
+.ti -1c
+.RI "std::string \fBvelocity_field_v0\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBmakestat\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBmassmin\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBmassmax\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBnbundlecnt\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBnstat\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBntrajectories\fP"
+.br
+.ti -1c
+.RI "\fBuint\fP \fBopeningcnt\fP"
+.br
+.ti -1c
+.RI "std::string \fBray_targets\fP"
+.br
+.ti -1c
+.RI "\fBinteger\fP \fBsavemode\fP"
+.br
+.ti -1c
+.RI "std::string \fBstatistic\fP"
+.br
+.in -1c
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBuint\fP parameters_t::acorrection"
+
+.SS "\fBuint\fP parameters_t::allocation"
+
+.SS "std::string parameters_t::base"
+
+.SS "\fBreal\fP parameters_t::cat_accuracy"
+
+.SS "std::string parameters_t::celldir"
+
+.SS "std::string parameters_t::cellfmt"
+
+.SS "\fBuint\fP parameters_t::coarsecorrection"
+
+.SS "\fBuint\fP parameters_t::coarseonly"
+
+.SS "std::string parameters_t::conedir"
+
+.SS "std::string parameters_t::conefmt"
+
+.SS "\fBuint\fP parameters_t::correction"
+
+.SS "std::string parameters_t::evolfile"
+
+.SS "\fBuint\fP parameters_t::firstcone"
+
+.SS "\fBuint\fP parameters_t::halos"
+
+.SS "std::string parameters_t::inputtype"
+
+.SS "\fBuint\fP parameters_t::isfullsky"
+
+.SS "std::string parameters_t::jacobiantype"
+
+.SS "\fBuint\fP parameters_t::lastcone"
+
+.SS "\fBuint\fP parameters_t::makestat"
+
+.SS "std::string parameters_t::map_components"
+
+.SS "\fBuint\fP parameters_t::massmax"
+
+.SS "\fBuint\fP parameters_t::massmin"
+
+.SS "\fBuint\fP parameters_t::microcoeff"
+
+.SS "std::string parameters_t::minicone"
+
+.SS "\fBreal\fP parameters_t::mpc"
+
+.SS "\fBuint\fP parameters_t::nb_z_maps"
+
+.SS "\fBuint\fP parameters_t::nbundlecnt"
+
+.SS "\fBuint\fP parameters_t::nbundlemin"
+
+.SS "\fBuint\fP parameters_t::ncoarse"
+
+.SS "\fBuint\fP parameters_t::ncones"
+
+.SS "\fBuint\fP parameters_t::npart"
+
+.SS "long parameters_t::nside"
+
+.SS "\fBuint\fP parameters_t::nstat"
+
+.SS "\fBuint\fP parameters_t::nsteps"
+
+.SS "\fBuint\fP parameters_t::ntrajectories"
+
+.SS "\fBuint\fP parameters_t::openingcnt"
+
+.SS "\fBreal\fP parameters_t::openingmin"
+
+.SS "std::string parameters_t::outputdir"
+
+.SS "std::string parameters_t::outputprefix"
+
+.SS "std::string parameters_t::paramfile"
+
+.SS "std::string parameters_t::partdir"
+
+.SS "std::string parameters_t::plane"
+
+.SS "std::string parameters_t::ray_targets"
+
+.SS "\fBreal\fP parameters_t::rhoch2"
+
+.SS "\fBinteger\fP parameters_t::savemode"
+
+.SS "\fBuint\fP parameters_t::seed"
+
+.SS "std::string parameters_t::sourcedir"
+
+.SS "std::string parameters_t::statistic"
+
+.SS "std::string parameters_t::stop_bundle"
+
+.SS "std::string parameters_t::stop_ray"
+
+.SS "\fBuint\fP parameters_t::typefile"
+
+.SS "\fBuint\fP parameters_t::use_previous_catalogues"
+
+.SS "\fBreal\fP parameters_t::v0x"
+
+.SS "\fBreal\fP parameters_t::v0y"
+
+.SS "\fBreal\fP parameters_t::v0z"
+
+.SS "std::string parameters_t::velocity_field_v0"
+
+.SS "\fBreal\fP parameters_t::z_stop_max"
+
+.SS "\fBreal\fP parameters_t::z_stop_min"
+
+.SS "\fBreal\fP parameters_t::zmax"
+
+.SS "\fBreal\fP parameters_t::zmin"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.

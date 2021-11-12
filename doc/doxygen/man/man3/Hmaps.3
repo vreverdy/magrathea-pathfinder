@@ -1,0 +1,241 @@
+.TH "Hmaps" 3 "Wed Oct 6 2021" "MAGRATHEA/PATHFINDER" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Hmaps \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <hmaps\&.h>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<class Parameters , class Map > static void \fBReadParamFile\fP (Parameters &\fBparameters\fP, Map &parameter)"
+.br
+.RI "\fIRead parameter file\&. \fP"
+.ti -1c
+.RI "template<class Parameter , typename Integer , class Cones > static void \fBgetPixels_per_cone\fP (const Parameter &\fBparameters\fP, const Integer npix, std::vector< Integer > &pixel, std::vector< unsigned int > &ntrajectories, const unsigned int iconerank, const Cones &cones)"
+.br
+.RI "\fIGet targets\&. \fP"
+.ti -1c
+.RI "template<class Parameter , typename Integer , class Cones > static void \fBgetPixels_per_cone2\fP (const Parameter &\fBparameters\fP, const Integer npix, std::vector< Integer > &pixel, std::vector< unsigned int > &ntrajectories, const unsigned int iconerank, const Cones &cones)"
+.br
+.RI "\fIGet targets\&. \fP"
+.ti -1c
+.RI "template<class Parameter , class Octree , class Map , class Pixel , class Cosmology , class Point , typename Integer , typename Real > static void \fBFillMapPropagate\fP (const Parameter &\fBparameters\fP, const Integer ntrajectory, const Integer firsttrajectory, const Octree &octree, const Point &vobs, Map &map, const Integer nmaps, const Pixel &pixel, const Cosmology &cosmology, const \fBpoint\fP &observer, const Real length, const std::vector< Real > &z_stop_vec)"
+.br
+.RI "\fIProduce Healpix maps using bundles\&. \fP"
+.ti -1c
+.RI "template<class Parameter , class Octree , class Map , class Pixel , class Cosmology , class Point , typename Integer , typename Real > static void \fBFillMap\fP (const Parameter &\fBparameters\fP, const std::vector< std::string > &map_components, const std::vector< unsigned int > &index_components, const Integer ntrajectory, const Integer firsttrajectory, const Octree &octree, const Point &vobs, Map &map, const unsigned int nmaps, const Pixel &pixel, const Cosmology &cosmology, const \fBpoint\fP &observer, const Real length, const std::vector< Real > &interpRefvec, const std::vector< Real > &rhomo, const std::vector< Real > &thomo, const std::vector< Real > &lambdahomo, const std::vector< Real > &redshifthomo, const std::vector< Real > &ahomo)"
+.br
+.RI "\fIProduce Healpix maps\&. \fP"
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class Parameter , class Octree , class Map , class Pixel , class Cosmology , class Point , typename Integer , typename Real > void Hmaps::FillMap (const Parameter &parameters, const std::vector< std::string > &map_components, const std::vector< unsigned int > &index_components, const Integerntrajectory, const Integerfirsttrajectory, const Octree &octree, const Point &vobs, Map &map, const unsigned intnmaps, const Pixel &pixel, const Cosmology &cosmology, const \fBpoint\fP &observer, const Reallength, const std::vector< Real > &interpRefvec, const std::vector< Real > &rhomo, const std::vector< Real > &thomo, const std::vector< Real > &lambdahomo, const std::vector< Real > &redshifthomo, const std::vector< Real > &ahomo)\fC [static]\fP"
+
+.PP
+Produce Healpix maps\&. Produce Healpix maps 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIParameter\fP Parameter type 
+.br
+\fIOctree\fP octree type 
+.br
+\fIMap\fP map type 
+.br
+\fIPixel\fP pixel type 
+.br
+\fICosmology\fP cosmology type 
+.br
+\fIPoint\fP Point type 
+.br
+\fIInteger\fP integer type 
+.br
+\fIReal\fP real/float type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Parameter structure\&. 
+.br
+\fImap_components\fP Vector of strings containing the map types\&. 
+.br
+\fIindex_components\fP Vector containing the index relative to the map types\&. 
+.br
+\fIntrajectory\fP Number of pixels to be filled 
+.br
+\fIfirsttrajectory\fP first index for pixel for a given cone 
+.br
+\fIoctree\fP Octree 
+.br
+\fIvobs\fP Observer velocity 
+.br
+\fImap\fP Map 
+.br
+\fInmaps\fP Number of Healpix maps 
+.br
+\fIpixel\fP Pixel vector 
+.br
+\fIcosmology\fP Cosmological table 
+.br
+\fIobserver\fP Observer position 
+.br
+\fIlength\fP R\&.U to S\&.I units for length 
+.br
+\fIinterpRefvec\fP vector of interpolations at a given quantity for a given surface 
+.br
+\fIrhomo\fP vector of FLRW distance at the redshifts of interest 
+.br
+\fIthomo\fP vector of FLRW time at the redshifts of interest 
+.br
+\fIlambdahomo\fP vector of FLRW affine parameter at the redshifts of interest 
+.br
+\fIredshifthomo\fP vector of FLRW redshift at the redshifts of interest 
+.br
+\fIahomo\fP vector of FLRW scale factor at the redshifts of interest 
+.RE
+.PP
+
+.SS "template<class Parameter , class Octree , class Map , class Pixel , class Cosmology , class Point , typename Integer , typename Real > void Hmaps::FillMapPropagate (const Parameter &parameters, const Integerntrajectory, const Integerfirsttrajectory, const Octree &octree, const Point &vobs, Map &map, const Integernmaps, const Pixel &pixel, const Cosmology &cosmology, const \fBpoint\fP &observer, const Reallength, const std::vector< Real > &z_stop_vec)\fC [static]\fP"
+
+.PP
+Produce Healpix maps using bundles\&. Produce Healpix maps using bundles at constant FLRW redshift 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIParameter\fP Parameter type 
+.br
+\fIOctree\fP octree type 
+.br
+\fIMap\fP map type 
+.br
+\fIPixel\fP pixel type 
+.br
+\fICosmology\fP cosmology type 
+.br
+\fIInteger\fP integer type 
+.br
+\fIReal\fP real/float type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Parameter structure 
+.br
+\fIntrajectory\fP Number of pixels to be filled 
+.br
+\fIfirsttrajectory\fP first index for pixel for a given cone 
+.br
+\fIoctree\fP Octree 
+.br
+\fIvobs\fP Observer velocity 
+.br
+\fImap\fP Map 
+.br
+\fInmaps\fP Number of Healpix maps 
+.br
+\fIpixel\fP Pixel vector 
+.br
+\fIcosmology\fP Cosmological table 
+.br
+\fIobserver\fP Observer position 
+.br
+\fIlength\fP R\&.U to S\&.I units for length 
+.br
+\fIz_stop_vec\fP Vector containing redshifts at which we compute scalar quantities 
+.RE
+.PP
+
+.SS "template<class Parameter , typename Integer , class Cones > void Hmaps::getPixels_per_cone (const Parameter &parameters, const Integernpix, std::vector< Integer > &pixel, std::vector< unsigned int > &ntrajectories, const unsigned inticonerank, const Cones &cones)\fC [static]\fP"
+
+.PP
+Get targets\&. Get targets inside cone\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIParameter\fP Parameter type 
+.br
+\fIInteger\fP Integer type 
+.br
+\fICones\fP Cones type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Parameter structure\&. 
+.br
+\fInpix\fP Number of pixels\&. 
+.br
+\fIpixel\fP Vector of pixels inside cones that are treated by the same MPI task\&. 
+.br
+\fIntrajectories\fP Number of pixels per cone\&. 
+.br
+\fIiconerank\fP Number of the cone of interest\&. 
+.br
+\fICones\fP Geometry of all the cones\&. return Filled vector of targets inside cones for a given MPI task 
+.RE
+.PP
+
+.SS "template<class Parameter , typename Integer , class Cones > void Hmaps::getPixels_per_cone2 (const Parameter &parameters, const Integernpix, std::vector< Integer > &pixel, std::vector< unsigned int > &ntrajectories, const unsigned inticonerank, const Cones &cones)\fC [static]\fP"
+
+.PP
+Get targets\&. Get targets inside cone\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIParameter\fP Parameter type 
+.br
+\fIInteger\fP Integer type 
+.br
+\fICones\fP Cones type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Parameter structure\&. 
+.br
+\fInpix\fP Number of pixels\&. 
+.br
+\fIpixel\fP Vector of pixels inside cones that are treated by the same MPI task\&. 
+.br
+\fIntrajectories\fP Number of pixels per cone\&. 
+.br
+\fIiconerank\fP Number of the cone of interest\&. 
+.br
+\fICones\fP Geometry of all the cones\&. return Filled vector of targets inside cones for a given MPI task 
+.RE
+.PP
+
+.SS "template<class Parameters , class Map > void Hmaps::ReadParamFile (Parameters &parameters, Map &parameter)\fC [static]\fP"
+
+.PP
+Read parameter file\&. Read and put in a structure the parameters\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIParameters\fP structure type 
+.br
+\fIMap\fP map type 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Structure containing the parameters\&. 
+.br
+\fIparameter\fP Contains parameters to be rewritten 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Filled parameters structure\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MAGRATHEA/PATHFINDER from the source code\&.
