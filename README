@@ -13,6 +13,7 @@ within cosmological simulations to construct observables.
  
 ==============================
 Table of content:
+ 0. Preamble
  1. Compiling the code
  2. Running the code
  3. Jobs
@@ -27,6 +28,14 @@ Table of content:
 12. Citations
 13. Contact
 ==============================
+
+
+=====================
+0. Preamble
+=====================
+Magrathea-Pathfinder is a high-performance computational framework for relativistic raytracing at cosmological scales.
+It is built on top of the Magrathea metalibrary (Reverdy, 2014) available at: https://github.com/vreverdy/magrathea
+Magrathea stands for "Multi-processor Adaptive Grid Refinement Analysis for THEoretical Astrophysics".
 
 
 =====================
@@ -427,8 +436,7 @@ You can compare your results to the ones in test_data/expected_results/
 An exhaustive documentation generated with Doxygen
 for every function is available in doc/doxygen/latex/refman.pdf
 
-For more information on the underlying Magrathea metalibrary on which 
-Magrathea-Pathfinder is built, please see:
+For more information on the underlying Magrathea metalibrary, please see:
 https://github.com/vreverdy/magrathea
 
 =============
