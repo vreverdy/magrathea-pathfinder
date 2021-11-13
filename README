@@ -8,7 +8,7 @@ Michel-Andres Breton
 2012-2021
 =============================================
 
-The goal of the present library is to propagate photons 
+The goal of the present framework is to propagate photons 
 within cosmological simulations to construct observables.
  
 ==============================
@@ -427,14 +427,17 @@ You can compare your results to the ones in test_data/expected_results/
 An exhaustive documentation generated with Doxygen
 for every function is available in doc/doxygen/latex/refman.pdf
 
+For more information on the underlying Magrathea metalibrary on which 
+Magrathea-Pathfinder is built, please see:
+https://github.com/vreverdy/magrathea
+
 =============
 12. Citations
 =============
 
-IF you use Magrathea-Pathfinder for your research, please cite:
+If you use Magrathea-Pathfinder for your research, please cite:
 - Reverdy (2014), PhD thesis (https://hal.archives-ouvertes.fr/tel-02095297/document)
 - Breton & Reverdy (2021)
-
 
 ===========
 13. Contact
