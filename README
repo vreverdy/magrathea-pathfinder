@@ -50,7 +50,7 @@ In the main directory, just type
 
 This will produce all the executables in ./bin
 
-The compiler must be GCC version must be at least 4.8.1 (Does not work for GCC 8.X, but does for GCC 9.X, this will be fixed soon)
+The compiler must be GCC version must be at least 4.8.1 (Does not work for GCC 8.X, but does for all other version up to GCC 11.X, this will be fixed soon)
 If the version of GCC is inferior to 7.x.x, it must be indicated in the Makefile
 (uncomment the 'OPTIONS += -DGCCBELOW7' line)
 
