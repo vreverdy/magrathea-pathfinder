@@ -392,8 +392,6 @@ a = 1 at z = 0 (today), t and tau = 0 at z = 0,
 a is the expansion factor, h the Hubble constant defined as hexp=1/a*da/dtau
  tau the supercomoving conformal time (integral of dt/a^2), t the look-back time, tproper is integral of dt/a!  )
 
-NEWDARKCOSMOS, VOIR AVEC PSC
-
 ---------------------------
 9.2 Cosmological parameters
 ---------------------------
