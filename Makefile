@@ -14,6 +14,7 @@ CF = -O3 -Wall -Wextra -Wno-unused-parameter  -Wuninitialized -Winit-self -Wno-s
 
 # The HDF5 library is mandatory to compile the code, even if we do not necessarily use it the get the data
 HDF5_PATH = /opt/hdf5/1.10.1/openmpi/3.0.0/gcc/7.3.0/
+#HDF5_PATH = /opt/hdf5-1.10.0/gcc-6.3.0/
 # Need the Healpix library to compute Healpix maps. Not needed for other purposes
 HEALPIX_PATH = /data/home/mbreton/Healpix_3.70
 # Needed when using the Healpix library
@@ -31,7 +32,7 @@ OPTIONS += -DMEMORY_SAVING
 # EXTENT = 1 is the size of the simulation box, might need to put a higher value for narrow cones. 
 # Must be equal to 2^n with n an integer. 
 # As long as the octree volume is larger than that of the data, the value for EXTENT does not matter
-OPTIONS += -DEXTENT=4
+OPTIONS += -DEXTENT=32
 # Interpolation order for ray-tracing. NGP = 0, CIC = 1, TSC = 2
 OPTIONS += -DORDER=2
 # VERBOSE

@@ -114,7 +114,7 @@ void Miscellaneous::getFilesinDir(const std::string dirName, std::vector<std::st
     pdir=opendir(dirName.c_str()); //"." refers to the current dir
     if (!pdir){
 	std::cout<<"opendir() failure; terminating"<<std::endl;
-	std::cout<<"# Error at file "<<__FILE__<<", line : "<<__LINE__<<std::endl;
+	std::cout<<"# Error at file "<<__FILE__<<", line : "<<__LINE__<<" "<<dirName<<std::endl;
 	std::terminate();
     }
     errno=0;
@@ -123,7 +123,7 @@ void Miscellaneous::getFilesinDir(const std::string dirName, std::vector<std::st
     }
     if (errno){
 	std::cout<<"readdir() failure; terminating"<<std::endl;
-	std::cout<<"# Error at file "<<__FILE__<<", line : "<<__LINE__<<std::endl;
+	std::cout<<"# Error at file "<<__FILE__<<", line : "<<__LINE__<<" "<<dirName<<std::endl;
 	std::terminate();
     }
     closedir(pdir);
@@ -263,7 +263,7 @@ void Miscellaneous::GenerateNarrowCones(const Parameter& parameters, std::vector
     std::array< std::array< double, 3 >, 3 > rotation = {{0}};
     std::vector<std::string> filelistingprior;
     std::string filelisting;
-    const double eps = 0; // buffer zone for cone distribution
+    const double eps = magrathea::Constants<double>::deg()*0.5; // 0.6 deg of buffer zone
 
     // Get all filenames in directory
     Miscellaneous::getFilesinDir(parameters.celldir, filelistingprior);
@@ -347,6 +347,7 @@ void Miscellaneous::GenerateNarrowCones(const Parameter& parameters, std::vector
     float irecuploop = 0;
     // Generally, we will not exactly have the good number of points, then need to iterate on the initial number of points on the full sky
     while(iloop != parameters.ncones){
+        //std::cout<<irecuploop<<" "<<tiling.size()<<std::endl;
 	if(irecuploop < 10) 
 	    tiling.resize(tiling.size()+static_cast<int>((static_cast<float>(parameters.ncones)-static_cast<float>(iloop))*static_cast<float>(fsp)*(1/(1+irecuploop))));
 	else 
@@ -394,7 +395,7 @@ void Miscellaneous::GenerateNarrowCones(const Parameter& parameters, std::vector
     // Assign an angle depending on the maximum distance between two cones. We multiply by an arbitrary factor which seems ideal to produce wide enough cones 
     double alpha = 1.8*std::asin(resulting/sphere.diameter());
     // Need a minimum angle to avoid thin cones. 0.1 = 6 degrees
-    const double anglemin = 0.01;
+    const double anglemin = 0.001;
     alpha = (anglemin > alpha) ? anglemin : alpha;
     std::cout<<"# Angle proposed : "<<1.8*std::asin(resulting/sphere.diameter())<<" angle chosen : "<<alpha<<std::endl;
     // Assign properties to cones
@@ -501,7 +502,7 @@ void Miscellaneous::VizualizeOctree(const Octree< Type, Index, Data, Dimension, 
 	double z = std::get<0>(octree[i]).template center<Type,Position,Extent>(2);
         if(x*x+y*y+z*z < radius*radius){
 	    // Output result on terminal
-	    std::cout<<x<<" "<<y<<" "<<z<<" "<<std::get<1>(octree[i])<<std::endl; 
+	    std::cout<<x<<" "<<y<<" "<<z<<" "<<std::get<1>(octree[i])<<" #vizualize"<<std::endl; 
         }
     }
 }

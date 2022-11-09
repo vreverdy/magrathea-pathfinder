@@ -420,7 +420,7 @@ inline bool Utility::collide(const Object<Dimension, Vector, Scalar>& object, co
         distance += cone.template pow<2>(object.position(idim)-(cone.vertex(idim)+(cone.base(idim)-cone.vertex(idim))*(length/norm))); 
     }
     //return ((std::sqrt(distance) < radius(object)+length*std::tan(cone.angle())) && (length > Scalar()) && (length < norm+radius(object)*Scalar(2)));
-    return ((std::sqrt(distance) < 5*radius(object)+length*std::tan(cone.angle()) + 0.4*inspheresize*std::exp(-0.7*(length - inspheresize*std::cos(cone.angle()))*(length - inspheresize*std::cos(cone.angle()))/(inspheresize*inspheresize))) && !(length < Scalar()) && (length < norm+radius(object)*Scalar(2)));
+    return ((std::sqrt(distance) < (5*radius(object)+length*std::tan(cone.angle()) + 0.4*inspheresize*std::exp(-0.7*(length - inspheresize*std::cos(cone.angle()))*(length - inspheresize*std::cos(cone.angle()))/(inspheresize*inspheresize)))) && !(length < Scalar()) && (length < (norm+radius(object)*Scalar(2))));
 }
 
 

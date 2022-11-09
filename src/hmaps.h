@@ -264,11 +264,15 @@ void Hmaps::getPixels_per_cone2(const Parameter& parameters, const Integer npix,
     // Fill temporary pixel vector with -1
     std::vector<long> pixeltmp(npix, -1);
     ntrajectories.push_back(0);
+    const double cone_length = cones[0].length();
     // Loop over all the pixels
-    Utility::parallelize(npix, [=, &parameters, &iconerank, &cones, &ntrajectories, &pixeltmp](long pix){
+    Utility::parallelize(npix, [=, &parameters, &iconerank, &cones, &ntrajectories, &pixeltmp, &cone_length](long pix){
 	double vec[3];
 	// Convert pixel to 3D vector
 	pix2vec_ring(parameters.nside, pix, vec);
+        vec[0] *= 0.9*cone_length;
+        vec[1] *= 0.9*cone_length;
+        vec[2] *= 0.9*cone_length;
         double reference(0), length(0), distance(0);
         bool ok = false;
 	reference = 0;

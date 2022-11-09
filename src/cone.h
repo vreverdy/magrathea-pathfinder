@@ -366,7 +366,7 @@ inline bool Cone<Vector, Scalar>::inside(const OtherVector& point) const
         dist += pow<2>(point[idim]-vertex(idim));
         ref += pow<2>(base(idim)-vertex(idim));
     }
-    return ((ref > Scalar()) && !(std::acos(dot/(rt<2>(dist*ref))) > angle()) && !(dot > ref) && (dot > Scalar()));
+    return ((dot > Scalar()) && !(std::acos(dot/(rt<2>(dist*ref))) > angle()) && !(dot > ref));
 }
 
 // Point outside
@@ -387,7 +387,7 @@ inline bool Cone<Vector, Scalar>::outside(const OtherVector& point) const
         dist += pow<2>(point[idim]-vertex(idim));
         ref += pow<2>(base(idim)-vertex(idim));
     }
-    return (!(ref > Scalar()) || !(std::acos(dot/rt<2>(dist*ref)) < angle()) || !(dot < ref) || !(dot > Scalar()));
+    return (!(dot > Scalar()) || !(std::acos(dot/rt<2>(dist*ref)) < angle()) || !(dot < ref));
 }
 // -------------------------------------------------------------------------- //
 

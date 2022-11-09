@@ -190,6 +190,8 @@ int main(int argc, char* argv[])
 	    }
 	    // Load octree
 	    Miscellaneous::loadOctree(icone, octree, conefile);
+            std::cout<<"#base : "<<coneIfRot[rank].base(0)<<" "<<coneIfRot[rank].base(1)<<" "<<coneIfRot[rank].base(2)<<std::endl;
+            Miscellaneous::VizualizeOctree(octree, 0.15);
 	    // Set observer position
 	    point observer; 
 	    observer[0] = 0;

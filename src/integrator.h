@@ -768,7 +768,6 @@ Trajectory& Integrator::integrate(Trajectory& trajectory, const std::string inte
 #else
             photon.redshift() = a0/photon.a()*(one + phi0c2 - photon.phi()/c2)-one;
 #endif
-
             // Next step
             if (data != empty) {
 		ratio = photon.a()*photon.a()*(scale/c)/nsteps;

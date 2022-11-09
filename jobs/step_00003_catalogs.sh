@@ -16,29 +16,33 @@ module load gcc/7.3.0
 module load openmpi/3.0.0-gcc-7.3.0 
 module load hdf5/1.10.1-gcc-7.3.0
 
+#module purge
+#module load gcc/6.3.0
+#module load openmpi/2.1.0-gcc-6.3.0
+#module load hdf5/1.10.0-gcc-6.3.0
 #export LD_LIBRARY_PATH=/home/mbreton/hdf5-1.8.16/lib:$LD_LIBRARY_PATH
 
 
-NCPU=8
+NCPU=1
 exec_line='mpirun -np '$NCPU
-home=/data/home/mbreton/magrathea_pathfinder/bin/ # executable directory
+home=/data/home/mbreton/magrathea-pathfinder/bin/ # executable directory
 EXEC=$home/catalogues
-base=/data/mbreton/test_data/simulation/   # simulation directory
-sim=boxlen82.03125_n128_lcdmw7 # simulation name
-ncoarse=7
-ncones=8
+base=/data/mbreton/   # simulation directory
+sim=boxlen110_n1024_lcdmplanck18_00000 # simulation name
+ncoarse=10
+ncones=64
 
-inputconegrav='cone_grav_fullsky_pastnfut_00001'
-inputconepart='cone_part_fullsky_past_00001/'
+inputconegrav='cone_grav_narrow_pastnfut_00001'
+inputconepart='cone_part_narrow_past_00001/'
 inputminicone='cone_grav_fullsky_pastnfut_00001'  #CENTRAL BUFFER ZONE FOR CONE NARROW
-conenameout='cone_lensing_fullsky_past_00001'
-#halodir='/fof_b02000m/' # For haloes
-halodir='' # For particles
-conedir='conedir'
-catalogs='catalogs'
+conenameout='cone_lensing_narrow_past_00001'
+halodir='/fof_b02000m/' # For haloes
+#halodir='' # For particles
+conedir='conedir_3930mini'
+catalogs='catalogs_3930mini'
 
-paramfile='/data/mbreton/test_data/simulation/boxlen82.03125_n128_lcdmw7/param_lcdmw7v2.txt'
-evolfile='/data/mbreton/test_data/simulation/boxlen82.03125_n128_lcdmw7/ramses_input_lcdmw7v2.dat'
+paramfile='/data/mbreton/boxlen110_n1024_lcdmplanck18_00000/param_lcdmplanck18.txt'
+evolfile='/data/mbreton/boxlen110_n1024_lcdmplanck18_00000/ramses_input_lcdmplanck18.dat'
 
 DIR=$base/$sim # The directory must contain the keyword 'boxlen' followed by the box length in Mpc/h
 
@@ -62,7 +66,7 @@ rhoch2 = 1.8783467E-26 # (Value of rhoc*h^2)
 
 # Input files
 typefile = 1 # Type of input data. 0 = binary, 1 = hdf5 and 2 = ascii
-isfullsky = 1 # Type of lightcone. 1 = fullsky, 0 = narrow
+isfullsky = 0 # Type of lightcone. 1 = fullsky, 0 = narrow
 paramfile = $paramfile # Cosmological parameter file.
 evolfile = $evolfile # Ramses evolution file. 
 
@@ -92,12 +96,12 @@ npart = 30000 # Roughly the maximum number of particle wanted (with halos = 0)
 zmin = 0.0   # If halos = 0, minimum particle redshift
 zmax = 0.025 # If halos = 0, maximum particle redshift. If equal to 0, compute on the full volume
 firstcone = 0  # First cone for which we compute the catalogs
-lastcone = 7 # Last cone for which we compute the catalogs
+lastcone = 0 # Last cone for which we compute the catalogs
 cat_accuracy = 1e-8 # Convergence threshold for the newton method at the source (in radians)
 #######################
 
 # Regarding the jacobian matrix
-jacobiantype = infinitesimal_born # Computation of the jacobian matrix : "infinitesimal" or "infinitesimal_born" for the use of an infinitesimal beam or "bundle"
+jacobiantype = infinitesimal # Computation of the jacobian matrix : "infinitesimal" or "infinitesimal_born" for the use of an infinitesimal beam or "bundle"
 stop_bundle = plane # Important, corresponds to the stop criterion of bundles. Possible cases : redshift, lambda, a, t, r, plane
 plane = sachs # On which plane we compute the jacobian matrix with bundles or computation of iterations for catalogues. "normal" (normal to the observer line of sight) or "sachs" (normal to the photon)
 openingmin = 0.0001 # Bundle opening angle (at the observer location, in radians)

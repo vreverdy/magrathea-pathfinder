@@ -430,7 +430,6 @@ std::array< std::array<double, 2>, 2> Catalogues::newtonMethod2d(const Point& vo
     // Integrate on null geodesics until the photon reaches the source
     Integrator::integrate(trajectory, "radius", distTarget, cosmology, octree, vobs, length, parameters.nsteps);
 
-
     const unsigned int marked = trajectory.size() - 1;
     firstid = marked - (marked > 0);
     // Check if the photon reached the source
@@ -572,7 +571,7 @@ std::array< std::array<double, 2>, 2> Catalogues::newtonMethod2d(const Point& vo
 			    } else if(parameters.plane == "exact"){
 	    			std::cout<<"# Jacobian 'exact' not yet implemented !"<<std::endl;
 			    }else{
-			        std::cout<<"WARNING : Wrong plane, please choose 'sachs', 'normal' or 'exact'"<<std::endl;
+			        std::cout<<"# WARNING : Wrong plane, please choose 'sachs', 'normal' or 'exact'"<<std::endl;
 			        std::cout<<"# Error at file "<<__FILE__<<", line : "<<__LINE__<<std::endl;
 			        std::terminate();
 			    }
@@ -590,7 +589,7 @@ std::array< std::array<double, 2>, 2> Catalogues::newtonMethod2d(const Point& vo
 			    } else if(parameters.stop_bundle == "plane"){
 			        interpRef = kiTarget[0]*finalPoint[0] + kiTarget[1]*finalPoint[1] + kiTarget[2]*finalPoint[2]; 	
 			    }else {
-			        std::cout<<"WARNING : Wrong stop criterion for integration"<<std::endl;
+			        std::cout<<"# WARNING : Wrong stop criterion for integration"<<std::endl;
 			        std::cout<<"# Error at file "<<__FILE__<<", line : "<<__LINE__<<std::endl;
 			        std::terminate();
 			    }
@@ -599,7 +598,7 @@ std::array< std::array<double, 2>, 2> Catalogues::newtonMethod2d(const Point& vo
 			break;
 		    // If trajectory if better than previously but still not the desired accuracy
 		    } else if (sep_tmp < result[1][0]){
-			std::cout<<"Better, continue "<<i<<" "<<j<<" delta : "<<err<<" separation : "<<sep_tmp<<" best for the moment : "<<result[1][0]<<" must be below : "<<parameters.cat_accuracy<<std::endl;
+			std::cout<<"# Better, continue "<<i<<" "<<j<<" delta : "<<err<<" separation : "<<sep_tmp<<" best for the moment : "<<result[1][0]<<" must be below : "<<parameters.cat_accuracy<<std::endl;
 			result[1][0] = sep_tmp;
 			phi_tmp = phi + i;
 			theta_tmp = theta + j;
@@ -806,7 +805,6 @@ void Catalogues::relCat(const Point& vobs, const std::array< std::array< double,
 
     const unsigned int size = targets_position.size();
     std::vector<std::array<double, 16> > catalog(size);
-
     Utility::parallelize(size, [=, &catalog, &vobs, &rotm1, &observer, &targets_position, &previous_catalogue, &parameters, &cosmology, &octree, &length, &h](const uint i){
 
 	Point trueTarget, velocityTarget;

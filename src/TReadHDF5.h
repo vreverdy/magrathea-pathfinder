@@ -397,7 +397,7 @@ void TReadHDF5::cellsAndCubesPerLevels(const Parameter& parameters, const std::s
 				distance += pow(point111[idim]-(vertexCone[idim]+(baseCone[idim]-vertexCone[idim])*(length/normCone)),2); 
 			}   
 			// Compute if the cube intersects the cone
-    			if ( (std::sqrt(dist111) < halfcubediag + microsphere) || ((std::sqrt(distance) < 2*coarsediag + halfcubediag + length*tanAngle) && (length > 0)) ){ 
+    			if ( (std::sqrt(dist111) < (halfcubediag + microsphere)) || ((std::sqrt(distance) < (5*coarsediag + halfcubediag + length*tanAngle)) && (length > 0)) ){ 
 				cubeNumber[i].push_back(str);
 				hid_t cubeid = H5Gopen(lvlid,memb_name,H5P_DEFAULT);  
 				hid_t dsid = H5Dopen(cubeid,"refined_bool",H5P_DEFAULT);
