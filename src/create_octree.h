@@ -60,6 +60,7 @@ using namespace magrathea;
 
 struct parameters_t {
     // Common
+    real buffer;
     std::string celldir;
     std::string conedir;
     std::string conefmt;
@@ -142,6 +143,7 @@ void Create_octree::ReadParamFile(Parameters& parameters, Map& parameter){
     parameters.acorrection = std::stoul(parameter["acorrection"]);
     parameters.mpc = std::stod(parameter["mpc"]); 
     parameters.rhoch2 = std::stod(parameter["rhoch2"]);
+    parameters.buffer = std::stod(parameter["buffer"]);
 
 }
 
@@ -248,7 +250,7 @@ void Create_octree::PreparationHDF5_from_cells(Octree< Type, Index, Data, Dimens
 	    if(parameters.isfullsky == 0){ 
                 std::shuffle(std::begin(filelistmini), std::end(filelistmini), engine1);
                 for (uint ifile = zero, nfiles = filelistmini.size(); ifile < nfiles; ++ifile) {
-		    std::cout<<filelistmini[ifile]<<std::endl;
+		    std::cout<<"# "<<filelistmini[ifile]<<std::endl;
 		    Input::importfullhdf5<Position,Extent>(parameters, octree, filelistmini[ifile], [=, &octree](const Element& e){return Input::collide(octree, std::get<0>(e), microsphere, conicIfRot);});
 #ifdef VERBOSE
 		    std::cout<<"# MiniCone : "<<icone<<" File "<<ifile+1<<"/"<<nfiles<<" Octree size : "<<octree.size()<<std::endl;

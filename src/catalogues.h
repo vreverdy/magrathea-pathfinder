@@ -60,6 +60,7 @@ using namespace magrathea;
 
 struct parameters_t {
     // Common
+    real buffer;
     std::string celldir;
     std::string conedir;
     std::string conefmt;
@@ -78,7 +79,7 @@ struct parameters_t {
     real cat_accuracy;
     uint firstcone;
     uint halos;
-    std::string jacobiantype;
+    std::string beam;
     uint lastcone;
     uint npart;
     uint nsteps;
@@ -112,6 +113,7 @@ class Catalogues {
 	template < int Order = ORDER, bool RK4 = true, bool Verbose = false, class Point, class Cosmology, class Octree, class Type, class Parameter > static std::array< std::array<double,2>, 2 > iterateNewtonMethod(const Point& vobs, const Point& observer, const Type phi, const Type theta, const Point& target, const Point& velocity, std::array< std::array<double, 2>, 2 >& jacobian, const Parameter& parameters, const Cosmology& cosmology, const Octree& octree, const Type length, const Type h, std::vector<double>& redshifts, double& interpRef);
 	template < class Point, class Cosmology, class Octree, class Type, class Parameter >  static void relCat(const Point& vobs, const std::array< std::array< double, 3 >, 3 >& rotm1, std::string& nomOutput, const Point& observer, const std::vector < std::array<double, 8> >& targets_position, const std::vector < std::array< double, 18 > >& previous_catalogue, const Parameter& parameters, const Cosmology& cosmology, const Octree& octree, const Type length, const Type h); 
 	template < class Point, class Cosmology, class Octree, class Type, class Parameter >  static void relCat_with_previous_cat(const Point& vobs, std::string& nomOutput, const Point& observer, std::vector < std::array< double, 18 > >& previous_catalogue, const Parameter& parameters, const Cosmology& cosmology, const Octree& octree, const Type length, const Type h); 
+	template < class Point, class Cosmology, class Octree, class Type, class Parameter >  static void relCat_with_previous_cat_forward(const Point& vobs, std::string& nomOutput, const Point& observer, std::vector < std::array< double, 18 > >& previous_catalogue, const Parameter& parameters, const Cosmology& cosmology, const Octree& octree, const Type length, const Type h); 
 
 };
 
@@ -126,7 +128,6 @@ class Catalogues {
 template <class Parameters, class Map> 
 void Catalogues::ReadParamFile(Parameters& parameters, Map& parameter){
 
-
     parameters.npart = std::stoul(parameter["npart"]);
     parameters.zmin = std::stod(parameter["zmin"]);
     parameters.zmax = std::stod(parameter["zmax"]);
@@ -134,7 +135,7 @@ void Catalogues::ReadParamFile(Parameters& parameters, Map& parameter){
     parameters.lastcone = std::stoul(parameter["lastcone"]);
     parameters.cat_accuracy = std::stod(parameter["cat_accuracy"]);
     parameters.halos = std::stoul(parameter["halos"]);
-    parameters.jacobiantype = parameter["jacobiantype"];
+    parameters.beam = parameter["beam"];
     parameters.conedir = parameter["conedir"];
     parameters.sourcedir = parameter["sourcedir"];
     parameters.outputdir = parameter["outputdir"];
@@ -159,7 +160,7 @@ void Catalogues::ReadParamFile(Parameters& parameters, Map& parameter){
     parameters.seed = std::stoul(parameter["seed"]);
     parameters.openingmin = std::stod(parameter["openingmin"]);
     parameters.nsteps = std::stoul(parameter["nsteps"]);
-
+    parameters.buffer = std::stod(parameter["buffer"]);
 }
 
 
@@ -454,7 +455,7 @@ std::array< std::array<double, 2>, 2> Catalogues::newtonMethod2d(const Point& vo
     finalPoint[2] = trajectory[firstid].z()*f + trajectory[firstid+1].z()*(1-f);
 
     // If we compute the lensing matrix with a bundle
-    if(parameters.jacobiantype == "bundle"){
+    if(parameters.beam == "bundle"){
 	// Set plane
         if(parameters.plane == "sachs"){
 	    kiTarget[0] = trajectory[firstid].dxdl()*f + trajectory[firstid+1].dxdl()*(1-f);
@@ -465,7 +466,7 @@ std::array< std::array<double, 2>, 2> Catalogues::newtonMethod2d(const Point& vo
         } else if(parameters.plane == "exact"){
 	    std::cout<<"# Jacobian 'exact' not yet implemented !"<<std::endl;
         } else{
-	    std::cout<<"# WARNING : with jacobiantype = 'bundle', please choose plane = 'sachs', 'normal' or 'exact'"<<std::endl;
+	    std::cout<<"# WARNING : with beam = 'bundle', please choose plane = 'sachs', 'normal' or 'exact'"<<std::endl;
 	    std::cout<<"# Error at file "<<__FILE__<<", line : "<<__LINE__<<std::endl;
 	    std::terminate();
         }
@@ -511,7 +512,7 @@ std::array< std::array<double, 2>, 2> Catalogues::newtonMethod2d(const Point& vo
 	        jacobianinv[1][0] = 0;
 	        jacobianinv[1][1] = 1;
 	    // After a few iterations, use the infinitesimal matrix
-	    } else if( (iteration < 5) | ( (parameters.jacobiantype == "infinitesimal") | (parameters.jacobiantype == "infinitesimal_born") ) ){
+	    } else if( (iteration < 5) | ( (parameters.beam == "infinitesimal") | (parameters.beam == "infinitesimal_born") ) ){
 	        jacobian = Lensing::dbetadtheta_infinitesimal(distTarget, trajectory, octree, length);
 	        jacobianinv = Utility::invMatrix2d(jacobian); 
 	    // If it still did not work and we want the jacobian with bundle, then use this method
@@ -561,7 +562,7 @@ std::array< std::array<double, 2>, 2> Catalogues::newtonMethod2d(const Point& vo
 			theta_tmp = theta + j;
 			trajectory = trajectory_tmp;
 			// Prepare for the real jacobian bundle computation
-			if(parameters.jacobiantype == "bundle"){
+			if(parameters.beam == "bundle"){
 			    if(parameters.plane == "sachs"){
 			        kiTarget[0] = trajectory[firstid].dxdl()*f + trajectory[firstid+1].dxdl()*(1-f);
 			        kiTarget[1] = trajectory[firstid].dydl()*f + trajectory[firstid+1].dydl()*(1-f);
@@ -662,16 +663,16 @@ std::array< std::array<double, 2>, 2> Catalogues::newtonMethod2d(const Point& vo
 
 
     // Compute jacobian
-    if(parameters.jacobiantype == "bundle"){
+    if(parameters.beam == "bundle"){
 	jacobian = Lensing::dbetadtheta(parameters, kiTarget, interpRef, observer, phi, theta, distTarget, cosmology, octree, vobs, length);
-    } else if(parameters.jacobiantype == "infinitesimal"){
+    } else if(parameters.beam == "infinitesimal"){
 	jacobian = Lensing::dbetadtheta_infinitesimal(distTarget, trajectory, octree, length);
-    } else if(parameters.jacobiantype == "infinitesimal_born"){
+    } else if(parameters.beam == "infinitesimal_born"){
         trajectory_born.append(photon);
         Integrator::integrate<-1>(trajectory_born, "radius", distTarget, cosmology, octree, vobs, length, parameters.nsteps);
 	jacobian = Lensing::dbetadtheta_infinitesimal(distTarget, trajectory_born, octree, length);
     } else{
-	std::cout<<"# jacobiantype must be 'bundle' or 'infinitesimal'"<<std::endl;
+	std::cout<<"# beam must be 'bundle' or 'infinitesimal'"<<std::endl;
 	std::cout<<"# Error at file "<<__FILE__<<", line : "<<__LINE__<<std::endl;
 	std::terminate();
     }
@@ -935,8 +936,8 @@ void Catalogues::relCat_with_previous_cat(const Point& vobs, std::string& filena
 	    const double scale_factor = 1./(1.+previous_catalogue[i][7]);
 	    // Initialise photon
 	    // If Born approximation, then launch toward the comoving position of the source. Otherwise, launch toward the observed position
-	    const double phi = (parameters.jacobiantype == "infinitesimal_born") ? previous_catalogue[i][1] : previous_catalogue[i][3];
-	    const double theta = (parameters.jacobiantype == "infinitesimal_born") ? previous_catalogue[i][2] :previous_catalogue[i][4];
+	    const double phi = (parameters.beam == "infinitesimal_born") ? previous_catalogue[i][1] : previous_catalogue[i][3];
+	    const double theta = (parameters.beam == "infinitesimal_born") ? previous_catalogue[i][2] :previous_catalogue[i][4];
 	    // Launch photon
 	    photon = Integrator::launch(observer[0], observer[1], observer[2], phi, theta);	
 	    trajectory.append(photon);
@@ -955,7 +956,7 @@ void Catalogues::relCat_with_previous_cat(const Point& vobs, std::string& filena
 	    const double distTarget = trajectory[firstid].chi()*f + trajectory[firstid+1].chi()*(1-f);
 
 	    // Compute the lensing distortion matrix
-	    if(parameters.jacobiantype == "bundle"){
+	    if(parameters.beam == "bundle"){
 	        if(parameters.plane == "sachs"){
 	            kiTarget[0] = trajectory[firstid].dxdl()*f + trajectory[firstid+1].dxdl()*(1-f);
 	            kiTarget[1] = trajectory[firstid].dydl()*f + trajectory[firstid+1].dydl()*(1-f);
@@ -989,14 +990,14 @@ void Catalogues::relCat_with_previous_cat(const Point& vobs, std::string& filena
 		    std::terminate();
 	        }
 	        jacobian = Lensing::dbetadtheta(parameters, kiTarget, interpRef, observer, phi, theta, distTarget, cosmology, octree, vobs, length);
-	    } else if(parameters.jacobiantype == "infinitesimal"){
+	    } else if(parameters.beam == "infinitesimal"){
 	        jacobian = Lensing::dbetadtheta_infinitesimal(distTarget, trajectory, octree, length);
-	    } else if(parameters.jacobiantype == "infinitesimal_born"){
+	    } else if(parameters.beam == "infinitesimal_born"){
 	        trajectory_born.append(photon);
 	        Integrator::integrate<-1>(trajectory_born, "a", scale_factor, cosmology, octree, vobs, length, parameters.nsteps);
 	        jacobian = Lensing::dbetadtheta_infinitesimal(distTarget, trajectory_born, octree, length);
 	    } else{
-	        std::cout<<"# WARNING: jacobiantype must be 'bundle' or 'infinitesimal'"<<std::endl;
+	        std::cout<<"# WARNING: beam must be 'bundle' or 'infinitesimal'"<<std::endl;
 		std::cout<<"# Error at file "<<__FILE__<<", line : "<<__LINE__<<std::endl;
 		std::terminate();
 	    }
@@ -1033,6 +1034,145 @@ void Catalogues::relCat_with_previous_cat(const Point& vobs, std::string& filena
 	    } else{
 	       if(monOutputErr)
 	        monOutputErr <<std::setprecision(17)<<previous_catalogue[i][0]<<" "<<previous_catalogue[i][1]<<" "<<previous_catalogue[i][2]<<" "<<previous_catalogue[i][3]<<" "<<previous_catalogue[i][4]<<" "<<previous_catalogue[i][5]<<" "<<previous_catalogue[i][6]<<" "<<previous_catalogue[i][7]<<" "<<previous_catalogue[i][8]<<" "<<previous_catalogue[i][9]<<" "<<previous_catalogue[i][10]<<" "<<previous_catalogue[i][11]<<" "<<previous_catalogue[i][12]<<" "<<previous_catalogue[i][13]<<" "<<previous_catalogue[i][14]<<" "<<previous_catalogue[i][15]<<" "<<previous_catalogue[i][16]<<" "<<previous_catalogue[i][17]<<std::endl; 
+	    } 
+        } 	
+	// Close streams
+        monOutput.close(); 
+        monOutputErr.close(); 
+    }
+}
+
+/// \brief          Get Hessian lensing matrix
+/// \details        Get Hessian lensing matrix for flexion
+/// \tparam	    Point point type.
+/// \tparam         Cosmology Cosmology evolution type.
+/// \tparam         Octree Octree type.
+/// \tparam         Type Scalar type.
+/// \tparam	    Parameter Parameter type.
+/// \param[in]      vobs Observer peculiar velocity, in SI
+/// \param[in]      filename output file name.
+/// \param[in]      observer Observer position.
+/// \param[in]      previous_catalogue Previously computed catalogue, used to re-run rejected sources.
+/// \param[in]      parameters Parameter structure
+/// \param[in]      cosmology Cosmology evolution.
+/// \param[in]      octree Octree.
+/// \param[in]      length Spatial length in SI units.
+/// \param[in]      h Dimensionless Hubble parameter 
+template < class Point, class Cosmology, class Octree, class Type, class Parameter > 
+void Catalogues::relCat_with_previous_cat_flexion(const Point& vobs, std::string& filename, const Point& observer, std::vector < std::array< double, 18 > >& previous_catalogue, const Parameter& parameters, const Cosmology& cosmology, const Octree& octree, const Type length, const Type h) 
+{
+
+    const unsigned int size = 1;//previous_catalogue.size();
+
+    if(size > 0){
+
+        Utility::parallelize(size, [=, &vobs, &observer, &previous_catalogue, &parameters, &cosmology, &octree, &length, &h](const uint i){
+            std::array< std::array<double, 2>, 2 > jacobian;
+	    magrathea::Evolution<Photon<double, 3> > trajectory;
+	    Photon<double, 3> photon;
+	    unsigned int firstid(0);
+	    const double one(1);
+	    Point kiTarget, finalPoint;
+	    double interpRef(0);
+	    const double aexp = 1./(1.+previous_catalogue[i][7]);
+	    // Initialise photon
+	    // If Born approximation, then launch toward the comoving position of the source. Otherwise, launch toward the observed position
+	    const double phi = previous_catalogue[i][3];
+	    const double theta = previous_catalogue[i][4];
+	    // Launch photon
+	    photon = Integrator::launch(observer[0], observer[1], observer[2], phi, theta);	
+	    trajectory.append(photon);
+	    // Propagate photon until it reaches the scale factor or the source
+	    Integrator::integrate(trajectory, "a", aexp, cosmology, octree, vobs, length, parameters.nsteps);
+
+	    const unsigned int marked = trajectory.size()-1;
+	    firstid = marked - (marked > 0);
+	    const double previous = trajectory[firstid].a();
+	    const double next = trajectory[firstid+1].a();
+	    double f = (next-aexp)/(next-previous);
+
+	    finalPoint[0] = trajectory[firstid].x()*f + trajectory[firstid+1].x()*(1-f);
+	    finalPoint[1] = trajectory[firstid].y()*f + trajectory[firstid+1].y()*(1-f);
+	    finalPoint[2] = trajectory[firstid].z()*f + trajectory[firstid+1].z()*(1-f);
+	    const double k0 = trajectory[firstid].dtdl()*f + trajectory[firstid+1].dtdl()*(1-f);
+	    const double kx = trajectory[firstid].dxdl()*f + trajectory[firstid+1].dxdl()*(1-f);
+	    const double ky = trajectory[firstid].dydl()*f + trajectory[firstid+1].dydl()*(1-f);
+	    const double kz = trajectory[firstid].dzdl()*f + trajectory[firstid+1].dzdl()*(1-f);
+	    const double distTarget = trajectory[firstid].chi()*f + trajectory[firstid+1].chi()*(1-f);
+
+	    //std::terminate();
+	    // Compute the lensing Hessian matrix
+	    if(parameters.beam == "bundle"){
+	        if(parameters.plane == "sachs"){
+	            kiTarget[0] = trajectory[firstid].dxdl()*f + trajectory[firstid+1].dxdl()*(1-f);
+	            kiTarget[1] = trajectory[firstid].dydl()*f + trajectory[firstid+1].dydl()*(1-f);
+	            kiTarget[2] = trajectory[firstid].dzdl()*f + trajectory[firstid+1].dzdl()*(1-f);	
+	        } else if (parameters.plane == "normal"){
+	            kiTarget = finalPoint;
+	        } else if (parameters.plane == "exact"){
+	    	    std::cout<<"# Jacobian 'exact' not yet implemented !"<<std::endl;
+	        } else{
+	            std::cout<<"# WARNING : Wrong plane, please choose 'sachs', 'normal' or 'exact'"<<std::endl;
+		    std::cout<<"# Error at file "<<__FILE__<<", line : "<<__LINE__<<std::endl;
+		    std::terminate();
+	        }
+
+	        // Interpolation 
+	        if(parameters.stop_bundle == "redshift"){
+	            interpRef = trajectory[firstid].redshift()*f + trajectory[firstid+1].redshift()*(1-f);
+	        } else if(parameters.stop_bundle == "a"){
+	            interpRef = aexp; 	
+	        } else if((parameters.stop_bundle == "t") || (parameters.stop_bundle == "eta")){
+	            interpRef = trajectory[firstid].t()*f + trajectory[firstid+1].t()*(1-f); 	
+	        } else if(parameters.stop_bundle == "lambda"){
+	            interpRef = trajectory[firstid].lambda()*f + trajectory[firstid+1].lambda()*(1-f); 	
+	        }  else if((parameters.stop_bundle == "r") || (parameters.stop_bundle == "radius")){
+	            interpRef = distTarget;
+	        } else if(parameters.stop_bundle == "plane"){
+	            interpRef = kiTarget[0]*finalPoint[0] + kiTarget[1]*finalPoint[1] + kiTarget[2]*finalPoint[2]; 	
+	        } else {
+	            std::cout<<"# WARNING : Wrong stop criterion for integration"<<std::endl;
+		    std::cout<<"# Error at file "<<__FILE__<<", line : "<<__LINE__<<std::endl;
+		    std::terminate();
+	        }
+	        jacobian = Lensing::dbetadtheta(parameters, kiTarget, interpRef, observer, phi, theta, distTarget, cosmology, octree, vobs, length);
+	    } else{
+	        std::cout<<"# WARNING: beam must be 'bundle' for flexion"<<std::endl;
+		std::cout<<"# Error at file "<<__FILE__<<", line : "<<__LINE__<<std::endl;
+		std::terminate();
+	    }
+	    // When re-running a previous catalogue, only modify the distortion matrix
+	    previous_catalogue[i][13] = jacobian[0][0];
+	    previous_catalogue[i][14] = jacobian[0][1];
+	    previous_catalogue[i][15] = jacobian[1][0];
+	    previous_catalogue[i][16] = jacobian[1][1];
+        });
+
+        // Clear the file
+        std::string filenameError = Output::name(filename, "_err", ".txt"); 
+        filename = Output::name(filename, ".txt");
+
+        std::ofstream ofst;
+        ofst.open(filename.c_str(), std::ofstream::out | std::ofstream::trunc); 
+        ofst.close();
+        std::ofstream monOutput(filename.c_str(), std::ios::app);
+
+        std::ofstream ofsterr;
+        ofsterr.open(filenameError.c_str(), std::ofstream::out | std::ofstream::trunc); 
+        ofsterr.close();
+        std::ofstream monOutputErr(filenameError.c_str(), std::ios::app);
+
+
+    	// Write an ASCII file
+        for(unsigned int i = 0; i < size; i++){
+	    // If everything is fine, put in the output catalogue 
+	    if(previous_catalogue[i][13] != 42 &&  previous_catalogue[i][14] != 42){
+	       if(monOutput)
+	            monOutput <<std::setprecision(17)<<previous_catalogue[i][0]<<" "<<previous_catalogue[i][13]<<" "<<previous_catalogue[i][14]<<" "<<previous_catalogue[i][15]<<" "<<previous_catalogue[i][16]<<std::endl; 
+	    // If there is a problem (for example use of a very lare bundle method at the edge of a cone), then put in the rror file
+	    } else{
+	       if(monOutputErr)
+	        monOutputErr <<std::setprecision(17)<<previous_catalogue[i][0]<<" "<<previous_catalogue[i][13]<<" "<<previous_catalogue[i][14]<<" "<<previous_catalogue[i][15]<<" "<<previous_catalogue[i][16]<<std::endl; 
 	    } 
         } 	
 	// Close streams

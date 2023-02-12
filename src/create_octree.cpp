@@ -134,16 +134,13 @@ int main(int argc, char* argv[])
     if(rank == 0) 
 	std::cout<<"#### MAGRATHEA_PATHFINDER "<<std::endl; 
     // Generate cones
-    if(parameters.isfullsky){
-	if(rank == 0){
-	    std::cout<<"## Fullsky cone"<<std::endl;
-	}
-        Miscellaneous::GenerateFullskyCones(parameters.ncones, cone, coneIfRot, sphere);
-    } else{
-	if(rank == 0){
-	    std::cout<<"## Narrow cone"<<std::endl;
-	}
-        Miscellaneous::GenerateNarrowCones(parameters, cone, coneIfRot, sphere, rotm1, thetay, thetaz);
+    Miscellaneous::TicketizeFunction(rank, ntasks, [=, &cone, &coneIfRot, &parameter]{
+	Miscellaneous::read_cone_orientation(cone, coneIfRot, parameters);
+    });
+    if(!parameters.isfullsky){
+        Miscellaneous::TicketizeFunction(rank, ntasks, [=, &parameter, &rotm1, &thetay, &thetaz]{
+            Miscellaneous::get_narrow_specs(parameters, rotm1, thetay, thetaz);
+        });
     }
     // Read cosmology
     cosmology = Input::acquire(parameters, h, omegam, lboxmpch);

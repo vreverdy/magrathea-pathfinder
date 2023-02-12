@@ -81,9 +81,8 @@ class Miscellaneous {
 	template <typename Type> static void fullclear_vector(std::vector<Type>& vector);
 	// Ticket
 	template <class Function, typename Integer> static void TicketizeFunction(const Integer rank, const Integer ntasks, Function&& function);
-	// Cones generation
-	template <  class Cone, template <unsigned int, class, typename > class Sphere, unsigned int Dimension, class Vector, typename Scalar, typename Integer > static void GenerateFullskyCones(const Integer ncones, std::vector< Cone >& cone, std::vector< Cone >& coneIfRot, Sphere<Dimension, Vector, Scalar>& sphere);
-	template <  class Parameter, class Cone, template <unsigned int, class, typename > class Sphere, unsigned int Dimension, class Vector, typename Scalar > static void GenerateNarrowCones(const Parameter& parameters, std::vector< Cone >& cone, std::vector< Cone >& coneIfRot, Sphere<Dimension, Vector, Scalar>& sphere,  std::array< std::array< double, 3 >, 3 >& rotm1, Scalar& thetay, Scalar& thetaz);
+	// Get specs
+	template <  class Parameter, typename Scalar > static void get_narrow_specs(const Parameter& parameters, std::array< std::array< double, 3 >, 3 >& rotm1, Scalar& thetay, Scalar& thetaz);
 	// Load & Correct octree
 	template < class Octree, class Filelist,  typename Integer > static void loadOctree(const Integer icone, Octree& octree, Filelist& conefile);
 	template < class Octree, class Cosmology, class Parameters, typename Real > static void correctOctree(Octree& octree, const Cosmology& cosmology, Parameters& parameters, const Real h, const Real omegam, const Real lboxmpch, Real& amin);
@@ -98,6 +97,11 @@ class Miscellaneous {
 
 	// Read Angular position from previously computed catalog
 	template <typename Integer, class Parameters  > static void ReadFromCat(const Integer icone, const Parameters& parameters, std::vector < std::array< double, 18 > >& catalogue);
+
+	// Write and read cone orientation file
+	template <class Cone, class Parameters  > static void write_cone_orientation(const Cone& cones, const Cone& conesIfRot, const Parameters& parameters);
+	template <class Cone, class Parameters  > static void read_cone_orientation(Cone& cones, Cone& conesIfRot, const Parameters& parameters);
+
 
 };
 
@@ -207,63 +211,23 @@ void Miscellaneous::TicketizeFunction(const Integer rank, const Integer ntasks, 
 
 }
 
-
-// Fullsky cones generation
-/// \brief          Generate fullsky cones.
-/// \details        Generate fullsky cones.
-/// \tparam         Cone cone type
-/// \tparam         Sphere sphere type
-/// \tparam         Dimension dimension
-/// \tparam         Vector vector type
-/// \tparam         Scalar scalar type
-/// \tparam         Integer integer type
-/// \param[in]      ncones Number of cones .
-/// \param[in,out]  cone Cones generated
-/// \param[in]      coneIfRot Cones generated
-/// \param[in]      sphere Central sphere
-/// \return         Generate the shape of fullsky cones.
-template < class Cone, template <unsigned int, class, typename > class Sphere, unsigned int Dimension, class Vector, typename Scalar, typename Integer >
-void Miscellaneous::GenerateFullskyCones(const Integer ncones, std::vector< Cone >& cone, std::vector< Cone >& coneIfRot, Sphere<Dimension, Vector, Scalar>& sphere){
-
-    std::vector< std::array<double, 3> > tiling(ncones);
-    // Cone angle from the maximum distance between points generated on the sphere. We multiply by an arbitrary factor which seems ideal to produce wide enough cones
-    double alpha = 1.8*std::asin(sphere.template uniform<Dimension-1>(std::begin(tiling), std::end(tiling)).first/sphere.diameter());
-    // Assign properties to each cone
-    Utility::parallelize(ncones, [=, &tiling, &cone, &sphere, &alpha](const uint i){cone[i].assign(sphere.position(), tiling[i], alpha);});
-    // No rotation for fullsky cones
-    for(uint i = 0; i < ncones; i++){
-	coneIfRot[i] = cone[i];
-    }
-
-}
-
-// Narrow cones generation
-/// \brief          Generate narrow cones.
-/// \details        Generate narrow cones.
+// Get narrow cone specs
+/// \brief          Get narrow cone specs.
+/// \details        Get narrow cone specs.
 /// \tparam         Parameter Parameter type.
-/// \tparam         Cone cone type
-/// \tparam         Sphere sphere type
-/// \tparam         Dimension dimension
-/// \tparam         Vector vector type
 /// \tparam         Scalar scalar type
 /// \param[in]      parameters Parameter structure 
-/// \param[in,out]  cone Cones generated
-/// \param[in,out]      coneIfRot Cones generated
-/// \param[in]      sphere Central sphere
 /// \param[in,out]  rotm1 Rotation matrix for narrow cone cells
 /// \param[in,out]  thetay Semi-angle for solid angle in direction y
 /// \param[in,out]  thetaz Semi-angle for solid angle in direction z
-template <  class Parameter, class Cone, template <unsigned int, class, typename > class Sphere, unsigned int Dimension, class Vector, typename Scalar >
-void Miscellaneous::GenerateNarrowCones(const Parameter& parameters, std::vector< Cone >& cone, std::vector< Cone >& coneIfRot, Sphere<Dimension, Vector, Scalar>& sphere, std::array< std::array< double, 3 >, 3 >& rotm1, Scalar& thetay, Scalar& thetaz){
+template <  class Parameter, typename Scalar >
+void Miscellaneous::get_narrow_specs(const Parameter& parameters, std::array< std::array< double, 3 >, 3 >& rotm1, Scalar& thetay, Scalar& thetaz){
 
-    static constexpr double pi = Constants<double>::pi();
     std::size_t found;
-    std::vector< std::array<double, 3> > tiling(parameters.ncones), tilingbis(parameters.ncones);
     double theta_rot(0), phi_rot(0);
     std::array< std::array< double, 3 >, 3 > rotation = {{0}};
     std::vector<std::string> filelistingprior;
     std::string filelisting;
-    const double eps = magrathea::Constants<double>::deg()*0.5; // 0.6 deg of buffer zone
 
     // Get all filenames in directory
     Miscellaneous::getFilesinDir(parameters.celldir, filelistingprior);
@@ -323,93 +287,7 @@ void Miscellaneous::GenerateNarrowCones(const Parameter& parameters, std::vector
     rotation[2][2] =  std::cos(theta_rot);
     // Inverse matrix
     rotm1 = Utility::invMatrix3d(rotation);
-    uint iloop(0);
-    std::array<double, 3> ciblage;
-    ciblage[0] = 1;
-    ciblage[1] = 0;
-    ciblage[2] = 0;
-    double fullsky = 4*pi; 
-    double portion = 2*thetay*(std::sin(thetaz) - std::cos(pi/2. + thetaz));
-    // Inverse fraction of the sky
-    uint fsp = fullsky/portion;
-    tiling.resize(parameters.ncones*fsp);
-
-    // Generate random points on the full sky. Then check is we have a number of points equal to 'ncones' in the area of interest
-    sphere.template uniform<Dimension-1>(std::begin(tiling), std::end(tiling));
-    for(uint i = 0; i < tiling.size(); ++i){
-	double phi = std::atan2(tiling[i][1],tiling[i][0]);
-	double theta = std::acos(tiling[i][2]/sphere.radius());
-	// If point is inside the region of interest
-	if(std::abs(phi) < thetay - eps && theta >  pi/2 - thetaz + eps && theta < pi/2 + thetaz - eps){
-	    iloop++;
-	}
-    } 
-    float irecuploop = 0;
-    // Generally, we will not exactly have the good number of points, then need to iterate on the initial number of points on the full sky
-    while(iloop != parameters.ncones){
-        //std::cout<<irecuploop<<" "<<tiling.size()<<std::endl;
-	if(irecuploop < 10) 
-	    tiling.resize(tiling.size()+static_cast<int>((static_cast<float>(parameters.ncones)-static_cast<float>(iloop))*static_cast<float>(fsp)*(1/(1+irecuploop))));
-	else 
-	    tiling.resize(tiling.size()+parameters.ncones-iloop);
-	sphere.template uniform<Dimension-1>(std::begin(tiling), std::end(tiling));
-	iloop = 0;
-	for(uint i = 0; i < tiling.size(); ++i){
-	    double phi = std::atan2(tiling[i][1],tiling[i][0]);
-	    double theta = std::acos(tiling[i][2]/sphere.radius());
-	    if(std::abs(phi) < thetay - eps && theta >  pi/2 - thetaz + eps && theta < pi/2 + thetaz - eps){
-	        iloop++;
-	    }
-	}
-	irecuploop ++;
-    }
-    iloop = 0;
-    // Put final result in tilingbis
-    for(uint i = 0; i < tiling.size(); ++i){
-	double phi = std::atan2(tiling[i][1],tiling[i][0]);
-	double theta = std::acos(tiling[i][2]/sphere.radius());
-	if(std::abs(phi) < thetay -eps && theta >  pi/2 - thetaz + eps && theta < pi/2 + thetaz - eps){
-	    tilingbis[iloop][0] = tiling[i][0];
-	    tilingbis[iloop][1] = tiling[i][1];
-	    tilingbis[iloop][2] = tiling[i][2];
-	    iloop++;
-	}
-    } 
-
-    double resulting(0);
-    resulting = sphere.diameter();
-    // Check the maximum distance between two cones
-    for (unsigned int i = 0; i < parameters.ncones; ++i) {
-        for (unsigned int j = 0; j < parameters.ncones; ++j) {
-            if (i != j) {
-                double tmp = 0;
-                for (unsigned int idim = 0; idim < 3; ++idim) {
-                    tmp += std::pow(tilingbis[i][idim]-tilingbis[j][idim], 2);
-                }
-                tmp = std::sqrt(tmp);
-                resulting = (resulting < tmp) ? (resulting) : (tmp);
-            }
-        }
-    }
-
-    // Assign an angle depending on the maximum distance between two cones. We multiply by an arbitrary factor which seems ideal to produce wide enough cones 
-    double alpha = 1.8*std::asin(resulting/sphere.diameter());
-    // Need a minimum angle to avoid thin cones. 0.1 = 6 degrees
-    const double anglemin = 0.001;
-    alpha = (anglemin > alpha) ? anglemin : alpha;
-    std::cout<<"# Angle proposed : "<<1.8*std::asin(resulting/sphere.diameter())<<" angle chosen : "<<alpha<<std::endl;
-    // Assign properties to cones
-    Utility::parallelize(parameters.ncones, [=, &tilingbis, &cone](const uint i){cone[i].assign(sphere.position(), tilingbis[i], alpha);});
-    // For narrow cones, need rotation
-    for(uint i = 0; i < parameters.ncones; i++){
-	coneIfRot[i] = cone[i];
-	coneIfRot[i].base(0) = cone[i].base(0)*rotm1[0][0] + cone[i].base(1)*rotm1[0][1] + cone[i].base(2)*rotm1[0][2];
-	coneIfRot[i].base(1) = cone[i].base(0)*rotm1[1][0] + cone[i].base(1)*rotm1[1][1] + cone[i].base(2)*rotm1[1][2];
-	coneIfRot[i].base(2) = cone[i].base(0)*rotm1[2][0] + cone[i].base(1)*rotm1[2][1] + cone[i].base(2)*rotm1[2][2];
-    }
-
 }
-
 
 // Load  Octree
 /// \brief          Load octree.
@@ -475,7 +353,7 @@ void Miscellaneous::correctOctree(Octree& octree, const Cosmology& cosmology, Pa
     // also .update() is used twice (before and after corrections)
     Input::correct(parameters, octree, amin);
     // Convert from dphi/da to dphi/dt
-    Utility::parallelize(octree.size(), [=, &octree](const uint i){std::get<1>(octree[i]).dphidt() *= Utility::interpolate2(std::get<1>(octree[i]).a(), std::get<1>(cosmology), std::get<2>(cosmology));});
+    Utility::parallelize(octree.size(), [=, &octree](const uint i){std::get<1>(octree[i]).dphidt() *= Utility::rinterpolate(std::get<1>(octree[i]).a(), std::get<1>(cosmology), std::get<2>(cosmology));});
 
 }
 
@@ -666,6 +544,105 @@ void Miscellaneous::ReadFromCat(const Integer icone, const Parameters& parameter
     for(unsigned int i = 0 ; i < size ; ++i){ 
 	stream >> catalogue[i][0] >> catalogue[i][1] >> catalogue[i][2] >> catalogue[i][3] >> catalogue[i][4] >> catalogue[i][5] >> catalogue[i][6] >> catalogue[i][7] >> catalogue[i][8] >> catalogue[i][9] >> catalogue[i][10] >> catalogue[i][11] >> catalogue[i][12] >> catalogue[i][13] >> catalogue[i][14] >> catalogue[i][15] >> catalogue[i][16] >> catalogue[i][17];
     }   
+
+}
+
+// Write cone properties in ascii file
+/// \brief          Write cone properties
+/// \details        Write cone properties
+/// \tparam         Cone cones type
+/// \tparam         Parameter Parameter type
+/// \param[in]      cones cone container
+/// \param[in]      conesIfRot rotated cone container
+/// \param[in]      parameters Parameter structure  
+template <class Cone, class Parameters >
+void Miscellaneous::write_cone_orientation(const Cone& cones, const Cone& conesIfRot, const Parameters& parameters){
+    // Create filename of catalogue
+    std::string filename, filename2;
+    if (parameters.isfullsky){
+	filename = Output::name(parameters.conedir, "/cone_orientations_ncones_", std::make_pair("%05d", parameters.ncones), ".txt"); 
+    } else{
+	filename = Output::name(parameters.conedir, "/cone_orientations_ncones_", std::make_pair("%05d", parameters.ncones), "_buffer_", std::make_pair("%5.4f", parameters.buffer), ".txt"); 
+	filename2 = Output::name(parameters.conedir, "/cone_orientations_rotated_ncones_", std::make_pair("%05d", parameters.ncones), "_buffer_", std::make_pair("%5.4f", parameters.buffer), ".txt"); 
+    }
+#ifdef VERBOSE
+    std::cout<<"# Writing in "<<filename<<std::endl;
+#endif
+    // Open filename
+    std::ofstream streaming;
+    streaming.open(filename.c_str(), std::ofstream::out | std::ofstream::trunc); 
+    streaming.close();
+    std::ofstream stream(filename.c_str(), std::ios::app);
+
+    for(uint i = 0; i < cones.size(); i++){
+	stream<<cones[i]<<std::endl;
+    }
+
+    stream.close();  
+
+    if(!parameters.isfullsky){
+        std::ofstream streaming2;
+        streaming2.open(filename2.c_str(), std::ofstream::out | std::ofstream::trunc); 
+        streaming2.close();
+        std::ofstream stream2(filename2.c_str(), std::ios::app);
+
+        for(uint i = 0; i < conesIfRot.size(); i++){
+	    stream2<<conesIfRot[i]<<std::endl;
+        }
+        stream2.close();  
+    }
+
+}
+
+// Read cone properties from ascii file
+/// \brief          Read cone properties
+/// \details        Read cone properties
+/// \tparam         Cone cones type
+/// \tparam         Parameter Parameter type
+/// \param[in]      cones cone container
+/// \param[in]      conesIfRot rotated cone container
+/// \param[in]      parameters Parameter structure  
+template <class Cone, class Parameters >
+void Miscellaneous::read_cone_orientation(Cone& cones, Cone& conesIfRot, const Parameters& parameters){
+    // Create filename of catalogue
+    std::string filename, filename2;
+    if (parameters.isfullsky){
+	filename = Output::name(parameters.conedir, "/cone_orientations_ncones_", std::make_pair("%05d", parameters.ncones), ".txt"); 
+    } else{
+	filename = Output::name(parameters.conedir, "/cone_orientations_ncones_", std::make_pair("%05d", parameters.ncones), "_buffer_", std::make_pair("%5.4f", parameters.buffer), ".txt"); 
+	filename2 = Output::name(parameters.conedir, "/cone_orientations_rotated_ncones_", std::make_pair("%05d", parameters.ncones), "_buffer_", std::make_pair("%5.4f", parameters.buffer), ".txt"); 
+    }
+#ifdef VERBOSE
+    std::cout<<"# Reading "<<filename<<std::endl;
+#endif
+    // Open filename
+    std::ifstream streaming(filename.c_str());
+    streaming.unsetf(std::ios_base::skipws);
+    uint size = std::count(std::istream_iterator<char>(streaming), std::istream_iterator<char>(), '\n');
+    streaming.close();
+    std::ifstream stream(filename.c_str());
+
+    for(uint i = 0 ; i < size ; ++i){ 
+	stream >> cones[i].vertex(0) >> cones[i].vertex(1) >> cones[i].vertex(2) >> cones[i].base(0) >> cones[i].base(1) >> cones[i].base(2) >> cones[i].angle();
+    } 
+
+    stream.close();  
+
+    if(parameters.isfullsky){
+	conesIfRot = cones;	
+    } else{
+
+        std::ifstream streaming2(filename2.c_str());
+        streaming2.unsetf(std::ios_base::skipws);
+        size = std::count(std::istream_iterator<char>(streaming2), std::istream_iterator<char>(), '\n');
+        streaming2.close();
+        std::ifstream stream2(filename2.c_str());
+
+        for(uint i = 0 ; i < size ; ++i){ 
+	    stream2 >> conesIfRot[i].vertex(0) >> conesIfRot[i].vertex(1) >> conesIfRot[i].vertex(2) >> conesIfRot[i].base(0) >> conesIfRot[i].base(1) >> conesIfRot[i].base(2) >> conesIfRot[i].angle();
+        }
+        stream2.close();  
+    }
 
 }
 

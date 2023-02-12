@@ -59,6 +59,7 @@ using namespace magrathea;
 
 struct parameters_t {
     // Common
+    real buffer;
     std::string celldir;
     std::string conedir;
     std::string conefmt;
@@ -118,6 +119,7 @@ void Rays::ReadParamFile(Parameters& parameters, Map& parameter){
     parameters.statistic = parameter["statistic"];
     parameters.conefmt = parameter["conefmt"];
     parameters.ncones = std::stoul(parameter["ncones"]);
+    parameters.buffer = std::stod(parameter["buffer"]);
     parameters.conedir = parameter["conedir"];
     parameters.seed = std::stoul(parameter["seed"]);
     parameters.microcoeff = std::stoul(parameter["microcoeff"]);

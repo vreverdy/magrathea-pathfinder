@@ -63,6 +63,7 @@ using namespace magrathea;
 
 struct parameters_t {
     // Common
+    real buffer;
     std::string celldir;
     std::string conedir;
     std::string conefmt;
@@ -85,7 +86,7 @@ struct parameters_t {
     std::string partdir;
 #endif
 
-    std::string jacobiantype;
+    std::string beam;
     std::string map_components;
     uint microcoeff;
     uint nb_z_maps; 
@@ -167,10 +168,11 @@ void Hmaps::ReadParamFile(Parameters& parameters, Map& parameter){
     parameters.nb_z_maps = std::stoul(parameter["nb_z_maps"]);
     parameters.ncoarse = std::stoul(parameter["ncoarse"]);
     parameters.ncones = std::stoul(parameter["ncones"]);
+    parameters.buffer = std::stod(parameter["buffer"]);
     parameters.stop_ray = parameter["stop_ray"];
     parameters.stop_bundle = parameter["stop_bundle"];
     parameters.plane = parameter["plane"];
-    parameters.jacobiantype = parameter["jacobiantype"];
+    parameters.beam = parameter["beam"];
     parameters.outputprefix = parameter["outputprefix"];
     parameters.nbundlemin = std::stoul(parameter["nbundlemin"]);
     parameters.nsteps = std::stoul(parameter["nsteps"]);
@@ -660,7 +662,7 @@ void Hmaps::FillMap(const Parameter& parameters, const std::vector<std::string>&
 	            posTargets[i][1] = trajectorycenter[firstid[i]].y()*f[i] + trajectorycenter[firstid[i]+1].y()*(1-f[i]);
 	            posTargets[i][2] = trajectorycenter[firstid[i]].z()*f[i] + trajectorycenter[firstid[i]+1].z()*(1-f[i]);
 	            distance[i] = std::sqrt(posTargets[i][0]*posTargets[i][0]+posTargets[i][1]*posTargets[i][1]+posTargets[i][2]*posTargets[i][2]);
-		    if (parameters.jacobiantype == "bundle"){
+		    if (parameters.beam == "bundle"){
 	                if (parameters.plane == "sachs"){
 	                    kiTargets[i][0] = trajectorycenter[firstid[i]].dxdl()*f[i] + trajectorycenter[firstid[i]+1].dxdl()*(1-f[i]);
 	                    kiTargets[i][1] = trajectorycenter[firstid[i]].dydl()*f[i] + trajectorycenter[firstid[i]+1].dydl()*(1-f[i]);
@@ -668,13 +670,13 @@ void Hmaps::FillMap(const Parameter& parameters, const std::vector<std::string>&
 	                } else if (parameters.plane == "normal") {
 	                    kiTargets = posTargets;
 	                } else{
-	    	            std::cout<<"# WARNING: with jacobiantype = 'bundle', please choose plane = 'normal' or 'sachs'"<<std::endl;
+	    	            std::cout<<"# WARNING: with beam = 'bundle', please choose plane = 'normal' or 'sachs'"<<std::endl;
 	    	            std::cout<<"# Error at file "<<__FILE__<<", line : "<<__LINE__<<std::endl;
 		            std::terminate();
 	                }
 		    } 
 	            // Stop criterion for bundle
-		    if (parameters.jacobiantype == "bundle"){
+		    if (parameters.beam == "bundle"){
 	                if(parameters.stop_bundle == "lambda"){
 	                    interpRefvecBundle[i] = trajectorycenter[firstid[i]].lambda()*f[i] + trajectorycenter[firstid[i]+1].lambda()*(1-f[i]); 
 	                } else if(parameters.stop_bundle == "r"){
@@ -695,12 +697,12 @@ void Hmaps::FillMap(const Parameter& parameters, const std::vector<std::string>&
 		    }
 	        }
 	        // Compute Lensing Jacobian matrix
-	        if(parameters.jacobiantype == "bundle"){
+	        if(parameters.beam == "bundle"){
 	            jacobian = Lensing::dbetadtheta(parameters, kiTargets, interpRefvecBundle, observer, phi, theta, distance, cosmology, octree, vobs, length);
-	        } else if(parameters.jacobiantype == "infinitesimal"){
+	        } else if(parameters.beam == "infinitesimal"){
 	            jacobian = Lensing::dbetadtheta_infinitesimal(distance, trajectorycenter, octree, length);
 	        } else{
-	            std::cout<<"# WARNING: jacobiantype must be 'bundle' or 'infinitesimal'"<<std::endl;
+	            std::cout<<"# WARNING: beam must be 'bundle' or 'infinitesimal'"<<std::endl;
 	            std::cout<<"# Error at file "<<__FILE__<<", line : "<<__LINE__<<std::endl;
 	            std::terminate();
 	        }
@@ -730,7 +732,7 @@ void Hmaps::FillMap(const Parameter& parameters, const std::vector<std::string>&
 	        for(uint j = 0; j < map_components.size(); j++){
 		    if(index_components[j] == 0){
 			// For 'bundle' need to compute the image rotation, while for 'infinitesimal' we assume that there isn't
-			if(parameters.jacobiantype == "bundle"){
+			if(parameters.beam == "bundle"){
 	                    const double a11(jacobian[iz][0][0]), a12(jacobian[iz][0][1]), a21(jacobian[iz][1][0]), a22(jacobian[iz][1][1]);
 			    // Check if jacobian is good
 			    if(a11 == 42){
@@ -751,7 +753,7 @@ void Hmaps::FillMap(const Parameter& parameters, const std::vector<std::string>&
 			        map[nmaps*iz + icomp + 4][pixel[itrajectorys]] = invmagnification;
 			        icomp += 4;
 			    }
-			} else if(parameters.jacobiantype == "infinitesimal"){
+			} else if(parameters.beam == "infinitesimal"){
 	                    const double a11(jacobian[iz][0][0]), a12(jacobian[iz][0][1]), a22(jacobian[iz][1][1]);
 			    // Check if jacobian is good
 			    if(a11 == 42){

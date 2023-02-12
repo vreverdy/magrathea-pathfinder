@@ -79,7 +79,7 @@ class Utility final
     //@{
     public:
         template <typename Type, class Container, class = typename std::enable_if<std::is_convertible<Type, typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Container>()[0])>::type>::type>::value>::type> static inline Type interpolate(const Type x0, const Container& x, const Container& y);
-        template <typename Type, class Container, class = typename std::enable_if<std::is_convertible<Type, typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Container>()[0])>::type>::type>::value>::type> static inline Type interpolate2(const Type x0, const Container& x, const Container& y);
+        template <typename Type, class Container, class = typename std::enable_if<std::is_convertible<Type, typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Container>()[0])>::type>::type>::value>::type> static inline Type rinterpolate(const Type x0, const Container& x, const Container& y);
         template <typename Type, class Container, class = typename std::enable_if<std::is_convertible<Type, typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Container>()[0])>::type>::type>::value>::type> static inline Type interpolate(const Type x0, const Container& x, const Container& y, const Container& dydx);
         template <class Container, class... Containers, class = typename std::enable_if<sizeof...(Containers) == 2 || sizeof...(Containers) == 3>::type> static inline Container reinterpolate(const Container& x0, Containers&&... containers);
         template <int Direction = 0, typename Type, class Container, typename T = Type, class = typename std::enable_if<std::is_convertible<Type, typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Container>()[0])>::type>::type>::value>::type> static inline Type differentiate(const Type x0, const Container& x, const Container& y, const unsigned int neighbourhood = 1);
@@ -419,7 +419,7 @@ inline bool Utility::collide(const Object<Dimension, Vector, Scalar>& object, co
     for (unsigned int idim = 0; idim < Dimension; ++idim) {
         distance += cone.template pow<2>(object.position(idim)-(cone.vertex(idim)+(cone.base(idim)-cone.vertex(idim))*(length/norm))); 
     }
-    //return ((std::sqrt(distance) < radius(object)+length*std::tan(cone.angle())) && (length > Scalar()) && (length < norm+radius(object)*Scalar(2)));
+
     return ((std::sqrt(distance) < (5*radius(object)+length*std::tan(cone.angle()) + 0.4*inspheresize*std::exp(-0.7*(length - inspheresize*std::cos(cone.angle()))*(length - inspheresize*std::cos(cone.angle()))/(inspheresize*inspheresize)))) && !(length < Scalar()) && (length < (norm+radius(object)*Scalar(2))));
 }
 
@@ -458,7 +458,7 @@ inline Type Utility::interpolate(const Type x0, const Container& x, const Contai
 /// \param[in]      y Ordinates.
 /// \return         Interpolated ordinate.
 template <typename Type, class Container, class> 
-inline Type Utility::interpolate2(const Type x0, const Container& x, const Container& y)
+inline Type Utility::rinterpolate(const Type x0, const Container& x, const Container& y)
 {
     static const Type zero = Type();
     const long long int n = std::min(x.size(), y.size());

@@ -132,7 +132,6 @@ int main(int argc, char* argv[])
     real lboxmpch = zero;
     std::ofstream stream;
     std::string filename;
-    real thetay(0), thetaz(0);
     std::array< std::array< double, 3 >, 3 > rotm1 = {{zero}};
     const point vobs = {parameters.v0x, parameters.v0y, parameters.v0z};
     const point vobs0 = {0,0,0}; // No peculiar velocity for homogeneous quantities
@@ -141,15 +140,16 @@ int main(int argc, char* argv[])
 	std::cout<<"#### MAGRATHEA_PATHFINDER "<<std::endl; 
     // Generate cones
     if(parameters.use_previous_catalogues == 0){ // Only useful to assign sources to cone
-        if(parameters.isfullsky){
-	    if(rank == 0)
-	        std::cout<<"## Fullsky cone"<<std::endl;
-            Miscellaneous::GenerateFullskyCones(parameters.ncones, cone, coneIfRot, sphere);
-        } else{
-	    if(rank == 0)
-	        std::cout<<"## Narrow cone"<<std::endl;
-            Miscellaneous::GenerateNarrowCones(parameters, cone, coneIfRot, sphere, rotm1, thetay, thetaz);
-        }
+        Miscellaneous::TicketizeFunction(rank, ntasks, [=, &cone, &coneIfRot, &parameter]{
+	    Miscellaneous::read_cone_orientation(cone, coneIfRot, parameters);
+        });
+    }
+
+    if(!parameters.isfullsky){
+	real thetay, thetaz;
+        Miscellaneous::TicketizeFunction(rank, ntasks, [=, &parameter, &rotm1, &thetay, &thetaz]{
+            Miscellaneous::get_narrow_specs(parameters, rotm1, thetay, thetaz);
+        });
     }
     // Read cosmology
     cosmology = Input::acquire(parameters, h, omegam, lboxmpch);
@@ -190,23 +190,28 @@ int main(int argc, char* argv[])
 	    }
 	    // Load octree
 	    Miscellaneous::loadOctree(icone, octree, conefile);
-            std::cout<<"#base : "<<coneIfRot[rank].base(0)<<" "<<coneIfRot[rank].base(1)<<" "<<coneIfRot[rank].base(2)<<std::endl;
-            Miscellaneous::VizualizeOctree(octree, 0.15);
 	    // Set observer position
 	    point observer; 
 	    observer[0] = 0;
 	    observer[1] = 0;
 	    observer[2] = 0;
 
-            if(parameters.use_previous_catalogues == 1){ // Rerun previously computed catalogs
+            if(parameters.use_previous_catalogues == 1 || parameters.use_previous_catalogues == 3){ // Rerun previously computed catalogs
 		// Set filename
 		std::string conetype = parameters.isfullsky? "fullsky" : "narrow";
 		std::string sourcetype = parameters.halos ? "halos" : "part";
-		std::string jacobinfo = (parameters.jacobiantype == "bundle") ? Output::name(parameters.stop_bundle, outputsep, parameters.plane, outputsep, std::make_pair(outputopening, parameters.openingmin)) : parameters.jacobiantype;
-		filename = Output::name(parameters.outputdir, parameters.outputprefix, outputsep, conetype, outputsep, jacobinfo, outputsep, sourcetype, outputsep, std::make_pair(outputint, icone));
-		// Re-run sources in already computed catalogue
-		Catalogues::relCat_with_previous_cat(vobs, filename, observer, previous_catalogue, parameters, cosmology, octree, length, h);
-		     
+		std::string jacobinfo = (parameters.beam == "bundle") ? Output::name(parameters.stop_bundle, outputsep, parameters.plane, outputsep, std::make_pair(outputopening, parameters.openingmin)) : parameters.beam;
+		filename = Output::name(parameters.outputdir, parameters.outputprefix, outputsep, conetype, outputsep, jacobinfo, outputsep, sourcetype);
+		if(parameters.use_previous_catalogues == 1){
+		    filename = Output::name(filename, outputsep, std::make_pair(outputint, icone));
+		    // Re-run sources in already computed catalogue
+		    Catalogues::relCat_with_previous_cat(vobs, filename, observer, previous_catalogue, parameters, cosmology, octree, length, h);
+	        } else if(parameters.use_previous_catalogues == 3){ // Rerun previously computed catalogs
+		    // Set filename
+		    filename = Output::name(filename, outputsep, "flexion", outputsep, std::make_pair(outputint, icone));
+		    // Re-run sources with flexion raytracing
+		    Catalogues::relCat_with_previous_cat_flexion(vobs, filename, observer, previous_catalogue, parameters, cosmology, octree, length, h);
+		}   
 	    } else if(parameters.use_previous_catalogues == 0 || parameters.use_previous_catalogues == 2){ // If need to compute catalogue or re-run non-converged sources
 
          	std::vector< std::array< double, 8 > > caractVect_source;
@@ -252,7 +257,7 @@ int main(int argc, char* argv[])
 		// Set filename
 		std::string conetype = parameters.isfullsky? "fullsky" : "narrow";  
 		std::string sourcetype = parameters.halos ? "halos" : "part";
-		std::string jacobinfo = (parameters.jacobiantype == "bundle") ? Output::name(parameters.stop_bundle, outputsep,parameters.plane,outputsep,std::make_pair(outputopening, parameters.openingmin)) : parameters.jacobiantype;
+		std::string jacobinfo = (parameters.beam == "bundle") ? Output::name(parameters.stop_bundle, outputsep,parameters.plane,outputsep,std::make_pair(outputopening, parameters.openingmin)) : parameters.beam;
 		if(parameters.use_previous_catalogues == 2){
 		    filename = Output::name(parameters.outputdir, "/rejected/", parameters.outputprefix, outputsep, conetype, outputsep, jacobinfo, outputsep, sourcetype, outputsep, std::make_pair(outputint, icone));
 		} else{

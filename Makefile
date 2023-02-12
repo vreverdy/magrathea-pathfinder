@@ -32,7 +32,7 @@ OPTIONS += -DMEMORY_SAVING
 # EXTENT = 1 is the size of the simulation box, might need to put a higher value for narrow cones. 
 # Must be equal to 2^n with n an integer. 
 # As long as the octree volume is larger than that of the data, the value for EXTENT does not matter
-OPTIONS += -DEXTENT=32
+OPTIONS += -DEXTENT=4
 # Interpolation order for ray-tracing. NGP = 0, CIC = 1, TSC = 2
 OPTIONS += -DORDER=2
 # VERBOSE
@@ -64,10 +64,12 @@ CF += $(OPTIONS)
 
 #-- Compile --#
 
-EXEC = bin/create_octree bin/observer_velocity bin/rays bin/catalogues bin/hmaps bin/hmaps_velocityfield
+EXEC = bin/generate_cones bin/create_octree bin/observer_velocity bin/rays bin/catalogues bin/hmaps bin/hmaps_velocityfield
 
 all: $(EXEC)
 
+bin/generate_cones: src/generate_cones.cpp src/generate_cones.h 
+	$(CC) src/generate_cones.cpp -o bin/generate_cones $(CF) $(INCLUDES) $(LIBRARIES)
 bin/create_octree: src/create_octree.cpp src/create_octree.h 
 	$(CC) src/create_octree.cpp -o bin/create_octree $(CF) $(INCLUDES) $(LIBRARIES)
 bin/observer_velocity: src/observer_velocity.cpp src/observer_velocity.h 

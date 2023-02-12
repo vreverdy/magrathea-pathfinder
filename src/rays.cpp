@@ -177,25 +177,15 @@ int main(int argc, char* argv[])
     std::vector<real> statstd;
     std::vector<real> statgmean;
     std::vector<real> statgstd;
-    real thetay(0), thetaz(0);
-    std::array< std::array< double, 3 >, 3 > rotm1 = {{zero}};
     const point vobs0 = {0,0,0}; // No peculiar velocity for homogeneous quantities
     std::mt19937 engine1(parameters.seed > zero ? parameters.seed+rank : std::random_device()());
 
     if(rank == 0) 
 	std::cout<<"#### MAGRATHEA_PATHFINDER "<<std::endl; 
     // Generate cones
-    if(parameters.isfullsky){
-	if(rank == 0){
-	    std::cout<<"## Fullsky cone"<<std::endl;
-	}
-        Miscellaneous::GenerateFullskyCones(parameters.ncones, cone, coneIfRot, sphere);
-    } else{
-	if(rank == 0){
-	    std::cout<<"## Narrow cone"<<std::endl;
-	}
-        Miscellaneous::GenerateNarrowCones(parameters, cone, coneIfRot, sphere, rotm1, thetay, thetaz);
-    }
+    Miscellaneous::TicketizeFunction(rank, ntasks, [=, &cone, &coneIfRot, &parameter]{
+	Miscellaneous::read_cone_orientation(cone, coneIfRot, parameters);
+    });
     // Read cosmology
     cosmology = Input::acquire(parameters, h, omegam, lboxmpch);
     if(rank == 0){
@@ -272,7 +262,7 @@ int main(int argc, char* argv[])
 		filename = Output::name(parameters.outputprefix, outputsep, std::make_pair(outputint, nbundle), outputsep, std::make_pair(outputopening, opening), outputsep, interp, outputsep, std::make_pair(outputint, rank));
                 std::replace(filename.begin(), filename.end(), dot, dotc);
 		filename = Output::name(parameters.outputdir, filename);
-                reference = Integrator::propagate<-1>(photon, nbundle, opening, real(), interp, cosmology, homotree, vobs0, length, EXTENT*parameters.nsteps*(one << (parameters.ncoarse-parameters.ncoarse/two))*two, real(), std::signbit(parameters.savemode) ? Output::name() : Output::name(filename, outputsuffix)); 
+                reference = Integrator::propagate<-1>(photon, nbundle, opening, real(), interp, cosmology, homotree, vobs0, length, EXTENT*parameters.nsteps*(one << (parameters.ncoarse-parameters.ncoarse/two))*two, real(), std::signbit(parameters.savemode) ? Output::name() : Output::name(filename, outputsuffix));
                 // Integration without statistics
                 if (parameters.makestat == zero) {
                     Utility::parallelize(ntrajectoriesMax, [=, &photons, &nbundle, &opening, &random, &interp, &cosmology, &octree, &vobs0, &length, &amin, &filename, &reference](const uint i){Integrator::propagate<1>(photons[i], nbundle, opening, random[i], interp, cosmology, octree, vobs0, length, parameters.nsteps, amin, std::signbit(parameters.savemode) ? Output::name() : Output::name(parameters.savemode ? Output::name(filename, outputsep, std::make_pair(outputint, i), outputsep, outputint) : Output::name(filename, outputsep, std::make_pair(outputint, i), outputsep, std::make_pair(outputint, zero)), outputsuffix), reference);});

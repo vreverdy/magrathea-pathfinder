@@ -134,25 +134,15 @@ int main(int argc, char* argv[])
     real h = zero;
     real omegam = zero;
     real lboxmpch = zero;
-    real thetay(0), thetaz(0);
-    std::array< std::array< double, 3 >, 3 > rotm1 = {{zero}};
     const point vobs0 = {0,0,0}; // No peculiar velocity for homogeneous quantities
     std::mt19937 engine1(parameters.seed > zero ? parameters.seed+rank : std::random_device()());
 
     if(rank == 0) 
 	std::cout<<"#### MAGRATHEA_PATHFINDER "<<std::endl; 
     // Generate cones
-    if(parameters.isfullsky){
-	if(rank == 0){
-	    std::cout<<"## Fullsky cone"<<std::endl;
-	}
-        Miscellaneous::GenerateFullskyCones(parameters.ncones, cone, coneIfRot, sphere);
-    } else{
-	if(rank == 0){
-	    std::cout<<"## Narrow cone"<<std::endl;
-	}
-        Miscellaneous::GenerateNarrowCones(parameters, cone, coneIfRot, sphere, rotm1, thetay, thetaz);
-    }
+    Miscellaneous::TicketizeFunction(rank, ntasks, [=, &cone, &coneIfRot, &parameter]{
+	Miscellaneous::read_cone_orientation(cone, coneIfRot, parameters);
+    });
     // Read cosmology
     cosmology = Input::acquire(parameters, h, omegam, lboxmpch);
     if(rank == 0){
@@ -196,7 +186,7 @@ int main(int argc, char* argv[])
     for(uint i = 0; i < map_components.size(); i++){
 	if(map_components[i] == "lensing"){
 	    index_components[i] = 0;
-	    if(parameters.jacobiantype=="bundle"){
+	    if(parameters.beam=="bundle"){
 	        if(rank == 0){
 	            std::cout<<"Index: "<<nmaps<<", component: kappa ('lensing')"<<std::endl;
 	            std::cout<<"Index: "<<nmaps+1<<", component: gamma1 ('lensing')"<<std::endl;
@@ -205,7 +195,7 @@ int main(int argc, char* argv[])
 	            std::cout<<"Index: "<<nmaps+4<<", component: inverse magnification ('lensing')"<<std::endl;	
 	        }
 	        nmaps += 4;
-	    } else if(parameters.jacobiantype=="infinitesimal"){
+	    } else if(parameters.beam=="infinitesimal"){
 	        if(rank == 0){
 	            std::cout<<"Index: "<<nmaps<<", component: kappa ('lensing')"<<std::endl;
 	            std::cout<<"Index: "<<nmaps+1<<", component: gamma1 ('lensing')"<<std::endl;
@@ -214,7 +204,7 @@ int main(int argc, char* argv[])
 	        }
 	        nmaps += 3;
 	    } else{
-		std::cout<<"# WARNING: With 'lensing', please choose jacobiantype 'bundle' or 'infinitesimal'"<<std::endl;
+		std::cout<<"# WARNING: With 'lensing', please choose beam 'bundle' or 'infinitesimal'"<<std::endl;
 	        std::cout<<"# Error at file "<<__FILE__<<", line : "<<__LINE__<<std::endl;
 	        std::terminate();
 	    }   
@@ -380,6 +370,15 @@ int main(int argc, char* argv[])
 
     uint firsttrajectory(0);
     long itraj = 0;
+    real thetay(0), thetaz(0);
+    std::array< std::array< double, 3 >, 3 > rotm1 = {{zero}};
+    // Get thetay, thetaz and rotm1
+    if(!parameters.isfullsky){
+        Miscellaneous::TicketizeFunction(rank, ntasks, [=, &parameter, &rotm1, &thetay, &thetaz]{
+            Miscellaneous::get_narrow_specs(parameters, rotm1, thetay, thetaz);
+        });
+    }
+    // Create octree from particles
     for (uint icone = zero; icone < parameters.ncones; ++icone) {
 	if (icone%static_cast<uint>(ntasks) == static_cast<uint>(rank)) {
 #ifdef VERBOSE

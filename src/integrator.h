@@ -68,9 +68,8 @@ class Integrator final
         template <typename Type = double, class Sphere, class Vector, typename Scalar, class Engine, class Distribution, unsigned int Dimension = Sphere::dimension(), class = typename std::enable_if<Dimension == 3>::type> static Photon<Type, Dimension> launch(const Sphere& sphere, const Cone<Vector, Scalar>& cone, Engine& engine, Distribution& distribution);
         template <typename Type = double, class Sphere, class Container, class Vector, typename Scalar, class Engine, class Distribution, unsigned int Dimension = Sphere::dimension(), class = typename std::enable_if<(Dimension == 3) && (std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Container>()[0])>::type>::type, Cone<Vector, Scalar> >::value)>::type> static Photon<Type, Dimension> launch(const Sphere& sphere, const Cone<Vector, Scalar>& cone, const Container& cones, Engine& engine, Distribution& distribution);
         template <typename Type, unsigned int Dimension = 3, class = typename std::enable_if<Dimension == 3>::type> static Photon<Type, Dimension> launch(const Type xbegin, const Type ybegin, const Type zbegin, const Type xend, const Type yend, const Type zend);
-	//MODIF
         template <typename Type, unsigned int Dimension = 3, class = typename std::enable_if<Dimension == 3>::type> static Photon<Type, Dimension> launch(const Type xbegin, const Type ybegin, const Type zbegin, const Type phi, const Type theta);
-	// FIN MODIF
+        template <typename Type, unsigned int Dimension = 3, class Cosmology, class = typename std::enable_if<Dimension == 3>::type> static Photon<Type, Dimension> launch(const Type xbegin, const Type ybegin, const Type zbegin, const Type k0, const Type kx, const Type ky, const Type kz, const Type aexp, const Cosmology& cosmology);
         template <bool Center = false, typename Type, unsigned int Dimension, class Container = std::vector<Photon<Type, Dimension> >, class = typename std::enable_if<Dimension == 3>::type> static Container launch(const Photon<Type, Dimension>& photon, const unsigned int count, const Type angle, const Type rotation = Type());
     //@}
     
@@ -87,7 +86,6 @@ class Integrator final
     public:
         template <int Order = ORDER, bool RK4 = true, bool Verbose = false, class Cosmology, class Octree, class Type, class Trajectory, unsigned int Dimension = Octree::dimension(), class Element = typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Trajectory>()[0])>::type>::type, class Data = typename std::tuple_element<1, decltype(Octree::element())>::type, class Core = decltype(Element::template type<1>()), unsigned int Size = std::tuple_size<Core>::value, class Position = decltype(Octree::position()), class Extent = decltype(Octree::extent()), class Point> static Trajectory& integrate(Trajectory& trajectory, const Cosmology& cosmology, const Octree& octree, const Point& vobs, const Type length, const unsigned int nsteps = 1);
         template <int Order = ORDER, bool RK4 = true, bool Verbose = false, class Cosmology, class Octree, class Type, class Trajectory, unsigned int Dimension = Octree::dimension(), class Element = typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Trajectory>()[0])>::type>::type, class Data = typename std::tuple_element<1, decltype(Octree::element())>::type, class Core = decltype(Element::template type<1>()), unsigned int Size = std::tuple_size<Core>::value, class Position = decltype(Octree::position()), class Extent = decltype(Octree::extent()), class Point = std::array<Type, 3>> static Trajectory& integrate(Trajectory& trajectory, const std::string interpolation, const Type interpRef, const Cosmology& cosmology, const Octree& octree, const Point& vobs, const Type length, const unsigned int nsteps = 1, const Point& kiTarget = Point());
-
         template <int Order = ORDER, bool RK4 = true, bool Verbose = false, class Cosmology, class Octree, class Type, unsigned int Dimension, class Homogeneous = std::vector<Photon<Type, Dimension> >, class Point, class = typename std::enable_if<(Dimension == 3) && (Dimension == Octree::dimension())>::type> static magrathea::Evolution<Photon<Type, Dimension> > propagate(const Photon<Type, Dimension>& photon, const unsigned int count, const Type angle, const Type rotation, const std::string& interpolation, const Cosmology& cosmology, const Octree& octree, const Point& vobs, const Type length, const unsigned int nsteps = 1, const Type amin = Type(), const std::string& filenames = std::string(), const Homogeneous& homogeneous = Homogeneous());
         
 
@@ -328,6 +326,48 @@ Photon<Type, Dimension> Integrator::launch(const Type xbegin, const Type ybegin,
     return result;
 }
 
+// Launch a photon going from a position to a specified wavenumber direction
+/// \brief          Launch a photon going from a position to a specified direction.
+/// \details        Launches a photon starting from a point and going to specified 
+///                 direction.
+/// \tparam         Type Photon type.
+/// \tparam         Dimension Number of space dimension.
+/// \tparam         Cosmology Cosmology evolution type.
+/// \param[in]      xbegin Starting x coordinate.
+/// \param[in]      ybegin Starting y coordinate.
+/// \param[in]      zbegin Starting z coordinate.
+/// \param[in]      k0 Starting dt/dl.
+/// \param[in]      kx Starting dx/dl.
+/// \param[in]      ky Starting dy/dl.
+/// \param[in]      kz Starting dz/dl.
+/// \param[in]      aexp Starting scale factor.
+/// \param[in]      cosmology Cosmology evolution.
+/// \return         Initial photon.
+template <typename Type, unsigned int Dimension, class Cosmology, class>
+Photon<Type, Dimension> Integrator::launch(const Type xbegin, const Type ybegin, const Type zbegin, const Type k0, const Type kx, const Type ky, const Type kz, const Type aexp, const Cosmology& cosmology)
+{
+    // Initialization
+    Photon<Type, Dimension> result;
+
+    // Set the photon cosmology
+    result.a() = aexp;
+    
+    // Set the photon position
+    result.t() = Utility::rinterpolate(aexp, std::get<1>(cosmology), std::get<0>(cosmology));
+    result.x() = xbegin;
+    result.y() = ybegin;
+    result.z() = zbegin;
+    
+    // Set the photon direction
+    result.dtdl() = k0;
+    result.dxdl() = kx;
+    result.dydl() = ky;
+    result.dzdl() = kz;
+    
+    // Finalization
+    return result;
+}
+
 // Launch photons around one photon
 /// \brief          Launch photons around one photon.
 /// \details        Launches a group of photon on a cone around one photon.
@@ -371,6 +411,7 @@ Container Integrator::launch(const Photon<Type, Dimension>& photon, const unsign
             x = rsin*std::cos(istep*step);
             y = rsin*std::sin(istep*step);
             z = rcos;
+            result[istep+Center].dtdl() = one;
             result[istep+Center].dxdl() = -cosphi*sinpsi*costheta*x-cosphi*cospsi*costheta*y+cosphi*sintheta*z+sinphi*sinpsi*y-sinphi*cospsi*x;
             result[istep+Center].dydl() = -sinphi*sinpsi*costheta*x-sinphi*cospsi*costheta*y-cosphi*sinpsi*y+cosphi*cospsi*x+sintheta*sinphi*z;
             result[istep+Center].dzdl() = sintheta*sinpsi*x+sintheta*cospsi*y+costheta*z;
@@ -448,6 +489,7 @@ Array& Integrator::dphotondl(Array& output, const Array& input, const Cosmology&
 
 
 // -------------------------------- EVOLUTION ------------------------------- //
+
 // Geodesics integration
 /// \brief          Geodesics integration.
 /// \details        Integrates the geodesics equation of a photon.
