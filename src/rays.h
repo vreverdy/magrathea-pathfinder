@@ -17,22 +17,21 @@
 #ifndef RAYS_H_INCLUDED
 #define RAYS_H_INCLUDED
 
-
 #include <ctime>
 // Include C++
-#include <iostream>
-#include <iomanip>
-#include <fstream>
 #include <algorithm>
-#include <utility>
+#include <array>
+#include <atomic>
+#include <deque>
+#include <fstream>
+#include <iomanip>
+#include <iostream>
+#include <mutex>
 #include <random>
 #include <string>
-#include <vector>
-#include <deque>
-#include <array>
 #include <tuple>
-#include <atomic>
-#include <mutex>
+#include <utility>
+#include <vector>
 
 #ifdef GCCBELOW7
 #include <experimental/algorithm>
@@ -40,20 +39,19 @@
 // Include libs
 #include <mpi.h>
 // Include project
-#include "magrathea/simplehyperoctree.h"
-#include "magrathea/simplehyperoctreeindex.h"
-#include "magrathea/hypersphere.h"
+#include "TReadHDF5.h"
+#include "cone.h"
+#include "input.h"
 #include "magrathea/abstracthypersphere.h"
-#include "magrathea/hypercube.h"
 #include "magrathea/constants.h"
 #include "magrathea/evolution.h"
+#include "magrathea/hypercube.h"
+#include "magrathea/hypersphere.h"
+#include "magrathea/simplehyperoctree.h"
+#include "magrathea/simplehyperoctreeindex.h"
 #include "magrathea/timer.h"
-#include "cone.h"
-#include "utility.h"
-#include "input.h"
 #include "output.h"
-#include "TReadHDF5.h"
-
+#include "utility.h"
 
 using namespace magrathea;
 
@@ -65,7 +63,7 @@ struct parameters_t {
     std::string conefmt;
     std::string evolfile;
     uint isfullsky;
-    real mpc; 
+    real mpc;
     uint ncoarse;
     uint ncones;
     std::string paramfile;
@@ -98,12 +96,11 @@ struct parameters_t {
 
 class Rays {
 
-	//Methodes
-	public:
-	
-	// Read parameter file
-	template <class Parameters, class Map> static void ReadParamFile(Parameters& parameters, Map& parameter);
-
+    // Methodes
+public:
+    // Read parameter file
+    template <class Parameters, class Map>
+    static void ReadParamFile(Parameters &parameters, Map &parameter);
 };
 
 // Read parameter file
@@ -113,8 +110,8 @@ class Rays {
 /// \tparam         Map map type
 /// \param[in,out]  parameters Structure containing the parameters.
 /// \param[in]      parameter Contains parameters to be rewritten
-template <class Parameters, class Map> 
-void Rays::ReadParamFile(Parameters& parameters, Map& parameter){
+template <class Parameters, class Map>
+void Rays::ReadParamFile(Parameters &parameters, Map &parameter) {
 
     parameters.statistic = parameter["statistic"];
     parameters.conefmt = parameter["conefmt"];
@@ -148,10 +145,6 @@ void Rays::ReadParamFile(Parameters& parameters, Map& parameter){
     parameters.typefile = std::stoul(parameter["typefile"]);
     parameters.base = parameter["base"];
     parameters.halos = std::stoul(parameter["halos"]);
-
 }
-
-
-
 
 #endif // RAYS_H_INCLUDED
