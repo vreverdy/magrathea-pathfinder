@@ -33,6 +33,7 @@
 #include <vector>
 // Include libs
 // Include project
+#include "integrator.h"
 #include "magrathea/constants.h"
 #include "magrathea/evolution.h"
 #include "magrathea/hypersphere.h"
@@ -112,8 +113,8 @@ public:
     template <int Order = ORDER, bool RK4 = true, bool Verbose = false,
               class Parameter, class Point, class Cosmology, class Octree,
               class Type>
-    static std::vector<double>
-    flexion(const Parameter &parameters, const Point &finalPoint,
+    static std::array<double, 6>
+    flexion(const Parameter &parameters, const Point &central_position,
             const Point &kiTarget, const Type interpRef, const Point &observer,
             const Type phi, const Type theta, const Type dist,
             const Cosmology &cosmology, const Octree &octree, const Point &vobs,
@@ -121,8 +122,8 @@ public:
     template <int Order = ORDER, bool RK4 = true, bool Verbose = false,
               class Parameter, class Point, class Cosmology, class Octree,
               class Type>
-    static std::vector<std::vector<double>>
-    flexion(const Parameter &parameters, const std::vector<Point> &finalPoints,
+    static std::vector<std::array<double, 6>>
+    flexion(const Parameter &parameters, const std::vector<Point> &central_positions,
             const std::vector<Point> &kiTargets,
             const std::vector<Type> &interpRef, const Point &observer,
             const Type phi, const Type theta, const std::vector<Type> &dist,
@@ -224,60 +225,45 @@ std::vector<std::array<std::array<double, 2>, 2>> Lensing::dbetadtheta(
     std::vector<std::array<std::array<double, 2>, 2>> jacobian(size);
     std::array<Photon<double, 3>, 4> photons;
     std::array<magrathea::Evolution<Photon<double, 3>>, 4> trajectories;
-    std::vector<std::array<Point, 4>> finalPoint(size);
+    std::vector<std::array<Point, 4>> bundle_position(size);
     const double cp(std::cos(phiInit)), sp(std::sin(phiInit)),
         ct(std::cos(thetaInit)), st(std::sin(thetaInit));
+    const uint n_bundle = 4;
 
     // Initialization
-    std::vector<Point> rini(4);
+    std::vector<Point> rini(n_bundle);
     Point target, e1, e2;
     // Direction of target
-    target[0] = cp * st;
-    target[1] = sp * st;
-    target[2] = ct;
+    target = {cp * st, sp * st, ct};
     // screen perpendicular to the target direction
-    e1[0] = -sp;
-    e1[1] = cp;
-    e1[2] = 0;
-    e2[0] = -cp * ct;
-    e2[1] = -sp * ct;
-    e2[2] = st;
+    e1 = {-sp, cp, 0};
+    e2 = {-cp * ct, -sp * ct, st};
     const double to = std::tan(parameters.openingmin);
 
     // Initialise direction of bundle photons
+    /*  2
 
+    0   C   1
+
+        3 */
     rini[0] = {target[0] + to * e1[0], target[1] + to * e1[1],
-               target[2]} rini[1] = {target[0] - to * e1[0],
-                                     target[1] - to * e1[1], target[2]} rini[2] =
-        {target[0] - to * e2[0], target[1] - to * e2[1],
-         target[2] - to * e2[2]} rini[3] =
-    { target[0] + to * e2[0],
-      target[1] + to * e2[1],
-      target[2] + to * e2[2] }
-    /*rini[0][0] = target[0] + to*e1[0];
-    rini[0][1] = target[1] + to*e1[1];
-    rini[0][2] = target[2];
-
-    rini[1][0] = target[0] - to*e1[0];
-    rini[1][1] = target[1] - to*e1[1];
-    rini[1][2] = target[2];
-
-    rini[2][0] = target[0] - to*e2[0];
-    rini[2][1] = target[1] - to*e2[1];
-    rini[2][2] = target[2] - to*e2[2];
-
-    rini[3][0] = target[0] + to*e2[0];
-    rini[3][1] = target[1] + to*e2[1];
-    rini[3][2] = target[2] + to*e2[2];*/
+               target[2]};
+    rini[1] = {target[0] - to * e1[0],
+               target[1] - to * e1[1], target[2]};
+    rini[2] = {target[0] - to * e2[0], target[1] - to * e2[1],
+               target[2] - to * e2[2]};
+    rini[3] = {target[0] + to * e2[0],
+               target[1] + to * e2[1],
+               target[2] + to * e2[2]};
 
     // Launch photons
-    for (unsigned int i = 0; i < 4; i++) {
+    for (unsigned int i = 0; i < n_bundle; i++) {
         photons[i] = Integrator::launch(observer[0], observer[1], observer[2],
                                         rini[i][0], rini[i][1], rini[i][2]);
     }
 
     // Integration
-    for (unsigned int itrajectory = 0; itrajectory < 4; itrajectory++) {
+    for (unsigned int itrajectory = 0; itrajectory < n_bundle; itrajectory++) {
         trajectories[itrajectory].append(photons[itrajectory]);
         Integrator::integrate<Order, RK4, Verbose>(
             trajectories[itrajectory], parameters.stop_bundle, interpRefvec.back(),
@@ -443,13 +429,13 @@ std::vector<std::array<std::array<double, 2>, 2>> Lensing::dbetadtheta(
             }
             const double f = (next - interpRefvec[iref]) / (next - previous);
             // Get position of bundle photons at some surface
-            finalPoint[iref][itrajectory][0] =
+            bundle_position[iref][itrajectory][0] =
                 trajectories[itrajectory][firstid].x() * f +
                 trajectories[itrajectory][firstid + 1].x() * (1 - f);
-            finalPoint[iref][itrajectory][1] =
+            bundle_position[iref][itrajectory][1] =
                 trajectories[itrajectory][firstid].y() * f +
                 trajectories[itrajectory][firstid + 1].y() * (1 - f);
-            finalPoint[iref][itrajectory][2] =
+            bundle_position[iref][itrajectory][2] =
                 trajectories[itrajectory][firstid].z() * f +
                 trajectories[itrajectory][firstid + 1].z() * (1 - f);
         } // iref for different interp
@@ -460,35 +446,28 @@ std::vector<std::array<std::array<double, 2>, 2>> Lensing::dbetadtheta(
         Point rh, rv;
         // Compute finite differences
         for (unsigned int idim = 0; idim < 3; idim++) {
-            rh[idim] = finalPoint[iref][0][idim] - finalPoint[iref][1][idim];
-            rv[idim] = finalPoint[iref][2][idim] - finalPoint[iref][3][idim];
+            rh[idim] = bundle_position[iref][0][idim] - bundle_position[iref][1][idim];
+            rv[idim] = bundle_position[iref][2][idim] - bundle_position[iref][3][idim];
         }
-        double kx(0), ky(0), kz(0);
         // Need normal to screen (either normal to the photon or normal to the
         // comoving direction of the source)
-        kx = kiTargets[iref][0];
-        ky = kiTargets[iref][1];
-        kz = kiTargets[iref][2];
+        double kx = kiTargets[iref][0];
+        double ky = kiTargets[iref][1];
+        double kz = kiTargets[iref][2];
         const double phik = std::atan2(ky, kx);
         const double thetak =
             std::acos(kz / std::sqrt(kx * kx + ky * ky + kz * kz));
         const double cpk(std::cos(phik)), spk(std::sin(phik)),
             ctk(std::cos(thetak)), stk(std::sin(thetak));
-        e1[0] = -spk;
-        e1[1] = cpk;
-        e1[2] = 0;
-        e2[0] = -cpk * ctk;
-        e2[1] = -spk * ctk;
-        e2[2] = stk;
+        // screen perpendicular to the target direction
+        e1 = {-spk, cpk, 0};
+        e2 = {-cpk * ctk, -spk * ctk, stk};
         // Compute lensing jacobian matrix
-        jacobian[iref][0][0] =
-            (rh[0] * e1[0] + rh[1] * e1[1]) / (2 * dist[iref] * to);
-        jacobian[iref][0][1] =
-            (rv[0] * e1[0] + rv[1] * e1[1]) / (2 * dist[iref] * to);
-        jacobian[iref][1][0] = (rh[0] * e2[0] + rh[1] * e2[1] + rh[2] * e2[2]) /
-                               (-2 * dist[iref] * to);
-        jacobian[iref][1][1] = (rv[0] * e2[0] + rv[1] * e2[1] + rv[2] * e2[2]) /
-                               (-2 * dist[iref] * to);
+        const double inv_denominator = 0.5 / (dist[iref] * to);
+        jacobian[iref][0][0] = std::inner_product(std::begin(rh), std::end(rh), std::begin(e1), 0.) * inv_denominator;
+        jacobian[iref][0][1] = std::inner_product(std::begin(rv), std::end(rv), std::begin(e1), 0.) * inv_denominator;
+        jacobian[iref][1][0] = -std::inner_product(std::begin(rh), std::end(rh), std::begin(e2), 0.) * inv_denominator;
+        jacobian[iref][1][1] = -std::inner_product(std::begin(rv), std::end(rv), std::begin(e2), 0.) * inv_denominator;
     }
 
     return jacobian;
@@ -686,20 +665,21 @@ Lensing::dbetadtheta_infinitesimal(
 /// \param[in]      length Spatial length in SI units.
 /// \return         1d array Dijk giving the Hessian from seen angles to true
 /// angles
+
 template <int Order, bool RK4, bool Verbose, class Parameter, class Point,
           class Cosmology, class Octree, class Type>
-std::array<std::array<double, 2>, 2> Lensing::flexion(
-    const Parameter &parameters, const Point &finalPoint, const Point &kiTarget,
+std::array<double, 6> Lensing::flexion(
+    const Parameter &parameters, const Point &central_position, const Point &kiTarget,
     const Type interpRef, const Point &observer, const Type phiInit,
     const Type thetaInit, const Type dist, const Cosmology &cosmology,
     const Octree &octree, const Point &vobs, const Type length) {
 
-    std::vector<Point> finalPoints{finalPoint};
+    std::vector<Point> central_positions{central_position};
     std::vector<Point> kiTargets{kiTarget};
     std::vector<Type> interpRefvec{interpRef};
     std::vector<Type> distance{dist};
     return Lensing::flexion<Order, RK4, Verbose>(
-        parameters, finalPoints, kiTargets, interpRefvec, observer, phiInit,
+        parameters, central_positions, kiTargets, interpRefvec, observer, phiInit,
         thetaInit, distance, cosmology, octree, vobs, length)[0];
 }
 
@@ -734,38 +714,39 @@ std::array<std::array<double, 2>, 2> Lensing::flexion(
 /// angles
 template <int Order, bool RK4, bool Verbose, class Parameter, class Point,
           class Cosmology, class Octree, class Type>
-std::vector<std::array<std::array<double, 2>, 2>> Lensing::flexion(
-    const Parameter &parameters, const std::vector<Point> &finalPoints,
+std::vector<std::array<double, 6>> Lensing::flexion(
+    const Parameter &parameters, const std::vector<Point> &central_positions,
     const std::vector<Point> &kiTargets, const std::vector<Type> &interpRefvec,
     const Point &observer, const Type phiInit, const Type thetaInit,
     const std::vector<Type> &dist, const Cosmology &cosmology,
     const Octree &octree, const Point &vobs, const Type length) {
 
     const unsigned int size = interpRefvec.size();
-    std::vector<std::vector<double>> jacobian(size);
+    std::vector<std::array<double, 6>> hessian(size);
     std::array<Photon<double, 3>, 8> photons;
     std::array<magrathea::Evolution<Photon<double, 3>>, 8> trajectories;
-    std::vector<std::array<Point, 8>> finalPoint(size);
+    std::vector<std::array<Point, 8>> bundle_position(size);
+    const uint n_bundle = 8;
     const double cp(std::cos(phiInit)), sp(std::sin(phiInit)),
         ct(std::cos(thetaInit)), st(std::sin(thetaInit));
 
     // Initialization
-    std::vector<Point> rini(4);
+    std::vector<Point> rini(n_bundle);
     Point target, e1, e2;
-    // Direction of target
-    target[0] = cp * st;
-    target[1] = sp * st;
-    target[2] = ct;
+    target = {cp * st, sp * st, ct};
     // screen perpendicular to the target direction
-    e1[0] = -sp;
-    e1[1] = cp;
-    e1[2] = 0;
-    e2[0] = -cp * ct;
-    e2[1] = -sp * ct;
-    e2[2] = st;
+    e1 = {-sp, cp, 0};
+    e2 = {-cp * ct, -sp * ct, st};
     const double to = std::tan(parameters.openingmin);
-    std::vectorrf<double> f;
+
     // Initialise direction of bundle photons
+
+    /*  4   2   6
+
+        0   C   1
+
+        5   3   7 */
+
     rini[0] = {target[0] + to * e1[0], target[1] + to * e1[1], target[2]};
     rini[1] = {target[0] - to * e1[0], target[1] - to * e1[1], target[2]};
     rini[2] = {target[0] - to * e2[0], target[1] - to * e2[1],
@@ -781,13 +762,13 @@ std::vector<std::array<std::array<double, 2>, 2>> Lensing::flexion(
     rini[7] = {target[0] - to * e1[0] + to * e2[0],
                target[1] - to * e1[1] + to * e2[1], target[2] + to * e2[2]};
     // Launch photons
-    for (unsigned int i = 0; i < 4; i++) {
+    for (unsigned int i = 0; i < n_bundle; i++) {
         photons[i] = Integrator::launch(observer[0], observer[1], observer[2],
                                         rini[i][0], rini[i][1], rini[i][2]);
     }
 
     // Integration
-    for (unsigned int itrajectory = 0; itrajectory < 4; itrajectory++) {
+    for (unsigned int itrajectory = 0; itrajectory < n_bundle; itrajectory++) {
         trajectories[itrajectory].append(photons[itrajectory]);
         Integrator::integrate<Order, RK4, Verbose>(
             trajectories[itrajectory], parameters.stop_bundle, interpRefvec.back(),
@@ -800,12 +781,9 @@ std::vector<std::array<std::array<double, 2>, 2>> Lensing::flexion(
             if (parameters.stop_bundle == "lambda") {
                 if (trajectories[itrajectory].back().lambda() < interpRefvec[iref]) {
                     for (uint iref2 = 0; iref2 < size; iref2++) {
-                        jacobian[iref2][0][0] = 42;
-                        jacobian[iref2][0][1] = 42;
-                        jacobian[iref2][1][0] = 1;
-                        jacobian[iref2][1][1] = 0;
+                        hessian[iref2][0] = 42;
                     }
-                    return jacobian;
+                    return hessian;
                 }
                 photons[itrajectory].lambda() = interpRefvec[iref];
                 marked = std::distance(
@@ -824,12 +802,9 @@ std::vector<std::array<std::array<double, 2>, 2>> Lensing::flexion(
                        (parameters.stop_bundle == "radius")) {
                 if (trajectories[itrajectory].back().chi() < interpRefvec[iref]) {
                     for (uint iref2 = 0; iref2 < size; iref2++) {
-                        jacobian[iref2][0][0] = 42;
-                        jacobian[iref2][0][1] = 42;
-                        jacobian[iref2][1][0] = 1;
-                        jacobian[iref2][1][1] = 0;
+                        hessian[iref2][0] = 42;
                     }
-                    return jacobian;
+                    return hessian;
                 }
                 photons[itrajectory].chi() = interpRefvec[iref];
                 marked = std::distance(
@@ -847,12 +822,9 @@ std::vector<std::array<std::array<double, 2>, 2>> Lensing::flexion(
             } else if (parameters.stop_bundle == "redshift") {
                 if (trajectories[itrajectory].back().redshift() < interpRefvec[iref]) {
                     for (uint iref2 = 0; iref2 < size; iref2++) {
-                        jacobian[iref2][0][0] = 42;
-                        jacobian[iref2][0][1] = 42;
-                        jacobian[iref2][1][0] = 1;
-                        jacobian[iref2][1][1] = 0;
+                        hessian[iref2][0] = 42;
                     }
-                    return jacobian;
+                    return hessian;
                 }
                 photons[itrajectory].redshift() = interpRefvec[iref];
                 marked = std::distance(
@@ -869,11 +841,10 @@ std::vector<std::array<std::array<double, 2>, 2>> Lensing::flexion(
                 previous = trajectories[itrajectory][firstid].redshift();
             } else if (parameters.stop_bundle == "a") {
                 if (trajectories[itrajectory].back().a() > interpRefvec[iref]) {
-                    jacobian[iref][0][0] = 42;
-                    jacobian[iref][0][1] = 42;
-                    jacobian[iref][1][0] = 1;
-                    jacobian[iref][1][1] = 3;
-                    return jacobian;
+                    for (uint iref2 = 0; iref2 < size; iref2++) {
+                        hessian[iref2][0] = 42;
+                    }
+                    return hessian;
                 }
                 photons[itrajectory].a() = interpRefvec[iref];
                 marked = std::distance(
@@ -892,12 +863,9 @@ std::vector<std::array<std::array<double, 2>, 2>> Lensing::flexion(
                        (parameters.stop_bundle == "eta")) {
                 if (trajectories[itrajectory].back().t() < interpRefvec[iref]) {
                     for (uint iref2 = 0; iref2 < size; iref2++) {
-                        jacobian[iref2][0][0] = 42;
-                        jacobian[iref2][0][1] = 42;
-                        jacobian[iref2][1][0] = 1;
-                        jacobian[iref2][1][1] = 0;
+                        hessian[iref2][0] = 42;
                     }
-                    return jacobian;
+                    return hessian;
                 }
                 photons[itrajectory].t() = interpRefvec[iref];
                 marked = std::distance(
@@ -918,13 +886,9 @@ std::vector<std::array<std::array<double, 2>, 2>> Lensing::flexion(
                      trajectories[itrajectory].back().z() * kiTargets[iref][2]) <
                     interpRefvec[iref]) {
                     for (uint iref2 = 0; iref2 < size; iref2++) {
-                        std::vectorrrr<double> f(0);
-                        jacobian[iref2][0][0] = 42;
-                        jacobian[iref2][0][1] = 42;
-                        jacobian[iref2][1][0] = 1;
-                        jacobian[iref2][1][1] = 0;
+                        hessian[iref2][0] = 42;
                     }
-                    return jacobian;
+                    return hessian;
                 }
                 marked = std::distance(
                     std::begin(trajectories[itrajectory]),
@@ -954,13 +918,13 @@ std::vector<std::array<std::array<double, 2>, 2>> Lensing::flexion(
             }
             const double f = (next - interpRefvec[iref]) / (next - previous);
             // Get position of bundle photons at some surface
-            finalPoint[iref][itrajectory][0] =
+            bundle_position[iref][itrajectory][0] =
                 trajectories[itrajectory][firstid].x() * f +
                 trajectories[itrajectory][firstid + 1].x() * (1 - f);
-            finalPoint[iref][itrajectory][1] =
+            bundle_position[iref][itrajectory][1] =
                 trajectories[itrajectory][firstid].y() * f +
                 trajectories[itrajectory][firstid + 1].y() * (1 - f);
-            finalPoint[iref][itrajectory][2] =
+            bundle_position[iref][itrajectory][2] =
                 trajectories[itrajectory][firstid].z() * f +
                 trajectories[itrajectory][firstid + 1].z() * (1 - f);
         } // iref for different interp
@@ -968,41 +932,38 @@ std::vector<std::array<std::array<double, 2>, 2>> Lensing::flexion(
 
     // Compute Hessian
     for (uint iref = 0; iref < size; iref++) {
-        Point rh, rv;
+        Point rhh, rvv, rhv;
         // Compute finite differences
         for (unsigned int idim = 0; idim < 3; idim++) {
-            rh[idim] = finalPoint[iref][0][idim] - finalPoint[iref][1][idim];
-            rv[idim] = finalPoint[iref][2][idim] - finalPoint[iref][3][idim];
+            rhh[idim] = bundle_position[iref][0][idim] + bundle_position[iref][1][idim] - 2 * central_positions[iref][idim];
+            rvv[idim] = bundle_position[iref][2][idim] + bundle_position[iref][3][idim] - 2 * central_positions[iref][idim];
+            rhv[idim] = (bundle_position[iref][4][idim] + bundle_position[iref][7][idim]
+                         - bundle_position[iref][5][idim] - bundle_position[iref][6][idim]);
         }
-        double kx(0), ky(0), kz(0);
         // Need normal to screen (either normal to the photon or normal to the
         // comoving direction of the source)
-        kx = kiTargets[iref][0];
-        ky = kiTargets[iref][1];
-        kz = kiTargets[iref][2];
+        double kx = kiTargets[iref][0];
+        double ky = kiTargets[iref][1];
+        double kz = kiTargets[iref][2];
         const double phik = std::atan2(ky, kx);
         const double thetak =
             std::acos(kz / std::sqrt(kx * kx + ky * ky + kz * kz));
         const double cpk(std::cos(phik)), spk(std::sin(phik)),
             ctk(std::cos(thetak)), stk(std::sin(thetak));
-        e1[0] = -spk;
-        e1[1] = cpk;
-        e1[2] = 0;
-        e2[0] = -cpk * ctk;
-        e2[1] = -spk * ctk;
-        e2[2] = stk;
+        // screen perpendicular to the target direction
+        e1 = {-spk, cpk, 0};
+        e2 = {-cpk * ctk, -spk * ctk, stk};
         // Compute lensing jacobian matrix
-        jacobian[iref][0][0] =
-            (rh[0] * e1[0] + rh[1] * e1[1]) / (2 * dist[iref] * to);
-        jacobian[iref][0][1] =
-            (rv[0] * e1[0] + rv[1] * e1[1]) / (2 * dist[iref] * to);
-        jacobian[iref][1][0] = (rh[0] * e2[0] + rh[1] * e2[1] + rh[2] * e2[2]) /
-                               (-2 * dist[iref] * to);
-        jacobian[iref][1][1] = (rv[0] * e2[0] + rv[1] * e2[1] + rv[2] * e2[2]) /
-                               (-2 * dist[iref] * to);
+        const double inv_denominator = 1. / (dist[iref] * dist[iref] * to * to);
+        hessian[iref][0] = std::inner_product(std::begin(rhh), std::end(rhh), std::begin(e1), 0.) * inv_denominator;
+        hessian[iref][1] = std::inner_product(std::begin(rhv), std::end(rhv), std::begin(e1), 0.) * inv_denominator;
+        hessian[iref][2] = std::inner_product(std::begin(rvv), std::end(rvv), std::begin(e1), 0.) * inv_denominator;
+        hessian[iref][3] = std::inner_product(std::begin(rhh), std::end(rhh), std::begin(e2), 0.) * inv_denominator;
+        hessian[iref][4] = std::inner_product(std::begin(rhv), std::end(rhv), std::begin(e2), 0.) * inv_denominator;
+        hessian[iref][5] = std::inner_product(std::begin(rvv), std::end(rvv), std::begin(e2), 0.) * inv_denominator;
     }
 
-    return jacobian;
+    return hessian;
 }
 
 // -------------------------------------------------------------------------- //

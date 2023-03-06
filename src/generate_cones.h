@@ -52,6 +52,7 @@
 #include "magrathea/simplehyperoctree.h"
 #include "magrathea/simplehyperoctreeindex.h"
 #include "magrathea/timer.h"
+#include "miscellaneous.h"
 #include "output.h"
 #include "utility.h"
 
@@ -64,7 +65,7 @@ struct parameters_t {
     uint typefile;
     uint isfullsky;
     uint ncones;
-    real buffer;
+    double buffer;
 
 } parameters;
 

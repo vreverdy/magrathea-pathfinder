@@ -53,6 +53,7 @@
 #include "magrathea/simplehyperoctree.h"
 #include "magrathea/simplehyperoctreeindex.h"
 #include "magrathea/timer.h"
+#include "miscellaneous.h"
 #include "output.h"
 #include "utility.h"
 
@@ -154,7 +155,7 @@ public:
         const Octree &octree, const Type length, const Type h);
     template <class Point, class Cosmology, class Octree, class Type,
               class Parameter>
-    static void relCat_with_previous_cat_forward(
+    static void relCat_with_previous_cat_flexion(
         const Point &vobs, std::string &nomOutput, const Point &observer,
         std::vector<std::array<double, 18>> &previous_catalogue,
         const Parameter &parameters, const Cosmology &cosmology,
@@ -509,7 +510,7 @@ std::array<std::array<double, 2>, 2> Catalogues::newtonMethod2d(
     const unsigned int iteration) {
     magrathea::Evolution<Photon<double, 3>> trajectory, trajectory_born;
     Photon<double, 3> photon;
-    Point finalPoint;
+    Point central_position;
     std::array<std::array<double, 2>, 2> result;
     double distTarget = std::sqrt(pow(trueTarget[0], 2) + pow(trueTarget[1], 2) +
                                   pow(trueTarget[2], 2));
@@ -550,11 +551,11 @@ std::array<std::array<double, 2>, 2> Catalogues::newtonMethod2d(
                    trajectory[firstid + 1].redshift() * (1 - f);
     double scale_factor =
         trajectory[firstid].a() * f + trajectory[firstid + 1].a() * (1 - f);
-    finalPoint[0] =
+    central_position[0] =
         trajectory[firstid].x() * f + trajectory[firstid + 1].x() * (1 - f);
-    finalPoint[1] =
+    central_position[1] =
         trajectory[firstid].y() * f + trajectory[firstid + 1].y() * (1 - f);
-    finalPoint[2] =
+    central_position[2] =
         trajectory[firstid].z() * f + trajectory[firstid + 1].z() * (1 - f);
 
     // If we compute the lensing matrix with a bundle
@@ -568,7 +569,7 @@ std::array<std::array<double, 2>, 2> Catalogues::newtonMethod2d(
             kiTarget[2] = trajectory[firstid].dzdl() * f +
                           trajectory[firstid + 1].dzdl() * (1 - f);
         } else if (parameters.plane == "normal") {
-            kiTarget = finalPoint;
+            kiTarget = central_position;
         } else if (parameters.plane == "exact") {
             std::cout << "# Jacobian 'exact' not yet implemented !" << std::endl;
         } else {
@@ -596,8 +597,8 @@ std::array<std::array<double, 2>, 2> Catalogues::newtonMethod2d(
                    (parameters.stop_bundle == "radius")) {
             interpRef = distTarget;
         } else if (parameters.stop_bundle == "plane") {
-            interpRef = kiTarget[0] * finalPoint[0] + kiTarget[1] * finalPoint[1] +
-                        kiTarget[2] * finalPoint[2];
+            interpRef = kiTarget[0] * central_position[0] + kiTarget[1] * central_position[1] +
+                        kiTarget[2] * central_position[2];
         } else {
             std::cout << "# WARNING : Wrong stop criterion for integration"
                       << std::endl;
@@ -608,9 +609,9 @@ std::array<std::array<double, 2>, 2> Catalogues::newtonMethod2d(
     }
 
     // Distance between source and photon at the same comoving radius
-    double dist_sep = std::sqrt(pow(trueTarget[0] - finalPoint[0], 2) +
-                                pow(trueTarget[1] - finalPoint[1], 2) +
-                                pow(trueTarget[2] - finalPoint[2], 2));
+    double dist_sep = std::sqrt(pow(trueTarget[0] - central_position[0], 2) +
+                                pow(trueTarget[1] - central_position[1], 2) +
+                                pow(trueTarget[2] - central_position[2], 2));
     result[1][0] = dist_sep / distTarget;
 
     // Set angle for re-run rejected sources
@@ -678,17 +679,17 @@ std::array<std::array<double, 2>, 2> Catalogues::newtonMethod2d(
                     previous = trajectory_tmp[firstid].chi();
                     next = trajectory_tmp[firstid + 1].chi();
                     f = (next - distTarget) / (next - previous);
-                    finalPoint[0] = trajectory_tmp[firstid].x() * f +
-                                    trajectory_tmp[firstid + 1].x() * (1 - f);
-                    finalPoint[1] = trajectory_tmp[firstid].y() * f +
-                                    trajectory_tmp[firstid + 1].y() * (1 - f);
-                    finalPoint[2] = trajectory_tmp[firstid].z() * f +
-                                    trajectory_tmp[firstid + 1].z() * (1 - f);
+                    central_position[0] = trajectory_tmp[firstid].x() * f +
+                                          trajectory_tmp[firstid + 1].x() * (1 - f);
+                    central_position[1] = trajectory_tmp[firstid].y() * f +
+                                          trajectory_tmp[firstid + 1].y() * (1 - f);
+                    central_position[2] = trajectory_tmp[firstid].z() * f +
+                                          trajectory_tmp[firstid + 1].z() * (1 - f);
                     // Get new distance between photon and source at the same comoving
                     // distance
-                    sep_tmp = std::sqrt(pow(trueTarget[0] - finalPoint[0], 2) +
-                                        pow(trueTarget[1] - finalPoint[1], 2) +
-                                        pow(trueTarget[2] - finalPoint[2], 2)) /
+                    sep_tmp = std::sqrt(pow(trueTarget[0] - central_position[0], 2) +
+                                        pow(trueTarget[1] - central_position[1], 2) +
+                                        pow(trueTarget[2] - central_position[2], 2)) /
                               distTarget;
                     // If we find one trajectory that gives us the desired accuracy
                     if (sep_tmp < parameters.cat_accuracy) {
@@ -711,7 +712,7 @@ std::array<std::array<double, 2>, 2> Catalogues::newtonMethod2d(
                                 kiTarget[2] = trajectory[firstid].dzdl() * f +
                                               trajectory[firstid + 1].dzdl() * (1 - f);
                             } else if (parameters.plane == "normal") {
-                                kiTarget = finalPoint;
+                                kiTarget = central_position;
                             } else if (parameters.plane == "exact") {
                                 std::cout << "# Jacobian 'exact' not yet implemented !"
                                           << std::endl;
@@ -739,9 +740,9 @@ std::array<std::array<double, 2>, 2> Catalogues::newtonMethod2d(
                                        (parameters.stop_bundle == "radius")) {
                                 interpRef = distTarget;
                             } else if (parameters.stop_bundle == "plane") {
-                                interpRef = kiTarget[0] * finalPoint[0] +
-                                            kiTarget[1] * finalPoint[1] +
-                                            kiTarget[2] * finalPoint[2];
+                                interpRef = kiTarget[0] * central_position[0] +
+                                            kiTarget[1] * central_position[1] +
+                                            kiTarget[2] * central_position[2];
                             } else {
                                 std::cout << "# WARNING : Wrong stop criterion for integration"
                                           << std::endl;
@@ -802,7 +803,7 @@ std::array<std::array<double, 2>, 2> Catalogues::newtonMethod2d(
             targeted[2] = distTarget * ct;
 
             for (unsigned int idim = 0; idim < 3; idim++) {
-                sep[idim] = finalPoint[idim] - trueTarget[idim];
+                sep[idim] = central_position[idim] - trueTarget[idim];
                 pos[idim] = targeted[idim] - trueTarget[idim];
             }
             double sepx = sep[0] * e1[0] + sep[1] * e1[1];
@@ -1180,7 +1181,7 @@ void Catalogues::relCat_with_previous_cat(
             magrathea::Evolution<Photon<double, 3>> trajectory, trajectory_born;
             Photon<double, 3> photon;
             unsigned int firstid(0);
-            Point kiTarget, finalPoint;
+            Point kiTarget, central_position;
             double interpRef(0);
             const double scale_factor = 1. / (1. + previous_catalogue[i][7]);
             // Initialise photon
@@ -1206,11 +1207,11 @@ void Catalogues::relCat_with_previous_cat(
             const double next = trajectory[firstid + 1].a();
             double f = (next - scale_factor) / (next - previous);
 
-            finalPoint[0] =
+            central_position[0] =
                 trajectory[firstid].x() * f + trajectory[firstid + 1].x() * (1 - f);
-            finalPoint[1] =
+            central_position[1] =
                 trajectory[firstid].y() * f + trajectory[firstid + 1].y() * (1 - f);
-            finalPoint[2] =
+            central_position[2] =
                 trajectory[firstid].z() * f + trajectory[firstid + 1].z() * (1 - f);
             const double distTarget = trajectory[firstid].chi() * f +
                                       trajectory[firstid + 1].chi() * (1 - f);
@@ -1225,7 +1226,7 @@ void Catalogues::relCat_with_previous_cat(
                     kiTarget[2] = trajectory[firstid].dzdl() * f +
                                   trajectory[firstid + 1].dzdl() * (1 - f);
                 } else if (parameters.plane == "normal") {
-                    kiTarget = finalPoint;
+                    kiTarget = central_position;
                 } else if (parameters.plane == "exact") {
                     std::cout << "# Jacobian 'exact' not yet implemented !" << std::endl;
                 } else {
@@ -1254,8 +1255,8 @@ void Catalogues::relCat_with_previous_cat(
                            (parameters.stop_bundle == "radius")) {
                     interpRef = distTarget;
                 } else if (parameters.stop_bundle == "plane") {
-                    interpRef = kiTarget[0] * finalPoint[0] +
-                                kiTarget[1] * finalPoint[1] + kiTarget[2] * finalPoint[2];
+                    interpRef = kiTarget[0] * central_position[0] +
+                                kiTarget[1] * central_position[1] + kiTarget[2] * central_position[2];
                 } else {
                     std::cout << "# WARNING : Wrong stop criterion for integration"
                               << std::endl;
@@ -1328,7 +1329,7 @@ void Catalogues::relCat_with_previous_cat(
                               << previous_catalogue[i][15] << " "
                               << previous_catalogue[i][16] << " "
                               << previous_catalogue[i][17] << std::endl;
-                // If there is a problem (for example use of a very lare bundle method
+                // If there is a problem (for example use of a very large bundle method
                 // at the edge of a cone), then put in the rror file
             } else {
                 if (monOutputErr)
@@ -1381,18 +1382,18 @@ void Catalogues::relCat_with_previous_cat_flexion(
     std::vector<std::array<double, 18>> &previous_catalogue,
     const Parameter &parameters, const Cosmology &cosmology,
     const Octree &octree, const Type length, const Type h) {
-    const unsigned int size = 1; // previous_catalogue.size();
+    const unsigned int size = previous_catalogue.size();
 
     if (size > 0) {
         Utility::parallelize(size, [=, &vobs, &observer, &previous_catalogue,
                                     &parameters, &cosmology, &octree, &length,
                                     &h](const uint i) {
-            std::array<std::array<double, 2>, 2> jacobian;
+            std::array<double, 6> hessian;
             magrathea::Evolution<Photon<double, 3>> trajectory;
             Photon<double, 3> photon;
             unsigned int firstid(0);
             const double one(1);
-            Point kiTarget, finalPoint;
+            Point kiTarget, central_position;
             double interpRef(0);
             const double aexp = 1. / (1. + previous_catalogue[i][7]);
             // Initialise photon
@@ -1414,11 +1415,11 @@ void Catalogues::relCat_with_previous_cat_flexion(
             const double next = trajectory[firstid + 1].a();
             double f = (next - aexp) / (next - previous);
 
-            finalPoint[0] =
+            central_position[0] =
                 trajectory[firstid].x() * f + trajectory[firstid + 1].x() * (1 - f);
-            finalPoint[1] =
+            central_position[1] =
                 trajectory[firstid].y() * f + trajectory[firstid + 1].y() * (1 - f);
-            finalPoint[2] =
+            central_position[2] =
                 trajectory[firstid].z() * f + trajectory[firstid + 1].z() * (1 - f);
             const double k0 = trajectory[firstid].dtdl() * f +
                               trajectory[firstid + 1].dtdl() * (1 - f);
@@ -1442,7 +1443,7 @@ void Catalogues::relCat_with_previous_cat_flexion(
                     kiTarget[2] = trajectory[firstid].dzdl() * f +
                                   trajectory[firstid + 1].dzdl() * (1 - f);
                 } else if (parameters.plane == "normal") {
-                    kiTarget = finalPoint;
+                    kiTarget = central_position;
                 } else if (parameters.plane == "exact") {
                     std::cout << "# Jacobian 'exact' not yet implemented !" << std::endl;
                 } else {
@@ -1471,8 +1472,8 @@ void Catalogues::relCat_with_previous_cat_flexion(
                            (parameters.stop_bundle == "radius")) {
                     interpRef = distTarget;
                 } else if (parameters.stop_bundle == "plane") {
-                    interpRef = kiTarget[0] * finalPoint[0] +
-                                kiTarget[1] * finalPoint[1] + kiTarget[2] * finalPoint[2];
+                    interpRef = kiTarget[0] * central_position[0] +
+                                kiTarget[1] * central_position[1] + kiTarget[2] * central_position[2];
                 } else {
                     std::cout << "# WARNING : Wrong stop criterion for integration"
                               << std::endl;
@@ -1480,9 +1481,9 @@ void Catalogues::relCat_with_previous_cat_flexion(
                               << std::endl;
                     std::terminate();
                 }
-                jacobian = Lensing::dbetadtheta(parameters, kiTarget, interpRef,
-                                                observer, phi, theta, distTarget,
-                                                cosmology, octree, vobs, length);
+                hessian = Lensing::flexion(parameters, central_position, kiTarget, interpRef,
+                                           observer, phi, theta, distTarget,
+                                           cosmology, octree, vobs, length);
             } else {
                 std::cout << "# WARNING: beam must be 'bundle' for flexion"
                           << std::endl;
@@ -1491,10 +1492,12 @@ void Catalogues::relCat_with_previous_cat_flexion(
                 std::terminate();
             }
             // When re-running a previous catalogue, only modify the distortion matrix
-            previous_catalogue[i][13] = jacobian[0][0];
-            previous_catalogue[i][14] = jacobian[0][1];
-            previous_catalogue[i][15] = jacobian[1][0];
-            previous_catalogue[i][16] = jacobian[1][1];
+            previous_catalogue[i][11] = hessian[0];
+            previous_catalogue[i][12] = hessian[1];
+            previous_catalogue[i][13] = hessian[2];
+            previous_catalogue[i][14] = hessian[3];
+            previous_catalogue[i][15] = hessian[4];
+            previous_catalogue[i][16] = hessian[5];
         });
 
         // Clear the file
@@ -1515,19 +1518,24 @@ void Catalogues::relCat_with_previous_cat_flexion(
         // Write an ASCII file
         for (unsigned int i = 0; i < size; i++) {
             // If everything is fine, put in the output catalogue
-            if (previous_catalogue[i][13] != 42 && previous_catalogue[i][14] != 42) {
+            if (previous_catalogue[i][11] != 42) {
                 if (monOutput)
                     monOutput << std::setprecision(17) << previous_catalogue[i][0] << " "
+                              << previous_catalogue[i][11] << " "
+                              << previous_catalogue[i][12] << " "
                               << previous_catalogue[i][13] << " "
                               << previous_catalogue[i][14] << " "
                               << previous_catalogue[i][15] << " "
                               << previous_catalogue[i][16] << std::endl;
-                // If there is a problem (for example use of a very lare bundle method
+                // If there is a problem (for example use of a very large bundle method
                 // at the edge of a cone), then put in the rror file
             } else {
                 if (monOutputErr)
                     monOutputErr << std::setprecision(17) << previous_catalogue[i][0]
                                  << " " << previous_catalogue[i][13] << " "
+                                 << previous_catalogue[i][11] << " "
+                                 << previous_catalogue[i][12] << " "
+                                 << previous_catalogue[i][13] << " "
                                  << previous_catalogue[i][14] << " "
                                  << previous_catalogue[i][15] << " "
                                  << previous_catalogue[i][16] << std::endl;
