@@ -239,7 +239,7 @@ void Generate_cones::GenerateNarrowCones(
     thetay *= magrathea::Constants<double>::deg();
     phi_rot *= magrathea::Constants<double>::deg();
     theta_rot *= magrathea::Constants<double>::deg();
-
+    std::cout << " Aperture " << thetaz << " " << thetay << " (radians)" << std::endl;
     // Compute the rotation matrix to rotate the cone
     rotation[0][0] = std::cos(theta_rot) * std::cos(phi_rot);
     rotation[0][1] = std::cos(theta_rot) * std::sin(phi_rot);
@@ -258,13 +258,14 @@ void Generate_cones::GenerateNarrowCones(
     ciblage[1] = 0;
     ciblage[2] = 0;
     double fullsky = 4 * pi;
-    double portion = 2 * thetay * (std::sin(thetaz) - std::cos(pi / 2. + thetaz));
+    double portion = 2 * (thetay - parameters.buffer) * (std::sin(thetaz - parameters.buffer) - std::cos(pi / 2. + thetaz - parameters.buffer));
     // Inverse fraction of the sky
     uint fsp = fullsky / portion;
     tiling.resize(parameters.ncones * fsp);
 
     // Generate random points on the full sky. Then check is we have a number of
     // points equal to 'ncones' in the area of interest
+    std::cout << " Generate " << parameters.ncones * fsp << " points" << std::endl;
     sphere.template uniform<Dimension - 1>(std::begin(tiling), std::end(tiling));
     for (uint i = 0; i < tiling.size(); ++i) {
         double phi = std::atan2(tiling[i][1], tiling[i][0]);
@@ -276,18 +277,18 @@ void Generate_cones::GenerateNarrowCones(
             iloop++;
         }
     }
+    std::cout << "Only " << iloop << " inside, need to iterate..." << std::endl;
     float irecuploop = 0;
     // Generally, we will not exactly have the good number of points, then need to
     // iterate on the initial number of points on the full sky
     while (iloop != parameters.ncones) {
-        if (irecuploop < 10)
-            tiling.resize(tiling.size() +
-                          static_cast<int>((static_cast<float>(parameters.ncones) -
-                                            static_cast<float>(iloop)) *
-                                           static_cast<float>(fsp) *
-                                           (1 / (1 + irecuploop))));
-        else
-            tiling.resize(tiling.size() + parameters.ncones - iloop);
+        uint new_input_value = tiling.size() * parameters.ncones / iloop;
+        if (new_input_value == tiling.size()) {
+            new_input_value += parameters.ncones - iloop;
+        }
+        std::cout << "Generate " << new_input_value << "points" << std::endl;
+        tiling.resize(new_input_value);
+
         sphere.template uniform<Dimension - 1>(std::begin(tiling),
                                                std::end(tiling));
         iloop = 0;
@@ -300,6 +301,7 @@ void Generate_cones::GenerateNarrowCones(
                 iloop++;
             }
         }
+        std::cout << "Iteration " << irecuploop << " Good points " << iloop << " must be equal to " << parameters.ncones << std::endl;
         irecuploop++;
     }
     iloop = 0;
