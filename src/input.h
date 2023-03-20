@@ -1636,6 +1636,12 @@ Cosmology Input::acquire(const Parameter &parameters, Type &h, Type &omegam,
                 line.emplace_back();
             } while (std::getline(input, line.back()));
             input.close();
+        } else {
+            std::cout << "# WARNING : evolfile not found: " << parameters.evolfile
+                      << std::endl;
+            std::cout << "# Error at file " << __FILE__ << ", line : " << __LINE__
+                      << std::endl;
+            std::terminate();
         }
     });
     std::ifstream stream;
@@ -1710,6 +1716,12 @@ Cosmology Input::acquire(const Parameter &parameters, Type &h, Type &omegam,
             }
         }
         stream.close();
+    } else {
+        std::cout << "# WARNING : paramfile not found: " << parameters.paramfile
+                  << std::endl;
+        std::cout << "# Error at file " << __FILE__ << ", line : " << __LINE__
+                  << std::endl;
+        std::terminate();
     }
     // Find evolution
     thread.join();
