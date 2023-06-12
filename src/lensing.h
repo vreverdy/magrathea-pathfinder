@@ -937,9 +937,9 @@ std::vector<std::array<double, 6>> Lensing::flexion(
         for (unsigned int idim = 0; idim < 3; idim++) {
             rhh[idim] = bundle_position[iref][0][idim] + bundle_position[iref][1][idim] - 2 * central_positions[iref][idim];
             rvv[idim] = bundle_position[iref][2][idim] + bundle_position[iref][3][idim] - 2 * central_positions[iref][idim];
-            rhv[idim] = (bundle_position[iref][4][idim] + bundle_position[iref][7][idim]
-                         - bundle_position[iref][5][idim] - bundle_position[iref][6][idim]);
+            rhv[idim] = (bundle_position[iref][4][idim] + bundle_position[iref][7][idim] - bundle_position[iref][5][idim] - bundle_position[iref][6][idim]);
         }
+
         // Need normal to screen (either normal to the photon or normal to the
         // comoving direction of the source)
         double kx = kiTargets[iref][0];
@@ -954,7 +954,7 @@ std::vector<std::array<double, 6>> Lensing::flexion(
         e1 = {-spk, cpk, 0};
         e2 = {-cpk * ctk, -spk * ctk, stk};
         // Compute lensing jacobian matrix
-        const double inv_denominator = 1. / (dist[iref] * dist[iref] * to * to);
+        const double inv_denominator = 1. / (dist[iref] * to * to); // Only 1 dist[ref] so that dimension of flexion is rad^-1
         hessian[iref][0] = std::inner_product(std::begin(rhh), std::end(rhh), std::begin(e1), 0.) * inv_denominator;
         hessian[iref][1] = std::inner_product(std::begin(rhv), std::end(rhv), std::begin(e1), 0.) * inv_denominator;
         hessian[iref][2] = std::inner_product(std::begin(rvv), std::end(rvv), std::begin(e1), 0.) * inv_denominator;

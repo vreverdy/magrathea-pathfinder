@@ -224,7 +224,8 @@ int main(int argc, char *argv[]) {
     } else if (parameters.ray_targets == "catalogue") {
         std::vector<std::array<double, 18>> previous_catalogue;
         // Read catalogue
-        Miscellaneous::ReadFromCat(rank, parameters, previous_catalogue);
+        const std::string filename = parameters.outputdir + "../catalogs/" + Output::name(parameters.base, "_", std::make_pair("%05d", rank), ".txt"); // Name of catalog, given icone, directory and base
+        Miscellaneous::ReadFromCat(rank, filename, previous_catalogue);
         // Select sources within mass bin
         previous_catalogue.erase(std::remove_if(previous_catalogue.begin(), previous_catalogue.end(), [](const std::array<double, 18> &elem) { return (elem[17] >= parameters.massmax) || (elem[17] < parameters.massmin); }), previous_catalogue.end());
         ntrajectoriesMax = previous_catalogue.size();
@@ -258,7 +259,9 @@ int main(int argc, char *argv[]) {
                 reference = Integrator::propagate<-1>(photon, nbundle, opening, real(), interp, cosmology, homotree, vobs0, length, EXTENT * parameters.nsteps * (one << (parameters.ncoarse - parameters.ncoarse / two)) * two, real(), std::signbit(parameters.savemode) ? Output::name() : Output::name(filename, outputsuffix));
                 // Integration without statistics
                 if (parameters.makestat == zero) {
-                    Utility::parallelize(ntrajectoriesMax, [=, &photons, &nbundle, &opening, &random, &interp, &cosmology, &octree, &vobs0, &length, &amin, &filename, &reference](const uint i) { Integrator::propagate<1>(photons[i], nbundle, opening, random[i], interp, cosmology, octree, vobs0, length, parameters.nsteps, amin, std::signbit(parameters.savemode) ? Output::name() : Output::name(parameters.savemode ? Output::name(filename, outputsep, std::make_pair(outputint, i), outputsep, outputint) : Output::name(filename, outputsep, std::make_pair(outputint, i), outputsep, std::make_pair(outputint, zero)), outputsuffix), reference); });
+                    Utility::parallelize(ntrajectoriesMax, [=, &photons, &nbundle, &opening, &random, &interp, &cosmology, &octree, &vobs0, &length, &amin, &filename, &reference](const uint i) {
+                        Integrator::propagate(photons[i], nbundle, opening, random[i], interp, cosmology, octree, vobs0, length, parameters.nsteps, amin, std::signbit(parameters.savemode) ? Output::name() : Output::name(parameters.savemode ? Output::name(filename, outputsep, std::make_pair(outputint, i), outputsep, outputint) : Output::name(filename, outputsep, std::make_pair(outputint, i), outputsep, std::make_pair(outputint, zero)), outputsuffix), reference);
+                    });
                 } else {
                     // Integration with statistics
                     // Clear statistics arrays

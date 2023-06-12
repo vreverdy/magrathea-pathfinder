@@ -148,11 +148,12 @@ double Utility::parallelize(const Type nsteps, Function &&function, const int nt
     const std::chrono::high_resolution_clock::time_point tbegin = std::chrono::high_resolution_clock::now();
     const Type ntasks = std::max(static_cast<int>(1), nthreads);
     const Type group = std::max(Type(nsteps > zero), nsteps / ntasks);
+    const Type imax = (ntasks > nsteps) ? nsteps : floor(nsteps / ntasks) * ntasks;
     std::vector<std::thread> threads;
     Type istep = zero;
     threads.reserve(ntasks);
     // Each thread takes care of some tasks
-    for (istep = zero; istep < floor(nsteps / ntasks) * ntasks; istep += group) {
+    for (istep = zero; istep < imax; istep += group) {
         threads.push_back(std::thread([=, &nsteps, &group, &function]() {for (Type i = istep; i < std::min(istep + group, nsteps); ++i) function(i); }));
     }
     // Run the last few steps

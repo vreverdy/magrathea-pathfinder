@@ -78,11 +78,13 @@ struct parameters_t {
     // Specific
     uint acorrection;
     uint allocation;
+    uint firstcone;
     std::string cellfmt;
     uint coarsecorrection;
     uint coarseonly;
     uint correction;
     std::string inputtype;
+    uint lastcone;
     uint microcoeff;
     std::string minicone;
     std::string partdir;
@@ -222,6 +224,8 @@ void Create_octree::ReadParamFile(Parameters &parameters, Map &parameter) {
     parameters.isfullsky = std::stoul(parameter["isfullsky"]);
     parameters.ncoarse = std::stoul(parameter["ncoarse"]);
     parameters.ncones = std::stoul(parameter["ncones"]);
+    parameters.firstcone = std::stoul(parameter["firstcone"]);
+    parameters.lastcone = std::stoul(parameter["lastcone"]);
     parameters.coarseonly = std::stoul(parameter["coarseonly"]);
     parameters.correction = std::stoul(parameter["correction"]);
     parameters.coarsecorrection = std::stoul(parameter["coarsecorrection"]);
@@ -333,7 +337,7 @@ void Create_octree::PreparationHDF5_from_cells(
 
     // Pre-reserve some memory for the octree to prevent reallocation (slow)
     octree.reserve(parameters.allocation);
-    for (uint icone = zero; icone < parameters.ncones; ++icone) {
+    for (uint icone = parameters.firstcone; icone <= parameters.lastcone; ++icone) {
         if (icone % static_cast<uint>(ntasks) == static_cast<uint>(rank)) {
             octree.clear();
 #ifdef VERBOSE
@@ -469,7 +473,7 @@ void Create_octree::PreparationHDF5_from_particles(
 
     // Pre-reserve memory for the octree, to avoid reallocation (slow)
     octree.reserve(parameters.allocation);
-    for (uint icone = zero; icone < parameters.ncones; ++icone) {
+    for (uint icone = parameters.firstcone; icone <= parameters.lastcone; ++icone) {
         if (icone % static_cast<uint>(ntasks) == static_cast<uint>(rank)) {
             bool continue_refining = true;
             octree.clear();
@@ -680,7 +684,7 @@ void Create_octree::PreparationBinary(
     octree.reserve(parameters.allocation);
     // Get names from directory and put them in octree
     Input::filetree(filetree, parameters.celldir, parameters.cellfmt);
-    for (uint icone = zero; icone < parameters.ncones; ++icone) {
+    for (uint icone = parameters.firstcone; icone <= parameters.lastcone; ++icone) {
         if (icone % static_cast<uint>(ntasks) == static_cast<uint>(rank)) {
             octree.clear();
             filelist.clear();
@@ -792,7 +796,7 @@ void Create_octree::PreparationASCII(
     }
 
     octree.reserve(parameters.allocation);
-    for (uint icone = zero; icone < parameters.ncones; ++icone) {
+    for (uint icone = parameters.firstcone; icone <= parameters.lastcone; ++icone) {
         if (icone % static_cast<uint>(ntasks) == static_cast<uint>(rank)) {
             octree.clear();
 #ifdef VERBOSE

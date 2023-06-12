@@ -824,6 +824,7 @@ void Hmaps::FillMap(
         std::vector<std::array<std::array<double, 2>, 2>> jacobian(
             parameters.nb_z_maps),
             jacobian_born(parameters.nb_z_maps);
+        std::vector<std::array<double, 6>> hessian(parameters.nb_z_maps);
         std::vector<uint> firstid(parameters.nb_z_maps);
         std::vector<Real> interpRefvecBundle(parameters.nb_z_maps),
             f(parameters.nb_z_maps), distance(parameters.nb_z_maps);
@@ -838,8 +839,11 @@ void Hmaps::FillMap(
         const bool compute_lensing =
             std::find(map_components.begin(), map_components.end(), "lensing") !=
             map_components.end();
+        const bool compute_flexion =
+            std::find(map_components.begin(), map_components.end(), "flexion") !=
+            map_components.end();
         std::vector<point> kiTargets(parameters.nb_z_maps),
-            posTargets(parameters.nb_z_maps);
+            central_position(parameters.nb_z_maps);
         // Convert pixel to 3D vector
         pix2vec_ring(parameters.nside, pixel[itrajectorys], vec1);
         // Convert to angles
@@ -958,19 +962,19 @@ void Hmaps::FillMap(
             }
 
             // Check if we need to compute the lensing jacobian matrix
-            if (compute_lensing) {
+            if (compute_lensing | compute_flexion) {
                 for (uint i = 0; i < parameters.nb_z_maps; i++) { // different maps
                     // Get position of photon at the surface and the plane (screen for
                     // bundle method)
-                    posTargets[i][0] = trajectorycenter[firstid[i]].x() * f[i] +
-                                       trajectorycenter[firstid[i] + 1].x() * (1 - f[i]);
-                    posTargets[i][1] = trajectorycenter[firstid[i]].y() * f[i] +
-                                       trajectorycenter[firstid[i] + 1].y() * (1 - f[i]);
-                    posTargets[i][2] = trajectorycenter[firstid[i]].z() * f[i] +
-                                       trajectorycenter[firstid[i] + 1].z() * (1 - f[i]);
-                    distance[i] = std::sqrt(posTargets[i][0] * posTargets[i][0] +
-                                            posTargets[i][1] * posTargets[i][1] +
-                                            posTargets[i][2] * posTargets[i][2]);
+                    central_position[i][0] = trajectorycenter[firstid[i]].x() * f[i] +
+                                             trajectorycenter[firstid[i] + 1].x() * (1 - f[i]);
+                    central_position[i][1] = trajectorycenter[firstid[i]].y() * f[i] +
+                                             trajectorycenter[firstid[i] + 1].y() * (1 - f[i]);
+                    central_position[i][2] = trajectorycenter[firstid[i]].z() * f[i] +
+                                             trajectorycenter[firstid[i] + 1].z() * (1 - f[i]);
+                    distance[i] = std::sqrt(central_position[i][0] * central_position[i][0] +
+                                            central_position[i][1] * central_position[i][1] +
+                                            central_position[i][2] * central_position[i][2]);
                     if (parameters.beam == "bundle") {
                         if (parameters.plane == "sachs") {
                             kiTargets[i][0] =
@@ -983,7 +987,7 @@ void Hmaps::FillMap(
                                 trajectorycenter[firstid[i]].dzdl() * f[i] +
                                 trajectorycenter[firstid[i] + 1].dzdl() * (1 - f[i]);
                         } else if (parameters.plane == "normal") {
-                            kiTargets = posTargets;
+                            kiTargets = central_position;
                         } else {
                             std::cout << "# WARNING: with beam = 'bundle', please choose "
                                          "plane = 'normal' or 'sachs'"
@@ -1018,9 +1022,9 @@ void Hmaps::FillMap(
                                 trajectorycenter[firstid[i]].t() * f[i] +
                                 trajectorycenter[firstid[i] + 1].t() * (1 - f[i]);
                         } else if (parameters.stop_bundle == "plane") {
-                            interpRefvecBundle[i] = kiTargets[i][0] * posTargets[i][0] +
-                                                    kiTargets[i][1] * posTargets[i][1] +
-                                                    kiTargets[i][2] * posTargets[i][2];
+                            interpRefvecBundle[i] = kiTargets[i][0] * central_position[i][0] +
+                                                    kiTargets[i][1] * central_position[i][1] +
+                                                    kiTargets[i][2] * central_position[i][2];
                         } else {
                             std::cout << "# WARNING: Please choose an existing stop_bundle "
                                          "parameter"
@@ -1031,20 +1035,28 @@ void Hmaps::FillMap(
                         }
                     }
                 }
+                if (compute_flexion) {
+                    hessian = Lensing::flexion(parameters, central_position, kiTargets, interpRefvecBundle,
+                                               observer, phi, theta, distance,
+                                               cosmology, octree, vobs, length);
+                }
+
                 // Compute Lensing Jacobian matrix
-                if (parameters.beam == "bundle") {
-                    jacobian = Lensing::dbetadtheta(
-                        parameters, kiTargets, interpRefvecBundle, observer, phi, theta,
-                        distance, cosmology, octree, vobs, length);
-                } else if (parameters.beam == "infinitesimal") {
-                    jacobian = Lensing::dbetadtheta_infinitesimal(
-                        distance, trajectorycenter, octree, length);
-                } else {
-                    std::cout << "# WARNING: beam must be 'bundle' or 'infinitesimal'"
-                              << std::endl;
-                    std::cout << "# Error at file " << __FILE__ << ", line : " << __LINE__
-                              << std::endl;
-                    std::terminate();
+                if (compute_lensing) {
+                    if (parameters.beam == "bundle") {
+                        jacobian = Lensing::dbetadtheta(
+                            parameters, kiTargets, interpRefvecBundle, observer, phi, theta,
+                            distance, cosmology, octree, vobs, length);
+                    } else if (parameters.beam == "infinitesimal") {
+                        jacobian = Lensing::dbetadtheta_infinitesimal(
+                            distance, trajectorycenter, octree, length);
+                    } else {
+                        std::cout << "# WARNING: beam must be 'bundle' or 'infinitesimal'"
+                                  << std::endl;
+                        std::cout << "# Error at file " << __FILE__ << ", line : " << __LINE__
+                                  << std::endl;
+                        std::terminate();
+                    }
                 }
             }
         }
@@ -1209,8 +1221,8 @@ void Hmaps::FillMap(
                     } else if (index_components[j] == 13) {
                         double beta1(0), beta2(0);
                         if (compute_lensing) {
-                            beta1 = std::atan2(posTargets[iz][1], posTargets[iz][0]);
-                            beta2 = std::acos(posTargets[iz][2] / distance[iz]);
+                            beta1 = std::atan2(central_position[iz][1], central_position[iz][0]);
+                            beta2 = std::acos(central_position[iz][2] / distance[iz]);
                         } else {
                             double x = trajectorycenter[firstid[iz]].x() * f[iz] +
                                        trajectorycenter[firstid[iz] + 1].x() * (1 - f[iz]);
@@ -1225,6 +1237,14 @@ void Hmaps::FillMap(
                         map[nmaps * iz + icomp][pixel[itrajectorys]] = phi - beta1;
                         map[nmaps * iz + icomp + 1][pixel[itrajectorys]] = theta - beta2;
                         icomp++;
+                    } else if (index_components[j] == 14) {
+                        map[nmaps * iz + icomp][pixel[itrajectorys]] = hessian[iz][0];
+                        map[nmaps * iz + icomp + 1][pixel[itrajectorys]] = hessian[iz][1];
+                        map[nmaps * iz + icomp + 2][pixel[itrajectorys]] = hessian[iz][2];
+                        map[nmaps * iz + icomp + 3][pixel[itrajectorys]] = hessian[iz][3];
+                        map[nmaps * iz + icomp + 4][pixel[itrajectorys]] = hessian[iz][4];
+                        map[nmaps * iz + icomp + 5][pixel[itrajectorys]] = hessian[iz][5];
+                        icomp += 5;
                     }
                     icomp++;
                 }
@@ -1319,8 +1339,7 @@ void Hmaps::FillMapPropagate(const Parameter &parameters,
         std::vector<uint> firstid(parameters.nb_z_maps);
         double vec1[3];
         std::vector<double> f(parameters.nb_z_maps), distance(parameters.nb_z_maps);
-        std::vector<point> kiTargets(parameters.nb_z_maps),
-            posTargets(parameters.nb_z_maps);
+        std::vector<point> kiTargets(parameters.nb_z_maps);
         // Convert pixel to 3D vector
         pix2vec_ring(parameters.nside, pixel[itrajectorys], vec1);
         // Launch photon toward pixel

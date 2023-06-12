@@ -145,8 +145,8 @@ int main(int argc, char *argv[]) {
     if (rank == 0)
         std::cout << "#### MAGRATHEA_PATHFINDER " << std::endl;
     // Generate cones
-    if (parameters.use_previous_catalogues ==
-        0) { // Only useful to assign sources to cone
+    if (parameters.use_previous_catalogues == 0 ||
+        parameters.use_previous_catalogues == 2) { // Only useful to assign sources to cone
         Miscellaneous::TicketizeFunction(
             rank, ntasks, [=, &cone, &coneIfRot, &parameter] {
                 Miscellaneous::read_cone_orientation(cone, coneIfRot, parameters);
@@ -202,8 +202,12 @@ int main(int argc, char *argv[]) {
         if (icone % static_cast<uint>(ntasks) == static_cast<uint>(rank)) {
             std::vector<std::array<double, 18>> previous_catalogue;
             if (parameters.use_previous_catalogues) {
+                std::string extra = (parameters.use_previous_catalogues == 2) ? ".reject" : "";
+                // Name of catalog, given icone, directory and base
+                std::string filename = parameters.outputdir + "../catalogs/" + Output::name(parameters.base, "_", std::make_pair("%05d", icone), ".txt" + extra);
+
                 Miscellaneous::ReadFromCat(
-                    icone, parameters,
+                    icone, filename,
                     previous_catalogue); // For 'rejected', read the id here, and choose
                                          // only those that are inside the cone
 #ifdef VERBOSE

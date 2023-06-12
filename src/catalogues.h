@@ -1085,8 +1085,8 @@ void Catalogues::relCat(
     });
 
     // Output result in ASCII files
-    std::string filenameError = Output::name(filename, "_err", ".txt");
-    std::string filenameRej = Output::name(filename, "_reject", ".txt");
+    std::string filenameError = Output::name(filename, ".txt", ".err");
+    std::string filenameRej = Output::name(filename, ".txt", ".reject");
     filename = Output::name(filename, ".txt");
 
     std::ofstream ofst;
@@ -1291,8 +1291,8 @@ void Catalogues::relCat_with_previous_cat(
         });
 
         // Clear the file
-        std::string filenameError = Output::name(filename, "_err", ".txt");
-        std::string filenameRej = Output::name(filename, "_reject", ".txt");
+        std::string filenameError = Output::name(filename, ".txt.err");
+        std::string filenameRej = Output::name(filename, ".txt.reject");
         filename = Output::name(filename, ".txt");
 
         std::ofstream ofst;
@@ -1369,8 +1369,8 @@ void Catalogues::relCat_with_previous_cat(
 /// \param[in]      vobs Observer peculiar velocity, in SI
 /// \param[in]      filename output file name.
 /// \param[in]      observer Observer position.
-/// \param[in]      previous_catalogue Previously computed catalogue, used to
-/// re-run rejected sources. \param[in]      parameters Parameter structure
+/// \param[in]      previous_catalogue Previously computed catalogue, used to re-run rejected sources.
+/// \param[in]      parameters Parameter structure
 /// \param[in]      cosmology Cosmology evolution.
 /// \param[in]      octree Octree.
 /// \param[in]      length Spatial length in SI units.
@@ -1498,10 +1498,11 @@ void Catalogues::relCat_with_previous_cat_flexion(
             previous_catalogue[i][14] = hessian[3];
             previous_catalogue[i][15] = hessian[4];
             previous_catalogue[i][16] = hessian[5];
+            //}
         });
 
         // Clear the file
-        std::string filenameError = Output::name(filename, "_err", ".txt");
+        std::string filenameError = Output::name(filename, ".txt", ".err");
         filename = Output::name(filename, ".txt");
 
         std::ofstream ofst;

@@ -101,8 +101,8 @@ public:
     static void VizualizeOctree(const Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container> &octree, const Type radius);
 
     // Read Angular position from previously computed catalog
-    template <typename Integer, class Parameters>
-    static void ReadFromCat(const Integer icone, const Parameters &parameters, std::vector<std::array<double, 18>> &catalogue);
+    template <typename Integer>
+    static void ReadFromCat(const Integer icone, const std::string filename, std::vector<std::array<double, 18>> &catalogue);
 
     // Write and read cone orientation file
     template <class Cone, class Parameters>
@@ -521,10 +521,9 @@ void Miscellaneous::fill_particles_vectors(const Parameter &parameters, const Co
 /// \param[in]      parameters Parameter structure
 /// \param[in]      icone cone number
 /// \param[in,out]  Catalogue Vector containing the source catalogue
-template <typename Integer, class Parameters>
-void Miscellaneous::ReadFromCat(const Integer icone, const Parameters &parameters, std::vector<std::array<double, 18>> &catalogue) {
-    // Create filename of catalogue
-    std::string filename = parameters.outputdir + "/" + Output::name(parameters.base, "_", std::make_pair("%05d", icone), ".txt"); // Name of catalog, given icone, directory and base
+template <typename Integer>
+void Miscellaneous::ReadFromCat(const Integer icone, const std::string filename, std::vector<std::array<double, 18>> &catalogue) {
+
 #ifdef VERBOSE
     std::cout << "# Cone " << icone << " Read angular position from " << filename << std::endl;
 #endif

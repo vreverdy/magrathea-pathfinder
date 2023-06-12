@@ -277,6 +277,29 @@ int main(int argc, char *argv[]) {
                           << std::endl;
             }
             nmaps++;
+        } else if (map_components[i] == "flexion") {
+            index_components[i] = 14; // "d111", "d112", "d122", "d211", "d212", "d222"
+            if (rank == 0) {
+                std::cout << "Index: " << nmaps
+                          << ", component: D111 ('flexion') [in radians^-1]"
+                          << std::endl;
+                std::cout << "Index: " << nmaps + 1
+                          << ", component: D112 ('flexion') [in radians^-1]"
+                          << std::endl;
+                std::cout << "Index: " << nmaps + 2
+                          << ", component: D122 ('flexion') [in radians^-1]"
+                          << std::endl;
+                std::cout << "Index: " << nmaps + 3
+                          << ", component: D211 ('flexion') [in radians^-1]"
+                          << std::endl;
+                std::cout << "Index: " << nmaps + 4
+                          << ", component: D212 ('flexion') [in radians^-1]"
+                          << std::endl;
+                std::cout << "Index: " << nmaps + 5
+                          << ", component: D222 ('flexion') [in radians^-1]"
+                          << std::endl;
+            }
+            nmaps += 5;
         } else {
             if (rank == 0)
                 std::cout << "Index: " << nmaps << ", component: '" << map_components[i]
@@ -303,6 +326,7 @@ int main(int argc, char *argv[]) {
                 index_components[i] = 11;
             else if (map_components[i] == "phi")
                 index_components[i] = 12;
+
             else {
                 std::cout << "# WARNING: Need good name for map_components"
                           << std::endl;
