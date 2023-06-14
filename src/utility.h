@@ -148,18 +148,23 @@ double Utility::parallelize(const Type nsteps, Function &&function, const int nt
     const std::chrono::high_resolution_clock::time_point tbegin = std::chrono::high_resolution_clock::now();
     const Type ntasks = std::max(static_cast<int>(1), nthreads);
     const Type group = std::max(Type(nsteps > zero), nsteps / ntasks);
-    const Type imax = (ntasks > nsteps) ? nsteps : floor(nsteps / ntasks) * ntasks;
+    const Type imax = (ntasks > nsteps) ? nsteps : ntasks;
+    const Type diff = (ntasks > nsteps) ? 0 : nsteps - ntasks * group;
     std::vector<std::thread> threads;
-    Type istep = zero;
+    Type itask = zero;
     threads.reserve(ntasks);
     // Each thread takes care of some tasks
-    for (istep = zero; istep < imax; istep += group) {
-        threads.push_back(std::thread([=, &nsteps, &group, &function]() {for (Type i = istep; i < std::min(istep + group, nsteps); ++i) function(i); }));
+    for (itask = zero; itask < imax; itask++) {
+        const Type imin = (diff == 0) ? itask * group : (itask < diff) ? itask * (group + 1)
+                                                                       : diff * (group + 1) + (itask - diff) * group;
+        threads.push_back(std::thread([=, &function]() {
+            const Type ngroup = (itask < diff) ? group + 1 : group;
+            for (Type i = imin; i < imin + ngroup; ++i) {
+                function(i);
+            }
+        }));
     }
-    // Run the last few steps
-    for (istep = istep; istep < nsteps; ++istep) {
-        function(istep);
-    }
+
     std::for_each(threads.begin(), threads.end(), [](std::thread &current) { current.join(); });
 
     return std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::high_resolution_clock::now() - tbegin).count();
