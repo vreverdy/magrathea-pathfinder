@@ -11,19 +11,9 @@
 #SBATCH --output error_output/job_catalogs_preparation_%I.o
 #SBATCH --error error_output/job_catalogs_preparation_%I.e
 
-module purge
-module load gcc/7.3.0
-module load openmpi/3.0.0-gcc-7.3.0 
-module load hdf5/1.10.1-gcc-7.3.0
-
-#module purge
-#module load gcc/6.3.0
-#module load openmpi/2.1.0-gcc-6.3.0
-#module load hdf5/1.10.0-gcc-6.3.0
 #export LD_LIBRARY_PATH=/home/mbreton/hdf5-1.8.16/lib:$LD_LIBRARY_PATH
 
-
-NCPU=1
+NCPU=2
 exec_line='mpirun -np '$NCPU
 home=/data/home/mbreton/magrathea-pathfinder/bin/ # executable directory
 EXEC=$home/catalogues
@@ -32,10 +22,10 @@ sim=boxlen82.03125_n128_lcdmw7 # simulation name
 ncoarse=7
 ncones=8
 
-inputconegrav='cone_grav_narrow_pastnfut_00002'
-inputconepart='cone_part_narrow_past_00002'
+inputconegrav='cone_grav_fullsky_pastnfut_00001'
+inputconepart='cone_part_fullsky_past_00001'
 inputminicone='cone_grav_fullsky_pastnfut_00001'  #CENTRAL BUFFER ZONE FOR CONE NARROW
-conenameout='cone_lensing_narrow_past_00002'
+conenameout='cone_lensing_fullsky_past_00001'
 #halodir='/fof_b02000m/' # For haloes
 halodir='' # For particles
 conedir='conedir'
@@ -66,7 +56,7 @@ rhoch2 = 1.8783467E-26 # (Value of rhoc*h^2)
 
 # Input files
 typefile = 1 # Type of input data. 0 = binary, 1 = hdf5 and 2 = ascii
-isfullsky = 0 # Type of lightcone. 1 = fullsky, 0 = narrow
+isfullsky = 1 # Type of lightcone. 1 = fullsky, 0 = narrow
 paramfile = $paramfile # Cosmological parameter file.
 evolfile = $evolfile # Ramses evolution file. 
 
@@ -85,7 +75,7 @@ nsteps = 4 # Number of integration steps per cell (not only coarse cells but als
 #########################
 
 
-base=catalogue_boxlen82.03125_n128_lcdmw7_narrow_infinitesimal_halos # Put the base of the catalog name, if we use it to compute other catalogues or to compute rays (see ray_targets).
+base=catalogue_boxlen82.03125_n128_lcdmw7_fullsky_plane_sachs_0.000010_halos # Put the base of the catalog name, if we use it to compute other catalogues or to compute rays (see ray_targets).
 
 # Observer peculiar velocity
 v0x = 0 
@@ -107,7 +97,7 @@ cat_accuracy = 1e-8 # Convergence threshold for the newton method at the source 
 beam = bundle # Computation of the lensing matrix : "infinitesimal" or "infinitesimal_born" for the use of an infinitesimal beam or "bundle". For flexion only "bundle"
 stop_bundle = plane # Important, corresponds to the stop criterion of bundles. Possible cases : redshift, lambda, a, t, r, plane
 plane = sachs # On which plane we compute the jacobian matrix with bundles or computation of iterations for catalogues. "normal" (normal to the observer line of sight) or "sachs" (normal to the photon)
-openingmin = 0.0001 # Bundle opening angle (at the observer location, in radians)
+openingmin = 0.00001 # Bundle opening angle (at the observer location, in radians)
 outputdir = $DIR/post/slicer_ncoarse/$conenameout/$catalogs/ # Output directory for catalogs
 outputprefix = catalogue_$sim # (Prefix for catalogs name)
 

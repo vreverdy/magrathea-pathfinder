@@ -11,10 +11,6 @@
 #SBATCH --output error_output/job_catalogs_preparation_%I.o
 #SBATCH --error error_output/job_catalogs_preparation_%I.e
 
-module purge
-module load gcc/7.3.0
-module load openmpi/3.0.0-gcc-7.3.0 
-module load hdf5/1.10.1-gcc-7.3.0
 #export LD_LIBRARY_PATH=/home/mbreton/hdf5-1.8.16/lib:$LD_LIBRARY_PATH
 
 
@@ -27,8 +23,8 @@ sim=boxlen82.03125_n128_lcdmw7 # simulation name
 ncoarse=7
 ncones=8
 
-inputconegrav='cone_grav_narrow_pastnfut_00002'
-conenameout='cone_lensing_narrow_past_00002'
+inputconegrav='cone_grav_fullsky_pastnfut_00001'
+conenameout='cone_lensing_fullsky_past_00001'
 conedir='conedir'
 rays='rays'
 
@@ -59,7 +55,7 @@ rhoch2 = 1.8783467E-26 # (Value of rhoc*h^2)
 
 # Input files
 typefile = 1 # Type of input data. 0 = binary, 1 = hdf5 and 2 = ascii
-isfullsky = 0 # Type of lightcone. 1 = fullsky, 0 = narrow
+isfullsky = 1 # Type of lightcone. 1 = fullsky, 0 = narrow
 paramfile = $paramfile # Cosmological parameter file.
 evolfile = $evolfile # Ramses evolution file. 
 

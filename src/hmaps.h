@@ -63,6 +63,22 @@
 
 using namespace magrathea;
 
+static constexpr uint INDEX_LENSING = 0;
+static constexpr uint INDEX_LENSING_BORN = 1;
+static constexpr uint INDEX_DR = 2;
+static constexpr uint INDEX_DL = 3;
+static constexpr uint INDEX_DT = 4;
+static constexpr uint INDEX_DA = 5;
+static constexpr uint INDEX_DZ = 6;
+static constexpr uint INDEX_DS = 7;
+static constexpr uint INDEX_ISW = 8;
+static constexpr uint INDEX_DENSITY = 9;
+static constexpr uint INDEX_DENSITY_MAX = 10;
+static constexpr uint INDEX_NSTEPS = 11;
+static constexpr uint INDEX_POTENTIAL = 12;
+static constexpr uint INDEX_DEFLECTION = 13;
+static constexpr uint INDEX_FLEXION = 14;
+
 struct parameters_t {
     // Common
     real buffer;
@@ -832,7 +848,7 @@ void Hmaps::FillMap(
         unsigned int marked(0);
         double vec1[3];
         const bool only_born =
-            (index_components.size() == 1 && index_components[0] == 1);
+            (index_components.size() == 1 && index_components[0] == INDEX_LENSING_BORN);
         const bool compute_born =
             std::find(map_components.begin(), map_components.end(),
                       "lensing_born") != map_components.end();
@@ -1088,7 +1104,7 @@ void Hmaps::FillMap(
                 uint icomp(0);
                 // Loops over map types
                 for (uint j = 0; j < map_components.size(); j++) {
-                    if (index_components[j] == 0) {
+                    if (index_components[j] == INDEX_LENSING) {
                         // For 'bundle' need to compute the image rotation, while for
                         // 'infinitesimal' we assume that there isn't
                         if (parameters.beam == "bundle") {
@@ -1138,7 +1154,7 @@ void Hmaps::FillMap(
                                 icomp += 3;
                             }
                         }
-                    } else if (index_components[j] == 1) {
+                    } else if (index_components[j] == INDEX_LENSING_BORN) {
                         const double a11(jacobian_born[iz][0][0]),
                             a12(jacobian_born[iz][0][1]), a22(jacobian_born[iz][1][1]);
                         // Check if jacobian is good
@@ -1159,51 +1175,51 @@ void Hmaps::FillMap(
                                 invmagnification;
                             icomp += 3;
                         }
-                    } else if (index_components[j] == 2) {
+                    } else if (index_components[j] == INDEX_DR) {
                         map[nmaps * iz + icomp][pixel[itrajectorys]] =
                             (trajectorycenter[firstid[iz]].chi() * f[iz] +
                              trajectorycenter[firstid[iz] + 1].chi() * (1 - f[iz])) /
                                 rhomo[iz] -
                             1;
-                    } else if (index_components[j] == 3) {
+                    } else if (index_components[j] == INDEX_DL) {
                         map[nmaps * iz + icomp][pixel[itrajectorys]] =
                             (trajectorycenter[firstid[iz]].lambda() * f[iz] +
                              trajectorycenter[firstid[iz] + 1].lambda() * (1 - f[iz])) /
                                 lambdahomo[iz] -
                             1;
-                    } else if (index_components[j] == 4) {
+                    } else if (index_components[j] == INDEX_DT) {
                         map[nmaps * iz + icomp][pixel[itrajectorys]] =
                             (trajectorycenter[firstid[iz]].t() * f[iz] +
                              trajectorycenter[firstid[iz] + 1].t() * (1 - f[iz])) /
                                 thomo[iz] -
                             1;
-                    } else if (index_components[j] == 5) {
+                    } else if (index_components[j] == INDEX_DA) {
                         map[nmaps * iz + icomp][pixel[itrajectorys]] =
                             (trajectorycenter[firstid[iz]].a() * f[iz] +
                              trajectorycenter[firstid[iz] + 1].a() * (1 - f[iz])) /
                                 ahomo[iz] -
                             1;
-                    } else if (index_components[j] == 6) {
+                    } else if (index_components[j] == INDEX_DZ) {
                         map[nmaps * iz + icomp][pixel[itrajectorys]] =
                             (trajectorycenter[firstid[iz]].redshift() * f[iz] +
                              trajectorycenter[firstid[iz] + 1].redshift() * (1 - f[iz])) /
                                 redshifthomo[iz] -
                             1;
-                    } else if (index_components[j] == 7) {
+                    } else if (index_components[j] == INDEX_DS) {
                         map[nmaps * iz + icomp][pixel[itrajectorys]] =
                             (trajectorycenter[firstid[iz]].s() * f[iz] +
                              trajectorycenter[firstid[iz] + 1].s() * (1 - f[iz])) /
                                 rhomo[iz] -
                             1;
-                    } else if (index_components[j] == 8) {
+                    } else if (index_components[j] == INDEX_ISW) {
                         map[nmaps * iz + icomp][pixel[itrajectorys]] =
                             (trajectorycenter[firstid[iz]].isw() * f[iz] +
                              trajectorycenter[firstid[iz] + 1].isw() * (1 - f[iz]));
-                    } else if (index_components[j] == 9) {
+                    } else if (index_components[j] == INDEX_DENSITY) {
                         map[nmaps * iz + icomp][pixel[itrajectorys]] =
                             (trajectorycenter[firstid[iz]].rho() * f[iz] +
                              trajectorycenter[firstid[iz] + 1].rho() * (1 - f[iz]));
-                    } else if (index_components[j] == 10) {
+                    } else if (index_components[j] == INDEX_DENSITY_MAX) {
                         map[nmaps * iz + icomp][pixel[itrajectorys]] =
                             (*std::max_element(std::begin(trajectorycenter),
                                                std::begin(trajectorycenter) + firstid[iz],
@@ -1212,13 +1228,13 @@ void Hmaps::FillMap(
                                                    return first.rho() < second.rho();
                                                }))
                                 .rho();
-                    } else if (index_components[j] == 11) {
+                    } else if (index_components[j] == INDEX_NSTEPS) {
                         map[nmaps * iz + icomp][pixel[itrajectorys]] = firstid[iz];
-                    } else if (index_components[j] == 12) {
+                    } else if (index_components[j] == INDEX_POTENTIAL) {
                         map[nmaps * iz + icomp][pixel[itrajectorys]] =
                             (trajectorycenter[firstid[iz]].phi() * f[iz] +
                              trajectorycenter[firstid[iz] + 1].phi() * (1 - f[iz]));
-                    } else if (index_components[j] == 13) {
+                    } else if (index_components[j] == INDEX_DEFLECTION) {
                         double beta1(0), beta2(0);
                         if (compute_lensing) {
                             beta1 = std::atan2(central_position[iz][1], central_position[iz][0]);
@@ -1237,7 +1253,7 @@ void Hmaps::FillMap(
                         map[nmaps * iz + icomp][pixel[itrajectorys]] = phi - beta1;
                         map[nmaps * iz + icomp + 1][pixel[itrajectorys]] = theta - beta2;
                         icomp++;
-                    } else if (index_components[j] == 14) {
+                    } else if (index_components[j] == INDEX_FLEXION) {
                         map[nmaps * iz + icomp][pixel[itrajectorys]] = hessian[iz][0];
                         map[nmaps * iz + icomp + 1][pixel[itrajectorys]] = hessian[iz][1];
                         map[nmaps * iz + icomp + 2][pixel[itrajectorys]] = hessian[iz][2];

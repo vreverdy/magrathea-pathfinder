@@ -665,8 +665,8 @@ std::array<std::array<double, 2>, 2> Catalogues::newtonMethod2d(
                       << " err : " << err << std::endl;
             // Launch rays toward the direction of the grid, with the previous angle
             // as the center, while size and resolution are functions of 'err'
-            for (double i = -err; i <= err; i += 0.2 * err) {
-                for (double j = -err; j <= err; j += 0.2 * err) {
+            for (double i = -err; i <= err; i += 0.25 * err) {
+                for (double j = -err; j <= err; j += 0.25 * err) {
                     magrathea::Evolution<Photon<double, 3>> trajectory_tmp;
                     photon = Integrator::launch(observer[0], observer[1], observer[2],
                                                 phi + i, theta + j);
@@ -1016,73 +1016,71 @@ void Catalogues::relCat(
     const Octree &octree, const Type length, const Type h) {
     const unsigned int size = targets_position.size();
     std::vector<std::array<double, 16>> catalog(size);
-    Utility::parallelize(size, [=, &catalog, &vobs, &rotm1, &observer,
-                                &targets_position, &previous_catalogue,
-                                &parameters, &cosmology, &octree, &length,
-                                &h](const uint i) {
-        Point trueTarget, velocityTarget;
-        std::array<std::array<double, 2>, 2> jacobian;
-        std::array<std::array<double, 2>, 2> result;
-        double interpRef(0), phi(0), theta(0);
-        std::vector<double> redshifts(6);
-        // Fill position and velocity of sources (may need rotation for narrow
-        // cones)
-        for (unsigned int j = 0; j < 3; j++) {
-            if (parameters.isfullsky == 1) {
-                trueTarget[j] = targets_position[i][j];
-                velocityTarget[j] = targets_position[i][j + 3];
-            } else {
-                trueTarget[j] = targets_position[i][0] * rotm1[j][0] +
-                                targets_position[i][1] * rotm1[j][1] +
-                                targets_position[i][2] * rotm1[j][2];
-                velocityTarget[j] = targets_position[i][3] * rotm1[j][0] +
-                                    targets_position[i][4] * rotm1[j][1] +
-                                    targets_position[i][5] * rotm1[j][2];
-                ;
+    Utility::parallelize(
+        size, [=, &catalog, &vobs, &rotm1, &observer, &targets_position, &previous_catalogue, &parameters, &cosmology, &octree, &length, &h](const uint i) {
+            Point trueTarget, velocityTarget;
+            std::array<std::array<double, 2>, 2> jacobian;
+            std::array<std::array<double, 2>, 2> result;
+            double interpRef(0), phi(0), theta(0);
+            std::vector<double> redshifts(6);
+            // Fill position and velocity of sources (may need rotation for narrow
+            // cones)
+            for (unsigned int j = 0; j < 3; j++) {
+                if (parameters.isfullsky == 1) {
+                    trueTarget[j] = targets_position[i][j];
+                    velocityTarget[j] = targets_position[i][j + 3];
+                } else {
+                    trueTarget[j] = targets_position[i][0] * rotm1[j][0] +
+                                    targets_position[i][1] * rotm1[j][1] +
+                                    targets_position[i][2] * rotm1[j][2];
+                    velocityTarget[j] = targets_position[i][3] * rotm1[j][0] +
+                                        targets_position[i][4] * rotm1[j][1] +
+                                        targets_position[i][5] * rotm1[j][2];
+                    ;
+                }
             }
-        }
-        // If we re-run rejected sources, then start with the latest observed
-        // angle computed
-        if (previous_catalogue.size() > 0) {
-            theta = previous_catalogue[i][4];
-            phi = previous_catalogue[i][3];
-            // If we compute the catalogue, the first guess to launch the ray is
-            // toward the comoving position of the source
-        } else {
-            const double distTarget(std::sqrt(trueTarget[0] * trueTarget[0] +
-                                              trueTarget[1] * trueTarget[1] +
-                                              trueTarget[2] * trueTarget[2]));
-            theta = std::acos(trueTarget[2] / distTarget);
-            phi = std::atan2(trueTarget[1], trueTarget[0]);
-        }
-        result = Catalogues::iterateNewtonMethod(
-            vobs, observer, phi, theta, trueTarget, velocityTarget, jacobian,
-            parameters, cosmology, octree, length, h, redshifts, interpRef);
-        if (previous_catalogue.size() > 0) {
-            theta = previous_catalogue[i][2];
-            phi = previous_catalogue[i][1];
-        }
-        // Put full results in array
-        catalog[i][0] = phi;           // Comoving angle (phi)
-        catalog[i][1] = theta;         // Comoving angle (theta)
-        catalog[i][2] = result[0][0];  // Observed angle (phi)
-        catalog[i][3] = result[0][1];  // Observed angle (theta)
-        catalog[i][4] = result[1][0];  // Error on angle at the source (phi)
-        catalog[i][5] = result[1][1];  // Error on angle at the source (theta)
-        catalog[i][6] = redshifts[0];  // Redshift FLRW
-        catalog[i][7] = redshifts[1];  // Redshift FLRW + Potential
-        catalog[i][8] = redshifts[2];  // Redshift FLRW + Potential + Doppler
-        catalog[i][9] = redshifts[3];  // Redshift FLRW + Potential + Doppler +
-                                       // Transverse Doppler
-        catalog[i][10] = redshifts[4]; // Redshift FLRW + Potential + Doppler +
-                                       // Transverse Doppler + ISW/RS
-        catalog[i][11] =
-            redshifts[5];                // Redshift GR (first order in metric perturbations)
-        catalog[i][12] = jacobian[0][0]; // Lensing distortion matrix (a11)
-        catalog[i][13] = jacobian[0][1]; // Lensing distortion matrix (a12)
-        catalog[i][14] = jacobian[1][0]; // Lensing distortion matrix (a21)
-        catalog[i][15] = jacobian[1][1]; // Lensing distortion matrix (a22)
-    });
+            // If we re-run rejected sources, then start with the latest observed
+            // angle computed
+            if (previous_catalogue.size() > 0) {
+                theta = previous_catalogue[i][4];
+                phi = previous_catalogue[i][3];
+                // If we compute the catalogue, the first guess to launch the ray is
+                // toward the comoving position of the source
+            } else {
+                const double distTarget(std::sqrt(trueTarget[0] * trueTarget[0] +
+                                                  trueTarget[1] * trueTarget[1] +
+                                                  trueTarget[2] * trueTarget[2]));
+                theta = std::acos(trueTarget[2] / distTarget);
+                phi = std::atan2(trueTarget[1], trueTarget[0]);
+            }
+            result = Catalogues::iterateNewtonMethod(
+                vobs, observer, phi, theta, trueTarget, velocityTarget, jacobian,
+                parameters, cosmology, octree, length, h, redshifts, interpRef);
+            if (previous_catalogue.size() > 0) {
+                theta = previous_catalogue[i][2];
+                phi = previous_catalogue[i][1];
+            }
+            // Put full results in array
+            catalog[i][0] = phi;           // Comoving angle (phi)
+            catalog[i][1] = theta;         // Comoving angle (theta)
+            catalog[i][2] = result[0][0];  // Observed angle (phi)
+            catalog[i][3] = result[0][1];  // Observed angle (theta)
+            catalog[i][4] = result[1][0];  // Error on angle at the source (phi)
+            catalog[i][5] = result[1][1];  // Error on angle at the source (theta)
+            catalog[i][6] = redshifts[0];  // Redshift FLRW
+            catalog[i][7] = redshifts[1];  // Redshift FLRW + Potential
+            catalog[i][8] = redshifts[2];  // Redshift FLRW + Potential + Doppler
+            catalog[i][9] = redshifts[3];  // Redshift FLRW + Potential + Doppler +
+                                           // Transverse Doppler
+            catalog[i][10] = redshifts[4]; // Redshift FLRW + Potential + Doppler +
+                                           // Transverse Doppler + ISW/RS
+            catalog[i][11] =
+                redshifts[5];                // Redshift GR (first order in metric perturbations)
+            catalog[i][12] = jacobian[0][0]; // Lensing distortion matrix (a11)
+            catalog[i][13] = jacobian[0][1]; // Lensing distortion matrix (a12)
+            catalog[i][14] = jacobian[1][0]; // Lensing distortion matrix (a21)
+            catalog[i][15] = jacobian[1][1]; // Lensing distortion matrix (a22)
+        });
 
     // Output result in ASCII files
     std::string filenameError = Output::name(filename, ".txt", ".err");
@@ -1392,7 +1390,6 @@ void Catalogues::relCat_with_previous_cat_flexion(
             magrathea::Evolution<Photon<double, 3>> trajectory;
             Photon<double, 3> photon;
             unsigned int firstid(0);
-            const double one(1);
             Point kiTarget, central_position;
             double interpRef(0);
             const double aexp = 1. / (1. + previous_catalogue[i][7]);
@@ -1421,14 +1418,7 @@ void Catalogues::relCat_with_previous_cat_flexion(
                 trajectory[firstid].y() * f + trajectory[firstid + 1].y() * (1 - f);
             central_position[2] =
                 trajectory[firstid].z() * f + trajectory[firstid + 1].z() * (1 - f);
-            const double k0 = trajectory[firstid].dtdl() * f +
-                              trajectory[firstid + 1].dtdl() * (1 - f);
-            const double kx = trajectory[firstid].dxdl() * f +
-                              trajectory[firstid + 1].dxdl() * (1 - f);
-            const double ky = trajectory[firstid].dydl() * f +
-                              trajectory[firstid + 1].dydl() * (1 - f);
-            const double kz = trajectory[firstid].dzdl() * f +
-                              trajectory[firstid + 1].dzdl() * (1 - f);
+
             const double distTarget = trajectory[firstid].chi() * f +
                                       trajectory[firstid + 1].chi() * (1 - f);
 

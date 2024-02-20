@@ -95,6 +95,21 @@ int main(int argc, char *argv[]) {
     using element =
         std::pair<SimpleHyperOctreeIndex<indexing, 3>, Gravity<floating, 3>>;
 #endif
+    static constexpr uint INDEX_LENSING = 0;
+    static constexpr uint INDEX_LENSING_BORN = 1;
+    static constexpr uint INDEX_DR = 2;
+    static constexpr uint INDEX_DL = 3;
+    static constexpr uint INDEX_DT = 4;
+    static constexpr uint INDEX_DA = 5;
+    static constexpr uint INDEX_DZ = 6;
+    static constexpr uint INDEX_DS = 7;
+    static constexpr uint INDEX_ISW = 8;
+    static constexpr uint INDEX_DENSITY = 9;
+    static constexpr uint INDEX_DENSITY_MAX = 10;
+    static constexpr uint INDEX_NSTEPS = 11;
+    static constexpr uint INDEX_POTENTIAL = 12;
+    static constexpr uint INDEX_DEFLECTION = 13;
+    static constexpr uint INDEX_FLEXION = 14;
     static constexpr uint zero = 0;
     static constexpr uint one = 1;
     static constexpr uint two = 2;
@@ -210,7 +225,7 @@ int main(int argc, char *argv[]) {
     // maps
     for (uint i = 0; i < map_components.size(); i++) {
         if (map_components[i] == "lensing") {
-            index_components[i] = 0;
+            index_components[i] = INDEX_LENSING;
             if (parameters.beam == "bundle") {
                 if (rank == 0) {
                     std::cout << "Index: " << nmaps << ", component: kappa ('lensing')"
@@ -248,7 +263,7 @@ int main(int argc, char *argv[]) {
                 std::terminate();
             }
         } else if (map_components[i] == "lensing_born") {
-            index_components[i] = 1;
+            index_components[i] = INDEX_LENSING_BORN;
             if (rank == 0) {
                 std::cout << "Index: " << nmaps
                           << ", component: kappa ('lensing_born') WARNING: with "
@@ -265,7 +280,7 @@ int main(int argc, char *argv[]) {
             }
             nmaps += 3;
         } else if (map_components[i] == "deflection") {
-            index_components[i] = 13;
+            index_components[i] = INDEX_DEFLECTION;
             if (rank == 0) {
                 std::cout << "Index: " << nmaps
                           << ", component: alpha1 ('deflection') [dphi in spherical "
@@ -278,7 +293,7 @@ int main(int argc, char *argv[]) {
             }
             nmaps++;
         } else if (map_components[i] == "flexion") {
-            index_components[i] = 14; // "d111", "d112", "d122", "d211", "d212", "d222"
+            index_components[i] = INDEX_FLEXION; // "d111", "d112", "d122", "d211", "d212", "d222"
             if (rank == 0) {
                 std::cout << "Index: " << nmaps
                           << ", component: D111 ('flexion') [in radians^-1]"
@@ -305,27 +320,27 @@ int main(int argc, char *argv[]) {
                 std::cout << "Index: " << nmaps << ", component: '" << map_components[i]
                           << "'" << std::endl;
             if (map_components[i] == "dr")
-                index_components[i] = 2;
+                index_components[i] = INDEX_DR;
             else if (map_components[i] == "dl")
-                index_components[i] = 3;
+                index_components[i] = INDEX_DL;
             else if (map_components[i] == "dt")
-                index_components[i] = 4;
+                index_components[i] = INDEX_DT;
             else if (map_components[i] == "da")
-                index_components[i] = 5;
+                index_components[i] = INDEX_DA;
             else if (map_components[i] == "dz")
-                index_components[i] = 6;
+                index_components[i] = INDEX_DZ;
             else if (map_components[i] == "ds")
-                index_components[i] = 7;
+                index_components[i] = INDEX_DS;
             else if (map_components[i] == "isw")
-                index_components[i] = 8;
+                index_components[i] = INDEX_ISW;
             else if (map_components[i] == "dens")
-                index_components[i] = 9;
+                index_components[i] = INDEX_DENSITY;
             else if (map_components[i] == "dens_max")
-                index_components[i] = 10;
+                index_components[i] = INDEX_DENSITY_MAX;
             else if (map_components[i] == "steps")
-                index_components[i] = 11;
+                index_components[i] = INDEX_NSTEPS;
             else if (map_components[i] == "phi")
-                index_components[i] = 12;
+                index_components[i] = INDEX_POTENTIAL;
 
             else {
                 std::cout << "# WARNING: Need good name for map_components"

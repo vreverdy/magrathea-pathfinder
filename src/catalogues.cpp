@@ -55,8 +55,6 @@
 #else
 #include "gravity.h"
 #endif
-// Include C++ HDF5 project
-#include "TReadHDF5.h"
 
 // In miscellaneous.h we use std::sample. For versions of gcc lower than 7.x,
 // please use std::experimental::sample. This can be done in the Makefile

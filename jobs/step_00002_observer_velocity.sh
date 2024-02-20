@@ -11,11 +11,6 @@
 #SBATCH --output error_output/job_catalogs_preparation_%I.o
 #SBATCH --error error_output/job_catalogs_preparation_%I.e
 
-module purge
-module load gcc/7.3.0
-module load openmpi/3.0.0-gcc-7.3.0 
-module load hdf5/1.10.1-gcc-7.3.0
-
 #export LD_LIBRARY_PATH=/home/mbreton/hdf5-1.8.16/lib:$LD_LIBRARY_PATH
 
 
@@ -27,8 +22,8 @@ base=/data/mbreton/test_data/simulation/   # simulation directory
 sim=boxlen82.03125_n128_lcdmw7 # simulation name
 ncoarse=7    
 
-inputconepart='cone_part_narrow_past_00002'
-conenameout='cone_lensing_narrow_past_00002'
+inputconepart='cone_part_fullsky_past_00001'
+conenameout='cone_lensing_fullsky_past_00001'
 conedir='conedir'
 
 DIR=$base/$sim # The directory must contain the keyword 'boxlen' followed by the box length in Mpc/h

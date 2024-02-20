@@ -11,14 +11,6 @@
 #SBATCH --output error_output/job_catalogs_preparation_%I.o
 #SBATCH --error error_output/job_catalogs_preparation_%I.e
 
-module purge
-module load gcc/7.3.0
-module load openmpi/3.0.0-gcc-7.3.0 
-module load hdf5/1.10.1-gcc-7.3.0
-
-#export LD_LIBRARY_PATH=/home/mbreton/hdf5-1.8.16/lib:$LD_LIBRARY_PATH
-
-
 NCPU=8
 exec_line='mpirun -np '$NCPU
 home=/data/home/mbreton/magrathea-pathfinder/bin/ # executable directory
@@ -28,9 +20,9 @@ sim=boxlen82.03125_n128_lcdmw7 # simulation name
 ncoarse=7
 ncones=8
 
-inputconegrav='cone_grav_narrow_pastnfut_00002'
+inputconegrav='cone_grav_fullsky_pastnfut_00001'
 inputminicone='cone_grav_fullsky_pastnfut_00001'  #CENTRAL BUFFER ZONE FOR CONE NARROW
-conenameout='cone_lensing_narrow_past_00002'
+conenameout='cone_lensing_fullsky_past_00001'
 healpix_outputdir='healpix_maps'
 conedir='conedir'
 
@@ -59,7 +51,7 @@ microcoeff = $((2**$ncoarse/8)) # Size on inner sphere shared by all process.
 
 # Input files
 typefile = 1 # Type of input data. 0 = binary, 1 = hdf5 and 2 = ascii
-isfullsky = 0 # Type of lightcone. 1 = fullsky, 0 = narrow
+isfullsky = 1 # Type of lightcone. 1 = fullsky, 0 = narrow
 paramfile = $paramfile # Cosmological parameter file.
 evolfile = $evolfile # Ramses evolution file. 
 
@@ -78,7 +70,7 @@ stop_ray = t # Important, corresponds to the stop criterion of bundles.    Possi
 
 ###### HEALPIX ########
 nside = 256 # total of 12*nside*nside pixels
-map_components = lensing, lensing_born, deflection, steps
+map_components = lensing, deflection, steps
 nb_z_maps = 2 # Number of maps within redshifts
 z_stop_min = 0.01 # Minimum redshift (and the only redshift if nb_z_maps = 1)
 z_stop_max = 0.025 # Maximum redshift (cannot go beyond the maximum redshift of the lightcone)

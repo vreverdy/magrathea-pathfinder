@@ -2,7 +2,7 @@
 
 #-- Compiler --#
 
-CC = mpic++
+CC = mpicxx
 
 #-- Flags --#
 
@@ -13,10 +13,11 @@ CF = -O3 -Wall -Wextra -Wno-unused-parameter  -Wuninitialized -Winit-self -Wno-s
 # Path to the HDF5, HEALPIX C++ libraries - must be set by user if they are not installed in the default system path
 
 # The HDF5 library is mandatory to compile the code, even if we do not necessarily use it the get the data
-HDF5_PATH = /opt/hdf5/1.10.1/openmpi/3.0.0/gcc/7.3.0/
+HDF5_PATH=/obs/mbreton/hdf5_src/
+#HDF5_PATH = /usr/include/hdf5/openmpi/
 #HDF5_PATH = /opt/hdf5-1.10.0/gcc-6.3.0/
 # Need the Healpix library to compute Healpix maps. Not needed for other purposes
-HEALPIX_PATH = /data/home/mbreton/Healpix_3.70
+HEALPIX_PATH = /data/home/mbreton/Healpix_3.81
 # Needed when using the Healpix library
 CFITSTIO_PATH = /data/home/mbreton/cfitsio
 
@@ -48,13 +49,13 @@ OPTIONS += -DSIZEOFOCTREE=48 # size given by sizeof(*(octree.data())), for gravi
 
 #-- Libraries and Includes --#
 
-LIBRARIES = -lpthread
+LIBRARIES = -lpthread -lz 
 # HDF5
 INCLUDES = -I/$(strip $(HDF5_PATH))/include
 LIBRARIES += -L/$(strip $(HDF5_PATH))/lib  -lhdf5 -lz
 # Healpix + Cfitsio
 CF_HEALPIX = -fopenmp 
-LIBRARIES_HEALPIX =  -L/$(strip $(CFITSTIO_PATH))
+LIBRARIES_HEALPIX =  -L/$(strip $(CFITSTIO_PATH))/lib
 INCLUDES_HEALPIX = -I/$(strip $(HEALPIX_PATH))/include -I/$(strip $(HEALPIX_PATH))/src/cxx/Healpix_cxx -I/$(strip $(HEALPIX_PATH))/src/cxx/cxxsupport -I/$(strip $(HEALPIX_PATH))/src/C/autotools/
 LIBRARIES_HEALPIX += -L/$(strip $(HEALPIX_PATH))/lib -L/$(strip $(HEALPIX_PATH))/src/cxx/optimized_gcc/lib  -lchealpix -lcfitsio -lhealpix_cxx # Check the compiling option!
 
