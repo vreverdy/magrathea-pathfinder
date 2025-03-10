@@ -35,9 +35,6 @@
 #include <utility>
 #include <vector>
 
-#ifdef GCCBELOW7
-#include <experimental/algorithm>
-#endif
 // Include libs
 #include <mpi.h>
 // Include project
@@ -281,8 +278,7 @@ void Hmaps::getPixels_per_cone(const Parameter &parameters, const Integer npix,
     std::vector<long> pixeltmp(npix, -1);
     ntrajectories.push_back(0);
     // Loop over all the pixels
-    Utility::parallelize(npix, [=, &parameters, &iconerank, &cones,
-                                &ntrajectories, &pixeltmp](long pix) {
+    Utility::parallelize(npix, [&](long pix) {
         double ang1(0), ang2(0), vec[3];
         bool closest = false;
         // Convert pixel to 3D vector
@@ -349,9 +345,7 @@ void Hmaps::getPixels_per_cone2(const Parameter &parameters, const Integer npix,
     ntrajectories.push_back(0);
     const double cone_length = cones[0].length();
     // Loop over all the pixels
-    Utility::parallelize(npix, [=, &parameters, &iconerank, &cones,
-                                &ntrajectories, &pixeltmp,
-                                &cone_length](long pix) {
+    Utility::parallelize(npix, [&](long pix) {
         double vec[3];
         // Convert pixel to 3D vector
         pix2vec_ring(parameters.nside, pix, vec);
@@ -481,7 +475,7 @@ void Hmaps::fill_particles_vectors(
 #endif
         // Loop over all the reference redshifts
         for (uint iz = 0; iz < z_stop_vec.size(); iz++) {
-            double scale_factor = 1. / (z_stop_vec[iz] + 1);
+            const double scale_factor = 1. / (z_stop_vec[iz] + 1);
             // If file is inside the buffer zone of any reference redshift, then get
             // the particles
             if (scale_factor <= amining && scale_factor >= amaxing) {
@@ -493,11 +487,10 @@ void Hmaps::fill_particles_vectors(
                                         "unit_l", unit_l); // comobile
                 TReadHDF5::getAttribute(shellList[ifiling], "metadata/ramses_info",
                                         "unit_t", unit_t); // superconformal unit
-                double factor = unit_l * 1e-2 / (c * unit_t);
-                std::transform(
-                    std::begin(vel_part) + marker, std::end(vel_part),
-                    std::begin(vel_part) + marker,
-                    std::bind1st(std::multiplies<double>(), factor)); // SI units
+                const Type1 factor = unit_l * 1e-2 / (c * unit_t);
+                std::for_each(std::execution::par_unseq, 
+                    vel_part.begin() + marker, vel_part.end(), 
+                    [&](Type1& value) { value *= factor; });
                 marker = vel_part.size();
                 break;
             }
@@ -507,9 +500,7 @@ void Hmaps::fill_particles_vectors(
     if (!parameters.isfullsky) {
         std::vector<Type1> pos_part_tmp = pos_part;
         std::vector<Type1> vel_part_tmp = vel_part;
-        Utility::parallelize(pos_part.size() / 3, [=, &pos_part, &vel_part,
-                                                   &pos_part_tmp, &vel_part_tmp,
-                                                   &rotm1](const uint i) {
+        Utility::parallelize(pos_part.size() / 3, [&](const uint i) {
             pos_part[3 * i] = pos_part_tmp[3 * i] * rotm1[0][0] +
                               pos_part_tmp[3 * i + 1] * rotm1[0][1] +
                               pos_part_tmp[3 * i + 2] * rotm1[0][2];
@@ -608,9 +599,7 @@ void Hmaps::CreateOctreeVelocityWithCIC(
         std::cout << "# Compute velocity field at level " << ilvl << std::endl;
 #endif
         // Loop over all the particles
-        Utility::parallelize(pos_part.size() / 3, [=, &octree, &pos_part, &vel_part,
-                                                   &invextension,
-                                                   &half](const uint i) {
+        Utility::parallelize(pos_part.size() / 3, [&](const uint i) {
             Index idxvertex;
             Data data;
             unsigned long long int marker(0);
@@ -718,9 +707,7 @@ void Hmaps::CreateOctreeVelocityWithTSC(
         std::cout << "# Compute velocity field at level " << ilvl << std::endl;
 #endif
         // Loop over all the particles
-        Utility::parallelize(pos_part.size() / 3, [=, &octree, &pos_part, &vel_part,
-                                                   &half,
-                                                   &twohalves](const uint i) {
+        Utility::parallelize(pos_part.size() / 3, [&](const uint i) {
             Index idxvertex;
             Data data;
             std::array<double, Index::dimension()> dist;
@@ -826,13 +813,7 @@ void Hmaps::FillMap(
     const std::vector<Real> &ahomo) {
 
     // Loop over all the pixels in the cone
-    Utility::parallelize(ntrajectory, [=, &parameters, &map_components,
-                                       &index_components, &ntrajectory,
-                                       &firsttrajectory, &octree, &vobs, &map,
-                                       &nmaps, &pixel, &cosmology, &observer,
-                                       &length, &interpRefvec, &rhomo, &thomo,
-                                       &lambdahomo, &redshifthomo,
-                                       &ahomo](const unsigned int itrajectory) {
+    Utility::parallelize(ntrajectory, [&](const unsigned int itrajectory) {
         const uint itrajectorys = itrajectory + firsttrajectory;
         magrathea::Evolution<Photon<double, 3>> trajectorycenter,
             trajectorycenter_born;
@@ -1308,7 +1289,7 @@ void Hmaps::FillMapPropagate(const Parameter &parameters,
     Photon<double, 3> photonref;
     // Launch a ray toward the x-axis
     photonref = Integrator::launch(0., 0., 0., 1., 0., 0.);
-    const point vobs0 = {0, 0,
+    constexpr point vobs0 = {0, 0,
                          0}; // No peculiar velocity for homogeneous quantities
     std::vector<unsigned long int> firstid_ref(parameters.nb_z_maps);
     std::vector<double> f_ref(parameters.nb_z_maps),
@@ -1344,9 +1325,7 @@ void Hmaps::FillMapPropagate(const Parameter &parameters,
             reference[firstid_ref[iz] + 1].distance() * (1 - f_ref[iz]);
     }
     // Loop over the pixels
-    Utility::parallelize(ntrajectory, [=, &map, &octree, &distance_ref,
-                                       &parameters, &cosmology,
-                                       &pixel](const uint itrajectory) {
+    Utility::parallelize(ntrajectory, [&](const uint itrajectory) {
         const uint itrajectorys = itrajectory + firsttrajectory;
         magrathea::Evolution<Photon<double, 3>> trajectorycenter;
         Photon<double, 3> photoncenter;

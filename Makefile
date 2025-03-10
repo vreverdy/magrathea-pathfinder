@@ -6,7 +6,7 @@ CC = mpicxx
 
 #-- Flags --#
 
-CF = -O3 -Wall -Wextra -Wno-unused-parameter  -Wuninitialized -Winit-self -Wno-shift-count-overflow -Wno-shift-count-negative -pedantic -std=c++17
+CF = -O3 -Wall -Wextra -Wno-unused-parameter  -Wuninitialized -Winit-self -Wno-shift-count-overflow -Wno-shift-count-negative -pedantic -ltbb -std=c++17
 
 #-- Paths --#
 
@@ -26,8 +26,6 @@ CFITSTIO_PATH = /data/home/mbreton/cfitsio
 OPTIONS =
 # I/O Node group. IOGROUPSIZE = 1 Means no ticket system
 OPTIONS += -DIOGROUPSIZE=1
-# If memory issues (only used in octree.update(), so that we do not use shrink_to_fit which cause a copy of an already huge array)
-OPTIONS += -DMEMORY_SAVING
 # EXTENT (In Ramses Units). Octree will have cells between +-EXTENT/2 along each dimension.
 # Photons do not propagate outside of the octree.
 # EXTENT = 1 is the size of the simulation box, might need to put a higher value for narrow cones. 
@@ -38,8 +36,6 @@ OPTIONS += -DEXTENT=4
 OPTIONS += -DORDER=2
 # VERBOSE
 OPTIONS += -DVERBOSE
-# Is GCC version below 7.x 
-#OPTIONS += -DGCCBELOW7
 
 # DO NOT TOUCH UNLESS YOU KNOW WHAT YOU ARE DOING
 OPTIONS += -DSIZEOFOCTREE=48 # size given by sizeof(*(octree.data())), for gravity.h (standard octree)

@@ -20,6 +20,7 @@
 #include <ctime>
 // Include C++
 #include <algorithm>
+#include <execution>
 #include <array>
 #include <atomic>
 #include <deque>
@@ -33,9 +34,6 @@
 #include <utility>
 #include <vector>
 
-#ifdef GCCBELOW7
-#include <experimental/algorithm>
-#endif
 // Include libs
 #include <mpi.h>
 // Include project
@@ -315,15 +313,16 @@ void Miscellaneous::loadOctree(const Integer icone, Octree &octree, Filelist &co
 #ifdef VELOCITYFIELD
     // When putting an octree generated with gravity.h in an octree with gravity2.h,
     // need to correct the position of data
-    Utility::parallelize(octree.size(), [=, &octree](const uint i) {
-        std::get<1>(octree[i]).rho() = std::get<1>(octree[i]).dphidy();
-        std::get<1>(octree[i]).phi() = std::get<1>(octree[i]).dphidx();
-        std::get<1>(octree[i]).dphidx() = std::get<1>(octree[i]).vz();
-        std::get<1>(octree[i]).dphidy() = std::get<1>(octree[i]).dphidt();
-        std::get<1>(octree[i]).dphidz() = std::get<1>(octree[i]).a();
-        std::get<1>(octree[i]).a() = std::get<1>(octree[i]).vy();
-        std::get<1>(octree[i]).dphidt() = std::get<1>(octree[i]).vx();
-        std::get<1>(octree[i]).vxyz() = std::array<float, 3>();
+    std::for_each(std::execution::par_unseq,
+    octree.begin(), octree.end(), [&](auto& elem){
+        std::get<1>(elem).rho() = std::get<1>(elem).dphidy();
+        std::get<1>(elem).phi() = std::get<1>(elem).dphidx();
+        std::get<1>(elem).dphidx() = std::get<1>(elem).vz();
+        std::get<1>(elem).dphidy() = std::get<1>(elem).dphidt();
+        std::get<1>(elem).dphidz() = std::get<1>(elem).a();
+        std::get<1>(elem).a() = std::get<1>(elem).vy();
+        std::get<1>(elem).dphidt() = std::get<1>(elem).vx();
+        std::get<1>(elem).vxyz() = std::array<float, 3>();  
     });
 #endif
 }
@@ -349,12 +348,18 @@ void Miscellaneous::correctOctree(Octree &octree, const Cosmology &cosmology, Pa
     // Convert from Ramses Units to SI
     Input::sistemize(parameters, octree, h, omegam, lboxmpch);
     // Initialise dphida to zero
-    Utility::parallelize(octree.size(), [=, &octree](const uint i) { std::get<1>(octree[i]).dphidt() = 0; });
+    std::for_each(std::execution::par_unseq, 
+        octree.begin(), octree.end(), [&](auto& elem) {
+        std::get<1>(elem).dphidt() = 0;  
+    });
     // Apply correction to the octree,
     // also .update() is used twice (before and after corrections)
     Input::correct(parameters, octree, amin);
     // Convert from dphi/da to dphi/dt
-    Utility::parallelize(octree.size(), [=, &octree](const uint i) { std::get<1>(octree[i]).dphidt() *= Utility::rinterpolate(std::get<1>(octree[i]).a(), std::get<1>(cosmology), std::get<2>(cosmology)); });
+    std::for_each(std::execution::par_unseq, 
+        octree.begin(), octree.end(), [&](auto& elem) {
+        std::get<1>(elem).dphidt() *= Utility::rinterpolate(std::get<1>(elem).a(), std::get<1>(cosmology), std::get<2>(cosmology));  
+    });
 }
 
 // Vizualize Octree
@@ -402,7 +407,7 @@ std::vector<std::array<double, 8>> Miscellaneous::getTargets(const std::vector<s
     std::vector<int> selection(posTargets.size(), -1);
 
     // Loop over all targets
-    Utility::parallelize(posTargets.size(), [=, &posTargets, &cone, &cones, &selection](const unsigned int ivec) {
+    Utility::parallelize(posTargets.size(), [&](const unsigned int ivec) {
         std::array<double, 3> position;
         double reference(0), length(0), distance(0);
         bool ok = false;
@@ -456,7 +461,7 @@ std::vector<std::array<double, 8>> Miscellaneous::getTargets(const std::vector<s
     selection.erase(std::remove(std::begin(selection), std::end(selection), -1), std::end(selection));
     std::vector<std::array<double, 8>> pointsCible(selection.size());
     // Put targets in vector
-    Utility::parallelize(selection.size(), [=, &posTargets, &pointsCible, &selection](const unsigned int ivec) {
+    Utility::parallelize(selection.size(), [&](const unsigned int ivec) {
         pointsCible[ivec] = posTargets[selection[ivec]];
     });
     return pointsCible;
@@ -502,8 +507,14 @@ void Miscellaneous::fill_particles_vectors(const Parameter &parameters, const Co
         // Factors to convert Potential and Force in SI
         const double factorpot = std::pow(unit_l * 1e-2 / unit_t, 2);
         const double factorforce = -aexp * unit_l * 1e-2 / (unit_t * unit_t);
-        std::transform(std::begin(potential_part) + marker1, std::end(potential_part), std::begin(potential_part) + marker1, std::bind1st(std::multiplies<double>(), factorpot)); // SI units
-        std::transform(std::begin(force_part) + marker2, std::end(force_part), std::begin(force_part) + marker2, std::bind1st(std::multiplies<double>(), factorforce));           // SI units
+        std::for_each(std::execution::par_unseq, 
+            potential_part.begin() + marker1, potential_part.end(), 
+            [factorpot](double& value) { value *= factorpot; });
+
+        std::for_each(std::execution::par_unseq, 
+            force_part.begin() + marker2, force_part.end(), 
+            [factorforce](double& value) { value *= factorforce; });
+
         std::vector<Type1> a_tmp(potential_part.size() - marker1);
         std::fill(a_tmp.begin(), a_tmp.end(), aexp);
         // Give the same scale factor value to all the particles in the same shell
@@ -530,7 +541,7 @@ void Miscellaneous::ReadFromCat(const Integer icone, const std::string filename,
     // Open filename
     std::ifstream streaming(filename.c_str());
     streaming.unsetf(std::ios_base::skipws);
-    uint size = std::count(std::istream_iterator<char>(streaming), std::istream_iterator<char>(), '\n');
+    const uint size = std::count(std::istream_iterator<char>(streaming), std::istream_iterator<char>(), '\n');
     streaming.close();
     std::ifstream stream(filename.c_str());
     catalogue.resize(size);

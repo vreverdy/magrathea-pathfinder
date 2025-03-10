@@ -35,9 +35,6 @@
 #include <utility>
 #include <vector>
 
-#ifdef GCCBELOW7
-#include <experimental/algorithm>
-#endif
 // Include libs
 #include <mpi.h>
 // Include project
@@ -226,8 +223,8 @@ void Catalogues::ReadParticlesHDF5(
     std::mt19937 engine1(parameters.seed > zero ? parameters.seed + rank
                                                 : std::random_device()());
 
-    double myamin = one / (one + parameters.zmin);
-    double myamax = one / (one + parameters.zmax);
+    const double myamin = one / (one + parameters.zmin);
+    const double myamax = one / (one + parameters.zmax);
 
     // Get all filenames in directory
     Miscellaneous::getFilesinDir(parameters.sourcedir, filelistprior);
@@ -455,16 +452,9 @@ void Catalogues::ReadParticlesASCII(
     // number within redshift range
     if (parameters.halos == 0 && parameters.npart < caractVect_source.size()) {
         std::vector<std::array<double, 8>> caractVect_source_tmp;
-#ifdef GCCBELOW7
-        std::experimental::sample(
-            caractVect_source.begin(), caractVect_source.end(),
-            std::back_inserter(caractVect_source_tmp), parameters.npart,
-            std::mt19937{std::random_device{}()});
-#else
         std::sample(caractVect_source.begin(), caractVect_source.end(),
                     std::back_inserter(caractVect_source_tmp), parameters.npart,
                     std::mt19937{std::random_device{}()});
-#endif
         caractVect_source = caractVect_source_tmp;
     }
 }
@@ -512,12 +502,12 @@ std::array<std::array<double, 2>, 2> Catalogues::newtonMethod2d(
     Photon<double, 3> photon;
     Point central_position;
     std::array<std::array<double, 2>, 2> result;
-    double distTarget = std::sqrt(pow(trueTarget[0], 2) + pow(trueTarget[1], 2) +
+    const double distTarget = std::sqrt(pow(trueTarget[0], 2) + pow(trueTarget[1], 2) +
                                   pow(trueTarget[2], 2));
     std::array<std::array<double, 2>, 2> jacobianinv;
     unsigned int firstid(0);
-    static const double c = magrathea::Constants<double>::c();
-    static const double c2 = magrathea::Constants<double>::c2();
+    static constexpr double c = magrathea::Constants<double>::c();
+    static constexpr double c2 = magrathea::Constants<double>::c2();
     Point kiTarget;
 
     // Initialise photon
@@ -609,7 +599,7 @@ std::array<std::array<double, 2>, 2> Catalogues::newtonMethod2d(
     }
 
     // Distance between source and photon at the same comoving radius
-    double dist_sep = std::sqrt(pow(trueTarget[0] - central_position[0], 2) +
+    const double dist_sep = std::sqrt(pow(trueTarget[0] - central_position[0], 2) +
                                 pow(trueTarget[1] - central_position[1], 2) +
                                 pow(trueTarget[2] - central_position[2], 2));
     result[1][0] = dist_sep / distTarget;
@@ -806,18 +796,18 @@ std::array<std::array<double, 2>, 2> Catalogues::newtonMethod2d(
                 sep[idim] = central_position[idim] - trueTarget[idim];
                 pos[idim] = targeted[idim] - trueTarget[idim];
             }
-            double sepx = sep[0] * e1[0] + sep[1] * e1[1];
-            double sepy = sep[0] * e2[0] + sep[1] * e2[1] + sep[2] * e2[2];
-            double posx = pos[0] * e1[0] + pos[1] * e1[1];
-            double posy = pos[0] * e2[0] + pos[1] * e2[1] + pos[2] * e2[2];
-            double sepxnew = jacobianinv[0][0] * sepx + jacobianinv[0][1] * sepy;
-            double sepynew = jacobianinv[1][0] * sepx + jacobianinv[1][1] * sepy;
+            const double sepx = sep[0] * e1[0] + sep[1] * e1[1];
+            const double sepy = sep[0] * e2[0] + sep[1] * e2[1] + sep[2] * e2[2];
+            const double posx = pos[0] * e1[0] + pos[1] * e1[1];
+            const double posy = pos[0] * e2[0] + pos[1] * e2[1] + pos[2] * e2[2];
+            const double sepxnew = jacobianinv[0][0] * sepx + jacobianinv[0][1] * sepy;
+            const double sepynew = jacobianinv[1][0] * sepx + jacobianinv[1][1] * sepy;
 
-            double posxnew = posx - sepxnew;
-            double posynew = posy - sepynew;
-            double xnew = trueTarget[0] + (posxnew * e1[0] + posynew * e2[0]);
-            double ynew = trueTarget[1] + (posxnew * e1[1] + posynew * e2[1]);
-            double znew = trueTarget[2] + posynew * e2[2];
+            const double posxnew = posx - sepxnew;
+            const double posynew = posy - sepynew;
+            const double xnew = trueTarget[0] + (posxnew * e1[0] + posynew * e2[0]);
+            const double ynew = trueTarget[1] + (posxnew * e1[1] + posynew * e2[1]);
+            const double znew = trueTarget[2] + posynew * e2[2];
             result[0][0] = std::atan2(ynew, xnew);
             result[0][1] =
                 std::acos(znew / std::sqrt(xnew * xnew + ynew * ynew + znew * znew));
@@ -1017,7 +1007,7 @@ void Catalogues::relCat(
     const unsigned int size = targets_position.size();
     std::vector<std::array<double, 16>> catalog(size);
     Utility::parallelize(
-        size, [=, &catalog, &vobs, &rotm1, &observer, &targets_position, &previous_catalogue, &parameters, &cosmology, &octree, &length, &h](const uint i) {
+        size, [&](const uint i) {
             Point trueTarget, velocityTarget;
             std::array<std::array<double, 2>, 2> jacobian;
             std::array<std::array<double, 2>, 2> result;
@@ -1083,8 +1073,8 @@ void Catalogues::relCat(
         });
 
     // Output result in ASCII files
-    std::string filenameError = Output::name(filename, ".txt", ".err");
-    std::string filenameRej = Output::name(filename, ".txt", ".reject");
+    const std::string filenameError = Output::name(filename, ".txt", ".err");
+    const std::string filenameRej = Output::name(filename, ".txt", ".reject");
     filename = Output::name(filename, ".txt");
 
     std::ofstream ofst;
@@ -1172,9 +1162,7 @@ void Catalogues::relCat_with_previous_cat(
     const unsigned int size = previous_catalogue.size();
 
     if (size > 0) {
-        Utility::parallelize(size, [=, &vobs, &observer, &previous_catalogue,
-                                    &parameters, &cosmology, &octree, &length,
-                                    &h](const uint i) {
+        Utility::parallelize(size, [&](const uint i) {
             std::array<std::array<double, 2>, 2> jacobian;
             magrathea::Evolution<Photon<double, 3>> trajectory, trajectory_born;
             Photon<double, 3> photon;
@@ -1203,7 +1191,7 @@ void Catalogues::relCat_with_previous_cat(
             firstid = marked - (marked > 0);
             const double previous = trajectory[firstid].a();
             const double next = trajectory[firstid + 1].a();
-            double f = (next - scale_factor) / (next - previous);
+            const double f = (next - scale_factor) / (next - previous);
 
             central_position[0] =
                 trajectory[firstid].x() * f + trajectory[firstid + 1].x() * (1 - f);
@@ -1383,9 +1371,7 @@ void Catalogues::relCat_with_previous_cat_flexion(
     const unsigned int size = previous_catalogue.size();
 
     if (size > 0) {
-        Utility::parallelize(size, [=, &vobs, &observer, &previous_catalogue,
-                                    &parameters, &cosmology, &octree, &length,
-                                    &h](const uint i) {
+        Utility::parallelize(size, [&](const uint i) {
             std::array<double, 6> hessian;
             magrathea::Evolution<Photon<double, 3>> trajectory;
             Photon<double, 3> photon;
@@ -1410,7 +1396,7 @@ void Catalogues::relCat_with_previous_cat_flexion(
             firstid = marked - (marked > 0);
             const double previous = trajectory[firstid].a();
             const double next = trajectory[firstid + 1].a();
-            double f = (next - aexp) / (next - previous);
+            const double f = (next - aexp) / (next - previous);
 
             central_position[0] =
                 trajectory[firstid].x() * f + trajectory[firstid + 1].x() * (1 - f);
@@ -1492,7 +1478,7 @@ void Catalogues::relCat_with_previous_cat_flexion(
         });
 
         // Clear the file
-        std::string filenameError = Output::name(filename, ".txt", ".err");
+        const std::string filenameError = Output::name(filename, ".txt", ".err");
         filename = Output::name(filename, ".txt");
 
         std::ofstream ofst;

@@ -29,10 +29,12 @@
 #include <cmath>
 #include <limits>
 #include <algorithm>
+#include <execution>
 #include <vector>
 #include <bitset>
 #include <array>
 #include <tuple>
+#include <chrono>
 // Include libs
 #include "simplehyperoctreeindex.h"
 #include "../utility.h"
@@ -181,20 +183,6 @@ class SimpleHyperOctree final
         template <class... Misc> inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& append(Misc&&... misc);
         template <class... Misc> inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& resize(Misc&&... misc);
 
-	template <unsigned int... Values,class... Misc,class Template, class> inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& rho(Misc&&... misc);
-	template <unsigned int... Values,class... Misc,class Template, class> inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& rho(Misc&&... misc) const;
-	template <unsigned int... Values,class... Misc,class Template, class> inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& phi(Misc&&... misc);
-	template <unsigned int... Values,class... Misc,class Template, class> inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& phi(Misc&&... misc) const;
-	template <unsigned int... Values,class... Misc,class Template, class> inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& dphidxyz(Misc&&... misc);
-	template <unsigned int... Values,class... Misc,class Template, class> inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& dphidxyz(Misc&&... misc) const;
-	template <unsigned int... Values,class... Misc,class Template, class> inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& dphidx(Misc&&... misc);
-	template <unsigned int... Values,class... Misc,class Template, class> inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& dphidx(Misc&&... misc) const;
-	template <unsigned int... Values,class... Misc,class Template, class> inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& dphidy(Misc&&... misc);
-	template <unsigned int... Values,class... Misc,class Template, class> inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& dphidy(Misc&&... misc) const;
-	template <unsigned int... Values,class... Misc,class Template, class> inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& dphidz(Misc&&... misc);
-	template <unsigned int... Values,class... Misc,class Template, class> inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& dphidz(Misc&&... misc) const;
-	template <unsigned int... Values,class... Misc,class Template, class> inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& a(Misc&&... misc);
-	template <unsigned int... Values,class... Misc,class Template, class> inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& a(Misc&&... misc) const;
 
     //@}
     
@@ -1034,229 +1022,6 @@ inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element
     return *this;
 }
 
-// Access to the rho data
-/// \brief          Access to the rho data. 
-/// \details        Provides an access to the rho data by forwarding 
-///                 parameters to the unified base accessor member. 
-/// \tparam         Values List of template values. 
-/// \tparam         Misc (Miscellaneous types.) 
-/// \tparam         Template (Deduced template type.) 
-/// \param[in]      misc Miscellaneous arguments. 
-/// \return         Forwarded result.
-template <typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
-template <unsigned int... Values,class... Misc,class Template, class>
-inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>::rho(Misc&&... misc)
-{
-    return this->template data<0, Values...>(std::forward<Misc>(misc)...);
-}
-
-// Immutable access to the rho data
-/// \brief          Access to the rho data. 
-/// \details        Provides an access to the rho data by forwarding 
-///                 parameters to the unified base accessor member. 
-/// \tparam         Values List of template values. 
-/// \tparam         Misc (Miscellaneous types.) 
-/// \tparam         Template (Deduced template type.) 
-/// \param[in]      misc Miscellaneous arguments. 
-/// \return         Forwarded result.
-template <typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
-template <unsigned int... Values,class... Misc,class Template, class>
-inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>::rho(Misc&&... misc) const
-{
-    return this->template data<0, Values...>(std::forward<Misc>(misc)...);
-}
-
-// Access to the phi data
-/// \brief          Access to the phi data. 
-/// \details        Provides an access to the phi data by forwarding 
-///                 parameters to the unified base accessor member. 
-/// \tparam         Values List of template values. 
-/// \tparam         Misc (Miscellaneous types.) 
-/// \tparam         Template (Deduced template type.) 
-/// \param[in]      misc Miscellaneous arguments. 
-/// \return         Forwarded result.
-template <typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
-template <unsigned int... Values,class... Misc,class Template, class>
-inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>::phi(Misc&&... misc)
-{
-    return this->template data<1, Values...>(std::forward<Misc>(misc)...);
-}
-
-// Immutable access to the phi data
-/// \brief          Immutable access to the phi data. 
-/// \details        Provides an access to the phi data by forwarding 
-///                 parameters to the unified base accessor member. 
-/// \tparam         Values List of template values. 
-/// \tparam         Misc (Miscellaneous types.) 
-/// \tparam         Template (Deduced template type.) 
-/// \param[in]      misc Miscellaneous arguments. 
-/// \return         Forwarded result.
-template <typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
-template <unsigned int... Values,class... Misc,class Template, class>
-inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>::phi(Misc&&... misc) const
-{
-    return this->template data<1, Values...>(std::forward<Misc>(misc)...);
-}
-
-// Access to the dphidxyz data
-/// \brief          Access to the dphidxyz data. 
-/// \details        Provides an access to the dphidxyz data by forwarding 
-///                 parameters to the unified base accessor member. 
-/// \tparam         Values List of template values. 
-/// \tparam         Misc (Miscellaneous types.) 
-/// \tparam         Template (Deduced template type.) 
-/// \param[in]      misc Miscellaneous arguments. 
-/// \return         Forwarded result.
-template <typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
-template <unsigned int... Values,class... Misc,class Template, class>
-inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>::dphidxyz(Misc&&... misc)
-{
-    return this->template data<2, Values...>(std::forward<Misc>(misc)...);
-}
-
-// Immutable access to the dphidxyz data
-/// \brief          Immutable access to the dphidxyz data. 
-/// \details        Provides an access to the dphidxyz data by forwarding 
-///                 parameters to the unified base accessor member. 
-/// \tparam         Values List of template values. 
-/// \tparam         Misc (Miscellaneous types.) 
-/// \tparam         Template (Deduced template type.) 
-/// \param[in]      misc Miscellaneous arguments. 
-/// \return         Forwarded result.
-template <typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
-template <unsigned int... Values,class... Misc,class Template, class>
-inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>::dphidxyz(Misc&&... misc) const
-{
-    return this->template data<2, Values...>(std::forward<Misc>(misc)...);
-}
-
-// Access to the dphidx data
-/// \brief          Access to the dphidx data. 
-/// \details        Provides an access to the dphidx data by forwarding 
-///                 parameters to the unified base accessor member. 
-/// \tparam         Values List of template values. 
-/// \tparam         Misc (Miscellaneous types.) 
-/// \tparam         Template (Deduced template type.) 
-/// \param[in]      misc Miscellaneous arguments. 
-/// \return         Forwarded result.
-template <typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
-template <unsigned int... Values,class... Misc,class Template, class>
-inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>::dphidx(Misc&&... misc)
-{
-    return this->template data<2, Values...>(0 ,std::forward<Misc>(misc)...);
-}
-
-// Immutable access to the dphidx data
-/// \brief          Immutable access to the dphidx data. 
-/// \details        Provides an access to the dphidx data by forwarding 
-///                 parameters to the unified base accessor member. 
-/// \tparam         Values List of template values. 
-/// \tparam         Misc (Miscellaneous types.) 
-/// \tparam         Template (Deduced template type.) 
-/// \param[in]      misc Miscellaneous arguments. 
-/// \return         Forwarded result.
-template <typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
-template <unsigned int... Values,class... Misc,class Template, class>
-inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>::dphidx(Misc&&... misc) const
-{
-    return this->template data<2, Values...>(0 ,std::forward<Misc>(misc)...);
-}
-
-// Access to the dphidy data
-/// \brief          Access to the dphidy data. 
-/// \details        Provides an access to the dphidy data by forwarding 
-///                 parameters to the unified base accessor member. 
-/// \tparam         Values List of template values. 
-/// \tparam         Misc (Miscellaneous types.) 
-/// \tparam         Template (Deduced template type.) 
-/// \param[in]      misc Miscellaneous arguments. 
-/// \return         Forwarded result.
-template <typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
-template <unsigned int... Values,class... Misc,class Template, class>
-inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>::dphidy(Misc&&... misc)
-{
-    return this->template data<2, Values...>(1 ,std::forward<Misc>(misc)...);
-}
-
-// Immutable access to the dphidy data
-/// \brief          Immutable access to the dphidy data. 
-/// \details        Provides an access to the dphidy data by forwarding 
-///                 parameters to the unified base accessor member. 
-/// \tparam         Values List of template values. 
-/// \tparam         Misc (Miscellaneous types.) 
-/// \tparam         Template (Deduced template type.) 
-/// \param[in]      misc Miscellaneous arguments. 
-/// \return         Forwarded result.
-template <typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
-template <unsigned int... Values,class... Misc,class Template, class>
-inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>::dphidy(Misc&&... misc) const
-{
-    return this->template data<2, Values...>(1 ,std::forward<Misc>(misc)...);
-}
-
-// Access to the dphidz data
-/// \brief          Access to the dphidz data. 
-/// \details        Provides an access to the dphidz data by forwarding 
-///                 parameters to the unified base accessor member. 
-/// \tparam         Values List of template values. 
-/// \tparam         Misc (Miscellaneous types.) 
-/// \tparam         Template (Deduced template type.) 
-/// \param[in]      misc Miscellaneous arguments. 
-/// \return         Forwarded result.
-template <typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
-template <unsigned int... Values,class... Misc,class Template, class>
-inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>::dphidz(Misc&&... misc)
-{
-    return this->template data<2, Values...>(2 ,std::forward<Misc>(misc)...);
-}
-
-// Immutable access to the dphidz data
-/// \brief          Immutable access to the dphidz data. 
-/// \details        Provides an access to the dphidz data by forwarding 
-///                 parameters to the unified base accessor member. 
-/// \tparam         Values List of template values. 
-/// \tparam         Misc (Miscellaneous types.) 
-/// \tparam         Template (Deduced template type.) 
-/// \param[in]      misc Miscellaneous arguments. 
-/// \return         Forwarded result.
-template <typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
-template <unsigned int... Values,class... Misc,class Template, class>
-inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>::dphidz(Misc&&... misc) const
-{
-    return this->template data<2, Values...>(2 ,std::forward<Misc>(misc)...);
-}
-
-// Access to the a data
-/// \brief          Access to the a data. 
-/// \details        Provides an access to the a data by forwarding 
-///                 parameters to the unified base accessor member. 
-/// \tparam         Values List of template values. 
-/// \tparam         Misc (Miscellaneous types.) 
-/// \tparam         Template (Deduced template type.) 
-/// \param[in]      misc Miscellaneous arguments. 
-/// \return         Forwarded result.
-template <typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
-template <unsigned int... Values,class... Misc,class Template, class>
-inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>::a(Misc&&... misc)
-{
-    return this->template data<3, Values...>(std::forward<Misc>(misc)...);
-}
-
-// Immutable access to the a data
-/// \brief          Immutable access to the a data. 
-/// \details        Provides an access to the a data by forwarding 
-///                 parameters to the unified base accessor member. 
-/// \tparam         Values List of template values. 
-/// \tparam         Misc (Miscellaneous types.) 
-/// \tparam         Template (Deduced template type.) 
-/// \param[in]      misc Miscellaneous arguments. 
-/// \return         Forwarded result.
-template <typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
-template <unsigned int... Values,class... Misc,class Template, class>
-inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>::a(Misc&&... misc) const
-{
-    return this->template data<3, Values...>(std::forward<Misc>(misc)...);
-}
 //--------------------------------------------------------------------------- //
 
 
@@ -1272,15 +1037,8 @@ template <typename Type, class Index, class Data, unsigned int Dimension, class 
 inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>::update()
 { 
     _container.resize(std::distance(std::begin(_container), std::remove_if(std::begin(_container), std::end(_container), [](const Element& elem){return std::get<0>(elem).invalidated();})));
-#ifdef MEMORY_SAVING
-    std::sort(std::begin(_container), std::end(_container), [](const Element& first, const Element& second){return std::get<0>(first) < std::get<0>(second);});
-#else
-    unsigned long long int marker = std::distance(std::begin(_container), std::is_sorted_until(std::begin(_container), std::end(_container), [](const Element& first, const Element& second){return std::get<0>(first) < std::get<0>(second);}));
-    if (marker < static_cast<unsigned long long int>(std::distance(std::begin(_container), std::end(_container)))) {
-        std::sort(std::begin(_container)+marker, std::end(_container), [](const Element& first, const Element& second){return std::get<0>(first) < std::get<0>(second);});
-        std::inplace_merge(std::begin(_container), std::begin(_container)+marker, std::end(_container), [](const Element& first, const Element& second){return std::get<0>(first) < std::get<0>(second);});
-    }
-#endif     
+ 
+    std::sort(std::execution::par_unseq, std::begin(_container), std::end(_container), [](const Element& first, const Element& second){return std::get<0>(first) < std::get<0>(second);});
 
     unsigned int size = _container.size();
     std::vector<unsigned int> count(size);
@@ -1306,9 +1064,7 @@ inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element
     });
 
     _container.resize(std::distance(std::begin(_container), std::unique(std::begin(_container), std::end(_container), [](const Element& first, const Element& second){	return std::get<0>(first) == std::get<0>(second);})));
-#ifndef MEMORY_SAVING
     _container.shrink_to_fit();
-#endif
     return *this;
 }
 

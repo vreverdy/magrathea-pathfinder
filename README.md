@@ -419,15 +419,16 @@ which refer to the position of the argument in the list.
 
 For example, when putting `map_components = lensing, lensing_born`, in the .log file we have:
 
-Index: 0, component: kappa ('lensing') \
-Index: 1, component: gamma1 ('lensing') \
-Index: 2, component: gamma2 ('lensing') \
-Index: 3, component: inverse magnification ('lensing') \
-Index: 4, component: kappa ('lensing_born') WARNING: with lensing_born we compute the jacobian matrix with a single photon (no bundle method available) \
-Index: 5, component: gamma1 ('lensing_born') \
-Index: 6, component: gamma2 ('lensing_born') \
+```ini
+Index: 0, component: kappa ('lensing') 
+Index: 1, component: gamma1 ('lensing')
+Index: 2, component: gamma2 ('lensing')
+Index: 3, component: inverse magnification ('lensing')
+Index: 4, component: kappa ('lensing_born') WARNING: with lensing_born we compute the jacobian matrix with a single photon (no bundle method available) 
+Index: 5, component: gamma1 ('lensing_born') 
+Index: 6, component: gamma2 ('lensing_born') 
 Index: 7, component: inverse magnification ('lensing_born') 
-
+```
 This gives the relation between index in the output names and nature of the map.
 
 <p align="right">(<a href="#top">back to top</a>)</p>

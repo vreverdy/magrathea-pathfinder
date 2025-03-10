@@ -35,9 +35,6 @@
 #include <utility>
 #include <vector>
 
-#ifdef GCCBELOW7
-#include <experimental/algorithm>
-#endif
 // Include libs
 #include <mpi.h>
 // Include project
@@ -136,14 +133,14 @@ void Generate_cones::GenerateFullskyCones(
     // Cone angle from the maximum distance between points generated on the
     // sphere. We multiply by an arbitrary factor which seems ideal to produce
     // wide enough cones
-    double alpha = 1.8 * std::asin(sphere
+    const double alpha = 1.8 * std::asin(sphere
                                        .template uniform<Dimension - 1>(
                                            std::begin(tiling), std::end(tiling))
                                        .first /
                                    sphere.diameter());
     // Assign properties to each cone
     Utility::parallelize(ncones,
-                         [=, &tiling, &cone, &sphere, &alpha](const uint i) {
+                         [&](const uint i) {
                              cone[i].assign(sphere.position(), tiling[i], alpha);
                          });
     // No rotation for fullsky cones
@@ -257,10 +254,10 @@ void Generate_cones::GenerateNarrowCones(
     ciblage[0] = 1;
     ciblage[1] = 0;
     ciblage[2] = 0;
-    double fullsky = 4 * pi;
-    double portion = 2 * (thetay - parameters.buffer) * (std::sin(thetaz - parameters.buffer) - std::cos(pi / 2. + thetaz - parameters.buffer));
+    constexpr double fullsky = 4 * pi;
+    const double portion = 2 * (thetay - parameters.buffer) * (std::sin(thetaz - parameters.buffer) - std::cos(pi / 2. + thetaz - parameters.buffer));
     // Inverse fraction of the sky
-    uint fsp = fullsky / portion;
+    const uint fsp = fullsky / portion;
     tiling.resize(parameters.ncones * fsp);
 
     // Generate random points on the full sky. Then check is we have a number of
@@ -268,8 +265,8 @@ void Generate_cones::GenerateNarrowCones(
     std::cout << " Generate " << parameters.ncones * fsp << " points" << std::endl;
     sphere.template uniform<Dimension - 1>(std::begin(tiling), std::end(tiling));
     for (uint i = 0; i < tiling.size(); ++i) {
-        double phi = std::atan2(tiling[i][1], tiling[i][0]);
-        double theta = std::acos(tiling[i][2] / sphere.radius());
+        const double phi = std::atan2(tiling[i][1], tiling[i][0]);
+        const double theta = std::acos(tiling[i][2] / sphere.radius());
         // If point is inside the region of interest
         if (std::abs(phi) < thetay - parameters.buffer &&
             theta > pi / 2 - thetaz + parameters.buffer &&
@@ -293,8 +290,8 @@ void Generate_cones::GenerateNarrowCones(
                                                std::end(tiling));
         iloop = 0;
         for (uint i = 0; i < tiling.size(); ++i) {
-            double phi = std::atan2(tiling[i][1], tiling[i][0]);
-            double theta = std::acos(tiling[i][2] / sphere.radius());
+            const double phi = std::atan2(tiling[i][1], tiling[i][0]);
+            const double theta = std::acos(tiling[i][2] / sphere.radius());
             if (std::abs(phi) < thetay - parameters.buffer &&
                 theta > pi / 2 - thetaz + parameters.buffer &&
                 theta < pi / 2 + thetaz - parameters.buffer) {
@@ -307,8 +304,8 @@ void Generate_cones::GenerateNarrowCones(
     iloop = 0;
     // Put final result in tilingbis
     for (uint i = 0; i < tiling.size(); ++i) {
-        double phi = std::atan2(tiling[i][1], tiling[i][0]);
-        double theta = std::acos(tiling[i][2] / sphere.radius());
+        const double phi = std::atan2(tiling[i][1], tiling[i][0]);
+        const double theta = std::acos(tiling[i][2] / sphere.radius());
         if (std::abs(phi) < thetay - parameters.buffer &&
             theta > pi / 2 - thetaz + parameters.buffer &&
             theta < pi / 2 + thetaz - parameters.buffer) {
@@ -346,7 +343,7 @@ void Generate_cones::GenerateNarrowCones(
               << 1.8 * std::asin(resulting / sphere.diameter())
               << " angle chosen : " << alpha << std::endl;
     // Assign properties to cones
-    Utility::parallelize(parameters.ncones, [=, &tilingbis, &cone](const uint i) {
+    Utility::parallelize(parameters.ncones, [&](const uint i) {
         cone[i].assign(sphere.position(), tilingbis[i], alpha);
     });
     // For narrow cones, need rotation

@@ -21,6 +21,7 @@
 // ------------------------------ PREPROCESSOR ------------------------------ //
 // Include C++
 #include <algorithm>
+#include <execution>
 #include <array>
 #include <atomic>
 #include <cctype>
@@ -754,7 +755,7 @@ Input::schwarzschildify(Octree &octree, const Vector &position, const Type mass,
         size = octree.size();
         Utility::parallelize(
             octree.begin(), octree.end(),
-            [=, &position, &length](Element &element) {
+            [&](Element &element) {
                 std::get<1>(element) = schwarzschildify<Extent>(
                     std::get<1>(element),
                     std::array<Type, Dimension>({{std::get<0>(element).position(0),
@@ -763,8 +764,7 @@ Input::schwarzschildify(Octree &octree, const Vector &position, const Type mass,
                     position, mass, length);
             });
         refine.resize(size);
-        Utility::parallelize(size, [=, &octree, &refiner,
-                                    &refine](const unsigned int i) {
+        Utility::parallelize(size, [&](const unsigned int i) {
             refine[i] =
                 ((octree.leaf(octree.begin() + i)) &&
                  (std::get<0>(octree[i]).level() <
@@ -779,7 +779,7 @@ Input::schwarzschildify(Octree &octree, const Vector &position, const Type mass,
         octree.update();
     } while (size < octree.size());
     Utility::parallelize(
-        octree.begin(), octree.end(), [=, &position, &length](Element &element) {
+        octree.begin(), octree.end(), [&](Element &element) {
             std::get<1>(element) = schwarzschildify<Extent>(
                 std::get<1>(element),
                 std::array<Type, Dimension>({{std::get<0>(element).position(0),
@@ -1447,7 +1447,7 @@ bool Input::importascii(const Parameter &parameters,
     Integral size = Integral();
     Integral n = Integral();
     std::thread thread;
-    const Integral levelShift(std::log2(EXTENT));
+    constexpr Integral levelShift(std::log2(EXTENT));
 
     // Initialization
     std::ifstream streaming(filename.c_str());
@@ -1513,8 +1513,9 @@ bool Input::importascii(const Parameter &parameters,
     }
 
     // Correct level depending on Octree extent
-    std::transform(level.begin(), level.end(), level.begin(),
-                   bind2nd(std::plus<Integral>(), levelShift));
+    std::for_each(std::execution::par_unseq, 
+    level.begin(), level.end(),
+    [levelShift](Integral& value) { value += levelShift; });
 
     // Selection
     thread = std::thread([=, &size, &selection, &index]() {
@@ -2192,7 +2193,7 @@ Octree &Input::correct(const Parameter &parameters, Octree &octree,
             count.erase(std::remove(count.begin(), count.end(), zero), count.end());
             Utility::parallelize(count.begin(), count.end(),
                                  [](unsigned int &i) { --i; });
-            std::sort(count.begin(), count.end());
+            std::sort(std::execution::par_unseq, count.begin(), count.end());
             count.erase(std::unique(count.begin(), count.end()), count.end());
             size = count.size();
             for (unsigned int i = 0; i < size; ++i) {
@@ -2297,7 +2298,7 @@ Octree &Input::correct(const Parameter &parameters, Octree &octree,
                                        return std::signbit(x) || !std::isnormal(x);
                                    }),
                     a.end());
-            std::sort(a.begin(), a.end());
+            std::sort(std::execution::par_unseq, a.begin(), a.end());
             a.erase(std::unique(a.begin(), a.end()), a.end());
             asize = a.size();
             data.resize(asize);

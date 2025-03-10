@@ -30,9 +30,6 @@
 #include <utility>
 #include <vector>
 
-#ifdef GCCBELOW7
-#include <experimental/algorithm>
-#endif
 
 #include "hdf5.h"
 #include "magrathea/constants.h"
@@ -763,11 +760,7 @@ void TReadHDF5::fillVectors_part(const double &fraction, const std::string &file
                 std::vector<unsigned int> randomization_tmp;
                 std::iota(std::begin(randomization), std::end(randomization), 0);
                 // Randomize vector indexes and only keep a fraction
-#ifdef GCCBELOW7
-                std::experimental::sample(randomization.begin(), randomization.end(), std::back_inserter(randomization_tmp), static_cast<unsigned int>(fraction * nmax / 3), std::mt19937{std::random_device{}()});
-#else
                 std::sample(randomization.begin(), randomization.end(), std::back_inserter(randomization_tmp), static_cast<unsigned int>(fraction * nmax / 3), std::mt19937{std::random_device{}()});
-#endif
                 std::for_each(randomization_tmp.begin(), randomization_tmp.end(), [=, &output1](int i) { output1.insert(output1.end(), &dset_data1[3 * i], &dset_data1[3 * (i + 1)]); });
                 free(dset_data1);
                 H5Dclose(dsid);
@@ -840,11 +833,7 @@ void TReadHDF5::fillVectors_part(const double &fraction, const std::string &file
                 std::vector<unsigned int> randomization_tmp;
                 std::iota(std::begin(randomization), std::end(randomization), 0);
                 // Randomize vector indexes and only keep a fraction
-#ifdef GCCBELOW7
-                std::experimental::sample(randomization.begin(), randomization.end(), std::back_inserter(randomization_tmp), static_cast<unsigned int>(fraction * nmax / 3), std::mt19937{std::random_device{}()});
-#else
                 std::sample(randomization.begin(), randomization.end(), std::back_inserter(randomization_tmp), static_cast<unsigned int>(fraction * nmax / 3), std::mt19937{std::random_device{}()});
-#endif
                 Type1 *dset_data1;
                 dset_data1 = (Type1 *)malloc(sizeof(Type1) * nmax);
                 H5Dread(dsid, h5t_native<Type1>(), H5S_ALL, H5S_ALL, H5P_DEFAULT, dset_data1);
@@ -936,11 +925,7 @@ void TReadHDF5::fillVectors_part(const double &fraction, const std::string &file
                 std::vector<unsigned int> randomization_tmp;
                 std::iota(std::begin(randomization), std::end(randomization), 0);
                 // Randomize vector indexes and only keep a fraction
-#ifdef GCCBELOW7
-                std::experimental::sample(randomization.begin(), randomization.end(), std::back_inserter(randomization_tmp), static_cast<unsigned int>(fraction * nmax1 / 3), std::mt19937{std::random_device{}()});
-#else
                 std::sample(randomization.begin(), randomization.end(), std::back_inserter(randomization_tmp), static_cast<unsigned int>(fraction * nmax1 / 3), std::mt19937{std::random_device{}()});
-#endif
                 Type1 *dset_data1;
                 dset_data1 = (Type1 *)malloc(sizeof(Type1) * nmax1);
                 H5Dread(dsid, h5t_native<Type1>(), H5S_ALL, H5S_ALL, H5P_DEFAULT, dset_data1);

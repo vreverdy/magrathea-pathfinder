@@ -33,9 +33,6 @@
 #include <utility>
 #include <vector>
 
-#ifdef GCCBELOW7
-#include <experimental/algorithm>
-#endif
 // Include libs
 #include <mpi.h>
 // Include project

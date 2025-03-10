@@ -35,9 +35,6 @@
 #include <utility>
 #include <vector>
 
-#ifdef GCCBELOW7
-#include <experimental/algorithm>
-#endif
 // Include libs
 #include <mpi.h>
 // Include project
@@ -556,7 +553,7 @@ void Create_octree::PreparationHDF5_from_particles(
             // Count if for a given coarse cell the density is zero or NaN (in this
             // case, also means that all the information is set to zero)
             Utility::parallelize(
-                size, [=, &ncoarse, &count, &octree](const unsigned int i) {
+                size, [&](const unsigned int i) {
                     count[i] = ((std::get<0>(octree[i]).level() == ncoarse) &&
                                 (!std::isnormal(std::get<1>(octree[i]).rho())));
                 });
@@ -565,14 +562,14 @@ void Create_octree::PreparationHDF5_from_particles(
                 i = (i > zero) ? (++counter) : (zero);
             });
             index.resize(counter);
-            Utility::parallelize(size, [=, &count, &index](const unsigned int i) {
+            Utility::parallelize(size, [&](const unsigned int i) {
                 if (count[i] > zero) {
                     index[count[i] - one] = i;
                 }
             });
             // For these cells, average over all the closest cells with normal density
             Utility::parallelize(
-                counter, [=, &ncoarse, &index, &octree](const unsigned int i) {
+                counter, [&](const unsigned int i) {
                     std::get<1>(octree[index[i]]) =
                         Input::meanAll(octree, octree[index[i]], ncoarse);
                 });
@@ -584,12 +581,12 @@ void Create_octree::PreparationHDF5_from_particles(
             for (unsigned int n = ncoarse + 1; n <= nmax; ++n) {
                 // Count if for a given refined cell the density is zero or NaN (in this
                 // case, also means that all the information is set to zero)
-                Utility::parallelize(size, [=, &count, &octree](const unsigned int i) {
+                Utility::parallelize(size, [&](const unsigned int i) {
                     count[i] = ((std::get<0>(octree[i]).level() == n) &&
                                 (!std::isnormal(std::get<1>(octree[i]).rho())));
                 });
                 // If the density is not normal, then interpolate from coarser cell
-                Utility::parallelize(size, [=, &count, &octree](const unsigned int i) {
+                Utility::parallelize(size, [&](const unsigned int i) {
                     if (count[i] > zero) {
                         if (ORDER == 1) {
                             std::get<1>(octree[i]) =
@@ -895,9 +892,9 @@ void Create_octree::CreateOctreeWithCIC(
 
     const unsigned int size = octree.size();
     std::vector<double> npart(size);
-    const unsigned int n_mass_refine = 8; // Threshold of how many DM particles in
+    constexpr unsigned int n_mass_refine = 8; // Threshold of how many DM particles in
                                           // a single cell to enable refinement
-    const unsigned int n_leveldiff_refine =
+    constexpr unsigned int n_leveldiff_refine =
         8; // Threshold of how many refinement levels we can have at most
 
     const unsigned int lvlmax =
@@ -919,10 +916,7 @@ void Create_octree::CreateOctreeWithCIC(
     std::cout << "# Compute octree at level " << lvlmax << std::endl;
 #endif
     // Loop over all the particles
-    Utility::parallelize(pos_part.size() / 3, [=, &octree, &npart, &pos_part,
-                                               &force_part, &potential_part,
-                                               &a_part, &half, &invextension,
-                                               &lvlmax](const uint i) {
+    Utility::parallelize(pos_part.size() / 3, [&](const uint i) {
         Index idxvertex;
         Data data;
         unsigned long long int marker(0);
@@ -980,7 +974,7 @@ void Create_octree::CreateOctreeWithCIC(
     });
 
     // Normalise the values by the mass
-    Utility::parallelize(size, [=, &octree, &lvlmax](const uint i) {
+    Utility::parallelize(size, [&](const uint i) {
         if (std::get<0>(octree[i]).level() == lvlmax) {
             double mass =
                 std::get<1>(octree[i]).rho() + (std::get<1>(octree[i]).rho() == 0);
@@ -1083,10 +1077,7 @@ void Create_octree::CreateOctreeWithTSC(
     std::cout << "# Compute octree at level " << lvlmax << std::endl;
 #endif
     // Loop over all the particles
-    Utility::parallelize(pos_part.size() / 3, [=, &octree, &npart, &pos_part,
-                                               &force_part, &potential_part,
-                                               &a_part, &lvlmax,
-                                               &twohalves](const uint i) {
+    Utility::parallelize(pos_part.size() / 3, [&](const uint i) {
         Index idxvertex;
         Data data;
         std::array<double, Index::dimension()> dist;
@@ -1152,7 +1143,7 @@ void Create_octree::CreateOctreeWithTSC(
     });
 
     // Normalise the values by the mass
-    Utility::parallelize(size, [=, &octree, &lvlmax](const uint i) {
+    Utility::parallelize(size, [&](const uint i) {
         if (std::get<0>(octree[i]).level() == lvlmax) {
             double mass =
                 std::get<1>(octree[i]).rho() + (std::get<1>(octree[i]).rho() == 0);

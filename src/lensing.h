@@ -451,9 +451,9 @@ std::vector<std::array<std::array<double, 2>, 2>> Lensing::dbetadtheta(
         }
         // Need normal to screen (either normal to the photon or normal to the
         // comoving direction of the source)
-        double kx = kiTargets[iref][0];
-        double ky = kiTargets[iref][1];
-        double kz = kiTargets[iref][2];
+        const double kx = kiTargets[iref][0];
+        const double ky = kiTargets[iref][1];
+        const double kz = kiTargets[iref][2];
         const double phik = std::atan2(ky, kx);
         const double thetak =
             std::acos(kz / std::sqrt(kx * kx + ky * ky + kz * kz));
@@ -556,7 +556,7 @@ Lensing::dbetadtheta_infinitesimal(
                  Container> &octree,
     const Type length) {
 
-    unsigned int size = dist.size();
+    const unsigned int size = dist.size();
     std::vector<std::array<std::array<double, 2>, 2>> result(size);
     static const double c2 = magrathea::Constants<double>::c2();
     double dxxp(0), dxyp(0), dxzp(0), dyyp(0), dyzp(0), dzzp(0);
@@ -942,9 +942,9 @@ std::vector<std::array<double, 6>> Lensing::flexion(
 
         // Need normal to screen (either normal to the photon or normal to the
         // comoving direction of the source)
-        double kx = kiTargets[iref][0];
-        double ky = kiTargets[iref][1];
-        double kz = kiTargets[iref][2];
+        const double kx = kiTargets[iref][0];
+        const double ky = kiTargets[iref][1];
+        const double kz = kiTargets[iref][2];
         const double phik = std::atan2(ky, kx);
         const double thetak =
             std::acos(kz / std::sqrt(kx * kx + ky * ky + kz * kz));

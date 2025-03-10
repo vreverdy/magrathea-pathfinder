@@ -142,7 +142,7 @@ int main(int argc, char *argv[]) {
     std::cout << "# Particle file : " << partfile << std::endl;
 #endif
     uint lvlmin = parameters.ncoarse + log2(EXTENT);
-    double factor = unit_l * 1e-2 / (c * unit_t);
+    const double factor = unit_l * 1e-2 / (c * unit_t);
     for (uint ilvl = lvlmin; ilvl < lvlmin + 5; ilvl++) {
         octree.clear();
         // If for some reason the file is not at a = 1, throw error
@@ -150,59 +150,59 @@ int main(int argc, char *argv[]) {
             std::cout << "# Bad file : need particles at aexp = 1." << std::endl;
             std::cout << "# Error at file " << __FILE__ << ", line : " << __LINE__ << std::endl;
             std::terminate();
-        } else {
-            std::vector<float> pos_part, vel_part;
-            // Take all the particles in file
-            const double fraction = 1;
-            // Get particles from file
-            TReadHDF5::fillVectors_part(fraction, partfile, "data", "position_part", pos_part, "velocity_part", vel_part);
-            SimpleHyperOctreeIndex<indexing, dimension> id;
-            double half = 0.5 * EXTENT * pow(2, -static_cast<int>(ilvl));
-            // Create an octree with 8 cells around the observer at the centre
-            for (int iz = -1; iz <= 1; iz += 2) {
-                for (int iy = -1; iy <= 1; iy += 2) {
-                    for (int ix = -1; ix <= 1; ix += 2) {
-                        id = id.template compute<double, position, extent>(ilvl, half * ix, half * iy, half * iz);
-                        octree.append(element(id, Gravity<floating, 3>()));
-                    }
+        }
+        std::vector<float> pos_part, vel_part;
+        // Take all the particles in file
+        const double fraction = 1;
+        // Get particles from file
+        TReadHDF5::fillVectors_part(fraction, partfile, "data", "position_part", pos_part, "velocity_part", vel_part);
+        SimpleHyperOctreeIndex<indexing, dimension> id;
+        double half = 0.5 * EXTENT * pow(2, -static_cast<int>(ilvl));
+        // Create an octree with 8 cells around the observer at the centre
+        for (int iz = -1; iz <= 1; iz += 2) {
+            for (int iy = -1; iy <= 1; iy += 2) {
+                for (int ix = -1; ix <= 1; ix += 2) {
+                    id = id.template compute<double, position, extent>(ilvl, half * ix, half * iy, half * iz);
+                    octree.append(element(id, Gravity<floating, 3>()));
                 }
             }
-            // Sort octree
-            octree.update();
-            // Compute velocity field in neighbour cells
-            if (parameters.velocity_field_v0 == "cic") {
-                Observer_velocity::CreateOctreeVelocityWithCIC(octree, pos_part, vel_part);
-            } else if (parameters.velocity_field_v0 == "tsc") {
-                Observer_velocity::CreateOctreeVelocityWithTSC(octree, pos_part, vel_part);
-            } else {
-                std::cout << "# Wrong velocity field name. Please type cic or tsc for velocity_field_v0" << std::endl;
-                std::cout << "# Error at file " << __FILE__ << ", line : " << __LINE__ << std::endl;
-                std::terminate();
-            }
-            // Finalize
-            const unsigned int lvlmax = (std::get<0>(*std::max_element(std::begin(octree), std::end(octree), [](const element &x, const element &y) { return std::get<0>(x).level() < std::get<0>(y).level(); })).level());
-            const unsigned int lvlmin = (std::get<0>(*std::min_element(std::begin(octree), std::end(octree), [](const element &x, const element &y) { return std::get<0>(x).level() < std::get<0>(y).level(); })).level());
-            // Normalise velocity field by the mass
-            Utility::parallelize(octree.size(), [=, &octree](const uint i) {
-                double mass = std::get<1>(octree[i]).rho();
-                mass = mass + (mass == 0);
-                std::get<1>(octree[i]).dphidx() /= mass;
-                std::get<1>(octree[i]).dphidy() /= mass;
-                std::get<1>(octree[i]).dphidz() /= mass;
-            });
-            // Correct rho and v = 0. If rho = 0, get from parent
-            for (unsigned int ilvl = lvlmin + 1; ilvl <= lvlmax; ilvl++) {
-                Utility::parallelize(octree.size(), [=, &octree](const uint i) {
-                    if (std::get<0>(octree[i]).level() == ilvl) {
-                        Gravity<floating, 3> data;
-                        if (!std::isnormal(std::get<1>(octree[i]).rho())) {
-                            data = std::get<1>(*octree.find(std::get<0>(octree[i]).parent()));
-                            std::get<1>(octree[i]).dphidxyz() = {data.dphidx(), data.dphidy(), data.dphidz()};
-                        }
-                    }
-                });
-            }
         }
+        // Sort octree
+        octree.update();
+        // Compute velocity field in neighbour cells
+        if (parameters.velocity_field_v0 == "cic") {
+            Observer_velocity::CreateOctreeVelocityWithCIC(octree, pos_part, vel_part);
+        } else if (parameters.velocity_field_v0 == "tsc") {
+            Observer_velocity::CreateOctreeVelocityWithTSC(octree, pos_part, vel_part);
+        } else {
+            std::cout << "# Wrong velocity field name. Please type cic or tsc for velocity_field_v0" << std::endl;
+            std::cout << "# Error at file " << __FILE__ << ", line : " << __LINE__ << std::endl;
+            std::terminate();
+        }
+        // Finalize
+        const unsigned int lvlmax = (std::get<0>(*std::max_element(std::begin(octree), std::end(octree), [](const element &x, const element &y) { return std::get<0>(x).level() < std::get<0>(y).level(); })).level());
+        const unsigned int lvlmin = (std::get<0>(*std::min_element(std::begin(octree), std::end(octree), [](const element &x, const element &y) { return std::get<0>(x).level() < std::get<0>(y).level(); })).level());
+        // Normalise velocity field by the mass
+        Utility::parallelize(octree.size(), [&](const uint i) {
+            double mass = std::get<1>(octree[i]).rho();
+            mass = mass + (mass == 0);
+            std::get<1>(octree[i]).dphidx() /= mass;
+            std::get<1>(octree[i]).dphidy() /= mass;
+            std::get<1>(octree[i]).dphidz() /= mass;
+        });
+        // Correct rho and v = 0. If rho = 0, get from parent
+        for (unsigned int ilvl = lvlmin + 1; ilvl <= lvlmax; ilvl++) {
+            Utility::parallelize(octree.size(), [&](const uint i) {
+                if (std::get<0>(octree[i]).level() == ilvl) {
+                    Gravity<floating, 3> data;
+                    if (!std::isnormal(std::get<1>(octree[i]).rho())) {
+                        data = std::get<1>(*octree.find(std::get<0>(octree[i]).parent()));
+                        std::get<1>(octree[i]).dphidxyz() = {data.dphidx(), data.dphidy(), data.dphidz()};
+                    }
+                }
+            });
+        }
+        
         double vx(0), vy(0), vz(0);
         // Sum contribution from neighbour cells
         for (uint i = 0; i < octree.size(); i++) {

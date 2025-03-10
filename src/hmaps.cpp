@@ -19,6 +19,7 @@
 #include <ctime>
 // Include C++
 #include <algorithm>
+#include <execution>
 #include <array>
 #include <atomic>
 #include <deque>
@@ -154,7 +155,7 @@ int main(int argc, char *argv[]) {
     real h = zero;
     real omegam = zero;
     real lboxmpch = zero;
-    const point vobs0 = {0, 0,
+    constexpr point vobs0 = {0, 0,
                          0}; // No peculiar velocity for homogeneous quantities
     std::mt19937 engine1(parameters.seed > zero ? parameters.seed + rank
                                                 : std::random_device()());
@@ -211,7 +212,7 @@ int main(int argc, char *argv[]) {
                             (parameters.nb_z_maps - (parameters.nb_z_maps > 1));
     }
     // Get number of pixels in a fullsky map from with nside
-    long npix = nside2npix(parameters.nside);
+    const long npix = nside2npix(parameters.nside);
 
     std::vector<std::string> map_components;
     // Tokenize map types to put in vector
@@ -512,9 +513,10 @@ int main(int argc, char *argv[]) {
             // Load octree from binary file
             Miscellaneous::loadOctree(icone, octree, conefile);
             // WARNING ! Set rho (density) to zero in each cell of the octree;
-            Utility::parallelize(octree.size(), [=, &octree](const uint i) {
-                std::get<1>(octree[i]).rho() = 0;
-            });
+            std::for_each(std::execution::par_unseq,
+                octree.begin(), octree.end(),
+                [](auto& elem){std::get<1>(elem).rho() = 0;}
+            );
             // Read Particle files to compute the velocity field in each AMR cell
             for (uint ifile = 0; ifile < shellList.size(); ifile++) {
                 std::vector<float> pos_part, vel_part;
@@ -576,7 +578,7 @@ int main(int argc, char *argv[]) {
                                        }))
                      .level());
             // Normalise velocity field with mass
-            Utility::parallelize(octree.size(), [=, &octree](const uint i) {
+            Utility::parallelize(octree.size(), [&](const uint i) {
                 double mass = std::get<1>(octree[i]).rho();
                 mass = mass + (mass == 0);
                 std::get<1>(octree[i]).vx() /= mass;
@@ -585,7 +587,7 @@ int main(int argc, char *argv[]) {
             });
             // If the density is zero in one cell, get value from parent
             for (unsigned int ilvl = lvlmin + 1; ilvl <= lvlmax; ilvl++) {
-                Utility::parallelize(octree.size(), [=, &octree](const uint i) {
+                Utility::parallelize(octree.size(), [&](const uint i) {
                     if (std::get<0>(octree[i]).level() == ilvl) {
                         Gravity<floating, 3> data;
                         if (!std::isnormal(std::get<1>(octree[i]).rho())) {

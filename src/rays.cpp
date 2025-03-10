@@ -259,7 +259,7 @@ int main(int argc, char *argv[]) {
                 reference = Integrator::propagate<-1>(photon, nbundle, opening, real(), interp, cosmology, homotree, vobs0, length, EXTENT * parameters.nsteps * (one << (parameters.ncoarse - parameters.ncoarse / two)) * two, real(), std::signbit(parameters.savemode) ? Output::name() : Output::name(filename, outputsuffix));
                 // Integration without statistics
                 if (parameters.makestat == zero) {
-                    Utility::parallelize(ntrajectoriesMax, [=, &photons, &nbundle, &opening, &random, &interp, &cosmology, &octree, &vobs0, &length, &amin, &filename, &reference](const uint i) {
+                    Utility::parallelize(ntrajectoriesMax, [&](const uint i) {
                         Integrator::propagate(photons[i], nbundle, opening, random[i], interp, cosmology, octree, vobs0, length, parameters.nsteps, amin, std::signbit(parameters.savemode) ? Output::name() : Output::name(parameters.savemode ? Output::name(filename, outputsep, std::make_pair(outputint, i), outputsep, outputint) : Output::name(filename, outputsep, std::make_pair(outputint, i), outputsep, std::make_pair(outputint, zero)), outputsuffix), reference);
                     });
                 } else {
@@ -305,7 +305,7 @@ int main(int argc, char *argv[]) {
                         statcase = zero;
                     }
                     // Integration
-                    Utility::parallelize(ntrajectoriesMax, [=, &photons, &nbundle, &opening, &random, &interp, &cosmology, &octree, &vobs0, &length, &amin, &filename, &reference, &mutex, &interpcase, &statcase, &statx, &staty](const uint i) {
+                    Utility::parallelize(ntrajectoriesMax, [&](const uint i) {
                         evolution result = Integrator::propagate(photons[i], nbundle, opening, random[i], interp, cosmology, octree, vobs0, length, parameters.nsteps, amin, std::signbit(parameters.savemode) ? Output::name() : Output::name(parameters.savemode ? Output::name(filename, outputsep, std::make_pair(outputint, i), outputsep, outputint) : Output::name(filename, outputsep, std::make_pair(outputint, i), outputsep, std::make_pair(outputint, zero)), outputsuffix), reference);
                         std::vector<std::vector<real>> tmp(two, std::vector<real>(result.size()));
                         for (uint j = zero; j < result.size(); ++j) { // Loop on all central rays
@@ -386,7 +386,7 @@ int main(int argc, char *argv[]) {
                     statgmean.shrink_to_fit();
                     statgstd.shrink_to_fit();
                     // Reinterpolate
-                    Utility::parallelize(statsize, [=, &statrefx, &statx, &staty](const uint j) { staty[j] = Utility::reinterpolate(statrefx, statx[j], staty[j]); }); // WARNING ! Interpolates outside of range !
+                    Utility::parallelize(statsize, [&](const uint j) { staty[j] = Utility::reinterpolate(statrefx, statx[j], staty[j]); }); // WARNING ! Interpolates outside of range !
                     // Reduction
                     // Compte mean and standard deviation
                     MPI_Allreduce(&statsize, &statgsize, one, MPI_UNSIGNED, MPI_SUM, MPI_COMM_WORLD);

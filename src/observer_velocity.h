@@ -33,9 +33,6 @@
 #include <utility>
 #include <vector>
 
-#ifdef GCCBELOW7
-#include <experimental/algorithm>
-#endif
 // Include libs
 #include <mpi.h>
 // Include project
@@ -121,7 +118,7 @@ void Observer_velocity::CreateOctreeVelocityWithCIC(Octree<Type, Index, Data, Di
         std::cout << "# Compute velocity field at level " << ilvl << std::endl;
 #endif
         // Loop over all the particles
-        Utility::parallelize(pos_part.size() / 3, [=, &octree, &pos_part, &vel_part, &invextension, &half](const uint i) {
+        Utility::parallelize(pos_part.size() / 3, [&](const uint i) {
             Index idxvertex;
             Data data;
             unsigned long long int marker(0);
@@ -180,7 +177,7 @@ void Observer_velocity::CreateOctreeVelocityWithTSC(Octree<Type, Index, Data, Di
         std::cout << "# Compute velocity field at level " << ilvl << std::endl;
 #endif
         // Loop over all the particles
-        Utility::parallelize(pos_part.size() / 3, [=, &octree, &pos_part, &vel_part, &half, &twohalves](const uint i) {
+        Utility::parallelize(pos_part.size() / 3, [&](const uint i) {
             Index idxvertex;
             Data data;
             std::array<double, Index::dimension()> dist;

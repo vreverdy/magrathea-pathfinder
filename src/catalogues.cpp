@@ -20,6 +20,7 @@
 #include <ctime>
 // Include C++
 #include <algorithm>
+#include <execution>
 #include <array>
 #include <atomic>
 #include <deque>
@@ -137,7 +138,7 @@ int main(int argc, char *argv[]) {
     std::string filename;
     std::array<std::array<double, 3>, 3> rotm1 = {{zero}};
     const point vobs = {parameters.v0x, parameters.v0y, parameters.v0z};
-    const point vobs0 = {0, 0,
+    constexpr point vobs0 = {0, 0,
                          0}; // No peculiar velocity for homogeneous quantities
 
     if (rank == 0)
@@ -231,9 +232,9 @@ int main(int argc, char *argv[]) {
                 parameters.use_previous_catalogues ==
                     3) { // Rerun previously computed catalogs
                 // Set filename
-                std::string conetype = parameters.isfullsky ? "fullsky" : "narrow";
-                std::string sourcetype = parameters.halos ? "halos" : "part";
-                std::string jacobinfo =
+                const std::string conetype = parameters.isfullsky ? "fullsky" : "narrow";
+                const std::string sourcetype = parameters.halos ? "halos" : "part";
+                const std::string jacobinfo =
                     (parameters.beam == "bundle")
                         ? Output::name(
                               parameters.stop_bundle, outputsep, parameters.plane,
@@ -298,12 +299,13 @@ int main(int argc, char *argv[]) {
                 if (parameters.use_previous_catalogues == 2) {
                     std::vector<std::array<double, 8>> targets_position_tmp;
                     // Sort sources from previously computed catalogue with index
-                    std::sort(
+                    std::sort(std::execution::par_unseq,
                         previous_catalogue.begin(), previous_catalogue.end(),
                         [](const std::array<double, 18> &a,
                            const std::array<double, 18> &b) { return a[0] < b[0]; });
                     // Sort sources from full dataset with index
-                    std::sort(targets_position.begin(), targets_position.end(),
+                    std::sort(std::execution::par_unseq, 
+                        targets_position.begin(), targets_position.end(),
                               [](const std::array<double, 8> &a,
                                  const std::array<double, 8> &b) { return a[6] < b[6]; });
 
@@ -328,9 +330,9 @@ int main(int argc, char *argv[]) {
                     Miscellaneous::fullclear_vector(targets_position_tmp);
                 }
                 // Set filename
-                std::string conetype = parameters.isfullsky ? "fullsky" : "narrow";
-                std::string sourcetype = parameters.halos ? "halos" : "part";
-                std::string jacobinfo =
+                const std::string conetype = parameters.isfullsky ? "fullsky" : "narrow";
+                const std::string sourcetype = parameters.halos ? "halos" : "part";
+                const std::string jacobinfo =
                     (parameters.beam == "bundle")
                         ? Output::name(
                               parameters.stop_bundle, outputsep, parameters.plane,
