@@ -509,11 +509,11 @@ void Miscellaneous::fill_particles_vectors(const Parameter &parameters, const Co
         const double factorforce = -aexp * unit_l * 1e-2 / (unit_t * unit_t);
         std::for_each(std::execution::par_unseq, 
             potential_part.begin() + marker1, potential_part.end(), 
-            [factorpot](double& value) { value *= factorpot; });
+            [factorpot](Type1& value) { value *= factorpot; });
 
         std::for_each(std::execution::par_unseq, 
             force_part.begin() + marker2, force_part.end(), 
-            [factorforce](double& value) { value *= factorforce; });
+            [factorforce](Type1& value) { value *= factorforce; });
 
         std::vector<Type1> a_tmp(potential_part.size() - marker1);
         std::fill(a_tmp.begin(), a_tmp.end(), aexp);
