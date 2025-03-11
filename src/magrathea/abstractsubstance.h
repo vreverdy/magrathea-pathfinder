@@ -71,6 +71,7 @@ class AbstractSubstance
     /// \name           Operators 
     //@{
     public: 
+        AbstractSubstance(const AbstractSubstance&) = default;
         inline Crtp& operator=(const AbstractSubstance<Crtp, Types...>& rhs); 
         template <class OtherCrtp, class... OtherTypes> inline Crtp& operator=(const AbstractSubstance<OtherCrtp, OtherTypes...>& rhs); 
         template <class... OtherTypes> inline Crtp& operator=(const std::tuple<OtherTypes...>& rhs); 

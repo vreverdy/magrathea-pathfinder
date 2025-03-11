@@ -1422,6 +1422,9 @@ void Catalogues::relCat_with_previous_cat_flexion(
                     kiTarget = central_position;
                 } else if (parameters.plane == "exact") {
                     std::cout << "# Jacobian 'exact' not yet implemented !" << std::endl;
+                    std::cout << "# Error at file " << __FILE__ << ", line : " << __LINE__
+                              << std::endl;
+                    std::terminate();
                 } else {
                     std::cout << "# WARNING : Wrong plane, please choose 'sachs', "
                                  "'normal' or 'exact'"
@@ -1430,7 +1433,7 @@ void Catalogues::relCat_with_previous_cat_flexion(
                               << std::endl;
                     std::terminate();
                 }
-
+ 
                 // Interpolation
                 if (parameters.stop_bundle == "redshift") {
                     interpRef = trajectory[firstid].redshift() * f +

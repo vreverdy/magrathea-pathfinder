@@ -77,6 +77,7 @@ class AbstractStep
     /// \name           Operators 
     //@{
     public: 
+        AbstractStep(const AbstractStep&) = default;
         inline Crtp& operator=(const AbstractStep<Crtp, Scalar, Array, Tuple>& rhs); 
         template <class OtherCrtp, class OtherScalar, class OtherArray, class OtherTuple> inline Crtp& operator=(const AbstractStep<OtherCrtp, OtherScalar, OtherArray, OtherTuple>& rhs); 
         template <class OtherCrtp, class OtherScalar, class OtherArray, class OtherTuple> inline bool operator==(const AbstractStep<OtherCrtp, OtherScalar, OtherArray, OtherTuple>& rhs) const; 

@@ -61,7 +61,7 @@ It is built on top of the Magrathea (Multi-processor Adaptive Grid Refinement An
 
 ## Requirements 
 
-In any case, you need to link paths to the HDF5 library.
+In any case, you need to link paths to the HDF5 library, and to oneTBB.
 
 
 To produce maps, the Healpix library is required, 
@@ -83,9 +83,8 @@ make
 ```
 This will produce all the executables in `./bin/`
 
-The compiler must be GCC version must be at least 4.8.1 (Does not work for GCC 8.X, but does for all other versions up to GCC 11.X, this will be fixed soon)
-If the version of GCC is inferior to 7.x.x, it must be indicated in the Makefile
-(uncomment the `OPTIONS += -DGCCBELOW7` line)
+The compiler must be GCC version must be at least 11.0 
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

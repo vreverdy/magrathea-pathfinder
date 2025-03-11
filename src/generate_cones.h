@@ -144,9 +144,7 @@ void Generate_cones::GenerateFullskyCones(
                              cone[i].assign(sphere.position(), tiling[i], alpha);
                          });
     // No rotation for fullsky cones
-    for (uint i = 0; i < ncones; i++) {
-        coneIfRot[i] = cone[i];
-    }
+    coneIfRot = cone;
 }
 
 // Narrow cones generation
@@ -347,8 +345,8 @@ void Generate_cones::GenerateNarrowCones(
         cone[i].assign(sphere.position(), tilingbis[i], alpha);
     });
     // For narrow cones, need rotation
+    coneIfRot = cone;
     for (uint i = 0; i < parameters.ncones; i++) {
-        coneIfRot[i] = cone[i];
         coneIfRot[i].base(0) = cone[i].base(0) * rotm1[0][0] +
                                cone[i].base(1) * rotm1[0][1] +
                                cone[i].base(2) * rotm1[0][2];

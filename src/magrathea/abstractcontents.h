@@ -78,6 +78,7 @@ class AbstractContents
     /// \name           Operators 
     //@{
     public: 
+        AbstractContents(const AbstractContents&) = default;
         inline Crtp& operator=(const AbstractContents<Crtp, Category, Types...>& rhs); 
         template <class OtherCrtp, class OtherCategory, class... OtherTypes> inline Crtp& operator=(const AbstractContents<OtherCrtp, OtherCategory, OtherTypes...>& rhs); 
         template <class... OtherTypes> inline Crtp& operator=(const std::tuple<OtherTypes...>& rhs); 
