@@ -79,9 +79,15 @@ Compile the code
 ```
 git clone https://github.com/vreverdy/magrathea-pathfinder
 cd magrathea-pathfinder/
-make
+
+mkdir build && cd build
+cmake ..
+make -j 7
 ```
 This will produce all the executables in `./bin/`
+
+To clean executables, use `make clean`.
+To also full clean the build directory, use `make clean_all`
 
 The compiler must be GCC version must be at least 11.0 
 
