@@ -22,6 +22,7 @@
 #include <ctime>
 // Include C++
 #include <algorithm>
+#include <execution>
 #include <array>
 #include <atomic>
 #include <deque>
@@ -454,7 +455,7 @@ void Create_octree::PreparationHDF5_from_particles(
     // Get filenames in directory
     Miscellaneous::getFilesinDir(parameters.partdir, filelistprior);
     for (uint ifiling = 0; ifiling < filelistprior.size(); ++ifiling) {
-        // Check all files with suffix .h5
+        // Check all files with suffix .h5 
         found = filelistprior[ifiling].find(".h5");
         if (found != std::string::npos) {
             double aexp(0);
@@ -483,7 +484,7 @@ void Create_octree::PreparationHDF5_from_particles(
             // Only keep cells within the cone
             octree.resize(std::distance(
                 std::begin(octree),
-                std::remove_if(std::begin(octree), std::end(octree),
+                std::remove_if(std::execution::par_unseq, std::begin(octree), std::end(octree),
                                [=, &octree](const Element &elem) {
                                    return !(Input::collide(octree, std::get<0>(elem),
                                                            microsphere, conicIfRot));
@@ -531,7 +532,7 @@ void Create_octree::PreparationHDF5_from_particles(
             // log2(EXTENT))
             const unsigned int ncoarse =
                 (std::get<0>(
-                     *std::min_element(std::begin(octree), std::end(octree),
+                     *std::min_element(std::execution::par_unseq, std::begin(octree), std::end(octree),
                                        [](const Element &x, const Element &y) {
                                            return std::get<0>(x).level() <
                                                   std::get<0>(y).level();
@@ -541,7 +542,7 @@ void Create_octree::PreparationHDF5_from_particles(
             // of refinement, see inner functions)
             const unsigned int nmax =
                 (std::get<0>(
-                     *std::max_element(std::begin(octree), std::end(octree),
+                     *std::max_element(std::execution::par_unseq, std::begin(octree), std::end(octree),
                                        [](const Element &x, const Element &y) {
                                            return std::get<0>(x).level() <
                                                   std::get<0>(y).level();
@@ -574,7 +575,7 @@ void Create_octree::PreparationHDF5_from_particles(
                         Input::meanAll(octree, octree[index[i]], ncoarse);
                 });
             // Clear vector
-            Utility::parallelize(count.begin(), count.end(),
+            std::for_each(std::execution::par_unseq, count.begin(), count.end(),
                                  [](unsigned int &i) { i = zero; });
 
             // Cleaning the Octree at refined levels
@@ -898,7 +899,7 @@ void Create_octree::CreateOctreeWithCIC(
         8; // Threshold of how many refinement levels we can have at most
 
     const unsigned int lvlmax =
-        (std::get<0>(*std::max_element(std::begin(octree), std::end(octree),
+        (std::get<0>(*std::max_element(std::execution::par_unseq, std::begin(octree), std::end(octree),
                                        [](const Element &x, const Element &y) {
                                            return std::get<0>(x).level() <
                                                   std::get<0>(y).level();
@@ -989,7 +990,7 @@ void Create_octree::CreateOctreeWithCIC(
     // Count number of cells which contain a mass superior or equal to 8 DM
     // particles
     const unsigned int num =
-        std::count_if(npart.begin(), npart.end(), [=, &n_mass_refine](double &i) {
+        std::count_if(std::execution::par_unseq, npart.begin(), npart.end(), [=, &n_mass_refine](double &i) {
             return i >= n_mass_refine;
         });
 #ifdef VERBOSE
@@ -1060,7 +1061,7 @@ void Create_octree::CreateOctreeWithTSC(
         8; // Threshold of how many refinement levels we can have at most
 
     const unsigned int lvlmax =
-        (std::get<0>(*std::max_element(std::begin(octree), std::end(octree),
+        (std::get<0>(*std::max_element(std::execution::par_unseq, std::begin(octree), std::end(octree),
                                        [](const Element &x, const Element &y) {
                                            return std::get<0>(x).level() <
                                                   std::get<0>(y).level();
@@ -1158,7 +1159,7 @@ void Create_octree::CreateOctreeWithTSC(
     // Count number of cells which contain a mass superior or equal to 8 DM
     // particles
     unsigned int num =
-        std::count_if(npart.begin(), npart.end(),
+        std::count_if(std::execution::par_unseq, npart.begin(), npart.end(),
                       [](unsigned int &i) { return i >= n_mass_refine; });
 #ifdef VERBOSE
     std::cout << "# Number of cells to refine : " << num << std::endl;

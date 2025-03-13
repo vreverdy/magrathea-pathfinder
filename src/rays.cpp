@@ -18,6 +18,7 @@
 #include <ctime>
 // Include C++
 #include <algorithm>
+#include <execution>
 #include <array>
 #include <atomic>
 #include <deque>
@@ -227,7 +228,7 @@ int main(int argc, char *argv[]) {
         const std::string filename = parameters.outputdir + "../catalogs/" + Output::name(parameters.base, "_", std::make_pair("%05d", rank), ".txt"); // Name of catalog, given icone, directory and base
         Miscellaneous::ReadFromCat(rank, filename, previous_catalogue);
         // Select sources within mass bin
-        previous_catalogue.erase(std::remove_if(previous_catalogue.begin(), previous_catalogue.end(), [](const std::array<double, 18> &elem) { return (elem[17] >= parameters.massmax) || (elem[17] < parameters.massmin); }), previous_catalogue.end());
+        previous_catalogue.erase(std::remove_if(std::execution::par_unseq, previous_catalogue.begin(), previous_catalogue.end(), [](const std::array<double, 18> &elem) { return (elem[17] >= parameters.massmax) || (elem[17] < parameters.massmin); }), previous_catalogue.end());
         ntrajectoriesMax = previous_catalogue.size();
 #ifdef VERBOSE
         std::cout << "Rank : " << rank << " number of sources " << ntrajectoriesMax << std::endl;
@@ -343,7 +344,7 @@ int main(int argc, char *argv[]) {
                     });
                     octree.fullclear();
                     // Transfer reference
-                    reference.container().erase(std::remove_if(reference.container().begin(), reference.container().end(), [=, &amin](const Photon<real, dimension> &p) { return std::isnormal(amin) && (p.a() < amin); }), reference.container().end());
+                    reference.container().erase(std::remove_if(std::execution::par_unseq, reference.container().begin(), reference.container().end(), [=, &amin](const Photon<real, dimension> &p) { return std::isnormal(amin) && (p.a() < amin); }), reference.container().end());
                     statmod = std::max(one, static_cast<uint>(reference.size()) / std::max(parameters.nstat, one));
                     for (uint j = zero; j < reference.size(); ++j) {
                         if (j % statmod == zero) {

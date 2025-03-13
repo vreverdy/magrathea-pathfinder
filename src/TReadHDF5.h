@@ -19,6 +19,7 @@
 
 // Include C++
 #include <algorithm>
+#include <execution>
 #include <array>
 #include <dirent.h>
 #include <errno.h>
@@ -33,6 +34,7 @@
 
 #include "hdf5.h"
 #include "magrathea/constants.h"
+#include "utility.h"
 
 class TReadHDF5 {
 
@@ -761,7 +763,11 @@ void TReadHDF5::fillVectors_part(const double &fraction, const std::string &file
                 std::iota(std::begin(randomization), std::end(randomization), 0);
                 // Randomize vector indexes and only keep a fraction
                 std::sample(randomization.begin(), randomization.end(), std::back_inserter(randomization_tmp), static_cast<unsigned int>(fraction * nmax / 3), std::mt19937{std::random_device{}()});
-                std::for_each(randomization_tmp.begin(), randomization_tmp.end(), [=, &output1](int i) { output1.insert(output1.end(), &dset_data1[3 * i], &dset_data1[3 * (i + 1)]); });
+                const uint size = output1.size();
+                output1.resize(output1.size() + nmax);
+                Utility::parallelize(randomization_tmp.size(), [&](const uint i){ 
+                    std::copy_n(&dset_data1[3 * randomization_tmp[i]], 3, output1.begin() + size + 3 * i);
+                });
                 free(dset_data1);
                 H5Dclose(dsid);
                 H5Gclose(cubeid);
@@ -837,7 +843,11 @@ void TReadHDF5::fillVectors_part(const double &fraction, const std::string &file
                 Type1 *dset_data1;
                 dset_data1 = (Type1 *)malloc(sizeof(Type1) * nmax);
                 H5Dread(dsid, h5t_native<Type1>(), H5S_ALL, H5S_ALL, H5P_DEFAULT, dset_data1);
-                std::for_each(randomization_tmp.begin(), randomization_tmp.end(), [=, &output1](int i) { output1.insert(output1.end(), &dset_data1[3 * i], &dset_data1[3 * (i + 1)]); });
+                uint size = output1.size();
+                output1.resize(output1.size() + nmax);
+                Utility::parallelize(randomization_tmp.size(), [&](const uint i){ 
+                    std::copy_n(&dset_data1[3 * randomization_tmp[i]], 3, output1.begin() + size + 3 * i);
+                });
                 free(dset_data1);
                 H5Dclose(dsid);
                 // Second dataset (velocity)
@@ -847,7 +857,11 @@ void TReadHDF5::fillVectors_part(const double &fraction, const std::string &file
                 Type2 *dset_data2;
                 dset_data2 = (Type2 *)malloc(sizeof(Type2) * nmax);
                 H5Dread(dsid, h5t_native<Type2>(), H5S_ALL, H5S_ALL, H5P_DEFAULT, dset_data2);
-                std::for_each(randomization_tmp.begin(), randomization_tmp.end(), [=, &output2](int i) { output2.insert(output2.end(), &dset_data2[3 * i], &dset_data2[3 * (i + 1)]); });
+                size = output2.size();
+                output2.resize(output2.size() + nmax);
+                Utility::parallelize(randomization_tmp.size(), [&](const uint i){ 
+                    std::copy_n(&dset_data2[3 * randomization_tmp[i]], 3, output2.begin() + size + 3 * i);
+                });
                 free(dset_data2);
                 H5Dclose(dsid);
                 H5Gclose(cubeid);
@@ -920,36 +934,48 @@ void TReadHDF5::fillVectors_part(const double &fraction, const std::string &file
                 // First dataset  (position)
                 hid_t dsid = H5Dopen(cubeid, output_name1.c_str(), H5P_DEFAULT);
                 hsize_t alloc = H5Dget_storage_size(dsid);
-                unsigned int nmax1 = alloc / (sizeof(Type1));
-                std::vector<unsigned int> randomization(nmax1 / 3);
+                unsigned int nmax = alloc / (sizeof(Type1));
+                std::vector<unsigned int> randomization(nmax / 3);
                 std::vector<unsigned int> randomization_tmp;
                 std::iota(std::begin(randomization), std::end(randomization), 0);
                 // Randomize vector indexes and only keep a fraction
-                std::sample(randomization.begin(), randomization.end(), std::back_inserter(randomization_tmp), static_cast<unsigned int>(fraction * nmax1 / 3), std::mt19937{std::random_device{}()});
+                std::sample(randomization.begin(), randomization.end(), std::back_inserter(randomization_tmp), static_cast<unsigned int>(fraction * nmax / 3), std::mt19937{std::random_device{}()});
                 Type1 *dset_data1;
-                dset_data1 = (Type1 *)malloc(sizeof(Type1) * nmax1);
+                dset_data1 = (Type1 *)malloc(sizeof(Type1) * nmax);
                 H5Dread(dsid, h5t_native<Type1>(), H5S_ALL, H5S_ALL, H5P_DEFAULT, dset_data1);
-                std::for_each(randomization_tmp.begin(), randomization_tmp.end(), [=, &output1](int i) { output1.insert(output1.end(), &dset_data1[3 * i], &dset_data1[3 * (i + 1)]); });
+                uint size = output1.size();
+                output1.resize(output1.size() + nmax);
+                Utility::parallelize(randomization_tmp.size(), [&](const uint i){ 
+                    std::copy_n(&dset_data1[3 * randomization_tmp[i]], 3, output1.begin() + size + 3 * i);
+                });
                 free(dset_data1);
                 H5Dclose(dsid);
                 // Second dataset (velocity)
                 dsid = H5Dopen(cubeid, output_name2.c_str(), H5P_DEFAULT);
                 alloc = H5Dget_storage_size(dsid);
-                unsigned int nmax2 = alloc / (sizeof(Type2));
+                nmax = alloc / (sizeof(Type2));
                 Type2 *dset_data2;
-                dset_data2 = (Type2 *)malloc(sizeof(Type2) * nmax2);
+                dset_data2 = (Type2 *)malloc(sizeof(Type2) * nmax);
                 H5Dread(dsid, h5t_native<Type2>(), H5S_ALL, H5S_ALL, H5P_DEFAULT, dset_data2);
-                std::for_each(randomization_tmp.begin(), randomization_tmp.end(), [=, &output2](int i) { output2.insert(output2.end(), &dset_data2[3 * i], &dset_data2[3 * (i + 1)]); });
+                size = output2.size();
+                output2.resize(output2.size() + nmax);
+                Utility::parallelize(randomization_tmp.size(), [&](const uint i){ 
+                    std::copy_n(&dset_data2[3 * randomization_tmp[i]], 3, output2.begin() + size + 3 * i);
+                });
                 free(dset_data2);
                 H5Dclose(dsid);
                 // Third dataset (id)
                 dsid = H5Dopen(cubeid, output_name3.c_str(), H5P_DEFAULT);
                 alloc = H5Dget_storage_size(dsid);
-                unsigned int nmax3 = alloc / (sizeof(Type3));
+                nmax = alloc / (sizeof(Type3));
                 Type3 *dset_data3;
-                dset_data3 = (Type3 *)malloc(sizeof(Type3) * nmax3);
+                dset_data3 = (Type3 *)malloc(sizeof(Type3) * nmax);
                 H5Dread(dsid, h5t_native<Type3>(), H5S_ALL, H5S_ALL, H5P_DEFAULT, dset_data3);
-                std::for_each(randomization_tmp.begin(), randomization_tmp.end(), [=, &output3](int i) { output3.push_back(dset_data3[i]); });
+                size = output3.size();
+                output3.resize(output3.size() + nmax);
+                Utility::parallelize(randomization_tmp.size(), [&](const uint i){ 
+                    std::copy_n(&dset_data3[3 * randomization_tmp[i]], 3, output3.begin() + size + 3 * i);
+                });
                 free(dset_data3);
                 H5Dclose(dsid);
                 H5Gclose(cubeid);

@@ -563,7 +563,7 @@ int main(int argc, char *argv[]) {
             // Finalize
             const unsigned int lvlmax =
                 (std::get<0>(
-                     *std::max_element(std::begin(octree), std::end(octree),
+                     *std::max_element(std::execution::par_unseq, std::begin(octree), std::end(octree),
                                        [](const element &x, const element &y) {
                                            return std::get<0>(x).level() <
                                                   std::get<0>(y).level();
@@ -571,7 +571,7 @@ int main(int argc, char *argv[]) {
                      .level());
             const unsigned int lvlmin =
                 (std::get<0>(
-                     *std::min_element(std::begin(octree), std::end(octree),
+                     *std::min_element(std::execution::par_unseq, std::begin(octree), std::end(octree),
                                        [](const element &x, const element &y) {
                                            return std::get<0>(x).level() <
                                                   std::get<0>(y).level();

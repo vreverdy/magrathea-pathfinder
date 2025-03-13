@@ -20,6 +20,7 @@
 #include <ctime>
 // Include C++
 #include <algorithm>
+#include <execution>
 #include <array>
 #include <atomic>
 #include <deque>
@@ -166,8 +167,8 @@ template <typename Type1, template <typename Type, class Index, class Data, unsi
 void Observer_velocity::CreateOctreeVelocityWithTSC(Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container> &octree, std::vector<Type1> &pos_part, std::vector<Type1> &vel_part) {
 
     // Get levels at which we wish to compute the velocity field
-    const unsigned int lvlmax = (std::get<0>(*std::max_element(std::begin(octree), std::end(octree), [](const Element &x, const Element &y) { return std::get<0>(x).level() < std::get<0>(y).level(); })).level());
-    const unsigned int lvlmin = (std::get<0>(*std::min_element(std::begin(octree), std::end(octree), [](const Element &x, const Element &y) { return std::get<0>(x).level() < std::get<0>(y).level(); })).level());
+    const unsigned int lvlmax = (std::get<0>(*std::max_element(std::execution::par_unseq, std::begin(octree), std::end(octree), [](const Element &x, const Element &y) { return std::get<0>(x).level() < std::get<0>(y).level(); })).level());
+    const unsigned int lvlmin = (std::get<0>(*std::min_element(std::execution::par_unseq, std::begin(octree), std::end(octree), [](const Element &x, const Element &y) { return std::get<0>(x).level() < std::get<0>(y).level(); })).level());
 
     // Loop over levels
     for (uint ilvl = lvlmin; ilvl <= lvlmax; ilvl++) {

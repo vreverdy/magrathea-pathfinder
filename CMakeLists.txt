@@ -8,7 +8,15 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Compiler & Flags
 set(CMAKE_CXX_COMPILER mpicxx)
-set(CMAKE_CXX_FLAGS "-O3 -Wall -Wextra -Wno-unused-parameter -Wuninitialized -Winit-self -Wno-shift-count-overflow -Wno-shift-count-negative -pedantic -march=native")
+set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-unused-parameter -Wuninitialized -Winit-self -Wno-shift-count-overflow -Wno-shift-count-negative -pedantic -march=native")
+# Debug options, use cmake -DCMAKE_BUILD_TYPE=Debug ..
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0")
+else()
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
+endif()
+
+message(STATUS "CMAKE_CXX_FLAGS_DEBUG: ${CMAKE_CXX_FLAGS_DEBUG}")
 
 # (Optional) Paths - Set to paths if installed manually
 set(HDF5_PATH "/obs/mbreton/hdf5_src")

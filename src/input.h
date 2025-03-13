@@ -340,7 +340,7 @@ inline std::string Input::trim(const std::string &text,
                      : (result.begin() + result.find(comment)),
                  result.end());
     result.erase(result.begin(),
-                 std::find_if(result.begin(), result.end(),
+                 std::find_if(std::execution::par_unseq, result.begin(), result.end(),
                               [](const char c) { return std::isgraph(c); }));
     result.erase(result.end() -
                      std::distance(result.rbegin(),
@@ -349,7 +349,7 @@ inline std::string Input::trim(const std::string &text,
                                                     return std::isgraph(c);
                                                 })),
                  result.end());
-    result.erase(std::unique(result.begin(), result.end(),
+    result.erase(std::unique(std::execution::par_unseq, result.begin(), result.end(),
                              [](const char x, const char y) {
                                  return ((std::isspace(x)) && (std::isspace(y)));
                              }),
@@ -636,9 +636,8 @@ template <class Parameter, class Octree, typename Type, class Element,
 inline unsigned int Input::sistemize(const Parameter &parameters,
                                      Octree &octree, const Type h,
                                      const Type omegam, const Type lboxmpch) {
-    Utility::parallelize(
-        octree.begin(), octree.end(),
-        [=, &h, &omegam, &lboxmpch, &parameters](Element &element) {
+    std::for_each(std::execution::par_unseq, octree.begin(), octree.end(),
+        [&](Element &element) {
             std::get<1>(element) =
                 sistemize(parameters, std::get<1>(element),
                           Type(std::get<1>(element).a()), h, omegam, lboxmpch);
@@ -679,7 +678,7 @@ inline Data Input::homogenize(const Data &data) {
 /// \return         Homogeneous empty octree.
 template <class Octree, class... Dummy, class Element, class Data, class>
 inline unsigned int Input::homogenize(Octree &octree, Dummy...) {
-    Utility::parallelize(octree.begin(), octree.end(), [](Element &element) {
+    std::for_each(std::execution::par_unseq, octree.begin(), octree.end(), [](Element &element) {
         std::get<1>(element) = homogenize(std::get<1>(element));
     });
     return octree.size();
@@ -753,7 +752,7 @@ Input::schwarzschildify(Octree &octree, const Vector &position, const Type mass,
     std::vector<unsigned char> refine(size);
     do {
         size = octree.size();
-        Utility::parallelize(
+        std::for_each(std::execution::par_unseq,
             octree.begin(), octree.end(),
             [&](Element &element) {
                 std::get<1>(element) = schwarzschildify<Extent>(
@@ -778,7 +777,7 @@ Input::schwarzschildify(Octree &octree, const Vector &position, const Type mass,
         }
         octree.update();
     } while (size < octree.size());
-    Utility::parallelize(
+    std::for_each(std::execution::par_unseq,
         octree.begin(), octree.end(), [&](Element &element) {
             std::get<1>(element) = schwarzschildify<Extent>(
                 std::get<1>(element),
@@ -882,8 +881,8 @@ bool Input::prepare(List &list, const Octree &octree, const Sphere &sphere,
                     ? (0)
                     : (collide(octree, std::get<0>(octree[i]), sphere, conic));
         });
-    list.resize(original +
-                std::accumulate(selection.begin(), selection.end(), 0));
+    list.resize(std::reduce(std::execution::par_unseq, selection.begin(), selection.end(), original));
+        
     std::for_each(selection.begin(), selection.end(),
                   [=, &n](unsigned int &i) { i = i ? ++n : i; });
     Utility::parallelize(size,
@@ -1025,10 +1024,9 @@ bool Input::import(const Parameter &parameters, Octree &octree,
 
             // Selection
             thread.join();
-            Utility::parallelize(
+            std::for_each(std::execution::par_unseq,
                 index.begin(), index.end(),
-                [=, &filter, &center, &force, &a, &phi, &rho, &son,
-                 &selection](Integral &i) {
+                [&](Integral &i) {
                     selection[i] = filter(
                         Element(Index::compute(ilevel, center[Dimension * i],
                                                center[Dimension * i + 1],
@@ -1042,15 +1040,14 @@ bool Input::import(const Parameter &parameters, Octree &octree,
 
             // Destination
             n = octree.size();
-            size = std::accumulate(selection.begin(), selection.end(), n);
+            size = std::reduce(std::execution::par_unseq, selection.begin(), selection.end(), n);
             thread = std::thread([=, &octree, &size]() { octree.resize(size); });
             std::for_each(selection.begin(), selection.end(),
                           [=, &n](Integral &i) { i = i ? ++n : i; });
             thread.join();
-            Utility::parallelize(
+            std::for_each(std::execution::par_unseq,
                 index.begin(), index.end(),
-                [=, &octree, &center, &force, &a, &phi, &rho, &son,
-                 &selection](Integral &i) {
+                [&](Integral &i) {
                     if (selection[i])
                         octree[selection[i] - 1] = Element(
                             Index::compute(ilevel, center[Dimension * i],
@@ -1139,7 +1136,7 @@ bool Input::importhdf5(const Parameter &parameters, unsigned int &rank,
     }
 #ifdef VERBOSE
     std::cout << "# Rank : " << rank << " Total number of cells : "
-              << std::accumulate(count.begin(), count.end(), 0) << " Filename "
+              << std::reduce(std::execution::par_unseq, count.begin(), count.end()) << " Filename "
               << filename << std::endl;
     for (unsigned int i = 0; i < count.size(); i++) {
         std::cout << "# Rank : " << rank
@@ -1175,11 +1172,11 @@ bool Input::importhdf5(const Parameter &parameters, unsigned int &rank,
         TReadHDF5::getAttribute(filename, "metadata/cone_info", "aexp", aexp);
         // Give the same scale factor to all cells in same shell
         if (aexp < 1) {
-            std::fill(a.begin(), a.end(), aexp);
+            std::fill(std::execution::par_unseq, a.begin(), a.end(), aexp);
             // The shell might be slightly (one coarse step) ahead of the lightcone,
             // in this case the scale factor might be above 1
         } else {
-            std::fill(a.begin(), a.end(), 1);
+            std::fill(std::execution::par_unseq, a.begin(), a.end(), 1);
         }
 
         // Read position, potential, force and density from data
@@ -1202,8 +1199,7 @@ bool Input::importhdf5(const Parameter &parameters, unsigned int &rank,
         if (parameters.isfullsky == 0) {
             std::vector<Real> centertmp = center;
             std::vector<Real> forcetmp = force;
-            Utility::parallelize(
-                size, [=, &center, &force, &centertmp, &forcetmp](Integral i) {
+            Utility::parallelize(size, [&](Integral i) {
                     center[3 * i] = centertmp[3 * i] * rotm1[0][0] +
                                     centertmp[3 * i + 1] * rotm1[0][1] +
                                     centertmp[3 * i + 2] * rotm1[0][2];
@@ -1226,9 +1222,9 @@ bool Input::importhdf5(const Parameter &parameters, unsigned int &rank,
         }
 
         // Selection
-        Utility::parallelize(
+        std::for_each(std::execution::par_unseq,
             index.begin(), index.end(),
-            [=, &filter, &center, &force, &a, &phi, &rho, &selection](Integral &i) {
+            [&](Integral &i) {
                 selection[i] = filter(
                     Element(Index::template compute<Real, Position, Extent>(
                                 octreelevel, center[Dimension * i],
@@ -1242,14 +1238,13 @@ bool Input::importhdf5(const Parameter &parameters, unsigned int &rank,
 
         // Destination
         n = octree.size();
-        size = std::accumulate(selection.begin(), selection.end(), n);
+        size = std::reduce(std::execution::par_unseq, selection.begin(), selection.end(), n);
         thread = std::thread([=, &octree, &size]() { octree.resize(size); });
         std::for_each(selection.begin(), selection.end(),
                       [=, &n](Integral &i) { i = i ? ++n : i; });
         thread.join();
-        Utility::parallelize(
-            index.begin(), index.end(),
-            [=, &octree, &center, &force, &a, &phi, &rho, &selection](Integral &i) {
+        std::for_each(std::execution::par_unseq,
+            index.begin(), index.end(), [&](Integral &i) {
                 if (selection[i])
                     octree[selection[i] - 1] = Element(
                         Index::template compute<Real, Position, Extent>(
@@ -1350,11 +1345,11 @@ bool Input::importfullhdf5(const Parameter &parameters, Octree &octree,
         TReadHDF5::getAttribute(filename, "metadata/cone_info", "aexp", aexp);
         // Give the same scale factor to all cells in same shell
         if (aexp < 1) {
-            std::fill(a.begin(), a.end(), aexp);
+            std::fill(std::execution::par_unseq, a.begin(), a.end(), aexp);
             // The shell might be slightly (one coarse step) ahead of the lightcone,
             // in this case the scale factor might be above 1
         } else {
-            std::fill(a.begin(), a.end(), 1);
+            std::fill(std::execution::par_unseq, a.begin(), a.end(), 1);
         }
 
         // Read position, potential, force and density from data
@@ -1373,9 +1368,8 @@ bool Input::importfullhdf5(const Parameter &parameters, Octree &octree,
         }
 
         // Selection
-        Utility::parallelize(
-            index.begin(), index.end(),
-            [=, &filter, &center, &force, &a, &phi, &rho, &selection](Integral &i) {
+        std::for_each(std::execution::par_unseq,
+            index.begin(), index.end(), [&](Integral &i) {
                 selection[i] = filter(
                     Element(Index::template compute<Real, Position, Extent>(
                                 octreelevel, center[Dimension * i],
@@ -1388,14 +1382,13 @@ bool Input::importfullhdf5(const Parameter &parameters, Octree &octree,
             });
         // Destination
         n = octree.size();
-        size = std::accumulate(selection.begin(), selection.end(), n);
+        size = std::reduce(std::execution::par_unseq, selection.begin(), selection.end(), n);
         thread = std::thread([=, &octree, &size]() { octree.resize(size); });
         std::for_each(selection.begin(), selection.end(),
                       [=, &n](Integral &i) { i = i ? ++n : i; });
         thread.join();
-        Utility::parallelize(
-            index.begin(), index.end(),
-            [=, &octree, &center, &force, &a, &phi, &rho, &selection](Integral &i) {
+        std::for_each(std::execution::par_unseq,
+            index.begin(), index.end(), [&](Integral &i) {
                 if (selection[i])
                     octree[selection[i] - 1] = Element(
                         Index::template compute<Real, Position, Extent>(
@@ -1525,10 +1518,8 @@ bool Input::importascii(const Parameter &parameters,
         std::iota(index.begin(), index.end(), Integral());
     });
     thread.join();
-    Utility::parallelize(
-        index.begin(), index.end(),
-        [=, &filter, &level, &center, &force, &a, &phi, &rho, &son,
-         &selection](Integral &i) {
+    std::for_each(std::execution::par_unseq, 
+        index.begin(), index.end(), [&](Integral &i) {
             selection[i] = filter(
                 Element(Index::template compute<Real, Position, Extent>(
                             level[i], center[Dimension * i],
@@ -1541,15 +1532,13 @@ bool Input::importascii(const Parameter &parameters,
         });
     // Destination
     n = octree.size();
-    size = std::accumulate(selection.begin(), selection.end(), n);
+    size = std::reduce(std::execution::par_unseq, selection.begin(), selection.end(), n);
     thread = std::thread([=, &octree, &size]() { octree.resize(size); });
     std::for_each(selection.begin(), selection.end(),
                   [=, &n](Integral &i) { i = i ? ++n : i; });
     thread.join();
-    Utility::parallelize(
-        index.begin(), index.end(),
-        [=, &octree, &level, &center, &force, &a, &phi, &rho, &son,
-         &selection](Integral &i) {
+    std::for_each(std::execution::par_unseq,
+        index.begin(), index.end(), [&](Integral &i) {
             if (selection[i])
                 octree[selection[i] - 1] =
                     Element(Index::template compute<Real, Position, Extent>(
@@ -1567,7 +1556,7 @@ bool Input::importascii(const Parameter &parameters,
         const unsigned int coarseShift = parameters.ncoarse + levelShift;
         octree.resize(std::distance(
             std::begin(octree),
-            std::remove_if(std::begin(octree), std::end(octree),
+            std::remove_if(std::execution::par_unseq, std::begin(octree), std::end(octree),
                            [=, &coarseShift](const Element &elem) {
                                return std::get<0>(elem).level() != coarseShift;
                            })));
@@ -1731,8 +1720,8 @@ Cosmology Input::acquire(const Parameter &parameters, Type &h, Type &omegam,
                line.end());
     size = line.size();
     if (size > 0) {
-        Utility::parallelize(input.begin(), input.end(),
-                             [=, &size](std::vector<Type> &v) { v.resize(size); });
+        std::for_each(std::execution::par_unseq, input.begin(), input.end(),
+                             [&](std::vector<Type> &v) { v.resize(size); });
         // Put evolution from string to float in 'input'
         Utility::parallelize(size, [=, &input](const unsigned int i) {
             std::istringstream iss(line[i]);
@@ -1742,11 +1731,11 @@ Cosmology Input::acquire(const Parameter &parameters, Type &h, Type &omegam,
             iss >> std::get<3>(input)[i];
             iss >> std::get<4>(input)[i];
         });
-        Utility::parallelize(output.begin(), output.end(),
-                             [=, &size](std::vector<Type> &v) { v.resize(size); });
+        std::for_each(std::execution::par_unseq, output.begin(), output.end(),
+                             [&](std::vector<Type> &v) { v.resize(size); });
         // Convert Ramses Units to SI and modify order of columns in 'output'
         Utility::parallelize(
-            size, [=, &input, &output, &hubble](const unsigned int i) {
+            size, [&](const unsigned int i) {
                 std::get<0>(output)[i] = std::get<4>(input)[i] / hubble;
                 std::get<2>(output)[i] = std::get<0>(input)[i];
                 std::get<3>(output)[i] = std::get<1>(input)[i] * hubble;
@@ -1786,7 +1775,7 @@ Cosmology Input::acquire(const Parameter &parameters, Type &h, Type &omegam,
             }
         });
         // Remove bad lines
-        Utility::parallelize(
+        std::for_each(std::execution::par_unseq,
             output.begin(), output.end(), [](std::vector<Type> &v) {
                 v.erase(std::remove_if(v.begin(), v.end(),
                                        [](const Type x) { return std::isnan(x); }),
@@ -1837,13 +1826,13 @@ Cosmology Input::acquire(const Parameter &parameters, Type &h, Type &omegam,
         });
         if (reverse) {
             std::get<0>(result) = Utility::reverse(
-                std::get<0>(result), *std::max_element(std::get<0>(result).begin(),
+                std::get<0>(result), *std::max_element(std::execution::par_unseq, std::get<0>(result).begin(),
                                                        std::get<0>(result).end()));
             Utility::parallelize(size, [=, &result](const unsigned int i) {
                 std::get<0>(result)[i] = std::abs(std::get<0>(result)[i]);
                 std::get<2>(result)[i] = -std::get<2>(result)[i];
             });
-            Utility::parallelize(
+            std::for_each(std::execution::par_unseq,
                 result.begin(), result.end(),
                 [](std::vector<Type> &v) { std::reverse(v.begin(), v.end()); });
         }
@@ -2092,7 +2081,7 @@ Octree &Input::correct(const Parameter &parameters, Octree &octree,
     unsigned int ncoarse =
         (!octree.empty())
             ? (std::get<0>(
-                   *std::min_element(octree.begin(), octree.end(),
+                   *std::min_element(std::execution::par_unseq, octree.begin(), octree.end(),
                                      [](const Element &x, const Element &y) {
                                          return std::get<0>(x).level() <
                                                 std::get<0>(y).level();
@@ -2102,7 +2091,7 @@ Octree &Input::correct(const Parameter &parameters, Octree &octree,
     unsigned int nmax =
         (!octree.empty())
             ? (std::get<0>(
-                   *std::max_element(octree.begin(), octree.end(),
+                   *std::max_element(std::execution::par_unseq, octree.begin(), octree.end(),
                                      [](const Element &x, const Element &y) {
                                          return std::get<0>(x).level() <
                                                 std::get<0>(y).level();
@@ -2141,7 +2130,7 @@ Octree &Input::correct(const Parameter &parameters, Octree &octree,
                     std::get<1>(octree[index[i]]).template data<Selection>() =
                         mean(octree, octree[index[i]], ncoarse);
                 });
-            Utility::parallelize(count.begin(), count.end(),
+            std::for_each(std::execution::par_unseq, count.begin(), count.end(),
                                  [](unsigned int &i) { i = zero; });
         }
     }
@@ -2190,11 +2179,11 @@ Octree &Input::correct(const Parameter &parameters, Octree &octree,
                             one;
                     }
                 });
-            count.erase(std::remove(count.begin(), count.end(), zero), count.end());
-            Utility::parallelize(count.begin(), count.end(),
+            count.erase(std::remove(std::execution::par_unseq, count.begin(), count.end(), zero), count.end());
+            std::for_each(std::execution::par_unseq, count.begin(), count.end(),
                                  [](unsigned int &i) { --i; });
             std::sort(std::execution::par_unseq, count.begin(), count.end());
-            count.erase(std::unique(count.begin(), count.end()), count.end());
+            count.erase(std::unique(std::execution::par_unseq, count.begin(), count.end()), count.end());
             size = count.size();
             for (unsigned int i = 0; i < size; ++i) {
                 if (!std::get<0>(octree[count[i]]).invalidated()) {
@@ -2205,7 +2194,7 @@ Octree &Input::correct(const Parameter &parameters, Octree &octree,
             size = octree.size();
             count.resize(size);
         }
-        Utility::parallelize(count.begin(), count.end(),
+        std::for_each(std::execution::par_unseq, count.begin(), count.end(),
                              [](unsigned int &i) { i = zero; });
     }
     // Detect non complete zones
@@ -2283,8 +2272,8 @@ Octree &Input::correct(const Parameter &parameters, Octree &octree,
         if (parameters.acorrection) {
             std::vector<Type> data;
             a.reserve(reservation);
-            Utility::parallelize(octree.begin(), octree.end(),
-                                 [=, &a, &distance, &mutex](const Element &e) {
+            std::for_each(std::execution::par_unseq, octree.begin(), octree.end(),
+                                 [&](const Element &e) {
                                      if (!std::count(a.begin(), a.begin() + distance,
                                                      std::get<1>(e).a())) {
                                          mutex.lock();
@@ -2293,13 +2282,13 @@ Octree &Input::correct(const Parameter &parameters, Octree &octree,
                                          mutex.unlock();
                                      }
                                  });
-            a.erase(std::remove_if(a.begin(), a.end(),
+            a.erase(std::remove_if(std::execution::par_unseq, a.begin(), a.end(),
                                    [](const Type x) {
                                        return std::signbit(x) || !std::isnormal(x);
                                    }),
                     a.end());
             std::sort(std::execution::par_unseq, a.begin(), a.end());
-            a.erase(std::unique(a.begin(), a.end()), a.end());
+            a.erase(std::unique(std::execution::par_unseq, a.begin(), a.end()), a.end());
             asize = a.size();
             data.resize(asize);
             std::iota(data.begin(), data.end(), one);
@@ -2313,7 +2302,7 @@ Octree &Input::correct(const Parameter &parameters, Octree &octree,
                 }
             }
             if (asize > zero) {
-                Utility::parallelize(octree.begin(), octree.end(), [=, &a](Element &e) {
+                std::for_each(std::execution::par_unseq, octree.begin(), octree.end(), [&](Element &e) {
                     std::get<1>(e).a() =
                         *(std::lower_bound(a.begin(), a.end(), std::get<1>(e).a()) - 1);
                 });

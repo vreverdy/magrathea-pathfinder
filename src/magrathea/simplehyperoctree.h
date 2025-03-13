@@ -1036,29 +1036,29 @@ inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element
 template <typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
 inline SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>::update()
 { 
-    _container.resize(std::distance(std::begin(_container), std::remove_if(std::begin(_container), std::end(_container), [](const Element& elem){return std::get<0>(elem).invalidated();})));
+    _container.resize(std::distance(std::begin(_container), std::remove_if(std::execution::par_unseq, std::begin(_container), std::end(_container), [](const Element& elem){return std::get<0>(elem).invalidated();})));
  
     std::sort(std::execution::par_unseq, std::begin(_container), std::end(_container), [](const Element& first, const Element& second){return std::get<0>(first) < std::get<0>(second);});
 
     unsigned int size = _container.size();
     std::vector<unsigned int> count(size);
     Utility::parallelize(size, [=, &count](const unsigned int i){
-	auto j = std::adjacent_find(std::begin(_container)+i, std::end(_container), [](const Element& first, const Element& second){return std::get<0>(first) != std::get<0>(second);});
-	count[i] = std::distance(std::begin(_container)+i, j);
+        auto j = std::adjacent_find(std::begin(_container)+i, std::end(_container), [](const Element& first, const Element& second){return std::get<0>(first) != std::get<0>(second);});
+        count[i] = std::distance(std::begin(_container)+i, j);
     });
 
     Utility::parallelize(size, [=](const unsigned int i){
 	if(count[i]){
 	    if(!((i > 0) && count[i-1])){ // Previous index must not be in a serie of identical indices.
 	        std::vector<Data> tmpvector;
-		for(unsigned int k = 0; k < count[i]+1; ++k){
-		    tmpvector.push_back(std::get<1>(_container.data()[i+k]));
-		}
-	 	std::sort(std::begin(tmpvector), std::end(tmpvector), [](const Data& first, const Data& second){return first.a() < second.a();});
-		std::get<1>(_container.data()[i]) = tmpvector[0];
-		if(std::abs(tmpvector.front().a() - tmpvector.back().a()) > 1e-6){ // To avoid numerical noise
-		    std::get<1>(_container.data()[i]).dphidt() = (tmpvector.front().phi()-tmpvector.back().phi())/(tmpvector.front().a()-tmpvector.back().a());
-		}
+            for(unsigned int k = 0; k < count[i]+1; ++k){
+                tmpvector.push_back(std::get<1>(_container.data()[i+k]));
+            }
+            std::sort(std::begin(tmpvector), std::end(tmpvector), [](const Data& first, const Data& second){return first.a() < second.a();});
+            std::get<1>(_container.data()[i]) = tmpvector[0];
+            if(std::abs(tmpvector.front().a() - tmpvector.back().a()) > 1e-6){ // To avoid numerical noise
+                std::get<1>(_container.data()[i]).dphidt() = (tmpvector.front().phi()-tmpvector.back().phi())/(tmpvector.front().a()-tmpvector.back().a());
+            }
 	    }
 	}
     });

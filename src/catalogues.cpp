@@ -290,7 +290,7 @@ int main(int argc, char *argv[]) {
                     Miscellaneous::getTargets(caractVect_source, cone[icone], cone);
 #ifdef VERBOSE
                 std::cout << "# Rank " << rank << " cone " << icone
-                          << " HALOS : number of sources in the cone : "
+                          << " Catalogue : number of sources in the cone : "
                           << targets_position.size() << " of "
                           << caractVect_source.size() << std::endl;
 #endif

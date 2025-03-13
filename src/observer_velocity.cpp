@@ -18,6 +18,7 @@
 #include <ctime>
 // Include C++
 #include <algorithm>
+#include <execution>
 #include <array>
 #include <atomic>
 #include <deque>
@@ -180,8 +181,8 @@ int main(int argc, char *argv[]) {
             std::terminate();
         }
         // Finalize
-        const unsigned int lvlmax = (std::get<0>(*std::max_element(std::begin(octree), std::end(octree), [](const element &x, const element &y) { return std::get<0>(x).level() < std::get<0>(y).level(); })).level());
-        const unsigned int lvlmin = (std::get<0>(*std::min_element(std::begin(octree), std::end(octree), [](const element &x, const element &y) { return std::get<0>(x).level() < std::get<0>(y).level(); })).level());
+        const unsigned int lvlmax = (std::get<0>(*std::max_element(std::execution::par_unseq, std::begin(octree), std::end(octree), [](const element &x, const element &y) { return std::get<0>(x).level() < std::get<0>(y).level(); })).level());
+        const unsigned int lvlmin = (std::get<0>(*std::min_element(std::execution::par_unseq, std::begin(octree), std::end(octree), [](const element &x, const element &y) { return std::get<0>(x).level() < std::get<0>(y).level(); })).level());
         // Normalise velocity field by the mass
         Utility::parallelize(octree.size(), [&](const uint i) {
             double mass = std::get<1>(octree[i]).rho();

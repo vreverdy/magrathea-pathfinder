@@ -22,6 +22,7 @@
 #include <ctime>
 // Include C++
 #include <algorithm>
+#include <execution>
 #include <array>
 #include <atomic>
 #include <deque>
@@ -313,7 +314,7 @@ void Hmaps::getPixels_per_cone(const Parameter &parameters, const Integer npix,
         }
     });
     // Erase pixels which are not inside the cone
-    pixeltmp.erase(std::remove(std::begin(pixeltmp), std::end(pixeltmp), -1),
+    pixeltmp.erase(std::remove(std::execution::par_unseq, std::begin(pixeltmp), std::end(pixeltmp), -1),
                    std::end(pixeltmp));
     // Count number of pixels inside the cone
     ntrajectories.back() = pixeltmp.size();
@@ -410,7 +411,7 @@ void Hmaps::getPixels_per_cone2(const Parameter &parameters, const Integer npix,
     });
 
     // Erase pixels which are not inside the cone
-    pixeltmp.erase(std::remove(std::begin(pixeltmp), std::end(pixeltmp), -1),
+    pixeltmp.erase(std::remove(std::execution::par_unseq, std::begin(pixeltmp), std::end(pixeltmp), -1),
                    std::end(pixeltmp));
     // Count number of pixels inside the cone
     ntrajectories.back() = pixeltmp.size();
@@ -577,14 +578,14 @@ void Hmaps::CreateOctreeVelocityWithCIC(
     const std::vector<Type1> &pos_part, const std::vector<Type1> &vel_part) {
 
     const unsigned int lvlmax =
-        (std::get<0>(*std::max_element(std::begin(octree), std::end(octree),
+        (std::get<0>(*std::max_element(std::execution::par_unseq, std::begin(octree), std::end(octree),
                                        [](const Element &x, const Element &y) {
                                            return std::get<0>(x).level() <
                                                   std::get<0>(y).level();
                                        }))
              .level());
     const unsigned int lvlmin =
-        (std::get<0>(*std::min_element(std::begin(octree), std::end(octree),
+        (std::get<0>(*std::min_element(std::execution::par_unseq, std::begin(octree), std::end(octree),
                                        [](const Element &x, const Element &y) {
                                            return std::get<0>(x).level() <
                                                   std::get<0>(y).level();
@@ -686,14 +687,14 @@ void Hmaps::CreateOctreeVelocityWithTSC(
     const std::vector<Type1> &pos_part, const std::vector<Type1> &vel_part) {
 
     const unsigned int lvlmax =
-        (std::get<0>(*std::max_element(std::begin(octree), std::end(octree),
+        (std::get<0>(*std::max_element(std::execution::par_unseq, std::begin(octree), std::end(octree),
                                        [](const Element &x, const Element &y) {
                                            return std::get<0>(x).level() <
                                                   std::get<0>(y).level();
                                        }))
              .level());
     const unsigned int lvlmin =
-        (std::get<0>(*std::min_element(std::begin(octree), std::end(octree),
+        (std::get<0>(*std::min_element(std::execution::par_unseq, std::begin(octree), std::end(octree),
                                        [](const Element &x, const Element &y) {
                                            return std::get<0>(x).level() <
                                                   std::get<0>(y).level();

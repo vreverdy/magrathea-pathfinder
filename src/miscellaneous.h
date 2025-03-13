@@ -458,7 +458,7 @@ std::vector<std::array<double, 8>> Miscellaneous::getTargets(const std::vector<s
     });   //  while
 
     // Erase targets which are not inside the cone
-    selection.erase(std::remove(std::begin(selection), std::end(selection), -1), std::end(selection));
+    selection.erase(std::remove(std::execution::par_unseq, std::begin(selection), std::end(selection), -1), std::end(selection));
     std::vector<std::array<double, 8>> pointsCible(selection.size());
     // Put targets in vector
     Utility::parallelize(selection.size(), [&](const unsigned int ivec) {
@@ -516,7 +516,7 @@ void Miscellaneous::fill_particles_vectors(const Parameter &parameters, const Co
             [factorforce](Type1& value) { value *= factorforce; });
 
         std::vector<Type1> a_tmp(potential_part.size() - marker1);
-        std::fill(a_tmp.begin(), a_tmp.end(), aexp);
+        std::fill(std::execution::par_unseq, a_tmp.begin(), a_tmp.end(), aexp);
         // Give the same scale factor value to all the particles in the same shell
         a_part.insert(std::end(a_part), std::begin(a_tmp), std::end(a_tmp));
         marker1 = potential_part.size();
