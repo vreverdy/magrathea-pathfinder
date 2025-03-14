@@ -1193,50 +1193,50 @@ namespace magrathea {
         std::array<Type, sizeof...(iposs)> dist = point;
         Data result = std::get<1>(elem);
         Type weight = 0;
-        if (point == std::array<Type, sizeof...(iposs)>()) { // if position is the center of the box, perform CIC
+
+        if (point == std::array<Type, sizeof...(iposs)>()) // if position is the center of the box, perform CIC
             return SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>::cic(0., 0., 0.);
-        } else {
-            do {
-                ilvl = lvl;
-                if (!idx.invalidated()) {
-                    const double twohalves = two * half;
-                    for (int ix = -one; ix <= one; ++ix) {
-                        int aix = abs(ix);
-                        for (int iy = -one; iy <= one; ++iy) {
-                            int aiy = abs(iy);
-                            for (int iz = -one; iz <= one; ++iz) {
-                                int aiz = abs(iz);
-                                std::get<0>(elem) = Index::template compute<Type, Position, Extent>(ilvl, point[0] + ix * twohalves, point[1] + iy * twohalves, point[2] + iz * twohalves);
-                                marker = std::distance(std::begin(_container), std::upper_bound(std::begin(_container), std::end(_container), elem, [](const Element& first, const Element& second) { return std::get<0>(first) < std::get<0>(second); }));
-                                if (std::get<0>(*(std::begin(_container) + marker - (marker > 0))).containing(std::get<0>(elem))) {
-                                    for (unsigned int idim = 0; idim < Index::dimension(); ++idim) {
-                                        dist[idim] = std::abs((std::get<0>(elem).template center<Type, Position, Extent>(idim) - point[idim]) / (twohalves));
-                                    }
-                                    weight = (aix * 0.5 * (1.5 - dist[0]) * (1.5 - dist[0]) + (1 - aix) * (0.75 - dist[0] * dist[0])) * (aiy * 0.5 * (1.5 - dist[1]) * (1.5 - dist[1]) + (1 - aiy) * (0.75 - dist[1] * dist[1])) * (aiz * 0.5 * (1.5 - dist[2]) * (1.5 - dist[2]) + (1 - aiz) * (0.75 - dist[2] * dist[2]));
-                                    lvl = std::min(lvl, std::get<0>(*(std::begin(_container) + marker - 1)).level());
-                                    if (lvl < ilvl) {
-                                        result = Data();
-                                        ix = iy = iz = one;
-                                    } else {
-                                        mac(result, std::get<1>(*(std::begin(_container) + marker - 1)), weight);
-                                    }
-                                } else {
+
+        do {
+            ilvl = lvl;
+            if (!idx.invalidated()) {
+                const Type twohalves = two * half;
+                for (int ix = -one; ix <= one; ++ix) {
+                    const Type aix = abs(ix);
+                    for (int iy = -one; iy <= one; ++iy) {
+                        const Type aiy = abs(iy);
+                        for (int iz = -one; iz <= one; ++iz) {
+                            const Type aiz = abs(iz);
+                            std::get<0>(elem) = Index::template compute<Type, Position, Extent>(ilvl, point[0] + ix * twohalves, point[1] + iy * twohalves, point[2] + iz * twohalves);
+                            marker = std::distance(std::begin(_container), std::upper_bound(std::begin(_container), std::end(_container), elem, [](const Element& first, const Element& second) { return std::get<0>(first) < std::get<0>(second); }));
+                            if (std::get<0>(*(std::begin(_container) + marker - (marker > 0))).containing(std::get<0>(elem))) {
+                                for (unsigned int idim = 0; idim < Index::dimension(); ++idim) {
+                                    dist[idim] = std::abs((std::get<0>(elem).template center<Type, Position, Extent>(idim) - point[idim]) / (twohalves));
+                                }
+                                weight = (aix * 0.5 * (1.5 - dist[0]) * (1.5 - dist[0]) + (1. - aix) * (0.75 - dist[0] * dist[0])) * (aiy * 0.5 * (1.5 - dist[1]) * (1.5 - dist[1]) + (1. - aiy) * (0.75 - dist[1] * dist[1])) * (aiz * 0.5 * (1.5 - dist[2]) * (1.5 - dist[2]) + (1. - aiz) * (0.75 - dist[2] * dist[2]));
+                                lvl = std::min(lvl, std::get<0>(*(std::begin(_container) + marker - 1)).level());
+                                if (lvl < ilvl) {
                                     result = Data();
                                     ix = iy = iz = one;
+                                } else {
+                                    mac(result, std::get<1>(*(std::begin(_container) + marker - 1)), weight);
                                 }
+                            } else {
+                                result = Data();
+                                ix = iy = iz = one;
                             }
                         }
                     }
                 }
-                if (lvl < ilvl) {
-                    elem = Element(Index::template compute<Type, Position, Extent>(lvl + 1, std::forward<Types>(iposs)...), Data());
-                    idx = std::get<0>(elem).parent();
-                    result = std::get<1>(elem);
-                    half = Type(Extent::num) / Type(Extent::den) * idx.extent() / two;
-                }
-            } while (lvl < ilvl);
-            return result;
-        }
+            }
+            if (lvl < ilvl) {
+                elem = Element(Index::template compute<Type, Position, Extent>(lvl + 1, std::forward<Types>(iposs)...), Data());
+                idx = std::get<0>(elem).parent();
+                result = std::get<1>(elem);
+                half = Type(Extent::num) / Type(Extent::den) * idx.extent() / two;
+            }
+        } while (lvl < ilvl);
+        return result;
     }
 
     // Triangular Shaped Cloud interpolation
@@ -1265,76 +1265,78 @@ namespace magrathea {
         Type weight = 0;
         std::vector<Element> elemsTsctmp(27);
         unsigned int ic = 0;
-        if (point == std::array<Type, sizeof...(iposs)>()) { // if position is the center of the box, perform CIC
+
+        if (point == std::array<Type, sizeof...(iposs)>()) // if position is the center of the box, perform CIC
             return SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>::cic(0., 0., 0.);
-        } else {
-            do {
-                ilvl = lvl;
-                const double twohalves = two * half;
-                if (std::get<0>(elemsTsc[13]) == idx) {
-                    ic = 0;
-                    for (int ix = -one; ix <= one; ++ix) {
-                        int aix = abs(ix);
-                        for (int iy = -one; iy <= one; ++iy) {
-                            int aiy = abs(iy);
-                            for (int iz = -one; iz <= one; ++iz) {
-                                int aiz = abs(iz);
+
+        do {
+            ilvl = lvl;
+            const double twohalves = two * half;
+
+            if (std::get<0>(elemsTsc[13]) == idx) {
+                ic = 0;
+                for (int ix = -one; ix <= one; ++ix) {
+                    const Type aix = abs(ix);
+                    for (int iy = -one; iy <= one; ++iy) {
+                        const Type aiy = abs(iy);
+                        for (int iz = -one; iz <= one; ++iz) {
+                            const Type aiz = abs(iz);
+                            for (unsigned int idim = 0; idim < Index::dimension(); ++idim) {
+                                dist[idim] = std::abs((std::get<0>(elemsTsc[ic]).template center<Type, Position, Extent>(idim) - point[idim]) / (twohalves));
+                            }
+                            weight = (aix * 0.5 * (1.5 - dist[0]) * (1.5 - dist[0]) + (1 - aix) * (0.75 - dist[0] * dist[0])) * (aiy * 0.5 * (1.5 - dist[1]) * (1.5 - dist[1]) + (1 - aiy) * (0.75 - dist[1] * dist[1])) * (aiz * 0.5 * (1.5 - dist[2]) * (1.5 - dist[2]) + (1 - aiz) * (0.75 - dist[2] * dist[2]));
+                            mac(result, std::get<1>(elemsTsc[ic]), weight);
+                            ic++;
+                        }
+                    }
+                }
+                return result;
+            }
+
+            if (!idx.invalidated()) {
+                ic = 0;
+                for (int ix = -one; ix <= one; ++ix) {
+                    const Type aix = abs(ix);
+                    for (int iy = -one; iy <= one; ++iy) {
+                        const Type aiy = abs(iy);
+                        for (int iz = -one; iz <= one; ++iz) {
+                            const Type aiz = abs(iz);
+                            std::get<0>(elem) = Index::template compute<Type, Position, Extent>(ilvl, point[0] + ix * twohalves, point[1] + iy * twohalves, point[2] + iz * twohalves);
+                            marker = std::distance(std::begin(_container), std::upper_bound(std::begin(_container), std::end(_container), elem, [](const Element& first, const Element& second) { return std::get<0>(first) < std::get<0>(second); }));
+                            if (std::get<0>(*(std::begin(_container) + marker - (marker > 0))).containing(std::get<0>(elem))) {
+                                elemsTsctmp[ic] = *(std::begin(_container) + marker - (marker > 0));
                                 for (unsigned int idim = 0; idim < Index::dimension(); ++idim) {
-                                    dist[idim] = std::abs((std::get<0>(elemsTsc[ic]).template center<Type, Position, Extent>(idim) - point[idim]) / (twohalves));
+                                    dist[idim] = std::abs((std::get<0>(elem).template center<Type, Position, Extent>(idim) - point[idim]) / (twohalves));
                                 }
                                 weight = (aix * 0.5 * (1.5 - dist[0]) * (1.5 - dist[0]) + (1 - aix) * (0.75 - dist[0] * dist[0])) * (aiy * 0.5 * (1.5 - dist[1]) * (1.5 - dist[1]) + (1 - aiy) * (0.75 - dist[1] * dist[1])) * (aiz * 0.5 * (1.5 - dist[2]) * (1.5 - dist[2]) + (1 - aiz) * (0.75 - dist[2] * dist[2]));
-                                mac(result, std::get<1>(elemsTsc[ic]), weight);
-                                ic++;
-                            }
-                        }
-                    }
-                    return result;
-                } else {
-                    if (!idx.invalidated()) {
-                        ic = 0;
-                        for (int ix = -one; ix <= one; ++ix) {
-                            int aix = abs(ix);
-                            for (int iy = -one; iy <= one; ++iy) {
-                                int aiy = abs(iy);
-                                for (int iz = -one; iz <= one; ++iz) {
-                                    int aiz = abs(iz);
-                                    std::get<0>(elem) = Index::template compute<Type, Position, Extent>(ilvl, point[0] + ix * twohalves, point[1] + iy * twohalves, point[2] + iz * twohalves);
-                                    marker = std::distance(std::begin(_container), std::upper_bound(std::begin(_container), std::end(_container), elem, [](const Element& first, const Element& second) { return std::get<0>(first) < std::get<0>(second); }));
-                                    if (std::get<0>(*(std::begin(_container) + marker - (marker > 0))).containing(std::get<0>(elem))) {
-                                        elemsTsctmp[ic] = *(std::begin(_container) + marker - (marker > 0));
-                                        for (unsigned int idim = 0; idim < Index::dimension(); ++idim) {
-                                            dist[idim] = std::abs((std::get<0>(elem).template center<Type, Position, Extent>(idim) - point[idim]) / (twohalves));
-                                        }
-                                        weight = (aix * 0.5 * (1.5 - dist[0]) * (1.5 - dist[0]) + (1 - aix) * (0.75 - dist[0] * dist[0])) * (aiy * 0.5 * (1.5 - dist[1]) * (1.5 - dist[1]) + (1 - aiy) * (0.75 - dist[1] * dist[1])) * (aiz * 0.5 * (1.5 - dist[2]) * (1.5 - dist[2]) + (1 - aiz) * (0.75 - dist[2] * dist[2]));
-                                        lvl = std::min(lvl, std::get<0>(elemsTsctmp[ic]).level());
-                                        if (lvl < ilvl) {
-                                            result = Data();
-                                            ix = iy = iz = one;
-                                        } else {
-                                            mac(result, std::get<1>(elemsTsctmp[ic]), weight);
-                                            ic++;
-                                        }
-                                    } else {
-                                        result = Data();
-                                        ix = iy = iz = one;
-                                    }
+                                lvl = std::min(lvl, std::get<0>(elemsTsctmp[ic]).level());
+                                if (lvl < ilvl) {
+                                    result = Data();
+                                    ix = iy = iz = one;
+                                } else {
+                                    mac(result, std::get<1>(elemsTsctmp[ic]), weight);
+                                    ic++;
                                 }
+                            } else {
+                                result = Data();
+                                ix = iy = iz = one;
                             }
-                        }
-                        if (27 == ic) {
-                            elemsTsc = elemsTsctmp;
                         }
                     }
                 }
-                if (lvl < ilvl) {
-                    elem = Element(Index::template compute<Type, Position, Extent>(lvl + 1, std::forward<Types>(iposs)...), Data());
-                    idx = std::get<0>(elem).parent();
-                    result = std::get<1>(elem);
-                    half = Type(Extent::num) / Type(Extent::den) * idx.extent() / two;
+                if (27 == ic) {
+                    elemsTsc = elemsTsctmp;
                 }
-            } while (lvl < ilvl);
-            return result;
-        }
+            }
+
+            if (lvl < ilvl) {
+                elem = Element(Index::template compute<Type, Position, Extent>(lvl + 1, std::forward<Types>(iposs)...), Data());
+                idx = std::get<0>(elem).parent();
+                result = std::get<1>(elem);
+                half = Type(Extent::num) / Type(Extent::den) * idx.extent() / two;
+            }
+        } while (lvl < ilvl);
+        return result;
     }
 
     //--------------------------------------------------------------------------- //
