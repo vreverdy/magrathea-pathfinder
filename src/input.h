@@ -76,243 +76,185 @@ class Input final {
     /// \name           Utilities
     //@{
 public:
-    static inline std::string trim(const std::string &text,
-                                   const std::string &comment = "#");
+    static inline std::string trim(const std::string& text,
+                                   const std::string& comment = "#");
     static inline std::pair<std::string, std::string>
-    partition(const std::string &text, const std::string &separator = "=");
-    template <class Octree, class Source,
-              class Data = typename std::tuple_element<
-                  1, decltype(Octree::element())>::type,
-              class Element = decltype(Source::element()),
-              class = typename std::enable_if<
-                  (Octree::dimension() == Source::dimension()) &&
-                  (std::is_integral<Data>::value)>::type>
-    static inline unsigned int count(Octree &octree, const Source &source);
-    template <class Octree, class Sphere, class Conic,
-              typename Type = decltype(Octree::type()),
-              class Element = decltype(Octree::element()),
-              class Index = typename std::tuple_element<0, Element>::type,
-              unsigned int Dimension = Octree::dimension(),
-              class Position = decltype(Octree::position()),
-              class Extent = decltype(Octree::extent()),
-              class = typename std::enable_if<
-                  (Dimension == 3) && (Dimension == Sphere::dimension())>::type>
-    static inline bool collide(const Octree &octree, const Index &index,
-                               const Sphere &sphere, const Conic &conic);
-    template <unsigned int Selection = 0, class Octree,
-              unsigned int Dimension = Octree::dimension(),
-              class Element = decltype(Octree::element()),
-              class Index = typename std::tuple_element<0, Element>::type,
-              class Data = typename std::tuple_element<1, Element>::type,
-              class Type = decltype(Data::template type<Selection>()),
-              class = typename std::enable_if<(Dimension == 3)>::type>
-    static inline Type mean(const Octree &octree, const Element &element,
-                            int level = -1);
-    template <unsigned int Selection = 0, class Octree,
-              unsigned int Dimension = Octree::dimension(),
-              class Element = decltype(Octree::element()),
-              class Index = typename std::tuple_element<0, Element>::type,
-              class Data = typename std::tuple_element<1, Element>::type,
-              class Type = decltype(Data::template type<Selection>()),
-              class = typename std::enable_if<(Dimension == 3)>::type>
-    static inline Data meanAll(const Octree &octree, const Element &element,
-                               int level = -1);
-    template <typename Type, class Cosmology = std::array<std::vector<double>, 4>,
-              class = typename std::enable_if<std::is_convertible<
-                  Type, typename std::remove_cv<typename std::remove_reference<
-                            decltype(std::declval<Cosmology>()[0][0])>::type>::
-                            type>::value>::type>
-    static inline Cosmology constantify(const unsigned int size, const Type tmin,
-                                        const Type tmax, const Type a = Type(1),
-                                        const Type dadt = Type(),
-                                        const Type d2adt2 = Type());
-    template <class Parameter, class Data, typename Type,
-              class = typename std::enable_if<Data::types() != 0>::type>
-    static inline Data sistemize(const Parameter &parameters, const Data &data,
-                                 const Type a, const Type h, const Type omegam,
-                                 const Type lboxmpch);
-    template <class Parameter, class Octree, typename Type,
-              class Element = decltype(Octree::element()),
-              class Data = typename std::tuple_element<1, Element>::type,
-              class = typename std::enable_if<(!std::is_void<Data>::value) &&
-                                              (Octree::dimension() != 0)>::type>
-    static inline unsigned int sistemize(const Parameter &parameters,
-                                         Octree &octree, const Type h,
-                                         const Type omegam, const Type lboxmpch);
-    template <class Data,
-              class = typename std::enable_if<Data::types() != 0>::type>
-    static inline Data homogenize(const Data &data);
-    template <class Octree, class... Dummy,
-              class Element = decltype(Octree::element()),
-              class Data = typename std::tuple_element<1, Element>::type,
-              class = typename std::enable_if<(!std::is_void<Data>::value) &&
-                                              (Octree::dimension() != 0) &&
-                                              (sizeof...(Dummy) == 0)>::type>
-    static inline unsigned int homogenize(Octree &octree, Dummy...);
-    template <
-        class Extent = std::ratio<1>, class Data, class Vector, typename Type,
-        unsigned int Dimension = 3,
-        class = typename std::enable_if<
-            (Data::types() != 0) &&
-            (std::is_convertible<
-                Type, typename std::remove_cv<typename std::remove_reference<
-                          decltype(std::declval<Vector>()[0])>::type>::type>::
-                 value)>::type>
-    static inline Data schwarzschildify(const Data &data, const Vector &center,
-                                        const Vector &position, const Type mass,
-                                        const Type length);
-    template <class Octree, class Vector, typename Type, class Function,
-              class... Dummy, class Element = decltype(Octree::element()),
-              unsigned int Dimension = Octree::dimension(),
-              class Extent = decltype(Octree::extent()),
-              class = typename std::enable_if<(sizeof...(Dummy) == 0) &&
-                                              (Dimension == 3)>::type>
+    partition(const std::string& text, const std::string& separator = "=");
+    template<class Octree, class Source, class Data = typename std::tuple_element<1, decltype(Octree::element())>::type, class Element = decltype(Source::element()), class = typename std::enable_if<(Octree::dimension() == Source::dimension()) && (std::is_integral<Data>::value)>::type>
+    static inline unsigned int count(Octree& octree, const Source& source);
+    template<class Octree, class Sphere, class Conic, typename Type = decltype(Octree::type()), class Element = decltype(Octree::element()), class Index = typename std::tuple_element<0, Element>::type, unsigned int Dimension = Octree::dimension(), class Position = decltype(Octree::position()), class Extent = decltype(Octree::extent()), class = typename std::enable_if<(Dimension == 3) && (Dimension == Sphere::dimension())>::type>
+    static inline bool collide(const Octree& octree, const Index& index, const Sphere& sphere, const Conic& conic);
+    template<unsigned int Selection = 0, class Octree, unsigned int Dimension = Octree::dimension(), class Element = decltype(Octree::element()), class Index = typename std::tuple_element<0, Element>::type, class Data = typename std::tuple_element<1, Element>::type, class Type = decltype(Data::template type<Selection>()), class = typename std::enable_if<(Dimension == 3)>::type>
+    static inline Type mean(const Octree& octree, const Element& element, int level = -1);
+    template<unsigned int Selection = 0, class Octree, unsigned int Dimension = Octree::dimension(), class Element = decltype(Octree::element()), class Index = typename std::tuple_element<0, Element>::type, class Data = typename std::tuple_element<1, Element>::type, class Type = decltype(Data::template type<Selection>()), class = typename std::enable_if<(Dimension == 3)>::type>
+    static inline Data meanAll(const Octree& octree, const Element& element, int level = -1);
+    template<typename Type, class Cosmology = std::array<std::vector<double>, 4>, class = typename std::enable_if<std::is_convertible<Type, typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Cosmology>()[0][0])>::type>::type>::value>::type>
+    static inline Cosmology constantify(const unsigned int size, const Type tmin, const Type tmax, const Type a = Type(1), const Type dadt = Type(), const Type d2adt2 = Type());
+    template<class Parameter, class Data, typename Type, class = typename std::enable_if<Data::types() != 0>::type>
+    static inline Data sistemize(const Parameter& parameters, const Data& data, const Type a, const Type h, const Type omegam, const Type lboxmpch);
+    template<class Parameter, class Octree, typename Type, class Element = decltype(Octree::element()), class Data = typename std::tuple_element<1, Element>::type, class = typename std::enable_if<(!std::is_void<Data>::value) && (Octree::dimension() != 0)>::type>
+    static inline unsigned int sistemize(const Parameter& parameters,
+                                         Octree& octree,
+                                         const Type h,
+                                         const Type omegam,
+                                         const Type lboxmpch);
+    template<class Data,
+             class = typename std::enable_if<Data::types() != 0>::type>
+    static inline Data homogenize(const Data& data);
+    template<class Octree, class... Dummy, class Element = decltype(Octree::element()), class Data = typename std::tuple_element<1, Element>::type, class = typename std::enable_if<(!std::is_void<Data>::value) && (Octree::dimension() != 0) && (sizeof...(Dummy) == 0)>::type>
+    static inline unsigned int homogenize(Octree& octree, Dummy...);
+    template<
+      class Extent = std::ratio<1>,
+      class Data,
+      class Vector,
+      typename Type,
+      unsigned int Dimension = 3,
+      class = typename std::enable_if<
+        (Data::types() != 0) &&
+        (std::is_convertible<
+          Type,
+          typename std::remove_cv<typename std::remove_reference<
+            decltype(std::declval<Vector>()[0])>::type>::type>::
+           value)>::type>
+    static inline Data schwarzschildify(const Data& data, const Vector& center, const Vector& position, const Type mass, const Type length);
+    template<class Octree, class Vector, typename Type, class Function, class... Dummy, class Element = decltype(Octree::element()), unsigned int Dimension = Octree::dimension(), class Extent = decltype(Octree::extent()), class = typename std::enable_if<(sizeof...(Dummy) == 0) && (Dimension == 3)>::type>
     static inline unsigned int
-    schwarzschildify(Octree &octree, const Vector &position, const Type mass,
-                     const Type length, Function &&refiner, Dummy...);
+    schwarzschildify(Octree& octree, const Vector& position, const Type mass, const Type length, Function&& refiner, Dummy...);
     //@}
 
     // Files
     /// \name           Files
     //@{
 public:
-    template <class Octree, class Element = decltype(Octree::element()),
-              class Index = typename std::tuple_element<0, Element>::type,
-              class Data = typename std::tuple_element<1, Element>::type,
-              unsigned int Dimension = Octree::dimension(),
-              class = typename std::enable_if<Dimension != 0>::type>
-    static unsigned int filetree(Octree &octree, const std::string &directory,
-                                 const std::string &format);
-    template <class List, class Octree, class Sphere, class Conic,
-              unsigned int Dimension = Octree::dimension(),
-              class = typename std::enable_if<
-                  (Dimension == 3) && (Dimension == Sphere::dimension())>::type>
-    static bool prepare(List &list, const Octree &octree, const Sphere &sphere,
-                        const Conic &conic);
+    template<class Octree, class Element = decltype(Octree::element()), class Index = typename std::tuple_element<0, Element>::type, class Data = typename std::tuple_element<1, Element>::type, unsigned int Dimension = Octree::dimension(), class = typename std::enable_if<Dimension != 0>::type>
+    static unsigned int filetree(Octree& octree, const std::string& directory, const std::string& format);
+    template<class List, class Octree, class Sphere, class Conic, unsigned int Dimension = Octree::dimension(), class = typename std::enable_if<(Dimension == 3) && (Dimension == Sphere::dimension())>::type>
+    static bool prepare(List& list, const Octree& octree, const Sphere& sphere, const Conic& conic);
     //@}
 
     // Data
     /// \name           Data
     //@{
 public:
-    template <
-        typename Integral = unsigned int, typename Real = float, class Parameter,
-        class Octree, class Function, class Element = decltype(Octree::element()),
-        class Index = typename std::tuple_element<0, Element>::type,
-        class Data = typename std::tuple_element<1, Element>::type,
-        unsigned int Dimension = Octree::dimension(),
-        class = typename std::enable_if<std::is_convertible<
-            typename std::result_of<Function(Element)>::type, bool>::value>::type>
-    static bool import(const Parameter &parameters, Octree &octree,
-                       const std::string &filename, Function &&filter);
+    template<
+      typename Integral = unsigned int,
+      typename Real = float,
+      class Parameter,
+      class Octree,
+      class Function,
+      class Element = decltype(Octree::element()),
+      class Index = typename std::tuple_element<0, Element>::type,
+      class Data = typename std::tuple_element<1, Element>::type,
+      unsigned int Dimension = Octree::dimension(),
+      class = typename std::enable_if<std::is_convertible<
+        typename std::result_of<Function(Element)>::type,
+        bool>::value>::type>
+    static bool import(const Parameter& parameters, Octree& octree, const std::string& filename, Function&& filter);
 
-    template <
-        typename Type, class Parameter,
-        class Cosmology = std::array<std::vector<Type>, 4>,
-        class Element = typename std::remove_cv<typename std::remove_reference<
-            decltype(std::declval<Cosmology>()[0])>::type>::type,
-        class = typename std::enable_if<std::is_convertible<
-            Element, typename std::remove_cv<typename std::remove_reference<
-                         decltype(std::declval<Cosmology>()[0])>::type>::type>::
-                                            value>::type>
-    static Cosmology acquire(const Parameter &parameters, Type &h, Type &omegam,
-                             Type &lboxmpch,
-                             const std::string &outfile = std::string());
+    template<
+      typename Type,
+      class Parameter,
+      class Cosmology = std::array<std::vector<Type>, 4>,
+      class Element = typename std::remove_cv<typename std::remove_reference<
+        decltype(std::declval<Cosmology>()[0])>::type>::type,
+      class = typename std::enable_if<std::is_convertible<
+        Element,
+        typename std::remove_cv<typename std::remove_reference<
+          decltype(std::declval<Cosmology>()[0])>::type>::type>::
+                                        value>::type>
+    static Cosmology acquire(const Parameter& parameters, Type& h, Type& omegam, Type& lboxmpch, const std::string& outfile = std::string());
 
-    template <
-        class Container = std::map<std::string, std::string>,
-        class Element = std::pair<std::string, std::string>,
-        class = typename std::enable_if<
-            (std::is_convertible<Container,
-                                 std::map<std::string, std::string>>::value) &&
-            (std::is_convertible<
-                Element, std::pair<std::string, std::string>>::value)>::type>
-    static Container parse(const std::string &filename,
-                           const std::string &separator = "=",
-                           const std::string &comment = "#");
+    template<
+      class Container = std::map<std::string, std::string>,
+      class Element = std::pair<std::string, std::string>,
+      class = typename std::enable_if<
+        (std::is_convertible<Container,
+                             std::map<std::string, std::string>>::value) &&
+        (std::is_convertible<
+          Element,
+          std::pair<std::string, std::string>>::value)>::type>
+    static Container parse(const std::string& filename,
+                           const std::string& separator = "=",
+                           const std::string& comment = "#");
 
-    template <
-        class Position, class Extent, typename Integral = unsigned int,
-        typename Real = float, class Parameter, class Conic, class Octree,
-        class Function, class Element = decltype(Octree::element()),
-        class Index = typename std::tuple_element<0, Element>::type,
-        class Data = typename std::tuple_element<1, Element>::type,
-        unsigned int Dimension = Octree::dimension(),
-        class = typename std::enable_if<std::is_convertible<
-            typename std::result_of<Function(Element)>::type, bool>::value>::type>
-    static bool importhdf5(const Parameter &parameters, unsigned int &rank,
-                           const std::array<std::array<double, 3>, 3> &rotm1,
-                           const double &thetay, const double &thetaz,
-                           const Conic &conic, Octree &octree,
-                           const std::string &filename, Function &&filter);
+    template<
+      class Position,
+      class Extent,
+      typename Integral = unsigned int,
+      typename Real = float,
+      class Parameter,
+      class Conic,
+      class Octree,
+      class Function,
+      class Element = decltype(Octree::element()),
+      class Index = typename std::tuple_element<0, Element>::type,
+      class Data = typename std::tuple_element<1, Element>::type,
+      unsigned int Dimension = Octree::dimension(),
+      class = typename std::enable_if<std::is_convertible<
+        typename std::result_of<Function(Element)>::type,
+        bool>::value>::type>
+    static bool importhdf5(const Parameter& parameters, unsigned int& rank, const std::array<std::array<double, 3>, 3>& rotm1, const double& thetay, const double& thetaz, const Conic& conic, Octree& octree, const std::string& filename, Function&& filter);
 
-    template <
-        class Position, class Extent, typename Integral = unsigned int,
-        typename Real = float, class Parameter, class Octree, class Function,
-        class Element = decltype(Octree::element()),
-        class Index = typename std::tuple_element<0, Element>::type,
-        class Data = typename std::tuple_element<1, Element>::type,
-        unsigned int Dimension = Octree::dimension(),
-        class = typename std::enable_if<std::is_convertible<
-            typename std::result_of<Function(Element)>::type, bool>::value>::type>
-    static bool importfullhdf5(const Parameter &parameters, Octree &octree,
-                               const std::string &filename, Function &&filter);
+    template<
+      class Position,
+      class Extent,
+      typename Integral = unsigned int,
+      typename Real = float,
+      class Parameter,
+      class Octree,
+      class Function,
+      class Element = decltype(Octree::element()),
+      class Index = typename std::tuple_element<0, Element>::type,
+      class Data = typename std::tuple_element<1, Element>::type,
+      unsigned int Dimension = Octree::dimension(),
+      class = typename std::enable_if<std::is_convertible<
+        typename std::result_of<Function(Element)>::type,
+        bool>::value>::type>
+    static bool importfullhdf5(const Parameter& parameters, Octree& octree, const std::string& filename, Function&& filter);
 
-    template <
-        class Position, class Extent, typename Integral = unsigned int,
-        typename Real = float, class Parameter, class Octree, class Function,
-        class Element = decltype(Octree::element()),
-        class Index = typename std::tuple_element<0, Element>::type,
-        class Data = typename std::tuple_element<1, Element>::type,
-        unsigned int Dimension = Octree::dimension(),
-        class = typename std::enable_if<std::is_convertible<
-            typename std::result_of<Function(Element)>::type, bool>::value>::type>
-    static bool importascii(const Parameter &parameters,
-                            const std::array<std::array<double, 3>, 3> &rotm1,
-                            Octree &octree, const std::string &filename,
-                            Function &&filter);
+    template<
+      class Position,
+      class Extent,
+      typename Integral = unsigned int,
+      typename Real = float,
+      class Parameter,
+      class Octree,
+      class Function,
+      class Element = decltype(Octree::element()),
+      class Index = typename std::tuple_element<0, Element>::type,
+      class Data = typename std::tuple_element<1, Element>::type,
+      unsigned int Dimension = Octree::dimension(),
+      class = typename std::enable_if<std::is_convertible<
+        typename std::result_of<Function(Element)>::type,
+        bool>::value>::type>
+    static bool importascii(const Parameter& parameters,
+                            const std::array<std::array<double, 3>, 3>& rotm1,
+                            Octree& octree,
+                            const std::string& filename,
+                            Function&& filter);
     //@}
 
     // Cones
     /// \name           Cones
     //@{
 public:
-    template <class Octree,
-              class = typename std::enable_if<Octree::dimension() != 0>::type>
-    static bool save(Octree &octree, const std::string &filename);
-    template <class Octree,
-              class = typename std::enable_if<Octree::dimension() != 0>::type>
-    static bool load(Octree &octree, const std::string &filename);
+    template<class Octree,
+             class = typename std::enable_if<Octree::dimension() != 0>::type>
+    static bool save(Octree& octree, const std::string& filename);
+    template<class Octree,
+             class = typename std::enable_if<Octree::dimension() != 0>::type>
+    static bool load(Octree& octree, const std::string& filename);
     //@}
 
     // Correction
     /// \name           Correction
     //@{
 public:
-    template <class Cosmology, class Trajectory,
-              class Type = typename std::remove_cv<typename std::remove_reference<
-                  decltype(std::declval<typename std::tuple_element<
-                               0, Cosmology>::type>()[0])>::type>::type,
-              class = typename std::enable_if<std::is_convertible<
-                  Type, typename std::remove_cv<typename std::remove_reference<
-                            decltype(std::declval<typename std::tuple_element<
-                                         0, Cosmology>::type>()[0])>::type>::
-                            type>::value>::type>
-    static Cosmology correct(const Cosmology &cosmology,
-                             const Trajectory &trajectory);
-    template <class Parameter, int Check = 0,
-              unsigned int Selection = Check *(Check >= 0), class Octree,
-              typename Kind = double,
-              unsigned int Dimension = Octree::dimension(),
-              class Element = decltype(Octree::element()),
-              class Index = typename std::tuple_element<0, Element>::type,
-              class Data = typename std::tuple_element<1, Element>::type,
-              class Type = decltype(Data::template type<Selection>()),
-              class Position = decltype(Octree::position()),
-              class Extent = decltype(Octree::extent()),
-              class = typename std::enable_if<(Dimension == 3)>::type>
-    static Octree &correct(const Parameter &parameters, Octree &octree,
-                           Kind &&amin = Kind());
+    template<class Cosmology, class Trajectory, class Type = typename std::remove_cv<typename std::remove_reference<decltype(std::declval<typename std::tuple_element<0, Cosmology>::type>()[0])>::type>::type, class = typename std::enable_if<std::is_convertible<Type, typename std::remove_cv<typename std::remove_reference<decltype(std::declval<typename std::tuple_element<0, Cosmology>::type>()[0])>::type>::type>::value>::type>
+    static Cosmology correct(const Cosmology& cosmology,
+                             const Trajectory& trajectory);
+    template<class Parameter, int Check = 0, unsigned int Selection = Check * (Check >= 0), class Octree, typename Kind = double, unsigned int Dimension = Octree::dimension(), class Element = decltype(Octree::element()), class Index = typename std::tuple_element<0, Element>::type, class Data = typename std::tuple_element<1, Element>::type, class Type = decltype(Data::template type<Selection>()), class Position = decltype(Octree::position()), class Extent = decltype(Octree::extent()), class = typename std::enable_if<(Dimension == 3)>::type>
+    static Octree& correct(const Parameter& parameters, Octree& octree, Kind&& amin = Kind());
     //@}
 
     // Test
@@ -332,27 +274,25 @@ public:
 /// \param[in]      text Input text.
 /// \param[in]      comment Comment string.
 /// \return         Trimmed string.
-inline std::string Input::trim(const std::string &text,
-                               const std::string &comment) {
+inline std::string
+Input::trim(const std::string& text,
+            const std::string& comment) {
     std::string result = text;
     result.erase((result.find(comment) == std::string::npos)
-                     ? (result.end())
-                     : (result.begin() + result.find(comment)),
+                   ? (result.end())
+                   : (result.begin() + result.find(comment)),
                  result.end());
     result.erase(result.begin(),
-                 std::find_if(std::execution::par_unseq, result.begin(), result.end(),
-                              [](const char c) { return std::isgraph(c); }));
+                 std::find_if(std::execution::par_unseq, result.begin(), result.end(), [](const char c) { return std::isgraph(c); }));
     result.erase(result.end() -
-                     std::distance(result.rbegin(),
-                                   std::find_if(result.rbegin(), result.rend(),
-                                                [](const char c) {
-                                                    return std::isgraph(c);
-                                                })),
+                   std::distance(result.rbegin(),
+                                 std::find_if(result.rbegin(), result.rend(), [](const char c) {
+                                     return std::isgraph(c);
+                                 })),
                  result.end());
-    result.erase(std::unique(std::execution::par_unseq, result.begin(), result.end(),
-                             [](const char x, const char y) {
-                                 return ((std::isspace(x)) && (std::isspace(y)));
-                             }),
+    result.erase(std::unique(std::execution::par_unseq, result.begin(), result.end(), [](const char x, const char y) {
+                     return ((std::isspace(x)) && (std::isspace(y)));
+                 }),
                  result.end());
     return result;
 }
@@ -365,14 +305,14 @@ inline std::string Input::trim(const std::string &text,
 /// \param[in]      separator Separator string.
 /// \return         Partitioned string.
 inline std::pair<std::string, std::string>
-Input::partition(const std::string &text, const std::string &separator) {
+Input::partition(const std::string& text, const std::string& separator) {
     return (text.find(separator) == std::string::npos)
-               ? (std::make_pair(text, std::string()))
-               : (std::make_pair(std::string(text.begin(),
-                                             text.begin() + text.find(separator)),
-                                 std::string(text.begin() + text.find(separator) +
-                                                 separator.size(),
-                                             text.end())));
+             ? (std::make_pair(text, std::string()))
+             : (std::make_pair(std::string(text.begin(),
+                                           text.begin() + text.find(separator)),
+                               std::string(text.begin() + text.find(separator) +
+                                             separator.size(),
+                                           text.end())));
 }
 
 // Count tree
@@ -385,12 +325,12 @@ Input::partition(const std::string &text, const std::string &separator) {
 /// \param[in]      octree Output octree.
 /// \param[in]      source Input octree.
 /// \return         Octree with count of input cells per output cell.
-template <class Octree, class Source, class Data, class Element, class>
-inline unsigned int Input::count(Octree &octree, const Source &source) {
-    std::for_each(source.begin(), source.end(),
-                  [=, &octree](const Element &elem) {
-                      ++std::get<1>(*(octree.find(std::get<0>(elem))));
-                  });
+template<class Octree, class Source, class Data, class Element, class>
+inline unsigned int
+Input::count(Octree& octree, const Source& source) {
+    std::for_each(source.begin(), source.end(), [=, &octree](const Element& elem) {
+        ++std::get<1>(*(octree.find(std::get<0>(elem))));
+    });
     return octree.size();
 }
 
@@ -412,15 +352,13 @@ inline unsigned int Input::count(Octree &octree, const Source &source) {
 /// \param[in]      sphere Geometrical sphere.
 /// \param[in]      cone Three dimensional cone.
 /// \return         True if collision, false otherwise.
-template <class Octree, class Sphere, class Conic, typename Type, class Element,
-          class Index, unsigned int Dimension, class Position, class Extent,
-          class>
-inline bool Input::collide(const Octree &octree, const Index &index,
-                           const Sphere &sphere, const Conic &conic) {
+template<class Octree, class Sphere, class Conic, typename Type, class Element, class Index, unsigned int Dimension, class Position, class Extent, class>
+inline bool
+Input::collide(const Octree& octree, const Index& index, const Sphere& sphere, const Conic& conic) {
     Sphere spherified = Sphere();
     for (unsigned int idim = 0; idim < Dimension; ++idim) {
         spherified.position(idim) =
-            index.template position<Type, Position, Extent>(idim);
+          index.template position<Type, Position, Extent>(idim);
     }
 
     spherified.extent() = index.template extent<Type, Position, Extent>() *
@@ -446,21 +384,19 @@ inline bool Input::collide(const Octree &octree, const Index &index,
 /// \param[in]      element Input element.
 /// \param[in]      level Cell level for computation.
 /// \return         Averaged value.
-template <unsigned int Selection, class Octree, unsigned int Dimension,
-          class Element, class Index, class Data, class Type, class>
-inline Type Input::mean(const Octree &octree, const Element &element,
-                        int level) {
+template<unsigned int Selection, class Octree, unsigned int Dimension, class Element, class Index, class Data, class Type, class>
+inline Type
+Input::mean(const Octree& octree, const Element& element, int level) {
     static const int zero = 0;
     static const int one = 1;
     static const int two = 2;
     const unsigned int size = octree.size();
     const Index index =
-        ((std::get<0>(element).level() > zero) &&
-         (static_cast<int>(std::get<0>(element).level()) > level))
-            ? (std::get<0>(element).previous(
-                  zero, (level < zero) ? (std::get<0>(element).level() - one)
-                                       : (level)))
-            : (std::get<0>(element));
+      ((std::get<0>(element).level() > zero) &&
+       (static_cast<int>(std::get<0>(element).level()) > level))
+        ? (std::get<0>(element).previous(
+            zero, (level < zero) ? (std::get<0>(element).level() - one) : (level)))
+        : (std::get<0>(element));
     const unsigned int lvl = index.level();
     const unsigned long long int nx = index.coordinate(zero);
     const unsigned long long int ny = index.coordinate(one);
@@ -475,12 +411,12 @@ inline Type Input::mean(const Octree &octree, const Element &element,
                 if (!((ix == zero) && (iy == zero) && (iz == zero))) {
                     // Find the cell in the octree
                     n = std::distance(
-                        octree.begin(),
-                        octree.find(Index::make(lvl, nx + ix, ny + iy, nz + iz)));
+                      octree.begin(),
+                      octree.find(Index::make(lvl, nx + ix, ny + iy, nz + iz)));
                     if (n < size) {
                         // Check if value of neighbour is normal
                         if (std::isnormal(
-                                std::get<1>(octree[n]).template data<Selection>())) {
+                              std::get<1>(octree[n]).template data<Selection>())) {
                             result += std::get<1>(octree[n]).template data<Selection>();
                             ++count;
                         }
@@ -507,21 +443,19 @@ inline Type Input::mean(const Octree &octree, const Element &element,
 /// \param[in]      element Input element.
 /// \param[in]      level Cell level for computation.
 /// \return         Averaged value of tuple.
-template <unsigned int Selection, class Octree, unsigned int Dimension,
-          class Element, class Index, class Data, class Type, class>
-inline Data Input::meanAll(const Octree &octree, const Element &element,
-                           int level) {
+template<unsigned int Selection, class Octree, unsigned int Dimension, class Element, class Index, class Data, class Type, class>
+inline Data
+Input::meanAll(const Octree& octree, const Element& element, int level) {
     static const int zero = 0;
     static const int one = 1;
     static const int two = 2;
     const unsigned int size = octree.size();
     const Index index =
-        ((std::get<0>(element).level() > zero) &&
-         (static_cast<int>(std::get<0>(element).level()) > level))
-            ? (std::get<0>(element).previous(
-                  zero, (level < zero) ? (std::get<0>(element).level() - one)
-                                       : (level)))
-            : (std::get<0>(element));
+      ((std::get<0>(element).level() > zero) &&
+       (static_cast<int>(std::get<0>(element).level()) > level))
+        ? (std::get<0>(element).previous(
+            zero, (level < zero) ? (std::get<0>(element).level() - one) : (level)))
+        : (std::get<0>(element));
     const unsigned int lvl = index.level();
     const unsigned long long int nx = index.coordinate(zero);
     const unsigned long long int ny = index.coordinate(one);
@@ -536,12 +470,12 @@ inline Data Input::meanAll(const Octree &octree, const Element &element,
                 if (!((ix == zero) && (iy == zero) && (iz == zero))) {
                     // Find the cell in the octree
                     n = std::distance(
-                        octree.begin(),
-                        octree.find(Index::make(lvl, nx + ix, ny + iy, nz + iz)));
+                      octree.begin(),
+                      octree.find(Index::make(lvl, nx + ix, ny + iy, nz + iz)));
                     if (n < size) {
                         // Check if value of neighbour is normal
                         if (std::isnormal(
-                                std::get<1>(octree[n]).template data<Selection>())) {
+                              std::get<1>(octree[n]).template data<Selection>())) {
                             // Sum tuple of values
                             octree.mac(result, std::get<1>(octree[n]), 1);
                             ++count;
@@ -567,12 +501,11 @@ inline Data Input::meanAll(const Octree &octree, const Element &element,
 /// \param[in]      dadt Value of the first derivative of the scale factor.
 /// \param[in]      d2adt2 Value of the second derivative of the scale factor.
 /// \return         Constant cosmology.
-template <typename Type, class Cosmology, class>
-inline Cosmology Input::constantify(const unsigned int size, const Type tmin,
-                                    const Type tmax, const Type a,
-                                    const Type dadt, const Type d2adt2) {
+template<typename Type, class Cosmology, class>
+inline Cosmology
+Input::constantify(const unsigned int size, const Type tmin, const Type tmax, const Type a, const Type dadt, const Type d2adt2) {
     const std::array<Type, 4> values =
-        std::array<Type, 4>({{tmin, a, dadt, d2adt2}});
+      std::array<Type, 4>({ { tmin, a, dadt, d2adt2 } });
     Cosmology result = Cosmology();
     Utility::parallelize(result.size(),
                          [=, &result, &size, &values](const unsigned int i) {
@@ -581,7 +514,7 @@ inline Cosmology Input::constantify(const unsigned int size, const Type tmin,
     Utility::parallelize(std::get<0>(result).size(),
                          [=, &result, &size, &tmin, &tmax](const unsigned int i) {
                              std::get<0>(result)[i] +=
-                                 Type(i) * (tmax - tmin) / Type(size - (size > 0));
+                               Type(i) * (tmax - tmin) / Type(size - (size > 0));
                          });
     return result;
 }
@@ -600,12 +533,11 @@ inline Cosmology Input::constantify(const unsigned int size, const Type tmin,
 /// \param[in]      rhoch2 Value of critical density times h squared in SI
 ///                 units.
 /// \return         Data in SI units.
-template <class Parameter, class Data, typename Type, class>
-inline Data Input::sistemize(const Parameter &parameters, const Data &data,
-                             const Type a, const Type h, const Type omegam,
-                             const Type lboxmpch) {
+template<class Parameter, class Data, typename Type, class>
+inline Data
+Input::sistemize(const Parameter& parameters, const Data& data, const Type a, const Type h, const Type omegam, const Type lboxmpch) {
     const Type t =
-        Type(a * a * parameters.mpc) / Type(h * std::hecto::num * std::kilo::num);
+      Type(a * a * parameters.mpc) / Type(h * std::hecto::num * std::kilo::num);
     const Type l = Type(a * lboxmpch * parameters.mpc) / Type(h);
     Data result = data;
     result.phi() *= (l * l) / (t * t);
@@ -631,17 +563,17 @@ inline Data Input::sistemize(const Parameter &parameters, const Data &data,
 /// \param[in]      rhoch2 Value of critical density times h squared in SI
 ///                 units.
 /// \return         Octree in SI units.
-template <class Parameter, class Octree, typename Type, class Element,
-          class Data, class>
-inline unsigned int Input::sistemize(const Parameter &parameters,
-                                     Octree &octree, const Type h,
-                                     const Type omegam, const Type lboxmpch) {
-    std::for_each(std::execution::par_unseq, octree.begin(), octree.end(),
-        [&](Element &element) {
-            std::get<1>(element) =
-                sistemize(parameters, std::get<1>(element),
-                          Type(std::get<1>(element).a()), h, omegam, lboxmpch);
-        });
+template<class Parameter, class Octree, typename Type, class Element, class Data, class>
+inline unsigned int
+Input::sistemize(const Parameter& parameters,
+                 Octree& octree,
+                 const Type h,
+                 const Type omegam,
+                 const Type lboxmpch) {
+    std::for_each(std::execution::par_unseq, octree.begin(), octree.end(), [&](Element& element) {
+        std::get<1>(element) =
+          sistemize(parameters, std::get<1>(element), Type(std::get<1>(element).a()), h, omegam, lboxmpch);
+    });
     return octree.size();
 }
 
@@ -651,8 +583,9 @@ inline unsigned int Input::sistemize(const Parameter &parameters,
 /// \tparam         Data Data type.
 /// \param[in]      data Input data.
 /// \return         Homogeneous empty data.
-template <class Data, class>
-inline Data Input::homogenize(const Data &data) {
+template<class Data, class>
+inline Data
+Input::homogenize(const Data& data) {
     thread_local const Data zero = Data();
     Data result = data;
     result.rho() = zero.rho();
@@ -662,7 +595,7 @@ inline Data Input::homogenize(const Data &data) {
     result.dphidz() = zero.dphidz();
     result.dphidt() = zero.dphidt();
     result.a() =
-        (result.a() != zero.a()) ? (result.a()) : (!(result.a() != zero.a()));
+      (result.a() != zero.a()) ? (result.a()) : (!(result.a() != zero.a()));
     return result;
 }
 
@@ -676,9 +609,10 @@ inline Data Input::homogenize(const Data &data) {
 /// \tparam         Data Data type.
 /// \param[in,out]  octree Octree of data.
 /// \return         Homogeneous empty octree.
-template <class Octree, class... Dummy, class Element, class Data, class>
-inline unsigned int Input::homogenize(Octree &octree, Dummy...) {
-    std::for_each(std::execution::par_unseq, octree.begin(), octree.end(), [](Element &element) {
+template<class Octree, class... Dummy, class Element, class Data, class>
+inline unsigned int
+Input::homogenize(Octree& octree, Dummy...) {
+    std::for_each(std::execution::par_unseq, octree.begin(), octree.end(), [](Element& element) {
         std::get<1>(element) = homogenize(std::get<1>(element));
     });
     return octree.size();
@@ -698,11 +632,9 @@ inline unsigned int Input::homogenize(Octree &octree, Dummy...) {
 /// \param[in]      mass Mass in SI units.
 /// \param[in]      length Spatial length in SI units.
 /// \return         Schwarzschild data.
-template <class Extent, class Data, class Vector, typename Type,
-          unsigned int Dimension, class>
-inline Data Input::schwarzschildify(const Data &data, const Vector &center,
-                                    const Vector &position, const Type mass,
-                                    const Type length) {
+template<class Extent, class Data, class Vector, typename Type, unsigned int Dimension, class>
+inline Data
+Input::schwarzschildify(const Data& data, const Vector& center, const Vector& position, const Type mass, const Type length) {
     static const Type extent = Type(Extent::num) / Type(Extent::den);
     static const Type null = Type();
     thread_local const Data zero = Data();
@@ -718,7 +650,7 @@ inline Data Input::schwarzschildify(const Data &data, const Vector &center,
     result.dphidy() = (d > null) ? ((gm / (d * d)) * (v[1] / r)) : (null);
     result.dphidz() = (d > null) ? ((gm / (d * d)) * (v[2] / r)) : (null);
     result.a() =
-        (result.a() != zero.a()) ? (result.a()) : (!(result.a() != zero.a()));
+      (result.a() != zero.a()) ? (result.a()) : (!(result.a() != zero.a()));
     return result;
 }
 
@@ -742,33 +674,33 @@ inline Data Input::schwarzschildify(const Data &data, const Vector &center,
 ///                 arguments and returning true when a refinement should be
 ///                 triggered
 /// \return         Schwarzschild octree.
-template <class Octree, class Vector, typename Type, class Function,
-          class... Dummy, class Element, unsigned int Dimension, class Extent,
-          class>
+template<class Octree, class Vector, typename Type, class Function, class... Dummy, class Element, unsigned int Dimension, class Extent, class>
 inline unsigned int
-Input::schwarzschildify(Octree &octree, const Vector &position, const Type mass,
-                        const Type length, Function &&refiner, Dummy...) {
+Input::schwarzschildify(Octree& octree, const Vector& position, const Type mass, const Type length, Function&& refiner, Dummy...) {
     unsigned int size = octree.size();
     std::vector<unsigned char> refine(size);
     do {
         size = octree.size();
         std::for_each(std::execution::par_unseq,
-            octree.begin(), octree.end(),
-            [&](Element &element) {
-                std::get<1>(element) = schwarzschildify<Extent>(
-                    std::get<1>(element),
-                    std::array<Type, Dimension>({{std::get<0>(element).position(0),
-                                                  std::get<0>(element).position(1),
-                                                  std::get<0>(element).position(2)}}),
-                    position, mass, length);
-            });
+                      octree.begin(),
+                      octree.end(),
+                      [&](Element& element) {
+                          std::get<1>(element) = schwarzschildify<Extent>(
+                            std::get<1>(element),
+                            std::array<Type, Dimension>({ { std::get<0>(element).position(0),
+                                                            std::get<0>(element).position(1),
+                                                            std::get<0>(element).position(2) } }),
+                            position,
+                            mass,
+                            length);
+                      });
         refine.resize(size);
         Utility::parallelize(size, [&](const unsigned int i) {
             refine[i] =
-                ((octree.leaf(octree.begin() + i)) &&
-                 (std::get<0>(octree[i]).level() <
-                  std::get<0>(octree[i]).refinements()) &&
-                 (refiner(std::get<1>(octree[i]), std::get<0>(octree[i]).level())));
+              ((octree.leaf(octree.begin() + i)) &&
+               (std::get<0>(octree[i]).level() <
+                std::get<0>(octree[i]).refinements()) &&
+               (refiner(std::get<1>(octree[i]), std::get<0>(octree[i]).level())));
         });
         for (unsigned int irefine = 0; irefine < size; ++irefine) {
             if (refine[irefine]) {
@@ -778,14 +710,18 @@ Input::schwarzschildify(Octree &octree, const Vector &position, const Type mass,
         octree.update();
     } while (size < octree.size());
     std::for_each(std::execution::par_unseq,
-        octree.begin(), octree.end(), [&](Element &element) {
-            std::get<1>(element) = schwarzschildify<Extent>(
-                std::get<1>(element),
-                std::array<Type, Dimension>({{std::get<0>(element).position(0),
-                                              std::get<0>(element).position(1),
-                                              std::get<0>(element).position(2)}}),
-                position, mass, length);
-        });
+                  octree.begin(),
+                  octree.end(),
+                  [&](Element& element) {
+                      std::get<1>(element) = schwarzschildify<Extent>(
+                        std::get<1>(element),
+                        std::array<Type, Dimension>({ { std::get<0>(element).position(0),
+                                                        std::get<0>(element).position(1),
+                                                        std::get<0>(element).position(2) } }),
+                        position,
+                        mass,
+                        length);
+                  });
     return octree.size();
 }
 // -------------------------------------------------------------------------- //
@@ -804,16 +740,13 @@ Input::schwarzschildify(Octree &octree, const Vector &position, const Type mass,
 /// \param[in]      directory Input directory.
 /// \param[in]      format Input file format.
 /// \return         Number of detected files.
-template <class Octree, class Element, class Index, class Data,
-          unsigned int Dimension, class>
-unsigned int Input::filetree(Octree &octree, const std::string &directory,
-                             const std::string &format) {
+template<class Octree, class Element, class Index, class Data, unsigned int Dimension, class>
+unsigned int
+Input::filetree(Octree& octree, const std::string& directory, const std::string& format) {
     // Initialization
     const bool zeroth = magrathea::FileList(format, 0, 1, 0, directory).count();
     const bool first = magrathea::FileList(format, 0, 1, 1, directory).count();
-    magrathea::FileList list(format, 0,
-                             std::numeric_limits<int>::max() * (zeroth || first),
-                             (!zeroth) && (first), directory);
+    magrathea::FileList list(format, 0, std::numeric_limits<int>::max() * (zeroth || first), (!zeroth) && (first), directory);
     unsigned int level = 0;
     unsigned int current = 0;
     unsigned int size = 0;
@@ -863,10 +796,9 @@ unsigned int Input::filetree(Octree &octree, const std::string &directory,
 /// \param[in]      cone Three dimensional cone.
 /// \return         True if some files have been added to the list, false
 ///                 otherwise.
-template <class List, class Octree, class Sphere, class Conic,
-          unsigned int Dimension, class>
-bool Input::prepare(List &list, const Octree &octree, const Sphere &sphere,
-                    const Conic &conic) {
+template<class List, class Octree, class Sphere, class Conic, unsigned int Dimension, class>
+bool
+Input::prepare(List& list, const Octree& octree, const Sphere& sphere, const Conic& conic) {
     // Initialization
     const unsigned int size = octree.size();
     const unsigned int original = list.size();
@@ -875,16 +807,15 @@ bool Input::prepare(List &list, const Octree &octree, const Sphere &sphere,
 
     // Compute files to be read
     Utility::parallelize(
-        size, [=, &octree, &sphere, &conic, &selection](const unsigned int i) {
-            selection[i] =
-                (std::get<1>(octree[i]).empty())
-                    ? (0)
-                    : (collide(octree, std::get<0>(octree[i]), sphere, conic));
-        });
+      size, [=, &octree, &sphere, &conic, &selection](const unsigned int i) {
+          selection[i] =
+            (std::get<1>(octree[i]).empty())
+              ? (0)
+              : (collide(octree, std::get<0>(octree[i]), sphere, conic));
+      });
     list.resize(std::reduce(std::execution::par_unseq, selection.begin(), selection.end(), original));
-        
-    std::for_each(selection.begin(), selection.end(),
-                  [=, &n](unsigned int &i) { i = i ? ++n : i; });
+
+    std::for_each(selection.begin(), selection.end(), [=, &n](unsigned int& i) { i = i ? ++n : i; });
     Utility::parallelize(size,
                          [=, &list, &octree, &selection](const unsigned int i) {
                              if (selection[i])
@@ -918,11 +849,9 @@ bool Input::prepare(List &list, const Octree &octree, const Sphere &sphere,
 /// \param[in]      filename Input file name.
 /// \param[in]      filter Filtering algorithm of cells.
 /// \return         True on success, false on error.
-template <typename Integral, typename Real, class Parameter, class Octree,
-          class Function, class Element, class Index, class Data,
-          unsigned int Dimension, class>
-bool Input::import(const Parameter &parameters, Octree &octree,
-                   const std::string &filename, Function &&filter) {
+template<typename Integral, typename Real, class Parameter, class Octree, class Function, class Element, class Index, class Data, unsigned int Dimension, class>
+bool
+Input::import(const Parameter& parameters, Octree& octree, const std::string& filename, Function&& filter) {
     // Initialization
     Integral record = Integral();
     Integral cube = Integral();
@@ -946,8 +875,7 @@ bool Input::import(const Parameter &parameters, Octree &octree,
         // Read level count
         magrathea::DataHandler::read(stream, record);
         count.resize(record / sizeof(Integral));
-        magrathea::DataHandler::rread(stream, count.data(),
-                                      count.data() + count.size());
+        magrathea::DataHandler::rread(stream, count.data(), count.data() + count.size());
         magrathea::DataHandler::read(stream, record);
 
         // Read cube number
@@ -962,8 +890,8 @@ bool Input::import(const Parameter &parameters, Octree &octree,
 
         // Loop over levels
         const unsigned int levelmax = parameters.coarseonly
-                                          ? parameters.ncoarse + 1
-                                          : parameters.ncoarse + count.size();
+                                        ? parameters.ncoarse + 1
+                                        : parameters.ncoarse + count.size();
         for (unsigned int ilevel = parameters.ncoarse; ilevel < levelmax;
              ++ilevel) {
 
@@ -980,8 +908,7 @@ bool Input::import(const Parameter &parameters, Octree &octree,
 
             // Read center
             magrathea::DataHandler::read(stream, record);
-            magrathea::DataHandler::rread(stream, center.data(),
-                                          center.data() + center.size());
+            magrathea::DataHandler::rread(stream, center.data(), center.data() + center.size());
             magrathea::DataHandler::read(stream, record);
 
             // Thread management
@@ -995,8 +922,7 @@ bool Input::import(const Parameter &parameters, Octree &octree,
 
             // Read force
             magrathea::DataHandler::read(stream, record);
-            magrathea::DataHandler::rread(stream, force.data(),
-                                          force.data() + force.size());
+            magrathea::DataHandler::rread(stream, force.data(), force.data() + force.size());
             magrathea::DataHandler::read(stream, record);
 
             // Read a
@@ -1006,59 +932,45 @@ bool Input::import(const Parameter &parameters, Octree &octree,
 
             // Read phi
             magrathea::DataHandler::read(stream, record);
-            magrathea::DataHandler::rread(stream, phi.data(),
-                                          phi.data() + phi.size());
+            magrathea::DataHandler::rread(stream, phi.data(), phi.data() + phi.size());
             magrathea::DataHandler::read(stream, record);
 
             // Read rho
             magrathea::DataHandler::read(stream, record);
-            magrathea::DataHandler::rread(stream, rho.data(),
-                                          rho.data() + rho.size());
+            magrathea::DataHandler::rread(stream, rho.data(), rho.data() + rho.size());
             magrathea::DataHandler::read(stream, record);
 
             // Read son
             magrathea::DataHandler::read(stream, record);
-            magrathea::DataHandler::rread(stream, son.data(),
-                                          son.data() + son.size());
+            magrathea::DataHandler::rread(stream, son.data(), son.data() + son.size());
             magrathea::DataHandler::read(stream, record);
 
             // Selection
             thread.join();
             std::for_each(std::execution::par_unseq,
-                index.begin(), index.end(),
-                [&](Integral &i) {
-                    selection[i] = filter(
-                        Element(Index::compute(ilevel, center[Dimension * i],
-                                               center[Dimension * i + 1],
-                                               center[Dimension * i + 2]),
-                                Data(rho[i], phi[i],
-                                     std::array<Real, 3>({{force[Dimension * i],
-                                                           force[Dimension * i + 1],
-                                                           force[Dimension * i + 2]}}),
-                                     a[i])));
-                });
+                          index.begin(),
+                          index.end(),
+                          [&](Integral& i) {
+                              selection[i] = filter(
+                                Element(Index::compute(ilevel, center[Dimension * i], center[Dimension * i + 1], center[Dimension * i + 2]),
+                                        Data(rho[i], phi[i], std::array<Real, 3>({ { force[Dimension * i], force[Dimension * i + 1], force[Dimension * i + 2] } }), a[i])));
+                          });
 
             // Destination
             n = octree.size();
             size = std::reduce(std::execution::par_unseq, selection.begin(), selection.end(), n);
             thread = std::thread([=, &octree, &size]() { octree.resize(size); });
-            std::for_each(selection.begin(), selection.end(),
-                          [=, &n](Integral &i) { i = i ? ++n : i; });
+            std::for_each(selection.begin(), selection.end(), [=, &n](Integral& i) { i = i ? ++n : i; });
             thread.join();
             std::for_each(std::execution::par_unseq,
-                index.begin(), index.end(),
-                [&](Integral &i) {
-                    if (selection[i])
-                        octree[selection[i] - 1] = Element(
-                            Index::compute(ilevel, center[Dimension * i],
-                                           center[Dimension * i + 1],
-                                           center[Dimension * i + 2]),
-                            Data(rho[i], phi[i],
-                                 std::array<Real, 3>(
-                                     {{force[Dimension * i], force[Dimension * i + 1],
-                                       force[Dimension * i + 2]}}),
-                                 a[i]));
-                });
+                          index.begin(),
+                          index.end(),
+                          [&](Integral& i) {
+                              if (selection[i])
+                                  octree[selection[i] - 1] = Element(
+                                    Index::compute(ilevel, center[Dimension * i], center[Dimension * i + 1], center[Dimension * i + 2]),
+                                    Data(rho[i], phi[i], std::array<Real, 3>({ { force[Dimension * i], force[Dimension * i + 1], force[Dimension * i + 2] } }), a[i]));
+                          });
         }
 
         // Cleaning
@@ -1095,14 +1007,9 @@ bool Input::import(const Parameter &parameters, Octree &octree,
 /// \param[in]      filename Input file name.
 /// \param[in]      filter Filtering algorithm of cells.
 /// \return         True on success, false on error.
-template <class Position, class Extent, typename Integral, typename Real,
-          class Parameter, class Conic, class Octree, class Function,
-          class Element, class Index, class Data, unsigned int Dimension, class>
-bool Input::importhdf5(const Parameter &parameters, unsigned int &rank,
-                       const std::array<std::array<double, 3>, 3> &rotm1,
-                       const double &thetay, const double &thetaz,
-                       const Conic &conic, Octree &octree,
-                       const std::string &filename, Function &&filter) {
+template<class Position, class Extent, typename Integral, typename Real, class Parameter, class Conic, class Octree, class Function, class Element, class Index, class Data, unsigned int Dimension, class>
+bool
+Input::importhdf5(const Parameter& parameters, unsigned int& rank, const std::array<std::array<double, 3>, 3>& rotm1, const double& thetay, const double& thetaz, const Conic& conic, Octree& octree, const std::string& filename, Function&& filter) {
 
     // Initialization
     Integral size = Integral();
@@ -1126,8 +1033,7 @@ bool Input::importhdf5(const Parameter &parameters, unsigned int &rank,
     std::vector<Integral> count;
 
     // Select cubes containing cells inside the cone
-    TReadHDF5::cellsAndCubesPerLevels(parameters, filename, count, cubeNumber,
-                                      thetay, thetaz, conic);
+    TReadHDF5::cellsAndCubesPerLevels(parameters, filename, count, cubeNumber, thetay, thetaz, conic);
     // If we only keep coarse cells, do not count higher levels
     if (parameters.coarseonly) {
         while (count.size() != 1) {
@@ -1146,7 +1052,8 @@ bool Input::importhdf5(const Parameter &parameters, unsigned int &rank,
 #endif
     // Loop over levels
     for (unsigned int ilevel = parameters.ncoarse;
-         ilevel < parameters.ncoarse + count.size(); ++ilevel) {
+         ilevel < parameters.ncoarse + count.size();
+         ++ilevel) {
 
         std::vector<Real> center;
         std::vector<Real> force;
@@ -1180,10 +1087,7 @@ bool Input::importhdf5(const Parameter &parameters, unsigned int &rank,
         }
 
         // Read position, potential, force and density from data
-        TReadHDF5::fillVectors_grav(filename, ilevel, ilevel, cubeNb,
-                                    "position_cell", center,
-                                    "gravitational_field_cell", force,
-                                    "potential_cell", phi, "density_cell", rho);
+        TReadHDF5::fillVectors_grav(filename, ilevel, ilevel, cubeNb, "position_cell", center, "gravitational_field_cell", force, "potential_cell", phi, "density_cell", rho);
 
         if (phi.size() != size || center.size() != Dimension * size ||
             force.size() != Dimension * size) {
@@ -1200,62 +1104,54 @@ bool Input::importhdf5(const Parameter &parameters, unsigned int &rank,
             std::vector<Real> centertmp = center;
             std::vector<Real> forcetmp = force;
             Utility::parallelize(size, [&](Integral i) {
-                    center[3 * i] = centertmp[3 * i] * rotm1[0][0] +
-                                    centertmp[3 * i + 1] * rotm1[0][1] +
-                                    centertmp[3 * i + 2] * rotm1[0][2];
-                    center[3 * i + 1] = centertmp[3 * i] * rotm1[1][0] +
-                                        centertmp[3 * i + 1] * rotm1[1][1] +
-                                        centertmp[3 * i + 2] * rotm1[1][2];
-                    center[3 * i + 2] = centertmp[3 * i] * rotm1[2][0] +
-                                        centertmp[3 * i + 1] * rotm1[2][1] +
-                                        centertmp[3 * i + 2] * rotm1[2][2];
-                    force[3 * i] = forcetmp[3 * i] * rotm1[0][0] +
-                                   forcetmp[3 * i + 1] * rotm1[0][1] +
-                                   forcetmp[3 * i + 2] * rotm1[0][2];
-                    force[3 * i + 1] = forcetmp[3 * i] * rotm1[1][0] +
-                                       forcetmp[3 * i + 1] * rotm1[1][1] +
-                                       forcetmp[3 * i + 2] * rotm1[1][2];
-                    force[3 * i + 2] = forcetmp[3 * i] * rotm1[2][0] +
-                                       forcetmp[3 * i + 1] * rotm1[2][1] +
-                                       forcetmp[3 * i + 2] * rotm1[2][2];
-                });
+                center[3 * i] = centertmp[3 * i] * rotm1[0][0] +
+                                centertmp[3 * i + 1] * rotm1[0][1] +
+                                centertmp[3 * i + 2] * rotm1[0][2];
+                center[3 * i + 1] = centertmp[3 * i] * rotm1[1][0] +
+                                    centertmp[3 * i + 1] * rotm1[1][1] +
+                                    centertmp[3 * i + 2] * rotm1[1][2];
+                center[3 * i + 2] = centertmp[3 * i] * rotm1[2][0] +
+                                    centertmp[3 * i + 1] * rotm1[2][1] +
+                                    centertmp[3 * i + 2] * rotm1[2][2];
+                force[3 * i] = forcetmp[3 * i] * rotm1[0][0] +
+                               forcetmp[3 * i + 1] * rotm1[0][1] +
+                               forcetmp[3 * i + 2] * rotm1[0][2];
+                force[3 * i + 1] = forcetmp[3 * i] * rotm1[1][0] +
+                                   forcetmp[3 * i + 1] * rotm1[1][1] +
+                                   forcetmp[3 * i + 2] * rotm1[1][2];
+                force[3 * i + 2] = forcetmp[3 * i] * rotm1[2][0] +
+                                   forcetmp[3 * i + 1] * rotm1[2][1] +
+                                   forcetmp[3 * i + 2] * rotm1[2][2];
+            });
         }
 
         // Selection
         std::for_each(std::execution::par_unseq,
-            index.begin(), index.end(),
-            [&](Integral &i) {
-                selection[i] = filter(
-                    Element(Index::template compute<Real, Position, Extent>(
-                                octreelevel, center[Dimension * i],
-                                center[Dimension * i + 1], center[Dimension * i + 2]),
-                            Data(rho[i], phi[i],
-                                 std::array<Real, 3>(
-                                     {{force[Dimension * i], force[Dimension * i + 1],
-                                       force[Dimension * i + 2]}}),
-                                 a[i])));
-            });
+                      index.begin(),
+                      index.end(),
+                      [&](Integral& i) {
+                          selection[i] = filter(
+                            Element(Index::template compute<Real, Position, Extent>(
+                                      octreelevel, center[Dimension * i], center[Dimension * i + 1], center[Dimension * i + 2]),
+                                    Data(rho[i], phi[i], std::array<Real, 3>({ { force[Dimension * i], force[Dimension * i + 1], force[Dimension * i + 2] } }), a[i])));
+                      });
 
         // Destination
         n = octree.size();
         size = std::reduce(std::execution::par_unseq, selection.begin(), selection.end(), n);
         thread = std::thread([=, &octree, &size]() { octree.resize(size); });
-        std::for_each(selection.begin(), selection.end(),
-                      [=, &n](Integral &i) { i = i ? ++n : i; });
+        std::for_each(selection.begin(), selection.end(), [=, &n](Integral& i) { i = i ? ++n : i; });
         thread.join();
         std::for_each(std::execution::par_unseq,
-            index.begin(), index.end(), [&](Integral &i) {
-                if (selection[i])
-                    octree[selection[i] - 1] = Element(
-                        Index::template compute<Real, Position, Extent>(
-                            octreelevel, center[Dimension * i],
-                            center[Dimension * i + 1], center[Dimension * i + 2]),
-                        Data(rho[i], phi[i],
-                             std::array<Real, 3>(
-                                 {{force[Dimension * i], force[Dimension * i + 1],
-                                   force[Dimension * i + 2]}}),
-                             a[i]));
-            });
+                      index.begin(),
+                      index.end(),
+                      [&](Integral& i) {
+                          if (selection[i])
+                              octree[selection[i] - 1] = Element(
+                                Index::template compute<Real, Position, Extent>(
+                                  octreelevel, center[Dimension * i], center[Dimension * i + 1], center[Dimension * i + 2]),
+                                Data(rho[i], phi[i], std::array<Real, 3>({ { force[Dimension * i], force[Dimension * i + 1], force[Dimension * i + 2] } }), a[i]));
+                      });
 
     } // loop over levels
 
@@ -1284,11 +1180,9 @@ bool Input::importhdf5(const Parameter &parameters, unsigned int &rank,
 /// \param[in]      filename Input file name.
 /// \param[in]      filter Filtering algorithm of cells.
 /// \return         True on success, false on error.
-template <class Position, class Extent, typename Integral, typename Real,
-          class Parameter, class Octree, class Function, class Element,
-          class Index, class Data, unsigned int Dimension, class>
-bool Input::importfullhdf5(const Parameter &parameters, Octree &octree,
-                           const std::string &filename, Function &&filter) {
+template<class Position, class Extent, typename Integral, typename Real, class Parameter, class Octree, class Function, class Element, class Index, class Data, unsigned int Dimension, class>
+bool
+Input::importfullhdf5(const Parameter& parameters, Octree& octree, const std::string& filename, Function&& filter) {
 
     // Initialization
     Integral size = Integral();
@@ -1320,7 +1214,8 @@ bool Input::importfullhdf5(const Parameter &parameters, Octree &octree,
 
     // Loop over levels
     for (unsigned int ilevel = parameters.ncoarse;
-         ilevel < parameters.ncoarse + count.size(); ++ilevel) {
+         ilevel < parameters.ncoarse + count.size();
+         ++ilevel) {
 
         std::vector<Real> center;
         std::vector<Real> force;
@@ -1354,8 +1249,7 @@ bool Input::importfullhdf5(const Parameter &parameters, Octree &octree,
 
         // Read position, potential, force and density from data
         TReadHDF5::fillVectors_grav(
-            filename, ilevel, ilevel, "gravitational_field_cell", force,
-            "potential_cell", phi, "density_cell", rho, "position_cell", center);
+          filename, ilevel, ilevel, "gravitational_field_cell", force, "potential_cell", phi, "density_cell", rho, "position_cell", center);
 
         if (phi.size() != size || center.size() != Dimension * size ||
             force.size() != Dimension * size) {
@@ -1369,37 +1263,30 @@ bool Input::importfullhdf5(const Parameter &parameters, Octree &octree,
 
         // Selection
         std::for_each(std::execution::par_unseq,
-            index.begin(), index.end(), [&](Integral &i) {
-                selection[i] = filter(
-                    Element(Index::template compute<Real, Position, Extent>(
-                                octreelevel, center[Dimension * i],
-                                center[Dimension * i + 1], center[Dimension * i + 2]),
-                            Data(rho[i], phi[i],
-                                 std::array<Real, 3>(
-                                     {{force[Dimension * i], force[Dimension * i + 1],
-                                       force[Dimension * i + 2]}}),
-                                 a[i])));
-            });
+                      index.begin(),
+                      index.end(),
+                      [&](Integral& i) {
+                          selection[i] = filter(
+                            Element(Index::template compute<Real, Position, Extent>(
+                                      octreelevel, center[Dimension * i], center[Dimension * i + 1], center[Dimension * i + 2]),
+                                    Data(rho[i], phi[i], std::array<Real, 3>({ { force[Dimension * i], force[Dimension * i + 1], force[Dimension * i + 2] } }), a[i])));
+                      });
         // Destination
         n = octree.size();
         size = std::reduce(std::execution::par_unseq, selection.begin(), selection.end(), n);
         thread = std::thread([=, &octree, &size]() { octree.resize(size); });
-        std::for_each(selection.begin(), selection.end(),
-                      [=, &n](Integral &i) { i = i ? ++n : i; });
+        std::for_each(selection.begin(), selection.end(), [=, &n](Integral& i) { i = i ? ++n : i; });
         thread.join();
         std::for_each(std::execution::par_unseq,
-            index.begin(), index.end(), [&](Integral &i) {
-                if (selection[i])
-                    octree[selection[i] - 1] = Element(
-                        Index::template compute<Real, Position, Extent>(
-                            octreelevel, center[Dimension * i],
-                            center[Dimension * i + 1], center[Dimension * i + 2]),
-                        Data(rho[i], phi[i],
-                             std::array<Real, 3>(
-                                 {{force[Dimension * i], force[Dimension * i + 1],
-                                   force[Dimension * i + 2]}}),
-                             a[i]));
-            });
+                      index.begin(),
+                      index.end(),
+                      [&](Integral& i) {
+                          if (selection[i])
+                              octree[selection[i] - 1] = Element(
+                                Index::template compute<Real, Position, Extent>(
+                                  octreelevel, center[Dimension * i], center[Dimension * i + 1], center[Dimension * i + 2]),
+                                Data(rho[i], phi[i], std::array<Real, 3>({ { force[Dimension * i], force[Dimension * i + 1], force[Dimension * i + 2] } }), a[i]));
+                      });
 
     } // loop over levels
 
@@ -1429,13 +1316,13 @@ bool Input::importfullhdf5(const Parameter &parameters, Octree &octree,
 /// \param[in]      filename Input file name.
 /// \param[in]      filter Filtering algorithm of cells.
 /// \return         True on success, false on error.
-template <class Position, class Extent, typename Integral, typename Real,
-          class Parameter, class Octree, class Function, class Element,
-          class Index, class Data, unsigned int Dimension, class>
-bool Input::importascii(const Parameter &parameters,
-                        const std::array<std::array<double, 3>, 3> &rotm1,
-                        Octree &octree, const std::string &filename,
-                        Function &&filter) {
+template<class Position, class Extent, typename Integral, typename Real, class Parameter, class Octree, class Function, class Element, class Index, class Data, unsigned int Dimension, class>
+bool
+Input::importascii(const Parameter& parameters,
+                   const std::array<std::array<double, 3>, 3>& rotm1,
+                   Octree& octree,
+                   const std::string& filename,
+                   Function&& filter) {
 
     Integral size = Integral();
     Integral n = Integral();
@@ -1446,7 +1333,8 @@ bool Input::importascii(const Parameter &parameters,
     std::ifstream streaming(filename.c_str());
     streaming.unsetf(std::ios_base::skipws);
     size = std::count(std::istream_iterator<char>(streaming),
-                      std::istream_iterator<char>(), '\n');
+                      std::istream_iterator<char>(),
+                      '\n');
     streaming.close();
     std::ifstream stream(filename.c_str());
 
@@ -1461,54 +1349,55 @@ bool Input::importascii(const Parameter &parameters,
     std::vector<Integral> selection;
 
     thread =
-        std::thread([=, &size, &level, &center, &force, &a, &phi, &rho, &son]() {
-            level.resize(size);
-            center.resize(Dimension * size);
-            force.resize(Dimension * size);
-            a.resize(size);
-            phi.resize(size);
-            rho.resize(size);
-            son.resize(size);
-        });
+      std::thread([=, &size, &level, &center, &force, &a, &phi, &rho, &son]() {
+          level.resize(size);
+          center.resize(Dimension * size);
+          force.resize(Dimension * size);
+          a.resize(size);
+          phi.resize(size);
+          rho.resize(size);
+          son.resize(size);
+      });
     thread.join();
 
     // Read all cells in files
     for (unsigned int i = 0; i < size; ++i) {
         stream >> level[i] >> center[Dimension * i] >> center[Dimension * i + 1] >>
-            center[Dimension * i + 2] >> rho[i] >> phi[i] >> force[Dimension * i] >>
-            force[Dimension * i + 1] >> force[Dimension * i + 2] >> a[i];
+          center[Dimension * i + 2] >> rho[i] >> phi[i] >> force[Dimension * i] >>
+          force[Dimension * i + 1] >> force[Dimension * i + 2] >> a[i];
     }
     // For narrow cones, need to rotate position and force
     if (parameters.isfullsky == 0) {
         std::vector<Real> centertmp = center;
         std::vector<Real> forcetmp = force;
         Utility::parallelize(
-            size, [=, &center, &force, &centertmp, &forcetmp](Integral i) {
-                center[3 * i] = centertmp[3 * i] * rotm1[0][0] +
-                                centertmp[3 * i + 1] * rotm1[0][1] +
-                                centertmp[3 * i + 2] * rotm1[0][2];
-                center[3 * i + 1] = centertmp[3 * i] * rotm1[1][0] +
-                                    centertmp[3 * i + 1] * rotm1[1][1] +
-                                    centertmp[3 * i + 2] * rotm1[1][2];
-                center[3 * i + 2] = centertmp[3 * i] * rotm1[2][0] +
-                                    centertmp[3 * i + 1] * rotm1[2][1] +
-                                    centertmp[3 * i + 2] * rotm1[2][2];
-                force[3 * i] = forcetmp[3 * i] * rotm1[0][0] +
-                               forcetmp[3 * i + 1] * rotm1[0][1] +
-                               forcetmp[3 * i + 2] * rotm1[0][2];
-                force[3 * i + 1] = forcetmp[3 * i] * rotm1[1][0] +
-                                   forcetmp[3 * i + 1] * rotm1[1][1] +
-                                   forcetmp[3 * i + 2] * rotm1[1][2];
-                force[3 * i + 2] = forcetmp[3 * i] * rotm1[2][0] +
-                                   forcetmp[3 * i + 1] * rotm1[2][1] +
-                                   forcetmp[3 * i + 2] * rotm1[2][2];
-            });
+          size, [=, &center, &force, &centertmp, &forcetmp](Integral i) {
+              center[3 * i] = centertmp[3 * i] * rotm1[0][0] +
+                              centertmp[3 * i + 1] * rotm1[0][1] +
+                              centertmp[3 * i + 2] * rotm1[0][2];
+              center[3 * i + 1] = centertmp[3 * i] * rotm1[1][0] +
+                                  centertmp[3 * i + 1] * rotm1[1][1] +
+                                  centertmp[3 * i + 2] * rotm1[1][2];
+              center[3 * i + 2] = centertmp[3 * i] * rotm1[2][0] +
+                                  centertmp[3 * i + 1] * rotm1[2][1] +
+                                  centertmp[3 * i + 2] * rotm1[2][2];
+              force[3 * i] = forcetmp[3 * i] * rotm1[0][0] +
+                             forcetmp[3 * i + 1] * rotm1[0][1] +
+                             forcetmp[3 * i + 2] * rotm1[0][2];
+              force[3 * i + 1] = forcetmp[3 * i] * rotm1[1][0] +
+                                 forcetmp[3 * i + 1] * rotm1[1][1] +
+                                 forcetmp[3 * i + 2] * rotm1[1][2];
+              force[3 * i + 2] = forcetmp[3 * i] * rotm1[2][0] +
+                                 forcetmp[3 * i + 1] * rotm1[2][1] +
+                                 forcetmp[3 * i + 2] * rotm1[2][2];
+          });
     }
 
     // Correct level depending on Octree extent
-    std::for_each(std::execution::par_unseq, 
-    level.begin(), level.end(),
-    [levelShift](Integral& value) { value += levelShift; });
+    std::for_each(std::execution::par_unseq,
+                  level.begin(),
+                  level.end(),
+                  [levelShift](Integral& value) { value += levelShift; });
 
     // Selection
     thread = std::thread([=, &size, &selection, &index]() {
@@ -1518,48 +1407,40 @@ bool Input::importascii(const Parameter &parameters,
         std::iota(index.begin(), index.end(), Integral());
     });
     thread.join();
-    std::for_each(std::execution::par_unseq, 
-        index.begin(), index.end(), [&](Integral &i) {
-            selection[i] = filter(
-                Element(Index::template compute<Real, Position, Extent>(
-                            level[i], center[Dimension * i],
-                            center[Dimension * i + 1], center[Dimension * i + 2]),
-                        Data(rho[i], phi[i],
-                             std::array<Real, 3>(
-                                 {{force[Dimension * i], force[Dimension * i + 1],
-                                   force[Dimension * i + 2]}}),
-                             a[i])));
-        });
+    std::for_each(std::execution::par_unseq,
+                  index.begin(),
+                  index.end(),
+                  [&](Integral& i) {
+                      selection[i] = filter(
+                        Element(Index::template compute<Real, Position, Extent>(
+                                  level[i], center[Dimension * i], center[Dimension * i + 1], center[Dimension * i + 2]),
+                                Data(rho[i], phi[i], std::array<Real, 3>({ { force[Dimension * i], force[Dimension * i + 1], force[Dimension * i + 2] } }), a[i])));
+                  });
     // Destination
     n = octree.size();
     size = std::reduce(std::execution::par_unseq, selection.begin(), selection.end(), n);
     thread = std::thread([=, &octree, &size]() { octree.resize(size); });
-    std::for_each(selection.begin(), selection.end(),
-                  [=, &n](Integral &i) { i = i ? ++n : i; });
+    std::for_each(selection.begin(), selection.end(), [=, &n](Integral& i) { i = i ? ++n : i; });
     thread.join();
     std::for_each(std::execution::par_unseq,
-        index.begin(), index.end(), [&](Integral &i) {
-            if (selection[i])
-                octree[selection[i] - 1] =
-                    Element(Index::template compute<Real, Position, Extent>(
-                                level[i], center[Dimension * i],
-                                center[Dimension * i + 1], center[Dimension * i + 2]),
-                            Data(rho[i], phi[i],
-                                 std::array<Real, 3>(
-                                     {{force[Dimension * i], force[Dimension * i + 1],
-                                       force[Dimension * i + 2]}}),
-                                 a[i]));
-        });
+                  index.begin(),
+                  index.end(),
+                  [&](Integral& i) {
+                      if (selection[i])
+                          octree[selection[i] - 1] =
+                            Element(Index::template compute<Real, Position, Extent>(
+                                      level[i], center[Dimension * i], center[Dimension * i + 1], center[Dimension * i + 2]),
+                                    Data(rho[i], phi[i], std::array<Real, 3>({ { force[Dimension * i], force[Dimension * i + 1], force[Dimension * i + 2] } }), a[i]));
+                  });
 
     // If we only want coarse level, remove refined cells
     if (parameters.coarseonly) {
         const unsigned int coarseShift = parameters.ncoarse + levelShift;
         octree.resize(std::distance(
-            std::begin(octree),
-            std::remove_if(std::execution::par_unseq, std::begin(octree), std::end(octree),
-                           [=, &coarseShift](const Element &elem) {
-                               return std::get<0>(elem).level() != coarseShift;
-                           })));
+          std::begin(octree),
+          std::remove_if(std::execution::par_unseq, std::begin(octree), std::end(octree), [=, &coarseShift](const Element& elem) {
+              return std::get<0>(elem).level() != coarseShift;
+          })));
     }
 
     stream.close();
@@ -1588,9 +1469,9 @@ bool Input::importascii(const Parameter &parameters,
 /// \param[in]      outfile Name of an output file for debugging purposes.
 /// \return         Container of cosmology evolution and derivatives. Contains
 /// t, a, H, int Hdot, Hdot
-template <typename Type, class Parameter, class Cosmology, class Element, class>
-Cosmology Input::acquire(const Parameter &parameters, Type &h, Type &omegam,
-                         Type &lboxmpch, const std::string &outfile) {
+template<typename Type, class Parameter, class Cosmology, class Element, class>
+Cosmology
+Input::acquire(const Parameter& parameters, Type& h, Type& omegam, Type& lboxmpch, const std::string& outfile) {
     // Initialization
     static const bool reverse = true;
     static const Cosmology empty = Cosmology();
@@ -1604,7 +1485,7 @@ Cosmology Input::acquire(const Parameter &parameters, Type &h, Type &omegam,
     static const unsigned int nderive = 1000;
     static const unsigned int precision = std::numeric_limits<Type>::max_digits10;
     static const unsigned int width =
-        precision + std::numeric_limits<unsigned char>::digits;
+      precision + std::numeric_limits<unsigned char>::digits;
     static const unsigned int length = 5;
     static const std::string digits = "0123456789";
     static const char minus = '-';
@@ -1637,9 +1518,9 @@ Cosmology Input::acquire(const Parameter &parameters, Type &h, Type &omegam,
     std::ifstream stream;
     std::ofstream outstream;
     std::string string(
-        std::begin(parameters.celldir) +
-            std::min(parameters.celldir.rfind(boxlen), parameters.celldir.size()),
-        std::end(parameters.celldir));
+      std::begin(parameters.celldir) +
+        std::min(parameters.celldir.rfind(boxlen), parameters.celldir.size()),
+      std::end(parameters.celldir));
     std::string temporary;
     Type hubble = zero;
     std::array<std::vector<Type>, length> input;
@@ -1652,8 +1533,8 @@ Cosmology Input::acquire(const Parameter &parameters, Type &h, Type &omegam,
                   string.end());
     string.assign(string.begin(),
                   string.begin() +
-                      std::min(string.find_first_not_of(digits + minus + "."),
-                               string.size()));
+                    std::min(string.find_first_not_of(digits + minus + "."),
+                             string.size()));
     std::replace(string.begin(), string.end(), minus, point);
     lboxmpch = (!string.empty()) ? (std::stold(string)) : (zero);
 
@@ -1669,34 +1550,30 @@ Cosmology Input::acquire(const Parameter &parameters, Type &h, Type &omegam,
                 temporary.assign(string.begin(),
                                  string.begin() + string.find(separator));
                 temporary.assign(
-                    std::find_if(temporary.begin(), temporary.end(),
-                                 [](const char c) { return std::isgraph(c); }),
-                    temporary.end());
+                  std::find_if(temporary.begin(), temporary.end(), [](const char c) { return std::isgraph(c); }),
+                  temporary.end());
                 temporary.assign(
-                    temporary.begin(),
-                    temporary.end() -
-                        std::distance(temporary.rbegin(),
-                                      std::find_if(temporary.rbegin(), temporary.rend(),
-                                                   [](const char c) {
-                                                       return std::isgraph(c);
-                                                   })));
+                  temporary.begin(),
+                  temporary.end() -
+                    std::distance(temporary.rbegin(),
+                                  std::find_if(temporary.rbegin(), temporary.rend(), [](const char c) {
+                                      return std::isgraph(c);
+                                  })));
                 string.assign(
-                    string.begin() + string.find(separator) +
-                        (std::distance(string.begin() + string.find(separator),
-                                       string.end()) > 0),
-                    string.end());
+                  string.begin() + string.find(separator) +
+                    (std::distance(string.begin() + string.find(separator),
+                                   string.end()) > 0),
+                  string.end());
                 string.assign(
-                    std::find_if(string.begin(), string.end(),
-                                 [](const char c) { return std::isgraph(c); }),
-                    string.end());
+                  std::find_if(string.begin(), string.end(), [](const char c) { return std::isgraph(c); }),
+                  string.end());
                 string.assign(
-                    string.begin(),
-                    string.end() -
-                        std::distance(string.rbegin(),
-                                      std::find_if(string.rbegin(), string.rend(),
-                                                   [](const char c) {
-                                                       return std::isgraph(c);
-                                                   })));
+                  string.begin(),
+                  string.end() -
+                    std::distance(string.rbegin(),
+                                  std::find_if(string.rbegin(), string.rend(), [](const char c) {
+                                      return std::isgraph(c);
+                                  })));
                 if (temporary == htext) {
                     h = std::stold(string);
                     hubble = (h * std::hecto::num * std::kilo::num) / parameters.mpc;
@@ -1715,13 +1592,11 @@ Cosmology Input::acquire(const Parameter &parameters, Type &h, Type &omegam,
     }
     // Find evolution
     thread.join();
-    line.erase(std::remove_if(line.begin(), line.end(),
-                              [](const std::string &s) { return s.empty(); }),
+    line.erase(std::remove_if(line.begin(), line.end(), [](const std::string& s) { return s.empty(); }),
                line.end());
     size = line.size();
     if (size > 0) {
-        std::for_each(std::execution::par_unseq, input.begin(), input.end(),
-                             [&](std::vector<Type> &v) { v.resize(size); });
+        std::for_each(std::execution::par_unseq, input.begin(), input.end(), [&](std::vector<Type>& v) { v.resize(size); });
         // Put evolution from string to float in 'input'
         Utility::parallelize(size, [=, &input](const unsigned int i) {
             std::istringstream iss(line[i]);
@@ -1731,27 +1606,24 @@ Cosmology Input::acquire(const Parameter &parameters, Type &h, Type &omegam,
             iss >> std::get<3>(input)[i];
             iss >> std::get<4>(input)[i];
         });
-        std::for_each(std::execution::par_unseq, output.begin(), output.end(),
-                             [&](std::vector<Type> &v) { v.resize(size); });
+        std::for_each(std::execution::par_unseq, output.begin(), output.end(), [&](std::vector<Type>& v) { v.resize(size); });
         // Convert Ramses Units to SI and modify order of columns in 'output'
         Utility::parallelize(
-            size, [&](const unsigned int i) {
-                std::get<0>(output)[i] = std::get<4>(input)[i] / hubble;
-                std::get<2>(output)[i] = std::get<0>(input)[i];
-                std::get<3>(output)[i] = std::get<1>(input)[i] * hubble;
-            });
+          size, [&](const unsigned int i) {
+              std::get<0>(output)[i] = std::get<4>(input)[i] / hubble;
+              std::get<2>(output)[i] = std::get<0>(input)[i];
+              std::get<3>(output)[i] = std::get<1>(input)[i] * hubble;
+          });
         // Reverse order of data from file (increasing from observer toward the
         // past)
         std::get<0>(output) = Utility::reverse(
-            std::get<0>(output), *std::min_element(std::get<0>(output).begin(),
-                                                   std::get<0>(output).end()));
+          std::get<0>(output), *std::min_element(std::get<0>(output).begin(), std::get<0>(output).end()));
         // Smooth evolution
         std::get<3>(output) = Utility::smooth(
-            std::get<2>(output), std::get<3>(output),
-            [](Type xi, Type xj) {
-                return std::exp(-((xi - xj) * (xi - xj)) / twob2);
-            },
-            size / nsmooth);
+          std::get<2>(output), std::get<3>(output), [](Type xi, Type xj) {
+              return std::exp(-((xi - xj) * (xi - xj)) / twob2);
+          },
+          size / nsmooth);
         std::get<1>(output)[0] = zero;
         // Check if each line is good and monotonically increasing
         Utility::parallelize(size, [=, &output](const unsigned int i) {
@@ -1776,11 +1648,12 @@ Cosmology Input::acquire(const Parameter &parameters, Type &h, Type &omegam,
         });
         // Remove bad lines
         std::for_each(std::execution::par_unseq,
-            output.begin(), output.end(), [](std::vector<Type> &v) {
-                v.erase(std::remove_if(v.begin(), v.end(),
-                                       [](const Type x) { return std::isnan(x); }),
-                        v.end());
-            });
+                      output.begin(),
+                      output.end(),
+                      [](std::vector<Type>& v) {
+                          v.erase(std::remove_if(v.begin(), v.end(), [](const Type x) { return std::isnan(x); }),
+                                  v.end());
+                      });
         size = std::get<0>(output).size();
         thread = std::thread([=, &result, &size]() {
             std::get<0>(result).resize(size);
@@ -1790,33 +1663,32 @@ Cosmology Input::acquire(const Parameter &parameters, Type &h, Type &omegam,
         });
         for (unsigned int i = 1; i < size; ++i) {
             std::get<1>(output)[i] =
-                std::get<1>(output)[i - 1] +
-                (std::get<2>(output)[i] - std::get<2>(output)[i - 1]) /
-                    std::get<3>(output)[i - 1];
+              std::get<1>(output)[i - 1] +
+              (std::get<2>(output)[i] - std::get<2>(output)[i - 1]) /
+                std::get<3>(output)[i - 1];
         }
         thread.join();
         std::get<4>(output) = Utility::derive(std::get<1>(output),
-                                              std::get<3>(output), size / nderive);
+                                              std::get<3>(output),
+                                              size / nderive);
         std::get<4>(output) = Utility::smooth(
-            std::get<2>(output), std::get<4>(output),
-            [](Type xi, Type xj) {
-                return std::exp(-((xi - xj) * (xi - xj)) / twob2);
-            },
-            size / nsmooth);
+          std::get<2>(output), std::get<4>(output), [](Type xi, Type xj) {
+              return std::exp(-((xi - xj) * (xi - xj)) / twob2);
+          },
+          size / nsmooth);
         std::get<4>(output) = Utility::smooth(
-            std::get<2>(output), std::get<4>(output),
-            [](Type xi, Type xj) {
-                return std::exp(-((xi - xj) * (xi - xj) * std::deca::num) / twob2);
-            },
-            size / (nsmooth * std::deca::num));
+          std::get<2>(output), std::get<4>(output), [](Type xi, Type xj) {
+              return std::exp(-((xi - xj) * (xi - xj) * std::deca::num) / twob2);
+          },
+          size / (nsmooth * std::deca::num));
         std::get<3>(output) = Utility::integrate(
-            std::get<1>(output), std::get<4>(output), std::get<3>(output)[0]);
+          std::get<1>(output), std::get<4>(output), std::get<3>(output)[0]);
         std::get<1>(output)[0] = zero;
         for (unsigned int i = 1; i < size; ++i) {
             std::get<1>(output)[i] =
-                std::get<1>(output)[i - 1] +
-                (std::get<2>(output)[i] - std::get<2>(output)[i - 1]) /
-                    std::get<3>(output)[i - 1];
+              std::get<1>(output)[i - 1] +
+              (std::get<2>(output)[i] - std::get<2>(output)[i - 1]) /
+                std::get<3>(output)[i - 1];
         }
         Utility::parallelize(size, [=, &output, &result](const unsigned int i) {
             std::get<0>(result)[i] = std::get<1>(output)[i];
@@ -1826,15 +1698,15 @@ Cosmology Input::acquire(const Parameter &parameters, Type &h, Type &omegam,
         });
         if (reverse) {
             std::get<0>(result) = Utility::reverse(
-                std::get<0>(result), *std::max_element(std::execution::par_unseq, std::get<0>(result).begin(),
-                                                       std::get<0>(result).end()));
+              std::get<0>(result), *std::max_element(std::execution::par_unseq, std::get<0>(result).begin(), std::get<0>(result).end()));
             Utility::parallelize(size, [=, &result](const unsigned int i) {
                 std::get<0>(result)[i] = std::abs(std::get<0>(result)[i]);
                 std::get<2>(result)[i] = -std::get<2>(result)[i];
             });
             std::for_each(std::execution::par_unseq,
-                result.begin(), result.end(),
-                [](std::vector<Type> &v) { std::reverse(v.begin(), v.end()); });
+                          result.begin(),
+                          result.end(),
+                          [](std::vector<Type>& v) { std::reverse(v.begin(), v.end()); });
         }
     }
     // Finalization
@@ -1856,10 +1728,9 @@ Cosmology Input::acquire(const Parameter &parameters, Type &h, Type &omegam,
                           << (one / (hubble * std::giga::num * year)) << std::right
                           << std::endl;
                 for (unsigned int i = 0; i < size; ++i) {
-                    std::for_each(output.begin(), output.end(),
-                                  [=, &outstream](const std::vector<Type> &v) {
-                                      outstream << std::setw(width) << v[i];
-                                  });
+                    std::for_each(output.begin(), output.end(), [=, &outstream](const std::vector<Type>& v) {
+                        outstream << std::setw(width) << v[i];
+                    });
                     outstream << endl;
                 }
                 outstream.close();
@@ -1879,10 +1750,11 @@ Cosmology Input::acquire(const Parameter &parameters, Type &h, Type &omegam,
 /// \param[in]      separator Separator string.
 /// \param[in]      comment Comment string.
 /// \return         Map of parameters.
-template <class Container, class Element, class>
-Container Input::parse(const std::string &filename,
-                       const std::string &separator,
-                       const std::string &comment) {
+template<class Container, class Element, class>
+Container
+Input::parse(const std::string& filename,
+             const std::string& separator,
+             const std::string& comment) {
     // Initialization
     std::vector<std::string> line;
     std::vector<Element> mapping;
@@ -1898,25 +1770,23 @@ Container Input::parse(const std::string &filename,
         size = line.size();
         mapping.resize(size);
         Utility::parallelize(
-            size, [=, &separator, &comment, &line, &mapping](const unsigned int i) {
-                mapping[i] = partition(trim(line[i], comment), separator);
-                std::get<0>(mapping[i]) = trim(std::get<0>(mapping[i]), comment);
-                std::get<1>(mapping[i]) = trim(std::get<1>(mapping[i]), comment);
-                if ((std::get<0>(mapping[i]).empty()) ||
-                    (std::get<1>(mapping[i]).empty()))
-                    mapping[i] = Element();
-            });
+          size, [=, &separator, &comment, &line, &mapping](const unsigned int i) {
+              mapping[i] = partition(trim(line[i], comment), separator);
+              std::get<0>(mapping[i]) = trim(std::get<0>(mapping[i]), comment);
+              std::get<1>(mapping[i]) = trim(std::get<1>(mapping[i]), comment);
+              if ((std::get<0>(mapping[i]).empty()) ||
+                  (std::get<1>(mapping[i]).empty()))
+                  mapping[i] = Element();
+          });
         mapping.erase(std::remove(mapping.begin(), mapping.end(), Element()),
                       mapping.end());
-        mapping.erase(std::unique(mapping.begin(), mapping.end(),
-                                  [](const Element &x, const Element &y) {
-                                      return std::get<0>(x) == std::get<0>(y);
-                                  }),
+        mapping.erase(std::unique(mapping.begin(), mapping.end(), [](const Element& x, const Element& y) {
+                          return std::get<0>(x) == std::get<0>(y);
+                      }),
                       mapping.end());
-        std::for_each(mapping.begin(), mapping.end(),
-                      [=, &result](const Element &e) {
-                          result[std::get<0>(e)] = std::get<1>(e);
-                      });
+        std::for_each(mapping.begin(), mapping.end(), [=, &result](const Element& e) {
+            result[std::get<0>(e)] = std::get<1>(e);
+        });
         stream.close();
     }
 
@@ -1933,15 +1803,15 @@ Container Input::parse(const std::string &filename,
 /// \param[in,out]  octree Source octree.
 /// \param[in]      filename File name.
 /// \return         True on success, false otherwise.
-template <class Octree, class>
-bool Input::save(Octree &octree, const std::string &filename) {
+template<class Octree, class>
+bool
+Input::save(Octree& octree, const std::string& filename) {
     std::ofstream stream;
     bool ok = false;
     if (!magrathea::FileSystem::exist(filename)) {
         stream.open(filename);
         if (stream) {
-            ok = magrathea::DataHandler::rwrite(stream, octree.data(),
-                                                octree.data() + octree.size());
+            ok = magrathea::DataHandler::rwrite(stream, octree.data(), octree.data() + octree.size());
             stream.close();
         }
     }
@@ -1955,10 +1825,11 @@ bool Input::save(Octree &octree, const std::string &filename) {
 /// \param[in,out]  octree Destination octree.
 /// \param[in]      filename File name.
 /// \return         True on success, false otherwise.
-template <class Octree, class>
-bool Input::load(Octree &octree, const std::string &filename) {
+template<class Octree, class>
+bool
+Input::load(Octree& octree, const std::string& filename) {
     static const unsigned long long int factor =
-        sizeof(unsigned long long int) * sizeof(unsigned long long int);
+      sizeof(unsigned long long int) * sizeof(unsigned long long int);
     const unsigned long long int original = octree.size();
     std::ifstream stream(filename);
     long long int size = magrathea::FileSystem::size(stream);
@@ -1969,8 +1840,7 @@ bool Input::load(Octree &octree, const std::string &filename) {
         octree.reserve(original + (size / SIZEOFOCTREE) +
                        ((size / SIZEOFOCTREE) / factor));
         octree.resize(original + size / SIZEOFOCTREE);
-        ok = magrathea::DataHandler::rread(stream, octree.data() + original,
-                                           octree.data() + octree.size());
+        ok = magrathea::DataHandler::rread(stream, octree.data() + original, octree.data() + octree.size());
         stream.close();
     }
     return ok;
@@ -1988,9 +1858,10 @@ bool Input::load(Octree &octree, const std::string &filename) {
 /// \param[in]      cosmology Cosmology.
 /// \param[in]      trajectory Homogeneous trajectory.
 /// \return         Corrected cosmology.
-template <class Cosmology, class Trajectory, class Type, class>
-Cosmology Input::correct(const Cosmology &cosmology,
-                         const Trajectory &trajectory) {
+template<class Cosmology, class Trajectory, class Type, class>
+Cosmology
+Input::correct(const Cosmology& cosmology,
+               const Trajectory& trajectory) {
     // Initialization
     static const unsigned int npasses = 4;
     static const Type one = Type(1);
@@ -1999,9 +1870,9 @@ Cosmology Input::correct(const Cosmology &cosmology,
     const unsigned int size = std::get<0>(cosmology).size();
     const unsigned int length = trajectory.size();
     const Type twob2 =
-        two * std::pow(((length > 0) ? (trajectory.back().t()) : (one)) /
-                           Type(std::kilo::num),
-                       two);
+      two * std::pow(((length > 0) ? (trajectory.back().t()) : (one)) /
+                       Type(std::kilo::num),
+                     two);
     std::vector<Type> t(length);
     std::vector<Type> a(length);
     Cosmology result = cosmology;
@@ -2018,28 +1889,26 @@ Cosmology Input::correct(const Cosmology &cosmology,
             if (!((std::get<0>(result)[i] < t.front()) ||
                   (std::get<0>(result)[i] > t.back())))
                 std::get<1>(result)[i] =
-                    Utility::interpolate(std::get<0>(result)[i], t, a);
+                  Utility::interpolate(std::get<0>(result)[i], t, a);
         });
         if (length < size) {
             for (unsigned int ipass = 0; ipass < npasses; ++ipass) {
                 std::get<1>(result) = Utility::smooth(
-                    std::get<0>(result), std::get<1>(result),
-                    [=, &twob2](Type xi, Type xj) {
-                        return std::exp(-((xi - xj) * (xi - xj)) / twob2);
-                    },
-                    size / nsmooth);
+                  std::get<0>(result), std::get<1>(result), [=, &twob2](Type xi, Type xj) {
+                      return std::exp(-((xi - xj) * (xi - xj)) / twob2);
+                  },
+                  size / nsmooth);
                 std::get<1>(result) = Utility::smooth(
-                    std::get<0>(result), std::get<1>(result),
-                    [=, &twob2](Type xi, Type xj) {
-                        return std::exp(-((xi - xj) * (xi - xj) * std::deca::num) /
-                                        twob2);
-                    },
-                    size / (nsmooth * std::deca::num));
+                  std::get<0>(result), std::get<1>(result), [=, &twob2](Type xi, Type xj) {
+                      return std::exp(-((xi - xj) * (xi - xj) * std::deca::num) /
+                                      twob2);
+                  },
+                  size / (nsmooth * std::deca::num));
                 Utility::parallelize(size, [=, &t, &a, &result](const unsigned int i) {
                     if (!((std::get<0>(result)[i] < t.front()) ||
                           (std::get<0>(result)[i] > t.back())))
                         std::get<1>(result)[i] =
-                            Utility::interpolate(std::get<0>(result)[i], t, a);
+                          Utility::interpolate(std::get<0>(result)[i], t, a);
                 });
             }
         }
@@ -2068,36 +1937,32 @@ Cosmology Input::correct(const Cosmology &cosmology,
 /// \param[in,out]  octree Input octree.
 /// \param[out]     amin Outputs the lowest value of a.
 /// \return         Reference to the octree.
-template <class Parameter, int Check, unsigned int Selection, class Octree,
-          typename Kind, unsigned int Dimension, class Element, class Index,
-          class Data, class Type, class Position, class Extent, class>
-Octree &Input::correct(const Parameter &parameters, Octree &octree,
-                       Kind &&amin) {
+template<class Parameter, int Check, unsigned int Selection, class Octree, typename Kind, unsigned int Dimension, class Element, class Index, class Data, class Type, class Position, class Extent, class>
+Octree&
+Input::correct(const Parameter& parameters, Octree& octree, Kind&& amin) {
     // Initialization
     static const unsigned int reservation = 1 << 20;
     static const int zero = 0;
     static const int one = 1;
     unsigned int size = octree.update().size();
     unsigned int ncoarse =
-        (!octree.empty())
-            ? (std::get<0>(
-                   *std::min_element(std::execution::par_unseq, octree.begin(), octree.end(),
-                                     [](const Element &x, const Element &y) {
-                                         return std::get<0>(x).level() <
-                                                std::get<0>(y).level();
-                                     }))
-                   .level())
-            : (zero);
+      (!octree.empty())
+        ? (std::get<0>(
+             *std::min_element(std::execution::par_unseq, octree.begin(), octree.end(), [](const Element& x, const Element& y) {
+                 return std::get<0>(x).level() <
+                        std::get<0>(y).level();
+             }))
+             .level())
+        : (zero);
     unsigned int nmax =
-        (!octree.empty())
-            ? (std::get<0>(
-                   *std::max_element(std::execution::par_unseq, octree.begin(), octree.end(),
-                                     [](const Element &x, const Element &y) {
-                                         return std::get<0>(x).level() <
-                                                std::get<0>(y).level();
-                                     }))
-                   .level())
-            : (zero);
+      (!octree.empty())
+        ? (std::get<0>(
+             *std::max_element(std::execution::par_unseq, octree.begin(), octree.end(), [](const Element& x, const Element& y) {
+                 return std::get<0>(x).level() <
+                        std::get<0>(y).level();
+             }))
+             .level())
+        : (zero);
     unsigned int counter = zero;
     int asize = zero;
     std::vector<unsigned int> count(size);
@@ -2111,11 +1976,11 @@ Octree &Input::correct(const Parameter &parameters, Octree &octree,
             // Check if we find a cell at coarse level for which the density is not
             // normal
             Utility::parallelize(
-                size, [=, &ncoarse, &count, &octree](const unsigned int i) {
-                    count[i] = ((std::get<0>(octree[i]).level() == ncoarse) &&
-                                (!std::isnormal(std::get<1>(octree[i]).rho())));
-                });
-            std::for_each(count.begin(), count.end(), [=, &counter](unsigned int &i) {
+              size, [=, &ncoarse, &count, &octree](const unsigned int i) {
+                  count[i] = ((std::get<0>(octree[i]).level() == ncoarse) &&
+                              (!std::isnormal(std::get<1>(octree[i]).rho())));
+              });
+            std::for_each(count.begin(), count.end(), [=, &counter](unsigned int& i) {
                 i = (i > zero) ? (++counter) : (zero);
             });
             index.resize(counter);
@@ -2126,12 +1991,11 @@ Octree &Input::correct(const Parameter &parameters, Octree &octree,
             });
             // For non-normal coarse densities, average over normal neighbours
             Utility::parallelize(
-                counter, [=, &ncoarse, &index, &octree](const unsigned int i) {
-                    std::get<1>(octree[index[i]]).template data<Selection>() =
-                        mean(octree, octree[index[i]], ncoarse);
-                });
-            std::for_each(std::execution::par_unseq, count.begin(), count.end(),
-                                 [](unsigned int &i) { i = zero; });
+              counter, [=, &ncoarse, &index, &octree](const unsigned int i) {
+                  std::get<1>(octree[index[i]]).template data<Selection>() =
+                    mean(octree, octree[index[i]], ncoarse);
+              });
+            std::for_each(std::execution::par_unseq, count.begin(), count.end(), [](unsigned int& i) { i = zero; });
         }
     }
     // Correct refined levels
@@ -2147,8 +2011,8 @@ Octree &Input::correct(const Parameter &parameters, Octree &octree,
                 Utility::parallelize(size, [=, &count, &octree](const unsigned int i) {
                     if (count[i] > zero) {
                         std::get<1>(octree[i]).dphidt() =
-                            std::get<1>(*octree.find(std::get<0>(octree[i]).parent()))
-                                .dphidt();
+                          std::get<1>(*octree.find(std::get<0>(octree[i]).parent()))
+                            .dphidt();
                     }
                 });
             }
@@ -2162,26 +2026,25 @@ Octree &Input::correct(const Parameter &parameters, Octree &octree,
                 Utility::parallelize(size, [=, &count, &octree](const unsigned int i) {
                     if (count[i] > zero) {
                         std::get<1>(octree[i]).rho() =
-                            std::get<1>(*octree.find(std::get<0>(octree[i]).parent()))
-                                .rho();
+                          std::get<1>(*octree.find(std::get<0>(octree[i]).parent()))
+                            .rho();
                     }
                 });
             }
         } else {
             Utility::parallelize(
-                size, [=, &ncoarse, &count, &octree](const unsigned int i) {
-                    if ((std::get<0>(octree[i]).level() > ncoarse) &&
-                        (!std::isnormal(
-                            std::get<1>(octree[i]).template data<Selection>()))) {
-                        count[i] =
-                            std::distance(octree.begin(),
-                                          octree.find(std::get<0>(octree[i]).parent())) +
-                            one;
-                    }
-                });
+              size, [=, &ncoarse, &count, &octree](const unsigned int i) {
+                  if ((std::get<0>(octree[i]).level() > ncoarse) &&
+                      (!std::isnormal(
+                        std::get<1>(octree[i]).template data<Selection>()))) {
+                      count[i] =
+                        std::distance(octree.begin(),
+                                      octree.find(std::get<0>(octree[i]).parent())) +
+                        one;
+                  }
+              });
             count.erase(std::remove(std::execution::par_unseq, count.begin(), count.end(), zero), count.end());
-            std::for_each(std::execution::par_unseq, count.begin(), count.end(),
-                                 [](unsigned int &i) { --i; });
+            std::for_each(std::execution::par_unseq, count.begin(), count.end(), [](unsigned int& i) { --i; });
             std::sort(std::execution::par_unseq, count.begin(), count.end());
             count.erase(std::unique(std::execution::par_unseq, count.begin(), count.end()), count.end());
             size = count.size();
@@ -2194,8 +2057,7 @@ Octree &Input::correct(const Parameter &parameters, Octree &octree,
             size = octree.size();
             count.resize(size);
         }
-        std::for_each(std::execution::par_unseq, count.begin(), count.end(),
-                             [](unsigned int &i) { i = zero; });
+        std::for_each(std::execution::par_unseq, count.begin(), count.end(), [](unsigned int& i) { i = zero; });
     }
     // Detect non complete zones
     if (parameters.correction) {
@@ -2204,7 +2066,7 @@ Octree &Input::correct(const Parameter &parameters, Octree &octree,
             if (!octree.leaf(octree.begin() + i)) {
                 for (unsigned int j = 0; j < Index::sites(); ++j) {
                     count[i] +=
-                        (octree.find(std::get<0>(octree[i]).child(j)) == octree.end());
+                      (octree.find(std::get<0>(octree[i]).child(j)) == octree.end());
                 }
             }
         });
@@ -2223,19 +2085,19 @@ Octree &Input::correct(const Parameter &parameters, Octree &octree,
                     // Interpolate at son location.
                     if (ORDER == 0)
                         datinterp =
-                            octree.ngp(idxchild.template center<Type, Position, Extent>(0),
-                                       idxchild.template center<Type, Position, Extent>(1),
-                                       idxchild.template center<Type, Position, Extent>(2));
+                          octree.ngp(idxchild.template center<Type, Position, Extent>(0),
+                                     idxchild.template center<Type, Position, Extent>(1),
+                                     idxchild.template center<Type, Position, Extent>(2));
                     else if (ORDER == 1)
                         datinterp =
-                            octree.cic(idxchild.template center<Type, Position, Extent>(0),
-                                       idxchild.template center<Type, Position, Extent>(1),
-                                       idxchild.template center<Type, Position, Extent>(2));
+                          octree.cic(idxchild.template center<Type, Position, Extent>(0),
+                                     idxchild.template center<Type, Position, Extent>(1),
+                                     idxchild.template center<Type, Position, Extent>(2));
                     else if (ORDER == 2)
                         datinterp =
-                            octree.tsc(idxchild.template center<Type, Position, Extent>(0),
-                                       idxchild.template center<Type, Position, Extent>(1),
-                                       idxchild.template center<Type, Position, Extent>(2));
+                          octree.tsc(idxchild.template center<Type, Position, Extent>(0),
+                                     idxchild.template center<Type, Position, Extent>(1),
+                                     idxchild.template center<Type, Position, Extent>(2));
                     else {
                         std::cout << "# WARNING : in Makefile, ORDER must be 0, 1 or 2"
                                   << std::endl;
@@ -2255,7 +2117,7 @@ Octree &Input::correct(const Parameter &parameters, Octree &octree,
             if (!octree.leaf(octree.begin() + i)) {
                 for (unsigned int j = 0; j < Index::sites(); ++j) {
                     count[i] +=
-                        (octree.find(std::get<0>(octree[i]).child(j)) == octree.end());
+                      (octree.find(std::get<0>(octree[i]).child(j)) == octree.end());
                 }
             }
         });
@@ -2272,20 +2134,17 @@ Octree &Input::correct(const Parameter &parameters, Octree &octree,
         if (parameters.acorrection) {
             std::vector<Type> data;
             a.reserve(reservation);
-            std::for_each(std::execution::par_unseq, octree.begin(), octree.end(),
-                                 [&](const Element &e) {
-                                     if (!std::count(a.begin(), a.begin() + distance,
-                                                     std::get<1>(e).a())) {
-                                         mutex.lock();
-                                         a.push_back(std::get<1>(e).a());
-                                         distance = a.size();
-                                         mutex.unlock();
-                                     }
-                                 });
-            a.erase(std::remove_if(std::execution::par_unseq, a.begin(), a.end(),
-                                   [](const Type x) {
-                                       return std::signbit(x) || !std::isnormal(x);
-                                   }),
+            std::for_each(std::execution::par_unseq, octree.begin(), octree.end(), [&](const Element& e) {
+                if (!std::count(a.begin(), a.begin() + distance, std::get<1>(e).a())) {
+                    mutex.lock();
+                    a.push_back(std::get<1>(e).a());
+                    distance = a.size();
+                    mutex.unlock();
+                }
+            });
+            a.erase(std::remove_if(std::execution::par_unseq, a.begin(), a.end(), [](const Type x) {
+                        return std::signbit(x) || !std::isnormal(x);
+                    }),
                     a.end());
             std::sort(std::execution::par_unseq, a.begin(), a.end());
             a.erase(std::unique(std::execution::par_unseq, a.begin(), a.end()), a.end());
@@ -2302,9 +2161,9 @@ Octree &Input::correct(const Parameter &parameters, Octree &octree,
                 }
             }
             if (asize > zero) {
-                std::for_each(std::execution::par_unseq, octree.begin(), octree.end(), [&](Element &e) {
+                std::for_each(std::execution::par_unseq, octree.begin(), octree.end(), [&](Element& e) {
                     std::get<1>(e).a() =
-                        *(std::lower_bound(a.begin(), a.end(), std::get<1>(e).a()) - 1);
+                      *(std::lower_bound(a.begin(), a.end(), std::get<1>(e).a()) - 1);
                 });
                 amin = a[zero];
             }

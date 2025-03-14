@@ -74,7 +74,8 @@ using namespace magrathea;
 /// \param[in]      argc Number of arguments.
 /// \param[in]      argv List of arguments.
 /// \return         Zero on success, error code otherwise.
-int main(int argc, char *argv[]) {
+int
+main(int argc, char* argv[]) {
     // Constants
 
     using integer = int;
@@ -97,7 +98,7 @@ int main(int argc, char *argv[]) {
     static constexpr uint nreference = 5; // Used to set homogeneous octree
     static constexpr real pi = Constants<real>::pi();
     static constexpr real rposition = static_cast<real>(position::num) / static_cast<real>(position::den);
-    static constexpr point center({{rposition, rposition, rposition}});
+    static constexpr point center({ { rposition, rposition, rposition } });
     static constexpr real diameter = static_cast<real>(extent::num) / static_cast<real>(extent::den);
     static constexpr uint digits = std::numeric_limits<real>::max_digits10;
     static constexpr char dot = '.';
@@ -127,7 +128,7 @@ int main(int argc, char *argv[]) {
     // Convert strings and put it in struct
     Rays::ReadParamFile(parameters, parameter);
     // Initialization
-    std::vector<std::string> statistics = (parameters.statistic == all) ? (std::vector<std::string>({"distance", "distance2", "homogeneous", "inhomogeneous"})) : (std::vector<std::string>({parameters.statistic}));
+    std::vector<std::string> statistics = (parameters.statistic == all) ? (std::vector<std::string>({ "distance", "distance2", "homogeneous", "inhomogeneous" })) : (std::vector<std::string>({ parameters.statistic }));
     uint statcnt = statistics.size();
     uint interpcase = zero;
     uint statcase = zero;
@@ -172,7 +173,7 @@ int main(int argc, char *argv[]) {
     std::vector<real> statstd;
     std::vector<real> statgmean;
     std::vector<real> statgstd;
-    const point vobs0 = {0, 0, 0}; // No peculiar velocity for homogeneous quantities
+    const point vobs0 = { 0, 0, 0 }; // No peculiar velocity for homogeneous quantities
     std::mt19937 engine1(parameters.seed > zero ? parameters.seed + rank : std::random_device()());
 
     if (rank == 0)
@@ -228,7 +229,7 @@ int main(int argc, char *argv[]) {
         const std::string filename = parameters.outputdir + "../catalogs/" + Output::name(parameters.base, "_", std::make_pair("%05d", rank), ".txt"); // Name of catalog, given icone, directory and base
         Miscellaneous::ReadFromCat(rank, filename, previous_catalogue);
         // Select sources within mass bin
-        previous_catalogue.erase(std::remove_if(std::execution::par_unseq, previous_catalogue.begin(), previous_catalogue.end(), [](const std::array<double, 18> &elem) { return (elem[17] >= parameters.massmax) || (elem[17] < parameters.massmin); }), previous_catalogue.end());
+        previous_catalogue.erase(std::remove_if(std::execution::par_unseq, previous_catalogue.begin(), previous_catalogue.end(), [](const std::array<double, 18>& elem) { return (elem[17] >= parameters.massmax) || (elem[17] < parameters.massmin); }), previous_catalogue.end());
         ntrajectoriesMax = previous_catalogue.size();
 #ifdef VERBOSE
         std::cout << "Rank : " << rank << " number of sources " << ntrajectoriesMax << std::endl;
@@ -344,7 +345,7 @@ int main(int argc, char *argv[]) {
                     });
                     octree.fullclear();
                     // Transfer reference
-                    reference.container().erase(std::remove_if(std::execution::par_unseq, reference.container().begin(), reference.container().end(), [=, &amin](const Photon<real, dimension> &p) { return std::isnormal(amin) && (p.a() < amin); }), reference.container().end());
+                    reference.container().erase(std::remove_if(std::execution::par_unseq, reference.container().begin(), reference.container().end(), [=, &amin](const Photon<real, dimension>& p) { return std::isnormal(amin) && (p.a() < amin); }), reference.container().end());
                     statmod = std::max(one, static_cast<uint>(reference.size()) / std::max(parameters.nstat, one));
                     for (uint j = zero; j < reference.size(); ++j) {
                         if (j % statmod == zero) {

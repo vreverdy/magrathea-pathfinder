@@ -63,72 +63,58 @@ class Lensing {
     //@{
 public:
     // Jacobian matrices
-    template <int Order = ORDER, bool RK4 = true, bool Verbose = false,
-              class Parameter, class Point, class Cosmology, class Octree,
-              class Type>
+    template<int Order = ORDER, bool RK4 = true, bool Verbose = false, class Parameter, class Point, class Cosmology, class Octree, class Type>
     static std::array<std::array<double, 2>, 2>
-    dbetadtheta(const Parameter &parameters, const Point &kiTarget,
-                const Type interpRef, const Point &observer, const Type phi,
-                const Type theta, const Type dist, const Cosmology &cosmology,
-                const Octree &octree, const Point &vobs, const Type length);
-    template <int Order = ORDER, bool RK4 = true, bool Verbose = false,
-              class Parameter, class Point, class Cosmology, class Octree,
-              class Type>
+    dbetadtheta(const Parameter& parameters, const Point& kiTarget, const Type interpRef, const Point& observer, const Type phi, const Type theta, const Type dist, const Cosmology& cosmology, const Octree& octree, const Point& vobs, const Type length);
+    template<int Order = ORDER, bool RK4 = true, bool Verbose = false, class Parameter, class Point, class Cosmology, class Octree, class Type>
     static std::vector<std::array<std::array<double, 2>, 2>>
-    dbetadtheta(const Parameter &parameters, const std::vector<Point> &kiTargets,
-                const std::vector<Type> &interpRef, const Point &observer,
-                const Type phi, const Type theta, const std::vector<Type> &dist,
-                const Cosmology &cosmology, const Octree &octree,
-                const Point &vobs, const Type length);
+    dbetadtheta(const Parameter& parameters, const std::vector<Point>& kiTargets, const std::vector<Type>& interpRef, const Point& observer, const Type phi, const Type theta, const std::vector<Type>& dist, const Cosmology& cosmology, const Octree& octree, const Point& vobs, const Type length);
 
-    template <
-        int Order = ORDER, bool RK4 = true, bool Verbose = false, class Type,
-        class Trajectory,
-        template <typename Kind, class Index, class Data, unsigned int Dimension,
-                  class Position, class Extent, class Element, class Container>
-        class Octree,
-        typename Kind, class Index, class Data, unsigned int Dimension,
-        class Position, class Extent, class Element, class Container>
+    template<
+      int Order = ORDER,
+      bool RK4 = true,
+      bool Verbose = false,
+      class Type,
+      class Trajectory,
+      template<typename Kind, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree,
+      typename Kind,
+      class Index,
+      class Data,
+      unsigned int Dimension,
+      class Position,
+      class Extent,
+      class Element,
+      class Container>
     static std::array<std::array<double, 2>, 2>
-    dbetadtheta_infinitesimal(const Type distance, const Trajectory &trajectory,
-                              const Octree<Kind, Index, Data, Dimension, Position,
-                                           Extent, Element, Container> &octree,
-                              const Type length);
-    template <
-        int Order = ORDER, bool RK4 = true, bool Verbose = false, class Type,
-        class Trajectory,
-        template <typename Kind, class Index, class Data, unsigned int Dimension,
-                  class Position, class Extent, class Element, class Container>
-        class Octree,
-        typename Kind, class Index, class Data, unsigned int Dimension,
-        class Position, class Extent, class Element, class Container>
+    dbetadtheta_infinitesimal(const Type distance, const Trajectory& trajectory, const Octree<Kind, Index, Data, Dimension, Position, Extent, Element, Container>& octree, const Type length);
+    template<
+      int Order = ORDER,
+      bool RK4 = true,
+      bool Verbose = false,
+      class Type,
+      class Trajectory,
+      template<typename Kind, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree,
+      typename Kind,
+      class Index,
+      class Data,
+      unsigned int Dimension,
+      class Position,
+      class Extent,
+      class Element,
+      class Container>
     static std::vector<std::array<std::array<double, 2>, 2>>
-    dbetadtheta_infinitesimal(const std::vector<Type> &dist,
-                              const Trajectory &trajectory,
-                              const Octree<Kind, Index, Data, Dimension, Position,
-                                           Extent, Element, Container> &octree,
+    dbetadtheta_infinitesimal(const std::vector<Type>& dist,
+                              const Trajectory& trajectory,
+                              const Octree<Kind, Index, Data, Dimension, Position, Extent, Element, Container>& octree,
                               const Type length);
 
     // Flexion
-    template <int Order = ORDER, bool RK4 = true, bool Verbose = false,
-              class Parameter, class Point, class Cosmology, class Octree,
-              class Type>
+    template<int Order = ORDER, bool RK4 = true, bool Verbose = false, class Parameter, class Point, class Cosmology, class Octree, class Type>
     static std::array<double, 6>
-    flexion(const Parameter &parameters, const Point &central_position,
-            const Point &kiTarget, const Type interpRef, const Point &observer,
-            const Type phi, const Type theta, const Type dist,
-            const Cosmology &cosmology, const Octree &octree, const Point &vobs,
-            const Type length);
-    template <int Order = ORDER, bool RK4 = true, bool Verbose = false,
-              class Parameter, class Point, class Cosmology, class Octree,
-              class Type>
+    flexion(const Parameter& parameters, const Point& central_position, const Point& kiTarget, const Type interpRef, const Point& observer, const Type phi, const Type theta, const Type dist, const Cosmology& cosmology, const Octree& octree, const Point& vobs, const Type length);
+    template<int Order = ORDER, bool RK4 = true, bool Verbose = false, class Parameter, class Point, class Cosmology, class Octree, class Type>
     static std::vector<std::array<double, 6>>
-    flexion(const Parameter &parameters, const std::vector<Point> &central_positions,
-            const std::vector<Point> &kiTargets,
-            const std::vector<Type> &interpRef, const Point &observer,
-            const Type phi, const Type theta, const std::vector<Type> &dist,
-            const Cosmology &cosmology, const Octree &octree, const Point &vobs,
-            const Type length);
+    flexion(const Parameter& parameters, const std::vector<Point>& central_positions, const std::vector<Point>& kiTargets, const std::vector<Type>& interpRef, const Point& observer, const Type phi, const Type theta, const std::vector<Type>& dist, const Cosmology& cosmology, const Octree& octree, const Point& vobs, const Type length);
 
     //@}
 
@@ -166,21 +152,15 @@ public:
 /// \param[in]      length Spatial length in SI units.
 /// \return         2x2 array Aij giving the jacobian from seen angles to true
 /// angles
-template <int Order, bool RK4, bool Verbose, class Parameter, class Point,
-          class Cosmology, class Octree, class Type>
+template<int Order, bool RK4, bool Verbose, class Parameter, class Point, class Cosmology, class Octree, class Type>
 std::array<std::array<double, 2>, 2>
-Lensing::dbetadtheta(const Parameter &parameters, const Point &kiTarget,
-                     const Type interpRef, const Point &observer,
-                     const Type phiInit, const Type thetaInit, const Type dist,
-                     const Cosmology &cosmology, const Octree &octree,
-                     const Point &vobs, const Type length) {
+Lensing::dbetadtheta(const Parameter& parameters, const Point& kiTarget, const Type interpRef, const Point& observer, const Type phiInit, const Type thetaInit, const Type dist, const Cosmology& cosmology, const Octree& octree, const Point& vobs, const Type length) {
 
-    std::vector<Point> kiTargets{kiTarget};
-    std::vector<Type> interpRefvec{interpRef};
-    std::vector<Type> distance{dist};
+    std::vector<Point> kiTargets{ kiTarget };
+    std::vector<Type> interpRefvec{ interpRef };
+    std::vector<Type> distance{ dist };
     return Lensing::dbetadtheta<Order, RK4, Verbose>(
-        parameters, kiTargets, interpRefvec, observer, phiInit, thetaInit,
-        distance, cosmology, octree, vobs, length)[0];
+      parameters, kiTargets, interpRefvec, observer, phiInit, thetaInit, distance, cosmology, octree, vobs, length)[0];
 }
 
 //  Jacobian calculation for angles deformations for multiple redshifts
@@ -212,14 +192,20 @@ Lensing::dbetadtheta(const Parameter &parameters, const Point &kiTarget,
 /// \param[in]      nsteps Number of lambda steps per grid.
 /// \return         2x2 array Aij giving the jacobian from seen angles to true
 /// angles
-template <int Order, bool RK4, bool Verbose, class Parameter, class Point,
-          class Cosmology, class Octree, class Type>
-std::vector<std::array<std::array<double, 2>, 2>> Lensing::dbetadtheta(
-    const Parameter &parameters, const std::vector<Point> &kiTargets,
-    const std::vector<Type> &interpRefvec, const Point &observer,
-    const Type phiInit, const Type thetaInit, const std::vector<Type> &dist,
-    const Cosmology &cosmology, const Octree &octree, const Point &vobs,
-    const Type length) {
+template<int Order, bool RK4, bool Verbose, class Parameter, class Point, class Cosmology, class Octree, class Type>
+std::vector<std::array<std::array<double, 2>, 2>>
+Lensing::dbetadtheta(
+  const Parameter& parameters,
+  const std::vector<Point>& kiTargets,
+  const std::vector<Type>& interpRefvec,
+  const Point& observer,
+  const Type phiInit,
+  const Type thetaInit,
+  const std::vector<Type>& dist,
+  const Cosmology& cosmology,
+  const Octree& octree,
+  const Point& vobs,
+  const Type length) {
 
     const unsigned int size = interpRefvec.size();
     std::vector<std::array<std::array<double, 2>, 2>> jacobian(size);
@@ -227,17 +213,17 @@ std::vector<std::array<std::array<double, 2>, 2>> Lensing::dbetadtheta(
     std::array<magrathea::Evolution<Photon<double, 3>>, 4> trajectories;
     std::vector<std::array<Point, 4>> bundle_position(size);
     const double cp(std::cos(phiInit)), sp(std::sin(phiInit)),
-        ct(std::cos(thetaInit)), st(std::sin(thetaInit));
+      ct(std::cos(thetaInit)), st(std::sin(thetaInit));
     const uint n_bundle = 4;
 
     // Initialization
     std::vector<Point> rini(n_bundle);
     Point target, e1, e2;
     // Direction of target
-    target = {cp * st, sp * st, ct};
+    target = { cp * st, sp * st, ct };
     // screen perpendicular to the target direction
-    e1 = {-sp, cp, 0};
-    e2 = {-cp * ct, -sp * ct, st};
+    e1 = { -sp, cp, 0 };
+    e2 = { -cp * ct, -sp * ct, st };
     const double to = std::tan(parameters.openingmin);
 
     // Initialise direction of bundle photons
@@ -246,28 +232,25 @@ std::vector<std::array<std::array<double, 2>, 2>> Lensing::dbetadtheta(
     0   C   1
 
         3 */
-    rini[0] = {target[0] + to * e1[0], target[1] + to * e1[1],
-               target[2]};
-    rini[1] = {target[0] - to * e1[0],
-               target[1] - to * e1[1], target[2]};
-    rini[2] = {target[0] - to * e2[0], target[1] - to * e2[1],
-               target[2] - to * e2[2]};
-    rini[3] = {target[0] + to * e2[0],
-               target[1] + to * e2[1],
-               target[2] + to * e2[2]};
+    rini[0] = { target[0] + to * e1[0], target[1] + to * e1[1], target[2] };
+    rini[1] = { target[0] - to * e1[0],
+                target[1] - to * e1[1],
+                target[2] };
+    rini[2] = { target[0] - to * e2[0], target[1] - to * e2[1], target[2] - to * e2[2] };
+    rini[3] = { target[0] + to * e2[0],
+                target[1] + to * e2[1],
+                target[2] + to * e2[2] };
 
     // Launch photons
     for (unsigned int i = 0; i < n_bundle; i++) {
-        photons[i] = Integrator::launch(observer[0], observer[1], observer[2],
-                                        rini[i][0], rini[i][1], rini[i][2]);
+        photons[i] = Integrator::launch(observer[0], observer[1], observer[2], rini[i][0], rini[i][1], rini[i][2]);
     }
 
     // Integration
     for (unsigned int itrajectory = 0; itrajectory < n_bundle; itrajectory++) {
         trajectories[itrajectory].append(photons[itrajectory]);
         Integrator::integrate<Order, RK4, Verbose>(
-            trajectories[itrajectory], parameters.stop_bundle, interpRefvec.back(),
-            cosmology, octree, vobs, length, parameters.nsteps, kiTargets.back());
+          trajectories[itrajectory], parameters.stop_bundle, interpRefvec.back(), cosmology, octree, vobs, length, parameters.nsteps, kiTargets.back());
 
         for (uint iref = 0; iref < size; iref++) {
             unsigned int marked(0), firstid(0);
@@ -285,14 +268,14 @@ std::vector<std::array<std::array<double, 2>, 2>> Lensing::dbetadtheta(
                 }
                 photons[itrajectory].lambda() = interpRefvec[iref];
                 marked = std::distance(
-                    std::begin(trajectories[itrajectory]),
-                    std::upper_bound(std::begin(trajectories[itrajectory]),
-                                     std::end(trajectories[itrajectory]),
-                                     photons[itrajectory],
-                                     [](const Photon<double, 3> &first,
-                                        const Photon<double, 3> &second) {
-                                         return first.lambda() < second.lambda();
-                                     }));
+                  std::begin(trajectories[itrajectory]),
+                  std::upper_bound(std::begin(trajectories[itrajectory]),
+                                   std::end(trajectories[itrajectory]),
+                                   photons[itrajectory],
+                                   [](const Photon<double, 3>& first,
+                                      const Photon<double, 3>& second) {
+                                       return first.lambda() < second.lambda();
+                                   }));
                 firstid = marked - (marked > 0);
                 next = trajectories[itrajectory][firstid + 1].lambda();
                 previous = trajectories[itrajectory][firstid].lambda();
@@ -309,14 +292,14 @@ std::vector<std::array<std::array<double, 2>, 2>> Lensing::dbetadtheta(
                 }
                 photons[itrajectory].chi() = interpRefvec[iref];
                 marked = std::distance(
-                    std::begin(trajectories[itrajectory]),
-                    std::upper_bound(std::begin(trajectories[itrajectory]),
-                                     std::end(trajectories[itrajectory]),
-                                     photons[itrajectory],
-                                     [](const Photon<double, 3> &first,
-                                        const Photon<double, 3> &second) {
-                                         return first.chi() < second.chi();
-                                     }));
+                  std::begin(trajectories[itrajectory]),
+                  std::upper_bound(std::begin(trajectories[itrajectory]),
+                                   std::end(trajectories[itrajectory]),
+                                   photons[itrajectory],
+                                   [](const Photon<double, 3>& first,
+                                      const Photon<double, 3>& second) {
+                                       return first.chi() < second.chi();
+                                   }));
                 firstid = marked - (marked > 0);
                 next = trajectories[itrajectory][firstid + 1].chi();
                 previous = trajectories[itrajectory][firstid].chi();
@@ -332,14 +315,14 @@ std::vector<std::array<std::array<double, 2>, 2>> Lensing::dbetadtheta(
                 }
                 photons[itrajectory].redshift() = interpRefvec[iref];
                 marked = std::distance(
-                    std::begin(trajectories[itrajectory]),
-                    std::upper_bound(std::begin(trajectories[itrajectory]),
-                                     std::end(trajectories[itrajectory]),
-                                     photons[itrajectory],
-                                     [](const Photon<double, 3> &first,
-                                        const Photon<double, 3> &second) {
-                                         return first.redshift() < second.redshift();
-                                     }));
+                  std::begin(trajectories[itrajectory]),
+                  std::upper_bound(std::begin(trajectories[itrajectory]),
+                                   std::end(trajectories[itrajectory]),
+                                   photons[itrajectory],
+                                   [](const Photon<double, 3>& first,
+                                      const Photon<double, 3>& second) {
+                                       return first.redshift() < second.redshift();
+                                   }));
                 firstid = marked - (marked > 0);
                 next = trajectories[itrajectory][firstid + 1].redshift();
                 previous = trajectories[itrajectory][firstid].redshift();
@@ -353,14 +336,14 @@ std::vector<std::array<std::array<double, 2>, 2>> Lensing::dbetadtheta(
                 }
                 photons[itrajectory].a() = interpRefvec[iref];
                 marked = std::distance(
-                    std::begin(trajectories[itrajectory]),
-                    std::upper_bound(std::begin(trajectories[itrajectory]),
-                                     std::end(trajectories[itrajectory]),
-                                     photons[itrajectory],
-                                     [](const Photon<double, 3> &first,
-                                        const Photon<double, 3> &second) {
-                                         return first.a() > second.a();
-                                     }));
+                  std::begin(trajectories[itrajectory]),
+                  std::upper_bound(std::begin(trajectories[itrajectory]),
+                                   std::end(trajectories[itrajectory]),
+                                   photons[itrajectory],
+                                   [](const Photon<double, 3>& first,
+                                      const Photon<double, 3>& second) {
+                                       return first.a() > second.a();
+                                   }));
                 firstid = marked - (marked > 0);
                 next = trajectories[itrajectory][firstid + 1].a();
                 previous = trajectories[itrajectory][firstid].a();
@@ -377,14 +360,14 @@ std::vector<std::array<std::array<double, 2>, 2>> Lensing::dbetadtheta(
                 }
                 photons[itrajectory].t() = interpRefvec[iref];
                 marked = std::distance(
-                    std::begin(trajectories[itrajectory]),
-                    std::upper_bound(std::begin(trajectories[itrajectory]),
-                                     std::end(trajectories[itrajectory]),
-                                     photons[itrajectory],
-                                     [](const Photon<double, 3> &first,
-                                        const Photon<double, 3> &second) {
-                                         return first.t() < second.t();
-                                     }));
+                  std::begin(trajectories[itrajectory]),
+                  std::upper_bound(std::begin(trajectories[itrajectory]),
+                                   std::end(trajectories[itrajectory]),
+                                   photons[itrajectory],
+                                   [](const Photon<double, 3>& first,
+                                      const Photon<double, 3>& second) {
+                                       return first.t() < second.t();
+                                   }));
                 firstid = marked - (marked > 0);
                 next = trajectories[itrajectory][firstid + 1].t();
                 previous = trajectories[itrajectory][firstid].t();
@@ -402,16 +385,16 @@ std::vector<std::array<std::array<double, 2>, 2>> Lensing::dbetadtheta(
                     return jacobian;
                 }
                 marked = std::distance(
-                    std::begin(trajectories[itrajectory]),
-                    std::upper_bound(std::begin(trajectories[itrajectory]),
-                                     std::end(trajectories[itrajectory]),
-                                     interpRefvec[iref],
-                                     [=, &kiTargets](const double &val,
-                                                     const Photon<double, 3> &first) {
-                                         return val < (first.x() * kiTargets[iref][0] +
-                                                       first.y() * kiTargets[iref][1] +
-                                                       first.z() * kiTargets[iref][2]);
-                                     }));
+                  std::begin(trajectories[itrajectory]),
+                  std::upper_bound(std::begin(trajectories[itrajectory]),
+                                   std::end(trajectories[itrajectory]),
+                                   interpRefvec[iref],
+                                   [=, &kiTargets](const double& val,
+                                                   const Photon<double, 3>& first) {
+                                       return val < (first.x() * kiTargets[iref][0] +
+                                                     first.y() * kiTargets[iref][1] +
+                                                     first.z() * kiTargets[iref][2]);
+                                   }));
                 firstid = marked - (marked > 0);
                 next = trajectories[itrajectory][firstid + 1].x() * kiTargets[iref][0] +
                        trajectories[itrajectory][firstid + 1].y() * kiTargets[iref][1] +
@@ -421,8 +404,8 @@ std::vector<std::array<std::array<double, 2>, 2>> Lensing::dbetadtheta(
                            trajectories[itrajectory][firstid].z() * kiTargets[iref][2];
             } else {
                 std::cout
-                    << "# WARNING: Please choose an existing stop_bundle parameter"
-                    << std::endl;
+                  << "# WARNING: Please choose an existing stop_bundle parameter"
+                  << std::endl;
                 std::cout << "# Error at file " << __FILE__ << ", line : " << __LINE__
                           << std::endl;
                 std::terminate();
@@ -430,16 +413,16 @@ std::vector<std::array<std::array<double, 2>, 2>> Lensing::dbetadtheta(
             const double f = (next - interpRefvec[iref]) / (next - previous);
             // Get position of bundle photons at some surface
             bundle_position[iref][itrajectory][0] =
-                trajectories[itrajectory][firstid].x() * f +
-                trajectories[itrajectory][firstid + 1].x() * (1 - f);
+              trajectories[itrajectory][firstid].x() * f +
+              trajectories[itrajectory][firstid + 1].x() * (1 - f);
             bundle_position[iref][itrajectory][1] =
-                trajectories[itrajectory][firstid].y() * f +
-                trajectories[itrajectory][firstid + 1].y() * (1 - f);
+              trajectories[itrajectory][firstid].y() * f +
+              trajectories[itrajectory][firstid + 1].y() * (1 - f);
             bundle_position[iref][itrajectory][2] =
-                trajectories[itrajectory][firstid].z() * f +
-                trajectories[itrajectory][firstid + 1].z() * (1 - f);
+              trajectories[itrajectory][firstid].z() * f +
+              trajectories[itrajectory][firstid + 1].z() * (1 - f);
         } // iref for different interp
-    }     // itrajectory for
+    } // itrajectory for
 
     // Compute jacobian
     for (uint iref = 0; iref < size; iref++) {
@@ -456,12 +439,12 @@ std::vector<std::array<std::array<double, 2>, 2>> Lensing::dbetadtheta(
         const double kz = kiTargets[iref][2];
         const double phik = std::atan2(ky, kx);
         const double thetak =
-            std::acos(kz / std::sqrt(kx * kx + ky * ky + kz * kz));
+          std::acos(kz / std::sqrt(kx * kx + ky * ky + kz * kz));
         const double cpk(std::cos(phik)), spk(std::sin(phik)),
-            ctk(std::cos(thetak)), stk(std::sin(thetak));
+          ctk(std::cos(thetak)), stk(std::sin(thetak));
         // screen perpendicular to the target direction
-        e1 = {-spk, cpk, 0};
-        e2 = {-cpk * ctk, -spk * ctk, stk};
+        e1 = { -spk, cpk, 0 };
+        e2 = { -cpk * ctk, -spk * ctk, stk };
         // Compute lensing jacobian matrix
         const double inv_denominator = 0.5 / (dist[iref] * to);
         jacobian[iref][0][0] = std::inner_product(std::begin(rh), std::end(rh), std::begin(e1), 0.) * inv_denominator;
@@ -499,22 +482,31 @@ std::vector<std::array<std::array<double, 2>, 2>> Lensing::dbetadtheta(
 /// to compute the jacobian matrix. \param[in]      octree Octree. \param[in]
 /// length Spatial length in SI units. \return         2x2 array Aij giving the
 /// jacobian from seen angles to true angles
-template <
-    int Order, bool RK4, bool Verbose, class Type, class Trajectory,
-    template <typename Kind, class Index, class Data, unsigned int Dimension,
-              class Position, class Extent, class Element, class Container>
-    class Octree,
-    typename Kind, class Index, class Data, unsigned int Dimension,
-    class Position, class Extent, class Element, class Container>
-std::array<std::array<double, 2>, 2> Lensing::dbetadtheta_infinitesimal(
-    const Type distance, const Trajectory &trajectory,
-    const Octree<Kind, Index, Data, Dimension, Position, Extent, Element,
-                 Container> &octree,
-    const Type length) {
+template<
+  int Order,
+  bool RK4,
+  bool Verbose,
+  class Type,
+  class Trajectory,
+  template<typename Kind, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree,
+  typename Kind,
+  class Index,
+  class Data,
+  unsigned int Dimension,
+  class Position,
+  class Extent,
+  class Element,
+  class Container>
+std::array<std::array<double, 2>, 2>
+Lensing::dbetadtheta_infinitesimal(
+  const Type distance,
+  const Trajectory& trajectory,
+  const Octree<Kind, Index, Data, Dimension, Position, Extent, Element, Container>& octree,
+  const Type length) {
 
-    std::vector<Type> dist{distance};
+    std::vector<Type> dist{ distance };
     return Lensing::dbetadtheta_infinitesimal<Order, RK4, Verbose>(
-        dist, trajectory, octree, length)[0];
+      dist, trajectory, octree, length)[0];
 }
 //  Jacobian calculation for angles deformations for one trajectory
 /// \brief          Compute the jacobian for lensing
@@ -542,19 +534,27 @@ std::array<std::array<double, 2>, 2> Lensing::dbetadtheta_infinitesimal(
 /// to compute the jacobian matrix. \param[in]      octree Octree. \param[in]
 /// length Spatial length in SI units. \return         2x2 array Aij giving the
 /// jacobian from seen angles to true angles
-template <
-    int Order, bool RK4, bool Verbose, class Type, class Trajectory,
-    template <typename Kind, class Index, class Data, unsigned int Dimension,
-              class Position, class Extent, class Element, class Container>
-    class Octree,
-    typename Kind, class Index, class Data, unsigned int Dimension,
-    class Position, class Extent, class Element, class Container>
+template<
+  int Order,
+  bool RK4,
+  bool Verbose,
+  class Type,
+  class Trajectory,
+  template<typename Kind, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree,
+  typename Kind,
+  class Index,
+  class Data,
+  unsigned int Dimension,
+  class Position,
+  class Extent,
+  class Element,
+  class Container>
 std::vector<std::array<std::array<double, 2>, 2>>
 Lensing::dbetadtheta_infinitesimal(
-    const std::vector<Type> &dist, const Trajectory &trajectory,
-    const Octree<Kind, Index, Data, Dimension, Position, Extent, Element,
-                 Container> &octree,
-    const Type length) {
+  const std::vector<Type>& dist,
+  const Trajectory& trajectory,
+  const Octree<Kind, Index, Data, Dimension, Position, Extent, Element, Container>& octree,
+  const Type length) {
 
     const unsigned int size = dist.size();
     std::vector<std::array<std::array<double, 2>, 2>> result(size);
@@ -582,7 +582,7 @@ Lensing::dbetadtheta_infinitesimal(
         const double phi = std::atan2(y, x);
         const double theta = std::acos(z / r);
         const double cp(std::cos(phi)), sp(std::sin(phi)), ct(std::cos(theta)),
-            st(std::sin(theta));
+          st(std::sin(theta));
         const double s2p(std::sin(2 * phi)), s2t(std::sin(2 * theta));
         // Derivation step (arbitrary)
         dl = std::pow(2, -(trajectory[i].level() - 1 - levelshift));
@@ -624,13 +624,14 @@ Lensing::dbetadtheta_infinitesimal(
     for (unsigned int j = 0; j < size; j++) {
         photon[0].chi() = dist[j];
         marked =
-            std::distance(std::begin(trajectory),
-                          std::upper_bound(std::begin(trajectory),
-                                           std::end(trajectory), photon[0],
-                                           [](const Photon<double, 3> &first,
-                                              const Photon<double, 3> &second) {
-                                               return first.chi() < second.chi();
-                                           }));
+          std::distance(std::begin(trajectory),
+                        std::upper_bound(std::begin(trajectory),
+                                         std::end(trajectory),
+                                         photon[0],
+                                         [](const Photon<double, 3>& first,
+                                            const Photon<double, 3>& second) {
+                                             return first.chi() < second.chi();
+                                         }));
         firstid = marked - (marked > 0);
         result[j][0][0] = 1 - 2 * a11[j][firstid] / c2 * length;
         // We assume a12 = a21
@@ -666,21 +667,28 @@ Lensing::dbetadtheta_infinitesimal(
 /// \return         1d array Dijk giving the Hessian from seen angles to true
 /// angles
 
-template <int Order, bool RK4, bool Verbose, class Parameter, class Point,
-          class Cosmology, class Octree, class Type>
-std::array<double, 6> Lensing::flexion(
-    const Parameter &parameters, const Point &central_position, const Point &kiTarget,
-    const Type interpRef, const Point &observer, const Type phiInit,
-    const Type thetaInit, const Type dist, const Cosmology &cosmology,
-    const Octree &octree, const Point &vobs, const Type length) {
+template<int Order, bool RK4, bool Verbose, class Parameter, class Point, class Cosmology, class Octree, class Type>
+std::array<double, 6>
+Lensing::flexion(
+  const Parameter& parameters,
+  const Point& central_position,
+  const Point& kiTarget,
+  const Type interpRef,
+  const Point& observer,
+  const Type phiInit,
+  const Type thetaInit,
+  const Type dist,
+  const Cosmology& cosmology,
+  const Octree& octree,
+  const Point& vobs,
+  const Type length) {
 
-    std::vector<Point> central_positions{central_position};
-    std::vector<Point> kiTargets{kiTarget};
-    std::vector<Type> interpRefvec{interpRef};
-    std::vector<Type> distance{dist};
+    std::vector<Point> central_positions{ central_position };
+    std::vector<Point> kiTargets{ kiTarget };
+    std::vector<Type> interpRefvec{ interpRef };
+    std::vector<Type> distance{ dist };
     return Lensing::flexion<Order, RK4, Verbose>(
-        parameters, central_positions, kiTargets, interpRefvec, observer, phiInit,
-        thetaInit, distance, cosmology, octree, vobs, length)[0];
+      parameters, central_positions, kiTargets, interpRefvec, observer, phiInit, thetaInit, distance, cosmology, octree, vobs, length)[0];
 }
 
 //  Hessian calculation for angles deformations for multiple redshifts
@@ -712,14 +720,21 @@ std::array<double, 6> Lensing::flexion(
 /// \param[in]      nsteps Number of lambda steps per grid.
 /// \return         1d array Dijk giving the Hessian from seen angles to true
 /// angles
-template <int Order, bool RK4, bool Verbose, class Parameter, class Point,
-          class Cosmology, class Octree, class Type>
-std::vector<std::array<double, 6>> Lensing::flexion(
-    const Parameter &parameters, const std::vector<Point> &central_positions,
-    const std::vector<Point> &kiTargets, const std::vector<Type> &interpRefvec,
-    const Point &observer, const Type phiInit, const Type thetaInit,
-    const std::vector<Type> &dist, const Cosmology &cosmology,
-    const Octree &octree, const Point &vobs, const Type length) {
+template<int Order, bool RK4, bool Verbose, class Parameter, class Point, class Cosmology, class Octree, class Type>
+std::vector<std::array<double, 6>>
+Lensing::flexion(
+  const Parameter& parameters,
+  const std::vector<Point>& central_positions,
+  const std::vector<Point>& kiTargets,
+  const std::vector<Type>& interpRefvec,
+  const Point& observer,
+  const Type phiInit,
+  const Type thetaInit,
+  const std::vector<Type>& dist,
+  const Cosmology& cosmology,
+  const Octree& octree,
+  const Point& vobs,
+  const Type length) {
 
     const unsigned int size = interpRefvec.size();
     std::vector<std::array<double, 6>> hessian(size);
@@ -728,15 +743,15 @@ std::vector<std::array<double, 6>> Lensing::flexion(
     std::vector<std::array<Point, 8>> bundle_position(size);
     const uint n_bundle = 8;
     const double cp(std::cos(phiInit)), sp(std::sin(phiInit)),
-        ct(std::cos(thetaInit)), st(std::sin(thetaInit));
+      ct(std::cos(thetaInit)), st(std::sin(thetaInit));
 
     // Initialization
     std::vector<Point> rini(n_bundle);
     Point target, e1, e2;
-    target = {cp * st, sp * st, ct};
+    target = { cp * st, sp * st, ct };
     // screen perpendicular to the target direction
-    e1 = {-sp, cp, 0};
-    e2 = {-cp * ct, -sp * ct, st};
+    e1 = { -sp, cp, 0 };
+    e2 = { -cp * ct, -sp * ct, st };
     const double to = std::tan(parameters.openingmin);
 
     // Initialise direction of bundle photons
@@ -747,32 +762,32 @@ std::vector<std::array<double, 6>> Lensing::flexion(
 
         5   3   7 */
 
-    rini[0] = {target[0] + to * e1[0], target[1] + to * e1[1], target[2]};
-    rini[1] = {target[0] - to * e1[0], target[1] - to * e1[1], target[2]};
-    rini[2] = {target[0] - to * e2[0], target[1] - to * e2[1],
-               target[2] - to * e2[2]};
-    rini[3] = {target[0] + to * e2[0], target[1] + to * e2[1],
-               target[2] + to * e2[2]};
-    rini[4] = {target[0] + to * e1[0] - to * e2[0],
-               target[1] + to * e1[1] - to * e2[1], target[2] - to * e2[2]};
-    rini[5] = {target[0] + to * e1[0] + to * e2[0],
-               target[1] + to * e1[1] + to * e2[1], target[2] + to * e2[2]};
-    rini[6] = {target[0] - to * e1[0] - to * e2[0],
-               target[1] - to * e1[1] - to * e2[1], target[2] - to * e2[2]};
-    rini[7] = {target[0] - to * e1[0] + to * e2[0],
-               target[1] - to * e1[1] + to * e2[1], target[2] + to * e2[2]};
+    rini[0] = { target[0] + to * e1[0], target[1] + to * e1[1], target[2] };
+    rini[1] = { target[0] - to * e1[0], target[1] - to * e1[1], target[2] };
+    rini[2] = { target[0] - to * e2[0], target[1] - to * e2[1], target[2] - to * e2[2] };
+    rini[3] = { target[0] + to * e2[0], target[1] + to * e2[1], target[2] + to * e2[2] };
+    rini[4] = { target[0] + to * e1[0] - to * e2[0],
+                target[1] + to * e1[1] - to * e2[1],
+                target[2] - to * e2[2] };
+    rini[5] = { target[0] + to * e1[0] + to * e2[0],
+                target[1] + to * e1[1] + to * e2[1],
+                target[2] + to * e2[2] };
+    rini[6] = { target[0] - to * e1[0] - to * e2[0],
+                target[1] - to * e1[1] - to * e2[1],
+                target[2] - to * e2[2] };
+    rini[7] = { target[0] - to * e1[0] + to * e2[0],
+                target[1] - to * e1[1] + to * e2[1],
+                target[2] + to * e2[2] };
     // Launch photons
     for (unsigned int i = 0; i < n_bundle; i++) {
-        photons[i] = Integrator::launch(observer[0], observer[1], observer[2],
-                                        rini[i][0], rini[i][1], rini[i][2]);
+        photons[i] = Integrator::launch(observer[0], observer[1], observer[2], rini[i][0], rini[i][1], rini[i][2]);
     }
 
     // Integration
     for (unsigned int itrajectory = 0; itrajectory < n_bundle; itrajectory++) {
         trajectories[itrajectory].append(photons[itrajectory]);
         Integrator::integrate<Order, RK4, Verbose>(
-            trajectories[itrajectory], parameters.stop_bundle, interpRefvec.back(),
-            cosmology, octree, vobs, length, parameters.nsteps, kiTargets.back());
+          trajectories[itrajectory], parameters.stop_bundle, interpRefvec.back(), cosmology, octree, vobs, length, parameters.nsteps, kiTargets.back());
 
         for (uint iref = 0; iref < size; iref++) {
             unsigned int marked(0), firstid(0);
@@ -787,14 +802,14 @@ std::vector<std::array<double, 6>> Lensing::flexion(
                 }
                 photons[itrajectory].lambda() = interpRefvec[iref];
                 marked = std::distance(
-                    std::begin(trajectories[itrajectory]),
-                    std::upper_bound(std::begin(trajectories[itrajectory]),
-                                     std::end(trajectories[itrajectory]),
-                                     photons[itrajectory],
-                                     [](const Photon<double, 3> &first,
-                                        const Photon<double, 3> &second) {
-                                         return first.lambda() < second.lambda();
-                                     }));
+                  std::begin(trajectories[itrajectory]),
+                  std::upper_bound(std::begin(trajectories[itrajectory]),
+                                   std::end(trajectories[itrajectory]),
+                                   photons[itrajectory],
+                                   [](const Photon<double, 3>& first,
+                                      const Photon<double, 3>& second) {
+                                       return first.lambda() < second.lambda();
+                                   }));
                 firstid = marked - (marked > 0);
                 next = trajectories[itrajectory][firstid + 1].lambda();
                 previous = trajectories[itrajectory][firstid].lambda();
@@ -808,14 +823,14 @@ std::vector<std::array<double, 6>> Lensing::flexion(
                 }
                 photons[itrajectory].chi() = interpRefvec[iref];
                 marked = std::distance(
-                    std::begin(trajectories[itrajectory]),
-                    std::upper_bound(std::begin(trajectories[itrajectory]),
-                                     std::end(trajectories[itrajectory]),
-                                     photons[itrajectory],
-                                     [](const Photon<double, 3> &first,
-                                        const Photon<double, 3> &second) {
-                                         return first.chi() < second.chi();
-                                     }));
+                  std::begin(trajectories[itrajectory]),
+                  std::upper_bound(std::begin(trajectories[itrajectory]),
+                                   std::end(trajectories[itrajectory]),
+                                   photons[itrajectory],
+                                   [](const Photon<double, 3>& first,
+                                      const Photon<double, 3>& second) {
+                                       return first.chi() < second.chi();
+                                   }));
                 firstid = marked - (marked > 0);
                 next = trajectories[itrajectory][firstid + 1].chi();
                 previous = trajectories[itrajectory][firstid].chi();
@@ -828,14 +843,14 @@ std::vector<std::array<double, 6>> Lensing::flexion(
                 }
                 photons[itrajectory].redshift() = interpRefvec[iref];
                 marked = std::distance(
-                    std::begin(trajectories[itrajectory]),
-                    std::upper_bound(std::begin(trajectories[itrajectory]),
-                                     std::end(trajectories[itrajectory]),
-                                     photons[itrajectory],
-                                     [](const Photon<double, 3> &first,
-                                        const Photon<double, 3> &second) {
-                                         return first.redshift() < second.redshift();
-                                     }));
+                  std::begin(trajectories[itrajectory]),
+                  std::upper_bound(std::begin(trajectories[itrajectory]),
+                                   std::end(trajectories[itrajectory]),
+                                   photons[itrajectory],
+                                   [](const Photon<double, 3>& first,
+                                      const Photon<double, 3>& second) {
+                                       return first.redshift() < second.redshift();
+                                   }));
                 firstid = marked - (marked > 0);
                 next = trajectories[itrajectory][firstid + 1].redshift();
                 previous = trajectories[itrajectory][firstid].redshift();
@@ -848,14 +863,14 @@ std::vector<std::array<double, 6>> Lensing::flexion(
                 }
                 photons[itrajectory].a() = interpRefvec[iref];
                 marked = std::distance(
-                    std::begin(trajectories[itrajectory]),
-                    std::upper_bound(std::begin(trajectories[itrajectory]),
-                                     std::end(trajectories[itrajectory]),
-                                     photons[itrajectory],
-                                     [](const Photon<double, 3> &first,
-                                        const Photon<double, 3> &second) {
-                                         return first.a() > second.a();
-                                     }));
+                  std::begin(trajectories[itrajectory]),
+                  std::upper_bound(std::begin(trajectories[itrajectory]),
+                                   std::end(trajectories[itrajectory]),
+                                   photons[itrajectory],
+                                   [](const Photon<double, 3>& first,
+                                      const Photon<double, 3>& second) {
+                                       return first.a() > second.a();
+                                   }));
                 firstid = marked - (marked > 0);
                 next = trajectories[itrajectory][firstid + 1].a();
                 previous = trajectories[itrajectory][firstid].a();
@@ -869,14 +884,14 @@ std::vector<std::array<double, 6>> Lensing::flexion(
                 }
                 photons[itrajectory].t() = interpRefvec[iref];
                 marked = std::distance(
-                    std::begin(trajectories[itrajectory]),
-                    std::upper_bound(std::begin(trajectories[itrajectory]),
-                                     std::end(trajectories[itrajectory]),
-                                     photons[itrajectory],
-                                     [](const Photon<double, 3> &first,
-                                        const Photon<double, 3> &second) {
-                                         return first.t() < second.t();
-                                     }));
+                  std::begin(trajectories[itrajectory]),
+                  std::upper_bound(std::begin(trajectories[itrajectory]),
+                                   std::end(trajectories[itrajectory]),
+                                   photons[itrajectory],
+                                   [](const Photon<double, 3>& first,
+                                      const Photon<double, 3>& second) {
+                                       return first.t() < second.t();
+                                   }));
                 firstid = marked - (marked > 0);
                 next = trajectories[itrajectory][firstid + 1].t();
                 previous = trajectories[itrajectory][firstid].t();
@@ -891,16 +906,16 @@ std::vector<std::array<double, 6>> Lensing::flexion(
                     return hessian;
                 }
                 marked = std::distance(
-                    std::begin(trajectories[itrajectory]),
-                    std::upper_bound(std::begin(trajectories[itrajectory]),
-                                     std::end(trajectories[itrajectory]),
-                                     interpRefvec[iref],
-                                     [=, &kiTargets](const double &val,
-                                                     const Photon<double, 3> &first) {
-                                         return val < (first.x() * kiTargets[iref][0] +
-                                                       first.y() * kiTargets[iref][1] +
-                                                       first.z() * kiTargets[iref][2]);
-                                     }));
+                  std::begin(trajectories[itrajectory]),
+                  std::upper_bound(std::begin(trajectories[itrajectory]),
+                                   std::end(trajectories[itrajectory]),
+                                   interpRefvec[iref],
+                                   [=, &kiTargets](const double& val,
+                                                   const Photon<double, 3>& first) {
+                                       return val < (first.x() * kiTargets[iref][0] +
+                                                     first.y() * kiTargets[iref][1] +
+                                                     first.z() * kiTargets[iref][2]);
+                                   }));
                 firstid = marked - (marked > 0);
                 next = trajectories[itrajectory][firstid + 1].x() * kiTargets[iref][0] +
                        trajectories[itrajectory][firstid + 1].y() * kiTargets[iref][1] +
@@ -910,8 +925,8 @@ std::vector<std::array<double, 6>> Lensing::flexion(
                            trajectories[itrajectory][firstid].z() * kiTargets[iref][2];
             } else {
                 std::cout
-                    << "# WARNING: Please choose an existing stop_bundle parameter"
-                    << std::endl;
+                  << "# WARNING: Please choose an existing stop_bundle parameter"
+                  << std::endl;
                 std::cout << "# Error at file " << __FILE__ << ", line : " << __LINE__
                           << std::endl;
                 std::terminate();
@@ -919,16 +934,16 @@ std::vector<std::array<double, 6>> Lensing::flexion(
             const double f = (next - interpRefvec[iref]) / (next - previous);
             // Get position of bundle photons at some surface
             bundle_position[iref][itrajectory][0] =
-                trajectories[itrajectory][firstid].x() * f +
-                trajectories[itrajectory][firstid + 1].x() * (1 - f);
+              trajectories[itrajectory][firstid].x() * f +
+              trajectories[itrajectory][firstid + 1].x() * (1 - f);
             bundle_position[iref][itrajectory][1] =
-                trajectories[itrajectory][firstid].y() * f +
-                trajectories[itrajectory][firstid + 1].y() * (1 - f);
+              trajectories[itrajectory][firstid].y() * f +
+              trajectories[itrajectory][firstid + 1].y() * (1 - f);
             bundle_position[iref][itrajectory][2] =
-                trajectories[itrajectory][firstid].z() * f +
-                trajectories[itrajectory][firstid + 1].z() * (1 - f);
+              trajectories[itrajectory][firstid].z() * f +
+              trajectories[itrajectory][firstid + 1].z() * (1 - f);
         } // iref for different interp
-    }     // itrajectory for
+    } // itrajectory for
 
     // Compute Hessian
     for (uint iref = 0; iref < size; iref++) {
@@ -947,12 +962,12 @@ std::vector<std::array<double, 6>> Lensing::flexion(
         const double kz = kiTargets[iref][2];
         const double phik = std::atan2(ky, kx);
         const double thetak =
-            std::acos(kz / std::sqrt(kx * kx + ky * ky + kz * kz));
+          std::acos(kz / std::sqrt(kx * kx + ky * ky + kz * kz));
         const double cpk(std::cos(phik)), spk(std::sin(phik)),
-            ctk(std::cos(thetak)), stk(std::sin(thetak));
+          ctk(std::cos(thetak)), stk(std::sin(thetak));
         // screen perpendicular to the target direction
-        e1 = {-spk, cpk, 0};
-        e2 = {-cpk * ctk, -spk * ctk, stk};
+        e1 = { -spk, cpk, 0 };
+        e2 = { -cpk * ctk, -spk * ctk, stk };
         // Compute lensing jacobian matrix
         const double inv_denominator = 1. / (dist[iref] * to * to); // Only 1 dist[ref] so that dimension of flexion is rad^-1
         hessian[iref][0] = std::inner_product(std::begin(rhh), std::end(rhh), std::begin(e1), 0.) * inv_denominator;

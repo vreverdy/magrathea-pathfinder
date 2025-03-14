@@ -61,46 +61,23 @@ class Integrator final {
     /// \name           Initialization
     //@{
 public:
-    template <typename Type = double, class Sphere, class Vector, typename Scalar,
-              class Engine, class Distribution,
-              unsigned int Dimension = Sphere::dimension(),
-              class = typename std::enable_if<Dimension == 3>::type>
+    template<typename Type = double, class Sphere, class Vector, typename Scalar, class Engine, class Distribution, unsigned int Dimension = Sphere::dimension(), class = typename std::enable_if<Dimension == 3>::type>
     static Photon<Type, Dimension>
-    launch(const Sphere &sphere, const Cone<Vector, Scalar> &cone, Engine &engine,
-           Distribution &distribution);
-    template <typename Type = double, class Sphere, class Container, class Vector,
-              typename Scalar, class Engine, class Distribution,
-              unsigned int Dimension = Sphere::dimension(),
-              class = typename std::enable_if<
-                  (Dimension == 3) &&
-                  (std::is_convertible<
-                      typename std::remove_cv<typename std::remove_reference<
-                          decltype(std::declval<Container>()[0])>::type>::type,
-                      Cone<Vector, Scalar>>::value)>::type>
+    launch(const Sphere& sphere, const Cone<Vector, Scalar>& cone, Engine& engine, Distribution& distribution);
+    template<typename Type = double, class Sphere, class Container, class Vector, typename Scalar, class Engine, class Distribution, unsigned int Dimension = Sphere::dimension(), class = typename std::enable_if<(Dimension == 3) && (std::is_convertible<typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Container>()[0])>::type>::type, Cone<Vector, Scalar>>::value)>::type>
     static Photon<Type, Dimension>
-    launch(const Sphere &sphere, const Cone<Vector, Scalar> &cone,
-           const Container &cones, Engine &engine, Distribution &distribution);
-    template <typename Type, unsigned int Dimension = 3,
-              class = typename std::enable_if<Dimension == 3>::type>
-    static Photon<Type, Dimension> launch(const Type xbegin, const Type ybegin,
-                                          const Type zbegin, const Type xend,
-                                          const Type yend, const Type zend);
-    template <typename Type, unsigned int Dimension = 3,
-              class = typename std::enable_if<Dimension == 3>::type>
-    static Photon<Type, Dimension> launch(const Type xbegin, const Type ybegin,
-                                          const Type zbegin, const Type phi,
-                                          const Type theta);
-    template <typename Type, unsigned int Dimension = 3, class Cosmology,
-              class = typename std::enable_if<Dimension == 3>::type>
+    launch(const Sphere& sphere, const Cone<Vector, Scalar>& cone, const Container& cones, Engine& engine, Distribution& distribution);
+    template<typename Type, unsigned int Dimension = 3, class = typename std::enable_if<Dimension == 3>::type>
+    static Photon<Type, Dimension> launch(const Type xbegin, const Type ybegin, const Type zbegin, const Type xend, const Type yend, const Type zend);
+    template<typename Type, unsigned int Dimension = 3, class = typename std::enable_if<Dimension == 3>::type>
+    static Photon<Type, Dimension> launch(const Type xbegin, const Type ybegin, const Type zbegin, const Type phi, const Type theta);
+    template<typename Type, unsigned int Dimension = 3, class Cosmology, class = typename std::enable_if<Dimension == 3>::type>
     static Photon<Type, Dimension>
-    launch(const Type xbegin, const Type ybegin, const Type zbegin, const Type k0,
-           const Type kx, const Type ky, const Type kz, const Type aexp,
-           const Cosmology &cosmology);
-    template <bool Center = false, typename Type, unsigned int Dimension,
-              class Container = std::vector<Photon<Type, Dimension>>,
-              class = typename std::enable_if<Dimension == 3>::type>
-    static Container launch(const Photon<Type, Dimension> &photon,
-                            const unsigned int count, const Type angle,
+    launch(const Type xbegin, const Type ybegin, const Type zbegin, const Type k0, const Type kx, const Type ky, const Type kz, const Type aexp, const Cosmology& cosmology);
+    template<bool Center = false, typename Type, unsigned int Dimension, class Container = std::vector<Photon<Type, Dimension>>, class = typename std::enable_if<Dimension == 3>::type>
+    static Container launch(const Photon<Type, Dimension>& photon,
+                            const unsigned int count,
+                            const Type angle,
                             const Type rotation = Type());
     //@}
 
@@ -108,70 +85,72 @@ public:
     /// \name           Computation
     //@{
 public:
-    template <
-        int Order = ORDER, class Array, class Element, class Cosmology,
-        class Octree, class Type, unsigned int Dimension = Octree::dimension(),
-        class Data =
-            typename std::tuple_element<1, decltype(Octree::element())>::type,
-        class Position = decltype(Octree::position()),
-        class Extent = decltype(Octree::extent())>
-    static Array &dphotondl(Array &output, const Array &input,
-                            const Cosmology &cosmology, const Octree &octree,
-                            const Type length, std::vector<Element> &elemsTsc);
+    template<
+      int Order = ORDER,
+      class Array,
+      class Element,
+      class Cosmology,
+      class Octree,
+      class Type,
+      unsigned int Dimension = Octree::dimension(),
+      class Data =
+        typename std::tuple_element<1, decltype(Octree::element())>::type,
+      class Position = decltype(Octree::position()),
+      class Extent = decltype(Octree::extent())>
+    static Array& dphotondl(Array& output, const Array& input, const Cosmology& cosmology, const Octree& octree, const Type length, std::vector<Element>& elemsTsc);
     //@}
 
     // Evolution
     /// \name           Evolution
     //@{
 public:
-    template <
-        int Order = ORDER, bool RK4 = true, bool Verbose = false, class Cosmology,
-        class Octree, class Type, class Trajectory,
-        unsigned int Dimension = Octree::dimension(),
-        class Element = typename std::remove_cv<typename std::remove_reference<
-            decltype(std::declval<Trajectory>()[0])>::type>::type,
-        class Data =
-            typename std::tuple_element<1, decltype(Octree::element())>::type,
-        class Core = decltype(Element::template type<1>()),
-        unsigned int Size = std::tuple_size<Core>::value,
-        class Position = decltype(Octree::position()),
-        class Extent = decltype(Octree::extent()), class Point>
-    static Trajectory &integrate(Trajectory &trajectory,
-                                 const Cosmology &cosmology, const Octree &octree,
-                                 const Point &vobs, const Type length,
+    template<
+      int Order = ORDER,
+      bool RK4 = true,
+      bool Verbose = false,
+      class Cosmology,
+      class Octree,
+      class Type,
+      class Trajectory,
+      unsigned int Dimension = Octree::dimension(),
+      class Element = typename std::remove_cv<typename std::remove_reference<
+        decltype(std::declval<Trajectory>()[0])>::type>::type,
+      class Data =
+        typename std::tuple_element<1, decltype(Octree::element())>::type,
+      class Core = decltype(Element::template type<1>()),
+      unsigned int Size = std::tuple_size<Core>::value,
+      class Position = decltype(Octree::position()),
+      class Extent = decltype(Octree::extent()),
+      class Point>
+    static Trajectory& integrate(Trajectory& trajectory,
+                                 const Cosmology& cosmology,
+                                 const Octree& octree,
+                                 const Point& vobs,
+                                 const Type length,
                                  const unsigned int nsteps = 1);
-    template <
-        int Order = ORDER, bool RK4 = true, bool Verbose = false, class Cosmology,
-        class Octree, class Type, class Trajectory,
-        unsigned int Dimension = Octree::dimension(),
-        class Element = typename std::remove_cv<typename std::remove_reference<
-            decltype(std::declval<Trajectory>()[0])>::type>::type,
-        class Data =
-            typename std::tuple_element<1, decltype(Octree::element())>::type,
-        class Core = decltype(Element::template type<1>()),
-        unsigned int Size = std::tuple_size<Core>::value,
-        class Position = decltype(Octree::position()),
-        class Extent = decltype(Octree::extent()),
-        class Point = std::array<Type, 3>>
-    static Trajectory &
-    integrate(Trajectory &trajectory, const std::string interpolation,
-              const Type interpRef, const Cosmology &cosmology,
-              const Octree &octree, const Point &vobs, const Type length,
-              const unsigned int nsteps = 1, const Point &kiTarget = Point());
-    template <int Order = ORDER, bool RK4 = true, bool Verbose = false,
-              class Cosmology, class Octree, class Type, unsigned int Dimension,
-              class Homogeneous = std::vector<Photon<Type, Dimension>>,
-              class Point,
-              class = typename std::enable_if<
-                  (Dimension == 3) && (Dimension == Octree::dimension())>::type>
+    template<
+      int Order = ORDER,
+      bool RK4 = true,
+      bool Verbose = false,
+      class Cosmology,
+      class Octree,
+      class Type,
+      class Trajectory,
+      unsigned int Dimension = Octree::dimension(),
+      class Element = typename std::remove_cv<typename std::remove_reference<
+        decltype(std::declval<Trajectory>()[0])>::type>::type,
+      class Data =
+        typename std::tuple_element<1, decltype(Octree::element())>::type,
+      class Core = decltype(Element::template type<1>()),
+      unsigned int Size = std::tuple_size<Core>::value,
+      class Position = decltype(Octree::position()),
+      class Extent = decltype(Octree::extent()),
+      class Point = std::array<Type, 3>>
+    static Trajectory&
+    integrate(Trajectory& trajectory, const std::string interpolation, const Type interpRef, const Cosmology& cosmology, const Octree& octree, const Point& vobs, const Type length, const unsigned int nsteps = 1, const Point& kiTarget = Point());
+    template<int Order = ORDER, bool RK4 = true, bool Verbose = false, class Cosmology, class Octree, class Type, unsigned int Dimension, class Homogeneous = std::vector<Photon<Type, Dimension>>, class Point, class = typename std::enable_if<(Dimension == 3) && (Dimension == Octree::dimension())>::type>
     static magrathea::Evolution<Photon<Type, Dimension>>
-    propagate(const Photon<Type, Dimension> &photon, const unsigned int count,
-              const Type angle, const Type rotation,
-              const std::string &interpolation, const Cosmology &cosmology,
-              const Octree &octree, const Point &vobs, const Type length,
-              const unsigned int nsteps = 1, const Type amin = Type(),
-              const std::string &filenames = std::string(),
-              const Homogeneous &homogeneous = Homogeneous());
+    propagate(const Photon<Type, Dimension>& photon, const unsigned int count, const Type angle, const Type rotation, const std::string& interpolation, const Cosmology& cosmology, const Octree& octree, const Point& vobs, const Type length, const unsigned int nsteps = 1, const Type amin = Type(), const std::string& filenames = std::string(), const Homogeneous& homogeneous = Homogeneous());
 
     //@}
 
@@ -199,11 +178,9 @@ public:
 /// \param[in,out]  engine Random engine.
 /// \param[in,out]  distribution Random distribution.
 /// \return         Initial photon in the cone.
-template <typename Type, class Sphere, class Vector, typename Scalar,
-          class Engine, class Distribution, unsigned int Dimension, class>
+template<typename Type, class Sphere, class Vector, typename Scalar, class Engine, class Distribution, unsigned int Dimension, class>
 Photon<Type, Dimension>
-Integrator::launch(const Sphere &sphere, const Cone<Vector, Scalar> &cone,
-                   Engine &engine, Distribution &distribution) {
+Integrator::launch(const Sphere& sphere, const Cone<Vector, Scalar>& cone, Engine& engine, Distribution& distribution) {
     // Initialization
     static const Type zero = Type();
     static const Type one = Type(1);
@@ -256,13 +233,9 @@ Integrator::launch(const Sphere &sphere, const Cone<Vector, Scalar> &cone,
 /// \param[in,out]  engine Random engine.
 /// \param[in,out]  distribution Random distribution.
 /// \return         Initial photon in the cone.
-template <typename Type, class Sphere, class Container, class Vector,
-          typename Scalar, class Engine, class Distribution,
-          unsigned int Dimension, class>
+template<typename Type, class Sphere, class Container, class Vector, typename Scalar, class Engine, class Distribution, unsigned int Dimension, class>
 Photon<Type, Dimension>
-Integrator::launch(const Sphere &sphere, const Cone<Vector, Scalar> &cone,
-                   const Container &cones, Engine &engine,
-                   Distribution &distribution) {
+Integrator::launch(const Sphere& sphere, const Cone<Vector, Scalar>& cone, const Container& cones, Engine& engine, Distribution& distribution) {
     // Initialization
     static const Type zero = Type();
     static const Type one = Type(1);
@@ -291,8 +264,8 @@ Integrator::launch(const Sphere &sphere, const Cone<Vector, Scalar> &cone,
             length /= cone.template pow<2>(cone.length());
             for (unsigned int idim = 0; idim < Dimension; ++idim) {
                 reference += cone.template pow<2>(
-                    position[idim] - (cone.vertex(idim) +
-                                      (cone.base(idim) - cone.vertex(idim)) * length));
+                  position[idim] - (cone.vertex(idim) +
+                                    (cone.base(idim) - cone.vertex(idim)) * length));
             }
             for (unsigned int icone = 0; icone < size; ++icone) {
                 length = Scalar();
@@ -306,10 +279,10 @@ Integrator::launch(const Sphere &sphere, const Cone<Vector, Scalar> &cone,
                         length /= cones[icone].template pow<2>(cones[icone].length());
                         for (unsigned int idim = 0; idim < Dimension; ++idim) {
                             distance += cones[icone].template pow<2>(
-                                position[idim] -
-                                (cones[icone].vertex(idim) +
-                                 (cones[icone].base(idim) - cones[icone].vertex(idim)) *
-                                     length));
+                              position[idim] -
+                              (cones[icone].vertex(idim) +
+                               (cones[icone].base(idim) - cones[icone].vertex(idim)) *
+                                 length));
                         }
                         if (distance < reference) {
                             ok = false;
@@ -353,10 +326,9 @@ Integrator::launch(const Sphere &sphere, const Cone<Vector, Scalar> &cone,
 /// \param[in]      yend Ending y coordinate.
 /// \param[in]      zend Ending z coordinate.
 /// \return         Initial photon.
-template <typename Type, unsigned int Dimension, class>
-Photon<Type, Dimension> Integrator::launch(const Type xbegin, const Type ybegin,
-                                           const Type zbegin, const Type xend,
-                                           const Type yend, const Type zend) {
+template<typename Type, unsigned int Dimension, class>
+Photon<Type, Dimension>
+Integrator::launch(const Type xbegin, const Type ybegin, const Type zbegin, const Type xend, const Type yend, const Type zend) {
     // Initialization
     static const Type zero = Type();
     static const Type one = Type(1);
@@ -397,10 +369,9 @@ Photon<Type, Dimension> Integrator::launch(const Type xbegin, const Type ybegin,
 /// \param[in]      phi Phi angular coordinate.
 /// \param[in]      theta Theta angular coordinate.
 /// \return         Initial photon.
-template <typename Type, unsigned int Dimension, class>
-Photon<Type, Dimension> Integrator::launch(const Type xbegin, const Type ybegin,
-                                           const Type zbegin, const Type phi,
-                                           const Type theta) {
+template<typename Type, unsigned int Dimension, class>
+Photon<Type, Dimension>
+Integrator::launch(const Type xbegin, const Type ybegin, const Type zbegin, const Type phi, const Type theta) {
     // Initialization
     static const Type zero = Type();
     static const Type one = Type(1);
@@ -443,11 +414,9 @@ Photon<Type, Dimension> Integrator::launch(const Type xbegin, const Type ybegin,
 /// \param[in]      aexp Starting scale factor.
 /// \param[in]      cosmology Cosmology evolution.
 /// \return         Initial photon.
-template <typename Type, unsigned int Dimension, class Cosmology, class>
+template<typename Type, unsigned int Dimension, class Cosmology, class>
 Photon<Type, Dimension>
-Integrator::launch(const Type xbegin, const Type ybegin, const Type zbegin,
-                   const Type k0, const Type kx, const Type ky, const Type kz,
-                   const Type aexp, const Cosmology &cosmology) {
+Integrator::launch(const Type xbegin, const Type ybegin, const Type zbegin, const Type k0, const Type kx, const Type ky, const Type kz, const Type aexp, const Cosmology& cosmology) {
     // Initialization
     Photon<Type, Dimension> result;
 
@@ -455,8 +424,7 @@ Integrator::launch(const Type xbegin, const Type ybegin, const Type zbegin,
     result.a() = aexp;
 
     // Set the photon position
-    result.t() = Utility::rinterpolate(aexp, std::get<1>(cosmology),
-                                       std::get<0>(cosmology));
+    result.t() = Utility::rinterpolate(aexp, std::get<1>(cosmology), std::get<0>(cosmology));
     result.x() = xbegin;
     result.y() = ybegin;
     result.z() = zbegin;
@@ -485,11 +453,12 @@ Integrator::launch(const Type xbegin, const Type ybegin, const Type zbegin,
 /// \param[in]      rotation Arbitrary rotation to optionally apply on the
 ///                 resulting circle of photons.
 /// \return         Circle of photons.
-template <bool Center, typename Type, unsigned int Dimension, class Container,
-          class>
-Container Integrator::launch(const Photon<Type, Dimension> &photon,
-                             const unsigned int count, const Type angle,
-                             const Type rotation) {
+template<bool Center, typename Type, unsigned int Dimension, class Container, class>
+Container
+Integrator::launch(const Photon<Type, Dimension>& photon,
+                   const unsigned int count,
+                   const Type angle,
+                   const Type rotation) {
     // Initialization
     static const unsigned int zero = 0;
     static const Type one = 1;
@@ -520,13 +489,13 @@ Container Integrator::launch(const Photon<Type, Dimension> &photon,
             z = rcos;
             result[istep + Center].dtdl() = one;
             result[istep + Center].dxdl() =
-                -cosphi * sinpsi * costheta * x - cosphi * cospsi * costheta * y +
-                cosphi * sintheta * z + sinphi * sinpsi * y - sinphi * cospsi * x;
+              -cosphi * sinpsi * costheta * x - cosphi * cospsi * costheta * y +
+              cosphi * sintheta * z + sinphi * sinpsi * y - sinphi * cospsi * x;
             result[istep + Center].dydl() =
-                -sinphi * sinpsi * costheta * x - sinphi * cospsi * costheta * y -
-                cosphi * sinpsi * y + cosphi * cospsi * x + sintheta * sinphi * z;
+              -sinphi * sinpsi * costheta * x - sinphi * cospsi * costheta * y -
+              cosphi * sinpsi * y + cosphi * cospsi * x + sintheta * sinphi * z;
             result[istep + Center].dzdl() =
-                sintheta * sinpsi * x + sintheta * cospsi * y + costheta * z;
+              sintheta * sinpsi * x + sintheta * cospsi * y + costheta * z;
         }
     }
 
@@ -558,13 +527,9 @@ Container Integrator::launch(const Photon<Type, Dimension> &photon,
 /// \param[in]      length Spatial length.
 /// \param[in]      elemsTsc Indexes of neighbouring cells
 /// \return         Reference to the output data.
-template <int Order, class Array, class Element, class Cosmology, class Octree,
-          class Type, unsigned int Dimension, class Data, class Position,
-          class Extent>
-Array &Integrator::dphotondl(Array &output, const Array &input,
-                             const Cosmology &cosmology, const Octree &octree,
-                             const Type length,
-                             std::vector<Element> &elemsTsc) {
+template<int Order, class Array, class Element, class Cosmology, class Octree, class Type, unsigned int Dimension, class Data, class Position, class Extent>
+Array&
+Integrator::dphotondl(Array& output, const Array& input, const Cosmology& cosmology, const Octree& octree, const Type length, std::vector<Element>& elemsTsc) {
     // Initialization
     static const unsigned int a = 0;
     static const unsigned int t = 1;
@@ -579,18 +544,17 @@ Array &Integrator::dphotondl(Array &output, const Array &input,
     static const Type c2 = magrathea::Constants<Type>::c2();
     // Interpolate at photon position
     Data data = (Order == 0)
-                    ? (octree.ngp(input[x], input[y], input[z]))
-                    : ((Order == 1) ? (octree.cic(input[x], input[y], input[z]))
-                       : (Order == 2)
-                           ? (octree.tsc(elemsTsc, input[x], input[y], input[z]))
-                           : (Data()));
+                  ? (octree.ngp(input[x], input[y], input[z]))
+                  : ((Order == 1) ? (octree.cic(input[x], input[y], input[z]))
+                     : (Order == 2)
+                       ? (octree.tsc(elemsTsc, input[x], input[y], input[z]))
+                       : (Data()));
     // Estimate the total derivative of the potential over the affine parameter
     const Type dphidl =
-        data.dphidt() * input[dtdl] +
-        (data.dphidx() * input[dxdl] + data.dphidy() * input[dydl] +
-         data.dphidz() * input[dzdl]);
-    const Type dadt = Utility::interpolate(input[t], std::get<0>(cosmology),
-                                           std::get<2>(cosmology));
+      data.dphidt() * input[dtdl] +
+      (data.dphidx() * input[dxdl] + data.dphidy() * input[dydl] +
+       data.dphidz() * input[dzdl]);
+    const Type dadt = Utility::interpolate(input[t], std::get<0>(cosmology), std::get<2>(cosmology));
     const Type scale = length;
     // Computation
     output[a] = input[dtdl] * dadt;
@@ -602,8 +566,8 @@ Array &Integrator::dphotondl(Array &output, const Array &input,
     // output[dtdl] =
     // -(two*dadt/input[a]*input[dtdl]*input[dtdl])-(two/c2*input[dtdl])*(data.dphidx()*input[dxdl]+data.dphidy()*input[dydl]+data.dphidz()*input[dzdl]);
     output[dtdl] =
-        -(two * dadt / input[a] * input[dtdl] * input[dtdl]) -
-        (two / c2 * input[dtdl]) * (dphidl - data.dphidt() * input[dtdl]);
+      -(two * dadt / input[a] * input[dtdl] * input[dtdl]) -
+      (two / c2 * input[dtdl]) * (dphidl - data.dphidt() * input[dtdl]);
     output[dxdl] = -(two * dadt / input[a] * input[dtdl] * input[dxdl]) +
                    (two / c2 * dphidl * input[dxdl]) -
                    (two * data.dphidx() * input[dtdl] * input[dtdl]);
@@ -648,14 +612,9 @@ Array &Integrator::dphotondl(Array &output, const Array &input,
 /// \param[in]      length Spatial length in SI units.
 /// \param[in]      nsteps Number of lambda steps per grid.
 /// \return         Reference to the trajectory data.
-template <int Order, bool RK4, bool Verbose, class Cosmology, class Octree,
-          class Type, class Trajectory, unsigned int Dimension, class Element,
-          class Data, class Core, unsigned int Size, class Position,
-          class Extent, class Point>
-Trajectory &
-Integrator::integrate(Trajectory &trajectory, const Cosmology &cosmology,
-                      const Octree &octree, const Point &vobs,
-                      const Type length, const unsigned int nsteps) {
+template<int Order, bool RK4, bool Verbose, class Cosmology, class Octree, class Type, class Trajectory, unsigned int Dimension, class Element, class Data, class Core, unsigned int Size, class Position, class Extent, class Point>
+Trajectory&
+Integrator::integrate(Trajectory& trajectory, const Cosmology& cosmology, const Octree& octree, const Point& vobs, const Type length, const unsigned int nsteps) {
     // Initialization
     static const Type zero = 0;
     static const Type one = 1;
@@ -672,7 +631,7 @@ Integrator::integrate(Trajectory &trajectory, const Cosmology &cosmology,
     const Type scale = length;
     std::vector<std::pair<magrathea::SimpleHyperOctreeIndex<__uint128_t, 3>,
                           Gravity<float, 3>>>
-        elemsTsc(27);
+      elemsTsc(27);
     Type norm = Type();
     Data data = Data();
     Element photon = Element();
@@ -684,16 +643,13 @@ Integrator::integrate(Trajectory &trajectory, const Cosmology &cosmology,
     if (!trajectory.empty()) {
         // Get initial data at the observer
         data =
-            (Order == 0)
-                ? (octree.ngp(trajectory.back().x(), trajectory.back().y(),
-                              trajectory.back().z()))
-                : ((Order == 1)
-                       ? (octree.cic(trajectory.back().x(), trajectory.back().y(),
-                                     trajectory.back().z()))
-                   : (Order == 2)
-                       ? (octree.tsc(elemsTsc, trajectory.back().x(),
-                                     trajectory.back().y(), trajectory.back().z()))
-                       : (homogeneous));
+          (Order == 0)
+            ? (octree.ngp(trajectory.back().x(), trajectory.back().y(), trajectory.back().z()))
+            : ((Order == 1)
+                 ? (octree.cic(trajectory.back().x(), trajectory.back().y(), trajectory.back().z()))
+               : (Order == 2)
+                 ? (octree.tsc(elemsTsc, trajectory.back().x(), trajectory.back().y(), trajectory.back().z()))
+                 : (homogeneous));
         // Normalise with k^µ k_µ = 0
         norm = std::sqrt((c2 * (one + two * (data.phi() / c2)) *
                           trajectory.back().dtdl() * trajectory.back().dtdl()) /
@@ -706,11 +662,10 @@ Integrator::integrate(Trajectory &trajectory, const Cosmology &cosmology,
         trajectory.back().dzdl() *= norm;
         // Initialise photon
         trajectory.back().a() = Utility::interpolate(
-            trajectory.back().t(), std::get<0>(cosmology), std::get<1>(cosmology));
+          trajectory.back().t(), std::get<0>(cosmology), std::get<1>(cosmology));
         trajectory.back().level() =
-            std::get<0>(*octree.locate(trajectory.back().x(), trajectory.back().y(),
-                                       trajectory.back().z()))
-                .level();
+          std::get<0>(*octree.locate(trajectory.back().x(), trajectory.back().y(), trajectory.back().z()))
+            .level();
         trajectory.back().ah() = data.a();
         trajectory.back().ah() = zero;
         trajectory.back().rho() = data.rho();
@@ -723,20 +678,20 @@ Integrator::integrate(Trajectory &trajectory, const Cosmology &cosmology,
         trajectory.back().laplacian() = zero;
         trajectory.back().redshift() = zero;
         trajectory.back().dsdl2() =
-            (trajectory.back().a() * trajectory.back().a()) *
-            (-(c2 * (one + two * (trajectory.back().phi() / c2)) *
-               trajectory.back().dtdl() * trajectory.back().dtdl()) +
-             ((one - two * (trajectory.back().phi() / c2)) *
-              (trajectory.back().dxdl() * trajectory.back().dxdl() +
-               trajectory.back().dydl() * trajectory.back().dydl() +
-               trajectory.back().dzdl() * trajectory.back().dzdl())));
+          (trajectory.back().a() * trajectory.back().a()) *
+          (-(c2 * (one + two * (trajectory.back().phi() / c2)) *
+             trajectory.back().dtdl() * trajectory.back().dtdl()) +
+           ((one - two * (trajectory.back().phi() / c2)) *
+            (trajectory.back().dxdl() * trajectory.back().dxdl() +
+             trajectory.back().dydl() * trajectory.back().dydl() +
+             trajectory.back().dzdl() * trajectory.back().dzdl())));
         trajectory.back().error() =
-            one - ((one - two * (trajectory.back().phi() / c2)) *
-                   (trajectory.back().dxdl() * trajectory.back().dxdl() +
-                    trajectory.back().dydl() * trajectory.back().dydl() +
-                    trajectory.back().dzdl() * trajectory.back().dzdl())) /
-                      (c2 * (one + two * (trajectory.back().phi() / c2)) *
-                       trajectory.back().dtdl() * trajectory.back().dtdl());
+          one - ((one - two * (trajectory.back().phi() / c2)) *
+                 (trajectory.back().dxdl() * trajectory.back().dxdl() +
+                  trajectory.back().dydl() * trajectory.back().dydl() +
+                  trajectory.back().dzdl() * trajectory.back().dzdl())) /
+                  (c2 * (one + two * (trajectory.back().phi() / c2)) *
+                   trajectory.back().dtdl() * trajectory.back().dtdl());
         trajectory.back().distance() = zero;
         trajectory.back().isw() = zero;
         trajectory.back().chi() = zero;
@@ -744,19 +699,18 @@ Integrator::integrate(Trajectory &trajectory, const Cosmology &cosmology,
         trajectory.back().lambda() = zero;
         trajectory.back().s() = zero;
         ratio =
-            trajectory.back().a() * trajectory.back().a() * (scale / c) / nsteps;
+          trajectory.back().a() * trajectory.back().a() * (scale / c) / nsteps;
         dl =
-            std::get<0>(*octree.locate(trajectory.back().x(), trajectory.back().y(),
-                                       trajectory.back().z()))
-                .template extent<Type, Position, Extent>() *
-            ratio;
+          std::get<0>(*octree.locate(trajectory.back().x(), trajectory.back().y(), trajectory.back().z()))
+            .template extent<Type, Position, Extent>() *
+          ratio;
         // a0 given by the scale factor at the observer
         const Type a0 = trajectory.back().a();
 #ifdef VELOCITYFIELD
         const Type v0n =
-            (vobs[0] * trajectory[0].dxdl() + vobs[1] * trajectory[0].dydl() +
-             vobs[2] * trajectory[0].dzdl()) /
-            (c * trajectory[0].dtdl());
+          (vobs[0] * trajectory[0].dxdl() + vobs[1] * trajectory[0].dydl() +
+           vobs[2] * trajectory[0].dzdl()) /
+          (c * trajectory[0].dtdl());
 #endif
         const Type phi0c2 = trajectory.back().phi() / c2;
         // Integrate
@@ -766,23 +720,19 @@ Integrator::integrate(Trajectory &trajectory, const Cosmology &cosmology,
             // Photon core
             // RK4 integration
             if (RK4) {
-                dphotondl<Order>(dcoredl[0], trajectory.back().core(), cosmology,
-                                 octree, length, elemsTsc);
+                dphotondl<Order>(dcoredl[0], trajectory.back().core(), cosmology, octree, length, elemsTsc);
                 for (unsigned int i = 0; i < Size; ++i) {
                     photon.core(i) = trajectory.back().core(i) + dl / two * dcoredl[0][i];
                 }
-                dphotondl<Order>(dcoredl[1], photon.core(), cosmology, octree, length,
-                                 elemsTsc);
+                dphotondl<Order>(dcoredl[1], photon.core(), cosmology, octree, length, elemsTsc);
                 for (unsigned int i = 0; i < Size; ++i) {
                     photon.core(i) = trajectory.back().core(i) + dl / two * dcoredl[1][i];
                 }
-                dphotondl<Order>(dcoredl[2], photon.core(), cosmology, octree, length,
-                                 elemsTsc);
+                dphotondl<Order>(dcoredl[2], photon.core(), cosmology, octree, length, elemsTsc);
                 for (unsigned int i = 0; i < std::tuple_size<Core>::value; ++i) {
                     photon.core(i) = trajectory.back().core(i) + dl * dcoredl[2][i];
                 }
-                dphotondl<Order>(dcoredl[3], photon.core(), cosmology, octree, length,
-                                 elemsTsc);
+                dphotondl<Order>(dcoredl[3], photon.core(), cosmology, octree, length, elemsTsc);
                 for (unsigned int i = 0; i < Size; ++i) {
                     photon.core(i) = trajectory.back().core(i) +
                                      (dl / six) * (dcoredl[0][i] + two * dcoredl[1][i] +
@@ -790,8 +740,7 @@ Integrator::integrate(Trajectory &trajectory, const Cosmology &cosmology,
                 }
                 // Euler integration
             } else {
-                dphotondl<Order>(photon.core(), trajectory.back().core(), cosmology,
-                                 octree, length, elemsTsc);
+                dphotondl<Order>(photon.core(), trajectory.back().core(), cosmology, octree, length, elemsTsc);
                 for (unsigned int i = 0; i < Size; ++i) {
                     photon.core(i) = trajectory.back().core(i) + dl * photon.core(i);
                 }
@@ -799,21 +748,20 @@ Integrator::integrate(Trajectory &trajectory, const Cosmology &cosmology,
             // Photon extra
             // Get data at new photon position
             data =
-                (Order == 0)
-                    ? (octree.ngp(photon.x(), photon.y(), photon.z()))
-                    : ((Order == 1)   ? (octree.cic(photon.x(), photon.y(), photon.z()))
-                       : (Order == 2) ? (octree.tsc(elemsTsc, photon.x(), photon.y(),
-                                                    photon.z()))
-                                      : (homogeneous));
+              (Order == 0)
+                ? (octree.ngp(photon.x(), photon.y(), photon.z()))
+                : ((Order == 1)   ? (octree.cic(photon.x(), photon.y(), photon.z()))
+                   : (Order == 2) ? (octree.tsc(elemsTsc, photon.x(), photon.y(), photon.z()))
+                                  : (homogeneous));
             // If photon outside of the Extent, put empty data
             data = (!(photon.a() < zero) &&
                     ((photon.x() > min) && (photon.x() < max) && (photon.y() > min) &&
                      (photon.y() < max) && (photon.z() > min) && (photon.z() < max)))
-                       ? (data)
-                       : (empty);
+                     ? (data)
+                     : (empty);
             photon.level() =
-                std::get<0>(*octree.locate(photon.x(), photon.y(), photon.z()))
-                    .level();
+              std::get<0>(*octree.locate(photon.x(), photon.y(), photon.z()))
+                .level();
             photon.ah() = data.a();
             photon.rho() = data.rho();
             photon.phi() = data.phi();
@@ -822,66 +770,66 @@ Integrator::integrate(Trajectory &trajectory, const Cosmology &cosmology,
             photon.dphidz() = data.dphidz();
             photon.dphidt() = -data.dphidt(); // forward dphidt
             photon.dphidl() =
-                data.dphidt() * photon.dtdl() +
-                (photon.dphidx() * photon.dxdl() + photon.dphidy() * photon.dydl() +
-                 photon.dphidz() * photon.dzdl());
+              data.dphidt() * photon.dtdl() +
+              (photon.dphidx() * photon.dxdl() + photon.dphidy() * photon.dydl() +
+               photon.dphidz() * photon.dzdl());
             photon.laplacian() = (data.phi() - trajectory.back().phi()) / dl;
             photon.dsdl2() =
-                (photon.a() * photon.a()) *
-                ((-c2 * (one + two * (photon.phi() / c2)) * photon.dtdl() *
-                  photon.dtdl()) +
-                 ((one - two * (photon.phi() / c2)) *
-                  (photon.dxdl() * photon.dxdl() + photon.dydl() * photon.dydl() +
-                   photon.dzdl() * photon.dzdl())));
+              (photon.a() * photon.a()) *
+              ((-c2 * (one + two * (photon.phi() / c2)) * photon.dtdl() *
+                photon.dtdl()) +
+               ((one - two * (photon.phi() / c2)) *
+                (photon.dxdl() * photon.dxdl() + photon.dydl() * photon.dydl() +
+                 photon.dzdl() * photon.dzdl())));
             photon.error() = one - ((one - two * (photon.phi() / c2)) *
                                     (photon.dxdl() * photon.dxdl() +
                                      photon.dydl() * photon.dydl() +
                                      photon.dzdl() * photon.dzdl())) /
-                                       (c2 * (one + two * (photon.phi() / c2)) *
-                                        photon.dtdl() * photon.dtdl());
+                                     (c2 * (one + two * (photon.phi() / c2)) *
+                                      photon.dtdl() * photon.dtdl());
             photon.distance() = zero;
             photon.isw() += (trajectory.back().dphidt() + photon.dphidt()) *
                             (photon.t() - trajectory.back().t()) / c2;
             photon.iswold() -= 2 * (photon.phi() - trajectory.back().phi()) / c2 -
                                ((trajectory.back().dphidx() + photon.dphidx()) *
-                                    (photon.x() - trajectory.back().x()) * scale +
+                                  (photon.x() - trajectory.back().x()) * scale +
                                 (trajectory.back().dphidy() + photon.dphidy()) *
-                                    (photon.y() - trajectory.back().y()) * scale +
+                                  (photon.y() - trajectory.back().y()) * scale +
                                 (trajectory.back().dphidz() + photon.dphidz()) *
-                                    (photon.z() - trajectory.back().z()) * scale) /
-                                   c2;
+                                  (photon.z() - trajectory.back().z()) * scale) /
+                                 c2;
             photon.chi() =
-                std::sqrt(photon.x() * photon.x() + photon.y() * photon.y() +
-                          photon.z() * photon.z());
+              std::sqrt(photon.x() * photon.x() + photon.y() * photon.y() +
+                        photon.z() * photon.z());
             photon.lambda() += dl;
             photon.s() += std::sqrt((photon.x() - trajectory.back().x()) *
-                                        (photon.x() - trajectory.back().x()) +
+                                      (photon.x() - trajectory.back().x()) +
                                     (photon.y() - trajectory.back().y()) *
-                                        (photon.y() - trajectory.back().y()) +
+                                      (photon.y() - trajectory.back().y()) +
                                     (photon.z() - trajectory.back().z()) *
-                                        (photon.z() - trajectory.back().z()));
+                                      (photon.z() - trajectory.back().z()));
 #ifdef VELOCITYFIELD
             photon.redshift() =
-                a0 / photon.a() *
-                    (one + phi0c2 - photon.phi() / c2 + photon.isw() +
-                     (data.vx() * photon.dxdl() + data.vy() * photon.dydl() +
-                      data.vz() * photon.dzdl()) /
-                         (c * photon.dtdl()) -
-                     v0n) -
-                one;
+              a0 / photon.a() *
+                (one + phi0c2 - photon.phi() / c2 + photon.isw() +
+                 (data.vx() * photon.dxdl() + data.vy() * photon.dydl() +
+                  data.vz() * photon.dzdl()) /
+                   (c * photon.dtdl()) -
+                 v0n) -
+              one;
             // photon.redshift() = a0/photon.a()*(one + (data.vx()*photon.dxdl() +
             // data.vy()*photon.dydl() + data.vz()*photon.dzdl())/(c*photon.dtdl()) -
             // v0n)-one;
 #else
             photon.redshift() =
-                a0 / photon.a() * (one + phi0c2 - photon.phi() / c2) - one;
+              a0 / photon.a() * (one + phi0c2 - photon.phi() / c2) - one;
 #endif
             // Next step
             // Continue integrating if the photon in still in the Octree
             if (data != empty) {
                 ratio = photon.a() * photon.a() * (scale / c) / nsteps;
                 dl = std::get<0>(*(octree.locate(photon.x(), photon.y(), photon.z())))
-                         .template extent<Type, Position, Extent>() *
+                       .template extent<Type, Position, Extent>() *
                      ratio;
                 trajectory.append(photon);
             }
@@ -928,16 +876,9 @@ Integrator::integrate(Trajectory &trajectory, const Cosmology &cosmology,
 /// \param[in]      nsteps Number of lambda steps per grid.
 /// \param[in]      kiTarget Normal to the plane needed for a given photon.
 /// \return         Reference to the trajectory data.
-template <int Order, bool RK4, bool Verbose, class Cosmology, class Octree,
-          class Type, class Trajectory, unsigned int Dimension, class Element,
-          class Data, class Core, unsigned int Size, class Position,
-          class Extent, class Point>
-Trajectory &
-Integrator::integrate(Trajectory &trajectory, const std::string interpolation,
-                      const Type interpRef, const Cosmology &cosmology,
-                      const Octree &octree, const Point &vobs,
-                      const Type length, const unsigned int nsteps,
-                      const Point &kiTarget) {
+template<int Order, bool RK4, bool Verbose, class Cosmology, class Octree, class Type, class Trajectory, unsigned int Dimension, class Element, class Data, class Core, unsigned int Size, class Position, class Extent, class Point>
+Trajectory&
+Integrator::integrate(Trajectory& trajectory, const std::string interpolation, const Type interpRef, const Cosmology& cosmology, const Octree& octree, const Point& vobs, const Type length, const unsigned int nsteps, const Point& kiTarget) {
 
     // Initialization
     static const Type zero = 0;
@@ -955,7 +896,7 @@ Integrator::integrate(Trajectory &trajectory, const std::string interpolation,
     const Type scale = length;
     std::vector<std::pair<magrathea::SimpleHyperOctreeIndex<__uint128_t, 3>,
                           Gravity<float, 3>>>
-        elemsTsc(27);
+      elemsTsc(27);
     Type norm = Type();
     Data data = Data();
     Element photon = Element();
@@ -966,16 +907,13 @@ Integrator::integrate(Trajectory &trajectory, const std::string interpolation,
     if (!trajectory.empty()) {
         // Get initial data at the observer
         data =
-            (Order == 0)
-                ? (octree.ngp(trajectory.back().x(), trajectory.back().y(),
-                              trajectory.back().z()))
-                : ((Order == 1)
-                       ? (octree.cic(trajectory.back().x(), trajectory.back().y(),
-                                     trajectory.back().z()))
-                   : (Order == 2)
-                       ? (octree.tsc(elemsTsc, trajectory.back().x(),
-                                     trajectory.back().y(), trajectory.back().z()))
-                       : (homogeneous));
+          (Order == 0)
+            ? (octree.ngp(trajectory.back().x(), trajectory.back().y(), trajectory.back().z()))
+            : ((Order == 1)
+                 ? (octree.cic(trajectory.back().x(), trajectory.back().y(), trajectory.back().z()))
+               : (Order == 2)
+                 ? (octree.tsc(elemsTsc, trajectory.back().x(), trajectory.back().y(), trajectory.back().z()))
+                 : (homogeneous));
         // Normalise with k^µ k_µ = 0
         norm = std::sqrt((c2 * (one + two * (data.phi() / c2)) *
                           trajectory.back().dtdl() * trajectory.back().dtdl()) /
@@ -987,11 +925,10 @@ Integrator::integrate(Trajectory &trajectory, const std::string interpolation,
         trajectory.back().dydl() *= norm;
         trajectory.back().dzdl() *= norm;
         trajectory.back().a() = Utility::interpolate(
-            trajectory.back().t(), std::get<0>(cosmology), std::get<1>(cosmology));
+          trajectory.back().t(), std::get<0>(cosmology), std::get<1>(cosmology));
         trajectory.back().level() =
-            std::get<0>(*octree.locate(trajectory.back().x(), trajectory.back().y(),
-                                       trajectory.back().z()))
-                .level();
+          std::get<0>(*octree.locate(trajectory.back().x(), trajectory.back().y(), trajectory.back().z()))
+            .level();
         trajectory.back().ah() = data.a();
         trajectory.back().ah() = zero;
         trajectory.back().rho() = data.rho();
@@ -1004,20 +941,20 @@ Integrator::integrate(Trajectory &trajectory, const std::string interpolation,
         trajectory.back().laplacian() = zero;
         trajectory.back().redshift() = zero;
         trajectory.back().dsdl2() =
-            (trajectory.back().a() * trajectory.back().a()) *
-            (-(c2 * (one + two * (trajectory.back().phi() / c2)) *
-               trajectory.back().dtdl() * trajectory.back().dtdl()) +
-             ((one - two * (trajectory.back().phi() / c2)) *
-              (trajectory.back().dxdl() * trajectory.back().dxdl() +
-               trajectory.back().dydl() * trajectory.back().dydl() +
-               trajectory.back().dzdl() * trajectory.back().dzdl())));
+          (trajectory.back().a() * trajectory.back().a()) *
+          (-(c2 * (one + two * (trajectory.back().phi() / c2)) *
+             trajectory.back().dtdl() * trajectory.back().dtdl()) +
+           ((one - two * (trajectory.back().phi() / c2)) *
+            (trajectory.back().dxdl() * trajectory.back().dxdl() +
+             trajectory.back().dydl() * trajectory.back().dydl() +
+             trajectory.back().dzdl() * trajectory.back().dzdl())));
         trajectory.back().error() =
-            one - ((one - two * (trajectory.back().phi() / c2)) *
-                   (trajectory.back().dxdl() * trajectory.back().dxdl() +
-                    trajectory.back().dydl() * trajectory.back().dydl() +
-                    trajectory.back().dzdl() * trajectory.back().dzdl())) /
-                      (c2 * (one + two * (trajectory.back().phi() / c2)) *
-                       trajectory.back().dtdl() * trajectory.back().dtdl());
+          one - ((one - two * (trajectory.back().phi() / c2)) *
+                 (trajectory.back().dxdl() * trajectory.back().dxdl() +
+                  trajectory.back().dydl() * trajectory.back().dydl() +
+                  trajectory.back().dzdl() * trajectory.back().dzdl())) /
+                  (c2 * (one + two * (trajectory.back().phi() / c2)) *
+                   trajectory.back().dtdl() * trajectory.back().dtdl());
         trajectory.back().distance() = zero;
         trajectory.back().isw() = zero;
         trajectory.back().chi() = zero;
@@ -1025,19 +962,18 @@ Integrator::integrate(Trajectory &trajectory, const std::string interpolation,
         trajectory.back().lambda() = zero;
         trajectory.back().s() = zero;
         ratio =
-            trajectory.back().a() * trajectory.back().a() * (scale / c) / nsteps;
+          trajectory.back().a() * trajectory.back().a() * (scale / c) / nsteps;
         dl =
-            std::get<0>(*octree.locate(trajectory.back().x(), trajectory.back().y(),
-                                       trajectory.back().z()))
-                .template extent<Type, Position, Extent>() *
-            ratio;
+          std::get<0>(*octree.locate(trajectory.back().x(), trajectory.back().y(), trajectory.back().z()))
+            .template extent<Type, Position, Extent>() *
+          ratio;
         // a0 given by the scale factor at the observer
         const Type a0 = trajectory.back().a();
 #ifdef VELOCITYFIELD
         const Type v0n =
-            (vobs[0] * trajectory[0].dxdl() + vobs[1] * trajectory[0].dydl() +
-             vobs[2] * trajectory[0].dzdl()) /
-            (c * trajectory[0].dtdl());
+          (vobs[0] * trajectory[0].dxdl() + vobs[1] * trajectory[0].dydl() +
+           vobs[2] * trajectory[0].dzdl()) /
+          (c * trajectory[0].dtdl());
 #endif
         const Type phi0c2 = trajectory.back().phi() / c2;
 
@@ -1048,23 +984,19 @@ Integrator::integrate(Trajectory &trajectory, const std::string interpolation,
             // Photon core
             // RK4 integration
             if (RK4) {
-                dphotondl<Order>(dcoredl[0], trajectory.back().core(), cosmology,
-                                 octree, length, elemsTsc);
+                dphotondl<Order>(dcoredl[0], trajectory.back().core(), cosmology, octree, length, elemsTsc);
                 for (unsigned int i = 0; i < Size; ++i) {
                     photon.core(i) = trajectory.back().core(i) + dl / two * dcoredl[0][i];
                 }
-                dphotondl<Order>(dcoredl[1], photon.core(), cosmology, octree, length,
-                                 elemsTsc);
+                dphotondl<Order>(dcoredl[1], photon.core(), cosmology, octree, length, elemsTsc);
                 for (unsigned int i = 0; i < Size; ++i) {
                     photon.core(i) = trajectory.back().core(i) + dl / two * dcoredl[1][i];
                 }
-                dphotondl<Order>(dcoredl[2], photon.core(), cosmology, octree, length,
-                                 elemsTsc);
+                dphotondl<Order>(dcoredl[2], photon.core(), cosmology, octree, length, elemsTsc);
                 for (unsigned int i = 0; i < std::tuple_size<Core>::value; ++i) {
                     photon.core(i) = trajectory.back().core(i) + dl * dcoredl[2][i];
                 }
-                dphotondl<Order>(dcoredl[3], photon.core(), cosmology, octree, length,
-                                 elemsTsc);
+                dphotondl<Order>(dcoredl[3], photon.core(), cosmology, octree, length, elemsTsc);
                 for (unsigned int i = 0; i < Size; ++i) {
                     photon.core(i) = trajectory.back().core(i) +
                                      (dl / six) * (dcoredl[0][i] + two * dcoredl[1][i] +
@@ -1072,8 +1004,7 @@ Integrator::integrate(Trajectory &trajectory, const std::string interpolation,
                 }
                 // Euler integration
             } else {
-                dphotondl<Order>(photon.core(), trajectory.back().core(), cosmology,
-                                 octree, length, elemsTsc);
+                dphotondl<Order>(photon.core(), trajectory.back().core(), cosmology, octree, length, elemsTsc);
                 for (unsigned int i = 0; i < Size; ++i) {
                     photon.core(i) = trajectory.back().core(i) + dl * photon.core(i);
                 }
@@ -1081,21 +1012,20 @@ Integrator::integrate(Trajectory &trajectory, const std::string interpolation,
             // Photon extra
             // Get data at new photon position
             data =
-                (Order == 0)
-                    ? (octree.ngp(photon.x(), photon.y(), photon.z()))
-                    : ((Order == 1)   ? (octree.cic(photon.x(), photon.y(), photon.z()))
-                       : (Order == 2) ? (octree.tsc(elemsTsc, photon.x(), photon.y(),
-                                                    photon.z()))
-                                      : (homogeneous));
+              (Order == 0)
+                ? (octree.ngp(photon.x(), photon.y(), photon.z()))
+                : ((Order == 1)   ? (octree.cic(photon.x(), photon.y(), photon.z()))
+                   : (Order == 2) ? (octree.tsc(elemsTsc, photon.x(), photon.y(), photon.z()))
+                                  : (homogeneous));
             // If the photon is outside of the Extent, put empty data
             data = (!(photon.a() < zero) &&
                     ((photon.x() > min) && (photon.x() < max) && (photon.y() > min) &&
                      (photon.y() < max) && (photon.z() > min) && (photon.z() < max)))
-                       ? (data)
-                       : (empty);
+                     ? (data)
+                     : (empty);
             photon.level() =
-                std::get<0>(*octree.locate(photon.x(), photon.y(), photon.z()))
-                    .level();
+              std::get<0>(*octree.locate(photon.x(), photon.y(), photon.z()))
+                .level();
             photon.ah() = data.a();
             photon.rho() = data.rho();
             photon.phi() = data.phi();
@@ -1104,65 +1034,65 @@ Integrator::integrate(Trajectory &trajectory, const std::string interpolation,
             photon.dphidz() = data.dphidz();
             photon.dphidt() = -data.dphidt(); // forward dphidt
             photon.dphidl() =
-                data.dphidt() * photon.dtdl() +
-                (photon.dphidx() * photon.dxdl() + photon.dphidy() * photon.dydl() +
-                 photon.dphidz() * photon.dzdl());
+              data.dphidt() * photon.dtdl() +
+              (photon.dphidx() * photon.dxdl() + photon.dphidy() * photon.dydl() +
+               photon.dphidz() * photon.dzdl());
             photon.laplacian() = (data.phi() - trajectory.back().phi()) / dl;
             photon.dsdl2() =
-                (photon.a() * photon.a()) *
-                ((-c2 * (one + two * (photon.phi() / c2)) * photon.dtdl() *
-                  photon.dtdl()) +
-                 ((one - two * (photon.phi() / c2)) *
-                  (photon.dxdl() * photon.dxdl() + photon.dydl() * photon.dydl() +
-                   photon.dzdl() * photon.dzdl())));
+              (photon.a() * photon.a()) *
+              ((-c2 * (one + two * (photon.phi() / c2)) * photon.dtdl() *
+                photon.dtdl()) +
+               ((one - two * (photon.phi() / c2)) *
+                (photon.dxdl() * photon.dxdl() + photon.dydl() * photon.dydl() +
+                 photon.dzdl() * photon.dzdl())));
             photon.error() = one - ((one - two * (photon.phi() / c2)) *
                                     (photon.dxdl() * photon.dxdl() +
                                      photon.dydl() * photon.dydl() +
                                      photon.dzdl() * photon.dzdl())) /
-                                       (c2 * (one + two * (photon.phi() / c2)) *
-                                        photon.dtdl() * photon.dtdl());
+                                     (c2 * (one + two * (photon.phi() / c2)) *
+                                      photon.dtdl() * photon.dtdl());
             photon.distance() = zero;
             photon.isw() += (trajectory.back().dphidt() + photon.dphidt()) *
                             (photon.t() - trajectory.back().t()) / c2;
             photon.iswold() -= 2 * (photon.phi() - trajectory.back().phi()) / c2 -
                                ((trajectory.back().dphidx() + photon.dphidx()) *
-                                    (photon.x() - trajectory.back().x()) * scale +
+                                  (photon.x() - trajectory.back().x()) * scale +
                                 (trajectory.back().dphidy() + photon.dphidy()) *
-                                    (photon.y() - trajectory.back().y()) * scale +
+                                  (photon.y() - trajectory.back().y()) * scale +
                                 (trajectory.back().dphidz() + photon.dphidz()) *
-                                    (photon.z() - trajectory.back().z()) * scale) /
-                                   c2;
+                                  (photon.z() - trajectory.back().z()) * scale) /
+                                 c2;
             photon.chi() =
-                std::sqrt(photon.x() * photon.x() + photon.y() * photon.y() +
-                          photon.z() * photon.z());
+              std::sqrt(photon.x() * photon.x() + photon.y() * photon.y() +
+                        photon.z() * photon.z());
             photon.lambda() += dl;
             photon.s() += std::sqrt((photon.x() - trajectory.back().x()) *
-                                        (photon.x() - trajectory.back().x()) +
+                                      (photon.x() - trajectory.back().x()) +
                                     (photon.y() - trajectory.back().y()) *
-                                        (photon.y() - trajectory.back().y()) +
+                                      (photon.y() - trajectory.back().y()) +
                                     (photon.z() - trajectory.back().z()) *
-                                        (photon.z() - trajectory.back().z()));
+                                      (photon.z() - trajectory.back().z()));
 #ifdef VELOCITYFIELD
             photon.redshift() =
-                a0 / photon.a() *
-                    (one + phi0c2 - photon.phi() / c2 + photon.isw() +
-                     (data.vx() * photon.dxdl() + data.vy() * photon.dydl() +
-                      data.vz() * photon.dzdl()) /
-                         (c * photon.dtdl()) -
-                     v0n) -
-                one;
+              a0 / photon.a() *
+                (one + phi0c2 - photon.phi() / c2 + photon.isw() +
+                 (data.vx() * photon.dxdl() + data.vy() * photon.dydl() +
+                  data.vz() * photon.dzdl()) /
+                   (c * photon.dtdl()) -
+                 v0n) -
+              one;
             // photon.redshift() = a0/photon.a()*(one + (data.vx()*photon.dxdl() +
             // data.vy()*photon.dydl() + data.vz()*photon.dzdl())/(c*photon.dtdl()) -
             // v0n)-one;
 #else
             photon.redshift() =
-                a0 / photon.a() * (one + phi0c2 - photon.phi() / c2) - one;
+              a0 / photon.a() * (one + phi0c2 - photon.phi() / c2) - one;
 #endif
             // Next step
             if (data != empty) {
                 ratio = photon.a() * photon.a() * (scale / c) / nsteps;
                 dl = std::get<0>(*(octree.locate(photon.x(), photon.y(), photon.z())))
-                         .template extent<Type, Position, Extent>() *
+                       .template extent<Type, Position, Extent>() *
                      ratio;
                 trajectory.append(photon);
             }
@@ -1255,15 +1185,22 @@ Integrator::integrate(Trajectory &trajectory, const std::string interpolation,
 ///                 a. If provided, the homogeneous value of a for the given
 ///                 radius is used.
 /// \return         Central photon trajectory.
-template <int Order, bool RK4, bool Verbose, class Cosmology, class Octree,
-          class Type, unsigned int Dimension, class Homogeneous, class Point,
-          class>
-magrathea::Evolution<Photon<Type, Dimension>> Integrator::propagate(
-    const Photon<Type, Dimension> &photon, const unsigned int count,
-    const Type angle, const Type rotation, const std::string &interpolation,
-    const Cosmology &cosmology, const Octree &octree, const Point &vobs,
-    const Type length, const unsigned int nsteps, const Type amin,
-    const std::string &filenames, const Homogeneous &homogeneous) {
+template<int Order, bool RK4, bool Verbose, class Cosmology, class Octree, class Type, unsigned int Dimension, class Homogeneous, class Point, class>
+magrathea::Evolution<Photon<Type, Dimension>>
+Integrator::propagate(
+  const Photon<Type, Dimension>& photon,
+  const unsigned int count,
+  const Type angle,
+  const Type rotation,
+  const std::string& interpolation,
+  const Cosmology& cosmology,
+  const Octree& octree,
+  const Point& vobs,
+  const Type length,
+  const unsigned int nsteps,
+  const Type amin,
+  const std::string& filenames,
+  const Homogeneous& homogeneous) {
     // Initialization
     static const Type zero = 0;
     static const Type one = 1;
@@ -1276,12 +1213,12 @@ magrathea::Evolution<Photon<Type, Dimension>> Integrator::propagate(
     static const char percent = '%';
     static const unsigned int digits = std::numeric_limits<Type>::max_digits10;
     static const Type quarter =
-        (Type(octree.extent().num) / Type(two * octree.extent().den)) / two;
+      (Type(octree.extent().num) / Type(two * octree.extent().den)) / two;
     static const Type limit = one / (two * two * two);
     std::vector<Photon<Type, Dimension>> initial =
-        launch<true>(photon, count, angle, rotation);
+      launch<true>(photon, count, angle, rotation);
     std::vector<magrathea::Evolution<Photon<Type, Dimension>>> trajectories(
-        initial.size());
+      initial.size());
     unsigned int ntrajectories = trajectories.size();
     unsigned int size = zero;
     std::vector<Type> last(ntrajectories);
@@ -1298,8 +1235,7 @@ magrathea::Evolution<Photon<Type, Dimension>> Integrator::propagate(
         // Launch photon
         trajectories[itrajectory].append(initial[itrajectory]);
         // Integrate
-        integrate<Order, RK4, Verbose>(trajectories[itrajectory], cosmology, octree,
-                                       vobs, length, nsteps);
+        integrate<Order, RK4, Verbose>(trajectories[itrajectory], cosmology, octree, vobs, length, nsteps);
         size = trajectories[itrajectory].size();
         for (unsigned int idim = 0; idim < Dimension; ++idim) {
             xyz[itrajectory][idim].resize(size);
@@ -1326,15 +1262,15 @@ magrathea::Evolution<Photon<Type, Dimension>> Integrator::propagate(
             // Check if values for the scale factor from data are normal and within
             // the expected range
             ntrajectories *=
-                (!(std::isnormal(amin) &&
-                   std::isnormal(trajectories[itrajectory].back().ah()) &&
-                   (trajectories[itrajectory].back().ah() < one))) ||
-                (!(trajectories[itrajectory].back().ah() > amin));
+              (!(std::isnormal(amin) &&
+                 std::isnormal(trajectories[itrajectory].back().ah()) &&
+                 (trajectories[itrajectory].back().ah() < one))) ||
+              (!(trajectories[itrajectory].back().ah() > amin));
         }
     }
     ntrajectories *= (std::abs((*std::max_element(last.begin(), last.end())) -
                                (*std::min_element(last.begin(), last.end()))) /
-                          (*std::max_element(last.begin(), last.end())) <
+                        (*std::max_element(last.begin(), last.end())) <
                       limit);
 
     // Interpolation for the photon from bundle at some given parameter
@@ -1355,7 +1291,7 @@ magrathea::Evolution<Photon<Type, Dimension>> Integrator::propagate(
                 ref[itrajectory].resize(size);
                 for (unsigned int istep = 0; istep < size; ++istep) {
                     ref[itrajectory][istep] =
-                        1 / trajectories[itrajectory][istep].a() - 1;
+                      1 / trajectories[itrajectory][istep].a() - 1;
                 }
             }
         } else if ((interpolation == "t") || (interpolation == "eta")) {
@@ -1389,7 +1325,7 @@ magrathea::Evolution<Photon<Type, Dimension>> Integrator::propagate(
                     coord[z] = trajectories[itrajectory][istep].z() -
                                trajectories[itrajectory][first].z();
                     ref[itrajectory][istep] = std::sqrt(
-                        coord[x] * coord[x] + coord[y] * coord[y] + coord[z] * coord[z]);
+                      coord[x] * coord[x] + coord[y] * coord[y] + coord[z] * coord[z]);
                 }
             }
         } else {
@@ -1411,22 +1347,19 @@ magrathea::Evolution<Photon<Type, Dimension>> Integrator::propagate(
                  ++itrajectory) {
                 // interpolate x position at some reference parameter given by central
                 // ray
-                coord[x] = Utility::interpolate(ref[center][istep], ref[itrajectory],
-                                                xyz[itrajectory][x]) -
+                coord[x] = Utility::interpolate(ref[center][istep], ref[itrajectory], xyz[itrajectory][x]) -
                            xyz[center][x][istep];
                 // interpolate y position at some reference parameter given by central
                 // ray
-                coord[y] = Utility::interpolate(ref[center][istep], ref[itrajectory],
-                                                xyz[itrajectory][y]) -
+                coord[y] = Utility::interpolate(ref[center][istep], ref[itrajectory], xyz[itrajectory][y]) -
                            xyz[center][y][istep];
                 // interpolate z position at some reference parameter given by central
                 // ray
-                coord[z] = Utility::interpolate(ref[center][istep], ref[itrajectory],
-                                                xyz[itrajectory][z]) -
+                coord[z] = Utility::interpolate(ref[center][istep], ref[itrajectory], xyz[itrajectory][z]) -
                            xyz[center][z][istep];
                 // Compute absolute distance from the central ray to each bundle ray
                 trajectories[center][istep].distance() += std::sqrt(
-                    coord[x] * coord[x] + coord[y] * coord[y] + coord[z] * coord[z]);
+                  coord[x] * coord[x] + coord[y] * coord[y] + coord[z] * coord[z]);
             }
             // Mean distance from central ray to bundle rays
             trajectories[center][istep].distance() /= (ntrajectories - 1);
@@ -1434,7 +1367,7 @@ magrathea::Evolution<Photon<Type, Dimension>> Integrator::propagate(
         // Convert comoving to angular diameter distance
         for (unsigned int istep = 0; istep < size; ++istep) {
             trajectories[center][istep].distance() *=
-                (length * trajectories[center][istep].a()) / angle;
+              (length * trajectories[center][istep].a()) / angle;
         }
     }
 

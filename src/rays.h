@@ -96,8 +96,8 @@ class Rays {
     // Methodes
 public:
     // Read parameter file
-    template <class Parameters, class Map>
-    static void ReadParamFile(Parameters &parameters, Map &parameter);
+    template<class Parameters, class Map>
+    static void ReadParamFile(Parameters& parameters, Map& parameter);
 };
 
 // Read parameter file
@@ -107,8 +107,9 @@ public:
 /// \tparam         Map map type
 /// \param[in,out]  parameters Structure containing the parameters.
 /// \param[in]      parameter Contains parameters to be rewritten
-template <class Parameters, class Map>
-void Rays::ReadParamFile(Parameters &parameters, Map &parameter) {
+template<class Parameters, class Map>
+void
+Rays::ReadParamFile(Parameters& parameters, Map& parameter) {
 
     parameters.statistic = parameter["statistic"];
     parameters.conefmt = parameter["conefmt"];

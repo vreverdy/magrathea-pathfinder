@@ -125,88 +125,99 @@ class Hmaps {
     // Methodes
 public:
     // Read parameter file
-    template <class Parameters, class Map>
-    static void ReadParamFile(Parameters &parameters, Map &parameter);
+    template<class Parameters, class Map>
+    static void ReadParamFile(Parameters& parameters, Map& parameter);
 
     // Target
-    template <class Parameter, typename Integer, class Cones>
+    template<class Parameter, typename Integer, class Cones>
     static void
-    getPixels_per_cone(const Parameter &parameters, const Integer npix,
-                       std::vector<Integer> &pixel,
-                       std::vector<unsigned int> &ntrajectories,
-                       const unsigned int iconerank, const Cones &cones);
-    template <class Parameter, typename Integer, class Cones>
+    getPixels_per_cone(const Parameter& parameters, const Integer npix, std::vector<Integer>& pixel, std::vector<unsigned int>& ntrajectories, const unsigned int iconerank, const Cones& cones);
+    template<class Parameter, typename Integer, class Cones>
     static void
-    getPixels_per_cone2(const Parameter &parameters, const Integer npix,
-                        std::vector<Integer> &pixel,
-                        std::vector<unsigned int> &ntrajectories,
-                        const unsigned int iconerank, const Cones &cones);
+    getPixels_per_cone2(const Parameter& parameters, const Integer npix, std::vector<Integer>& pixel, std::vector<unsigned int>& ntrajectories, const unsigned int iconerank, const Cones& cones);
 
     // Fill particles
 #ifdef VELOCITYFIELD
-    template <class Parameter, class Cone, typename Type1, typename Type2>
+    template<class Parameter, class Cone, typename Type1, typename Type2>
     static void fill_particles_vectors(
-        const Parameter &parameters,
-        const std::array<std::array<double, 3>, 3> &rotm1, const Cone &cone,
-        const std::vector<std::string> &shellList, std::vector<Type1> &pos_part,
-        std::vector<Type1> &vel_part, const std::vector<Type2> &z_stop_vec,
-        const double thetay, const double thetaz);
-    template <class Parameter, class Cone, typename Type1, typename Type2>
+      const Parameter& parameters,
+      const std::array<std::array<double, 3>, 3>& rotm1,
+      const Cone& cone,
+      const std::vector<std::string>& shellList,
+      std::vector<Type1>& pos_part,
+      std::vector<Type1>& vel_part,
+      const std::vector<Type2>& z_stop_vec,
+      const double thetay,
+      const double thetaz);
+    template<class Parameter, class Cone, typename Type1, typename Type2>
     static void fill_particles_vectors(
-        const Parameter &parameters,
-        const std::array<std::array<double, 3>, 3> &rotm1, const Cone &cone,
-        const std::string shellList, std::vector<Type1> &pos_part,
-        std::vector<Type1> &vel_part, const std::vector<Type2> &z_stop_vec,
-        const double thetay, const double thetaz);
+      const Parameter& parameters,
+      const std::array<std::array<double, 3>, 3>& rotm1,
+      const Cone& cone,
+      const std::string shellList,
+      std::vector<Type1>& pos_part,
+      std::vector<Type1>& vel_part,
+      const std::vector<Type2>& z_stop_vec,
+      const double thetay,
+      const double thetaz);
     // Velocity field octree
-    template <
-        typename Type1,
-        template <typename Type, class Index, class Data, unsigned int Dimension,
-                  class Position, class Extent, class Element, class Container>
-        class Octree,
-        typename Type, class Index, class Data, unsigned int Dimension,
-        class Position, class Extent, class Element, class Container>
+    template<
+      typename Type1,
+      template<typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree,
+      typename Type,
+      class Index,
+      class Data,
+      unsigned int Dimension,
+      class Position,
+      class Extent,
+      class Element,
+      class Container>
     static void CreateOctreeVelocityWithCIC(
-        Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>
-            &octree,
-        const std::vector<Type1> &pos_part, const std::vector<Type1> &vel_part);
-    template <
-        typename Type1,
-        template <typename Type, class Index, class Data, unsigned int Dimension,
-                  class Position, class Extent, class Element, class Container>
-        class Octree,
-        typename Type, class Index, class Data, unsigned int Dimension,
-        class Position, class Extent, class Element, class Container>
+      Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& octree,
+      const std::vector<Type1>& pos_part,
+      const std::vector<Type1>& vel_part);
+    template<
+      typename Type1,
+      template<typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree,
+      typename Type,
+      class Index,
+      class Data,
+      unsigned int Dimension,
+      class Position,
+      class Extent,
+      class Element,
+      class Container>
     static void CreateOctreeVelocityWithTSC(
-        Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>
-            &octree,
-        const std::vector<Type1> &pos_part, const std::vector<Type1> &vel_part);
+      Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& octree,
+      const std::vector<Type1>& pos_part,
+      const std::vector<Type1>& vel_part);
 #endif
     // Fill maps
-    template <class Parameter, class Octree, class Map, class Pixel,
-              class Cosmology, class Point, typename Integer, typename Real>
+    template<class Parameter, class Octree, class Map, class Pixel, class Cosmology, class Point, typename Integer, typename Real>
     static void
-    FillMapPropagate(const Parameter &parameters, const Integer ntrajectory,
-                     const Integer firsttrajectory, const Octree &octree,
-                     const Point &vobs, Map &map, const Integer nmaps,
-                     const Pixel &pixel, const Cosmology &cosmology,
-                     const point &observer, const Real length,
-                     const std::vector<Real> &z_stop_vec);
+    FillMapPropagate(const Parameter& parameters, const Integer ntrajectory, const Integer firsttrajectory, const Octree& octree, const Point& vobs, Map& map, const Integer nmaps, const Pixel& pixel, const Cosmology& cosmology, const point& observer, const Real length, const std::vector<Real>& z_stop_vec);
 
-    template <class Parameter, class Octree, class Map, class Pixel,
-              class Cosmology, class Point, typename Integer, typename Real>
+    template<class Parameter, class Octree, class Map, class Pixel, class Cosmology, class Point, typename Integer, typename Real>
     static void
-    FillMap(const Parameter &parameters,
-            const std::vector<std::string> &map_components,
-            const std::vector<unsigned int> &index_components,
-            const Integer ntrajectory, const Integer firsttrajectory,
-            const Octree &octree, const Point &vobs, Map &map,
-            const unsigned int nmaps, const Pixel &pixel,
-            const Cosmology &cosmology, const point &observer, const Real length,
-            const std::vector<Real> &interpRefvec, const std::vector<Real> &rhomo,
-            const std::vector<Real> &thomo, const std::vector<Real> &lambdahomo,
-            const std::vector<Real> &redshifthomo,
-            const std::vector<Real> &ahomo);
+    FillMap(const Parameter& parameters,
+            const std::vector<std::string>& map_components,
+            const std::vector<unsigned int>& index_components,
+            const Integer ntrajectory,
+            const Integer firsttrajectory,
+            const Octree& octree,
+            const Point& vobs,
+            Map& map,
+            const unsigned int nmaps,
+            const Pixel& pixel,
+            const Cosmology& cosmology,
+            const point& observer,
+            const Real length,
+            const std::vector<Real>& interpRefvec,
+            const std::vector<Real>& rhomo,
+            const std::vector<Real>& thomo,
+            const std::vector<Real>& lambdahomo,
+            const std::vector<Real>& redshifthomo,
+            const std::vector<Real>& ahomo);
 };
 
 // Read parameter file
@@ -217,8 +228,9 @@ public:
 /// \param[in,out]  parameters Structure containing the parameters.
 /// \param[in]      parameter Contains parameters to be rewritten
 /// \return         Filled parameters structure.
-template <class Parameters, class Map>
-void Hmaps::ReadParamFile(Parameters &parameters, Map &parameter) {
+template<class Parameters, class Map>
+void
+Hmaps::ReadParamFile(Parameters& parameters, Map& parameter) {
 
     parameters.seed = std::stoul(parameter["seed"]);
     parameters.mpc = std::stod(parameter["mpc"]);
@@ -269,12 +281,9 @@ void Hmaps::ReadParamFile(Parameters &parameters, Map &parameter) {
 /// \param[in]	    iconerank Number of the cone of interest.
 /// \param[in]	    Cones Geometry of all the cones.
 /// return  	    Filled vector of targets inside cones for a given MPI task
-template <class Parameter, typename Integer, class Cones>
-void Hmaps::getPixels_per_cone(const Parameter &parameters, const Integer npix,
-                               std::vector<Integer> &pixel,
-                               std::vector<unsigned int> &ntrajectories,
-                               const unsigned int iconerank,
-                               const Cones &cones) {
+template<class Parameter, typename Integer, class Cones>
+void
+Hmaps::getPixels_per_cone(const Parameter& parameters, const Integer npix, std::vector<Integer>& pixel, std::vector<unsigned int>& ntrajectories, const unsigned int iconerank, const Cones& cones) {
     // Fill temporary pixel vector with -1
     std::vector<long> pixeltmp(npix, -1);
     ntrajectories.push_back(0);
@@ -335,12 +344,9 @@ void Hmaps::getPixels_per_cone(const Parameter &parameters, const Integer npix,
 /// \param[in]	    iconerank Number of the cone of interest.
 /// \param[in]	    Cones Geometry of all the cones.
 /// return  	    Filled vector of targets inside cones for a given MPI task
-template <class Parameter, typename Integer, class Cones>
-void Hmaps::getPixels_per_cone2(const Parameter &parameters, const Integer npix,
-                                std::vector<Integer> &pixel,
-                                std::vector<unsigned int> &ntrajectories,
-                                const unsigned int iconerank,
-                                const Cones &cones) {
+template<class Parameter, typename Integer, class Cones>
+void
+Hmaps::getPixels_per_cone2(const Parameter& parameters, const Integer npix, std::vector<Integer>& pixel, std::vector<unsigned int>& ntrajectories, const unsigned int iconerank, const Cones& cones) {
     // Fill temporary pixel vector with -1
     std::vector<long> pixeltmp(npix, -1);
     ntrajectories.push_back(0);
@@ -363,17 +369,17 @@ void Hmaps::getPixels_per_cone2(const Parameter &parameters, const Integer npix,
             // Compute scalar product of cone base and pixel direction
             for (unsigned int idim = 0; idim < 3; ++idim) {
                 length +=
-                    (cones[iconerank].base(idim) - cones[iconerank].vertex(idim)) *
-                    (vec[idim] - cones[iconerank].vertex(idim));
+                  (cones[iconerank].base(idim) - cones[iconerank].vertex(idim)) *
+                  (vec[idim] - cones[iconerank].vertex(idim));
             }
             length /= cones[iconerank].template pow<2>(cones[iconerank].length());
             // Compute the ditance between cone base and pixel
             for (unsigned int idim = 0; idim < 3; ++idim) {
                 reference += cones[iconerank].template pow<2>(
-                    vec[idim] -
-                    (cones[iconerank].vertex(idim) +
-                     (cones[iconerank].base(idim) - cones[iconerank].vertex(idim)) *
-                         length));
+                  vec[idim] -
+                  (cones[iconerank].vertex(idim) +
+                   (cones[iconerank].base(idim) - cones[iconerank].vertex(idim)) *
+                     length));
             }
             // Loop over all the other cones
             for (unsigned int icone = 0; icone < cones.size(); ++icone) {
@@ -383,18 +389,18 @@ void Hmaps::getPixels_per_cone2(const Parameter &parameters, const Integer npix,
                     // Compute scalar product of other cone base and pixel direction
                     for (unsigned int idim = 0; idim < 3; ++idim) {
                         length +=
-                            (cones[icone].base(idim) - cones[iconerank].vertex(idim)) *
-                            (vec[idim] - cones[icone].vertex(idim));
+                          (cones[icone].base(idim) - cones[iconerank].vertex(idim)) *
+                          (vec[idim] - cones[icone].vertex(idim));
                     }
                     if (!(length < 0)) {
                         length /= cones[icone].template pow<2>(cones[icone].length());
                         // Compute the ditance between other cone base and pixel
                         for (unsigned int idim = 0; idim < 3; ++idim) {
                             distance += cones[icone].template pow<2>(
-                                vec[idim] -
-                                (cones[icone].vertex(idim) +
-                                 (cones[icone].base(idim) - cones[icone].vertex(idim)) *
-                                     length));
+                              vec[idim] -
+                              (cones[icone].vertex(idim) +
+                               (cones[icone].base(idim) - cones[icone].vertex(idim)) *
+                                 length));
                         }
                         // Check if other cone is closer to pixel
                         if (distance < reference) {
@@ -402,8 +408,8 @@ void Hmaps::getPixels_per_cone2(const Parameter &parameters, const Integer npix,
                             icone = cones.size();
                         }
                     } //  if length
-                }     // if
-            }         // for icone
+                } // if
+            } // for icone
             if (ok) {
                 pixeltmp[pix] = pix;
             }
@@ -437,13 +443,18 @@ void Hmaps::getPixels_per_cone2(const Parameter &parameters, const Integer npix,
 /// \param[in]      z_stop_vec Redshift at which we want to compute Healpix maps
 /// \param[in]      thetay Semi-angle for solid angle in direction y
 /// \param[in]      thetaz Semi-angle for solid angle in direction z
-template <class Parameter, class Cone, typename Type1, typename Type2>
-void Hmaps::fill_particles_vectors(
-    const Parameter &parameters,
-    const std::array<std::array<double, 3>, 3> &rotm1, const Cone &cone,
-    const std::vector<std::string> &shellList, std::vector<Type1> &pos_part,
-    std::vector<Type1> &vel_part, const std::vector<Type2> &z_stop_vec,
-    const double thetay, const double thetaz) {
+template<class Parameter, class Cone, typename Type1, typename Type2>
+void
+Hmaps::fill_particles_vectors(
+  const Parameter& parameters,
+  const std::array<std::array<double, 3>, 3>& rotm1,
+  const Cone& cone,
+  const std::vector<std::string>& shellList,
+  std::vector<Type1>& pos_part,
+  std::vector<Type1>& vel_part,
+  const std::vector<Type2>& z_stop_vec,
+  const double thetay,
+  const double thetaz) {
 
     unsigned long long int marker(0);
     const double c = magrathea::Constants<double>::c();
@@ -460,10 +471,8 @@ void Hmaps::fill_particles_vectors(
     for (uint ifiling = 0; ifiling < shellList.size(); ifiling++) {
         double amaxing(0), amining(0);
         // Get the limits of particle shell
-        TReadHDF5::getAttribute(shellList[ifiling], "metadata/cone_info", "amax",
-                                amaxing);
-        TReadHDF5::getAttribute(shellList[ifiling], "metadata/cone_info", "amin",
-                                amining);
+        TReadHDF5::getAttribute(shellList[ifiling], "metadata/cone_info", "amax", amaxing);
+        TReadHDF5::getAttribute(shellList[ifiling], "metadata/cone_info", "amin", amining);
         double da = amaxing - amining;
         // Need to define a buffer zone around the reference redshift.
         // Must be chosen so the maximum observed redshift is far enough (take dz =
@@ -480,18 +489,15 @@ void Hmaps::fill_particles_vectors(
             // If file is inside the buffer zone of any reference redshift, then get
             // the particles
             if (scale_factor <= amining && scale_factor >= amaxing) {
-                TReadHDF5::fillVectors_part(parameters, shellList[ifiling], thetay,
-                                            thetaz, cone, "data", "position_part",
-                                            pos_part, "velocity_part", vel_part);
+                TReadHDF5::fillVectors_part(parameters, shellList[ifiling], thetay, thetaz, cone, "data", "position_part", pos_part, "velocity_part", vel_part);
                 float unit_l(0), unit_t(0);
-                TReadHDF5::getAttribute(shellList[ifiling], "metadata/ramses_info",
-                                        "unit_l", unit_l); // comobile
-                TReadHDF5::getAttribute(shellList[ifiling], "metadata/ramses_info",
-                                        "unit_t", unit_t); // superconformal unit
+                TReadHDF5::getAttribute(shellList[ifiling], "metadata/ramses_info", "unit_l", unit_l); // comobile
+                TReadHDF5::getAttribute(shellList[ifiling], "metadata/ramses_info", "unit_t", unit_t); // superconformal unit
                 const Type1 factor = unit_l * 1e-2 / (c * unit_t);
-                std::for_each(std::execution::par_unseq, 
-                    vel_part.begin() + marker, vel_part.end(), 
-                    [&](Type1& value) { value *= factor; });
+                std::for_each(std::execution::par_unseq,
+                              vel_part.begin() + marker,
+                              vel_part.end(),
+                              [&](Type1& value) { value *= factor; });
                 marker = vel_part.size();
                 break;
             }
@@ -537,16 +543,20 @@ void Hmaps::fill_particles_vectors(
 /// \param[in]      z_stop_vec Redshift at which we want to compute Healpix maps
 /// \param[in]      thetay Semi-angle for solid angle in direction y
 /// \param[in]      thetaz Semi-angle for solid angle in direction z
-template <class Parameter, class Cone, typename Type1, typename Type2>
-void Hmaps::fill_particles_vectors(
-    const Parameter &parameters,
-    const std::array<std::array<double, 3>, 3> &rotm1, const Cone &cone,
-    const std::string shellList, std::vector<Type1> &pos_part,
-    std::vector<Type1> &vel_part, const std::vector<Type2> &z_stop_vec,
-    const double thetay, const double thetaz) {
-    std::vector<std::string> shellLists{shellList};
-    Hmaps::fill_particles_vectors(parameters, rotm1, cone, shellLists, pos_part,
-                                  vel_part, z_stop_vec, thetay, thetaz);
+template<class Parameter, class Cone, typename Type1, typename Type2>
+void
+Hmaps::fill_particles_vectors(
+  const Parameter& parameters,
+  const std::array<std::array<double, 3>, 3>& rotm1,
+  const Cone& cone,
+  const std::string shellList,
+  std::vector<Type1>& pos_part,
+  std::vector<Type1>& vel_part,
+  const std::vector<Type2>& z_stop_vec,
+  const double thetay,
+  const double thetaz) {
+    std::vector<std::string> shellLists{ shellList };
+    Hmaps::fill_particles_vectors(parameters, rotm1, cone, shellLists, pos_part, vel_part, z_stop_vec, thetay, thetaz);
 }
 
 // Compute CIC velocity field
@@ -565,32 +575,35 @@ void Hmaps::fill_particles_vectors(
 /// \param[in,out]  octree Octree be to filled with velocity field
 /// \param[in]      pos_part Position of particles
 /// \param[in]      vel_part Velocity of particles
-template <
-    typename Type1,
-    template <typename Type, class Index, class Data, unsigned int Dimension,
-              class Position, class Extent, class Element, class Container>
-    class Octree,
-    typename Type, class Index, class Data, unsigned int Dimension,
-    class Position, class Extent, class Element, class Container>
-void Hmaps::CreateOctreeVelocityWithCIC(
-    Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>
-        &octree,
-    const std::vector<Type1> &pos_part, const std::vector<Type1> &vel_part) {
+template<
+  typename Type1,
+  template<typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree,
+  typename Type,
+  class Index,
+  class Data,
+  unsigned int Dimension,
+  class Position,
+  class Extent,
+  class Element,
+  class Container>
+void
+Hmaps::CreateOctreeVelocityWithCIC(
+  Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& octree,
+  const std::vector<Type1>& pos_part,
+  const std::vector<Type1>& vel_part) {
 
     const unsigned int lvlmax =
-        (std::get<0>(*std::max_element(std::execution::par_unseq, std::begin(octree), std::end(octree),
-                                       [](const Element &x, const Element &y) {
-                                           return std::get<0>(x).level() <
-                                                  std::get<0>(y).level();
-                                       }))
-             .level());
+      (std::get<0>(*std::max_element(std::execution::par_unseq, std::begin(octree), std::end(octree), [](const Element& x, const Element& y) {
+           return std::get<0>(x).level() <
+                  std::get<0>(y).level();
+       }))
+         .level());
     const unsigned int lvlmin =
-        (std::get<0>(*std::min_element(std::execution::par_unseq, std::begin(octree), std::end(octree),
-                                       [](const Element &x, const Element &y) {
-                                           return std::get<0>(x).level() <
-                                                  std::get<0>(y).level();
-                                       }))
-             .level());
+      (std::get<0>(*std::min_element(std::execution::par_unseq, std::begin(octree), std::end(octree), [](const Element& x, const Element& y) {
+           return std::get<0>(x).level() <
+                  std::get<0>(y).level();
+       }))
+         .level());
 
     // Loop over all the levels
     for (uint ilvl = lvlmin; ilvl <= lvlmax; ilvl++) {
@@ -611,45 +624,41 @@ void Hmaps::CreateOctreeVelocityWithCIC(
                     for (int ix = -1; ix <= 1; ix += 2) {
                         // Create an index at the level of interest for the neighboring cell
                         idxvertex = idxvertex.template compute<Type, Position, Extent>(
-                            ilvl, pos_part[3 * i] + half * ix,
-                            pos_part[3 * i + 1] + half * iy,
-                            pos_part[3 * i + 2] + half * iz);
+                          ilvl, pos_part[3 * i] + half * ix, pos_part[3 * i + 1] + half * iy, pos_part[3 * i + 2] + half * iz);
                         // Given an index in the octree that is consistent with the created
                         // index
                         marker = std::distance(
-                            std::begin(octree),
-                            std::upper_bound(
-                                std::begin(octree), std::end(octree),
-                                Element(idxvertex, data),
-                                [](const Element &first, const Element &second) {
-                                    return std::get<0>(first) < std::get<0>(second);
-                                }));
+                          std::begin(octree),
+                          std::upper_bound(
+                            std::begin(octree), std::end(octree), Element(idxvertex, data), [](const Element& first, const Element& second) {
+                                return std::get<0>(first) < std::get<0>(second);
+                            }));
                         // If the index exists in the octree, compute CIC
                         if (std::get<0>(*(std::begin(octree) + marker - (marker > 0))) ==
                             idxvertex) {
                             vratio =
-                                (1 -
-                                 std::abs(
-                                     pos_part[3 * i] -
-                                     idxvertex.template center<Type, Position, Extent>(0)) *
-                                     invextension) *
-                                (1 -
-                                 std::abs(
-                                     pos_part[3 * i + 1] -
-                                     idxvertex.template center<Type, Position, Extent>(1)) *
-                                     invextension) *
-                                (1 -
-                                 std::abs(
-                                     pos_part[3 * i + 2] -
-                                     idxvertex.template center<Type, Position, Extent>(2)) *
-                                     invextension);
+                              (1 -
+                               std::abs(
+                                 pos_part[3 * i] -
+                                 idxvertex.template center<Type, Position, Extent>(0)) *
+                                 invextension) *
+                              (1 -
+                               std::abs(
+                                 pos_part[3 * i + 1] -
+                                 idxvertex.template center<Type, Position, Extent>(1)) *
+                                 invextension) *
+                              (1 -
+                               std::abs(
+                                 pos_part[3 * i + 2] -
+                                 idxvertex.template center<Type, Position, Extent>(2)) *
+                                 invextension);
                             std::get<1>(octree[marker - (marker > 0)]).rho() += vratio;
                             std::get<1>(octree[marker - (marker > 0)]).vx() +=
-                                vel_part[3 * i] * vratio;
+                              vel_part[3 * i] * vratio;
                             std::get<1>(octree[marker - (marker > 0)]).vy() +=
-                                vel_part[3 * i + 1] * vratio;
+                              vel_part[3 * i + 1] * vratio;
                             std::get<1>(octree[marker - (marker > 0)]).vz() +=
-                                vel_part[3 * i + 2] * vratio;
+                              vel_part[3 * i + 2] * vratio;
                         }
                     }
                 }
@@ -674,32 +683,35 @@ void Hmaps::CreateOctreeVelocityWithCIC(
 /// \param[in,out]  octree Octree be to filled with velocity field
 /// \param[in]      pos_part Position of particles
 /// \param[in]      vel_part Velocity of particles
-template <
-    typename Type1,
-    template <typename Type, class Index, class Data, unsigned int Dimension,
-              class Position, class Extent, class Element, class Container>
-    class Octree,
-    typename Type, class Index, class Data, unsigned int Dimension,
-    class Position, class Extent, class Element, class Container>
-void Hmaps::CreateOctreeVelocityWithTSC(
-    Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>
-        &octree,
-    const std::vector<Type1> &pos_part, const std::vector<Type1> &vel_part) {
+template<
+  typename Type1,
+  template<typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree,
+  typename Type,
+  class Index,
+  class Data,
+  unsigned int Dimension,
+  class Position,
+  class Extent,
+  class Element,
+  class Container>
+void
+Hmaps::CreateOctreeVelocityWithTSC(
+  Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& octree,
+  const std::vector<Type1>& pos_part,
+  const std::vector<Type1>& vel_part) {
 
     const unsigned int lvlmax =
-        (std::get<0>(*std::max_element(std::execution::par_unseq, std::begin(octree), std::end(octree),
-                                       [](const Element &x, const Element &y) {
-                                           return std::get<0>(x).level() <
-                                                  std::get<0>(y).level();
-                                       }))
-             .level());
+      (std::get<0>(*std::max_element(std::execution::par_unseq, std::begin(octree), std::end(octree), [](const Element& x, const Element& y) {
+           return std::get<0>(x).level() <
+                  std::get<0>(y).level();
+       }))
+         .level());
     const unsigned int lvlmin =
-        (std::get<0>(*std::min_element(std::execution::par_unseq, std::begin(octree), std::end(octree),
-                                       [](const Element &x, const Element &y) {
-                                           return std::get<0>(x).level() <
-                                                  std::get<0>(y).level();
-                                       }))
-             .level());
+      (std::get<0>(*std::min_element(std::execution::par_unseq, std::begin(octree), std::end(octree), [](const Element& x, const Element& y) {
+           return std::get<0>(x).level() <
+                  std::get<0>(y).level();
+       }))
+         .level());
     // Loop over all the levels
     for (uint ilvl = lvlmin; ilvl <= lvlmax; ilvl++) {
         const double half = 0.5 * EXTENT / pow(2, ilvl);
@@ -723,28 +735,24 @@ void Hmaps::CreateOctreeVelocityWithTSC(
                         const int aix = abs(ix);
                         // Create an index at the level of interest for the neighboring cell
                         idxvertex = idxvertex.template compute<Type, Position, Extent>(
-                            ilvl, pos_part[3 * i] + twohalves * ix,
-                            pos_part[3 * i + 1] + twohalves * iy,
-                            pos_part[3 * i + 2] + twohalves * iz);
+                          ilvl, pos_part[3 * i] + twohalves * ix, pos_part[3 * i + 1] + twohalves * iy, pos_part[3 * i + 2] + twohalves * iz);
                         // Given an index in the octree that is consistent with the created
                         // index
                         marker = std::distance(
-                            std::begin(octree),
-                            std::upper_bound(
-                                std::begin(octree), std::end(octree),
-                                Element(idxvertex, data),
-                                [](const Element &first, const Element &second) {
-                                    return std::get<0>(first) < std::get<0>(second);
-                                }));
+                          std::begin(octree),
+                          std::upper_bound(
+                            std::begin(octree), std::end(octree), Element(idxvertex, data), [](const Element& first, const Element& second) {
+                                return std::get<0>(first) < std::get<0>(second);
+                            }));
                         // If the index exists in the octree, compute TSC
                         if (std::get<0>(*(std::begin(octree) + marker - (marker > 0))) ==
                             idxvertex) {
                             for (unsigned int idim = 0; idim < Index::dimension(); ++idim) {
                                 dist[idim] = std::abs(
-                                    (std::get<0>(*(std::begin(octree) + marker - (marker > 0)))
-                                         .template center<Type, Position, Extent>(idim) -
-                                     pos_part[3 * i + idim]) /
-                                    (twohalves));
+                                  (std::get<0>(*(std::begin(octree) + marker - (marker > 0)))
+                                     .template center<Type, Position, Extent>(idim) -
+                                   pos_part[3 * i + idim]) /
+                                  (twohalves));
                             }
                             weightx = aix * 0.5 * (1.5 - dist[0]) * (1.5 - dist[0]) +
                                       (1 - aix) * (0.75 - dist[0] * dist[0]);
@@ -755,11 +763,11 @@ void Hmaps::CreateOctreeVelocityWithTSC(
                             vratio = weightx * weighty * weightz;
                             std::get<1>(octree[marker - (marker > 0)]).rho() += vratio;
                             std::get<1>(octree[marker - (marker > 0)]).vx() +=
-                                vel_part[3 * i] * vratio;
+                              vel_part[3 * i] * vratio;
                             std::get<1>(octree[marker - (marker > 0)]).vy() +=
-                                vel_part[3 * i + 1] * vratio;
+                              vel_part[3 * i + 1] * vratio;
                             std::get<1>(octree[marker - (marker > 0)]).vz() +=
-                                vel_part[3 * i + 2] * vratio;
+                              vel_part[3 * i + 2] * vratio;
                         }
                     }
                 }
@@ -800,48 +808,57 @@ void Hmaps::CreateOctreeVelocityWithTSC(
 /// parameter at the redshifts of interest \param[in]      redshifthomo vector
 /// of FLRW redshift at the redshifts of interest \param[in]      ahomo vector
 /// of FLRW scale factor at the redshifts of interest
-template <class Parameter, class Octree, class Map, class Pixel,
-          class Cosmology, class Point, typename Integer, typename Real>
-void Hmaps::FillMap(
-    const Parameter &parameters, const std::vector<std::string> &map_components,
-    const std::vector<unsigned int> &index_components,
-    const Integer ntrajectory, const Integer firsttrajectory,
-    const Octree &octree, const Point &vobs, Map &map, const unsigned int nmaps,
-    const Pixel &pixel, const Cosmology &cosmology, const point &observer,
-    const Real length, const std::vector<Real> &interpRefvec,
-    const std::vector<Real> &rhomo, const std::vector<Real> &thomo,
-    const std::vector<Real> &lambdahomo, const std::vector<Real> &redshifthomo,
-    const std::vector<Real> &ahomo) {
+template<class Parameter, class Octree, class Map, class Pixel, class Cosmology, class Point, typename Integer, typename Real>
+void
+Hmaps::FillMap(
+  const Parameter& parameters,
+  const std::vector<std::string>& map_components,
+  const std::vector<unsigned int>& index_components,
+  const Integer ntrajectory,
+  const Integer firsttrajectory,
+  const Octree& octree,
+  const Point& vobs,
+  Map& map,
+  const unsigned int nmaps,
+  const Pixel& pixel,
+  const Cosmology& cosmology,
+  const point& observer,
+  const Real length,
+  const std::vector<Real>& interpRefvec,
+  const std::vector<Real>& rhomo,
+  const std::vector<Real>& thomo,
+  const std::vector<Real>& lambdahomo,
+  const std::vector<Real>& redshifthomo,
+  const std::vector<Real>& ahomo) {
 
     // Loop over all the pixels in the cone
     Utility::parallelize(ntrajectory, [&](const unsigned int itrajectory) {
         const uint itrajectorys = itrajectory + firsttrajectory;
         magrathea::Evolution<Photon<double, 3>> trajectorycenter,
-            trajectorycenter_born;
+          trajectorycenter_born;
         Photon<double, 3> photoncenter;
         std::vector<std::array<std::array<double, 2>, 2>> jacobian(
-            parameters.nb_z_maps),
-            jacobian_born(parameters.nb_z_maps);
+          parameters.nb_z_maps),
+          jacobian_born(parameters.nb_z_maps);
         std::vector<std::array<double, 6>> hessian(parameters.nb_z_maps);
         std::vector<uint> firstid(parameters.nb_z_maps);
         std::vector<Real> interpRefvecBundle(parameters.nb_z_maps),
-            f(parameters.nb_z_maps), distance(parameters.nb_z_maps);
+          f(parameters.nb_z_maps), distance(parameters.nb_z_maps);
         double phi(0), theta(0);
         unsigned int marked(0);
         double vec1[3];
         const bool only_born =
-            (index_components.size() == 1 && index_components[0] == INDEX_LENSING_BORN);
+          (index_components.size() == 1 && index_components[0] == INDEX_LENSING_BORN);
         const bool compute_born =
-            std::find(map_components.begin(), map_components.end(),
-                      "lensing_born") != map_components.end();
+          std::find(map_components.begin(), map_components.end(), "lensing_born") != map_components.end();
         const bool compute_lensing =
-            std::find(map_components.begin(), map_components.end(), "lensing") !=
-            map_components.end();
+          std::find(map_components.begin(), map_components.end(), "lensing") !=
+          map_components.end();
         const bool compute_flexion =
-            std::find(map_components.begin(), map_components.end(), "flexion") !=
-            map_components.end();
+          std::find(map_components.begin(), map_components.end(), "flexion") !=
+          map_components.end();
         std::vector<point> kiTargets(parameters.nb_z_maps),
-            central_position(parameters.nb_z_maps);
+          central_position(parameters.nb_z_maps);
         // Convert pixel to 3D vector
         pix2vec_ring(parameters.nside, pixel[itrajectorys], vec1);
         // Convert to angles
@@ -851,13 +868,10 @@ void Hmaps::FillMap(
         // If we only use 'lensing_born', then no need for real ray-tracing
         if (!only_born) {
             // Integrate central ray
-            photoncenter = Integrator::launch(observer[0], observer[1], observer[2],
-                                              vec1[0], vec1[1], vec1[2]);
+            photoncenter = Integrator::launch(observer[0], observer[1], observer[2], vec1[0], vec1[1], vec1[2]);
             trajectorycenter.append(photoncenter);
             // Integrate photon trajectory
-            Integrator::integrate(trajectorycenter, parameters.stop_ray,
-                                  interpRefvec.back(), cosmology, octree, vobs,
-                                  length, parameters.nsteps);
+            Integrator::integrate(trajectorycenter, parameters.stop_ray, interpRefvec.back(), cosmology, octree, vobs, length, parameters.nsteps);
             // Integrator::integrate(trajectorycenter, cosmology, octree, vobs,
             // length, parameters.nsteps); // Uncomment to compute upper surface (with
             // stop_rays == redshift)
@@ -869,13 +883,14 @@ void Hmaps::FillMap(
                 if (parameters.stop_ray == "r") {
                     photoncenter.chi() = interpRefvec[i];
                     marked = std::distance(
-                        std::begin(trajectorycenter),
-                        std::upper_bound(std::begin(trajectorycenter),
-                                         std::end(trajectorycenter), photoncenter,
-                                         [](const Photon<double, 3> &first,
-                                            const Photon<double, 3> &second) {
-                                             return first.chi() < second.chi();
-                                         }));
+                      std::begin(trajectorycenter),
+                      std::upper_bound(std::begin(trajectorycenter),
+                                       std::end(trajectorycenter),
+                                       photoncenter,
+                                       [](const Photon<double, 3>& first,
+                                          const Photon<double, 3>& second) {
+                                           return first.chi() < second.chi();
+                                       }));
                     firstid[i] = marked - (marked > 0);
                     f[i] = (trajectorycenter[firstid[i] + 1].chi() - interpRefvec[i]) /
                            (trajectorycenter[firstid[i] + 1].chi() -
@@ -883,13 +898,14 @@ void Hmaps::FillMap(
                 } else if (parameters.stop_ray == "lambda") {
                     photoncenter.lambda() = interpRefvec[i];
                     marked = std::distance(
-                        std::begin(trajectorycenter),
-                        std::upper_bound(std::begin(trajectorycenter),
-                                         std::end(trajectorycenter), photoncenter,
-                                         [](const Photon<double, 3> &first,
-                                            const Photon<double, 3> &second) {
-                                             return first.lambda() < second.lambda();
-                                         }));
+                      std::begin(trajectorycenter),
+                      std::upper_bound(std::begin(trajectorycenter),
+                                       std::end(trajectorycenter),
+                                       photoncenter,
+                                       [](const Photon<double, 3>& first,
+                                          const Photon<double, 3>& second) {
+                                           return first.lambda() < second.lambda();
+                                       }));
                     firstid[i] = marked - (marked > 0);
                     f[i] = (trajectorycenter[firstid[i] + 1].lambda() - interpRefvec[i]) /
                            (trajectorycenter[firstid[i] + 1].lambda() -
@@ -897,13 +913,14 @@ void Hmaps::FillMap(
                 } else if (parameters.stop_ray == "t") {
                     photoncenter.t() = interpRefvec[i];
                     marked = std::distance(
-                        std::begin(trajectorycenter),
-                        std::upper_bound(std::begin(trajectorycenter),
-                                         std::end(trajectorycenter), photoncenter,
-                                         [](const Photon<double, 3> &first,
-                                            const Photon<double, 3> &second) {
-                                             return first.t() < second.t();
-                                         }));
+                      std::begin(trajectorycenter),
+                      std::upper_bound(std::begin(trajectorycenter),
+                                       std::end(trajectorycenter),
+                                       photoncenter,
+                                       [](const Photon<double, 3>& first,
+                                          const Photon<double, 3>& second) {
+                                           return first.t() < second.t();
+                                       }));
                     firstid[i] = marked - (marked > 0);
                     f[i] = (trajectorycenter[firstid[i] + 1].t() - interpRefvec[i]) /
                            (trajectorycenter[firstid[i] + 1].t() -
@@ -911,12 +928,12 @@ void Hmaps::FillMap(
                 } else if (parameters.stop_ray == "redshift") {
                     photoncenter.redshift() = interpRefvec[i];
                     marked = std::distance(
-                        std::begin(trajectorycenter),
-                        std::find_if(std::begin(trajectorycenter),
-                                     std::end(trajectorycenter),
-                                     [=, &photoncenter](const Photon<double, 3> &first) {
-                                         return first.redshift() > photoncenter.redshift();
-                                     })); // lower surface
+                      std::begin(trajectorycenter),
+                      std::find_if(std::begin(trajectorycenter),
+                                   std::end(trajectorycenter),
+                                   [=, &photoncenter](const Photon<double, 3>& first) {
+                                       return first.redshift() > photoncenter.redshift();
+                                   })); // lower surface
                     // marked = std::distance(std::begin(trajectorycenter),
                     // std::find_if(std::rbegin(trajectorycenter),
                     // std::rend(trajectorycenter), [=, &photoncenter](const
@@ -925,19 +942,20 @@ void Hmaps::FillMap(
                     // surface (with stop_rays == redshift)
                     firstid[i] = marked - (marked > 0);
                     f[i] =
-                        (trajectorycenter[firstid[i] + 1].redshift() - interpRefvec[i]) /
-                        (trajectorycenter[firstid[i] + 1].redshift() -
-                         trajectorycenter[firstid[i]].redshift());
+                      (trajectorycenter[firstid[i] + 1].redshift() - interpRefvec[i]) /
+                      (trajectorycenter[firstid[i] + 1].redshift() -
+                       trajectorycenter[firstid[i]].redshift());
                 } else if (parameters.stop_ray == "a") {
                     photoncenter.a() = interpRefvec[i];
                     marked = std::distance(
-                        std::begin(trajectorycenter),
-                        std::upper_bound(std::begin(trajectorycenter),
-                                         std::end(trajectorycenter), photoncenter,
-                                         [](const Photon<double, 3> &first,
-                                            const Photon<double, 3> &second) {
-                                             return first.a() > second.a();
-                                         }));
+                      std::begin(trajectorycenter),
+                      std::upper_bound(std::begin(trajectorycenter),
+                                       std::end(trajectorycenter),
+                                       photoncenter,
+                                       [](const Photon<double, 3>& first,
+                                          const Photon<double, 3>& second) {
+                                           return first.a() > second.a();
+                                       }));
                     firstid[i] = marked - (marked > 0);
                     f[i] = (trajectorycenter[firstid[i] + 1].a() - interpRefvec[i]) /
                            (trajectorycenter[firstid[i] + 1].a() -
@@ -945,13 +963,14 @@ void Hmaps::FillMap(
                 } else if (parameters.stop_ray == "s") {
                     photoncenter.s() = interpRefvec[i];
                     marked = std::distance(
-                        std::begin(trajectorycenter),
-                        std::upper_bound(std::begin(trajectorycenter),
-                                         std::end(trajectorycenter), photoncenter,
-                                         [](const Photon<double, 3> &first,
-                                            const Photon<double, 3> &second) {
-                                             return first.s() < second.s();
-                                         }));
+                      std::begin(trajectorycenter),
+                      std::upper_bound(std::begin(trajectorycenter),
+                                       std::end(trajectorycenter),
+                                       photoncenter,
+                                       [](const Photon<double, 3>& first,
+                                          const Photon<double, 3>& second) {
+                                           return first.s() < second.s();
+                                       }));
                     firstid[i] = marked - (marked > 0);
                     f[i] = (trajectorycenter[firstid[i] + 1].s() - interpRefvec[i]) /
                            (trajectorycenter[firstid[i] + 1].s() -
@@ -976,14 +995,14 @@ void Hmaps::FillMap(
                     if (parameters.beam == "bundle") {
                         if (parameters.plane == "sachs") {
                             kiTargets[i][0] =
-                                trajectorycenter[firstid[i]].dxdl() * f[i] +
-                                trajectorycenter[firstid[i] + 1].dxdl() * (1 - f[i]);
+                              trajectorycenter[firstid[i]].dxdl() * f[i] +
+                              trajectorycenter[firstid[i] + 1].dxdl() * (1 - f[i]);
                             kiTargets[i][1] =
-                                trajectorycenter[firstid[i]].dydl() * f[i] +
-                                trajectorycenter[firstid[i] + 1].dydl() * (1 - f[i]);
+                              trajectorycenter[firstid[i]].dydl() * f[i] +
+                              trajectorycenter[firstid[i] + 1].dydl() * (1 - f[i]);
                             kiTargets[i][2] =
-                                trajectorycenter[firstid[i]].dzdl() * f[i] +
-                                trajectorycenter[firstid[i] + 1].dzdl() * (1 - f[i]);
+                              trajectorycenter[firstid[i]].dzdl() * f[i] +
+                              trajectorycenter[firstid[i] + 1].dzdl() * (1 - f[i]);
                         } else if (parameters.plane == "normal") {
                             kiTargets = central_position;
                         } else {
@@ -999,26 +1018,26 @@ void Hmaps::FillMap(
                     if (parameters.beam == "bundle") {
                         if (parameters.stop_bundle == "lambda") {
                             interpRefvecBundle[i] =
-                                trajectorycenter[firstid[i]].lambda() * f[i] +
-                                trajectorycenter[firstid[i] + 1].lambda() * (1 - f[i]);
+                              trajectorycenter[firstid[i]].lambda() * f[i] +
+                              trajectorycenter[firstid[i] + 1].lambda() * (1 - f[i]);
                         } else if (parameters.stop_bundle == "r") {
                             interpRefvecBundle[i] =
-                                trajectorycenter[firstid[i]].chi() * f[i] +
-                                trajectorycenter[firstid[i] + 1].chi() * (1 - f[i]);
+                              trajectorycenter[firstid[i]].chi() * f[i] +
+                              trajectorycenter[firstid[i] + 1].chi() * (1 - f[i]);
                             ;
                         } else if (parameters.stop_bundle == "redshift") {
                             interpRefvecBundle[i] =
-                                trajectorycenter[firstid[i]].redshift() * f[i] +
-                                trajectorycenter[firstid[i] + 1].redshift() * (1 - f[i]);
+                              trajectorycenter[firstid[i]].redshift() * f[i] +
+                              trajectorycenter[firstid[i] + 1].redshift() * (1 - f[i]);
                             ;
                         } else if (parameters.stop_bundle == "a") {
                             interpRefvecBundle[i] =
-                                trajectorycenter[firstid[i]].a() * f[i] +
-                                trajectorycenter[firstid[i] + 1].a() * (1 - f[i]);
+                              trajectorycenter[firstid[i]].a() * f[i] +
+                              trajectorycenter[firstid[i] + 1].a() * (1 - f[i]);
                         } else if (parameters.stop_bundle == "t") {
                             interpRefvecBundle[i] =
-                                trajectorycenter[firstid[i]].t() * f[i] +
-                                trajectorycenter[firstid[i] + 1].t() * (1 - f[i]);
+                              trajectorycenter[firstid[i]].t() * f[i] +
+                              trajectorycenter[firstid[i] + 1].t() * (1 - f[i]);
                         } else if (parameters.stop_bundle == "plane") {
                             interpRefvecBundle[i] = kiTargets[i][0] * central_position[i][0] +
                                                     kiTargets[i][1] * central_position[i][1] +
@@ -1034,20 +1053,17 @@ void Hmaps::FillMap(
                     }
                 }
                 if (compute_flexion) {
-                    hessian = Lensing::flexion(parameters, central_position, kiTargets, interpRefvecBundle,
-                                               observer, phi, theta, distance,
-                                               cosmology, octree, vobs, length);
+                    hessian = Lensing::flexion(parameters, central_position, kiTargets, interpRefvecBundle, observer, phi, theta, distance, cosmology, octree, vobs, length);
                 }
 
                 // Compute Lensing Jacobian matrix
                 if (compute_lensing) {
                     if (parameters.beam == "bundle") {
                         jacobian = Lensing::dbetadtheta(
-                            parameters, kiTargets, interpRefvecBundle, observer, phi, theta,
-                            distance, cosmology, octree, vobs, length);
+                          parameters, kiTargets, interpRefvecBundle, observer, phi, theta, distance, cosmology, octree, vobs, length);
                     } else if (parameters.beam == "infinitesimal") {
                         jacobian = Lensing::dbetadtheta_infinitesimal(
-                            distance, trajectorycenter, octree, length);
+                          distance, trajectorycenter, octree, length);
                     } else {
                         std::cout << "# WARNING: beam must be 'bundle' or 'infinitesimal'"
                                   << std::endl;
@@ -1061,16 +1077,13 @@ void Hmaps::FillMap(
         // Check if we need to compute the lensing jacobian matrix with Born
         // approximation
         if (compute_born) {
-            photoncenter = Integrator::launch(observer[0], observer[1], observer[2],
-                                              vec1[0], vec1[1], vec1[2]);
+            photoncenter = Integrator::launch(observer[0], observer[1], observer[2], vec1[0], vec1[1], vec1[2]);
             trajectorycenter_born.append(photoncenter);
             // Integrate photon on a FLRW trajectory
-            Integrator::integrate<-1>(trajectorycenter_born, parameters.stop_ray,
-                                      interpRefvec.back(), cosmology, octree, vobs,
-                                      length, parameters.nsteps);
+            Integrator::integrate<-1>(trajectorycenter_born, parameters.stop_ray, interpRefvec.back(), cosmology, octree, vobs, length, parameters.nsteps);
             // Compute distortions around the FLRW trajectory
             jacobian_born = Lensing::dbetadtheta_infinitesimal(
-                rhomo, trajectorycenter_born, octree, length);
+              rhomo, trajectorycenter_born, octree, length);
         }
 
         // Fill maps
@@ -1091,7 +1104,7 @@ void Hmaps::FillMap(
                         // 'infinitesimal' we assume that there isn't
                         if (parameters.beam == "bundle") {
                             const double a11(jacobian[iz][0][0]), a12(jacobian[iz][0][1]),
-                                a21(jacobian[iz][1][0]), a22(jacobian[iz][1][1]);
+                              a21(jacobian[iz][1][0]), a22(jacobian[iz][1][1]);
                             // Check if jacobian is good
                             if (a11 == 42) {
                                 for (uint i = 0; i < nmaps; i++) {
@@ -1111,12 +1124,12 @@ void Hmaps::FillMap(
                                 map[nmaps * iz + icomp + 2][pixel[itrajectorys]] = gamma2;
                                 map[nmaps * iz + icomp + 3][pixel[itrajectorys]] = w;
                                 map[nmaps * iz + icomp + 4][pixel[itrajectorys]] =
-                                    invmagnification;
+                                  invmagnification;
                                 icomp += 4;
                             }
                         } else if (parameters.beam == "infinitesimal") {
                             const double a11(jacobian[iz][0][0]), a12(jacobian[iz][0][1]),
-                                a22(jacobian[iz][1][1]);
+                              a22(jacobian[iz][1][1]);
                             // Check if jacobian is good
                             if (a11 == 42) {
                                 for (uint i = 0; i < nmaps; i++) {
@@ -1132,13 +1145,13 @@ void Hmaps::FillMap(
                                 map[nmaps * iz + icomp + 1][pixel[itrajectorys]] = gamma1;
                                 map[nmaps * iz + icomp + 2][pixel[itrajectorys]] = gamma2;
                                 map[nmaps * iz + icomp + 3][pixel[itrajectorys]] =
-                                    invmagnification;
+                                  invmagnification;
                                 icomp += 3;
                             }
                         }
                     } else if (index_components[j] == INDEX_LENSING_BORN) {
                         const double a11(jacobian_born[iz][0][0]),
-                            a12(jacobian_born[iz][0][1]), a22(jacobian_born[iz][1][1]);
+                          a12(jacobian_born[iz][0][1]), a22(jacobian_born[iz][1][1]);
                         // Check if jacobian is good
                         if (a11 == 42) {
                             for (uint i = 0; i < nmaps; i++) {
@@ -1154,68 +1167,68 @@ void Hmaps::FillMap(
                             map[nmaps * iz + icomp + 1][pixel[itrajectorys]] = gamma1;
                             map[nmaps * iz + icomp + 2][pixel[itrajectorys]] = gamma2;
                             map[nmaps * iz + icomp + 3][pixel[itrajectorys]] =
-                                invmagnification;
+                              invmagnification;
                             icomp += 3;
                         }
                     } else if (index_components[j] == INDEX_DR) {
                         map[nmaps * iz + icomp][pixel[itrajectorys]] =
-                            (trajectorycenter[firstid[iz]].chi() * f[iz] +
-                             trajectorycenter[firstid[iz] + 1].chi() * (1 - f[iz])) /
-                                rhomo[iz] -
-                            1;
+                          (trajectorycenter[firstid[iz]].chi() * f[iz] +
+                           trajectorycenter[firstid[iz] + 1].chi() * (1 - f[iz])) /
+                            rhomo[iz] -
+                          1;
                     } else if (index_components[j] == INDEX_DL) {
                         map[nmaps * iz + icomp][pixel[itrajectorys]] =
-                            (trajectorycenter[firstid[iz]].lambda() * f[iz] +
-                             trajectorycenter[firstid[iz] + 1].lambda() * (1 - f[iz])) /
-                                lambdahomo[iz] -
-                            1;
+                          (trajectorycenter[firstid[iz]].lambda() * f[iz] +
+                           trajectorycenter[firstid[iz] + 1].lambda() * (1 - f[iz])) /
+                            lambdahomo[iz] -
+                          1;
                     } else if (index_components[j] == INDEX_DT) {
                         map[nmaps * iz + icomp][pixel[itrajectorys]] =
-                            (trajectorycenter[firstid[iz]].t() * f[iz] +
-                             trajectorycenter[firstid[iz] + 1].t() * (1 - f[iz])) /
-                                thomo[iz] -
-                            1;
+                          (trajectorycenter[firstid[iz]].t() * f[iz] +
+                           trajectorycenter[firstid[iz] + 1].t() * (1 - f[iz])) /
+                            thomo[iz] -
+                          1;
                     } else if (index_components[j] == INDEX_DA) {
                         map[nmaps * iz + icomp][pixel[itrajectorys]] =
-                            (trajectorycenter[firstid[iz]].a() * f[iz] +
-                             trajectorycenter[firstid[iz] + 1].a() * (1 - f[iz])) /
-                                ahomo[iz] -
-                            1;
+                          (trajectorycenter[firstid[iz]].a() * f[iz] +
+                           trajectorycenter[firstid[iz] + 1].a() * (1 - f[iz])) /
+                            ahomo[iz] -
+                          1;
                     } else if (index_components[j] == INDEX_DZ) {
                         map[nmaps * iz + icomp][pixel[itrajectorys]] =
-                            (trajectorycenter[firstid[iz]].redshift() * f[iz] +
-                             trajectorycenter[firstid[iz] + 1].redshift() * (1 - f[iz])) /
-                                redshifthomo[iz] -
-                            1;
+                          (trajectorycenter[firstid[iz]].redshift() * f[iz] +
+                           trajectorycenter[firstid[iz] + 1].redshift() * (1 - f[iz])) /
+                            redshifthomo[iz] -
+                          1;
                     } else if (index_components[j] == INDEX_DS) {
                         map[nmaps * iz + icomp][pixel[itrajectorys]] =
-                            (trajectorycenter[firstid[iz]].s() * f[iz] +
-                             trajectorycenter[firstid[iz] + 1].s() * (1 - f[iz])) /
-                                rhomo[iz] -
-                            1;
+                          (trajectorycenter[firstid[iz]].s() * f[iz] +
+                           trajectorycenter[firstid[iz] + 1].s() * (1 - f[iz])) /
+                            rhomo[iz] -
+                          1;
                     } else if (index_components[j] == INDEX_ISW) {
                         map[nmaps * iz + icomp][pixel[itrajectorys]] =
-                            (trajectorycenter[firstid[iz]].isw() * f[iz] +
-                             trajectorycenter[firstid[iz] + 1].isw() * (1 - f[iz]));
+                          (trajectorycenter[firstid[iz]].isw() * f[iz] +
+                           trajectorycenter[firstid[iz] + 1].isw() * (1 - f[iz]));
                     } else if (index_components[j] == INDEX_DENSITY) {
                         map[nmaps * iz + icomp][pixel[itrajectorys]] =
-                            (trajectorycenter[firstid[iz]].rho() * f[iz] +
-                             trajectorycenter[firstid[iz] + 1].rho() * (1 - f[iz]));
+                          (trajectorycenter[firstid[iz]].rho() * f[iz] +
+                           trajectorycenter[firstid[iz] + 1].rho() * (1 - f[iz]));
                     } else if (index_components[j] == INDEX_DENSITY_MAX) {
                         map[nmaps * iz + icomp][pixel[itrajectorys]] =
-                            (*std::max_element(std::begin(trajectorycenter),
-                                               std::begin(trajectorycenter) + firstid[iz],
-                                               [](const Photon<double, 3> &first,
-                                                  const Photon<double, 3> &second) {
-                                                   return first.rho() < second.rho();
-                                               }))
-                                .rho();
+                          (*std::max_element(std::begin(trajectorycenter),
+                                             std::begin(trajectorycenter) + firstid[iz],
+                                             [](const Photon<double, 3>& first,
+                                                const Photon<double, 3>& second) {
+                                                 return first.rho() < second.rho();
+                                             }))
+                            .rho();
                     } else if (index_components[j] == INDEX_NSTEPS) {
                         map[nmaps * iz + icomp][pixel[itrajectorys]] = firstid[iz];
                     } else if (index_components[j] == INDEX_POTENTIAL) {
                         map[nmaps * iz + icomp][pixel[itrajectorys]] =
-                            (trajectorycenter[firstid[iz]].phi() * f[iz] +
-                             trajectorycenter[firstid[iz] + 1].phi() * (1 - f[iz]));
+                          (trajectorycenter[firstid[iz]].phi() * f[iz] +
+                           trajectorycenter[firstid[iz] + 1].phi() * (1 - f[iz]));
                     } else if (index_components[j] == INDEX_DEFLECTION) {
                         double beta1(0), beta2(0);
                         if (compute_lensing) {
@@ -1274,56 +1287,53 @@ void Hmaps::FillMap(
 /// \param[in]      length R.U to S.I units for length
 /// \param[in]      z_stop_vec Vector containing redshifts at which we compute
 /// scalar quantities
-template <class Parameter, class Octree, class Map, class Pixel,
-          class Cosmology, class Point, typename Integer, typename Real>
-void Hmaps::FillMapPropagate(const Parameter &parameters,
-                             const Integer ntrajectory,
-                             const Integer firsttrajectory,
-                             const Octree &octree, const Point &vobs, Map &map,
-                             const Integer nmaps, const Pixel &pixel,
-                             const Cosmology &cosmology, const point &observer,
-                             const Real length,
-                             const std::vector<Real> &z_stop_vec) {
+template<class Parameter, class Octree, class Map, class Pixel, class Cosmology, class Point, typename Integer, typename Real>
+void
+Hmaps::FillMapPropagate(const Parameter& parameters,
+                        const Integer ntrajectory,
+                        const Integer firsttrajectory,
+                        const Octree& octree,
+                        const Point& vobs,
+                        Map& map,
+                        const Integer nmaps,
+                        const Pixel& pixel,
+                        const Cosmology& cosmology,
+                        const point& observer,
+                        const Real length,
+                        const std::vector<Real>& z_stop_vec) {
 
     const double amin = one / (one + z_stop_vec.back());
     magrathea::Evolution<Photon<double, 3>> reference;
     Photon<double, 3> photonref;
     // Launch a ray toward the x-axis
     photonref = Integrator::launch(0., 0., 0., 1., 0., 0.);
-    constexpr point vobs0 = {0, 0,
-                         0}; // No peculiar velocity for homogeneous quantities
+    constexpr point vobs0 = { 0, 0, 0 }; // No peculiar velocity for homogeneous quantities
     std::vector<unsigned long int> firstid_ref(parameters.nb_z_maps);
     std::vector<double> f_ref(parameters.nb_z_maps),
-        distance_ref(parameters.nb_z_maps);
+      distance_ref(parameters.nb_z_maps);
     Octree homotree;
     // Create homogeneous octree
     homotree.assign(parameters.ncoarse / 2., zero);
     // Compute FLRW ray in the homogeneous octree
     reference = Integrator::propagate<-1>(
-        photonref, parameters.nbundlemin, parameters.openingmin, real(),
-        parameters.stop_ray, cosmology, homotree, vobs0, length,
-        parameters.nsteps * (1 << (parameters.ncoarse - parameters.ncoarse / 2)) *
-            2,
-        double());
+      photonref, parameters.nbundlemin, parameters.openingmin, real(), parameters.stop_ray, cosmology, homotree, vobs0, length, parameters.nsteps * (1 << (parameters.ncoarse - parameters.ncoarse / 2)) * 2, double());
 
     // Loop over all the redshifts to get angular distance and interpolation
     // factors
     for (uint iz = 0; iz < parameters.nb_z_maps; iz++) {
         photonref.a() = one / (one + z_stop_vec[iz]);
         const unsigned long int marked = std::distance(
-            std::begin(reference),
-            std::upper_bound(std::begin(reference), std::end(reference), photonref,
-                             [](const Photon<double, 3> &first,
-                                const Photon<double, 3> &second) {
-                                 return first.a() > second.a();
-                             }));
+          std::begin(reference),
+          std::upper_bound(std::begin(reference), std::end(reference), photonref, [](const Photon<double, 3>& first, const Photon<double, 3>& second) {
+              return first.a() > second.a();
+          }));
         firstid_ref[iz] = marked - (marked > 0);
         const double previous = reference[firstid_ref[iz]].a();
         const double next = reference[firstid_ref[iz] + 1].a();
         f_ref[iz] = (next - photonref.a()) / (next - previous);
         distance_ref[iz] =
-            reference[firstid_ref[iz]].distance() * f_ref[iz] +
-            reference[firstid_ref[iz] + 1].distance() * (1 - f_ref[iz]);
+          reference[firstid_ref[iz]].distance() * f_ref[iz] +
+          reference[firstid_ref[iz] + 1].distance() * (1 - f_ref[iz]);
     }
     // Loop over the pixels
     Utility::parallelize(ntrajectory, [&](const uint itrajectory) {
@@ -1331,7 +1341,7 @@ void Hmaps::FillMapPropagate(const Parameter &parameters,
         magrathea::Evolution<Photon<double, 3>> trajectorycenter;
         Photon<double, 3> photoncenter;
         std::vector<std::array<std::array<double, 2>, 2>> jacobian(
-            parameters.nb_z_maps);
+          parameters.nb_z_maps);
         std::vector<uint> firstid(parameters.nb_z_maps);
         double vec1[3];
         std::vector<double> f(parameters.nb_z_maps), distance(parameters.nb_z_maps);
@@ -1339,13 +1349,10 @@ void Hmaps::FillMapPropagate(const Parameter &parameters,
         // Convert pixel to 3D vector
         pix2vec_ring(parameters.nside, pixel[itrajectorys], vec1);
         // Launch photon toward pixel
-        photoncenter = Integrator::launch(observer[0], observer[1], observer[2],
-                                          vec1[0], vec1[1], vec1[2]);
+        photoncenter = Integrator::launch(observer[0], observer[1], observer[2], vec1[0], vec1[1], vec1[2]);
         // Propagate spherical bundle in the direction of pixel
         trajectorycenter = Integrator::propagate(
-            photoncenter, parameters.nbundlemin, parameters.openingmin, double(),
-            parameters.stop_ray, cosmology, octree, vobs0, length,
-            parameters.nsteps, amin);
+          photoncenter, parameters.nbundlemin, parameters.openingmin, double(), parameters.stop_ray, cosmology, octree, vobs0, length, parameters.nsteps, amin);
 
         // Check if trajectory is good
         if (trajectorycenter.size()) {
@@ -1354,20 +1361,21 @@ void Hmaps::FillMapPropagate(const Parameter &parameters,
             for (uint iz = 0; iz < parameters.nb_z_maps; iz++) {
                 photoncenter.a() = one / (one + z_stop_vec[iz]);
                 const unsigned long int marked = std::distance(
-                    std::begin(trajectorycenter),
-                    std::upper_bound(std::begin(trajectorycenter),
-                                     std::end(trajectorycenter), photoncenter,
-                                     [](const Photon<double, 3> &first,
-                                        const Photon<double, 3> &second) {
-                                         return first.a() > second.a();
-                                     }));
+                  std::begin(trajectorycenter),
+                  std::upper_bound(std::begin(trajectorycenter),
+                                   std::end(trajectorycenter),
+                                   photoncenter,
+                                   [](const Photon<double, 3>& first,
+                                      const Photon<double, 3>& second) {
+                                       return first.a() > second.a();
+                                   }));
                 firstid[iz] = marked - (marked > 0);
                 const double previous = trajectorycenter[firstid[iz]].a();
                 const double next = trajectorycenter[firstid[iz] + 1].a();
                 f[iz] = (next - photoncenter.a()) / (next - previous);
                 distance[iz] =
-                    trajectorycenter[firstid[iz]].distance() * f[iz] +
-                    trajectorycenter[firstid[iz] + 1].distance() * (1 - f[iz]);
+                  trajectorycenter[firstid[iz]].distance() * f[iz] +
+                  trajectorycenter[firstid[iz] + 1].distance() * (1 - f[iz]);
             }
             // Loop over all the redshifts of reference
             for (uint iz = 0; iz < parameters.nb_z_maps; iz++) {
@@ -1381,12 +1389,12 @@ void Hmaps::FillMapPropagate(const Parameter &parameters,
                     const double sf = trajectorycenter[firstid[iz]].a() * f[iz] +
                                       trajectorycenter[firstid[iz] + 1].a() * (1 - f[iz]);
                     const double chi =
-                        trajectorycenter[firstid[iz]].chi() * f[iz] +
-                        trajectorycenter[firstid[iz] + 1].chi() * (1 - f[iz]);
+                      trajectorycenter[firstid[iz]].chi() * f[iz] +
+                      trajectorycenter[firstid[iz] + 1].chi() * (1 - f[iz]);
                     map[nmaps * iz + 0][pixel[itrajectorys]] = dd0;
                     map[nmaps * iz + 1][pixel[itrajectorys]] = 1. / sf - 1;
                     map[nmaps * iz + 2][pixel[itrajectorys]] =
-                        chi * sf / (distance_ref[iz] / length);
+                      chi * sf / (distance_ref[iz] / length);
                     map[nmaps * iz + 3][pixel[itrajectorys]] = chi;
                 }
             }

@@ -73,7 +73,8 @@ using namespace magrathea;
 /// \param[in]      argc Number of arguments.
 /// \param[in]      argv List of arguments.
 /// \return         Zero on success, error code otherwise.
-int main(int argc, char *argv[]) {
+int
+main(int argc, char* argv[]) {
     // Constants
 
     using integer = int;
@@ -91,12 +92,12 @@ int main(int argc, char *argv[]) {
     static constexpr uint dimension = 3;
     static constexpr uint nreference = 5; // Used to set homogeneous octree
     static constexpr real rposition =
-        static_cast<real>(position::num) / static_cast<real>(position::den);
-    static constexpr point center({{rposition, rposition, rposition}});
+      static_cast<real>(position::num) / static_cast<real>(position::den);
+    static constexpr point center({ { rposition, rposition, rposition } });
     static constexpr real diameter =
-        static_cast<real>(extent::num) / static_cast<real>(extent::den);
+      static_cast<real>(extent::num) / static_cast<real>(extent::den);
     static const std::string namelist =
-        argc > 1 ? std::string(argv[1]) : std::string("raytracer.txt");
+      argc > 1 ? std::string(argv[1]) : std::string("raytracer.txt");
 
     // Parameters
     std::map<std::string, std::string> parameter;
@@ -110,18 +111,15 @@ int main(int argc, char *argv[]) {
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     // Read parameter file
     Miscellaneous::TicketizeFunction(
-        rank, ntasks, [=, &parameter] { parameter = Input::parse(namelist); });
+      rank, ntasks, [=, &parameter] { parameter = Input::parse(namelist); });
     // Convert strings and put it in struct
     Create_octree::ReadParamFile(parameters, parameter);
     // Initialization
-    FileList conefile(parameters.conefmt, zero, parameters.ncones, zero,
-                      parameters.conedir);
-    SimpleHyperOctree<real, SimpleHyperOctreeIndex<uint, dimension>, std::string,
-                      dimension, position, extent>
-        filetree;
-    SimpleHyperOctree<real, SimpleHyperOctreeIndex<indexing, dimension>,
-                      Gravity<floating, dimension>, dimension, position, extent>
-        octree;
+    FileList conefile(parameters.conefmt, zero, parameters.ncones, zero, parameters.conedir);
+    SimpleHyperOctree<real, SimpleHyperOctreeIndex<uint, dimension>, std::string, dimension, position, extent>
+      filetree;
+    SimpleHyperOctree<real, SimpleHyperOctreeIndex<indexing, dimension>, Gravity<floating, dimension>, dimension, position, extent>
+      octree;
     HyperSphere<dimension, point> sphere(center, diameter / two);
     HyperSphere<dimension, point> microsphere(center,
                                               rone / parameters.microcoeff);
@@ -134,22 +132,21 @@ int main(int argc, char *argv[]) {
     real lboxmpch = zero;
     real amin = zero;
     real thetay(0), thetaz(0);
-    std::array<std::array<double, 3>, 3> rotm1 = {{zero}};
-    const point vobs0 = {0, 0,
-                         0}; // No peculiar velocity for homogeneous quantities
+    std::array<std::array<double, 3>, 3> rotm1 = { { zero } };
+    const point vobs0 = { 0, 0, 0 }; // No peculiar velocity for homogeneous quantities
 
     if (rank == 0)
         std::cout << "#### MAGRATHEA_PATHFINDER " << std::endl;
     // Generate cones
     Miscellaneous::TicketizeFunction(
-        rank, ntasks, [=, &cone, &coneIfRot, &parameter] {
-            Miscellaneous::read_cone_orientation(cone, coneIfRot, parameters);
-        });
+      rank, ntasks, [=, &cone, &coneIfRot, &parameter] {
+          Miscellaneous::read_cone_orientation(cone, coneIfRot, parameters);
+      });
     if (!parameters.isfullsky) {
         Miscellaneous::TicketizeFunction(
-            rank, ntasks, [=, &parameter, &rotm1, &thetay, &thetaz] {
-                Miscellaneous::get_narrow_specs(parameters, rotm1, thetay, thetaz);
-            });
+          rank, ntasks, [=, &parameter, &rotm1, &thetay, &thetaz] {
+              Miscellaneous::get_narrow_specs(parameters, rotm1, thetay, thetaz);
+          });
     }
     // Read cosmology
     cosmology = Input::acquire(parameters, h, omegam, lboxmpch);
@@ -169,20 +166,12 @@ int main(int argc, char *argv[]) {
     // Construct homogeneous tree
 
     Input::homogenize(octree.assign(nreference, zero));
-    reference.append(Integrator::launch(center[zero], center[one], center[two],
-                                        center[zero] + diameter / two,
-                                        center[one], center[two]));
+    reference.append(Integrator::launch(center[zero], center[one], center[two], center[zero] + diameter / two, center[one], center[two]));
 
     // Propagate a photon in a homogeneous cosmology
 
     Integrator::integrate<-1>(
-        reference, cosmology, octree, vobs0, length,
-        EXTENT * std::pow(two, static_cast<uint>(
-                                   std::log2(std::get<0>(cosmology).size() /
-                                                 std::pow(two, nreference) +
-                                             one) +
-                                   one) +
-                                   one));
+      reference, cosmology, octree, vobs0, length, EXTENT * std::pow(two, static_cast<uint>(std::log2(std::get<0>(cosmology).size() / std::pow(two, nreference) + one) + one) + one));
     cosmology = Input::correct(cosmology, reference);
     reference.fullclear();
     octree.fullclear();
@@ -194,9 +183,7 @@ int main(int argc, char *argv[]) {
         if (rank == 0)
             std::cout << "# Preparation mode : read ASCII files" << std::endl;
 #endif
-        Create_octree::PreparationASCII(octree, parameters, ntasks, rank, cone,
-                                        coneIfRot, rotm1, conefile, microsphere, h,
-                                        omegam, lboxmpch, amin, cosmology);
+        Create_octree::PreparationASCII(octree, parameters, ntasks, rank, cone, coneIfRot, rotm1, conefile, microsphere, h, omegam, lboxmpch, amin, cosmology);
     } else if (parameters.typefile == 1) { // HDF5
 #ifdef VERBOSE
         if (rank == 0)
@@ -204,12 +191,10 @@ int main(int argc, char *argv[]) {
 #endif
         if (parameters.inputtype == "cells") {
             Create_octree::PreparationHDF5_from_cells(
-                octree, parameters, ntasks, rank, cone, coneIfRot, rotm1, thetay,
-                thetaz, conefile, microsphere, h, omegam, lboxmpch, amin, cosmology);
+              octree, parameters, ntasks, rank, cone, coneIfRot, rotm1, thetay, thetaz, conefile, microsphere, h, omegam, lboxmpch, amin, cosmology);
         } else if (parameters.inputtype == "particles") {
             Create_octree::PreparationHDF5_from_particles(
-                octree, parameters, ntasks, rank, cone, coneIfRot, thetay, thetaz,
-                conefile, microsphere);
+              octree, parameters, ntasks, rank, cone, coneIfRot, thetay, thetaz, conefile, microsphere);
         } else {
             std::cout << "# Please choose 'cells' or 'particles' for inputtype"
                       << std::endl;
@@ -222,9 +207,7 @@ int main(int argc, char *argv[]) {
         if (rank == 0)
             std::cout << "# Preparation mode : read Binary files" << std::endl;
 #endif
-        Create_octree::PreparationBinary(octree, parameters, ntasks, rank, cone,
-                                         conefile, microsphere, filetree, h, omegam,
-                                         lboxmpch, amin, cosmology);
+        Create_octree::PreparationBinary(octree, parameters, ntasks, rank, cone, conefile, microsphere, filetree, h, omegam, lboxmpch, amin, cosmology);
     } else {
         if (rank == 0) {
             std::cout << "# Please choose Preparation or Propagation mode"

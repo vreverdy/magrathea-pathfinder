@@ -64,14 +64,14 @@ class Observer_velocity {
     // Methodes
 public:
     // Read parameter file
-    template <class Parameters, class Map>
-    static void ReadParamFile(Parameters &parameters, Map &parameter);
+    template<class Parameters, class Map>
+    static void ReadParamFile(Parameters& parameters, Map& parameter);
 
     // Velocity field octree
-    template <typename Type1, template <typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree, typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
-    static void CreateOctreeVelocityWithCIC(Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container> &octree, std::vector<Type1> &pos_part, std::vector<Type1> &vel_part);
-    template <typename Type1, template <typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree, typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
-    static void CreateOctreeVelocityWithTSC(Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container> &octree, std::vector<Type1> &pos_part, std::vector<Type1> &vel_part);
+    template<typename Type1, template<typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree, typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
+    static void CreateOctreeVelocityWithCIC(Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& octree, std::vector<Type1>& pos_part, std::vector<Type1>& vel_part);
+    template<typename Type1, template<typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree, typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
+    static void CreateOctreeVelocityWithTSC(Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& octree, std::vector<Type1>& pos_part, std::vector<Type1>& vel_part);
 };
 
 // Read parameter file
@@ -81,8 +81,9 @@ public:
 /// \tparam         Map map type
 /// \param[in,out]  parameters Structure containing the parameters.
 /// \param[in]      parameter Contains parameters to be rewritten
-template <class Parameters, class Map>
-void Observer_velocity::ReadParamFile(Parameters &parameters, Map &parameter) {
+template<class Parameters, class Map>
+void
+Observer_velocity::ReadParamFile(Parameters& parameters, Map& parameter) {
     parameters.ncoarse = std::stoul(parameter["ncoarse"]);
     parameters.partdir = parameter["partdir"];
     parameters.velocity_field_v0 = parameter["velocity_field_v0"];
@@ -104,12 +105,13 @@ void Observer_velocity::ReadParamFile(Parameters &parameters, Map &parameter) {
 /// \param[in,out]  octree Octree be to filled with velocity field
 /// \param[in]      pos_part Position of particles
 /// \param[in]      vel_part Velocity of particles
-template <typename Type1, template <typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree, typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
-void Observer_velocity::CreateOctreeVelocityWithCIC(Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container> &octree, std::vector<Type1> &pos_part, std::vector<Type1> &vel_part) {
+template<typename Type1, template<typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree, typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
+void
+Observer_velocity::CreateOctreeVelocityWithCIC(Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& octree, std::vector<Type1>& pos_part, std::vector<Type1>& vel_part) {
 
     // Get levels at which we wish to compute the velocity field
-    const unsigned int lvlmax = (std::get<0>(*std::max_element(std::begin(octree), std::end(octree), [](const Element &x, const Element &y) { return std::get<0>(x).level() < std::get<0>(y).level(); })).level());
-    const unsigned int lvlmin = (std::get<0>(*std::min_element(std::begin(octree), std::end(octree), [](const Element &x, const Element &y) { return std::get<0>(x).level() < std::get<0>(y).level(); })).level());
+    const unsigned int lvlmax = (std::get<0>(*std::max_element(std::begin(octree), std::end(octree), [](const Element& x, const Element& y) { return std::get<0>(x).level() < std::get<0>(y).level(); })).level());
+    const unsigned int lvlmin = (std::get<0>(*std::min_element(std::begin(octree), std::end(octree), [](const Element& x, const Element& y) { return std::get<0>(x).level() < std::get<0>(y).level(); })).level());
 
     // Loop over levels
     for (uint ilvl = lvlmin; ilvl <= lvlmax; ilvl++) {
@@ -131,7 +133,7 @@ void Observer_velocity::CreateOctreeVelocityWithCIC(Octree<Type, Index, Data, Di
                         // Create an index at the level of interest for the neighboring cell
                         idxvertex = idxvertex.template compute<Type, Position, Extent>(ilvl, pos_part[3 * i] + half * ix, pos_part[3 * i + 1] + half * iy, pos_part[3 * i + 2] + half * iz);
                         // Given an index in the octree that is consistent with the created index
-                        marker = std::distance(std::begin(octree), std::upper_bound(std::begin(octree), std::end(octree), Element(idxvertex, data), [](const Element &first, const Element &second) { return std::get<0>(first) < std::get<0>(second); }));
+                        marker = std::distance(std::begin(octree), std::upper_bound(std::begin(octree), std::end(octree), Element(idxvertex, data), [](const Element& first, const Element& second) { return std::get<0>(first) < std::get<0>(second); }));
                         // If the index exists in the octree, compute CIC
                         if (std::get<0>(*(std::begin(octree) + marker - (marker > 0))) == idxvertex) {
                             vratio = (1 - std::abs(pos_part[3 * i] - idxvertex.template center<Type, Position, Extent>(0)) * invextension) * (1 - std::abs(pos_part[3 * i + 1] - idxvertex.template center<Type, Position, Extent>(1)) * invextension) * (1 - std::abs(pos_part[3 * i + 2] - idxvertex.template center<Type, Position, Extent>(2)) * invextension);
@@ -163,12 +165,13 @@ void Observer_velocity::CreateOctreeVelocityWithCIC(Octree<Type, Index, Data, Di
 /// \param[in,out]  octree Octree be to filled with velocity field
 /// \param[in]      pos_part Position of particles
 /// \param[in]      vel_part Velocity of particles
-template <typename Type1, template <typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree, typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
-void Observer_velocity::CreateOctreeVelocityWithTSC(Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container> &octree, std::vector<Type1> &pos_part, std::vector<Type1> &vel_part) {
+template<typename Type1, template<typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree, typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
+void
+Observer_velocity::CreateOctreeVelocityWithTSC(Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& octree, std::vector<Type1>& pos_part, std::vector<Type1>& vel_part) {
 
     // Get levels at which we wish to compute the velocity field
-    const unsigned int lvlmax = (std::get<0>(*std::max_element(std::execution::par_unseq, std::begin(octree), std::end(octree), [](const Element &x, const Element &y) { return std::get<0>(x).level() < std::get<0>(y).level(); })).level());
-    const unsigned int lvlmin = (std::get<0>(*std::min_element(std::execution::par_unseq, std::begin(octree), std::end(octree), [](const Element &x, const Element &y) { return std::get<0>(x).level() < std::get<0>(y).level(); })).level());
+    const unsigned int lvlmax = (std::get<0>(*std::max_element(std::execution::par_unseq, std::begin(octree), std::end(octree), [](const Element& x, const Element& y) { return std::get<0>(x).level() < std::get<0>(y).level(); })).level());
+    const unsigned int lvlmin = (std::get<0>(*std::min_element(std::execution::par_unseq, std::begin(octree), std::end(octree), [](const Element& x, const Element& y) { return std::get<0>(x).level() < std::get<0>(y).level(); })).level());
 
     // Loop over levels
     for (uint ilvl = lvlmin; ilvl <= lvlmax; ilvl++) {
@@ -194,7 +197,7 @@ void Observer_velocity::CreateOctreeVelocityWithTSC(Octree<Type, Index, Data, Di
                         // Create an index at the level of interest for the neighboring cell
                         idxvertex = idxvertex.template compute<Type, Position, Extent>(ilvl, pos_part[3 * i] + twohalves * ix, pos_part[3 * i + 1] + twohalves * iy, pos_part[3 * i + 2] + twohalves * iz);
                         // Given an index in the octree that is consistent with the created index
-                        marker = std::distance(std::begin(octree), std::upper_bound(std::begin(octree), std::end(octree), Element(idxvertex, data), [](const Element &first, const Element &second) { return std::get<0>(first) < std::get<0>(second); }));
+                        marker = std::distance(std::begin(octree), std::upper_bound(std::begin(octree), std::end(octree), Element(idxvertex, data), [](const Element& first, const Element& second) { return std::get<0>(first) < std::get<0>(second); }));
                         // If the index exists in the octree, compute TSC
                         if (std::get<0>(*(std::begin(octree) + marker - (marker > 0))) == idxvertex) {
                             for (unsigned int idim = 0; idim < Index::dimension(); ++idim) {

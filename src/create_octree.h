@@ -93,107 +93,174 @@ class Create_octree {
     // Methodes
 public:
     // Read parameter file
-    template <class Parameters, class Map>
-    static void ReadParamFile(Parameters &parameters, Map &parameter);
+    template<class Parameters, class Map>
+    static void ReadParamFile(Parameters& parameters, Map& parameter);
 
     // Preparation
-    template <
-        template <typename Type, class Index, class Data, unsigned int Dimension,
-                  class Position, class Extent, class Element, class Container>
-        class Octree,
-        typename Type, class Index, class Data, unsigned int Dimension,
-        class Position, class Extent, class Element, class Container,
-        class Parameters, class Cone, class FileList, class Sphere,
-        typename Integer, typename Scalar, class Cosmology>
+    template<
+      template<typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree,
+      typename Type,
+      class Index,
+      class Data,
+      unsigned int Dimension,
+      class Position,
+      class Extent,
+      class Element,
+      class Container,
+      class Parameters,
+      class Cone,
+      class FileList,
+      class Sphere,
+      typename Integer,
+      typename Scalar,
+      class Cosmology>
     static void PreparationHDF5_from_cells(
-        Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>
-            &octree,
-        const Parameters &parameters, const Integer ntasks, const Integer rank,
-        const std::vector<Cone> &cone, const std::vector<Cone> &coneIfRot,
-        const std::array<std::array<double, 3>, 3> &rotm1, const Scalar thetay,
-        const Scalar thetaz, FileList &conefile, const Sphere &microsphere,
-        const Scalar h, const Scalar omegam, const Scalar lboxmpch, Scalar &amin,
-        const Cosmology &cosmology);
-    template <
-        template <typename Type, class Index, class Data, unsigned int Dimension,
-                  class Position, class Extent, class Element, class Container>
-        class Octree,
-        typename Type, class Index, class Data, unsigned int Dimension,
-        class Position, class Extent, class Element, class Container,
-        class Parameters, class Cone, class FileList, class Sphere,
-        typename Integer, typename Scalar>
+      Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& octree,
+      const Parameters& parameters,
+      const Integer ntasks,
+      const Integer rank,
+      const std::vector<Cone>& cone,
+      const std::vector<Cone>& coneIfRot,
+      const std::array<std::array<double, 3>, 3>& rotm1,
+      const Scalar thetay,
+      const Scalar thetaz,
+      FileList& conefile,
+      const Sphere& microsphere,
+      const Scalar h,
+      const Scalar omegam,
+      const Scalar lboxmpch,
+      Scalar& amin,
+      const Cosmology& cosmology);
+    template<
+      template<typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree,
+      typename Type,
+      class Index,
+      class Data,
+      unsigned int Dimension,
+      class Position,
+      class Extent,
+      class Element,
+      class Container,
+      class Parameters,
+      class Cone,
+      class FileList,
+      class Sphere,
+      typename Integer,
+      typename Scalar>
     static void PreparationHDF5_from_particles(
-        Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>
-            &octree,
-        const Parameters &parameters, const Integer ntasks, const Integer rank,
-        const std::vector<Cone> &cone, const std::vector<Cone> &coneIfRot,
-        const Scalar thetay, const Scalar thetaz, FileList &conefile,
-        const Sphere &microsphere);
-    template <
-        template <typename Type, class Index, class Data, unsigned int Dimension,
-                  class Position, class Extent, class Element, class Container>
-        class Octree,
-        typename Type, class Index, class Data, unsigned int Dimension,
-        class Position, class Extent, class Element, class Container,
-        class Parameters, class Cone, class Sphere, class FileList, class Index2,
-        typename Integer, typename Scalar, class Cosmology>
-    static void PreparationBinary(Octree<Type, Index, Data, Dimension, Position,
-                                         Extent, Element, Container> &octree,
-                                  const Parameters &parameters,
-                                  const Integer ntasks, const Integer rank,
-                                  const std::vector<Cone> &cone,
-                                  FileList &conefile, const Sphere &microsphere,
-                                  Index2 &filetree, const Scalar h,
-                                  const Scalar omegam, const Scalar lboxmpch,
-                                  Scalar &amin, const Cosmology &cosmology);
-    template <
-        template <typename Type, class Index, class Data, unsigned int Dimension,
-                  class Position, class Extent, class Element, class Container>
-        class Octree,
-        typename Type, class Index, class Data, unsigned int Dimension,
-        class Position, class Extent, class Element, class Container,
-        class Parameters, class Cone, class FileList, class Sphere,
-        typename Integer, typename Scalar, class Cosmology>
+      Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& octree,
+      const Parameters& parameters,
+      const Integer ntasks,
+      const Integer rank,
+      const std::vector<Cone>& cone,
+      const std::vector<Cone>& coneIfRot,
+      const Scalar thetay,
+      const Scalar thetaz,
+      FileList& conefile,
+      const Sphere& microsphere);
+    template<
+      template<typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree,
+      typename Type,
+      class Index,
+      class Data,
+      unsigned int Dimension,
+      class Position,
+      class Extent,
+      class Element,
+      class Container,
+      class Parameters,
+      class Cone,
+      class Sphere,
+      class FileList,
+      class Index2,
+      typename Integer,
+      typename Scalar,
+      class Cosmology>
+    static void PreparationBinary(Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& octree,
+                                  const Parameters& parameters,
+                                  const Integer ntasks,
+                                  const Integer rank,
+                                  const std::vector<Cone>& cone,
+                                  FileList& conefile,
+                                  const Sphere& microsphere,
+                                  Index2& filetree,
+                                  const Scalar h,
+                                  const Scalar omegam,
+                                  const Scalar lboxmpch,
+                                  Scalar& amin,
+                                  const Cosmology& cosmology);
+    template<
+      template<typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree,
+      typename Type,
+      class Index,
+      class Data,
+      unsigned int Dimension,
+      class Position,
+      class Extent,
+      class Element,
+      class Container,
+      class Parameters,
+      class Cone,
+      class FileList,
+      class Sphere,
+      typename Integer,
+      typename Scalar,
+      class Cosmology>
     static void PreparationASCII(
-        Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>
-            &octree,
-        const Parameters &parameters, const Integer ntasks, const Integer rank,
-        const std::vector<Cone> &cone, const std::vector<Cone> &coneIfRot,
-        const std::array<std::array<double, 3>, 3> &rotm1, FileList &conefile,
-        const Sphere &microsphere, const Scalar h, const Scalar omegam,
-        const Scalar lboxmpch, Scalar &amin, const Cosmology &cosmology);
+      Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& octree,
+      const Parameters& parameters,
+      const Integer ntasks,
+      const Integer rank,
+      const std::vector<Cone>& cone,
+      const std::vector<Cone>& coneIfRot,
+      const std::array<std::array<double, 3>, 3>& rotm1,
+      FileList& conefile,
+      const Sphere& microsphere,
+      const Scalar h,
+      const Scalar omegam,
+      const Scalar lboxmpch,
+      Scalar& amin,
+      const Cosmology& cosmology);
 
     // Create octree with particles
-    template <
-        class Parameters, typename Type1,
-        template <typename Type, class Index, class Data, unsigned int Dimension,
-                  class Position, class Extent, class Element, class Container>
-        class Octree,
-        typename Type, class Index, class Data, unsigned int Dimension,
-        class Position, class Extent, class Element, class Container>
-    static void CreateOctreeWithCIC(bool &continue_refining,
-                                    Octree<Type, Index, Data, Dimension, Position,
-                                           Extent, Element, Container> &octree,
-                                    const Parameters &parameters,
-                                    std::vector<Type1> &pos_part,
-                                    std::vector<Type1> &force_part,
-                                    std::vector<Type1> &potential_part,
-                                    std::vector<Type1> &a_part);
-    template <
-        class Parameters, typename Type1,
-        template <typename Type, class Index, class Data, unsigned int Dimension,
-                  class Position, class Extent, class Element, class Container>
-        class Octree,
-        typename Type, class Index, class Data, unsigned int Dimension,
-        class Position, class Extent, class Element, class Container>
-    static void CreateOctreeWithTSC(bool &continue_refining,
-                                    Octree<Type, Index, Data, Dimension, Position,
-                                           Extent, Element, Container> &octree,
-                                    const Parameters &parameters,
-                                    std::vector<Type1> &pos_part,
-                                    std::vector<Type1> &force_part,
-                                    std::vector<Type1> &potential_part,
-                                    std::vector<Type1> &a_part);
+    template<
+      class Parameters,
+      typename Type1,
+      template<typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree,
+      typename Type,
+      class Index,
+      class Data,
+      unsigned int Dimension,
+      class Position,
+      class Extent,
+      class Element,
+      class Container>
+    static void CreateOctreeWithCIC(bool& continue_refining,
+                                    Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& octree,
+                                    const Parameters& parameters,
+                                    std::vector<Type1>& pos_part,
+                                    std::vector<Type1>& force_part,
+                                    std::vector<Type1>& potential_part,
+                                    std::vector<Type1>& a_part);
+    template<
+      class Parameters,
+      typename Type1,
+      template<typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree,
+      typename Type,
+      class Index,
+      class Data,
+      unsigned int Dimension,
+      class Position,
+      class Extent,
+      class Element,
+      class Container>
+    static void CreateOctreeWithTSC(bool& continue_refining,
+                                    Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& octree,
+                                    const Parameters& parameters,
+                                    std::vector<Type1>& pos_part,
+                                    std::vector<Type1>& force_part,
+                                    std::vector<Type1>& potential_part,
+                                    std::vector<Type1>& a_part);
 };
 
 // Read parameter file
@@ -203,8 +270,9 @@ public:
 /// \tparam         Map map type
 /// \param[in,out]  parameters Structure containing the parameters.
 /// \param[in]      parameter Contains parameters to be rewritten
-template <class Parameters, class Map>
-void Create_octree::ReadParamFile(Parameters &parameters, Map &parameter) {
+template<class Parameters, class Map>
+void
+Create_octree::ReadParamFile(Parameters& parameters, Map& parameter) {
 
     parameters.paramfile = parameter["paramfile"];
     parameters.evolfile = parameter["evolfile"];
@@ -268,23 +336,41 @@ void Create_octree::ReadParamFile(Parameters &parameters, Map &parameter) {
 /// \param[in]      lboxmpch Size of simulation box
 /// \param[in]      amin minimum value scale factor
 /// \param[in]      cosmology Cosmological tables
-template <
-    template <typename Type, class Index, class Data, unsigned int Dimension,
-              class Position, class Extent, class Element, class Container>
-    class Octree,
-    typename Type, class Index, class Data, unsigned int Dimension,
-    class Position, class Extent, class Element, class Container,
-    class Parameters, class Cone, class FileList, class Sphere,
-    typename Integer, typename Scalar, class Cosmology>
-void Create_octree::PreparationHDF5_from_cells(
-    Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>
-        &octree,
-    const Parameters &parameters, const Integer ntasks, const Integer rank,
-    const std::vector<Cone> &cone, const std::vector<Cone> &coneIfRot,
-    const std::array<std::array<double, 3>, 3> &rotm1, const Scalar thetay,
-    const Scalar thetaz, FileList &conefile, const Sphere &microsphere,
-    const Scalar h, const Scalar omegam, const Scalar lboxmpch, Scalar &amin,
-    const Cosmology &cosmology) {
+template<
+  template<typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree,
+  typename Type,
+  class Index,
+  class Data,
+  unsigned int Dimension,
+  class Position,
+  class Extent,
+  class Element,
+  class Container,
+  class Parameters,
+  class Cone,
+  class FileList,
+  class Sphere,
+  typename Integer,
+  typename Scalar,
+  class Cosmology>
+void
+Create_octree::PreparationHDF5_from_cells(
+  Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& octree,
+  const Parameters& parameters,
+  const Integer ntasks,
+  const Integer rank,
+  const std::vector<Cone>& cone,
+  const std::vector<Cone>& coneIfRot,
+  const std::array<std::array<double, 3>, 3>& rotm1,
+  const Scalar thetay,
+  const Scalar thetaz,
+  FileList& conefile,
+  const Sphere& microsphere,
+  const Scalar h,
+  const Scalar omegam,
+  const Scalar lboxmpch,
+  Scalar& amin,
+  const Cosmology& cosmology) {
 
     uint nfiles = zero;
     std::mt19937 engine1(parameters.seed > zero ? parameters.seed + rank
@@ -301,7 +387,9 @@ void Create_octree::PreparationHDF5_from_cells(
         if (found != std::string::npos) {
             double aexp(0);
             TReadHDF5::getAttribute(parameters.celldir + filelistprior[ifiling],
-                                    "metadata/cone_info", "aexp", aexp);
+                                    "metadata/cone_info",
+                                    "aexp",
+                                    aexp);
             // Check if the scale factor is normal. If it is then add the file to the
             // list
             if (std::isnormal(aexp)) {
@@ -322,8 +410,10 @@ void Create_octree::PreparationHDF5_from_cells(
             if (found != std::string::npos) {
                 double aexp(0);
                 TReadHDF5::getAttribute(parameters.minicone +
-                                            filelistpriormini[ifiling],
-                                        "metadata/cone_info", "aexp", aexp);
+                                          filelistpriormini[ifiling],
+                                        "metadata/cone_info",
+                                        "aexp",
+                                        aexp);
                 if (std::isnormal(aexp)) {
                     filelistmini.push_back(parameters.minicone +
                                            filelistpriormini[ifiling]);
@@ -350,11 +440,9 @@ void Create_octree::PreparationHDF5_from_cells(
             // Read files and put cell information in octree
             for (uint ifile = zero; ifile < nfiles; ++ifile) {
                 Input::importhdf5<Position, Extent>(
-                    parameters, icone, rotm1, thetay, thetaz, conic, octree,
-                    filelist[ifile], [=, &octree](const Element &e) {
-                        return Input::collide(octree, std::get<0>(e), microsphere,
-                                              conicIfRot);
-                    });
+                  parameters, icone, rotm1, thetay, thetaz, conic, octree, filelist[ifile], [=, &octree](const Element& e) {
+                      return Input::collide(octree, std::get<0>(e), microsphere, conicIfRot);
+                  });
 #ifdef VERBOSE
                 std::cout << "# Cone : " << icone << " File " << ifile + 1 << "/"
                           << nfiles << " Octree size : " << octree.size()
@@ -369,11 +457,9 @@ void Create_octree::PreparationHDF5_from_cells(
                      ++ifile) {
                     std::cout << "# " << filelistmini[ifile] << std::endl;
                     Input::importfullhdf5<Position, Extent>(
-                        parameters, octree, filelistmini[ifile],
-                        [=, &octree](const Element &e) {
-                            return Input::collide(octree, std::get<0>(e), microsphere,
-                                                  conicIfRot);
-                        });
+                      parameters, octree, filelistmini[ifile], [=, &octree](const Element& e) {
+                          return Input::collide(octree, std::get<0>(e), microsphere, conicIfRot);
+                      });
 #ifdef VERBOSE
                     std::cout << "# MiniCone : " << icone << " File " << ifile + 1 << "/"
                               << nfiles << " Octree size : " << octree.size()
@@ -387,8 +473,8 @@ void Create_octree::PreparationHDF5_from_cells(
 #endif
             // Apply correction on the octree
             Miscellaneous::correctOctree(
-                octree, cosmology, parameters, h, omegam, lboxmpch,
-                amin); // comment this line if you want to keep all cells in cones
+              octree, cosmology, parameters, h, omegam, lboxmpch,
+              amin); // comment this line if you want to keep all cells in cones
 #ifdef VERBOSE
             std::cout << "# Final Cone : " << icone
                       << " Octree size : " << octree.size() << std::endl;
@@ -431,21 +517,34 @@ void Create_octree::PreparationHDF5_from_cells(
 /// \param[in]      lboxmpch Size of simulation box
 /// \param[in]      amin minimum value scale factor
 /// \param[in]      cosmology Cosmological tables
-template <
-    template <typename Type, class Index, class Data, unsigned int Dimension,
-              class Position, class Extent, class Element, class Container>
-    class Octree,
-    typename Type, class Index, class Data, unsigned int Dimension,
-    class Position, class Extent, class Element, class Container,
-    class Parameter, class Cone, class FileList, class Sphere, typename Integer,
-    typename Scalar>
-void Create_octree::PreparationHDF5_from_particles(
-    Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>
-        &octree,
-    const Parameter &parameters, const Integer ntasks, const Integer rank,
-    const std::vector<Cone> &cone, const std::vector<Cone> &coneIfRot,
-    const Scalar thetay, const Scalar thetaz, FileList &conefile,
-    const Sphere &microsphere) {
+template<
+  template<typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree,
+  typename Type,
+  class Index,
+  class Data,
+  unsigned int Dimension,
+  class Position,
+  class Extent,
+  class Element,
+  class Container,
+  class Parameter,
+  class Cone,
+  class FileList,
+  class Sphere,
+  typename Integer,
+  typename Scalar>
+void
+Create_octree::PreparationHDF5_from_particles(
+  Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& octree,
+  const Parameter& parameters,
+  const Integer ntasks,
+  const Integer rank,
+  const std::vector<Cone>& cone,
+  const std::vector<Cone>& coneIfRot,
+  const Scalar thetay,
+  const Scalar thetaz,
+  FileList& conefile,
+  const Sphere& microsphere) {
 
     std::mt19937 engine1(parameters.seed > zero ? parameters.seed + rank
                                                 : std::random_device()());
@@ -455,12 +554,14 @@ void Create_octree::PreparationHDF5_from_particles(
     // Get filenames in directory
     Miscellaneous::getFilesinDir(parameters.partdir, filelistprior);
     for (uint ifiling = 0; ifiling < filelistprior.size(); ++ifiling) {
-        // Check all files with suffix .h5 
+        // Check all files with suffix .h5
         found = filelistprior[ifiling].find(".h5");
         if (found != std::string::npos) {
             double aexp(0);
             TReadHDF5::getAttribute(parameters.partdir + filelistprior[ifiling],
-                                    "metadata/cone_info", "aexp", aexp);
+                                    "metadata/cone_info",
+                                    "aexp",
+                                    aexp);
             // Check if scale factor is normal
             if (std::isnormal(aexp)) {
                 filelist.push_back(parameters.partdir + filelistprior[ifiling]);
@@ -477,18 +578,16 @@ void Create_octree::PreparationHDF5_from_particles(
             octree.clear();
             // Create a homogeneous octree at coarse level
             Input::homogenize(
-                octree.assign(parameters.ncoarse + std::log2(EXTENT), zero));
+              octree.assign(parameters.ncoarse + std::log2(EXTENT), zero));
             conic = cone[icone];
             conicIfRot = coneIfRot[icone];
             std::cout << "#size initial octree : " << octree.size() << std::endl;
             // Only keep cells within the cone
             octree.resize(std::distance(
-                std::begin(octree),
-                std::remove_if(std::execution::par_unseq, std::begin(octree), std::end(octree),
-                               [=, &octree](const Element &elem) {
-                                   return !(Input::collide(octree, std::get<0>(elem),
-                                                           microsphere, conicIfRot));
-                               })));
+              std::begin(octree),
+              std::remove_if(std::execution::par_unseq, std::begin(octree), std::end(octree), [=, &octree](const Element& elem) {
+                  return !(Input::collide(octree, std::get<0>(elem), microsphere, conicIfRot));
+              })));
             std::cout << "#size cone octree : " << octree.size() << std::endl;
             std::vector<float> pos_part, force_part, potential_part, a_part;
 #ifdef VERBOSE
@@ -498,19 +597,14 @@ void Create_octree::PreparationHDF5_from_particles(
             std::shuffle(std::begin(filelist), std::end(filelist), engine1);
             // Read all partiles within the cone
             Miscellaneous::fill_particles_vectors(
-                parameters, conicIfRot, filelist, pos_part, force_part,
-                potential_part, a_part, thetay, thetaz);
+              parameters, conicIfRot, filelist, pos_part, force_part, potential_part, a_part, thetay, thetaz);
             // As long as we did not exceed the maximum refinement level, continue
             // creating octree cells are finer levels
             while (continue_refining) {
                 if (ORDER == 1) {
-                    Create_octree::CreateOctreeWithCIC(continue_refining, octree,
-                                                       parameters, pos_part, force_part,
-                                                       potential_part, a_part);
+                    Create_octree::CreateOctreeWithCIC(continue_refining, octree, parameters, pos_part, force_part, potential_part, a_part);
                 } else if (ORDER == 2) {
-                    Create_octree::CreateOctreeWithTSC(continue_refining, octree,
-                                                       parameters, pos_part, force_part,
-                                                       potential_part, a_part);
+                    Create_octree::CreateOctreeWithTSC(continue_refining, octree, parameters, pos_part, force_part, potential_part, a_part);
                 } else {
                     std::cout << "# Please select -DORDER = 1 or 2 to compute the octree "
                                  "from particles"
@@ -531,35 +625,33 @@ void Create_octree::PreparationHDF5_from_particles(
             // Get the coarse level from octree (should match the input coarse level +
             // log2(EXTENT))
             const unsigned int ncoarse =
-                (std::get<0>(
-                     *std::min_element(std::execution::par_unseq, std::begin(octree), std::end(octree),
-                                       [](const Element &x, const Element &y) {
-                                           return std::get<0>(x).level() <
-                                                  std::get<0>(y).level();
-                                       }))
-                     .level());
+              (std::get<0>(
+                 *std::min_element(std::execution::par_unseq, std::begin(octree), std::end(octree), [](const Element& x, const Element& y) {
+                     return std::get<0>(x).level() <
+                            std::get<0>(y).level();
+                 }))
+                 .level());
             // Get the maximum level (At most, should be equal to ncoarse + max number
             // of refinement, see inner functions)
             const unsigned int nmax =
-                (std::get<0>(
-                     *std::max_element(std::execution::par_unseq, std::begin(octree), std::end(octree),
-                                       [](const Element &x, const Element &y) {
-                                           return std::get<0>(x).level() <
-                                                  std::get<0>(y).level();
-                                       }))
-                     .level());
+              (std::get<0>(
+                 *std::max_element(std::execution::par_unseq, std::begin(octree), std::end(octree), [](const Element& x, const Element& y) {
+                     return std::get<0>(x).level() <
+                            std::get<0>(y).level();
+                 }))
+                 .level());
             uint size = octree.size();
             std::vector<uint> count(size), index;
             uint counter(0);
             // Count if for a given coarse cell the density is zero or NaN (in this
             // case, also means that all the information is set to zero)
             Utility::parallelize(
-                size, [&](const unsigned int i) {
-                    count[i] = ((std::get<0>(octree[i]).level() == ncoarse) &&
-                                (!std::isnormal(std::get<1>(octree[i]).rho())));
-                });
+              size, [&](const unsigned int i) {
+                  count[i] = ((std::get<0>(octree[i]).level() == ncoarse) &&
+                              (!std::isnormal(std::get<1>(octree[i]).rho())));
+              });
             // Total number of cells counted
-            std::for_each(count.begin(), count.end(), [=, &counter](unsigned int &i) {
+            std::for_each(count.begin(), count.end(), [=, &counter](unsigned int& i) {
                 i = (i > zero) ? (++counter) : (zero);
             });
             index.resize(counter);
@@ -570,13 +662,12 @@ void Create_octree::PreparationHDF5_from_particles(
             });
             // For these cells, average over all the closest cells with normal density
             Utility::parallelize(
-                counter, [&](const unsigned int i) {
-                    std::get<1>(octree[index[i]]) =
-                        Input::meanAll(octree, octree[index[i]], ncoarse);
-                });
+              counter, [&](const unsigned int i) {
+                  std::get<1>(octree[index[i]]) =
+                    Input::meanAll(octree, octree[index[i]], ncoarse);
+              });
             // Clear vector
-            std::for_each(std::execution::par_unseq, count.begin(), count.end(),
-                                 [](unsigned int &i) { i = zero; });
+            std::for_each(std::execution::par_unseq, count.begin(), count.end(), [](unsigned int& i) { i = zero; });
 
             // Cleaning the Octree at refined levels
             for (unsigned int n = ncoarse + 1; n <= nmax; ++n) {
@@ -591,26 +682,26 @@ void Create_octree::PreparationHDF5_from_particles(
                     if (count[i] > zero) {
                         if (ORDER == 1) {
                             std::get<1>(octree[i]) =
-                                octree.cic(std::get<0>(octree[i])
-                                               .template center<double, Position, Extent>(0),
-                                           std::get<0>(octree[i])
-                                               .template center<double, Position, Extent>(1),
-                                           std::get<0>(octree[i])
-                                               .template center<double, Position, Extent>(2));
+                              octree.cic(std::get<0>(octree[i])
+                                           .template center<double, Position, Extent>(0),
+                                         std::get<0>(octree[i])
+                                           .template center<double, Position, Extent>(1),
+                                         std::get<0>(octree[i])
+                                           .template center<double, Position, Extent>(2));
                         } else if (ORDER == 2) {
                             std::get<1>(octree[i]) =
-                                octree.tsc(std::get<0>(octree[i])
-                                               .template center<double, Position, Extent>(0),
-                                           std::get<0>(octree[i])
-                                               .template center<double, Position, Extent>(1),
-                                           std::get<0>(octree[i])
-                                               .template center<double, Position, Extent>(2));
+                              octree.tsc(std::get<0>(octree[i])
+                                           .template center<double, Position, Extent>(0),
+                                         std::get<0>(octree[i])
+                                           .template center<double, Position, Extent>(1),
+                                         std::get<0>(octree[i])
+                                           .template center<double, Position, Extent>(2));
                         }
                         // If we could not interpolate, then give the value from parent cell
                         std::get<1>(octree[i]) =
-                            (std::get<1>(octree[i]) == Data())
-                                ? std::get<1>(*octree.find(std::get<0>(octree[i]).parent()))
-                                : std::get<1>(octree[i]);
+                          (std::get<1>(octree[i]) == Data())
+                            ? std::get<1>(*octree.find(std::get<0>(octree[i]).parent()))
+                            : std::get<1>(octree[i]);
                     }
                 });
             }
@@ -656,22 +747,39 @@ void Create_octree::PreparationHDF5_from_particles(
 /// \param[in]      lboxmpch Size of simulation box
 /// \param[in]      amin minimum value scale factor
 /// \param[in]      cosmology Cosmological tables
-template <
-    template <typename Type, class Index, class Data, unsigned int Dimension,
-              class Position, class Extent, class Element, class Container>
-    class Octree,
-    typename Type, class Index, class Data, unsigned int Dimension,
-    class Position, class Extent, class Element, class Container,
-    class Parameter, class Cone, class Sphere, class FileList, class Index2,
-    typename Integer, typename Scalar, class Cosmology>
-void Create_octree::PreparationBinary(
-    Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>
-        &octree,
-    const Parameter &parameters, const Integer ntasks, const Integer rank,
-    const std::vector<Cone> &cone, FileList &conefile,
-    const Sphere &microsphere, Index2 &filetree, const Scalar h,
-    const Scalar omegam, const Scalar lboxmpch, Scalar &amin,
-    const Cosmology &cosmology) {
+template<
+  template<typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree,
+  typename Type,
+  class Index,
+  class Data,
+  unsigned int Dimension,
+  class Position,
+  class Extent,
+  class Element,
+  class Container,
+  class Parameter,
+  class Cone,
+  class Sphere,
+  class FileList,
+  class Index2,
+  typename Integer,
+  typename Scalar,
+  class Cosmology>
+void
+Create_octree::PreparationBinary(
+  Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& octree,
+  const Parameter& parameters,
+  const Integer ntasks,
+  const Integer rank,
+  const std::vector<Cone>& cone,
+  FileList& conefile,
+  const Sphere& microsphere,
+  Index2& filetree,
+  const Scalar h,
+  const Scalar omegam,
+  const Scalar lboxmpch,
+  Scalar& amin,
+  const Cosmology& cosmology) {
 
     std::mt19937 engine1(parameters.seed > zero ? parameters.seed + rank
                                                 : std::random_device()());
@@ -694,16 +802,14 @@ void Create_octree::PreparationBinary(
             nfiles = filelist.size();
             // Fill octree with cells
             for (uint ifile = zero; ifile < nfiles; ++ifile) {
-                Input::import(parameters, octree, filelist[ifile],
-                              [=, &octree](const Element &e) {
-                                  return Input::collide(octree, std::get<0>(e),
-                                                        microsphere, conic);
-                              });
+                Input::import(parameters, octree, filelist[ifile], [=, &octree](const Element& e) {
+                    return Input::collide(octree, std::get<0>(e), microsphere, conic);
+                });
             }
             // Apply correction to octree
             Miscellaneous::correctOctree(
-                octree, cosmology, parameters, h, omegam, lboxmpch,
-                amin); // comment this line if you want to keep all cells in cones
+              octree, cosmology, parameters, h, omegam, lboxmpch,
+              amin); // comment this line if you want to keep all cells in cones
             Input::save(octree, conefile[icone]);
         }
     }
@@ -742,22 +848,39 @@ void Create_octree::PreparationBinary(
 /// \param[in]      lboxmpch Size of simulation box
 /// \param[in]      amin minimum value scale factor
 /// \param[in]      cosmology Cosmological tables
-template <
-    template <typename Type, class Index, class Data, unsigned int Dimension,
-              class Position, class Extent, class Element, class Container>
-    class Octree,
-    typename Type, class Index, class Data, unsigned int Dimension,
-    class Position, class Extent, class Element, class Container,
-    class Parameter, class Cone, class FileList, class Sphere, typename Integer,
-    typename Scalar, class Cosmology>
-void Create_octree::PreparationASCII(
-    Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>
-        &octree,
-    const Parameter &parameters, const Integer ntasks, const Integer rank,
-    const std::vector<Cone> &cone, const std::vector<Cone> &coneIfRot,
-    const std::array<std::array<double, 3>, 3> &rotm1, FileList &conefile,
-    const Sphere &microsphere, const Scalar h, const Scalar omegam,
-    const Scalar lboxmpch, Scalar &amin, const Cosmology &cosmology) {
+template<
+  template<typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree,
+  typename Type,
+  class Index,
+  class Data,
+  unsigned int Dimension,
+  class Position,
+  class Extent,
+  class Element,
+  class Container,
+  class Parameter,
+  class Cone,
+  class FileList,
+  class Sphere,
+  typename Integer,
+  typename Scalar,
+  class Cosmology>
+void
+Create_octree::PreparationASCII(
+  Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& octree,
+  const Parameter& parameters,
+  const Integer ntasks,
+  const Integer rank,
+  const std::vector<Cone>& cone,
+  const std::vector<Cone>& coneIfRot,
+  const std::array<std::array<double, 3>, 3>& rotm1,
+  FileList& conefile,
+  const Sphere& microsphere,
+  const Scalar h,
+  const Scalar omegam,
+  const Scalar lboxmpch,
+  Scalar& amin,
+  const Cosmology& cosmology) {
 
     uint nfiles = zero;
     std::mt19937 engine1(parameters.seed > zero ? parameters.seed + rank
@@ -809,11 +932,9 @@ void Create_octree::PreparationASCII(
             // Fill octree with cell data
             for (uint ifile = zero; ifile < nfiles; ++ifile) {
                 Input::importascii<Position, Extent>(
-                    parameters, rotm1, octree, filelist[ifile],
-                    [=, &octree](const Element &e) {
-                        return Input::collide(octree, std::get<0>(e), microsphere,
-                                              conicIfRot);
-                    });
+                  parameters, rotm1, octree, filelist[ifile], [=, &octree](const Element& e) {
+                      return Input::collide(octree, std::get<0>(e), microsphere, conicIfRot);
+                  });
 #ifdef VERBOSE
                 std::cout << "# Cone : " << icone << " File " << ifile << "/" << nfiles
                           << " Octree size : " << octree.size() << std::endl;
@@ -825,11 +946,9 @@ void Create_octree::PreparationASCII(
                 for (uint ifile = zero, nfiles = filelistmini.size(); ifile < nfiles;
                      ++ifile) {
                     Input::importascii<Position, Extent>(
-                        parameters, rotm1, octree, filelistmini[ifile],
-                        [=, &octree](const Element &e) {
-                            return Input::collide(octree, std::get<0>(e), microsphere,
-                                                  conicIfRot);
-                        });
+                      parameters, rotm1, octree, filelistmini[ifile], [=, &octree](const Element& e) {
+                          return Input::collide(octree, std::get<0>(e), microsphere, conicIfRot);
+                      });
 #ifdef VERBOSE
                     std::cout << "# MiniCone : " << icone << " File " << ifile << "/"
                               << nfiles << " Octree size : " << octree.size()
@@ -843,8 +962,8 @@ void Create_octree::PreparationASCII(
 #endif
             // Apply correction to octree
             Miscellaneous::correctOctree(
-                octree, cosmology, parameters, h, omegam, lboxmpch,
-                amin); // comment this line if you want to keep all cells in cones
+              octree, cosmology, parameters, h, omegam, lboxmpch,
+              amin); // comment this line if you want to keep all cells in cones
 #ifdef VERBOSE
             std::cout << "# Final Cone : " << icone
                       << " Octree size : " << octree.size() << std::endl;
@@ -876,37 +995,43 @@ void Create_octree::PreparationASCII(
 /// \param[in]      force_part Force of particles
 /// \param[in]      potential_part Potential of particles
 /// \param[in]      a_part Scale factor of particles
-template <
-    class Parameters, typename Type1,
-    template <typename Type, class Index, class Data, unsigned int Dimension,
-              class Position, class Extent, class Element, class Container>
-    class Octree,
-    typename Type, class Index, class Data, unsigned int Dimension,
-    class Position, class Extent, class Element, class Container>
-void Create_octree::CreateOctreeWithCIC(
-    bool &continue_refining,
-    Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>
-        &octree,
-    const Parameters &parameters, std::vector<Type1> &pos_part,
-    std::vector<Type1> &force_part, std::vector<Type1> &potential_part,
-    std::vector<Type1> &a_part) {
+template<
+  class Parameters,
+  typename Type1,
+  template<typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree,
+  typename Type,
+  class Index,
+  class Data,
+  unsigned int Dimension,
+  class Position,
+  class Extent,
+  class Element,
+  class Container>
+void
+Create_octree::CreateOctreeWithCIC(
+  bool& continue_refining,
+  Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& octree,
+  const Parameters& parameters,
+  std::vector<Type1>& pos_part,
+  std::vector<Type1>& force_part,
+  std::vector<Type1>& potential_part,
+  std::vector<Type1>& a_part) {
 
     const unsigned int size = octree.size();
     std::vector<double> npart(size);
     constexpr unsigned int n_mass_refine = 8; // Threshold of how many DM particles in
-                                          // a single cell to enable refinement
+                                              // a single cell to enable refinement
     constexpr unsigned int n_leveldiff_refine =
-        8; // Threshold of how many refinement levels we can have at most
+      8; // Threshold of how many refinement levels we can have at most
 
     const unsigned int lvlmax =
-        (std::get<0>(*std::max_element(std::execution::par_unseq, std::begin(octree), std::end(octree),
-                                       [](const Element &x, const Element &y) {
-                                           return std::get<0>(x).level() <
-                                                  std::get<0>(y).level();
-                                       }))
-             .level());
+      (std::get<0>(*std::max_element(std::execution::par_unseq, std::begin(octree), std::end(octree), [](const Element& x, const Element& y) {
+           return std::get<0>(x).level() <
+                  std::get<0>(y).level();
+       }))
+         .level());
     const unsigned int leveldiff =
-        lvlmax - (parameters.ncoarse + std::log2(EXTENT));
+      lvlmax - (parameters.ncoarse + std::log2(EXTENT));
 
     // As long as the number of refinement levels is not superior or equal to 8,
     // continue refining if possible
@@ -928,46 +1053,43 @@ void Create_octree::CreateOctreeWithCIC(
                 for (int ix = -1; ix <= 1; ix += 2) {
                     // Create an index at the level of interest for the neighboring cell
                     idxvertex = idxvertex.template compute<Type, Position, Extent>(
-                        lvlmax, pos_part[3 * i] + half * ix,
-                        pos_part[3 * i + 1] + half * iy, pos_part[3 * i + 2] + half * iz);
+                      lvlmax, pos_part[3 * i] + half * ix, pos_part[3 * i + 1] + half * iy, pos_part[3 * i + 2] + half * iz);
                     // Given an index in the octree that is consistent with the created
                     // index
                     marker = std::distance(
-                        std::begin(octree),
-                        std::upper_bound(std::begin(octree), std::end(octree),
-                                         Element(idxvertex, data),
-                                         [](const Element &first, const Element &second) {
-                                             return std::get<0>(first) <
-                                                    std::get<0>(second);
-                                         }));
+                      std::begin(octree),
+                      std::upper_bound(std::begin(octree), std::end(octree), Element(idxvertex, data), [](const Element& first, const Element& second) {
+                          return std::get<0>(first) <
+                                 std::get<0>(second);
+                      }));
                     // If the index exists in the octree, compute CIC
                     if (std::get<0>(*(std::begin(octree) + marker - (marker > 0))) ==
                         idxvertex) {
                         vratio =
-                            (1 - std::abs(
-                                     pos_part[3 * i] -
-                                     idxvertex.template center<Type, Position, Extent>(0)) *
-                                     invextension) *
-                            (1 - std::abs(
-                                     pos_part[3 * i + 1] -
-                                     idxvertex.template center<Type, Position, Extent>(1)) *
-                                     invextension) *
-                            (1 - std::abs(
-                                     pos_part[3 * i + 2] -
-                                     idxvertex.template center<Type, Position, Extent>(2)) *
-                                     invextension);
+                          (1 - std::abs(
+                                 pos_part[3 * i] -
+                                 idxvertex.template center<Type, Position, Extent>(0)) *
+                                 invextension) *
+                          (1 - std::abs(
+                                 pos_part[3 * i + 1] -
+                                 idxvertex.template center<Type, Position, Extent>(1)) *
+                                 invextension) *
+                          (1 - std::abs(
+                                 pos_part[3 * i + 2] -
+                                 idxvertex.template center<Type, Position, Extent>(2)) *
+                                 invextension);
                         npart[marker - (marker > 0)] += vratio;
                         std::get<1>(octree[marker - (marker > 0)]).rho() += vratio;
                         std::get<1>(octree[marker - (marker > 0)]).dphidx() +=
-                            force_part[3 * i] * vratio;
+                          force_part[3 * i] * vratio;
                         std::get<1>(octree[marker - (marker > 0)]).dphidy() +=
-                            force_part[3 * i + 1] * vratio;
+                          force_part[3 * i + 1] * vratio;
                         std::get<1>(octree[marker - (marker > 0)]).dphidz() +=
-                            force_part[3 * i + 2] * vratio;
+                          force_part[3 * i + 2] * vratio;
                         std::get<1>(octree[marker - (marker > 0)]).phi() +=
-                            potential_part[i] * vratio;
+                          potential_part[i] * vratio;
                         std::get<1>(octree[marker - (marker > 0)]).a() +=
-                            a_part[i] * vratio;
+                          a_part[i] * vratio;
                     }
                 }
             }
@@ -978,7 +1100,7 @@ void Create_octree::CreateOctreeWithCIC(
     Utility::parallelize(size, [&](const uint i) {
         if (std::get<0>(octree[i]).level() == lvlmax) {
             double mass =
-                std::get<1>(octree[i]).rho() + (std::get<1>(octree[i]).rho() == 0);
+              std::get<1>(octree[i]).rho() + (std::get<1>(octree[i]).rho() == 0);
             std::get<1>(octree[i]).dphidx() /= mass;
             std::get<1>(octree[i]).dphidy() /= mass;
             std::get<1>(octree[i]).dphidz() /= mass;
@@ -990,9 +1112,9 @@ void Create_octree::CreateOctreeWithCIC(
     // Count number of cells which contain a mass superior or equal to 8 DM
     // particles
     const unsigned int num =
-        std::count_if(std::execution::par_unseq, npart.begin(), npart.end(), [=, &n_mass_refine](double &i) {
-            return i >= n_mass_refine;
-        });
+      std::count_if(std::execution::par_unseq, npart.begin(), npart.end(), [=, &n_mass_refine](double& i) {
+          return i >= n_mass_refine;
+      });
 #ifdef VERBOSE
     std::cout << "# Number of cells to refine : " << num << std::endl;
 #endif
@@ -1038,37 +1160,43 @@ void Create_octree::CreateOctreeWithCIC(
 /// \param[in]      force_part Force of particles
 /// \param[in]      potential_part Potential of particles
 /// \param[in]      a_part Scale factor of particles
-template <
-    class Parameters, typename Type1,
-    template <typename Type, class Index, class Data, unsigned int Dimension,
-              class Position, class Extent, class Element, class Container>
-    class Octree,
-    typename Type, class Index, class Data, unsigned int Dimension,
-    class Position, class Extent, class Element, class Container>
-void Create_octree::CreateOctreeWithTSC(
-    bool &continue_refining,
-    Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>
-        &octree,
-    const Parameters &parameters, std::vector<Type1> &pos_part,
-    std::vector<Type1> &force_part, std::vector<Type1> &potential_part,
-    std::vector<Type1> &a_part) {
+template<
+  class Parameters,
+  typename Type1,
+  template<typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree,
+  typename Type,
+  class Index,
+  class Data,
+  unsigned int Dimension,
+  class Position,
+  class Extent,
+  class Element,
+  class Container>
+void
+Create_octree::CreateOctreeWithTSC(
+  bool& continue_refining,
+  Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& octree,
+  const Parameters& parameters,
+  std::vector<Type1>& pos_part,
+  std::vector<Type1>& force_part,
+  std::vector<Type1>& potential_part,
+  std::vector<Type1>& a_part) {
 
     const unsigned int size = octree.size();
     std::vector<unsigned int> npart(size);
     const unsigned int n_mass_refine = 8; // Threshold of how many DM particles in
                                           // a single cell to enable refinement
     const unsigned int n_leveldiff_refine =
-        8; // Threshold of how many refinement levels we can have at most
+      8; // Threshold of how many refinement levels we can have at most
 
     const unsigned int lvlmax =
-        (std::get<0>(*std::max_element(std::execution::par_unseq, std::begin(octree), std::end(octree),
-                                       [](const Element &x, const Element &y) {
-                                           return std::get<0>(x).level() <
-                                                  std::get<0>(y).level();
-                                       }))
-             .level());
+      (std::get<0>(*std::max_element(std::execution::par_unseq, std::begin(octree), std::end(octree), [](const Element& x, const Element& y) {
+           return std::get<0>(x).level() <
+                  std::get<0>(y).level();
+       }))
+         .level());
     const unsigned int leveldiff =
-        lvlmax - (parameters.ncoarse + std::log2(EXTENT));
+      lvlmax - (parameters.ncoarse + std::log2(EXTENT));
     // As long as the number of refinement levels is not superior or equal to 8,
     // continue refining if possible
     continue_refining = (leveldiff < n_leveldiff_refine);
@@ -1093,28 +1221,24 @@ void Create_octree::CreateOctreeWithTSC(
                     const int aix = abs(ix);
                     // Create an index at the level of interest for the neighboring cell
                     idxvertex = idxvertex.template compute<Type, Position, Extent>(
-                        lvlmax, pos_part[3 * i] + twohalves * ix,
-                        pos_part[3 * i + 1] + twohalves * iy,
-                        pos_part[3 * i + 2] + twohalves * iz);
+                      lvlmax, pos_part[3 * i] + twohalves * ix, pos_part[3 * i + 1] + twohalves * iy, pos_part[3 * i + 2] + twohalves * iz);
                     // Given an index in the octree that is consistent with the created
                     // index
                     marker = std::distance(
-                        std::begin(octree),
-                        std::upper_bound(std::begin(octree), std::end(octree),
-                                         Element(idxvertex, data),
-                                         [](const Element &first, const Element &second) {
-                                             return std::get<0>(first) <
-                                                    std::get<0>(second);
-                                         }));
+                      std::begin(octree),
+                      std::upper_bound(std::begin(octree), std::end(octree), Element(idxvertex, data), [](const Element& first, const Element& second) {
+                          return std::get<0>(first) <
+                                 std::get<0>(second);
+                      }));
                     // If the index exists in the octree, compute TSC
                     if (std::get<0>(*(std::begin(octree) + marker - (marker > 0))) ==
                         idxvertex) {
                         for (unsigned int idim = 0; idim < Index::dimension(); ++idim) {
                             dist[idim] = std::abs(
-                                (std::get<0>(*(std::begin(octree) + marker - (marker > 0)))
-                                     .template center<Type, Position, Extent>(idim) -
-                                 pos_part[3 * i + idim]) /
-                                (twohalves));
+                              (std::get<0>(*(std::begin(octree) + marker - (marker > 0)))
+                                 .template center<Type, Position, Extent>(idim) -
+                               pos_part[3 * i + idim]) /
+                              (twohalves));
                         }
                         weightx = aix * 0.5 * (1.5 - dist[0]) * (1.5 - dist[0]) +
                                   (1 - aix) * (0.75 - dist[0] * dist[0]);
@@ -1128,15 +1252,15 @@ void Create_octree::CreateOctreeWithTSC(
                         }
                         std::get<1>(octree[marker - (marker > 0)]).rho() += vratio;
                         std::get<1>(octree[marker - (marker > 0)]).dphidx() +=
-                            force_part[3 * i] * vratio;
+                          force_part[3 * i] * vratio;
                         std::get<1>(octree[marker - (marker > 0)]).dphidy() +=
-                            force_part[3 * i + 1] * vratio;
+                          force_part[3 * i + 1] * vratio;
                         std::get<1>(octree[marker - (marker > 0)]).dphidz() +=
-                            force_part[3 * i + 2] * vratio;
+                          force_part[3 * i + 2] * vratio;
                         std::get<1>(octree[marker - (marker > 0)]).phi() +=
-                            potential_part[i] * vratio;
+                          potential_part[i] * vratio;
                         std::get<1>(octree[marker - (marker > 0)]).a() +=
-                            a_part[i] * vratio;
+                          a_part[i] * vratio;
                     }
                 }
             }
@@ -1147,7 +1271,7 @@ void Create_octree::CreateOctreeWithTSC(
     Utility::parallelize(size, [&](const uint i) {
         if (std::get<0>(octree[i]).level() == lvlmax) {
             double mass =
-                std::get<1>(octree[i]).rho() + (std::get<1>(octree[i]).rho() == 0);
+              std::get<1>(octree[i]).rho() + (std::get<1>(octree[i]).rho() == 0);
             std::get<1>(octree[i]).dphidx() /= mass;
             std::get<1>(octree[i]).dphidy() /= mass;
             std::get<1>(octree[i]).dphidz() /= mass;
@@ -1159,8 +1283,7 @@ void Create_octree::CreateOctreeWithTSC(
     // Count number of cells which contain a mass superior or equal to 8 DM
     // particles
     unsigned int num =
-        std::count_if(std::execution::par_unseq, npart.begin(), npart.end(),
-                      [](unsigned int &i) { return i >= n_mass_refine; });
+      std::count_if(std::execution::par_unseq, npart.begin(), npart.end(), [](unsigned int& i) { return i >= n_mass_refine; });
 #ifdef VERBOSE
     std::cout << "# Number of cells to refine : " << num << std::endl;
 #endif

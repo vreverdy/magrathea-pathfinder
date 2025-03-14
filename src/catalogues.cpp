@@ -75,7 +75,8 @@ using namespace magrathea;
 /// \param[in]      argc Number of arguments.
 /// \param[in]      argv List of arguments.
 /// \return         Zero on success, error code otherwise.
-int main(int argc, char *argv[]) {
+int
+main(int argc, char* argv[]) {
     // Constants
 
     using integer = int;
@@ -92,17 +93,17 @@ int main(int argc, char *argv[]) {
     static constexpr uint dimension = 3;
     static constexpr uint nreference = 5; // Used to set homogeneous octree
     static constexpr real rposition =
-        static_cast<real>(position::num) / static_cast<real>(position::den);
-    static constexpr point center({{rposition, rposition, rposition}});
+      static_cast<real>(position::num) / static_cast<real>(position::den);
+    static constexpr point center({ { rposition, rposition, rposition } });
     static constexpr real diameter =
-        static_cast<real>(extent::num) / static_cast<real>(extent::den);
+      static_cast<real>(extent::num) / static_cast<real>(extent::den);
     static const std::string all = "all";
     static const std::string outputsep = "_";    // (Separator used in file names)
     static const std::string outputint = "%05d"; // (Integer format in file names)
     static const std::string outputopening =
-        "%8.6f"; // (Opening angle format in file names)
+      "%8.6f"; // (Opening angle format in file names)
     static const std::string namelist =
-        argc > 1 ? std::string(argv[1]) : std::string("raytracer.txt");
+      argc > 1 ? std::string(argv[1]) : std::string("raytracer.txt");
 
     // Parameters
     std::map<std::string, std::string> parameter;
@@ -116,15 +117,13 @@ int main(int argc, char *argv[]) {
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     // Read parameter file
     Miscellaneous::TicketizeFunction(
-        rank, ntasks, [=, &parameter] { parameter = Input::parse(namelist); });
+      rank, ntasks, [=, &parameter] { parameter = Input::parse(namelist); });
     // Convert strings and put it in struct
     Catalogues::ReadParamFile(parameters, parameter);
     // Initialization
-    FileList conefile(parameters.conefmt, zero, parameters.ncones, zero,
-                      parameters.conedir);
-    SimpleHyperOctree<real, SimpleHyperOctreeIndex<indexing, dimension>,
-                      Gravity<floating, dimension>, dimension, position, extent>
-        octree;
+    FileList conefile(parameters.conefmt, zero, parameters.ncones, zero, parameters.conedir);
+    SimpleHyperOctree<real, SimpleHyperOctreeIndex<indexing, dimension>, Gravity<floating, dimension>, dimension, position, extent>
+      octree;
     HyperSphere<dimension, point> sphere(center, diameter / two);
     std::vector<std::string> filelist;
     std::vector<Cone<point>> cone(parameters.ncones);
@@ -136,10 +135,9 @@ int main(int argc, char *argv[]) {
     real lboxmpch = zero;
     std::ofstream stream;
     std::string filename;
-    std::array<std::array<double, 3>, 3> rotm1 = {{zero}};
-    const point vobs = {parameters.v0x, parameters.v0y, parameters.v0z};
-    constexpr point vobs0 = {0, 0,
-                         0}; // No peculiar velocity for homogeneous quantities
+    std::array<std::array<double, 3>, 3> rotm1 = { { zero } };
+    const point vobs = { parameters.v0x, parameters.v0y, parameters.v0z };
+    constexpr point vobs0 = { 0, 0, 0 }; // No peculiar velocity for homogeneous quantities
 
     if (rank == 0)
         std::cout << "#### MAGRATHEA_PATHFINDER " << std::endl;
@@ -147,17 +145,17 @@ int main(int argc, char *argv[]) {
     if (parameters.use_previous_catalogues == 0 ||
         parameters.use_previous_catalogues == 2) { // Only useful to assign sources to cone
         Miscellaneous::TicketizeFunction(
-            rank, ntasks, [=, &cone, &coneIfRot, &parameter] {
-                Miscellaneous::read_cone_orientation(cone, coneIfRot, parameters);
-            });
+          rank, ntasks, [=, &cone, &coneIfRot, &parameter] {
+              Miscellaneous::read_cone_orientation(cone, coneIfRot, parameters);
+          });
     }
 
     if (!parameters.isfullsky) {
         real thetay, thetaz;
         Miscellaneous::TicketizeFunction(
-            rank, ntasks, [=, &parameter, &rotm1, &thetay, &thetaz] {
-                Miscellaneous::get_narrow_specs(parameters, rotm1, thetay, thetaz);
-            });
+          rank, ntasks, [=, &parameter, &rotm1, &thetay, &thetaz] {
+              Miscellaneous::get_narrow_specs(parameters, rotm1, thetay, thetaz);
+          });
     }
     // Read cosmology
     cosmology = Input::acquire(parameters, h, omegam, lboxmpch);
@@ -176,18 +174,10 @@ int main(int argc, char *argv[]) {
 
     // Construct homogeneous tree
     Input::homogenize(octree.assign(nreference, zero));
-    reference.append(Integrator::launch(center[zero], center[one], center[two],
-                                        center[zero] + diameter / two,
-                                        center[one], center[two]));
+    reference.append(Integrator::launch(center[zero], center[one], center[two], center[zero] + diameter / two, center[one], center[two]));
     // Propagate a photon in a homogeneous cosmology
     Integrator::integrate<-1>(
-        reference, cosmology, octree, vobs0, length,
-        EXTENT * std::pow(two, static_cast<uint>(
-                                   std::log2(std::get<0>(cosmology).size() /
-                                                 std::pow(two, nreference) +
-                                             one) +
-                                   one) +
-                                   one));
+      reference, cosmology, octree, vobs0, length, EXTENT * std::pow(two, static_cast<uint>(std::log2(std::get<0>(cosmology).size() / std::pow(two, nreference) + one) + one) + one));
     cosmology = Input::correct(cosmology, reference);
     octree.fullclear();
 
@@ -206,9 +196,9 @@ int main(int argc, char *argv[]) {
                 std::string filename = parameters.outputdir + "../catalogs/" + Output::name(parameters.base, "_", std::make_pair("%05d", icone), ".txt" + extra);
 
                 Miscellaneous::ReadFromCat(
-                    icone, filename,
-                    previous_catalogue); // For 'rejected', read the id here, and choose
-                                         // only those that are inside the cone
+                  icone, filename,
+                  previous_catalogue); // For 'rejected', read the id here, and choose
+                                       // only those that are inside the cone
 #ifdef VERBOSE
                 std::cout << "# Rank " << rank << " cone " << icone
                           << " number of sources in the cone : "
@@ -230,41 +220,32 @@ int main(int argc, char *argv[]) {
 
             if (parameters.use_previous_catalogues == 1 ||
                 parameters.use_previous_catalogues ==
-                    3) { // Rerun previously computed catalogs
+                  3) { // Rerun previously computed catalogs
                 // Set filename
                 const std::string conetype = parameters.isfullsky ? "fullsky" : "narrow";
                 const std::string sourcetype = parameters.halos ? "halos" : "part";
                 const std::string jacobinfo =
-                    (parameters.beam == "bundle")
-                        ? Output::name(
-                              parameters.stop_bundle, outputsep, parameters.plane,
-                              outputsep,
-                              std::make_pair(outputopening, parameters.openingmin))
-                        : parameters.beam;
-                filename = Output::name(parameters.outputdir, parameters.outputprefix,
-                                        outputsep, conetype, outputsep, jacobinfo,
-                                        outputsep, sourcetype);
+                  (parameters.beam == "bundle")
+                    ? Output::name(
+                        parameters.stop_bundle, outputsep, parameters.plane, outputsep, std::make_pair(outputopening, parameters.openingmin))
+                    : parameters.beam;
+                filename = Output::name(parameters.outputdir, parameters.outputprefix, outputsep, conetype, outputsep, jacobinfo, outputsep, sourcetype);
                 if (parameters.use_previous_catalogues == 1) {
-                    filename = Output::name(filename, outputsep,
-                                            std::make_pair(outputint, icone));
+                    filename = Output::name(filename, outputsep, std::make_pair(outputint, icone));
                     // Re-run sources in already computed catalogue
-                    Catalogues::relCat_with_previous_cat(vobs, filename, observer,
-                                                         previous_catalogue, parameters,
-                                                         cosmology, octree, length, h);
+                    Catalogues::relCat_with_previous_cat(vobs, filename, observer, previous_catalogue, parameters, cosmology, octree, length, h);
                 } else if (parameters.use_previous_catalogues ==
                            3) { // Rerun previously computed catalogs
                     // Set filename
-                    filename = Output::name(filename, outputsep, "flexion", outputsep,
-                                            std::make_pair(outputint, icone));
+                    filename = Output::name(filename, outputsep, "flexion", outputsep, std::make_pair(outputint, icone));
                     // Re-run sources with flexion raytracing
                     Catalogues::relCat_with_previous_cat_flexion(
-                        vobs, filename, observer, previous_catalogue, parameters,
-                        cosmology, octree, length, h);
+                      vobs, filename, observer, previous_catalogue, parameters, cosmology, octree, length, h);
                 }
             } else if (parameters.use_previous_catalogues == 0 ||
                        parameters.use_previous_catalogues ==
-                           2) { // If need to compute catalogue or re-run
-                                // non-converged sources
+                         2) { // If need to compute catalogue or re-run
+                              // non-converged sources
 
                 std::vector<std::array<double, 8>> caractVect_source;
                 // Read source files (usually depends on some convention in the
@@ -276,8 +257,8 @@ int main(int argc, char *argv[]) {
                 } else {
                     if (rank == 0) {
                         std::cout
-                            << "Targets are only available with the HDF5 or ASCII format"
-                            << std::endl;
+                          << "Targets are only available with the HDF5 or ASCII format"
+                          << std::endl;
                         std::cout << "# Error at file " << __FILE__
                                   << ", line : " << __LINE__ << std::endl;
                         std::terminate();
@@ -287,7 +268,7 @@ int main(int argc, char *argv[]) {
                 std::vector<std::array<double, 8>> targets_position;
                 // Assign sources to cone
                 targets_position =
-                    Miscellaneous::getTargets(caractVect_source, cone[icone], cone);
+                  Miscellaneous::getTargets(caractVect_source, cone[icone], cone);
 #ifdef VERBOSE
                 std::cout << "# Rank " << rank << " cone " << icone
                           << " Catalogue : number of sources in the cone : "
@@ -300,30 +281,33 @@ int main(int argc, char *argv[]) {
                     std::vector<std::array<double, 8>> targets_position_tmp;
                     // Sort sources from previously computed catalogue with index
                     std::sort(std::execution::par_unseq,
-                        previous_catalogue.begin(), previous_catalogue.end(),
-                        [](const std::array<double, 18> &a,
-                           const std::array<double, 18> &b) { return a[0] < b[0]; });
+                              previous_catalogue.begin(),
+                              previous_catalogue.end(),
+                              [](const std::array<double, 18>& a,
+                                 const std::array<double, 18>& b) { return a[0] < b[0]; });
                     // Sort sources from full dataset with index
-                    std::sort(std::execution::par_unseq, 
-                        targets_position.begin(), targets_position.end(),
-                              [](const std::array<double, 8> &a,
-                                 const std::array<double, 8> &b) { return a[6] < b[6]; });
+                    std::sort(std::execution::par_unseq,
+                              targets_position.begin(),
+                              targets_position.end(),
+                              [](const std::array<double, 8>& a,
+                                 const std::array<double, 8>& b) { return a[6] < b[6]; });
 
                     for (uint i = 0; i < previous_catalogue.size(); i++) {
                         std::array<double, 8> point_tmp;
                         point_tmp[6] = previous_catalogue[i][0];
                         const unsigned long int marked = std::distance(
-                            std::begin(targets_position),
-                            std::upper_bound(std::begin(targets_position),
-                                             std::end(targets_position), point_tmp,
-                                             [](const std::array<double, 8> &first,
-                                                const std::array<double, 8> &second) {
-                                                 return first[6] < second[6];
-                                             }));
+                          std::begin(targets_position),
+                          std::upper_bound(std::begin(targets_position),
+                                           std::end(targets_position),
+                                           point_tmp,
+                                           [](const std::array<double, 8>& first,
+                                              const std::array<double, 8>& second) {
+                                               return first[6] < second[6];
+                                           }));
                         // If we find a source that was rejected, then append the vector to
                         // re-run it from the beginning
                         targets_position_tmp.push_back(
-                            targets_position[marked - (marked > 0)]);
+                          targets_position[marked - (marked > 0)]);
                     }
                     Miscellaneous::fullclear_vector(targets_position);
                     targets_position = targets_position_tmp;
@@ -333,27 +317,17 @@ int main(int argc, char *argv[]) {
                 const std::string conetype = parameters.isfullsky ? "fullsky" : "narrow";
                 const std::string sourcetype = parameters.halos ? "halos" : "part";
                 const std::string jacobinfo =
-                    (parameters.beam == "bundle")
-                        ? Output::name(
-                              parameters.stop_bundle, outputsep, parameters.plane,
-                              outputsep,
-                              std::make_pair(outputopening, parameters.openingmin))
-                        : parameters.beam;
+                  (parameters.beam == "bundle")
+                    ? Output::name(
+                        parameters.stop_bundle, outputsep, parameters.plane, outputsep, std::make_pair(outputopening, parameters.openingmin))
+                    : parameters.beam;
                 if (parameters.use_previous_catalogues == 2) {
-                    filename = Output::name(parameters.outputdir, "/rejected/",
-                                            parameters.outputprefix, outputsep, conetype,
-                                            outputsep, jacobinfo, outputsep, sourcetype,
-                                            outputsep, std::make_pair(outputint, icone));
+                    filename = Output::name(parameters.outputdir, "/rejected/", parameters.outputprefix, outputsep, conetype, outputsep, jacobinfo, outputsep, sourcetype, outputsep, std::make_pair(outputint, icone));
                 } else {
-                    filename = Output::name(parameters.outputdir, parameters.outputprefix,
-                                            outputsep, conetype, outputsep, jacobinfo,
-                                            outputsep, sourcetype, outputsep,
-                                            std::make_pair(outputint, icone));
+                    filename = Output::name(parameters.outputdir, parameters.outputprefix, outputsep, conetype, outputsep, jacobinfo, outputsep, sourcetype, outputsep, std::make_pair(outputint, icone));
                 }
                 // Run the root-finding method to connect the observer and sources
-                Catalogues::relCat(vobs, rotm1, filename, observer, targets_position,
-                                   previous_catalogue, parameters, cosmology, octree,
-                                   length, h);
+                Catalogues::relCat(vobs, rotm1, filename, observer, targets_position, previous_catalogue, parameters, cosmology, octree, length, h);
             } else {
                 std::cout << "# WARNING : If 'use_previous_catalogues' is non-zero, "
                              "must be equal to 1 or 2"

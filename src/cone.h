@@ -39,78 +39,100 @@
 /// \details        Implementation of a basic cone in three dimensions.
 /// \tparam         Vector Position vector type.
 /// \tparam         Scalar Scalar data type.
-template <class Vector = std::array<double, 3>,
-          typename Scalar =
-              typename std::remove_cv<typename std::remove_reference<
-                  decltype(std::declval<Vector>()[0])>::type>::type>
-class Cone final : public magrathea::AbstractShape,
-                   public magrathea::AbstractSubstance<Cone<Vector, Scalar>,
-                                                       Vector, Vector, Scalar> {
+template<class Vector = std::array<double, 3>,
+         typename Scalar =
+           typename std::remove_cv<typename std::remove_reference<
+             decltype(std::declval<Vector>()[0])>::type>::type>
+class Cone final : public magrathea::AbstractShape
+  , public magrathea::AbstractSubstance<Cone<Vector, Scalar>, Vector, Vector, Scalar> {
     // Setup
 public:
-    using magrathea::AbstractSubstance<Cone<Vector, Scalar>, Vector, Vector,
-                                       Scalar>::operator=;
+    using magrathea::AbstractSubstance<Cone<Vector, Scalar>, Vector, Vector, Scalar>::operator=;
 
     // Lifecycle
     /// \name           Lifecycle
     //@{
 public:
-    template <class... Misc>
-    explicit inline Cone(Misc &&...misc);
+    template<class... Misc>
+    explicit inline Cone(Misc&&... misc);
     //@}
 
     // Data
     /// \name           Data
     //@{
 public:
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<magrathea::AbstractSubstance<
-                         Cone<Vector, Scalar>, Vector, Vector, Scalar>>()
-                         .template data<0, Values...>(std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template vertex(Misc &&...misc);
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<const magrathea::AbstractSubstance<
-                         Cone<Vector, Scalar>, Vector, Vector, Scalar>>()
-                         .template data<0, Values...>(std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template vertex(Misc &&...misc) const;
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<magrathea::AbstractSubstance<
-                         Cone<Vector, Scalar>, Vector, Vector, Scalar>>()
-                         .template data<1, Values...>(std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template base(Misc &&...misc);
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<const magrathea::AbstractSubstance<
-                         Cone<Vector, Scalar>, Vector, Vector, Scalar>>()
-                         .template data<1, Values...>(std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template base(Misc &&...misc) const;
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<magrathea::AbstractSubstance<
-                         Cone<Vector, Scalar>, Vector, Vector, Scalar>>()
-                         .template data<2, Values...>(std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template angle(Misc &&...misc);
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<const magrathea::AbstractSubstance<
-                         Cone<Vector, Scalar>, Vector, Vector, Scalar>>()
-                         .template data<2, Values...>(std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template angle(Misc &&...misc) const;
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<magrathea::AbstractSubstance<
+                   Cone<Vector, Scalar>,
+                   Vector,
+                   Vector,
+                   Scalar>>()
+                   .template data<0, Values...>(std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template vertex(Misc&&... misc);
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<const magrathea::AbstractSubstance<
+                   Cone<Vector, Scalar>,
+                   Vector,
+                   Vector,
+                   Scalar>>()
+                   .template data<0, Values...>(std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template vertex(Misc&&... misc) const;
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<magrathea::AbstractSubstance<
+                   Cone<Vector, Scalar>,
+                   Vector,
+                   Vector,
+                   Scalar>>()
+                   .template data<1, Values...>(std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template base(Misc&&... misc);
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<const magrathea::AbstractSubstance<
+                   Cone<Vector, Scalar>,
+                   Vector,
+                   Vector,
+                   Scalar>>()
+                   .template data<1, Values...>(std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template base(Misc&&... misc) const;
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<magrathea::AbstractSubstance<
+                   Cone<Vector, Scalar>,
+                   Vector,
+                   Vector,
+                   Scalar>>()
+                   .template data<2, Values...>(std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template angle(Misc&&... misc);
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<const magrathea::AbstractSubstance<
+                   Cone<Vector, Scalar>,
+                   Vector,
+                   Vector,
+                   Scalar>>()
+                   .template data<2, Values...>(std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template angle(Misc&&... misc) const;
     //@}
 
     // Position
@@ -137,18 +159,18 @@ public:
     /// \name           Collision
     //@{
 public:
-    template <class OtherVector,
-              class = typename std::enable_if<std::is_convertible<
-                  typename std::remove_cv<typename std::remove_reference<
-                      decltype(std::declval<OtherVector>()[0])>::type>::type,
-                  Scalar>::value>::type>
-    inline bool inside(const OtherVector &point) const;
-    template <class OtherVector,
-              class = typename std::enable_if<std::is_convertible<
-                  typename std::remove_cv<typename std::remove_reference<
-                      decltype(std::declval<OtherVector>()[0])>::type>::type,
-                  Scalar>::value>::type>
-    inline bool outside(const OtherVector &point) const;
+    template<class OtherVector,
+             class = typename std::enable_if<std::is_convertible<
+               typename std::remove_cv<typename std::remove_reference<
+                 decltype(std::declval<OtherVector>()[0])>::type>::type,
+               Scalar>::value>::type>
+    inline bool inside(const OtherVector& point) const;
+    template<class OtherVector,
+             class = typename std::enable_if<std::is_convertible<
+               typename std::remove_cv<typename std::remove_reference<
+                 decltype(std::declval<OtherVector>()[0])>::type>::type,
+               Scalar>::value>::type>
+    inline bool outside(const OtherVector& point) const;
     //@}
 
     // Test
@@ -167,12 +189,11 @@ public:
 ///                 base class.
 /// \tparam         Misc (Miscellaneous types.)
 /// \param[in]      misc Miscellaneous arguments.
-template <class Vector, typename Scalar>
-template <class... Misc>
-inline Cone<Vector, Scalar>::Cone(Misc &&...misc)
-    : magrathea::AbstractShape(),
-      magrathea::AbstractSubstance<Cone<Vector, Scalar>, Vector, Vector,
-                                   Scalar>(std::forward<Misc>(misc)...) {
+template<class Vector, typename Scalar>
+template<class... Misc>
+inline Cone<Vector, Scalar>::Cone(Misc&&... misc)
+  : magrathea::AbstractShape()
+  , magrathea::AbstractSubstance<Cone<Vector, Scalar>, Vector, Vector, Scalar>(std::forward<Misc>(misc)...) {
     ;
 }
 // -------------------------------------------------------------------------- //
@@ -187,9 +208,10 @@ inline Cone<Vector, Scalar>::Cone(Misc &&...misc)
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <class Vector, typename Scalar>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Cone<Vector, Scalar>::vertex(Misc &&...misc) {
+template<class Vector, typename Scalar>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Cone<Vector, Scalar>::vertex(Misc&&... misc) {
     return this->template data<0, Values...>(std::forward<Misc>(misc)...);
 }
 
@@ -202,9 +224,10 @@ inline Template Cone<Vector, Scalar>::vertex(Misc &&...misc) {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <class Vector, typename Scalar>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Cone<Vector, Scalar>::vertex(Misc &&...misc) const {
+template<class Vector, typename Scalar>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Cone<Vector, Scalar>::vertex(Misc&&... misc) const {
     return this->template data<0, Values...>(std::forward<Misc>(misc)...);
 }
 
@@ -217,9 +240,10 @@ inline Template Cone<Vector, Scalar>::vertex(Misc &&...misc) const {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <class Vector, typename Scalar>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Cone<Vector, Scalar>::base(Misc &&...misc) {
+template<class Vector, typename Scalar>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Cone<Vector, Scalar>::base(Misc&&... misc) {
     return this->template data<1, Values...>(std::forward<Misc>(misc)...);
 }
 
@@ -232,9 +256,10 @@ inline Template Cone<Vector, Scalar>::base(Misc &&...misc) {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <class Vector, typename Scalar>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Cone<Vector, Scalar>::base(Misc &&...misc) const {
+template<class Vector, typename Scalar>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Cone<Vector, Scalar>::base(Misc&&... misc) const {
     return this->template data<1, Values...>(std::forward<Misc>(misc)...);
 }
 
@@ -247,9 +272,10 @@ inline Template Cone<Vector, Scalar>::base(Misc &&...misc) const {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <class Vector, typename Scalar>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Cone<Vector, Scalar>::angle(Misc &&...misc) {
+template<class Vector, typename Scalar>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Cone<Vector, Scalar>::angle(Misc&&... misc) {
     return this->template data<2, Values...>(std::forward<Misc>(misc)...);
 }
 
@@ -262,9 +288,10 @@ inline Template Cone<Vector, Scalar>::angle(Misc &&...misc) {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <class Vector, typename Scalar>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Cone<Vector, Scalar>::angle(Misc &&...misc) const {
+template<class Vector, typename Scalar>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Cone<Vector, Scalar>::angle(Misc&&... misc) const {
     return this->template data<2, Values...>(std::forward<Misc>(misc)...);
 }
 // -------------------------------------------------------------------------- //
@@ -276,8 +303,9 @@ inline Template Cone<Vector, Scalar>::angle(Misc &&...misc) const {
 ///                 the vertex to the base center.
 /// \param[in]      idim Index of the dimension.
 /// \return         The coordinate of \f$b_{i}-v_{i}\f$.
-template <class Vector, typename Scalar>
-inline Scalar Cone<Vector, Scalar>::direction(const unsigned int idim) const {
+template<class Vector, typename Scalar>
+inline Scalar
+Cone<Vector, Scalar>::direction(const unsigned int idim) const {
     return base(idim) - vertex(idim);
 }
 
@@ -286,8 +314,9 @@ inline Scalar Cone<Vector, Scalar>::direction(const unsigned int idim) const {
 /// \details        Computes the vector going from the vertex to the base
 ///                 center.
 /// \return         The vector \f$\vec{b}-\vec{v}\f$.
-template <class Vector, typename Scalar>
-inline Vector Cone<Vector, Scalar>::direction() const {
+template<class Vector, typename Scalar>
+inline Vector
+Cone<Vector, Scalar>::direction() const {
     Vector result = Vector();
     for (unsigned int idim = 0; idim < 3; ++idim) {
         result[idim] = base(idim) - vertex(idim);
@@ -301,8 +330,9 @@ inline Vector Cone<Vector, Scalar>::direction() const {
 /// \brief          Length.
 /// \details        Computes the height length of the cone.
 /// \return         \f$h\f$.
-template <class Vector, typename Scalar>
-inline Scalar Cone<Vector, Scalar>::length() const {
+template<class Vector, typename Scalar>
+inline Scalar
+Cone<Vector, Scalar>::length() const {
     Scalar result = Scalar();
     for (unsigned int idim = 0; idim < 3; ++idim) {
         result += pow<2>(base(idim) - vertex(idim));
@@ -314,8 +344,9 @@ inline Scalar Cone<Vector, Scalar>::length() const {
 /// \brief          Radius.
 /// \details        Computes the base radius of the cone.
 /// \return         \f$r\f$.
-template <class Vector, typename Scalar>
-inline Scalar Cone<Vector, Scalar>::radius() const {
+template<class Vector, typename Scalar>
+inline Scalar
+Cone<Vector, Scalar>::radius() const {
     Scalar result = Scalar();
     for (unsigned int idim = 0; idim < 3; ++idim) {
         result += pow<2>(base(idim) - vertex(idim));
@@ -327,8 +358,9 @@ inline Scalar Cone<Vector, Scalar>::radius() const {
 /// \brief          Diameter.
 /// \details        Computes the base diameter of the cone.
 /// \return         \f$d\f$.
-template <class Vector, typename Scalar>
-inline Scalar Cone<Vector, Scalar>::diameter() const {
+template<class Vector, typename Scalar>
+inline Scalar
+Cone<Vector, Scalar>::diameter() const {
     Scalar result = Scalar();
     for (unsigned int idim = 0; idim < 3; ++idim) {
         result += pow<2>(base(idim) - vertex(idim));
@@ -340,8 +372,9 @@ inline Scalar Cone<Vector, Scalar>::diameter() const {
 /// \brief          Circle.
 /// \details        Computes the base area of the cone.
 /// \return         \f$B\f$.
-template <class Vector, typename Scalar>
-inline Scalar Cone<Vector, Scalar>::circle() const {
+template<class Vector, typename Scalar>
+inline Scalar
+Cone<Vector, Scalar>::circle() const {
     Scalar result = Scalar();
     for (unsigned int idim = 0; idim < 3; ++idim) {
         result += pow<2>(base(idim) - vertex(idim));
@@ -353,8 +386,9 @@ inline Scalar Cone<Vector, Scalar>::circle() const {
 /// \brief          Surface.
 /// \details        Computes the outer surface of the cone.
 /// \return         \f$\pi\times r^{2}+\pi\times r \times h\f$.
-template <class Vector, typename Scalar>
-inline Scalar Cone<Vector, Scalar>::surface() const {
+template<class Vector, typename Scalar>
+inline Scalar
+Cone<Vector, Scalar>::surface() const {
     Scalar result = Scalar();
     for (unsigned int idim = 0; idim < 3; ++idim) {
         result += pow<2>(base(idim) - vertex(idim));
@@ -367,8 +401,9 @@ inline Scalar Cone<Vector, Scalar>::surface() const {
 /// \brief          Volume.
 /// \details        Computes the volume of the cone.
 /// \return         \f$\frac{\pi\times r^{2}\times h}{3}\f$.
-template <class Vector, typename Scalar>
-inline Scalar Cone<Vector, Scalar>::volume() const {
+template<class Vector, typename Scalar>
+inline Scalar
+Cone<Vector, Scalar>::volume() const {
     Scalar result = Scalar();
     for (unsigned int idim = 0; idim < 3; ++idim) {
         result += pow<2>(base(idim) - vertex(idim));
@@ -385,9 +420,10 @@ inline Scalar Cone<Vector, Scalar>::volume() const {
 /// \tparam         OtherVector Other position vector type.
 /// \param[in]      point Position of the point.
 /// \return         True if the point is inside the cone, false otherwise.
-template <class Vector, typename Scalar>
-template <class OtherVector, class>
-inline bool Cone<Vector, Scalar>::inside(const OtherVector &point) const {
+template<class Vector, typename Scalar>
+template<class OtherVector, class>
+inline bool
+Cone<Vector, Scalar>::inside(const OtherVector& point) const {
     Scalar dot = Scalar();
     Scalar dist = Scalar();
     Scalar ref = Scalar();
@@ -406,9 +442,10 @@ inline bool Cone<Vector, Scalar>::inside(const OtherVector &point) const {
 /// \tparam         OtherVector Other position vector type.
 /// \param[in]      point Position of the point.
 /// \return         True if the point is outside the cone, false otherwise.
-template <class Vector, typename Scalar>
-template <class OtherVector, class>
-inline bool Cone<Vector, Scalar>::outside(const OtherVector &point) const {
+template<class Vector, typename Scalar>
+template<class OtherVector, class>
+inline bool
+Cone<Vector, Scalar>::outside(const OtherVector& point) const {
     Scalar dot = Scalar();
     Scalar dist = Scalar();
     Scalar ref = Scalar();
@@ -427,14 +464,15 @@ inline bool Cone<Vector, Scalar>::outside(const OtherVector &point) const {
 /// \brief          Example function.
 /// \details        Tests and demonstrates the use of Cone.
 /// \return         0 if no error.
-template <class Vector, typename Scalar>
-int Cone<Vector, Scalar>::example() {
+template<class Vector, typename Scalar>
+int
+Cone<Vector, Scalar>::example() {
     // Initialize
     std::cout << "BEGIN = Cone::example()" << std::endl;
     std::cout << std::boolalpha << std::left;
     const unsigned int width = 40;
-    std::array<double, 3> array({{4, 8, 15}});
-    std::array<double, 3> array2({{16, 23, 42}});
+    std::array<double, 3> array({ { 4, 8, 15 } });
+    std::array<double, 3> array2({ { 16, 23, 42 } });
 
     // Construction
     Cone<std::array<double, 3>, double> cone(array, array2, 0.16);

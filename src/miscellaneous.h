@@ -66,57 +66,58 @@ class Miscellaneous {
     // Methodes
 public:
     // Name of files in Directory
-    static void getFilesinDir(const std::string dirName, std::vector<std::string> &fileNames);
+    static void getFilesinDir(const std::string dirName, std::vector<std::string>& fileNames);
     // Tokenize string
-    static void Tokenize(const std::string &str, std::vector<std::string> &tokens, const std::string &delimiters = " ");
+    static void Tokenize(const std::string& str, std::vector<std::string>& tokens, const std::string& delimiters = " ");
 
     // Clear and shrink
-    template <class Vectored>
-    static void clear_shrink(Vectored &vector);
-    template <typename Type>
-    static void fullclear_vector(std::vector<Type> &vector);
+    template<class Vectored>
+    static void clear_shrink(Vectored& vector);
+    template<typename Type>
+    static void fullclear_vector(std::vector<Type>& vector);
     // Ticket
-    template <class Function, typename Integer>
-    static void TicketizeFunction(const Integer rank, const Integer ntasks, Function &&function);
+    template<class Function, typename Integer>
+    static void TicketizeFunction(const Integer rank, const Integer ntasks, Function&& function);
     // Get specs
-    template <class Parameter, typename Scalar>
-    static void get_narrow_specs(const Parameter &parameters, std::array<std::array<double, 3>, 3> &rotm1, Scalar &thetay, Scalar &thetaz);
+    template<class Parameter, typename Scalar>
+    static void get_narrow_specs(const Parameter& parameters, std::array<std::array<double, 3>, 3>& rotm1, Scalar& thetay, Scalar& thetaz);
     // Load & Correct octree
-    template <class Octree, class Filelist, typename Integer>
-    static void loadOctree(const Integer icone, Octree &octree, Filelist &conefile);
-    template <class Octree, class Cosmology, class Parameters, typename Real>
-    static void correctOctree(Octree &octree, const Cosmology &cosmology, Parameters &parameters, const Real h, const Real omegam, const Real lboxmpch, Real &amin);
+    template<class Octree, class Filelist, typename Integer>
+    static void loadOctree(const Integer icone, Octree& octree, Filelist& conefile);
+    template<class Octree, class Cosmology, class Parameters, typename Real>
+    static void correctOctree(Octree& octree, const Cosmology& cosmology, Parameters& parameters, const Real h, const Real omegam, const Real lboxmpch, Real& amin);
     // Targets
-    template <class Vector, typename Scalar, class Container>
-    static std::vector<std::array<double, 8>> getTargets(const std::vector<std::array<double, 8>> &posTargets, const Cone<Vector, Scalar> &cone, const Container &cones);
+    template<class Vector, typename Scalar, class Container>
+    static std::vector<std::array<double, 8>> getTargets(const std::vector<std::array<double, 8>>& posTargets, const Cone<Vector, Scalar>& cone, const Container& cones);
 
     // Fill particles
-    template <class Parameter, class Cone, typename Type1>
-    static void fill_particles_vectors(const Parameter &parameters, const Cone &cone, const std::vector<std::string> &shellList, std::vector<Type1> &pos_part, std::vector<Type1> &force_part, std::vector<Type1> &potential_part, std::vector<Type1> &a_part, const double thetay, const double thetaz);
+    template<class Parameter, class Cone, typename Type1>
+    static void fill_particles_vectors(const Parameter& parameters, const Cone& cone, const std::vector<std::string>& shellList, std::vector<Type1>& pos_part, std::vector<Type1>& force_part, std::vector<Type1>& potential_part, std::vector<Type1>& a_part, const double thetay, const double thetaz);
 
     // Visualise octree
-    template <template <typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree, typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
-    static void VizualizeOctree(const Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container> &octree, const Type radius);
+    template<template<typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree, typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
+    static void VizualizeOctree(const Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& octree, const Type radius);
 
     // Read Angular position from previously computed catalog
-    template <typename Integer>
-    static void ReadFromCat(const Integer icone, const std::string filename, std::vector<std::array<double, 18>> &catalogue);
+    template<typename Integer>
+    static void ReadFromCat(const Integer icone, const std::string filename, std::vector<std::array<double, 18>>& catalogue);
 
     // Write and read cone orientation file
-    template <class Cone, class Parameters>
-    static void write_cone_orientation(const Cone &cones, const Cone &conesIfRot, const Parameters &parameters);
-    template <class Cone, class Parameters>
-    static void read_cone_orientation(Cone &cones, Cone &conesIfRot, const Parameters &parameters);
+    template<class Cone, class Parameters>
+    static void write_cone_orientation(const Cone& cones, const Cone& conesIfRot, const Parameters& parameters);
+    template<class Cone, class Parameters>
+    static void read_cone_orientation(Cone& cones, Cone& conesIfRot, const Parameters& parameters);
 };
 
 /// \brief          Get list of files.
 /// \details        Get list of files and directories.
 /// \param[in]      String Directory name.
 /// \param[in,out]  vector<string> List of files and directories.
-void Miscellaneous::getFilesinDir(const std::string dirName, std::vector<std::string> &fileNames) {
+void
+Miscellaneous::getFilesinDir(const std::string dirName, std::vector<std::string>& fileNames) {
 
-    DIR *pdir;
-    struct dirent *pent;
+    DIR* pdir;
+    struct dirent* pent;
 
     pdir = opendir(dirName.c_str()); //"." refers to the current dir
     if (!pdir) {
@@ -143,7 +144,8 @@ void Miscellaneous::getFilesinDir(const std::string dirName, std::vector<std::st
 /// \param[in,out]  tokens Vector of strings.
 /// \param[in]      delimiters Delimiters used to tokenize String.
 /// \return         tokenized vector
-void Miscellaneous::Tokenize(const std::string &str, std::vector<std::string> &tokens, const std::string &delimiters) {
+void
+Miscellaneous::Tokenize(const std::string& str, std::vector<std::string>& tokens, const std::string& delimiters) {
     // Skip delimiters at beginning.
     std::string::size_type lastPos = str.find_first_not_of(delimiters, 0);
     // Find first "non-delimiter".
@@ -165,8 +167,9 @@ void Miscellaneous::Tokenize(const std::string &str, std::vector<std::string> &t
 /// \tparam         Vectored vector type
 /// \param[in,out]  vector Vector to be cleared.
 /// \return         Empty vector
-template <class Vectored>
-void Miscellaneous::clear_shrink(Vectored &vector) {
+template<class Vectored>
+void
+Miscellaneous::clear_shrink(Vectored& vector) {
 
     vector.clear();
     vector.shrink_to_fit();
@@ -177,8 +180,9 @@ void Miscellaneous::clear_shrink(Vectored &vector) {
 /// \tparam         Type Type type
 /// \param[in,out]  vector Vector to be erased.
 /// \return         Empty vector
-template <typename Type>
-void Miscellaneous::fullclear_vector(std::vector<Type> &vector) {
+template<typename Type>
+void
+Miscellaneous::fullclear_vector(std::vector<Type>& vector) {
     std::vector<Type>().swap(vector);
 }
 
@@ -191,20 +195,21 @@ void Miscellaneous::fullclear_vector(std::vector<Type> &vector) {
 /// \param[in]      ntasks Number of tasks
 /// \param[in]      function Lambda function
 /// \return         Operation using ticketing system.
-template <class Function, typename Integer>
-void Miscellaneous::TicketizeFunction(const Integer rank, const Integer ntasks, Function &&function) {
+template<class Function, typename Integer>
+void
+Miscellaneous::TicketizeFunction(const Integer rank, const Integer ntasks, Function&& function) {
 
     Integer ioticket = 1;
     // If we use the ticket system
     if (IOGROUPSIZE > 1) {
 
         if (rank % IOGROUPSIZE > 0)
-            MPI_Recv((void *)&ioticket, 1, MPI_INT, rank - 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            MPI_Recv((void*)&ioticket, 1, MPI_INT, rank - 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
         function();
 
         if ((rank + 1) % IOGROUPSIZE > 0 && rank + 1 < ntasks)
-            MPI_Send((void *)&ioticket, 1, MPI_INT, rank + 1, 0, MPI_COMM_WORLD);
+            MPI_Send((void*)&ioticket, 1, MPI_INT, rank + 1, 0, MPI_COMM_WORLD);
         // No ticket system
     } else {
         function();
@@ -220,12 +225,13 @@ void Miscellaneous::TicketizeFunction(const Integer rank, const Integer ntasks, 
 /// \param[in,out]  rotm1 Rotation matrix for narrow cone cells
 /// \param[in,out]  thetay Semi-angle for solid angle in direction y
 /// \param[in,out]  thetaz Semi-angle for solid angle in direction z
-template <class Parameter, typename Scalar>
-void Miscellaneous::get_narrow_specs(const Parameter &parameters, std::array<std::array<double, 3>, 3> &rotm1, Scalar &thetay, Scalar &thetaz) {
+template<class Parameter, typename Scalar>
+void
+Miscellaneous::get_narrow_specs(const Parameter& parameters, std::array<std::array<double, 3>, 3>& rotm1, Scalar& thetay, Scalar& thetaz) {
 
     std::size_t found;
     double theta_rot(0), phi_rot(0);
-    std::array<std::array<double, 3>, 3> rotation = {{0}};
+    std::array<std::array<double, 3>, 3> rotation = { { 0 } };
     std::vector<std::string> filelistingprior;
     std::string filelisting;
 
@@ -298,8 +304,9 @@ void Miscellaneous::get_narrow_specs(const Parameter &parameters, std::array<std
 /// \param[in]      icone cone number
 /// \param[in,out]  octree Octree to be filled
 /// \param[in]      conefile Cone names in conedir
-template <class Octree, class Filelist, typename Integer>
-void Miscellaneous::loadOctree(const Integer icone, Octree &octree, Filelist &conefile) {
+template<class Octree, class Filelist, typename Integer>
+void
+Miscellaneous::loadOctree(const Integer icone, Octree& octree, Filelist& conefile) {
 
     octree.fullclear();
 #ifdef VERBOSE
@@ -314,16 +321,18 @@ void Miscellaneous::loadOctree(const Integer icone, Octree &octree, Filelist &co
     // When putting an octree generated with gravity.h in an octree with gravity2.h,
     // need to correct the position of data
     std::for_each(std::execution::par_unseq,
-    octree.begin(), octree.end(), [&](auto& elem){
-        std::get<1>(elem).rho() = std::get<1>(elem).dphidy();
-        std::get<1>(elem).phi() = std::get<1>(elem).dphidx();
-        std::get<1>(elem).dphidx() = std::get<1>(elem).vz();
-        std::get<1>(elem).dphidy() = std::get<1>(elem).dphidt();
-        std::get<1>(elem).dphidz() = std::get<1>(elem).a();
-        std::get<1>(elem).a() = std::get<1>(elem).vy();
-        std::get<1>(elem).dphidt() = std::get<1>(elem).vx();
-        std::get<1>(elem).vxyz() = std::array<float, 3>();  
-    });
+                  octree.begin(),
+                  octree.end(),
+                  [&](auto& elem) {
+                      std::get<1>(elem).rho() = std::get<1>(elem).dphidy();
+                      std::get<1>(elem).phi() = std::get<1>(elem).dphidx();
+                      std::get<1>(elem).dphidx() = std::get<1>(elem).vz();
+                      std::get<1>(elem).dphidy() = std::get<1>(elem).dphidt();
+                      std::get<1>(elem).dphidz() = std::get<1>(elem).a();
+                      std::get<1>(elem).a() = std::get<1>(elem).vy();
+                      std::get<1>(elem).dphidt() = std::get<1>(elem).vx();
+                      std::get<1>(elem).vxyz() = std::array<float, 3>();
+                  });
 #endif
 }
 
@@ -342,24 +351,29 @@ void Miscellaneous::loadOctree(const Integer icone, Octree &octree, Filelist &co
 /// \param[in]      omegam Matter density fraction
 /// \param[in]      lboxmpch Size of simulation box
 /// \param[in,out]  amin minimum value scale factor
-template <class Octree, class Cosmology, class Parameters, typename Real>
-void Miscellaneous::correctOctree(Octree &octree, const Cosmology &cosmology, Parameters &parameters, const Real h, const Real omegam, const Real lboxmpch, Real &amin) {
+template<class Octree, class Cosmology, class Parameters, typename Real>
+void
+Miscellaneous::correctOctree(Octree& octree, const Cosmology& cosmology, Parameters& parameters, const Real h, const Real omegam, const Real lboxmpch, Real& amin) {
 
     // Convert from Ramses Units to SI
     Input::sistemize(parameters, octree, h, omegam, lboxmpch);
     // Initialise dphida to zero
-    std::for_each(std::execution::par_unseq, 
-        octree.begin(), octree.end(), [&](auto& elem) {
-        std::get<1>(elem).dphidt() = 0;  
-    });
+    std::for_each(std::execution::par_unseq,
+                  octree.begin(),
+                  octree.end(),
+                  [&](auto& elem) {
+                      std::get<1>(elem).dphidt() = 0;
+                  });
     // Apply correction to the octree,
     // also .update() is used twice (before and after corrections)
     Input::correct(parameters, octree, amin);
     // Convert from dphi/da to dphi/dt
-    std::for_each(std::execution::par_unseq, 
-        octree.begin(), octree.end(), [&](auto& elem) {
-        std::get<1>(elem).dphidt() *= Utility::rinterpolate(std::get<1>(elem).a(), std::get<1>(cosmology), std::get<2>(cosmology));  
-    });
+    std::for_each(std::execution::par_unseq,
+                  octree.begin(),
+                  octree.end(),
+                  [&](auto& elem) {
+                      std::get<1>(elem).dphidt() *= Utility::rinterpolate(std::get<1>(elem).a(), std::get<1>(cosmology), std::get<2>(cosmology));
+                  });
 }
 
 // Vizualize Octree
@@ -376,8 +390,9 @@ void Miscellaneous::correctOctree(Octree &octree, const Cosmology &cosmology, Pa
 /// \tparam         Container container type
 /// \param[in]      octree Octree to be filled
 /// \param[in]      radius Maximum radius at which we write cells (in Ramses Units)
-template <template <typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree, typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
-void Miscellaneous::VizualizeOctree(const Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container> &octree, const Type radius) {
+template<template<typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container> class Octree, typename Type, class Index, class Data, unsigned int Dimension, class Position, class Extent, class Element, class Container>
+void
+Miscellaneous::VizualizeOctree(const Octree<Type, Index, Data, Dimension, Position, Extent, Element, Container>& octree, const Type radius) {
 
     for (uint i = 0; i < octree.size(); i++) {
         double x = std::get<0>(octree[i]).template center<Type, Position, Extent>(0);
@@ -401,8 +416,9 @@ void Miscellaneous::VizualizeOctree(const Octree<Type, Index, Data, Dimension, P
 /// \param[in]      Cone current cone.
 /// \param[in]	    Cones to compare distances.
 /// return  	    Vector vector of targets inside cone
-template <class Vector, typename Scalar, class Container>
-std::vector<std::array<double, 8>> Miscellaneous::getTargets(const std::vector<std::array<double, 8>> &posTargets, const Cone<Vector, Scalar> &cone, const Container &cones) {
+template<class Vector, typename Scalar, class Container>
+std::vector<std::array<double, 8>>
+Miscellaneous::getTargets(const std::vector<std::array<double, 8>>& posTargets, const Cone<Vector, Scalar>& cone, const Container& cones) {
     // Fill selection vector with -1
     std::vector<int> selection(posTargets.size(), -1);
 
@@ -449,13 +465,13 @@ std::vector<std::array<double, 8>> Miscellaneous::getTargets(const std::vector<s
                             icone = cones.size();
                         }
                     } //  if length
-                }     // if
-            }         // for icone
+                } // if
+            } // for icone
             if (ok) {
                 selection[ivec] = ivec;
             }
         } //  if
-    });   //  while
+    }); //  while
 
     // Erase targets which are not inside the cone
     selection.erase(std::remove(std::execution::par_unseq, std::begin(selection), std::end(selection), -1), std::end(selection));
@@ -482,8 +498,9 @@ std::vector<std::array<double, 8>> Miscellaneous::getTargets(const std::vector<s
 /// \param[in,out]  a_part scale factor of particles
 /// \param[in]      thetay Semi-angle for solid angle in direction y
 /// \param[in]      thetaz Semi-angle for solid angle in direction z
-template <class Parameter, class Cone, typename Type1>
-void Miscellaneous::fill_particles_vectors(const Parameter &parameters, const Cone &cone, const std::vector<std::string> &shellList, std::vector<Type1> &pos_part, std::vector<Type1> &force_part, std::vector<Type1> &potential_part, std::vector<Type1> &a_part, const double thetay, const double thetaz) {
+template<class Parameter, class Cone, typename Type1>
+void
+Miscellaneous::fill_particles_vectors(const Parameter& parameters, const Cone& cone, const std::vector<std::string>& shellList, std::vector<Type1>& pos_part, std::vector<Type1>& force_part, std::vector<Type1>& potential_part, std::vector<Type1>& a_part, const double thetay, const double thetaz) {
 
     unsigned long long int marker1(0), marker2(0);
 
@@ -507,13 +524,15 @@ void Miscellaneous::fill_particles_vectors(const Parameter &parameters, const Co
         // Factors to convert Potential and Force in SI
         const double factorpot = std::pow(unit_l * 1e-2 / unit_t, 2);
         const double factorforce = -aexp * unit_l * 1e-2 / (unit_t * unit_t);
-        std::for_each(std::execution::par_unseq, 
-            potential_part.begin() + marker1, potential_part.end(), 
-            [factorpot](Type1& value) { value *= factorpot; });
+        std::for_each(std::execution::par_unseq,
+                      potential_part.begin() + marker1,
+                      potential_part.end(),
+                      [factorpot](Type1& value) { value *= factorpot; });
 
-        std::for_each(std::execution::par_unseq, 
-            force_part.begin() + marker2, force_part.end(), 
-            [factorforce](Type1& value) { value *= factorforce; });
+        std::for_each(std::execution::par_unseq,
+                      force_part.begin() + marker2,
+                      force_part.end(),
+                      [factorforce](Type1& value) { value *= factorforce; });
 
         std::vector<Type1> a_tmp(potential_part.size() - marker1);
         std::fill(std::execution::par_unseq, a_tmp.begin(), a_tmp.end(), aexp);
@@ -532,8 +551,9 @@ void Miscellaneous::fill_particles_vectors(const Parameter &parameters, const Co
 /// \param[in]      parameters Parameter structure
 /// \param[in]      icone cone number
 /// \param[in,out]  Catalogue Vector containing the source catalogue
-template <typename Integer>
-void Miscellaneous::ReadFromCat(const Integer icone, const std::string filename, std::vector<std::array<double, 18>> &catalogue) {
+template<typename Integer>
+void
+Miscellaneous::ReadFromCat(const Integer icone, const std::string filename, std::vector<std::array<double, 18>>& catalogue) {
 
 #ifdef VERBOSE
     std::cout << "# Cone " << icone << " Read angular position from " << filename << std::endl;
@@ -560,8 +580,9 @@ void Miscellaneous::ReadFromCat(const Integer icone, const std::string filename,
 /// \param[in]      cones cone container
 /// \param[in]      conesIfRot rotated cone container
 /// \param[in]      parameters Parameter structure
-template <class Cone, class Parameters>
-void Miscellaneous::write_cone_orientation(const Cone &cones, const Cone &conesIfRot, const Parameters &parameters) {
+template<class Cone, class Parameters>
+void
+Miscellaneous::write_cone_orientation(const Cone& cones, const Cone& conesIfRot, const Parameters& parameters) {
     // Create filename of catalogue
     std::string filename, filename2;
     if (parameters.isfullsky) {
@@ -606,8 +627,9 @@ void Miscellaneous::write_cone_orientation(const Cone &cones, const Cone &conesI
 /// \param[in]      cones cone container
 /// \param[in]      conesIfRot rotated cone container
 /// \param[in]      parameters Parameter structure
-template <class Cone, class Parameters>
-void Miscellaneous::read_cone_orientation(Cone &cones, Cone &conesIfRot, const Parameters &parameters) {
+template<class Cone, class Parameters>
+void
+Miscellaneous::read_cone_orientation(Cone& cones, Cone& conesIfRot, const Parameters& parameters) {
     // Create filename of catalogue
     std::string filename, filename2;
     if (parameters.isfullsky) {

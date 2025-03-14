@@ -81,7 +81,8 @@ using namespace magrathea;
 /// \param[in]      argc Number of arguments.
 /// \param[in]      argv List of arguments.
 /// \return         Zero on success, error code otherwise.
-int main(int argc, char *argv[]) {
+int
+main(int argc, char* argv[]) {
     // Constants
 
     using integer = int;
@@ -94,7 +95,7 @@ int main(int argc, char *argv[]) {
     using indexing = __uint128_t;
 #ifdef VELOCITYFIELD
     using element =
-        std::pair<SimpleHyperOctreeIndex<indexing, 3>, Gravity<floating, 3>>;
+      std::pair<SimpleHyperOctreeIndex<indexing, 3>, Gravity<floating, 3>>;
 #endif
     static constexpr uint INDEX_LENSING = 0;
     static constexpr uint INDEX_LENSING_BORN = 1;
@@ -117,13 +118,13 @@ int main(int argc, char *argv[]) {
     static constexpr uint dimension = 3;
     static constexpr uint nreference = 5; // Used to set homogeneous octree
     static constexpr real rposition =
-        static_cast<real>(position::num) / static_cast<real>(position::den);
-    static constexpr point center({{rposition, rposition, rposition}});
+      static_cast<real>(position::num) / static_cast<real>(position::den);
+    static constexpr point center({ { rposition, rposition, rposition } });
     static constexpr real diameter =
-        static_cast<real>(extent::num) / static_cast<real>(extent::den);
+      static_cast<real>(extent::num) / static_cast<real>(extent::den);
     static const std::string all = "all";
     static const std::string namelist =
-        argc > 1 ? std::string(argv[1]) : std::string("raytracer.txt");
+      argc > 1 ? std::string(argv[1]) : std::string("raytracer.txt");
 
     // Parameters
     std::map<std::string, std::string> parameter;
@@ -137,15 +138,13 @@ int main(int argc, char *argv[]) {
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     // Read parameter file
     Miscellaneous::TicketizeFunction(
-        rank, ntasks, [=, &parameter] { parameter = Input::parse(namelist); });
+      rank, ntasks, [=, &parameter] { parameter = Input::parse(namelist); });
     // Convert strings and put it in struct
     Hmaps::ReadParamFile(parameters, parameter);
     // Initialization
-    FileList conefile(parameters.conefmt, zero, parameters.ncones, zero,
-                      parameters.conedir);
-    SimpleHyperOctree<real, SimpleHyperOctreeIndex<indexing, dimension>,
-                      Gravity<floating, dimension>, dimension, position, extent>
-        octree;
+    FileList conefile(parameters.conefmt, zero, parameters.ncones, zero, parameters.conedir);
+    SimpleHyperOctree<real, SimpleHyperOctreeIndex<indexing, dimension>, Gravity<floating, dimension>, dimension, position, extent>
+      octree;
     HyperSphere<dimension, point> sphere(center, diameter / two);
     std::vector<Cone<point>> cone(parameters.ncones);
     std::vector<Cone<point>> coneIfRot(parameters.ncones);
@@ -155,8 +154,7 @@ int main(int argc, char *argv[]) {
     real h = zero;
     real omegam = zero;
     real lboxmpch = zero;
-    constexpr point vobs0 = {0, 0,
-                         0}; // No peculiar velocity for homogeneous quantities
+    constexpr point vobs0 = { 0, 0, 0 }; // No peculiar velocity for homogeneous quantities
     std::mt19937 engine1(parameters.seed > zero ? parameters.seed + rank
                                                 : std::random_device()());
 
@@ -164,9 +162,9 @@ int main(int argc, char *argv[]) {
         std::cout << "#### MAGRATHEA_PATHFINDER " << std::endl;
     // Generate cones
     Miscellaneous::TicketizeFunction(
-        rank, ntasks, [=, &cone, &coneIfRot, &parameter] {
-            Miscellaneous::read_cone_orientation(cone, coneIfRot, parameters);
-        });
+      rank, ntasks, [=, &cone, &coneIfRot, &parameter] {
+          Miscellaneous::read_cone_orientation(cone, coneIfRot, parameters);
+      });
     // Read cosmology
     cosmology = Input::acquire(parameters, h, omegam, lboxmpch);
     if (rank == 0) {
@@ -184,18 +182,10 @@ int main(int argc, char *argv[]) {
 
     // Construct homogeneous tree
     Input::homogenize(octree.assign(nreference, zero));
-    reference.append(Integrator::launch(center[zero], center[one], center[two],
-                                        center[zero] + diameter / two,
-                                        center[one], center[two]));
+    reference.append(Integrator::launch(center[zero], center[one], center[two], center[zero] + diameter / two, center[one], center[two]));
     // Propagate a photon in a very refined homogeneous FLRW metric
     Integrator::integrate<-1>(
-        reference, cosmology, octree, vobs0, length,
-        EXTENT * std::pow(two, static_cast<uint>(
-                                   std::log2(std::get<0>(cosmology).size() /
-                                                 std::pow(two, nreference) +
-                                             one) +
-                                   one) +
-                                   one));
+      reference, cosmology, octree, vobs0, length, EXTENT * std::pow(two, static_cast<uint>(std::log2(std::get<0>(cosmology).size() / std::pow(two, nreference) + one) + one) + one));
     // Correct cosmology with photon
     cosmology = Input::correct(cosmology, reference);
     octree.fullclear();
@@ -209,7 +199,7 @@ int main(int argc, char *argv[]) {
     for (uint i = 0; i < parameters.nb_z_maps; i++) {
         z_stop_vec[i] = parameters.z_stop_min +
                         i * (parameters.z_stop_max - parameters.z_stop_min) /
-                            (parameters.nb_z_maps - (parameters.nb_z_maps > 1));
+                          (parameters.nb_z_maps - (parameters.nb_z_maps > 1));
     }
     // Get number of pixels in a fullsky map from with nside
     const long npix = nside2npix(parameters.nside);
@@ -370,8 +360,7 @@ int main(int argc, char *argv[]) {
     // Assign pixels to cones
     for (uint iconerank = zero; iconerank < parameters.ncones; ++iconerank) {
         if (iconerank % static_cast<uint>(ntasks) == static_cast<uint>(rank)) {
-            Hmaps::getPixels_per_cone2(parameters, npix, pixel, ntrajectories,
-                                       iconerank, coneIfRot);
+            Hmaps::getPixels_per_cone2(parameters, npix, pixel, ntrajectories, iconerank, coneIfRot);
         }
     }
     pixel.shrink_to_fit();
@@ -385,28 +374,26 @@ int main(int argc, char *argv[]) {
     observer[2] = 0;
     std::vector<real> interpRefvec(parameters.nb_z_maps);
     std::vector<double> thomo(parameters.nb_z_maps), rhomo(parameters.nb_z_maps),
-        lambdahomo(parameters.nb_z_maps), redshifthomo(parameters.nb_z_maps),
-        ahomo(parameters.nb_z_maps);
+      lambdahomo(parameters.nb_z_maps), redshifthomo(parameters.nb_z_maps),
+      ahomo(parameters.nb_z_maps);
 
     // For each redshift, estimate the homogeneous quantities [scale factor,
     // redshift, comoving distance, conformal time, affine parameter]
     for (unsigned int i = 0; i < parameters.nb_z_maps; i++) {
         photon.redshift() = z_stop_vec[i];
         const unsigned long int marked = std::distance(
-            std::begin(reference),
-            std::upper_bound(std::begin(reference), std::end(reference), photon,
-                             [](const Photon<double, 3> &first,
-                                const Photon<double, 3> &second) {
-                                 return first.redshift() < second.redshift();
-                             }));
+          std::begin(reference),
+          std::upper_bound(std::begin(reference), std::end(reference), photon, [](const Photon<double, 3>& first, const Photon<double, 3>& second) {
+              return first.redshift() < second.redshift();
+          }));
         const unsigned long int firstid = marked - (marked > 0);
         const double f =
-            (reference[firstid + 1].redshift() - photon.redshift()) /
-            (reference[firstid + 1].redshift() - reference[firstid].redshift());
+          (reference[firstid + 1].redshift() - photon.redshift()) /
+          (reference[firstid + 1].redshift() - reference[firstid].redshift());
         thomo[i] =
-            reference[firstid].t() * f + reference[firstid + 1].t() * (1 - f);
+          reference[firstid].t() * f + reference[firstid + 1].t() * (1 - f);
         rhomo[i] =
-            reference[firstid].chi() * f + reference[firstid + 1].chi() * (1 - f);
+          reference[firstid].chi() * f + reference[firstid + 1].chi() * (1 - f);
         lambdahomo[i] = reference[firstid].lambda() * f +
                         reference[firstid + 1].lambda() * (1 - f);
         ahomo[i] = 1. / (1. + z_stop_vec[i]);
@@ -459,10 +446,7 @@ int main(int argc, char *argv[]) {
                       << ", now computing Healpix maps" << std::endl;
 #endif
             // Fill Healpix maps with ray-tracing routines
-            Hmaps::FillMap(parameters, map_components, index_components,
-                           ntrajectories[itraj], firsttrajectory, octree, vobs0, map,
-                           nmaps, pixel, cosmology, observer, length, interpRefvec,
-                           rhomo, thomo, lambdahomo, redshifthomo, ahomo);
+            Hmaps::FillMap(parameters, map_components, index_components, ntrajectories[itraj], firsttrajectory, octree, vobs0, map, nmaps, pixel, cosmology, observer, length, interpRefvec, rhomo, thomo, lambdahomo, redshifthomo, ahomo);
             firsttrajectory += ntrajectories[itraj];
             itraj++;
         }
@@ -472,10 +456,10 @@ int main(int argc, char *argv[]) {
 #ifdef VERBOSE
     if (rank == 0)
         std::cout
-            << "# Maps at inhomogeneous redshift(s). Velocity field computed with "
-            << parameters.velocity_field << std::endl;
+          << "# Maps at inhomogeneous redshift(s). Velocity field computed with "
+          << parameters.velocity_field << std::endl;
 #endif
-    const point vobs = {parameters.v0x, parameters.v0y, parameters.v0z};
+    const point vobs = { parameters.v0x, parameters.v0y, parameters.v0z };
     std::size_t found;
     std::vector<std::string> filelistprior, shellList;
 
@@ -495,13 +479,13 @@ int main(int argc, char *argv[]) {
     uint firsttrajectory(0);
     long itraj = 0;
     real thetay(0), thetaz(0);
-    std::array<std::array<double, 3>, 3> rotm1 = {{zero}};
+    std::array<std::array<double, 3>, 3> rotm1 = { { zero } };
     // Get thetay, thetaz and rotm1
     if (!parameters.isfullsky) {
         Miscellaneous::TicketizeFunction(
-            rank, ntasks, [=, &parameter, &rotm1, &thetay, &thetaz] {
-                Miscellaneous::get_narrow_specs(parameters, rotm1, thetay, thetaz);
-            });
+          rank, ntasks, [=, &parameter, &rotm1, &thetay, &thetaz] {
+              Miscellaneous::get_narrow_specs(parameters, rotm1, thetay, thetaz);
+          });
     }
     // Create octree from particles
     for (uint icone = zero; icone < parameters.ncones; ++icone) {
@@ -514,18 +498,16 @@ int main(int argc, char *argv[]) {
             Miscellaneous::loadOctree(icone, octree, conefile);
             // WARNING ! Set rho (density) to zero in each cell of the octree;
             std::for_each(std::execution::par_unseq,
-                octree.begin(), octree.end(),
-                [](auto& elem){std::get<1>(elem).rho() = 0;}
-            );
+                          octree.begin(),
+                          octree.end(),
+                          [](auto& elem) { std::get<1>(elem).rho() = 0; });
             // Read Particle files to compute the velocity field in each AMR cell
             for (uint ifile = 0; ifile < shellList.size(); ifile++) {
                 std::vector<float> pos_part, vel_part;
                 // Miscellaneous::TicketizeFunction(rank, ntasks, [=, &shellList,
                 // &pos_part, &vel_part]{ // Uncomment in case of IO problems
                 //  Get particles from files
-                Hmaps::fill_particles_vectors(parameters, rotm1, cone[icone],
-                                              shellList[ifile], pos_part, vel_part,
-                                              z_stop_vec, thetay, thetaz);
+                Hmaps::fill_particles_vectors(parameters, rotm1, cone[icone], shellList[ifile], pos_part, vel_part, z_stop_vec, thetay, thetaz);
                 //});
                 if (pos_part.size() > 0) {
 #ifdef VERBOSE
@@ -537,16 +519,16 @@ int main(int argc, char *argv[]) {
                     // From particles, compute the velocity field with CIC or TSC scheme
                     if (parameters.velocity_field == "cic") {
                         Hmaps::CreateOctreeVelocityWithCIC(
-                            octree, pos_part,
-                            vel_part); // octree with velocity field using CIC interpolation
+                          octree, pos_part,
+                          vel_part); // octree with velocity field using CIC interpolation
 #ifdef VERBOSE
                         std::cout << "# Rank " << rank << " using cone " << icone
                                   << ", Octree created with CIC" << std::endl;
 #endif
                     } else if (parameters.velocity_field == "tsc") {
                         Hmaps::CreateOctreeVelocityWithTSC(
-                            octree, pos_part,
-                            vel_part); // octree with velocity field using TSC interpolation
+                          octree, pos_part,
+                          vel_part); // octree with velocity field using TSC interpolation
 #ifdef VERBOSE
                         std::cout << "# Rank " << rank << " using cone " << icone
                                   << ", Octree created with TSC" << std::endl;
@@ -562,21 +544,19 @@ int main(int argc, char *argv[]) {
             }
             // Finalize
             const unsigned int lvlmax =
-                (std::get<0>(
-                     *std::max_element(std::execution::par_unseq, std::begin(octree), std::end(octree),
-                                       [](const element &x, const element &y) {
-                                           return std::get<0>(x).level() <
-                                                  std::get<0>(y).level();
-                                       }))
-                     .level());
+              (std::get<0>(
+                 *std::max_element(std::execution::par_unseq, std::begin(octree), std::end(octree), [](const element& x, const element& y) {
+                     return std::get<0>(x).level() <
+                            std::get<0>(y).level();
+                 }))
+                 .level());
             const unsigned int lvlmin =
-                (std::get<0>(
-                     *std::min_element(std::execution::par_unseq, std::begin(octree), std::end(octree),
-                                       [](const element &x, const element &y) {
-                                           return std::get<0>(x).level() <
-                                                  std::get<0>(y).level();
-                                       }))
-                     .level());
+              (std::get<0>(
+                 *std::min_element(std::execution::par_unseq, std::begin(octree), std::end(octree), [](const element& x, const element& y) {
+                     return std::get<0>(x).level() <
+                            std::get<0>(y).level();
+                 }))
+                 .level());
             // Normalise velocity field with mass
             Utility::parallelize(octree.size(), [&](const uint i) {
                 double mass = std::get<1>(octree[i]).rho();
@@ -592,7 +572,7 @@ int main(int argc, char *argv[]) {
                         Gravity<floating, 3> data;
                         if (!std::isnormal(std::get<1>(octree[i]).rho())) {
                             data = std::get<1>(*octree.find(std::get<0>(octree[i]).parent()));
-                            std::get<1>(octree[i]).vxyz() = {data.vx(), data.vy(), data.vz()};
+                            std::get<1>(octree[i]).vxyz() = { data.vx(), data.vy(), data.vz() };
                         }
                     }
                 });
@@ -605,10 +585,7 @@ int main(int argc, char *argv[]) {
                       << ntrajectories[itraj] << std::endl;
 #endif
             // Fill Healpix maps with ray-tracing routines
-            Hmaps::FillMap(parameters, map_components, index_components,
-                           ntrajectories[itraj], firsttrajectory, octree, vobs, map,
-                           nmaps, pixel, cosmology, observer, length, interpRefvec,
-                           rhomo, thomo, lambdahomo, redshifthomo, ahomo);
+            Hmaps::FillMap(parameters, map_components, index_components, ntrajectories[itraj], firsttrajectory, octree, vobs, map, nmaps, pixel, cosmology, observer, length, interpRefvec, rhomo, thomo, lambdahomo, redshifthomo, ahomo);
 #ifdef VERBOSE
             std::cout << "# Rank " << rank << " using cone " << icone
                       << ", Healpix maps computed" << std::endl;
@@ -621,9 +598,9 @@ int main(int argc, char *argv[]) {
 
 #ifdef VERBOSE
     std::cout
-        << "# Rank " << rank
-        << " : Healpix maps filled, now waiting for other procs to finalize "
-        << std::endl;
+      << "# Rank " << rank
+      << " : Healpix maps filled, now waiting for other procs to finalize "
+      << std::endl;
 #endif
     Miscellaneous::fullclear_vector(pixel);
     octree.fullclear();
@@ -631,10 +608,10 @@ int main(int argc, char *argv[]) {
     MPI_Barrier(MPI_COMM_WORLD);
 
     // Finalisation
-    float *mapdata1;
-    float *mapdata2;
-    mapdata1 = (float *)malloc(npix * sizeof(float));
-    mapdata2 = (float *)malloc(npix * sizeof(float));
+    float* mapdata1;
+    float* mapdata2;
+    mapdata1 = (float*)malloc(npix * sizeof(float));
+    mapdata2 = (float*)malloc(npix * sizeof(float));
     const char coordsys = 'G';
     // Create vector of Healpix maps
     Healpix_Map<float> map_tmp;
@@ -649,8 +626,7 @@ int main(int argc, char *argv[]) {
             MPI_Barrier(MPI_COMM_WORLD);
             // Add contribution from every MPI task mapdata1 into the array mapdata2
             const int icone = (nmaps * iz + i) % static_cast<uint>(ntasks);
-            MPI_Reduce((void *)mapdata1, (void *)mapdata2, (int)npix, MPI_FLOAT,
-                       MPI_SUM, icone, MPI_COMM_WORLD);
+            MPI_Reduce((void*)mapdata1, (void*)mapdata2, (int)npix, MPI_FLOAT, MPI_SUM, icone, MPI_COMM_WORLD);
             if (rank == icone) {
                 my_iz = iz;
                 my_i = i;
@@ -687,8 +663,7 @@ int main(int argc, char *argv[]) {
                                      std::to_string(z_stop_vec[my_iz]) + "_" +
                                      parameters.stop_ray + ".fits";
                     // Write Healpix map
-                    write_healpix_map(mapdata2, parameters.nside, outputfilename.data(),
-                                      0, &coordsys);
+                    write_healpix_map(mapdata2, parameters.nside, outputfilename.data(), 0, &coordsys);
                     my_iz = -1;
                 }
             }

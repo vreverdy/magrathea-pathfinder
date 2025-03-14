@@ -74,7 +74,8 @@ using namespace magrathea;
 /// \param[in]      argc Number of arguments.
 /// \param[in]      argv List of arguments.
 /// \return         Zero on success, error code otherwise.
-int main(int argc, char *argv[]) {
+int
+main(int argc, char* argv[]) {
     // Constants
     using integer = int;
     using uint = unsigned int;
@@ -181,8 +182,8 @@ int main(int argc, char *argv[]) {
             std::terminate();
         }
         // Finalize
-        const unsigned int lvlmax = (std::get<0>(*std::max_element(std::execution::par_unseq, std::begin(octree), std::end(octree), [](const element &x, const element &y) { return std::get<0>(x).level() < std::get<0>(y).level(); })).level());
-        const unsigned int lvlmin = (std::get<0>(*std::min_element(std::execution::par_unseq, std::begin(octree), std::end(octree), [](const element &x, const element &y) { return std::get<0>(x).level() < std::get<0>(y).level(); })).level());
+        const unsigned int lvlmax = (std::get<0>(*std::max_element(std::execution::par_unseq, std::begin(octree), std::end(octree), [](const element& x, const element& y) { return std::get<0>(x).level() < std::get<0>(y).level(); })).level());
+        const unsigned int lvlmin = (std::get<0>(*std::min_element(std::execution::par_unseq, std::begin(octree), std::end(octree), [](const element& x, const element& y) { return std::get<0>(x).level() < std::get<0>(y).level(); })).level());
         // Normalise velocity field by the mass
         Utility::parallelize(octree.size(), [&](const uint i) {
             double mass = std::get<1>(octree[i]).rho();
@@ -198,12 +199,12 @@ int main(int argc, char *argv[]) {
                     Gravity<floating, 3> data;
                     if (!std::isnormal(std::get<1>(octree[i]).rho())) {
                         data = std::get<1>(*octree.find(std::get<0>(octree[i]).parent()));
-                        std::get<1>(octree[i]).dphidxyz() = {data.dphidx(), data.dphidy(), data.dphidz()};
+                        std::get<1>(octree[i]).dphidxyz() = { data.dphidx(), data.dphidy(), data.dphidz() };
                     }
                 }
             });
         }
-        
+
         double vx(0), vy(0), vz(0);
         // Sum contribution from neighbour cells
         for (uint i = 0; i < octree.size(); i++) {

@@ -56,28 +56,28 @@ class Output final {
     /// \name           Utilities
     //@{
 public:
-    template <class Type = std::string, class = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<Type>::type>::type, std::string>::value>::type>
-    static inline std::string name(Type &&value = Type());
-    template <class Type, class = typename std::enable_if<!std::is_convertible<typename std::remove_cv<typename std::remove_reference<Type>::type>::type, std::string>::value>::type>
-    static inline std::string name(const Type &value);
-    template <template <class, class> class Type, class First, class Second, class = typename std::enable_if<(std::tuple_size<Type<First, Second>>::value == std::tuple_size<std::pair<First, Second>>::value) && (std::is_convertible<First, std::string>::value)>::type>
-    static inline std::string name(const Type<First, Second> &value);
-    template <class Type, class... Types, class = typename std::enable_if<sizeof...(Types) != 0>::type>
-    static inline std::string name(Type &&value, Types &&...values);
+    template<class Type = std::string, class = typename std::enable_if<std::is_convertible<typename std::remove_cv<typename std::remove_reference<Type>::type>::type, std::string>::value>::type>
+    static inline std::string name(Type&& value = Type());
+    template<class Type, class = typename std::enable_if<!std::is_convertible<typename std::remove_cv<typename std::remove_reference<Type>::type>::type, std::string>::value>::type>
+    static inline std::string name(const Type& value);
+    template<template<class, class> class Type, class First, class Second, class = typename std::enable_if<(std::tuple_size<Type<First, Second>>::value == std::tuple_size<std::pair<First, Second>>::value) && (std::is_convertible<First, std::string>::value)>::type>
+    static inline std::string name(const Type<First, Second>& value);
+    template<class Type, class... Types, class = typename std::enable_if<sizeof...(Types) != 0>::type>
+    static inline std::string name(Type&& value, Types&&... values);
     //@}
 
     // Save
     /// \name           Save
     //@{
 public:
-    template <class Octree, class = typename std::enable_if<Octree::dimension() != 0>::type>
-    static bool save(std::ostream &stream, const Octree &octree, const int digits = 0);
-    template <class Cosmology, class = typename std::enable_if<std::tuple_size<Cosmology>::value != 0>::type>
-    static bool save(std::ostream &stream, const Cosmology &cosmology, const unsigned int digits = 0);
-    template <class Trajectory, class = typename std::enable_if<!std::is_void<typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Trajectory>()[0].type())>::type>::type>::value>::type>
-    static bool save(std::ostream &stream, const Trajectory &trajectory, const unsigned int &digits = 0);
-    template <class Container, typename Type = typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Container>()[0])>::type>::type, typename Integral = std::true_type, class = typename std::enable_if<!std::is_void<typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Container>()[0])>::type>::type>::value>::type>
-    static bool save(std::ostream &stream, const Container &x, const Container &y, const Container &ymean, const Container &ystd, const unsigned int digits = 0, const Integral count = Integral());
+    template<class Octree, class = typename std::enable_if<Octree::dimension() != 0>::type>
+    static bool save(std::ostream& stream, const Octree& octree, const int digits = 0);
+    template<class Cosmology, class = typename std::enable_if<std::tuple_size<Cosmology>::value != 0>::type>
+    static bool save(std::ostream& stream, const Cosmology& cosmology, const unsigned int digits = 0);
+    template<class Trajectory, class = typename std::enable_if<!std::is_void<typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Trajectory>()[0].type())>::type>::type>::value>::type>
+    static bool save(std::ostream& stream, const Trajectory& trajectory, const unsigned int& digits = 0);
+    template<class Container, typename Type = typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Container>()[0])>::type>::type, typename Integral = std::true_type, class = typename std::enable_if<!std::is_void<typename std::remove_cv<typename std::remove_reference<decltype(std::declval<Container>()[0])>::type>::type>::value>::type>
+    static bool save(std::ostream& stream, const Container& x, const Container& y, const Container& ymean, const Container& ystd, const unsigned int digits = 0, const Integral count = Integral());
     //@}
 
     // Test
@@ -96,8 +96,9 @@ public:
 /// \tparam         Type Type convertible to a string.
 /// \param[in]      value Value of the string.
 /// \return         Name corresponding to the string.
-template <class Type, class>
-inline std::string Output::name(Type &&value) {
+template<class Type, class>
+inline std::string
+Output::name(Type&& value) {
     return std::forward<Type>(value);
 }
 
@@ -107,8 +108,9 @@ inline std::string Output::name(Type &&value) {
 /// \tparam         Type Number type convertible to a string.
 /// \param[in]      value Value of the number.
 /// \return         Name corresponding to the number.
-template <class Type, class>
-inline std::string Output::name(const Type &value) {
+template<class Type, class>
+inline std::string
+Output::name(const Type& value) {
     return std::to_string(value);
 }
 
@@ -120,8 +122,9 @@ inline std::string Output::name(const Type &value) {
 /// \tparam         Second Second type associated to the format.
 /// \param[in]      value Value of the pair.
 /// \return         Name corresponding to the format.
-template <template <class, class> class Type, class First, class Second, class>
-inline std::string Output::name(const Type<First, Second> &value) {
+template<template<class, class> class Type, class First, class Second, class>
+inline std::string
+Output::name(const Type<First, Second>& value) {
     std::string input(std::get<0>(value));
     std::vector<char> output(input.size() + std::numeric_limits<unsigned char>::max(), static_cast<char>(0));
     std::snprintf(output.data(), output.size(), input.data(), std::get<1>(value));
@@ -137,8 +140,9 @@ inline std::string Output::name(const Type<First, Second> &value) {
 /// \param[in]      value First value.
 /// \param[in]      values Other values.
 /// \return         Name corresponding to the serie of components.
-template <class Type, class... Types, class>
-inline std::string Output::name(Type &&value, Types &&...values) {
+template<class Type, class... Types, class>
+inline std::string
+Output::name(Type&& value, Types&&... values) {
     return name(value) + name(values...);
 }
 // -------------------------------------------------------------------------- //
@@ -152,8 +156,9 @@ inline std::string Output::name(Type &&value, Types &&...values) {
 /// \param[in]      octree Octree.
 /// \param[in]      digits Optional precision.
 ///  \return         True on success, false otherwise.
-template <class Octree, class>
-bool Output::save(std::ostream &stream, const Octree &octree, const int digits) {
+template<class Octree, class>
+bool
+Output::save(std::ostream& stream, const Octree& octree, const int digits) {
     if (stream) {
         stream << std::setprecision((digits > 0) ? (digits) : (stream.precision()));
         stream << octree;
@@ -169,8 +174,9 @@ bool Output::save(std::ostream &stream, const Octree &octree, const int digits) 
 /// \param[in]      cosmology Cosmology.
 /// \param[in]      digits Optional precision.
 ///  \return         True on success, false otherwise.
-template <class Cosmology, class>
-bool Output::save(std::ostream &stream, const Cosmology &cosmology, const unsigned int digits) {
+template<class Cosmology, class>
+bool
+Output::save(std::ostream& stream, const Cosmology& cosmology, const unsigned int digits) {
     const unsigned int size = std::get<0>(cosmology).size();
     const char separator = stream.fill();
     if (stream) {
@@ -190,8 +196,9 @@ bool Output::save(std::ostream &stream, const Cosmology &cosmology, const unsign
 /// \param[in]      trajectory Trajectory.
 /// \param[in]      digits Optional precision.
 ///  \return         True on success, false otherwise.
-template <class Trajectory, class>
-bool Output::save(std::ostream &stream, const Trajectory &trajectory, const unsigned int &digits) {
+template<class Trajectory, class>
+bool
+Output::save(std::ostream& stream, const Trajectory& trajectory, const unsigned int& digits) {
     const unsigned int size = trajectory.size();
     if (stream) {
         stream << std::setprecision((digits > 0) ? (digits) : (stream.precision()));
@@ -216,8 +223,9 @@ bool Output::save(std::ostream &stream, const Trajectory &trajectory, const unsi
 /// \param[in]      digits Optional precision.
 /// \param[in]      count Optional count.
 ///  \return         True on success, false otherwise.
-template <class Container, typename Type, typename Integral, class>
-bool Output::save(std::ostream &stream, const Container &x, const Container &y, const Container &ymean, const Container &ystd, const unsigned int digits, const Integral count) {
+template<class Container, typename Type, typename Integral, class>
+bool
+Output::save(std::ostream& stream, const Container& x, const Container& y, const Container& ymean, const Container& ystd, const unsigned int digits, const Integral count) {
     const unsigned int n = count;
     const unsigned int size = x.size();
     if (stream) {
@@ -238,7 +246,8 @@ bool Output::save(std::ostream &stream, const Container &x, const Container &y, 
 /// \brief          Example function.
 /// \details        Tests and demonstrates the use of Output.
 /// \return         0 if no error.
-int Output::example() {
+int
+Output::example() {
     // Initialize
     std::cout << "BEGIN = Input::example()" << std::endl;
     std::cout << std::boolalpha << std::left;

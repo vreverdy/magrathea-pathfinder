@@ -70,26 +70,23 @@ class Generate_cones {
     // Methodes
 public:
     // Read parameter file
-    template <class Parameters, class Map>
-    static void ReadParamFile(Parameters &parameters, Map &parameter);
+    template<class Parameters, class Map>
+    static void ReadParamFile(Parameters& parameters, Map& parameter);
 
     // Cones generation
-    template <class Cone, template <unsigned int, class, typename> class Sphere,
-              unsigned int Dimension, class Vector, typename Scalar,
-              typename Integer>
+    template<class Cone, template<unsigned int, class, typename> class Sphere, unsigned int Dimension, class Vector, typename Scalar, typename Integer>
     static void GenerateFullskyCones(const Integer ncones,
-                                     std::vector<Cone> &cone,
-                                     std::vector<Cone> &coneIfRot,
-                                     Sphere<Dimension, Vector, Scalar> &sphere);
-    template <class Parameter, class Cone,
-              template <unsigned int, class, typename> class Sphere,
-              unsigned int Dimension, class Vector, typename Scalar>
-    static void GenerateNarrowCones(const Parameter &parameters,
-                                    std::vector<Cone> &cone,
-                                    std::vector<Cone> &coneIfRot,
-                                    Sphere<Dimension, Vector, Scalar> &sphere,
-                                    std::array<std::array<double, 3>, 3> &rotm1,
-                                    Scalar &thetay, Scalar &thetaz);
+                                     std::vector<Cone>& cone,
+                                     std::vector<Cone>& coneIfRot,
+                                     Sphere<Dimension, Vector, Scalar>& sphere);
+    template<class Parameter, class Cone, template<unsigned int, class, typename> class Sphere, unsigned int Dimension, class Vector, typename Scalar>
+    static void GenerateNarrowCones(const Parameter& parameters,
+                                    std::vector<Cone>& cone,
+                                    std::vector<Cone>& coneIfRot,
+                                    Sphere<Dimension, Vector, Scalar>& sphere,
+                                    std::array<std::array<double, 3>, 3>& rotm1,
+                                    Scalar& thetay,
+                                    Scalar& thetaz);
 };
 
 // Read parameter file
@@ -99,8 +96,9 @@ public:
 /// \tparam         Map map type
 /// \param[in,out]  parameters Structure containing the parameters.
 /// \param[in]      parameter Contains parameters to be rewritten
-template <class Parameters, class Map>
-void Generate_cones::ReadParamFile(Parameters &parameters, Map &parameter) {
+template<class Parameters, class Map>
+void
+Generate_cones::ReadParamFile(Parameters& parameters, Map& parameter) {
     parameters.celldir = parameter["celldir"];
     parameters.conedir = parameter["conedir"];
     parameters.typefile = std::stoul(parameter["typefile"]);
@@ -123,21 +121,22 @@ void Generate_cones::ReadParamFile(Parameters &parameters, Map &parameter) {
 /// \param[in]      coneIfRot Cones generated
 /// \param[in]      sphere Central sphere
 /// \return         Generate the shape of fullsky cones.
-template <class Cone, template <unsigned int, class, typename> class Sphere,
-          unsigned int Dimension, class Vector, typename Scalar,
-          typename Integer>
-void Generate_cones::GenerateFullskyCones(
-    const Integer ncones, std::vector<Cone> &cone, std::vector<Cone> &coneIfRot,
-    Sphere<Dimension, Vector, Scalar> &sphere) {
+template<class Cone, template<unsigned int, class, typename> class Sphere, unsigned int Dimension, class Vector, typename Scalar, typename Integer>
+void
+Generate_cones::GenerateFullskyCones(
+  const Integer ncones,
+  std::vector<Cone>& cone,
+  std::vector<Cone>& coneIfRot,
+  Sphere<Dimension, Vector, Scalar>& sphere) {
     std::vector<std::array<double, 3>> tiling(ncones);
     // Cone angle from the maximum distance between points generated on the
     // sphere. We multiply by an arbitrary factor which seems ideal to produce
     // wide enough cones
     const double alpha = 1.8 * std::asin(sphere
-                                       .template uniform<Dimension - 1>(
-                                           std::begin(tiling), std::end(tiling))
-                                       .first /
-                                   sphere.diameter());
+                                           .template uniform<Dimension - 1>(
+                                             std::begin(tiling), std::end(tiling))
+                                           .first /
+                                         sphere.diameter());
     // Assign properties to each cone
     Utility::parallelize(ncones,
                          [&](const uint i) {
@@ -163,20 +162,22 @@ void Generate_cones::GenerateFullskyCones(
 /// \param[in,out]  rotm1 Rotation matrix for narrow cone cells
 /// \param[in,out]  thetay Semi-angle for solid angle in direction y
 /// \param[in,out]  thetaz Semi-angle for solid angle in direction z
-template <class Parameter, class Cone,
-          template <unsigned int, class, typename> class Sphere,
-          unsigned int Dimension, class Vector, typename Scalar>
-void Generate_cones::GenerateNarrowCones(
-    const Parameter &parameters, std::vector<Cone> &cone,
-    std::vector<Cone> &coneIfRot, Sphere<Dimension, Vector, Scalar> &sphere,
-    std::array<std::array<double, 3>, 3> &rotm1, Scalar &thetay,
-    Scalar &thetaz) {
+template<class Parameter, class Cone, template<unsigned int, class, typename> class Sphere, unsigned int Dimension, class Vector, typename Scalar>
+void
+Generate_cones::GenerateNarrowCones(
+  const Parameter& parameters,
+  std::vector<Cone>& cone,
+  std::vector<Cone>& coneIfRot,
+  Sphere<Dimension, Vector, Scalar>& sphere,
+  std::array<std::array<double, 3>, 3>& rotm1,
+  Scalar& thetay,
+  Scalar& thetaz) {
     static constexpr double pi = Constants<double>::pi();
     std::size_t found;
     std::vector<std::array<double, 3>> tiling(parameters.ncones),
-        tilingbis(parameters.ncones);
+      tilingbis(parameters.ncones);
     double theta_rot(0), phi_rot(0);
-    std::array<std::array<double, 3>, 3> rotation = {{0}};
+    std::array<std::array<double, 3>, 3> rotation = { { 0 } };
     std::vector<std::string> filelistingprior;
     std::string filelisting;
 
@@ -208,12 +209,9 @@ void Generate_cones::GenerateNarrowCones(
     // Get informations from HDF5 files
     if (parameters.typefile == 1) {
         TReadHDF5::getAttribute(filelisting, "metadata/cone_info", "phi", phi_rot);
-        TReadHDF5::getAttribute(filelisting, "metadata/cone_info", "theta",
-                                theta_rot);
-        TReadHDF5::getAttribute(filelisting, "metadata/cone_info", "thetay",
-                                thetay);
-        TReadHDF5::getAttribute(filelisting, "metadata/cone_info", "thetaz",
-                                thetaz);
+        TReadHDF5::getAttribute(filelisting, "metadata/cone_info", "theta", theta_rot);
+        TReadHDF5::getAttribute(filelisting, "metadata/cone_info", "thetay", thetay);
+        TReadHDF5::getAttribute(filelisting, "metadata/cone_info", "thetaz", thetaz);
         // Get informations from ASCII files
     } else if (parameters.typefile == 2) {
         std::map<std::string, std::string> parameterASCII;

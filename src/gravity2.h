@@ -40,282 +40,427 @@
 ///                 potential.
 /// \tparam         Type Data type.
 /// \tparam         Dimension Number of space dimension.
-template <typename Type = double, unsigned int Dimension = 3>
-class Gravity final : public magrathea::AbstractContents<
-                          Gravity<Type, Dimension>, magrathea::EulerianCategory,
-                          Type, Type, std::array<Type, Dimension>, Type, Type,
-                          std::array<Type, Dimension>> {
+template<typename Type = double, unsigned int Dimension = 3>
+class Gravity final : public magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>> {
     // Setup
 public:
     using magrathea::AbstractContents<Gravity<Type, Dimension>,
-                                      magrathea::EulerianCategory, Type, Type,
-                                      std::array<Type, Dimension>, Type, Type,
+                                      magrathea::EulerianCategory,
+                                      Type,
+                                      Type,
+                                      std::array<Type, Dimension>,
+                                      Type,
+                                      Type,
                                       std::array<Type, Dimension>>::operator=;
 
     // Lifecycle
     /// \name           Lifecycle
     //@{
 public:
-    template <class... Misc>
-    explicit inline Gravity(Misc &&...misc);
+    template<class... Misc>
+    explicit inline Gravity(Misc&&... misc);
     //@}
 
     // Data
     /// \name           Data
     //@{
 public:
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<magrathea::AbstractContents<
-                         Gravity<Type, Dimension>, magrathea::EulerianCategory,
-                         Type, Type, std::array<Type, Dimension>, Type, Type,
-                         std::array<Type, Dimension>>>()
-                         .template data<0, Values...>(std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template rho(Misc &&...misc);
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<const magrathea::AbstractContents<
-                         Gravity<Type, Dimension>, magrathea::EulerianCategory,
-                         Type, Type, std::array<Type, Dimension>, Type, Type,
-                         std::array<Type, Dimension>>>()
-                         .template data<0, Values...>(std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template rho(Misc &&...misc) const;
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<magrathea::AbstractContents<
-                         Gravity<Type, Dimension>, magrathea::EulerianCategory,
-                         Type, Type, std::array<Type, Dimension>, Type, Type,
-                         std::array<Type, Dimension>>>()
-                         .template data<1, Values...>(std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template phi(Misc &&...misc);
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<const magrathea::AbstractContents<
-                         Gravity<Type, Dimension>, magrathea::EulerianCategory,
-                         Type, Type, std::array<Type, Dimension>, Type, Type,
-                         std::array<Type, Dimension>>>()
-                         .template data<1, Values...>(std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template phi(Misc &&...misc) const;
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<magrathea::AbstractContents<
-                         Gravity<Type, Dimension>, magrathea::EulerianCategory,
-                         Type, Type, std::array<Type, Dimension>, Type, Type,
-                         std::array<Type, Dimension>>>()
-                         .template data<2, Values...>(std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template dphidxyz(Misc &&...misc);
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<const magrathea::AbstractContents<
-                         Gravity<Type, Dimension>, magrathea::EulerianCategory,
-                         Type, Type, std::array<Type, Dimension>, Type, Type,
-                         std::array<Type, Dimension>>>()
-                         .template data<2, Values...>(std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template dphidxyz(Misc &&...misc) const;
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<magrathea::AbstractContents<
-                         Gravity<Type, Dimension>, magrathea::EulerianCategory,
-                         Type, Type, std::array<Type, Dimension>, Type, Type,
-                         std::array<Type, Dimension>>>()
-                         .template data<2, Values...>(0,
-                                                      std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template dphidx(Misc &&...misc);
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<const magrathea::AbstractContents<
-                         Gravity<Type, Dimension>, magrathea::EulerianCategory,
-                         Type, Type, std::array<Type, Dimension>, Type, Type,
-                         std::array<Type, Dimension>>>()
-                         .template data<2, Values...>(0,
-                                                      std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template dphidx(Misc &&...misc) const;
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<magrathea::AbstractContents<
-                         Gravity<Type, Dimension>, magrathea::EulerianCategory,
-                         Type, Type, std::array<Type, Dimension>, Type, Type,
-                         std::array<Type, Dimension>>>()
-                         .template data<2, Values...>(1,
-                                                      std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template dphidy(Misc &&...misc);
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<const magrathea::AbstractContents<
-                         Gravity<Type, Dimension>, magrathea::EulerianCategory,
-                         Type, Type, std::array<Type, Dimension>, Type, Type,
-                         std::array<Type, Dimension>>>()
-                         .template data<2, Values...>(1,
-                                                      std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template dphidy(Misc &&...misc) const;
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<magrathea::AbstractContents<
-                         Gravity<Type, Dimension>, magrathea::EulerianCategory,
-                         Type, Type, std::array<Type, Dimension>, Type, Type,
-                         std::array<Type, Dimension>>>()
-                         .template data<2, Values...>(2,
-                                                      std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template dphidz(Misc &&...misc);
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<const magrathea::AbstractContents<
-                         Gravity<Type, Dimension>, magrathea::EulerianCategory,
-                         Type, Type, std::array<Type, Dimension>, Type, Type,
-                         std::array<Type, Dimension>>>()
-                         .template data<2, Values...>(2,
-                                                      std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template dphidz(Misc &&...misc) const;
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<magrathea::AbstractContents<
-                         Gravity<Type, Dimension>, magrathea::EulerianCategory,
-                         Type, Type, std::array<Type, Dimension>, Type, Type,
-                         std::array<Type, Dimension>>>()
-                         .template data<3, Values...>(std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template a(Misc &&...misc);
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<const magrathea::AbstractContents<
-                         Gravity<Type, Dimension>, magrathea::EulerianCategory,
-                         Type, Type, std::array<Type, Dimension>, Type, Type,
-                         std::array<Type, Dimension>>>()
-                         .template data<3, Values...>(std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template a(Misc &&...misc) const;
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<magrathea::AbstractContents<
-                         Gravity<Type, Dimension>, magrathea::EulerianCategory,
-                         Type, Type, std::array<Type, Dimension>, Type, Type,
-                         std::array<Type, Dimension>>>()
-                         .template data<4, Values...>(std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template dphidt(Misc &&...misc);
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<const magrathea::AbstractContents<
-                         Gravity<Type, Dimension>, magrathea::EulerianCategory,
-                         Type, Type, std::array<Type, Dimension>, Type, Type,
-                         std::array<Type, Dimension>>>()
-                         .template data<4, Values...>(std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template dphidt(Misc &&...misc) const;
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<magrathea::AbstractContents<
-                         Gravity<Type, Dimension>, magrathea::EulerianCategory,
-                         Type, Type, std::array<Type, Dimension>, Type, Type,
-                         std::array<Type, Dimension>>>()
-                         .template data<5, Values...>(std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template vxyz(Misc &&...misc);
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<const magrathea::AbstractContents<
-                         Gravity<Type, Dimension>, magrathea::EulerianCategory,
-                         Type, Type, std::array<Type, Dimension>, Type, Type,
-                         std::array<Type, Dimension>>>()
-                         .template data<5, Values...>(std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template vxyz(Misc &&...misc) const;
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<magrathea::AbstractContents<
-                         Gravity<Type, Dimension>, magrathea::EulerianCategory,
-                         Type, Type, std::array<Type, Dimension>, Type, Type,
-                         std::array<Type, Dimension>>>()
-                         .template data<5, Values...>(0,
-                                                      std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template vx(Misc &&...misc);
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<const magrathea::AbstractContents<
-                         Gravity<Type, Dimension>, magrathea::EulerianCategory,
-                         Type, Type, std::array<Type, Dimension>, Type, Type,
-                         std::array<Type, Dimension>>>()
-                         .template data<5, Values...>(0,
-                                                      std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template vx(Misc &&...misc) const;
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<magrathea::AbstractContents<
-                         Gravity<Type, Dimension>, magrathea::EulerianCategory,
-                         Type, Type, std::array<Type, Dimension>, Type, Type,
-                         std::array<Type, Dimension>>>()
-                         .template data<5, Values...>(1,
-                                                      std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template vy(Misc &&...misc);
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<const magrathea::AbstractContents<
-                         Gravity<Type, Dimension>, magrathea::EulerianCategory,
-                         Type, Type, std::array<Type, Dimension>, Type, Type,
-                         std::array<Type, Dimension>>>()
-                         .template data<5, Values...>(1,
-                                                      std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template vy(Misc &&...misc) const;
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<magrathea::AbstractContents<
-                         Gravity<Type, Dimension>, magrathea::EulerianCategory,
-                         Type, Type, std::array<Type, Dimension>, Type, Type,
-                         std::array<Type, Dimension>>>()
-                         .template data<5, Values...>(2,
-                                                      std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template vz(Misc &&...misc);
-    template <
-        unsigned int... Values, class... Misc,
-        class Template =
-            decltype(std::declval<const magrathea::AbstractContents<
-                         Gravity<Type, Dimension>, magrathea::EulerianCategory,
-                         Type, Type, std::array<Type, Dimension>, Type, Type,
-                         std::array<Type, Dimension>>>()
-                         .template data<5, Values...>(2,
-                                                      std::declval<Misc>()...)),
-        class = typename std::enable_if<!std::is_void<Template>::value>::type>
-    inline Template vz(Misc &&...misc) const;
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<magrathea::AbstractContents<
+                   Gravity<Type, Dimension>,
+                   magrathea::EulerianCategory,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>>>()
+                   .template data<0, Values...>(std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template rho(Misc&&... misc);
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<const magrathea::AbstractContents<
+                   Gravity<Type, Dimension>,
+                   magrathea::EulerianCategory,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>>>()
+                   .template data<0, Values...>(std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template rho(Misc&&... misc) const;
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<magrathea::AbstractContents<
+                   Gravity<Type, Dimension>,
+                   magrathea::EulerianCategory,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>>>()
+                   .template data<1, Values...>(std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template phi(Misc&&... misc);
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<const magrathea::AbstractContents<
+                   Gravity<Type, Dimension>,
+                   magrathea::EulerianCategory,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>>>()
+                   .template data<1, Values...>(std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template phi(Misc&&... misc) const;
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<magrathea::AbstractContents<
+                   Gravity<Type, Dimension>,
+                   magrathea::EulerianCategory,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>>>()
+                   .template data<2, Values...>(std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dphidxyz(Misc&&... misc);
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<const magrathea::AbstractContents<
+                   Gravity<Type, Dimension>,
+                   magrathea::EulerianCategory,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>>>()
+                   .template data<2, Values...>(std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dphidxyz(Misc&&... misc) const;
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<magrathea::AbstractContents<
+                   Gravity<Type, Dimension>,
+                   magrathea::EulerianCategory,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>>>()
+                   .template data<2, Values...>(0,
+                                                std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dphidx(Misc&&... misc);
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<const magrathea::AbstractContents<
+                   Gravity<Type, Dimension>,
+                   magrathea::EulerianCategory,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>>>()
+                   .template data<2, Values...>(0,
+                                                std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dphidx(Misc&&... misc) const;
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<magrathea::AbstractContents<
+                   Gravity<Type, Dimension>,
+                   magrathea::EulerianCategory,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>>>()
+                   .template data<2, Values...>(1,
+                                                std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dphidy(Misc&&... misc);
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<const magrathea::AbstractContents<
+                   Gravity<Type, Dimension>,
+                   magrathea::EulerianCategory,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>>>()
+                   .template data<2, Values...>(1,
+                                                std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dphidy(Misc&&... misc) const;
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<magrathea::AbstractContents<
+                   Gravity<Type, Dimension>,
+                   magrathea::EulerianCategory,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>>>()
+                   .template data<2, Values...>(2,
+                                                std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dphidz(Misc&&... misc);
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<const magrathea::AbstractContents<
+                   Gravity<Type, Dimension>,
+                   magrathea::EulerianCategory,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>>>()
+                   .template data<2, Values...>(2,
+                                                std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dphidz(Misc&&... misc) const;
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<magrathea::AbstractContents<
+                   Gravity<Type, Dimension>,
+                   magrathea::EulerianCategory,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>>>()
+                   .template data<3, Values...>(std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template a(Misc&&... misc);
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<const magrathea::AbstractContents<
+                   Gravity<Type, Dimension>,
+                   magrathea::EulerianCategory,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>>>()
+                   .template data<3, Values...>(std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template a(Misc&&... misc) const;
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<magrathea::AbstractContents<
+                   Gravity<Type, Dimension>,
+                   magrathea::EulerianCategory,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>>>()
+                   .template data<4, Values...>(std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dphidt(Misc&&... misc);
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<const magrathea::AbstractContents<
+                   Gravity<Type, Dimension>,
+                   magrathea::EulerianCategory,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>>>()
+                   .template data<4, Values...>(std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dphidt(Misc&&... misc) const;
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<magrathea::AbstractContents<
+                   Gravity<Type, Dimension>,
+                   magrathea::EulerianCategory,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>>>()
+                   .template data<5, Values...>(std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template vxyz(Misc&&... misc);
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<const magrathea::AbstractContents<
+                   Gravity<Type, Dimension>,
+                   magrathea::EulerianCategory,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>>>()
+                   .template data<5, Values...>(std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template vxyz(Misc&&... misc) const;
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<magrathea::AbstractContents<
+                   Gravity<Type, Dimension>,
+                   magrathea::EulerianCategory,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>>>()
+                   .template data<5, Values...>(0,
+                                                std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template vx(Misc&&... misc);
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<const magrathea::AbstractContents<
+                   Gravity<Type, Dimension>,
+                   magrathea::EulerianCategory,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>>>()
+                   .template data<5, Values...>(0,
+                                                std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template vx(Misc&&... misc) const;
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<magrathea::AbstractContents<
+                   Gravity<Type, Dimension>,
+                   magrathea::EulerianCategory,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>>>()
+                   .template data<5, Values...>(1,
+                                                std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template vy(Misc&&... misc);
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<const magrathea::AbstractContents<
+                   Gravity<Type, Dimension>,
+                   magrathea::EulerianCategory,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>>>()
+                   .template data<5, Values...>(1,
+                                                std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template vy(Misc&&... misc) const;
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<magrathea::AbstractContents<
+                   Gravity<Type, Dimension>,
+                   magrathea::EulerianCategory,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>>>()
+                   .template data<5, Values...>(2,
+                                                std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template vz(Misc&&... misc);
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<const magrathea::AbstractContents<
+                   Gravity<Type, Dimension>,
+                   magrathea::EulerianCategory,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>,
+                   Type,
+                   Type,
+                   std::array<Type, Dimension>>>()
+                   .template data<5, Values...>(2,
+                                                std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template vz(Misc&&... misc) const;
     //@}
 
     // Test
@@ -334,13 +479,19 @@ public:
 ///                 base class.
 /// \tparam         Misc (Miscellaneous types.)
 /// \param[in]      misc Miscellaneous arguments.
-template <typename Type, unsigned int Dimension>
-template <class... Misc>
-inline Gravity<Type, Dimension>::Gravity(Misc &&...misc)
-    : magrathea::AbstractContents<
-          Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type,
-          std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>>(
-          std::forward<Misc>(misc)...) {
+template<typename Type, unsigned int Dimension>
+template<class... Misc>
+inline Gravity<Type, Dimension>::Gravity(Misc&&... misc)
+  : magrathea::AbstractContents<
+      Gravity<Type, Dimension>,
+      magrathea::EulerianCategory,
+      Type,
+      Type,
+      std::array<Type, Dimension>,
+      Type,
+      Type,
+      std::array<Type, Dimension>>(
+      std::forward<Misc>(misc)...) {
     ;
 }
 // -------------------------------------------------------------------------- //
@@ -355,9 +506,10 @@ inline Gravity<Type, Dimension>::Gravity(Misc &&...misc)
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <typename Type, unsigned int Dimension>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Gravity<Type, Dimension>::rho(Misc &&...misc) {
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::rho(Misc&&... misc) {
     return this->template data<0, Values...>(std::forward<Misc>(misc)...);
 }
 
@@ -370,9 +522,10 @@ inline Template Gravity<Type, Dimension>::rho(Misc &&...misc) {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <typename Type, unsigned int Dimension>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Gravity<Type, Dimension>::rho(Misc &&...misc) const {
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::rho(Misc&&... misc) const {
     return this->template data<0, Values...>(std::forward<Misc>(misc)...);
 }
 
@@ -385,9 +538,10 @@ inline Template Gravity<Type, Dimension>::rho(Misc &&...misc) const {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <typename Type, unsigned int Dimension>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Gravity<Type, Dimension>::phi(Misc &&...misc) {
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::phi(Misc&&... misc) {
     return this->template data<1, Values...>(std::forward<Misc>(misc)...);
 }
 
@@ -400,9 +554,10 @@ inline Template Gravity<Type, Dimension>::phi(Misc &&...misc) {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <typename Type, unsigned int Dimension>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Gravity<Type, Dimension>::phi(Misc &&...misc) const {
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::phi(Misc&&... misc) const {
     return this->template data<1, Values...>(std::forward<Misc>(misc)...);
 }
 
@@ -415,9 +570,10 @@ inline Template Gravity<Type, Dimension>::phi(Misc &&...misc) const {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <typename Type, unsigned int Dimension>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Gravity<Type, Dimension>::dphidxyz(Misc &&...misc) {
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::dphidxyz(Misc&&... misc) {
     return this->template data<2, Values...>(std::forward<Misc>(misc)...);
 }
 
@@ -430,9 +586,10 @@ inline Template Gravity<Type, Dimension>::dphidxyz(Misc &&...misc) {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <typename Type, unsigned int Dimension>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Gravity<Type, Dimension>::dphidxyz(Misc &&...misc) const {
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::dphidxyz(Misc&&... misc) const {
     return this->template data<2, Values...>(std::forward<Misc>(misc)...);
 }
 
@@ -445,9 +602,10 @@ inline Template Gravity<Type, Dimension>::dphidxyz(Misc &&...misc) const {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <typename Type, unsigned int Dimension>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Gravity<Type, Dimension>::dphidx(Misc &&...misc) {
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::dphidx(Misc&&... misc) {
     return this->template data<2, Values...>(0, std::forward<Misc>(misc)...);
 }
 
@@ -460,9 +618,10 @@ inline Template Gravity<Type, Dimension>::dphidx(Misc &&...misc) {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <typename Type, unsigned int Dimension>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Gravity<Type, Dimension>::dphidx(Misc &&...misc) const {
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::dphidx(Misc&&... misc) const {
     return this->template data<2, Values...>(0, std::forward<Misc>(misc)...);
 }
 
@@ -475,9 +634,10 @@ inline Template Gravity<Type, Dimension>::dphidx(Misc &&...misc) const {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <typename Type, unsigned int Dimension>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Gravity<Type, Dimension>::dphidy(Misc &&...misc) {
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::dphidy(Misc&&... misc) {
     return this->template data<2, Values...>(1, std::forward<Misc>(misc)...);
 }
 
@@ -490,9 +650,10 @@ inline Template Gravity<Type, Dimension>::dphidy(Misc &&...misc) {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <typename Type, unsigned int Dimension>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Gravity<Type, Dimension>::dphidy(Misc &&...misc) const {
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::dphidy(Misc&&... misc) const {
     return this->template data<2, Values...>(1, std::forward<Misc>(misc)...);
 }
 
@@ -505,9 +666,10 @@ inline Template Gravity<Type, Dimension>::dphidy(Misc &&...misc) const {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <typename Type, unsigned int Dimension>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Gravity<Type, Dimension>::dphidz(Misc &&...misc) {
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::dphidz(Misc&&... misc) {
     return this->template data<2, Values...>(2, std::forward<Misc>(misc)...);
 }
 
@@ -520,9 +682,10 @@ inline Template Gravity<Type, Dimension>::dphidz(Misc &&...misc) {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <typename Type, unsigned int Dimension>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Gravity<Type, Dimension>::dphidz(Misc &&...misc) const {
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::dphidz(Misc&&... misc) const {
     return this->template data<2, Values...>(2, std::forward<Misc>(misc)...);
 }
 
@@ -535,9 +698,10 @@ inline Template Gravity<Type, Dimension>::dphidz(Misc &&...misc) const {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <typename Type, unsigned int Dimension>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Gravity<Type, Dimension>::a(Misc &&...misc) {
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::a(Misc&&... misc) {
     return this->template data<3, Values...>(std::forward<Misc>(misc)...);
 }
 
@@ -550,9 +714,10 @@ inline Template Gravity<Type, Dimension>::a(Misc &&...misc) {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <typename Type, unsigned int Dimension>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Gravity<Type, Dimension>::a(Misc &&...misc) const {
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::a(Misc&&... misc) const {
     return this->template data<3, Values...>(std::forward<Misc>(misc)...);
 }
 
@@ -565,9 +730,10 @@ inline Template Gravity<Type, Dimension>::a(Misc &&...misc) const {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <typename Type, unsigned int Dimension>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Gravity<Type, Dimension>::dphidt(Misc &&...misc) {
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::dphidt(Misc&&... misc) {
     return this->template data<4, Values...>(std::forward<Misc>(misc)...);
 }
 
@@ -581,9 +747,10 @@ inline Template Gravity<Type, Dimension>::dphidt(Misc &&...misc) {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <typename Type, unsigned int Dimension>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Gravity<Type, Dimension>::dphidt(Misc &&...misc) const {
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::dphidt(Misc&&... misc) const {
     return this->template data<4, Values...>(std::forward<Misc>(misc)...);
 }
 
@@ -596,9 +763,10 @@ inline Template Gravity<Type, Dimension>::dphidt(Misc &&...misc) const {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <typename Type, unsigned int Dimension>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Gravity<Type, Dimension>::vxyz(Misc &&...misc) {
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::vxyz(Misc&&... misc) {
     return this->template data<5, Values...>(std::forward<Misc>(misc)...);
 }
 
@@ -611,9 +779,10 @@ inline Template Gravity<Type, Dimension>::vxyz(Misc &&...misc) {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <typename Type, unsigned int Dimension>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Gravity<Type, Dimension>::vxyz(Misc &&...misc) const {
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::vxyz(Misc&&... misc) const {
     return this->template data<5, Values...>(std::forward<Misc>(misc)...);
 }
 
@@ -626,9 +795,10 @@ inline Template Gravity<Type, Dimension>::vxyz(Misc &&...misc) const {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <typename Type, unsigned int Dimension>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Gravity<Type, Dimension>::vx(Misc &&...misc) {
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::vx(Misc&&... misc) {
     return this->template data<5, Values...>(0, std::forward<Misc>(misc)...);
 }
 
@@ -641,9 +811,10 @@ inline Template Gravity<Type, Dimension>::vx(Misc &&...misc) {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <typename Type, unsigned int Dimension>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Gravity<Type, Dimension>::vx(Misc &&...misc) const {
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::vx(Misc&&... misc) const {
     return this->template data<5, Values...>(0, std::forward<Misc>(misc)...);
 }
 
@@ -656,9 +827,10 @@ inline Template Gravity<Type, Dimension>::vx(Misc &&...misc) const {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <typename Type, unsigned int Dimension>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Gravity<Type, Dimension>::vy(Misc &&...misc) {
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::vy(Misc&&... misc) {
     return this->template data<5, Values...>(1, std::forward<Misc>(misc)...);
 }
 
@@ -671,9 +843,10 @@ inline Template Gravity<Type, Dimension>::vy(Misc &&...misc) {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <typename Type, unsigned int Dimension>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Gravity<Type, Dimension>::vy(Misc &&...misc) const {
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::vy(Misc&&... misc) const {
     return this->template data<5, Values...>(1, std::forward<Misc>(misc)...);
 }
 
@@ -686,9 +859,10 @@ inline Template Gravity<Type, Dimension>::vy(Misc &&...misc) const {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <typename Type, unsigned int Dimension>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Gravity<Type, Dimension>::vz(Misc &&...misc) {
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::vz(Misc&&... misc) {
     return this->template data<5, Values...>(2, std::forward<Misc>(misc)...);
 }
 
@@ -701,9 +875,10 @@ inline Template Gravity<Type, Dimension>::vz(Misc &&...misc) {
 /// \tparam         Template (Deduced template type.)
 /// \param[in]      misc Miscellaneous arguments.
 /// \return         Forwarded result.
-template <typename Type, unsigned int Dimension>
-template <unsigned int... Values, class... Misc, class Template, class>
-inline Template Gravity<Type, Dimension>::vz(Misc &&...misc) const {
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::vz(Misc&&... misc) const {
     return this->template data<5, Values...>(2, std::forward<Misc>(misc)...);
 }
 
@@ -714,13 +889,14 @@ inline Template Gravity<Type, Dimension>::vz(Misc &&...misc) const {
 /// \brief          Example function.
 /// \details        Tests and demonstrates the use of Gravity.
 /// \return         0 if no error.
-template <typename Type, unsigned int Dimension>
-int Gravity<Type, Dimension>::example() {
+template<typename Type, unsigned int Dimension>
+int
+Gravity<Type, Dimension>::example() {
     // Initialize
     std::cout << "BEGIN = Gravity::example()" << std::endl;
     std::cout << std::boolalpha << std::left;
     const unsigned int width = 40;
-    std::array<double, 3> array({{4, 8, 15}});
+    std::array<double, 3> array({ { 4, 8, 15 } });
 
     // Construction
     Gravity<double, 3> gravity(16, 23, array, 42);

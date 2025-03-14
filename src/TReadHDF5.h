@@ -31,7 +31,6 @@
 #include <utility>
 #include <vector>
 
-
 #include "hdf5.h"
 #include "magrathea/constants.h"
 #include "utility.h"
@@ -46,66 +45,66 @@ public:
     static hid_t h5t_native(const float N);
     static hid_t h5t_native(const double N);
     static hid_t h5t_native(const unsigned long int N);
-    template <typename T>
+    template<typename T>
     static hid_t h5t_native(void);
 
     // Some informations
-    static void pos_from_index_fullsky(const std::string &str, const std::vector<int> &nctab, const std::vector<float> &dimtab, const float &cubesize, std::array<double, 3> &point111);
-    static void pos_from_index_narrow(const std::string &str, const std::vector<int> &nctab, const std::vector<float> &dimtab, const float &cubesize, const double &thetay, const double &thetaz, std::array<double, 3> &point111);
+    static void pos_from_index_fullsky(const std::string& str, const std::vector<int>& nctab, const std::vector<float>& dimtab, const float& cubesize, std::array<double, 3>& point111);
+    static void pos_from_index_narrow(const std::string& str, const std::vector<int>& nctab, const std::vector<float>& dimtab, const float& cubesize, const double& thetay, const double& thetaz, std::array<double, 3>& point111);
 
-    void displayAllInfos(const std::string &fileName) const;
+    void displayAllInfos(const std::string& fileName) const;
     // Get data
-    template <typename Type>
-    static void get_data_from_dataset(const hid_t &gid, const std::string &output_name, std::vector<Type> &output);
-    template <typename Type, typename... String, typename... Vector>
-    static void get_data_from_dataset(const hid_t &gid, const std::string &output_name, std::vector<Type> &output, const String &...output_names, Vector &...outputs);
+    template<typename Type>
+    static void get_data_from_dataset(const hid_t& gid, const std::string& output_name, std::vector<Type>& output);
+    template<typename Type, typename... String, typename... Vector>
+    static void get_data_from_dataset(const hid_t& gid, const std::string& output_name, std::vector<Type>& output, const String&... output_names, Vector&... outputs);
     // Count
-    template <typename Integer>
-    static void cellsPerLevels(const std::string &fileName, std::vector<Integer> &count);
-    template <class Parameter, typename Integer, class Conic>
-    static void cellsAndCubesPerLevels(const Parameter &parameters, const std::string &fileName, std::vector<Integer> &count, std::vector<std::vector<std::string>> &cubeNumber, const double &thetay, const double &thetaz, const Conic &conic);
+    template<typename Integer>
+    static void cellsPerLevels(const std::string& fileName, std::vector<Integer>& count);
+    template<class Parameter, typename Integer, class Conic>
+    static void cellsAndCubesPerLevels(const Parameter& parameters, const std::string& fileName, std::vector<Integer>& count, std::vector<std::vector<std::string>>& cubeNumber, const double& thetay, const double& thetaz, const Conic& conic);
 
     // Attributes at file level
-    template <typename Type>
-    static void getAttribute(const std::string &fileName, const std::string &attributeName, Type &attributeValue);
-    template <typename Type>
-    static void getAttribute(const std::string &fileName, const std::string &attributeName, std::vector<Type> &attributeValue);
+    template<typename Type>
+    static void getAttribute(const std::string& fileName, const std::string& attributeName, Type& attributeValue);
+    template<typename Type>
+    static void getAttribute(const std::string& fileName, const std::string& attributeName, std::vector<Type>& attributeValue);
 
     // Attributes on group
-    template <typename Type>
-    static void getAttribute(const std::string &fileName, const std::string &attributeName1, const std::string &attributeName2, Type &attributeValue);
-    template <typename Type>
-    static void getAttribute(const std::string &fileName, const std::string &attributeName1, const std::string &attributeName2, std::vector<Type> &attributeValue);
+    template<typename Type>
+    static void getAttribute(const std::string& fileName, const std::string& attributeName1, const std::string& attributeName2, Type& attributeValue);
+    template<typename Type>
+    static void getAttribute(const std::string& fileName, const std::string& attributeName1, const std::string& attributeName2, std::vector<Type>& attributeValue);
 
     // Read and fill gravity cell vectors
     // Full sample
-    template <typename Type>
-    static void fillVectors_grav(const std::string &fileName, const unsigned int &levelMin, const unsigned int &levelMax, const std::string &output_name, std::vector<Type> &output);
-    template <typename Type, typename... String, typename... Vector>
-    static void fillVectors_grav(const std::string &fileName, const unsigned int &levelMin, const unsigned int &levelMax, const std::string &output_name, std::vector<Type> &output, const String &...output_names, Vector &...outputs);
+    template<typename Type>
+    static void fillVectors_grav(const std::string& fileName, const unsigned int& levelMin, const unsigned int& levelMax, const std::string& output_name, std::vector<Type>& output);
+    template<typename Type, typename... String, typename... Vector>
+    static void fillVectors_grav(const std::string& fileName, const unsigned int& levelMin, const unsigned int& levelMax, const std::string& output_name, std::vector<Type>& output, const String&... output_names, Vector&... outputs);
     // Selected sample
-    template <typename Type>
-    static void fillVectors_grav(const std::string &fileName, const unsigned int &levelMin, const unsigned int &levelMax, const std::vector<std::string> &cubeNumber, const std::string &output_name, std::vector<Type> &output);
-    template <typename Type, typename... String, typename... Vector>
-    static void fillVectors_grav(const std::string &fileName, const unsigned int &levelMin, const unsigned int &levelMax, const std::vector<std::string> &cubeNumber, const std::string &output_name, std::vector<Type> &output, const String &...output_names, Vector &...outputs);
+    template<typename Type>
+    static void fillVectors_grav(const std::string& fileName, const unsigned int& levelMin, const unsigned int& levelMax, const std::vector<std::string>& cubeNumber, const std::string& output_name, std::vector<Type>& output);
+    template<typename Type, typename... String, typename... Vector>
+    static void fillVectors_grav(const std::string& fileName, const unsigned int& levelMin, const unsigned int& levelMax, const std::vector<std::string>& cubeNumber, const std::string& output_name, std::vector<Type>& output, const String&... output_names, Vector&... outputs);
     // Read and fill particle vectors
     // Full sample
-    template <typename Type>
-    static void fillVectors_part(const std::string &fileName, const std::string &fileSide, const std::string &output_name, std::vector<Type> &output);
-    template <typename Type, typename... String, typename... Vector>
-    static void fillVectors_part(const std::string &fileName, const std::string &fileSide, const std::string &output_name, std::vector<Type> &output, const String &...output_names, Vector &...outputs);
+    template<typename Type>
+    static void fillVectors_part(const std::string& fileName, const std::string& fileSide, const std::string& output_name, std::vector<Type>& output);
+    template<typename Type, typename... String, typename... Vector>
+    static void fillVectors_part(const std::string& fileName, const std::string& fileSide, const std::string& output_name, std::vector<Type>& output, const String&... output_names, Vector&... outputs);
     // Random sample
-    template <typename Type>
-    static void fillVectors_part(const double &fraction, const std::string &fileName, const std::string &fileSide, const std::string &output_name, std::vector<Type> &output);
-    template <typename Type1, typename Type2>
-    static void fillVectors_part(const double &fraction, const std::string &fileName, const std::string &fileSide, const std::string &output_name1, std::vector<Type1> &output1, const std::string &output_name2, std::vector<Type2> &output2);
-    template <typename Type1, typename Type2, typename Type3>
-    static void fillVectors_part(const double &fraction, const std::string &fileName, const std::string &fileSide, const std::string &output_name1, std::vector<Type1> &output1, const std::string &output_name2, std::vector<Type2> &output2, const std::string &output_name3, std::vector<Type3> &output3);
+    template<typename Type>
+    static void fillVectors_part(const double& fraction, const std::string& fileName, const std::string& fileSide, const std::string& output_name, std::vector<Type>& output);
+    template<typename Type1, typename Type2>
+    static void fillVectors_part(const double& fraction, const std::string& fileName, const std::string& fileSide, const std::string& output_name1, std::vector<Type1>& output1, const std::string& output_name2, std::vector<Type2>& output2);
+    template<typename Type1, typename Type2, typename Type3>
+    static void fillVectors_part(const double& fraction, const std::string& fileName, const std::string& fileSide, const std::string& output_name1, std::vector<Type1>& output1, const std::string& output_name2, std::vector<Type2>& output2, const std::string& output_name3, std::vector<Type3>& output3);
     // Selected sample
-    template <class Parameter, typename Type, class Conic>
-    static void fillVectors_part(const Parameter &parameters, const std::string &fileName, const double &thetay, const double &thetaz, const Conic &conic, const std::string &fileSide, const std::string &output_name, std::vector<Type> &output);
-    template <class Parameter, typename Type, typename... String, typename... Vector, class Conic>
-    static void fillVectors_part(const Parameter &parameters, const std::string &fileName, const double &thetay, const double &thetaz, const Conic &conic, const std::string &fileSide, const std::string &output_name, std::vector<Type> &output, const String &...output_names, Vector &...outputs);
+    template<class Parameter, typename Type, class Conic>
+    static void fillVectors_part(const Parameter& parameters, const std::string& fileName, const double& thetay, const double& thetaz, const Conic& conic, const std::string& fileSide, const std::string& output_name, std::vector<Type>& output);
+    template<class Parameter, typename Type, typename... String, typename... Vector, class Conic>
+    static void fillVectors_part(const Parameter& parameters, const std::string& fileName, const double& thetay, const double& thetaz, const Conic& conic, const std::string& fileSide, const std::string& output_name, std::vector<Type>& output, const String&... output_names, Vector&... outputs);
 };
 
 /// \brief          Converts Type to the corresponding hid_t.
@@ -113,7 +112,8 @@ public:
 ///                 to get the data of a specified type.
 /// \param[in]      N (only the type matters, not the value)
 /// \return         hid_t H5T_NATIVE of the intput type
-hid_t TReadHDF5::h5t_native(const int N) {
+hid_t
+TReadHDF5::h5t_native(const int N) {
     return H5T_NATIVE_INT;
 }
 
@@ -122,7 +122,8 @@ hid_t TReadHDF5::h5t_native(const int N) {
 ///                 to get the data of a specified type.
 /// \param[in]      N (only the type matters, not the value)
 /// \return         hid_t H5T_NATIVE of the intput type
-hid_t TReadHDF5::h5t_native(const unsigned int N) {
+hid_t
+TReadHDF5::h5t_native(const unsigned int N) {
     return H5T_NATIVE_UINT;
 }
 
@@ -131,7 +132,8 @@ hid_t TReadHDF5::h5t_native(const unsigned int N) {
 ///                 to get the data of a specified type.
 /// \param[in]      N (only the type matters, not the value)
 /// \return         hid_t H5T_NATIVE of the intput type
-hid_t TReadHDF5::h5t_native(const float N) {
+hid_t
+TReadHDF5::h5t_native(const float N) {
     return H5T_NATIVE_FLOAT;
 }
 
@@ -140,7 +142,8 @@ hid_t TReadHDF5::h5t_native(const float N) {
 ///                 to get the data of a specified type.
 /// \param[in]      N (only the type matters, not the value)
 /// \return         hid_t H5T_NATIVE of the intput type
-hid_t TReadHDF5::h5t_native(const double N) {
+hid_t
+TReadHDF5::h5t_native(const double N) {
     return H5T_NATIVE_DOUBLE;
 }
 
@@ -149,7 +152,8 @@ hid_t TReadHDF5::h5t_native(const double N) {
 ///                 to get the data of a specified type.
 /// \param[in]      N (only the type matters, not the value)
 /// \return         hid_t H5T_NATIVE of the intput type
-hid_t TReadHDF5::h5t_native(const unsigned long int N) {
+hid_t
+TReadHDF5::h5t_native(const unsigned long int N) {
     return H5T_NATIVE_ULONG;
 }
 
@@ -158,8 +162,9 @@ hid_t TReadHDF5::h5t_native(const unsigned long int N) {
 ///                 to get the data of a specified type.
 /// \tparam         T Type
 /// \return         hid_t H5T_NATIVE of the intput type
-template <class T>
-hid_t TReadHDF5::h5t_native() {
+template<class T>
+hid_t
+TReadHDF5::h5t_native() {
     return h5t_native(T());
 }
 
@@ -170,7 +175,8 @@ hid_t TReadHDF5::h5t_native() {
 /// \param[in]      dimtab Dimensions of data.
 /// \param[in]      cubesize Cube size.
 /// \param[in,out]  point111 Cube center position.
-void TReadHDF5::pos_from_index_fullsky(const std::string &str, const std::vector<int> &nctab, const std::vector<float> &dimtab, const float &cubesize, std::array<double, 3> &point111) {
+void
+TReadHDF5::pos_from_index_fullsky(const std::string& str, const std::vector<int>& nctab, const std::vector<float>& dimtab, const float& cubesize, std::array<double, 3>& point111) {
 
     std::array<double, 3> point;
     int index(std::stoi(str.substr(4, str.size())));
@@ -200,7 +206,8 @@ void TReadHDF5::pos_from_index_fullsky(const std::string &str, const std::vector
 /// \param[in]      thetay Semi-angle for solid angle in direction y
 /// \param[in]      thetaz Semi-angle for solid angle in direction z
 /// \param[in,out]  point111 Cube center position.
-void TReadHDF5::pos_from_index_narrow(const std::string &str, const std::vector<int> &nctab, const std::vector<float> &dimtab, const float &cubesize, const double &thetay, const double &thetaz, std::array<double, 3> &point111) {
+void
+TReadHDF5::pos_from_index_narrow(const std::string& str, const std::vector<int>& nctab, const std::vector<float>& dimtab, const float& cubesize, const double& thetay, const double& thetaz, std::array<double, 3>& point111) {
 
     std::array<double, 3> point;
     int index(std::stoi(str.substr(4, str.size())));
@@ -229,7 +236,8 @@ void TReadHDF5::pos_from_index_narrow(const std::string &str, const std::vector<
 ///		    - Group names
 ///		    - Number of subgroups
 /// \param[in]      fileName File list.
-void TReadHDF5::displayAllInfos(const std::string &fileName) const {
+void
+TReadHDF5::displayAllInfos(const std::string& fileName) const {
     std::cout << "Fichier : " << fileName << std::endl;
     unsigned int const MAX_NAME = 1024;
     char memb_name[MAX_NAME];
@@ -259,14 +267,15 @@ void TReadHDF5::displayAllInfos(const std::string &fileName) const {
 /// \param[in]      gid Group HDF5 id.
 /// \param[in]      output_name Data name.
 /// \param[in,out]  output Data vector.
-template <typename Type>
-void TReadHDF5::get_data_from_dataset(const hid_t &gid, const std::string &output_name, std::vector<Type> &output) {
+template<typename Type>
+void
+TReadHDF5::get_data_from_dataset(const hid_t& gid, const std::string& output_name, std::vector<Type>& output) {
 
     hid_t dsid = H5Dopen(gid, output_name.c_str(), H5P_DEFAULT);
     hsize_t alloc = H5Dget_storage_size(dsid);
     unsigned int nmax = alloc / (sizeof(Type));
-    Type *dset_data;
-    dset_data = (Type *)malloc(sizeof(Type) * nmax);
+    Type* dset_data;
+    dset_data = (Type*)malloc(sizeof(Type) * nmax);
     H5Dread(dsid, h5t_native<Type>(), H5S_ALL, H5S_ALL, H5P_DEFAULT, dset_data);
     output.insert(output.end(), &dset_data[0], &dset_data[nmax]);
     free(dset_data);
@@ -281,8 +290,9 @@ void TReadHDF5::get_data_from_dataset(const hid_t &gid, const std::string &outpu
 /// \param[in,out]  output Data vector.
 /// \param[in]	    output_names Variadic Data names.
 /// \param[in,out]  outputs Variadic Data vectors.
-template <typename Type, typename... String, typename... Vector>
-void TReadHDF5::get_data_from_dataset(const hid_t &gid, const std::string &output_name, std::vector<Type> &output, const String &...output_names, Vector &...outputs) {
+template<typename Type, typename... String, typename... Vector>
+void
+TReadHDF5::get_data_from_dataset(const hid_t& gid, const std::string& output_name, std::vector<Type>& output, const String&... output_names, Vector&... outputs) {
 
     TReadHDF5::get_data_from_dataset(gid, output_name, output);
     TReadHDF5::get_data_from_dataset(gid, output_names..., outputs...);
@@ -293,8 +303,9 @@ void TReadHDF5::get_data_from_dataset(const hid_t &gid, const std::string &outpu
 /// \tparam         Integer Count type.
 /// \param[in]      fileName File name.
 /// \param[in,out]  count Number of cells per level.
-template <typename Integer>
-void TReadHDF5::cellsPerLevels(const std::string &fileName, std::vector<Integer> &count) {
+template<typename Integer>
+void
+TReadHDF5::cellsPerLevels(const std::string& fileName, std::vector<Integer>& count) {
 
     unsigned int const MAX_NAME = 1024;
     char memb_name[MAX_NAME];
@@ -316,15 +327,15 @@ void TReadHDF5::cellsPerLevels(const std::string &fileName, std::vector<Integer>
                 hid_t dsid = H5Dopen(lvlid, "ncell_level", H5P_DEFAULT);
                 hsize_t alloc = H5Dget_storage_size(dsid);
                 unsigned int nmax = alloc / (sizeof(Integer));
-                Integer *dset_data;
-                dset_data = (Integer *)malloc(sizeof(Integer) * nmax);
+                Integer* dset_data;
+                dset_data = (Integer*)malloc(sizeof(Integer) * nmax);
                 H5Dread(dsid, h5t_native<Integer>(), H5S_ALL, H5S_ALL, H5P_DEFAULT, dset_data);
                 count[i] = dset_data[0];
                 free(dset_data);
             } // if
             H5Gclose(lvlid);
         } //  strcmp
-    }     //  i
+    } //  i
     H5Gclose(gid);
     H5Fclose(file);
     for (int i = count.size() - 1; i >= 0; --i) {
@@ -346,8 +357,9 @@ void TReadHDF5::cellsPerLevels(const std::string &fileName, std::vector<Integer>
 /// \param[in]      thetay Semi-angle for solid angle in direction y
 /// \param[in]      thetaz Semi-angle for solid angle in direction z
 /// \param[in]      conic Cone.
-template <class Parameter, typename Integer, class Conic>
-void TReadHDF5::cellsAndCubesPerLevels(const Parameter &parameters, const std::string &fileName, std::vector<Integer> &count, std::vector<std::vector<std::string>> &cubeNumber, const double &thetay, const double &thetaz, const Conic &conic) {
+template<class Parameter, typename Integer, class Conic>
+void
+TReadHDF5::cellsAndCubesPerLevels(const Parameter& parameters, const std::string& fileName, std::vector<Integer>& count, std::vector<std::vector<std::string>>& cubeNumber, const double& thetay, const double& thetaz, const Conic& conic) {
 
     float cubesize(0);
     TReadHDF5::getAttribute(fileName, "metadata/conecreator_grav_parameters/output_parameters", "cube_size", cubesize);
@@ -419,12 +431,12 @@ void TReadHDF5::cellsAndCubesPerLevels(const Parameter &parameters, const std::s
                             H5Dclose(dsid);
                             H5Gclose(cubeid);
                         } // if selection
-                    }     // if cube
-                }         // i1
-            }             // if level
+                    } // if cube
+                } // i1
+            } // if level
             H5Gclose(lvlid);
         } // strcmp
-    }     //  i
+    } //  i
     for (int i = count.size() - 1; i >= 0; --i) {
         // If no cells in any group at some given level, then erase level
         if (count[i] == 0) {
@@ -442,8 +454,9 @@ void TReadHDF5::cellsAndCubesPerLevels(const Parameter &parameters, const std::s
 /// \param[in]      fileName File name.
 /// \param[in]	    attributeName Attribute name.
 /// \param[in,out]  attributeValue Value of attribute.
-template <typename Type>
-void TReadHDF5::getAttribute(const std::string &fileName, const std::string &attributeName, Type &attributeValue) {
+template<typename Type>
+void
+TReadHDF5::getAttribute(const std::string& fileName, const std::string& attributeName, Type& attributeValue) {
 
     hid_t file = H5Fopen(fileName.c_str(), H5F_ACC_RDONLY, H5P_DEFAULT);
     hid_t aid = H5Aopen(file, attributeName.c_str(), H5P_DEFAULT);
@@ -460,8 +473,9 @@ void TReadHDF5::getAttribute(const std::string &fileName, const std::string &att
 /// \param[in]      fileName File name.
 /// \param[in]	    attributeName Attribute name.
 /// \param[in,out]  attributeValue Values of attribute.
-template <typename Type>
-void TReadHDF5::getAttribute(const std::string &fileName, const std::string &attributeName, std::vector<Type> &attributeValue) {
+template<typename Type>
+void
+TReadHDF5::getAttribute(const std::string& fileName, const std::string& attributeName, std::vector<Type>& attributeValue) {
 
     Type tabValues[3];
     hid_t file = H5Fopen(fileName.c_str(), H5F_ACC_RDONLY, H5P_DEFAULT);
@@ -485,8 +499,9 @@ void TReadHDF5::getAttribute(const std::string &fileName, const std::string &att
 /// \param[in]	    groupName Group name.
 /// \param[in] 	    attributeName Attribute name
 /// \param[in,out]  attributeValue Value of attribute.
-template <typename Type>
-void TReadHDF5::getAttribute(const std::string &fileName, const std::string &groupName, const std::string &attributeName, Type &attributeValue) {
+template<typename Type>
+void
+TReadHDF5::getAttribute(const std::string& fileName, const std::string& groupName, const std::string& attributeName, Type& attributeValue) {
 
     hid_t file = H5Fopen(fileName.c_str(), H5F_ACC_RDONLY, H5P_DEFAULT);
     hid_t gid = H5Gopen(file, groupName.c_str(), H5P_DEFAULT);
@@ -506,8 +521,9 @@ void TReadHDF5::getAttribute(const std::string &fileName, const std::string &gro
 /// \param[in]      groupName Group name.
 /// \param[in]	    attributeName Attribute name.
 /// \param[in,out]  attributeValueValues of attribute.
-template <typename Type>
-void TReadHDF5::getAttribute(const std::string &fileName, const std::string &groupName, const std::string &attributeName, std::vector<Type> &attributeValue) {
+template<typename Type>
+void
+TReadHDF5::getAttribute(const std::string& fileName, const std::string& groupName, const std::string& attributeName, std::vector<Type>& attributeValue) {
 
     Type tabValues[3];
     hid_t file = H5Fopen(fileName.c_str(), H5F_ACC_RDONLY, H5P_DEFAULT);
@@ -533,11 +549,12 @@ void TReadHDF5::getAttribute(const std::string &fileName, const std::string &gro
 /// \param[in]      levelMax int Maximum level.
 /// \param[in]	    output_name Data name.
 /// \param[in,out]  output Data vector.
-template <typename Type>
-void TReadHDF5::fillVectors_grav(const std::string &fileName, const unsigned int &levelMin, const unsigned int &levelMax, const std::string &output_name, std::vector<Type> &output) {
+template<typename Type>
+void
+TReadHDF5::fillVectors_grav(const std::string& fileName, const unsigned int& levelMin, const unsigned int& levelMax, const std::string& output_name, std::vector<Type>& output) {
 
     // Need to pre-compute the level names
-    const std::vector<std::string> levels = {"level00", "level01", "level02", "level03", "level04", "level05", "level06", "level07", "level08", "level09", "level10", "level11", "level12", "level13", "level14", "level15", "level16", "level17", "level18", "level19", "level20", "level21", "level22", "level23", "level24"};
+    const std::vector<std::string> levels = { "level00", "level01", "level02", "level03", "level04", "level05", "level06", "level07", "level08", "level09", "level10", "level11", "level12", "level13", "level14", "level15", "level16", "level17", "level18", "level19", "level20", "level21", "level22", "level23", "level24" };
     unsigned int const MAX_NAME = 1024;
     char memb_name[MAX_NAME];
     H5G_info_t grpinfo, lvlinfo;
@@ -551,8 +568,7 @@ void TReadHDF5::fillVectors_grav(const std::string &fileName, const unsigned int
         H5Gget_info(lvlid, &lvlinfo);
         // Loop over groups in 'level'
         for (unsigned int i1 = 0; i1 < lvlinfo.nlinks; i1++) {
-            H5Lget_name_by_idx(lvlid, ".", H5_INDEX_NAME, H5_ITER_NATIVE, i1, memb_name,
-                               (size_t)MAX_NAME, H5P_DEFAULT);
+            H5Lget_name_by_idx(lvlid, ".", H5_INDEX_NAME, H5_ITER_NATIVE, i1, memb_name, (size_t)MAX_NAME, H5P_DEFAULT);
             std::string str(memb_name);
             // Select groups which start with 'cube'
             if (str.substr(0, 4) == "cube") {
@@ -560,7 +576,7 @@ void TReadHDF5::fillVectors_grav(const std::string &fileName, const unsigned int
                 TReadHDF5::get_data_from_dataset(cubeid, output_name, output);
                 H5Gclose(cubeid);
             } // if cube
-        }     // i1
+        } // i1
         H5Gclose(lvlid);
     } // i
     H5Gclose(gid);
@@ -577,11 +593,12 @@ void TReadHDF5::fillVectors_grav(const std::string &fileName, const unsigned int
 /// \param[in,out]  output Data vector.
 /// \param[in]	    output_names Variadic Data names.
 /// \param[in,out]  outputs Variadic Data vectors.
-template <typename Type, typename... String, typename... Vector>
-void TReadHDF5::fillVectors_grav(const std::string &fileName, const unsigned int &levelMin, const unsigned int &levelMax, const std::string &output_name, std::vector<Type> &output, const String &...output_names, Vector &...outputs) {
+template<typename Type, typename... String, typename... Vector>
+void
+TReadHDF5::fillVectors_grav(const std::string& fileName, const unsigned int& levelMin, const unsigned int& levelMax, const std::string& output_name, std::vector<Type>& output, const String&... output_names, Vector&... outputs) {
 
     // Need to pre-compute the level names
-    const std::vector<std::string> levels = {"level00", "level01", "level02", "level03", "level04", "level05", "level06", "level07", "level08", "level09", "level10", "level11", "level12", "level13", "level14", "level15", "level16", "level17", "level18", "level19", "level20", "level21", "level22", "level23", "level24"};
+    const std::vector<std::string> levels = { "level00", "level01", "level02", "level03", "level04", "level05", "level06", "level07", "level08", "level09", "level10", "level11", "level12", "level13", "level14", "level15", "level16", "level17", "level18", "level19", "level20", "level21", "level22", "level23", "level24" };
     unsigned int const MAX_NAME = 1024;
     char memb_name[MAX_NAME];
     H5G_info_t grpinfo, lvlinfo;
@@ -595,8 +612,7 @@ void TReadHDF5::fillVectors_grav(const std::string &fileName, const unsigned int
         H5Gget_info(lvlid, &lvlinfo);
         // Loop over groups in 'level'
         for (unsigned int i1 = 0; i1 < lvlinfo.nlinks; i1++) {
-            H5Lget_name_by_idx(lvlid, ".", H5_INDEX_NAME, H5_ITER_NATIVE, i1, memb_name,
-                               (size_t)MAX_NAME, H5P_DEFAULT);
+            H5Lget_name_by_idx(lvlid, ".", H5_INDEX_NAME, H5_ITER_NATIVE, i1, memb_name, (size_t)MAX_NAME, H5P_DEFAULT);
             std::string str(memb_name);
             // Select groups which start with 'cube'
             if (str.substr(0, 4) == "cube") {
@@ -604,7 +620,7 @@ void TReadHDF5::fillVectors_grav(const std::string &fileName, const unsigned int
                 TReadHDF5::get_data_from_dataset(cubeid, output_name, output, output_names..., outputs...);
                 H5Gclose(cubeid);
             } // if cube
-        }     // i1
+        } // i1
         H5Gclose(lvlid);
     } // i
     H5Gclose(gid);
@@ -622,10 +638,11 @@ void TReadHDF5::fillVectors_grav(const std::string &fileName, const unsigned int
 /// \param[in,out]  cubeNumber Name of cubes that intersects the cone.
 /// \param[in]      output_name Data name.
 /// \param[in,out]  output Data vector.
-template <typename Type>
-void TReadHDF5::fillVectors_grav(const std::string &fileName, const unsigned int &levelMin, const unsigned int &levelMax, const std::vector<std::string> &cubeNumber, const std::string &output_name, std::vector<Type> &output) {
+template<typename Type>
+void
+TReadHDF5::fillVectors_grav(const std::string& fileName, const unsigned int& levelMin, const unsigned int& levelMax, const std::vector<std::string>& cubeNumber, const std::string& output_name, std::vector<Type>& output) {
 
-    const std::vector<std::string> levels = {"level00", "level01", "level02", "level03", "level04", "level05", "level06", "level07", "level08", "level09", "level10", "level11", "level12", "level13", "level14", "level15", "level16", "level17", "level18", "level19", "level20", "level21", "level22", "level23", "level24"};
+    const std::vector<std::string> levels = { "level00", "level01", "level02", "level03", "level04", "level05", "level06", "level07", "level08", "level09", "level10", "level11", "level12", "level13", "level14", "level15", "level16", "level17", "level18", "level19", "level20", "level21", "level22", "level23", "level24" };
     H5G_info_t grpinfo;
     hid_t file = H5Fopen(fileName.c_str(), H5F_ACC_RDONLY, H5P_DEFAULT);
     hid_t gid = H5Gopen(file, "/data/", H5P_DEFAULT);
@@ -659,10 +676,11 @@ void TReadHDF5::fillVectors_grav(const std::string &fileName, const unsigned int
 /// \param[in,out]  output Data vector.
 /// \param[in]	    output_names Variadic Data names.
 /// \param[in,out]  outputs Variadic Data vectors.
-template <typename Type, typename... String, typename... Vector>
-void TReadHDF5::fillVectors_grav(const std::string &fileName, const unsigned int &levelMin, const unsigned int &levelMax, const std::vector<std::string> &cubeNumber, const std::string &output_name, std::vector<Type> &output, const String &...output_names, Vector &...outputs) {
+template<typename Type, typename... String, typename... Vector>
+void
+TReadHDF5::fillVectors_grav(const std::string& fileName, const unsigned int& levelMin, const unsigned int& levelMax, const std::vector<std::string>& cubeNumber, const std::string& output_name, std::vector<Type>& output, const String&... output_names, Vector&... outputs) {
 
-    const std::vector<std::string> levels = {"level00", "level01", "level02", "level03", "level04", "level05", "level06", "level07", "level08", "level09", "level10", "level11", "level12", "level13", "level14", "level15", "level16", "level17", "level18", "level19", "level20", "level21", "level22", "level23", "level24"};
+    const std::vector<std::string> levels = { "level00", "level01", "level02", "level03", "level04", "level05", "level06", "level07", "level08", "level09", "level10", "level11", "level12", "level13", "level14", "level15", "level16", "level17", "level18", "level19", "level20", "level21", "level22", "level23", "level24" };
     H5G_info_t grpinfo;
     hid_t file = H5Fopen(fileName.c_str(), H5F_ACC_RDONLY, H5P_DEFAULT);
     hid_t gid = H5Gopen(file, "/data/", H5P_DEFAULT);
@@ -689,8 +707,9 @@ void TReadHDF5::fillVectors_grav(const std::string &fileName, const unsigned int
 /// \param[in]      fileSide side name('data' or 'metadata' in Raygal simulation HDF5 files).
 /// \param[in]      output_name Data name.
 /// \param[in,out]  output Data vector.
-template <typename Type>
-void TReadHDF5::fillVectors_part(const std::string &fileName, const std::string &fileSide, const std::string &output_name, std::vector<Type> &output) {
+template<typename Type>
+void
+TReadHDF5::fillVectors_part(const std::string& fileName, const std::string& fileSide, const std::string& output_name, std::vector<Type>& output) {
 
     hid_t file = H5Fopen(fileName.c_str(), H5F_ACC_RDONLY, H5P_DEFAULT);
     hid_t gid = H5Gopen(file, fileSide.c_str(), H5P_DEFAULT);
@@ -711,8 +730,9 @@ void TReadHDF5::fillVectors_part(const std::string &fileName, const std::string 
 /// \param[in,out]  output Data vector.
 /// \param[in]	    output_names Variadic Data names.
 /// \param[in,out]  outputs Variadic Data vectors.
-template <typename Type, typename... String, typename... Vector>
-void TReadHDF5::fillVectors_part(const std::string &fileName, const std::string &fileSide, const std::string &output_name, std::vector<Type> &output, const String &...output_names, Vector &...outputs) {
+template<typename Type, typename... String, typename... Vector>
+void
+TReadHDF5::fillVectors_part(const std::string& fileName, const std::string& fileSide, const std::string& output_name, std::vector<Type>& output, const String&... output_names, Vector&... outputs) {
 
     hid_t file = H5Fopen(fileName.c_str(), H5F_ACC_RDONLY, H5P_DEFAULT);
     hid_t gid = H5Gopen(file, fileSide.c_str(), H5P_DEFAULT);
@@ -731,8 +751,9 @@ void TReadHDF5::fillVectors_part(const std::string &fileName, const std::string 
 /// \param[in]      fileSide side name( data or metadata ).
 /// \param[in]      output_name1 Data name.
 /// \param[in,out]  output1 Data vector.
-template <typename Type1>
-void TReadHDF5::fillVectors_part(const double &fraction, const std::string &fileName, const std::string &fileSide, const std::string &output_name1, std::vector<Type1> &output1) {
+template<typename Type1>
+void
+TReadHDF5::fillVectors_part(const double& fraction, const std::string& fileName, const std::string& fileSide, const std::string& output_name1, std::vector<Type1>& output1) {
 
     // Need for random selection
     if (fraction < 1) {
@@ -745,8 +766,7 @@ void TReadHDF5::fillVectors_part(const double &fraction, const std::string &file
         H5Gget_info(gid, &grpinfo);
         // Loop over groups
         for (unsigned int i1 = 0; i1 < grpinfo.nlinks; i1++) {
-            H5Lget_name_by_idx(gid, ".", H5_INDEX_NAME, H5_ITER_NATIVE, i1, memb_name,
-                               (size_t)MAX_NAME, H5P_DEFAULT);
+            H5Lget_name_by_idx(gid, ".", H5_INDEX_NAME, H5_ITER_NATIVE, i1, memb_name, (size_t)MAX_NAME, H5P_DEFAULT);
             std::string str(memb_name);
             // Select groups which start with 'cube'
             if (str.substr(0, 4) == "cube") {
@@ -755,24 +775,24 @@ void TReadHDF5::fillVectors_part(const double &fraction, const std::string &file
                 hid_t dsid = H5Dopen(cubeid, output_name1.c_str(), H5P_DEFAULT);
                 hsize_t alloc = H5Dget_storage_size(dsid);
                 unsigned int nmax = alloc / (sizeof(Type1));
-                Type1 *dset_data1;
-                dset_data1 = (Type1 *)malloc(sizeof(Type1) * nmax);
+                Type1* dset_data1;
+                dset_data1 = (Type1*)malloc(sizeof(Type1) * nmax);
                 H5Dread(dsid, h5t_native<Type1>(), H5S_ALL, H5S_ALL, H5P_DEFAULT, dset_data1);
                 std::vector<unsigned int> randomization(nmax / 3);
                 std::vector<unsigned int> randomization_tmp;
                 std::iota(std::begin(randomization), std::end(randomization), 0);
                 // Randomize vector indexes and only keep a fraction
-                std::sample(randomization.begin(), randomization.end(), std::back_inserter(randomization_tmp), static_cast<unsigned int>(fraction * nmax / 3), std::mt19937{std::random_device{}()});
+                std::sample(randomization.begin(), randomization.end(), std::back_inserter(randomization_tmp), static_cast<unsigned int>(fraction * nmax / 3), std::mt19937{ std::random_device{}() });
                 const uint size = output1.size();
                 output1.resize(output1.size() + nmax);
-                Utility::parallelize(randomization_tmp.size(), [&](const uint i){ 
+                Utility::parallelize(randomization_tmp.size(), [&](const uint i) {
                     std::copy_n(&dset_data1[3 * randomization_tmp[i]], 3, output1.begin() + size + 3 * i);
                 });
                 free(dset_data1);
                 H5Dclose(dsid);
                 H5Gclose(cubeid);
             } // if cube
-        }     // i1
+        } // i1
         H5Gclose(gid);
         H5Fclose(file);
         // Take full sample
@@ -785,8 +805,7 @@ void TReadHDF5::fillVectors_part(const double &fraction, const std::string &file
         H5Gget_info(gid, &grpinfo);
         // Loop over groups
         for (unsigned int i1 = 0; i1 < grpinfo.nlinks; i1++) {
-            H5Lget_name_by_idx(gid, ".", H5_INDEX_NAME, H5_ITER_NATIVE, i1, memb_name,
-                               (size_t)MAX_NAME, H5P_DEFAULT);
+            H5Lget_name_by_idx(gid, ".", H5_INDEX_NAME, H5_ITER_NATIVE, i1, memb_name, (size_t)MAX_NAME, H5P_DEFAULT);
             std::string str(memb_name);
             // Select groups which start with 'cube'
             if (str.substr(0, 4) == "cube") {
@@ -794,7 +813,7 @@ void TReadHDF5::fillVectors_part(const double &fraction, const std::string &file
                 TReadHDF5::get_data_from_dataset(cubeid, output_name1, output1);
                 H5Gclose(cubeid);
             } // if cube
-        }     // i1
+        } // i1
         H5Gclose(gid);
         H5Fclose(file);
     }
@@ -811,8 +830,9 @@ void TReadHDF5::fillVectors_part(const double &fraction, const std::string &file
 /// \param[in,out]  output1 Data vector.
 /// \param[in]	    output_name2 Variadic Data name.
 /// \param[in,out]  output2 Variadic Data vector.
-template <typename Type1, typename Type2>
-void TReadHDF5::fillVectors_part(const double &fraction, const std::string &fileName, const std::string &fileSide, const std::string &output_name1, std::vector<Type1> &output1, const std::string &output_name2, std::vector<Type2> &output2) {
+template<typename Type1, typename Type2>
+void
+TReadHDF5::fillVectors_part(const double& fraction, const std::string& fileName, const std::string& fileSide, const std::string& output_name1, std::vector<Type1>& output1, const std::string& output_name2, std::vector<Type2>& output2) {
 
     // Need for random selection
     if (fraction < 1) {
@@ -825,8 +845,7 @@ void TReadHDF5::fillVectors_part(const double &fraction, const std::string &file
         H5Gget_info(gid, &grpinfo);
         // Loop over groups
         for (unsigned int i1 = 0; i1 < grpinfo.nlinks; i1++) {
-            H5Lget_name_by_idx(gid, ".", H5_INDEX_NAME, H5_ITER_NATIVE, i1, memb_name,
-                               (size_t)MAX_NAME, H5P_DEFAULT);
+            H5Lget_name_by_idx(gid, ".", H5_INDEX_NAME, H5_ITER_NATIVE, i1, memb_name, (size_t)MAX_NAME, H5P_DEFAULT);
             std::string str(memb_name);
             // Select groups which start with 'cube'
             if (str.substr(0, 4) == "cube") {
@@ -839,13 +858,13 @@ void TReadHDF5::fillVectors_part(const double &fraction, const std::string &file
                 std::vector<unsigned int> randomization_tmp;
                 std::iota(std::begin(randomization), std::end(randomization), 0);
                 // Randomize vector indexes and only keep a fraction
-                std::sample(randomization.begin(), randomization.end(), std::back_inserter(randomization_tmp), static_cast<unsigned int>(fraction * nmax / 3), std::mt19937{std::random_device{}()});
-                Type1 *dset_data1;
-                dset_data1 = (Type1 *)malloc(sizeof(Type1) * nmax);
+                std::sample(randomization.begin(), randomization.end(), std::back_inserter(randomization_tmp), static_cast<unsigned int>(fraction * nmax / 3), std::mt19937{ std::random_device{}() });
+                Type1* dset_data1;
+                dset_data1 = (Type1*)malloc(sizeof(Type1) * nmax);
                 H5Dread(dsid, h5t_native<Type1>(), H5S_ALL, H5S_ALL, H5P_DEFAULT, dset_data1);
                 uint size = output1.size();
                 output1.resize(output1.size() + nmax);
-                Utility::parallelize(randomization_tmp.size(), [&](const uint i){ 
+                Utility::parallelize(randomization_tmp.size(), [&](const uint i) {
                     std::copy_n(&dset_data1[3 * randomization_tmp[i]], 3, output1.begin() + size + 3 * i);
                 });
                 free(dset_data1);
@@ -854,19 +873,19 @@ void TReadHDF5::fillVectors_part(const double &fraction, const std::string &file
                 dsid = H5Dopen(cubeid, output_name2.c_str(), H5P_DEFAULT);
                 alloc = H5Dget_storage_size(dsid);
                 nmax = alloc / (sizeof(Type2));
-                Type2 *dset_data2;
-                dset_data2 = (Type2 *)malloc(sizeof(Type2) * nmax);
+                Type2* dset_data2;
+                dset_data2 = (Type2*)malloc(sizeof(Type2) * nmax);
                 H5Dread(dsid, h5t_native<Type2>(), H5S_ALL, H5S_ALL, H5P_DEFAULT, dset_data2);
                 size = output2.size();
                 output2.resize(output2.size() + nmax);
-                Utility::parallelize(randomization_tmp.size(), [&](const uint i){ 
+                Utility::parallelize(randomization_tmp.size(), [&](const uint i) {
                     std::copy_n(&dset_data2[3 * randomization_tmp[i]], 3, output2.begin() + size + 3 * i);
                 });
                 free(dset_data2);
                 H5Dclose(dsid);
                 H5Gclose(cubeid);
             } // if cube
-        }     // i1
+        } // i1
         H5Gclose(gid);
         H5Fclose(file);
         // Take full sample
@@ -879,8 +898,7 @@ void TReadHDF5::fillVectors_part(const double &fraction, const std::string &file
         H5Gget_info(gid, &grpinfo);
         // Loop over groups
         for (unsigned int i1 = 0; i1 < grpinfo.nlinks; i1++) {
-            H5Lget_name_by_idx(gid, ".", H5_INDEX_NAME, H5_ITER_NATIVE, i1, memb_name,
-                               (size_t)MAX_NAME, H5P_DEFAULT);
+            H5Lget_name_by_idx(gid, ".", H5_INDEX_NAME, H5_ITER_NATIVE, i1, memb_name, (size_t)MAX_NAME, H5P_DEFAULT);
             std::string str(memb_name);
             // Select groups which start with 'cube'
             if (str.substr(0, 4) == "cube") {
@@ -891,7 +909,7 @@ void TReadHDF5::fillVectors_part(const double &fraction, const std::string &file
                 TReadHDF5::get_data_from_dataset(cubeid, output_name2, output2);
                 H5Gclose(cubeid);
             } // if cube
-        }     // i1
+        } // i1
         H5Gclose(gid);
         H5Fclose(file);
     }
@@ -911,8 +929,9 @@ void TReadHDF5::fillVectors_part(const double &fraction, const std::string &file
 /// \param[in,out]  output2 Data vector.
 /// \param[in]      output_name3 Data name.
 /// \param[in,out]  output3 Data vector.
-template <typename Type1, typename Type2, typename Type3>
-void TReadHDF5::fillVectors_part(const double &fraction, const std::string &fileName, const std::string &fileSide, const std::string &output_name1, std::vector<Type1> &output1, const std::string &output_name2, std::vector<Type2> &output2, const std::string &output_name3, std::vector<Type3> &output3) {
+template<typename Type1, typename Type2, typename Type3>
+void
+TReadHDF5::fillVectors_part(const double& fraction, const std::string& fileName, const std::string& fileSide, const std::string& output_name1, std::vector<Type1>& output1, const std::string& output_name2, std::vector<Type2>& output2, const std::string& output_name3, std::vector<Type3>& output3) {
 
     // Need for random selection
     if (fraction < 1) {
@@ -925,8 +944,7 @@ void TReadHDF5::fillVectors_part(const double &fraction, const std::string &file
         H5Gget_info(gid, &grpinfo);
         // Loop over groups
         for (unsigned int i1 = 0; i1 < grpinfo.nlinks; i1++) {
-            H5Lget_name_by_idx(gid, ".", H5_INDEX_NAME, H5_ITER_NATIVE, i1, memb_name,
-                               (size_t)MAX_NAME, H5P_DEFAULT);
+            H5Lget_name_by_idx(gid, ".", H5_INDEX_NAME, H5_ITER_NATIVE, i1, memb_name, (size_t)MAX_NAME, H5P_DEFAULT);
             std::string str(memb_name);
             // Select groups which start with 'cube'
             if (str.substr(0, 4) == "cube") {
@@ -939,13 +957,13 @@ void TReadHDF5::fillVectors_part(const double &fraction, const std::string &file
                 std::vector<unsigned int> randomization_tmp;
                 std::iota(std::begin(randomization), std::end(randomization), 0);
                 // Randomize vector indexes and only keep a fraction
-                std::sample(randomization.begin(), randomization.end(), std::back_inserter(randomization_tmp), static_cast<unsigned int>(fraction * nmax / 3), std::mt19937{std::random_device{}()});
-                Type1 *dset_data1;
-                dset_data1 = (Type1 *)malloc(sizeof(Type1) * nmax);
+                std::sample(randomization.begin(), randomization.end(), std::back_inserter(randomization_tmp), static_cast<unsigned int>(fraction * nmax / 3), std::mt19937{ std::random_device{}() });
+                Type1* dset_data1;
+                dset_data1 = (Type1*)malloc(sizeof(Type1) * nmax);
                 H5Dread(dsid, h5t_native<Type1>(), H5S_ALL, H5S_ALL, H5P_DEFAULT, dset_data1);
                 uint size = output1.size();
                 output1.resize(output1.size() + nmax);
-                Utility::parallelize(randomization_tmp.size(), [&](const uint i){ 
+                Utility::parallelize(randomization_tmp.size(), [&](const uint i) {
                     std::copy_n(&dset_data1[3 * randomization_tmp[i]], 3, output1.begin() + size + 3 * i);
                 });
                 free(dset_data1);
@@ -954,12 +972,12 @@ void TReadHDF5::fillVectors_part(const double &fraction, const std::string &file
                 dsid = H5Dopen(cubeid, output_name2.c_str(), H5P_DEFAULT);
                 alloc = H5Dget_storage_size(dsid);
                 nmax = alloc / (sizeof(Type2));
-                Type2 *dset_data2;
-                dset_data2 = (Type2 *)malloc(sizeof(Type2) * nmax);
+                Type2* dset_data2;
+                dset_data2 = (Type2*)malloc(sizeof(Type2) * nmax);
                 H5Dread(dsid, h5t_native<Type2>(), H5S_ALL, H5S_ALL, H5P_DEFAULT, dset_data2);
                 size = output2.size();
                 output2.resize(output2.size() + nmax);
-                Utility::parallelize(randomization_tmp.size(), [&](const uint i){ 
+                Utility::parallelize(randomization_tmp.size(), [&](const uint i) {
                     std::copy_n(&dset_data2[3 * randomization_tmp[i]], 3, output2.begin() + size + 3 * i);
                 });
                 free(dset_data2);
@@ -968,19 +986,19 @@ void TReadHDF5::fillVectors_part(const double &fraction, const std::string &file
                 dsid = H5Dopen(cubeid, output_name3.c_str(), H5P_DEFAULT);
                 alloc = H5Dget_storage_size(dsid);
                 nmax = alloc / (sizeof(Type3));
-                Type3 *dset_data3;
-                dset_data3 = (Type3 *)malloc(sizeof(Type3) * nmax);
+                Type3* dset_data3;
+                dset_data3 = (Type3*)malloc(sizeof(Type3) * nmax);
                 H5Dread(dsid, h5t_native<Type3>(), H5S_ALL, H5S_ALL, H5P_DEFAULT, dset_data3);
                 size = output3.size();
                 output3.resize(output3.size() + nmax);
-                Utility::parallelize(randomization_tmp.size(), [&](const uint i){ 
+                Utility::parallelize(randomization_tmp.size(), [&](const uint i) {
                     std::copy_n(&dset_data3[3 * randomization_tmp[i]], 3, output3.begin() + size + 3 * i);
                 });
                 free(dset_data3);
                 H5Dclose(dsid);
                 H5Gclose(cubeid);
             } // if cube
-        }     // i1
+        } // i1
         H5Gclose(gid);
         H5Fclose(file);
         // Take full sample
@@ -993,8 +1011,7 @@ void TReadHDF5::fillVectors_part(const double &fraction, const std::string &file
         H5Gget_info(gid, &grpinfo);
         // Loop over groups
         for (unsigned int i1 = 0; i1 < grpinfo.nlinks; i1++) {
-            H5Lget_name_by_idx(gid, ".", H5_INDEX_NAME, H5_ITER_NATIVE, i1, memb_name,
-                               (size_t)MAX_NAME, H5P_DEFAULT);
+            H5Lget_name_by_idx(gid, ".", H5_INDEX_NAME, H5_ITER_NATIVE, i1, memb_name, (size_t)MAX_NAME, H5P_DEFAULT);
             std::string str(memb_name);
             // Select group which start with 'cube'
             if (str.substr(0, 4) == "cube") {
@@ -1007,7 +1024,7 @@ void TReadHDF5::fillVectors_part(const double &fraction, const std::string &file
                 TReadHDF5::get_data_from_dataset(cubeid, output_name3, output3);
                 H5Gclose(cubeid);
             } // if cube
-        }     // i1
+        } // i1
         H5Gclose(gid);
         H5Fclose(file);
     }
@@ -1027,8 +1044,9 @@ void TReadHDF5::fillVectors_part(const double &fraction, const std::string &file
 /// \param[in]      fileSide side name( data or metadata ).
 /// \param[in]      output_name Data name.
 /// \param[in,out]  output Data vector.
-template <class Parameter, typename Type, class Conic>
-void TReadHDF5::fillVectors_part(const Parameter &parameters, const std::string &fileName, const double &thetay, const double &thetaz, const Conic &conic, const std::string &fileSide, const std::string &output_name, std::vector<Type> &output) {
+template<class Parameter, typename Type, class Conic>
+void
+TReadHDF5::fillVectors_part(const Parameter& parameters, const std::string& fileName, const double& thetay, const double& thetaz, const Conic& conic, const std::string& fileSide, const std::string& output_name, std::vector<Type>& output) {
 
     float cubesize(0);
     TReadHDF5::getAttribute(fileName, "metadata/conecreator_part_parameters/output_parameters", "cube_size", cubesize);
@@ -1057,8 +1075,7 @@ void TReadHDF5::fillVectors_part(const Parameter &parameters, const std::string 
     H5Gget_info(gid, &grpinfo);
     // Loop over groups
     for (unsigned int i1 = 0; i1 < grpinfo.nlinks; i1++) {
-        H5Lget_name_by_idx(gid, ".", H5_INDEX_NAME, H5_ITER_NATIVE, i1, memb_name,
-                           (size_t)MAX_NAME, H5P_DEFAULT);
+        H5Lget_name_by_idx(gid, ".", H5_INDEX_NAME, H5_ITER_NATIVE, i1, memb_name, (size_t)MAX_NAME, H5P_DEFAULT);
         std::string str(memb_name);
         // Select groups which start with 'cube'
         if (str.substr(0, 4) == "cube") {
@@ -1084,8 +1101,8 @@ void TReadHDF5::fillVectors_part(const Parameter &parameters, const std::string 
                 TReadHDF5::get_data_from_dataset(cubeid, output_name, output);
                 H5Gclose(cubeid);
             } // if inside cone
-        }     // if cube
-    }         // i1
+        } // if cube
+    } // i1
     H5Gclose(gid);
     H5Fclose(file);
 }
@@ -1105,8 +1122,9 @@ void TReadHDF5::fillVectors_part(const Parameter &parameters, const std::string 
 /// \param[in,out]  output Data vector.
 /// \param[in]	    output_names Variadic Data names.
 /// \param[in,out]  outputs Variadic Data vectors.
-template <class Parameter, typename Type, typename... String, typename... Vector, class Conic>
-void TReadHDF5::fillVectors_part(const Parameter &parameters, const std::string &fileName, const double &thetay, const double &thetaz, const Conic &conic, const std::string &fileSide, const std::string &output_name, std::vector<Type> &output, const String &...output_names, Vector &...outputs) {
+template<class Parameter, typename Type, typename... String, typename... Vector, class Conic>
+void
+TReadHDF5::fillVectors_part(const Parameter& parameters, const std::string& fileName, const double& thetay, const double& thetaz, const Conic& conic, const std::string& fileSide, const std::string& output_name, std::vector<Type>& output, const String&... output_names, Vector&... outputs) {
 
     float cubesize(0);
     TReadHDF5::getAttribute(fileName, "metadata/conecreator_part_parameters/output_parameters", "cube_size", cubesize);
@@ -1135,8 +1153,7 @@ void TReadHDF5::fillVectors_part(const Parameter &parameters, const std::string 
     H5Gget_info(gid, &grpinfo);
     // Loop over groups
     for (unsigned int i1 = 0; i1 < grpinfo.nlinks; i1++) {
-        H5Lget_name_by_idx(gid, ".", H5_INDEX_NAME, H5_ITER_NATIVE, i1, memb_name,
-                           (size_t)MAX_NAME, H5P_DEFAULT);
+        H5Lget_name_by_idx(gid, ".", H5_INDEX_NAME, H5_ITER_NATIVE, i1, memb_name, (size_t)MAX_NAME, H5P_DEFAULT);
         std::string str(memb_name);
         // Select groups which start with 'cube'
         if (str.substr(0, 4) == "cube") {
@@ -1162,8 +1179,8 @@ void TReadHDF5::fillVectors_part(const Parameter &parameters, const std::string 
                 TReadHDF5::get_data_from_dataset(cubeid, output_name, output, output_names..., outputs...);
                 H5Gclose(cubeid);
             } // if inside cone
-        }     // if cube
-    }         // i1
+        } // if cube
+    } // i1
     H5Gclose(gid);
     H5Fclose(file);
 }

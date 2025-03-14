@@ -73,7 +73,8 @@ using namespace magrathea;
 /// \param[in]      argc Number of arguments.
 /// \param[in]      argv List of arguments.
 /// \return         Zero on success, error code otherwise.
-int main(int argc, char *argv[]) {
+int
+main(int argc, char* argv[]) {
     // Constants
 
     using integer = int;
@@ -84,12 +85,12 @@ int main(int argc, char *argv[]) {
 
     static constexpr uint zero = 0;
     static constexpr uint two = 2;
-    static constexpr point center({{0, 0, 0}});
+    static constexpr point center({ { 0, 0, 0 } });
     static constexpr real diameter =
-        static_cast<real>(extent::num) / static_cast<real>(extent::den);
+      static_cast<real>(extent::num) / static_cast<real>(extent::den);
     static constexpr uint dimension = 3;
     static const std::string namelist =
-        argc > 1 ? std::string(argv[1]) : std::string("raytracer.txt");
+      argc > 1 ? std::string(argv[1]) : std::string("raytracer.txt");
 
     // Parameters
     std::map<std::string, std::string> parameter;
@@ -103,7 +104,7 @@ int main(int argc, char *argv[]) {
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     // Read parameter file
     Miscellaneous::TicketizeFunction(
-        rank, ntasks, [=, &parameter] { parameter = Input::parse(namelist); });
+      rank, ntasks, [=, &parameter] { parameter = Input::parse(namelist); });
     // Convert strings and put it in struct
     Generate_cones::ReadParamFile(parameters, parameter);
     // Initialization
@@ -111,7 +112,7 @@ int main(int argc, char *argv[]) {
     std::vector<Cone<point>> cone(parameters.ncones);
     std::vector<Cone<point>> coneIfRot(parameters.ncones);
     real thetay(0), thetaz(0);
-    std::array<std::array<double, 3>, 3> rotm1 = {{zero}};
+    std::array<std::array<double, 3>, 3> rotm1 = { { zero } };
 
     if (rank == 0)
         std::cout << "#### MAGRATHEA_PATHFINDER " << std::endl;
@@ -120,14 +121,12 @@ int main(int argc, char *argv[]) {
         if (rank == 0) {
             std::cout << "## Fullsky cone" << std::endl;
         }
-        Generate_cones::GenerateFullskyCones(parameters.ncones, cone, coneIfRot,
-                                             sphere);
+        Generate_cones::GenerateFullskyCones(parameters.ncones, cone, coneIfRot, sphere);
     } else {
         if (rank == 0) {
             std::cout << "## Narrow cone" << std::endl;
         }
-        Generate_cones::GenerateNarrowCones(parameters, cone, coneIfRot, sphere,
-                                            rotm1, thetay, thetaz);
+        Generate_cones::GenerateNarrowCones(parameters, cone, coneIfRot, sphere, rotm1, thetay, thetaz);
     }
 
     // Write cone orientations in txt file
