@@ -1182,15 +1182,15 @@ namespace magrathea {
     template<typename... Types, class, class>
     inline Data SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>::tsc(Types&&... iposs) const {
         static const Type one = Type(1);
-        static const Type two = Type(2);
         const std::array<Type, sizeof...(iposs)> point = tupleify<std::array<Type, sizeof...(iposs)>>(std::forward<Types>(iposs)...);
         Element elem = Element(Index::template cipher<Type, Position, Extent>(std::forward<Types>(iposs)...), Data());
         unsigned long long int marker = std::distance(std::begin(_container), std::upper_bound(std::begin(_container), std::end(_container), elem, [](const Element& first, const Element& second) { return std::get<0>(first) < std::get<0>(second); }));
         Index idx = (std::get<0>(*(std::begin(_container) + marker - (marker > 0))).containing(std::get<0>(elem))) ? (std::get<0>(*(std::begin(_container) + marker - 1))) : (Index::invalid());
         unsigned int ilvl = idx.level();
         unsigned int lvl = ilvl;
-        Type half = Type(Extent::num) / Type(Extent::den) * idx.extent() / two;
+        Type cellsize = Type(Extent::num) / Type(Extent::den) * idx.extent();
         std::array<Type, sizeof...(iposs)> dist = point;
+        std::array<Type, sizeof...(iposs)> center_cell;
         Data result = std::get<1>(elem);
         Type weight = 0;
 
@@ -1200,20 +1200,30 @@ namespace magrathea {
         do {
             ilvl = lvl;
             if (!idx.invalidated()) {
-                const Type twohalves = two * half;
+
+                std::get<0>(elem) = Index::template compute<Type, Position, Extent>(ilvl, point[0], point[1], point[2]);
+                for (uint idim = 0; idim < 3; idim++)
+                    center_cell[idim] = std::get<0>(elem).template center<Type, Position, Extent>(idim);
+
                 for (int ix = -one; ix <= one; ++ix) {
                     const Type aix = abs(ix);
+                    dist[0] = std::abs(center_cell[0] + ix * cellsize - point[0]);
+                    dist[0] /= cellsize;
+                    const Type wx = aix * 0.5 * (1.5 - dist[0]) * (1.5 - dist[0]) + (1. - aix) * (0.75 - dist[0] * dist[0]);
                     for (int iy = -one; iy <= one; ++iy) {
                         const Type aiy = abs(iy);
+                        dist[1] = std::abs(center_cell[1] + iy * cellsize - point[1]);
+                        dist[1] /= cellsize;
+                        const Type wy = aiy * 0.5 * (1.5 - dist[1]) * (1.5 - dist[1]) + (1. - aiy) * (0.75 - dist[1] * dist[1]);
                         for (int iz = -one; iz <= one; ++iz) {
                             const Type aiz = abs(iz);
-                            std::get<0>(elem) = Index::template compute<Type, Position, Extent>(ilvl, point[0] + ix * twohalves, point[1] + iy * twohalves, point[2] + iz * twohalves);
+                            dist[2] = std::abs(center_cell[2] + iz * cellsize - point[2]);
+                            dist[2] /= cellsize;
+                            const Type wz = aiz * 0.5 * (1.5 - dist[2]) * (1.5 - dist[2]) + (1. - aiz) * (0.75 - dist[2] * dist[2]);
+                            std::get<0>(elem) = Index::template compute<Type, Position, Extent>(ilvl, point[0] + ix * cellsize, point[1] + iy * cellsize, point[2] + iz * cellsize);
                             marker = std::distance(std::begin(_container), std::upper_bound(std::begin(_container), std::end(_container), elem, [](const Element& first, const Element& second) { return std::get<0>(first) < std::get<0>(second); }));
                             if (std::get<0>(*(std::begin(_container) + marker - (marker > 0))).containing(std::get<0>(elem))) {
-                                for (unsigned int idim = 0; idim < Index::dimension(); ++idim) {
-                                    dist[idim] = std::abs((std::get<0>(elem).template center<Type, Position, Extent>(idim) - point[idim]) / (twohalves));
-                                }
-                                weight = (aix * 0.5 * (1.5 - dist[0]) * (1.5 - dist[0]) + (1. - aix) * (0.75 - dist[0] * dist[0])) * (aiy * 0.5 * (1.5 - dist[1]) * (1.5 - dist[1]) + (1. - aiy) * (0.75 - dist[1] * dist[1])) * (aiz * 0.5 * (1.5 - dist[2]) * (1.5 - dist[2]) + (1. - aiz) * (0.75 - dist[2] * dist[2]));
+                                weight = wx * wy * wz;
                                 lvl = std::min(lvl, std::get<0>(*(std::begin(_container) + marker - 1)).level());
                                 if (lvl < ilvl) {
                                     result = Data();
@@ -1233,7 +1243,7 @@ namespace magrathea {
                 elem = Element(Index::template compute<Type, Position, Extent>(lvl + 1, std::forward<Types>(iposs)...), Data());
                 idx = std::get<0>(elem).parent();
                 result = std::get<1>(elem);
-                half = Type(Extent::num) / Type(Extent::den) * idx.extent() / two;
+                cellsize = Type(Extent::num) / Type(Extent::den) * idx.extent();
             }
         } while (lvl < ilvl);
         return result;
@@ -1252,15 +1262,15 @@ namespace magrathea {
     template<typename... Types, class, class>
     inline Data SimpleHyperOctree<Type, Index, Data, Dimension, Position, Extent, Element, Container>::tsc(std::vector<Element>& elemsTsc, Types&&... iposs) const {
         static const Type one = Type(1);
-        static const Type two = Type(2);
         const std::array<Type, sizeof...(iposs)> point = tupleify<std::array<Type, sizeof...(iposs)>>(std::forward<Types>(iposs)...);
         Element elem = Element(Index::template cipher<Type, Position, Extent>(std::forward<Types>(iposs)...), Data());
         unsigned long long int marker = std::distance(std::begin(_container), std::upper_bound(std::begin(_container), std::end(_container), elem, [](const Element& first, const Element& second) { return std::get<0>(first) < std::get<0>(second); }));
         Index idx = (std::get<0>(*(std::begin(_container) + marker - (marker > 0))).containing(std::get<0>(elem))) ? (std::get<0>(*(std::begin(_container) + marker - 1))) : (Index::invalid());
         unsigned int ilvl = idx.level();
         unsigned int lvl = ilvl;
-        Type half = Type(Extent::num) / Type(Extent::den) * idx.extent() / two;
+        Type cellsize = Type(Extent::num) / Type(Extent::den) * idx.extent();
         std::array<Type, sizeof...(iposs)> dist = point;
+        std::array<Type, sizeof...(iposs)> center_cell;
         Data result = std::get<1>(elem);
         Type weight = 0;
         std::vector<Element> elemsTsctmp(27);
@@ -1271,44 +1281,61 @@ namespace magrathea {
 
         do {
             ilvl = lvl;
-            const double twohalves = two * half;
-
-            if (std::get<0>(elemsTsc[13]) == idx) {
-                ic = 0;
-                for (int ix = -one; ix <= one; ++ix) {
-                    const Type aix = abs(ix);
-                    for (int iy = -one; iy <= one; ++iy) {
-                        const Type aiy = abs(iy);
-                        for (int iz = -one; iz <= one; ++iz) {
-                            const Type aiz = abs(iz);
-                            for (unsigned int idim = 0; idim < Index::dimension(); ++idim) {
-                                dist[idim] = std::abs((std::get<0>(elemsTsc[ic]).template center<Type, Position, Extent>(idim) - point[idim]) / (twohalves));
-                            }
-                            weight = (aix * 0.5 * (1.5 - dist[0]) * (1.5 - dist[0]) + (1 - aix) * (0.75 - dist[0] * dist[0])) * (aiy * 0.5 * (1.5 - dist[1]) * (1.5 - dist[1]) + (1 - aiy) * (0.75 - dist[1] * dist[1])) * (aiz * 0.5 * (1.5 - dist[2]) * (1.5 - dist[2]) + (1 - aiz) * (0.75 - dist[2] * dist[2]));
-                            mac(result, std::get<1>(elemsTsc[ic]), weight);
-                            ic++;
-                        }
-                    }
-                }
-                return result;
-            }
 
             if (!idx.invalidated()) {
+
+                std::get<0>(elem) = Index::template compute<Type, Position, Extent>(ilvl, point[0], point[1], point[2]);
+                for (uint idim = 0; idim < 3; idim++)
+                    center_cell[idim] = std::get<0>(elem).template center<Type, Position, Extent>(idim);
+
+                // Photon is in the same cell as previous integration step
+                if (std::get<0>(elemsTsc[13]) == idx) {
+                    ic = 0;
+                    for (int ix = -one; ix <= one; ++ix) {
+                        const Type aix = abs(ix);
+                        dist[0] = std::abs(center_cell[0] + ix * cellsize - point[0]);
+                        dist[0] /= cellsize;
+                        const Type wx = aix * 0.5 * (1.5 - dist[0]) * (1.5 - dist[0]) + (1 - aix) * (0.75 - dist[0] * dist[0]);
+                        for (int iy = -one; iy <= one; ++iy) {
+                            const Type aiy = abs(iy);
+                            dist[1] = std::abs(center_cell[1] + iy * cellsize - point[1]);
+                            dist[1] /= cellsize;
+                            const Type wy = aiy * 0.5 * (1.5 - dist[1]) * (1.5 - dist[1]) + (1 - aiy) * (0.75 - dist[1] * dist[1]);
+                            for (int iz = -one; iz <= one; ++iz) {
+                                const Type aiz = abs(iz);
+                                dist[2] = std::abs(center_cell[2] + iz * cellsize - point[2]);
+                                dist[2] /= cellsize;
+                                const Type wz = aiz * 0.5 * (1.5 - dist[2]) * (1.5 - dist[2]) + (1 - aiz) * (0.75 - dist[2] * dist[2]);
+                                weight = wx * wy * wz;
+                                mac(result, std::get<1>(elemsTsc[ic]), weight);
+                                ic++;
+                            }
+                        }
+                    }
+                    return result;
+                }
+
                 ic = 0;
                 for (int ix = -one; ix <= one; ++ix) {
                     const Type aix = abs(ix);
+                    dist[0] = std::abs(center_cell[0] + ix * cellsize - point[0]);
+                    dist[0] /= cellsize;
+                    const Type wx = aix * 0.5 * (1.5 - dist[0]) * (1.5 - dist[0]) + (1 - aix) * (0.75 - dist[0] * dist[0]);
                     for (int iy = -one; iy <= one; ++iy) {
                         const Type aiy = abs(iy);
+                        dist[1] = std::abs(center_cell[1] + iy * cellsize - point[1]);
+                        dist[1] /= cellsize;
+                        const Type wy = aiy * 0.5 * (1.5 - dist[1]) * (1.5 - dist[1]) + (1 - aiy) * (0.75 - dist[1] * dist[1]);
                         for (int iz = -one; iz <= one; ++iz) {
                             const Type aiz = abs(iz);
-                            std::get<0>(elem) = Index::template compute<Type, Position, Extent>(ilvl, point[0] + ix * twohalves, point[1] + iy * twohalves, point[2] + iz * twohalves);
+                            dist[2] = std::abs(center_cell[2] + iz * cellsize - point[2]);
+                            dist[2] /= cellsize;
+                            const Type wz = aiz * 0.5 * (1.5 - dist[2]) * (1.5 - dist[2]) + (1 - aiz) * (0.75 - dist[2] * dist[2]);
+                            std::get<0>(elem) = Index::template compute<Type, Position, Extent>(ilvl, point[0] + ix * cellsize, point[1] + iy * cellsize, point[2] + iz * cellsize);
                             marker = std::distance(std::begin(_container), std::upper_bound(std::begin(_container), std::end(_container), elem, [](const Element& first, const Element& second) { return std::get<0>(first) < std::get<0>(second); }));
                             if (std::get<0>(*(std::begin(_container) + marker - (marker > 0))).containing(std::get<0>(elem))) {
                                 elemsTsctmp[ic] = *(std::begin(_container) + marker - (marker > 0));
-                                for (unsigned int idim = 0; idim < Index::dimension(); ++idim) {
-                                    dist[idim] = std::abs((std::get<0>(elem).template center<Type, Position, Extent>(idim) - point[idim]) / (twohalves));
-                                }
-                                weight = (aix * 0.5 * (1.5 - dist[0]) * (1.5 - dist[0]) + (1 - aix) * (0.75 - dist[0] * dist[0])) * (aiy * 0.5 * (1.5 - dist[1]) * (1.5 - dist[1]) + (1 - aiy) * (0.75 - dist[1] * dist[1])) * (aiz * 0.5 * (1.5 - dist[2]) * (1.5 - dist[2]) + (1 - aiz) * (0.75 - dist[2] * dist[2]));
+                                weight = wx * wy * wz;
                                 lvl = std::min(lvl, std::get<0>(elemsTsctmp[ic]).level());
                                 if (lvl < ilvl) {
                                     result = Data();
@@ -1333,7 +1360,7 @@ namespace magrathea {
                 elem = Element(Index::template compute<Type, Position, Extent>(lvl + 1, std::forward<Types>(iposs)...), Data());
                 idx = std::get<0>(elem).parent();
                 result = std::get<1>(elem);
-                half = Type(Extent::num) / Type(Extent::den) * idx.extent() / two;
+                cellsize = Type(Extent::num) / Type(Extent::den) * idx.extent();
             }
         } while (lvl < ilvl);
         return result;
