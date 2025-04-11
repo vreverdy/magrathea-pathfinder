@@ -182,7 +182,7 @@ Output::save(std::ostream& stream, const Cosmology& cosmology, const unsigned in
     if (stream) {
         stream << std::setprecision((digits > 0) ? (digits) : (stream.precision()));
         for (unsigned int i = 0; i < size; ++i) {
-            stream << std::get<0>(cosmology)[i] << separator << std::get<1>(cosmology)[i] << separator << std::get<2>(cosmology)[i] << separator << std::get<3>(cosmology)[i] << std::endl;
+            stream << std::get<0>(cosmology)[i] << separator << std::get<1>(cosmology)[i] << separator << std::get<2>(cosmology)[i] << separator << std::get<3>(cosmology)[i] << "\n";
         }
     }
     return stream.good();
@@ -203,7 +203,7 @@ Output::save(std::ostream& stream, const Trajectory& trajectory, const unsigned 
     if (stream) {
         stream << std::setprecision((digits > 0) ? (digits) : (stream.precision()));
         for (unsigned int i = 0; i < size; ++i) {
-            stream << trajectory[i] << std::endl;
+            stream << trajectory[i] << "\n";
         }
     }
     return stream.good();
@@ -231,10 +231,10 @@ Output::save(std::ostream& stream, const Container& x, const Container& y, const
     if (stream) {
         stream << std::setprecision((digits > 0) ? (digits) : (stream.precision()));
         if (!std::is_same<Integral, std::true_type>::value) {
-            stream << "# " << n << std::endl;
+            stream << "# " << n << "\n";
         }
         for (unsigned int i = 0; i < size; ++i) {
-            stream << x[i] << " " << y[i] << " " << ymean[i] << " " << ystd[i] << std::endl;
+            stream << x[i] << " " << y[i] << " " << ymean[i] << " " << ystd[i] << "\n";
         }
     }
     return stream.good();

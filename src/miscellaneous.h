@@ -100,7 +100,7 @@ public:
 
     // Read Angular position from previously computed catalog
     template<typename Integer>
-    static void ReadFromCat(const Integer icone, const std::string filename, std::vector<std::array<double, 18>>& catalogue);
+    static void ReadFromCat(const Integer icone, const std::string filename, std::vector<std::vector<double>>& catalogue);
 
     // Write and read cone orientation file
     template<class Cone, class Parameters>
@@ -553,23 +553,31 @@ Miscellaneous::fill_particles_vectors(const Parameter& parameters, const Cone& c
 /// \param[in,out]  Catalogue Vector containing the source catalogue
 template<typename Integer>
 void
-Miscellaneous::ReadFromCat(const Integer icone, const std::string filename, std::vector<std::array<double, 18>>& catalogue) {
+Miscellaneous::ReadFromCat(const Integer icone, const std::string filename, std::vector<std::vector<double>>& catalogue) {
 
 #ifdef VERBOSE
     std::cout << "# Cone " << icone << " Read angular position from " << filename << std::endl;
 #endif
     // Open filename
-    std::ifstream streaming(filename.c_str());
-    streaming.unsetf(std::ios_base::skipws);
-    const uint size = std::count(std::istream_iterator<char>(streaming), std::istream_iterator<char>(), '\n');
-    streaming.close();
-    std::ifstream stream(filename.c_str());
-    catalogue.resize(size);
-    // Read halo catalogue or particle catalogue (for the latter there is no 'npart' column)
+    std::ifstream stream(filename);
 
-    for (unsigned int i = 0; i < size; ++i) {
-        stream >> catalogue[i][0] >> catalogue[i][1] >> catalogue[i][2] >> catalogue[i][3] >> catalogue[i][4] >> catalogue[i][5] >> catalogue[i][6] >> catalogue[i][7] >> catalogue[i][8] >> catalogue[i][9] >> catalogue[i][10] >> catalogue[i][11] >> catalogue[i][12] >> catalogue[i][13] >> catalogue[i][14] >> catalogue[i][15] >> catalogue[i][16] >> catalogue[i][17];
+    if (!stream.is_open()) {
+        std::cerr << "Error opening file: " << filename << std::endl;
+        return;
     }
+    std::string line;
+    std::vector<double> row(18, 0);  // Pre-allocate a row with 18 columns
+
+    // Read all lines into memory
+    while (std::getline(stream, line)) {
+        std::stringstream line_stream(line);
+        // Read 18 values from the line
+        for (int i = 0; i < 18; ++i) 
+            line_stream >> row[i];
+
+        catalogue.push_back(row);
+    }
+    stream.close();
 }
 
 // Write cone properties in ascii file

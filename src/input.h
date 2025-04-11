@@ -1995,7 +1995,7 @@ Input::correct(const Parameter& parameters, Octree& octree, Kind&& amin) {
                   std::get<1>(octree[index[i]]).template data<Selection>() =
                     mean(octree, octree[index[i]], ncoarse);
               });
-            std::for_each(std::execution::par_unseq, count.begin(), count.end(), [](unsigned int& i) { i = zero; });
+            std::fill(std::execution::par_unseq, count.begin(), count.end(), zero);
         }
     }
     // Correct refined levels
@@ -2038,9 +2038,7 @@ Input::correct(const Parameter& parameters, Octree& octree, Kind&& amin) {
                       (!std::isnormal(
                         std::get<1>(octree[i]).template data<Selection>()))) {
                       count[i] =
-                        std::distance(octree.begin(),
-                                      octree.find(std::get<0>(octree[i]).parent())) +
-                        one;
+                        std::distance(octree.begin(), octree.find(std::get<0>(octree[i]).parent())) + one;
                   }
               });
             count.erase(std::remove(std::execution::par_unseq, count.begin(), count.end(), zero), count.end());
@@ -2057,7 +2055,7 @@ Input::correct(const Parameter& parameters, Octree& octree, Kind&& amin) {
             size = octree.size();
             count.resize(size);
         }
-        std::for_each(std::execution::par_unseq, count.begin(), count.end(), [](unsigned int& i) { i = zero; });
+        std::fill(std::execution::par_unseq, count.begin(), count.end(), zero);
     }
     // Detect non complete zones
     if (parameters.correction) {
@@ -2065,12 +2063,11 @@ Input::correct(const Parameter& parameters, Octree& octree, Kind&& amin) {
         Utility::parallelize(size, [=, &count, &octree](const unsigned int i) {
             if (!octree.leaf(octree.begin() + i)) {
                 for (unsigned int j = 0; j < Index::sites(); ++j) {
-                    count[i] +=
-                      (octree.find(std::get<0>(octree[i]).child(j)) == octree.end());
+                    count[i] += (octree.find(std::get<0>(octree[i]).child(j)) == octree.end());
                 }
             }
         });
-        // Loop over ceclls in octree
+        // Loop over cells in octree
         for (unsigned int i = 0; i < size; ++i) { // Parallelize ?
             if (count[i] > zero) {
                 // Get index and data from cell
@@ -2152,8 +2149,7 @@ Input::correct(const Parameter& parameters, Octree& octree, Kind&& amin) {
             data.resize(asize);
             std::iota(data.begin(), data.end(), one);
             if (asize > one) {
-                data.insert(data.begin(),
-                            a[0] - Utility::differentiate<1>(Type(), data, a, one));
+                data.insert(data.begin(), a[0] - Utility::differentiate<1>(Type(), data, a, one));
                 if (!std::signbit(data[zero]) && std::isnormal(data[zero]) &&
                     data[zero] < a[zero]) {
                     a.insert(a.begin(), data[zero]);

@@ -189,7 +189,7 @@ main(int argc, char* argv[]) {
     for (uint icone = parameters.firstcone; icone < parameters.lastcone + one;
          ++icone) {
         if (icone % static_cast<uint>(ntasks) == static_cast<uint>(rank)) {
-            std::vector<std::array<double, 18>> previous_catalogue;
+            std::vector<std::vector<double>> previous_catalogue;
             if (parameters.use_previous_catalogues) {
                 std::string extra = (parameters.use_previous_catalogues == 2) ? ".reject" : "";
                 // Name of catalog, given icone, directory and base
@@ -283,8 +283,8 @@ main(int argc, char* argv[]) {
                     std::sort(std::execution::par_unseq,
                               previous_catalogue.begin(),
                               previous_catalogue.end(),
-                              [](const std::array<double, 18>& a,
-                                 const std::array<double, 18>& b) { return a[0] < b[0]; });
+                              [](const auto& a,
+                                 const auto& b) { return a[0] < b[0]; });
                     // Sort sources from full dataset with index
                     std::sort(std::execution::par_unseq,
                               targets_position.begin(),

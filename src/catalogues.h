@@ -108,6 +108,9 @@ public:
     static void
     ReadParticlesASCII(const Integer rank, const Parameter& parameters, std::vector<std::array<double, 8>>& caractVect_source);
 
+    static void
+    write_row(std::ostream& out,const std::vector<double>& row); 
+
     // Catalogues
     template<int Order = ORDER, bool RK4 = true, bool Verbose = false, class Point, class Cosmology, class Octree, class Type, class Parameter>
     static std::array<std::array<double, 2>, 2>
@@ -117,13 +120,13 @@ public:
     iterateNewtonMethod(const Point& vobs, const Point& observer, const Type phi, const Type theta, const Point& target, const Point& velocity, std::array<std::array<double, 2>, 2>& jacobian, const Parameter& parameters, const Cosmology& cosmology, const Octree& octree, const Type length, const Type h, std::vector<double>& redshifts, double& interpRef);
     template<class Point, class Cosmology, class Octree, class Type, class Parameter>
     static void
-    relCat(const Point& vobs, const std::array<std::array<double, 3>, 3>& rotm1, std::string& nomOutput, const Point& observer, const std::vector<std::array<double, 8>>& targets_position, const std::vector<std::array<double, 18>>& previous_catalogue, const Parameter& parameters, const Cosmology& cosmology, const Octree& octree, const Type length, const Type h);
+    relCat(const Point& vobs, const std::array<std::array<double, 3>, 3>& rotm1, std::string& nomOutput, const Point& observer, const std::vector<std::array<double, 8>>& targets_position, const std::vector<std::vector<double>>& previous_catalogue, const Parameter& parameters, const Cosmology& cosmology, const Octree& octree, const Type length, const Type h);
     template<class Point, class Cosmology, class Octree, class Type, class Parameter>
     static void relCat_with_previous_cat(
       const Point& vobs,
       std::string& nomOutput,
       const Point& observer,
-      std::vector<std::array<double, 18>>& previous_catalogue,
+      std::vector<std::vector<double>>& previous_catalogue,
       const Parameter& parameters,
       const Cosmology& cosmology,
       const Octree& octree,
@@ -134,7 +137,7 @@ public:
       const Point& vobs,
       std::string& nomOutput,
       const Point& observer,
-      std::vector<std::array<double, 18>>& previous_catalogue,
+      std::vector<std::vector<double>>& previous_catalogue,
       const Parameter& parameters,
       const Cosmology& cosmology,
       const Octree& octree,
@@ -994,14 +997,14 @@ Catalogues::relCat(
   std::string& filename,
   const Point& observer,
   const std::vector<std::array<double, 8>>& targets_position,
-  const std::vector<std::array<double, 18>>& previous_catalogue,
+  const std::vector<std::vector<double>>& previous_catalogue,
   const Parameter& parameters,
   const Cosmology& cosmology,
   const Octree& octree,
   const Type length,
   const Type h) {
     const unsigned int size = targets_position.size();
-    std::vector<std::array<double, 16>> catalog(size);
+    std::vector<std::vector<double>> catalog(size, std::vector<double>(18));
     Utility::parallelize(
       size, [&](const uint i) {
           Point trueTarget, velocityTarget;
@@ -1046,85 +1049,48 @@ Catalogues::relCat(
               phi = previous_catalogue[i][1];
           }
           // Put full results in array
-          catalog[i][0] = phi;           // Comoving angle (phi)
-          catalog[i][1] = theta;         // Comoving angle (theta)
-          catalog[i][2] = result[0][0];  // Observed angle (phi)
-          catalog[i][3] = result[0][1];  // Observed angle (theta)
-          catalog[i][4] = result[1][0];  // Error on angle at the source (phi)
-          catalog[i][5] = result[1][1];  // Error on angle at the source (theta)
-          catalog[i][6] = redshifts[0];  // Redshift FLRW
-          catalog[i][7] = redshifts[1];  // Redshift FLRW + Potential
-          catalog[i][8] = redshifts[2];  // Redshift FLRW + Potential + Doppler
-          catalog[i][9] = redshifts[3];  // Redshift FLRW + Potential + Doppler +
-                                         // Transverse Doppler
-          catalog[i][10] = redshifts[4]; // Redshift FLRW + Potential + Doppler +
-                                         // Transverse Doppler + ISW/RS
-          catalog[i][11] =
-            redshifts[5];                  // Redshift GR (first order in metric perturbations)
-          catalog[i][12] = jacobian[0][0]; // Lensing distortion matrix (a11)
-          catalog[i][13] = jacobian[0][1]; // Lensing distortion matrix (a12)
-          catalog[i][14] = jacobian[1][0]; // Lensing distortion matrix (a21)
-          catalog[i][15] = jacobian[1][1]; // Lensing distortion matrix (a22)
+          catalog[i][0] = targets_position[i][6];   // Id
+          catalog[i][1] = phi;                      // Comoving angle (phi)
+          catalog[i][2] = theta;                    // Comoving angle (theta)
+          catalog[i][3] = result[0][0];             // Observed angle (phi)
+          catalog[i][4] = result[0][1];             // Observed angle (theta)
+          catalog[i][5] = result[1][0];             // Error on angle at the source (phi)
+          catalog[i][6] = result[1][1];             // Error on angle at the source (theta)
+          catalog[i][7] = redshifts[0];             // Redshift FLRW
+          catalog[i][8] = redshifts[1];             // Redshift FLRW + Potential
+          catalog[i][9] = redshifts[2];             // Redshift FLRW + Potential + Doppler
+          catalog[i][10] = redshifts[3];             // Redshift FLRW + Potential + Doppler +
+                                                    // Transverse Doppler
+          catalog[i][11] = redshifts[4];            // Redshift FLRW + Potential + Doppler +
+                                                    // Transverse Doppler + ISW/RS
+          catalog[i][12] =
+            redshifts[5];                           // Redshift GR (first order in metric perturbations)
+          catalog[i][13] = jacobian[0][0];          // Lensing distortion matrix (a11)
+          catalog[i][14] = jacobian[0][1];          // Lensing distortion matrix (a12)
+          catalog[i][15] = jacobian[1][0];          // Lensing distortion matrix (a21)
+          catalog[i][16] = jacobian[1][1];          // Lensing distortion matrix (a22)
+          catalog[i][17] = targets_position[i][7];  // Number of particles per halo
       });
 
     // Output result in ASCII files
     const std::string filenameError = Output::name(filename, ".txt", ".err");
     const std::string filenameRej = Output::name(filename, ".txt", ".reject");
     filename = Output::name(filename, ".txt");
-
-    std::ofstream ofst;
-    ofst.open(filename.c_str(), std::ofstream::out | std::ofstream::trunc);
-    ofst.close();
-    std::ofstream monOutput(filename.c_str(), std::ios::app);
-
-    std::ofstream ofsterr;
-    ofsterr.open(filenameError.c_str(),
-                 std::ofstream::out | std::ofstream::trunc);
-    ofsterr.close();
-    std::ofstream monOutputErr(filenameError.c_str(), std::ios::app);
-
-    std::ofstream ofstrej;
-    ofstrej.open(filenameRej.c_str(), std::ofstream::out | std::ofstream::trunc);
-    ofstrej.close();
-    std::ofstream monOutputRej(filenameRej.c_str(), std::ios::app);
-
-    // Ecriture dans un fichier
-    for (unsigned int i = 0; i < size; i++) {
-        // If everything is fine
-        if (catalog[i][2] != 42 && catalog[i][3] != 42 && catalog[i][5] != 42) {
-            if (monOutput)
-                monOutput << std::setprecision(17) << targets_position[i][6] << " "
-                          << catalog[i][0] << " " << catalog[i][1] << " "
-                          << catalog[i][2] << " " << catalog[i][3] << " "
-                          << catalog[i][4] << " " << catalog[i][5] << " "
-                          << catalog[i][6] << " " << catalog[i][7] << " "
-                          << catalog[i][8] << " " << catalog[i][9] << " "
-                          << catalog[i][10] << " " << catalog[i][11] << " "
-                          << catalog[i][12] << " " << catalog[i][13] << " "
-                          << catalog[i][14] << " " << catalog[i][15] << " "
-                          << targets_position[i][7] << std::endl;
-            // If Source is outside of the cone
-        } else if (catalog[i][2] == 42 && catalog[i][3] == 42) {
-            if (monOutputErr)
-                monOutputErr << targets_position[i][6] << " " << catalog[i][0] << " "
-                             << catalog[i][1] << " " << catalog[i][2] << " "
-                             << catalog[i][3] << " " << catalog[i][4] << " "
-                             << catalog[i][4] << std::endl;
-            // If source could not converge (rejected)
-        } else {
-            if (monOutputRej)
-                monOutputRej << std::setprecision(17) << targets_position[i][6] << " "
-                             << catalog[i][0] << " " << catalog[i][1] << " "
-                             << catalog[i][2] << " " << catalog[i][3] << " "
-                             << catalog[i][4] << " " << catalog[i][5] << " "
-                             << catalog[i][6] << " " << catalog[i][7] << " "
-                             << catalog[i][8] << " " << catalog[i][9] << " "
-                             << catalog[i][10] << " " << catalog[i][11] << " "
-                             << catalog[i][12] << " " << catalog[i][13] << " "
-                             << catalog[i][14] << " " << catalog[i][15] << " "
-                             << targets_position[i][7] << std::endl;
-        }
-    } // i
+    std::ofstream monOutput(filename, std::ios::trunc);
+    std::ofstream monOutputErr(filenameError, std::ios::trunc);
+    std::ofstream monOutputRej(filenameRej, std::ios::trunc);
+    // Write in a file
+    monOutput << std::setprecision(17);
+    monOutputErr << std::setprecision(17);
+    monOutputRej << std::setprecision(17);
+    for (size_t i = 0; i < catalog.size(); ++i) {
+        const auto& row = catalog[i];
+        // Determine the appropriate output stream based on conditions
+        std::ostream& outStream = (row[2] != 42 && row[3] != 42 && row[5] != 42) ? monOutput :
+                                (row[2] == 42 && row[3] == 42) ? monOutputErr : monOutputRej;
+        // Copy the full row to the selected output stream
+        write_row(outStream, row);
+    }
     // Close streams
     monOutput.close();
     monOutputErr.close();
@@ -1153,7 +1119,7 @@ Catalogues::relCat_with_previous_cat(
   const Point& vobs,
   std::string& filename,
   const Point& observer,
-  std::vector<std::array<double, 18>>& previous_catalogue,
+  std::vector<std::vector<double>>& previous_catalogue,
   const Parameter& parameters,
   const Cosmology& cosmology,
   const Octree& octree,
@@ -1275,64 +1241,18 @@ Catalogues::relCat_with_previous_cat(
         std::string filenameError = Output::name(filename, ".txt.err");
         std::string filenameRej = Output::name(filename, ".txt.reject");
         filename = Output::name(filename, ".txt");
+        std::ofstream monOutput(filename, std::ios::trunc);
+        std::ofstream monOutputErr(filenameError, std::ios::trunc);
 
-        std::ofstream ofst;
-        ofst.open(filename.c_str(), std::ofstream::out | std::ofstream::trunc);
-        ofst.close();
-        std::ofstream monOutput(filename.c_str(), std::ios::app);
-
-        std::ofstream ofsterr;
-        ofsterr.open(filenameError.c_str(),
-                     std::ofstream::out | std::ofstream::trunc);
-        ofsterr.close();
-        std::ofstream monOutputErr(filenameError.c_str(), std::ios::app);
-
-        // Write an ASCII file
-        for (unsigned int i = 0; i < size; i++) {
-            // If everything is fine, put in the output catalogue
-            if (previous_catalogue[i][13] != 42 && previous_catalogue[i][14] != 42) {
-                if (monOutput)
-                    monOutput << std::setprecision(17) << previous_catalogue[i][0] << " "
-                              << previous_catalogue[i][1] << " "
-                              << previous_catalogue[i][2] << " "
-                              << previous_catalogue[i][3] << " "
-                              << previous_catalogue[i][4] << " "
-                              << previous_catalogue[i][5] << " "
-                              << previous_catalogue[i][6] << " "
-                              << previous_catalogue[i][7] << " "
-                              << previous_catalogue[i][8] << " "
-                              << previous_catalogue[i][9] << " "
-                              << previous_catalogue[i][10] << " "
-                              << previous_catalogue[i][11] << " "
-                              << previous_catalogue[i][12] << " "
-                              << previous_catalogue[i][13] << " "
-                              << previous_catalogue[i][14] << " "
-                              << previous_catalogue[i][15] << " "
-                              << previous_catalogue[i][16] << " "
-                              << previous_catalogue[i][17] << std::endl;
-                // If there is a problem (for example use of a very large bundle method
-                // at the edge of a cone), then put in the rror file
-            } else {
-                if (monOutputErr)
-                    monOutputErr << std::setprecision(17) << previous_catalogue[i][0]
-                                 << " " << previous_catalogue[i][1] << " "
-                                 << previous_catalogue[i][2] << " "
-                                 << previous_catalogue[i][3] << " "
-                                 << previous_catalogue[i][4] << " "
-                                 << previous_catalogue[i][5] << " "
-                                 << previous_catalogue[i][6] << " "
-                                 << previous_catalogue[i][7] << " "
-                                 << previous_catalogue[i][8] << " "
-                                 << previous_catalogue[i][9] << " "
-                                 << previous_catalogue[i][10] << " "
-                                 << previous_catalogue[i][11] << " "
-                                 << previous_catalogue[i][12] << " "
-                                 << previous_catalogue[i][13] << " "
-                                 << previous_catalogue[i][14] << " "
-                                 << previous_catalogue[i][15] << " "
-                                 << previous_catalogue[i][16] << " "
-                                 << previous_catalogue[i][17] << std::endl;
-            }
+            // Write in a file
+        monOutput << std::setprecision(17);
+        monOutputErr << std::setprecision(17);
+        for (size_t i = 0; i < previous_catalogue.size(); ++i) {
+            const auto& row = previous_catalogue[i];
+            // Determine the appropriate output stream based on conditions
+            std::ostream& outStream = (row[13] != 42 && row[14] != 42) ? monOutput : monOutputErr;
+            // Copy the full row to the selected output stream
+            write_row(outStream, row);
         }
         // Close streams
         monOutput.close();
@@ -1362,7 +1282,7 @@ Catalogues::relCat_with_previous_cat_flexion(
   const Point& vobs,
   std::string& filename,
   const Point& observer,
-  std::vector<std::array<double, 18>>& previous_catalogue,
+  std::vector<std::vector<double>>& previous_catalogue,
   const Parameter& parameters,
   const Cosmology& cosmology,
   const Octree& octree,
@@ -1481,47 +1401,35 @@ Catalogues::relCat_with_previous_cat_flexion(
         const std::string filenameError = Output::name(filename, ".txt", ".err");
         filename = Output::name(filename, ".txt");
 
-        std::ofstream ofst;
-        ofst.open(filename.c_str(), std::ofstream::out | std::ofstream::trunc);
-        ofst.close();
-        std::ofstream monOutput(filename.c_str(), std::ios::app);
-
-        std::ofstream ofsterr;
-        ofsterr.open(filenameError.c_str(),
-                     std::ofstream::out | std::ofstream::trunc);
-        ofsterr.close();
-        std::ofstream monOutputErr(filenameError.c_str(), std::ios::app);
+        std::ofstream monOutput(filename, std::ios::trunc);
+        std::ofstream monOutputErr(filenameError, std::ios::trunc);
+        monOutput << std::setprecision(17);
+        monOutputErr << std::setprecision(17);
 
         // Write an ASCII file
         for (unsigned int i = 0; i < size; i++) {
-            // If everything is fine, put in the output catalogue
-            if (previous_catalogue[i][11] != 42) {
-                if (monOutput)
-                    monOutput << std::setprecision(17) << previous_catalogue[i][0] << " "
-                              << previous_catalogue[i][11] << " "
-                              << previous_catalogue[i][12] << " "
-                              << previous_catalogue[i][13] << " "
-                              << previous_catalogue[i][14] << " "
-                              << previous_catalogue[i][15] << " "
-                              << previous_catalogue[i][16] << std::endl;
-                // If there is a problem (for example use of a very large bundle method
-                // at the edge of a cone), then put in the rror file
-            } else {
-                if (monOutputErr)
-                    monOutputErr << std::setprecision(17) << previous_catalogue[i][0]
-                                 << " " << previous_catalogue[i][13] << " "
-                                 << previous_catalogue[i][11] << " "
-                                 << previous_catalogue[i][12] << " "
-                                 << previous_catalogue[i][13] << " "
-                                 << previous_catalogue[i][14] << " "
-                                 << previous_catalogue[i][15] << " "
-                                 << previous_catalogue[i][16] << std::endl;
-            }
+            const auto& row = previous_catalogue[i];
+            std::ostream& outStream = (row[11] != 42) ? monOutput : monOutputErr;
+            outStream << row[0] << " "
+                              << row[11] << " "
+                              << row[12] << " "
+                              << row[13] << " "
+                              << row[14] << " "
+                              << row[15] << " "
+                              << row[16] << "\n";
         }
         // Close streams
         monOutput.close();
         monOutputErr.close();
     }
+}
+
+void Catalogues::write_row(std::ostream& out, const std::vector<double>& row) 
+{
+    // Copy the full row to the output stream
+    std::copy(row.begin(), row.end(), std::ostream_iterator<double>(out, " "));
+    // Output newline
+    out << '\n';
 }
 
 #endif // CATALOGUES_H_INCLUDED

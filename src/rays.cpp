@@ -224,12 +224,12 @@ main(int argc, char* argv[]) {
         }
         // Launch photons toward observed sources (with mass threshold for haloes)
     } else if (parameters.ray_targets == "catalogue") {
-        std::vector<std::array<double, 18>> previous_catalogue;
+        std::vector<std::vector<double>> previous_catalogue;
         // Read catalogue
         const std::string filename = parameters.outputdir + "../catalogs/" + Output::name(parameters.base, "_", std::make_pair("%05d", rank), ".txt"); // Name of catalog, given icone, directory and base
         Miscellaneous::ReadFromCat(rank, filename, previous_catalogue);
         // Select sources within mass bin
-        previous_catalogue.erase(std::remove_if(std::execution::par_unseq, previous_catalogue.begin(), previous_catalogue.end(), [](const std::array<double, 18>& elem) { return (elem[17] >= parameters.massmax) || (elem[17] < parameters.massmin); }), previous_catalogue.end());
+        previous_catalogue.erase(std::remove_if(std::execution::par_unseq, previous_catalogue.begin(), previous_catalogue.end(), [](const auto& elem) { return (elem[17] >= parameters.massmax) || (elem[17] < parameters.massmin); }), previous_catalogue.end());
         ntrajectoriesMax = previous_catalogue.size();
 #ifdef VERBOSE
         std::cout << "Rank : " << rank << " number of sources " << ntrajectoriesMax << std::endl;
