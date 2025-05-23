@@ -995,7 +995,7 @@ namespace magrathea {
 
         std::sort(std::execution::par_unseq, std::begin(_container), std::end(_container), [](const Element& first, const Element& second) { return std::get<0>(first) < std::get<0>(second); });
 
-        unsigned int size = _container.size();
+        const unsigned int size = _container.size();
         std::vector<unsigned int> count(size);
         Utility::parallelize(size, [=, &count](const unsigned int i) {
             auto j = std::adjacent_find(std::begin(_container) + i, std::end(_container), [](const Element& first, const Element& second) { return std::get<0>(first) != std::get<0>(second); });
@@ -1019,7 +1019,6 @@ namespace magrathea {
         });
 
         _container.resize(std::distance(std::begin(_container), std::unique(std::begin(_container), std::end(_container), [](const Element& first, const Element& second) { return std::get<0>(first) == std::get<0>(second); })));
-        _container.shrink_to_fit();
         return *this;
     }
 
