@@ -1086,8 +1086,8 @@ Catalogues::relCat(
     for (size_t i = 0; i < catalog.size(); ++i) {
         const auto& row = catalog[i];
         // Determine the appropriate output stream based on conditions
-        std::ostream& outStream = (row[2] != 42 && row[3] != 42 && row[5] != 42) ? monOutput :
-                                (row[2] == 42 && row[3] == 42) ? monOutputErr : monOutputRej;
+        std::ostream& outStream = (row[3] != 42 && row[4] != 42 && row[6] != 42) ? monOutput :
+                                (row[3] == 42 && row[4] == 42) ? monOutputErr : monOutputRej;
         // Copy the full row to the selected output stream
         write_row(outStream, row);
     }
@@ -1127,137 +1127,138 @@ Catalogues::relCat_with_previous_cat(
   const Type h) {
     const unsigned int size = previous_catalogue.size();
 
-    if (size > 0) {
-        Utility::parallelize(size, [&](const uint i) {
-            std::array<std::array<double, 2>, 2> jacobian;
-            magrathea::Evolution<Photon<double, 3>> trajectory, trajectory_born;
-            Photon<double, 3> photon;
-            unsigned int firstid(0);
-            Point kiTarget, central_position;
-            double interpRef(0);
-            const double scale_factor = 1. / (1. + previous_catalogue[i][7]);
-            // Initialise photon
-            // If Born approximation, then launch toward the comoving position of the
-            // source. Otherwise, launch toward the observed position
-            const double phi = (parameters.beam == "infinitesimal_born")
-                                 ? previous_catalogue[i][1]
-                                 : previous_catalogue[i][3];
-            const double theta = (parameters.beam == "infinitesimal_born")
-                                   ? previous_catalogue[i][2]
-                                   : previous_catalogue[i][4];
-            // Launch photon
-            photon =
-              Integrator::launch(observer[0], observer[1], observer[2], phi, theta);
-            trajectory.append(photon);
-            // Propagate photon until it reaches the scale factor or the source
-            Integrator::integrate(trajectory, "a", scale_factor, cosmology, octree, vobs, length, parameters.nsteps);
+    if (size == 0) return;
+    
+    Utility::parallelize(size, [&](const uint i) {
+        std::array<std::array<double, 2>, 2> jacobian;
+        magrathea::Evolution<Photon<double, 3>> trajectory, trajectory_born;
+        Photon<double, 3> photon;
+        unsigned int firstid(0);
+        Point kiTarget, central_position;
+        double interpRef(0);
+        const double scale_factor = 1. / (1. + previous_catalogue[i][7]);
+        // Initialise photon
+        // If Born approximation, then launch toward the comoving position of the
+        // source. Otherwise, launch toward the observed position
+        const double phi = (parameters.beam == "infinitesimal_born")
+                                ? previous_catalogue[i][1]
+                                : previous_catalogue[i][3];
+        const double theta = (parameters.beam == "infinitesimal_born")
+                                ? previous_catalogue[i][2]
+                                : previous_catalogue[i][4];
+        // Launch photon
+        photon =
+            Integrator::launch(observer[0], observer[1], observer[2], phi, theta);
+        trajectory.append(photon);
+        // Propagate photon until it reaches the scale factor or the source
+        Integrator::integrate(trajectory, "a", scale_factor, cosmology, octree, vobs, length, parameters.nsteps);
 
-            const unsigned int marked = trajectory.size() - 1;
-            firstid = marked - (marked > 0);
-            const double previous = trajectory[firstid].a();
-            const double next = trajectory[firstid + 1].a();
-            const double f = (next - scale_factor) / (next - previous);
+        const unsigned int marked = trajectory.size() - 1;
+        firstid = marked - (marked > 0);
+        const double previous = trajectory[firstid].a();
+        const double next = trajectory[firstid + 1].a();
+        const double f = (next - scale_factor) / (next - previous);
 
-            central_position[0] =
-              trajectory[firstid].x() * f + trajectory[firstid + 1].x() * (1 - f);
-            central_position[1] =
-              trajectory[firstid].y() * f + trajectory[firstid + 1].y() * (1 - f);
-            central_position[2] =
-              trajectory[firstid].z() * f + trajectory[firstid + 1].z() * (1 - f);
-            const double distTarget = trajectory[firstid].chi() * f +
-                                      trajectory[firstid + 1].chi() * (1 - f);
+        central_position[0] =
+            trajectory[firstid].x() * f + trajectory[firstid + 1].x() * (1 - f);
+        central_position[1] =
+            trajectory[firstid].y() * f + trajectory[firstid + 1].y() * (1 - f);
+        central_position[2] =
+            trajectory[firstid].z() * f + trajectory[firstid + 1].z() * (1 - f);
+        const double distTarget = trajectory[firstid].chi() * f +
+                                    trajectory[firstid + 1].chi() * (1 - f);
 
-            // Compute the lensing distortion matrix
-            if (parameters.beam == "bundle") {
-                if (parameters.plane == "sachs") {
-                    kiTarget[0] = trajectory[firstid].dxdl() * f +
-                                  trajectory[firstid + 1].dxdl() * (1 - f);
-                    kiTarget[1] = trajectory[firstid].dydl() * f +
-                                  trajectory[firstid + 1].dydl() * (1 - f);
-                    kiTarget[2] = trajectory[firstid].dzdl() * f +
-                                  trajectory[firstid + 1].dzdl() * (1 - f);
-                } else if (parameters.plane == "normal") {
-                    kiTarget = central_position;
-                } else if (parameters.plane == "exact") {
-                    std::cout << "# Jacobian 'exact' not yet implemented !" << std::endl;
-                } else {
-                    std::cout << "# WARNING : Wrong plane, please choose 'sachs', "
-                                 "'normal' or 'exact'"
-                              << std::endl;
-                    std::cout << "# Error at file " << __FILE__ << ", line : " << __LINE__
-                              << std::endl;
-                    std::terminate();
-                }
-
-                // Interpolation
-                if (parameters.stop_bundle == "redshift") {
-                    interpRef = trajectory[firstid].redshift() * f +
-                                trajectory[firstid + 1].redshift() * (1 - f);
-                } else if (parameters.stop_bundle == "a") {
-                    interpRef = scale_factor;
-                } else if ((parameters.stop_bundle == "t") ||
-                           (parameters.stop_bundle == "eta")) {
-                    interpRef = trajectory[firstid].t() * f +
-                                trajectory[firstid + 1].t() * (1 - f);
-                } else if (parameters.stop_bundle == "lambda") {
-                    interpRef = trajectory[firstid].lambda() * f +
-                                trajectory[firstid + 1].lambda() * (1 - f);
-                } else if ((parameters.stop_bundle == "r") ||
-                           (parameters.stop_bundle == "radius")) {
-                    interpRef = distTarget;
-                } else if (parameters.stop_bundle == "plane") {
-                    interpRef = kiTarget[0] * central_position[0] +
-                                kiTarget[1] * central_position[1] + kiTarget[2] * central_position[2];
-                } else {
-                    std::cout << "# WARNING : Wrong stop criterion for integration"
-                              << std::endl;
-                    std::cout << "# Error at file " << __FILE__ << ", line : " << __LINE__
-                              << std::endl;
-                    std::terminate();
-                }
-                jacobian = Lensing::dbetadtheta(parameters, kiTarget, interpRef, observer, phi, theta, distTarget, cosmology, octree, vobs, length);
-            } else if (parameters.beam == "infinitesimal") {
-                jacobian = Lensing::dbetadtheta_infinitesimal(distTarget, trajectory, octree, length);
-            } else if (parameters.beam == "infinitesimal_born") {
-                trajectory_born.append(photon);
-                Integrator::integrate<-1>(trajectory_born, "a", scale_factor, cosmology, octree, vobs, length, parameters.nsteps);
-                jacobian = Lensing::dbetadtheta_infinitesimal(
-                  distTarget, trajectory_born, octree, length);
+        // Compute the lensing distortion matrix
+        if (parameters.beam == "bundle") {
+            if (parameters.plane == "sachs") {
+                kiTarget[0] = trajectory[firstid].dxdl() * f +
+                                trajectory[firstid + 1].dxdl() * (1 - f);
+                kiTarget[1] = trajectory[firstid].dydl() * f +
+                                trajectory[firstid + 1].dydl() * (1 - f);
+                kiTarget[2] = trajectory[firstid].dzdl() * f +
+                                trajectory[firstid + 1].dzdl() * (1 - f);
+            } else if (parameters.plane == "normal") {
+                kiTarget = central_position;
+            } else if (parameters.plane == "exact") {
+                std::cout << "# Jacobian 'exact' not yet implemented !" << std::endl;
             } else {
-                std::cout << "# WARNING: beam must be 'bundle' or 'infinitesimal'"
-                          << std::endl;
+                std::cout << "# WARNING : Wrong plane, please choose 'sachs', "
+                                "'normal' or 'exact'"
+                            << std::endl;
                 std::cout << "# Error at file " << __FILE__ << ", line : " << __LINE__
-                          << std::endl;
+                            << std::endl;
                 std::terminate();
             }
-            // When re-running a previous catalogue, only modify the distortion matrix
-            previous_catalogue[i][13] = jacobian[0][0];
-            previous_catalogue[i][14] = jacobian[0][1];
-            previous_catalogue[i][15] = jacobian[1][0];
-            previous_catalogue[i][16] = jacobian[1][1];
-        });
 
-        // Clear the file
-        std::string filenameError = Output::name(filename, ".txt.err");
-        std::string filenameRej = Output::name(filename, ".txt.reject");
-        filename = Output::name(filename, ".txt");
-        std::ofstream monOutput(filename, std::ios::trunc);
-        std::ofstream monOutputErr(filenameError, std::ios::trunc);
-
-            // Write in a file
-        monOutput << std::setprecision(17);
-        monOutputErr << std::setprecision(17);
-        for (size_t i = 0; i < previous_catalogue.size(); ++i) {
-            const auto& row = previous_catalogue[i];
-            // Determine the appropriate output stream based on conditions
-            std::ostream& outStream = (row[13] != 42 && row[14] != 42) ? monOutput : monOutputErr;
-            // Copy the full row to the selected output stream
-            write_row(outStream, row);
+            // Interpolation
+            if (parameters.stop_bundle == "redshift") {
+                interpRef = trajectory[firstid].redshift() * f +
+                            trajectory[firstid + 1].redshift() * (1 - f);
+            } else if (parameters.stop_bundle == "a") {
+                interpRef = scale_factor;
+            } else if ((parameters.stop_bundle == "t") ||
+                        (parameters.stop_bundle == "eta")) {
+                interpRef = trajectory[firstid].t() * f +
+                            trajectory[firstid + 1].t() * (1 - f);
+            } else if (parameters.stop_bundle == "lambda") {
+                interpRef = trajectory[firstid].lambda() * f +
+                            trajectory[firstid + 1].lambda() * (1 - f);
+            } else if ((parameters.stop_bundle == "r") ||
+                        (parameters.stop_bundle == "radius")) {
+                interpRef = distTarget;
+            } else if (parameters.stop_bundle == "plane") {
+                interpRef = kiTarget[0] * central_position[0] +
+                            kiTarget[1] * central_position[1] + kiTarget[2] * central_position[2];
+            } else {
+                std::cout << "# WARNING : Wrong stop criterion for integration"
+                            << std::endl;
+                std::cout << "# Error at file " << __FILE__ << ", line : " << __LINE__
+                            << std::endl;
+                std::terminate();
+            }
+            jacobian = Lensing::dbetadtheta(parameters, kiTarget, interpRef, observer, phi, theta, distTarget, cosmology, octree, vobs, length);
+        } else if (parameters.beam == "infinitesimal") {
+            jacobian = Lensing::dbetadtheta_infinitesimal(distTarget, trajectory, octree, length);
+        } else if (parameters.beam == "infinitesimal_born") {
+            trajectory_born.append(photon);
+            Integrator::integrate<-1>(trajectory_born, "a", scale_factor, cosmology, octree, vobs, length, parameters.nsteps);
+            jacobian = Lensing::dbetadtheta_infinitesimal(
+                distTarget, trajectory_born, octree, length);
+        } else {
+            std::cout << "# WARNING: beam must be 'bundle' or 'infinitesimal'"
+                        << std::endl;
+            std::cout << "# Error at file " << __FILE__ << ", line : " << __LINE__
+                        << std::endl;
+            std::terminate();
         }
-        // Close streams
-        monOutput.close();
-        monOutputErr.close();
+        // When re-running a previous catalogue, only modify the distortion matrix
+        previous_catalogue[i][13] = jacobian[0][0];
+        previous_catalogue[i][14] = jacobian[0][1];
+        previous_catalogue[i][15] = jacobian[1][0];
+        previous_catalogue[i][16] = jacobian[1][1];
+    });
+
+    // Clear the file
+    std::string filenameError = Output::name(filename, ".txt.err");
+    std::string filenameRej = Output::name(filename, ".txt.reject");
+    filename = Output::name(filename, ".txt");
+    std::ofstream monOutput(filename, std::ios::trunc);
+    std::ofstream monOutputErr(filenameError, std::ios::trunc);
+
+        // Write in a file
+    monOutput << std::setprecision(17);
+    monOutputErr << std::setprecision(17);
+    for (size_t i = 0; i < previous_catalogue.size(); ++i) {
+        const auto& row = previous_catalogue[i];
+        // Determine the appropriate output stream based on conditions
+        std::ostream& outStream = (row[13] != 42 && row[14] != 42) ? monOutput : monOutputErr;
+        // Copy the full row to the selected output stream
+        write_row(outStream, row);
     }
+    // Close streams
+    monOutput.close();
+    monOutputErr.close();
+    
 }
 
 /// \brief          Get Hessian lensing matrix
@@ -1290,138 +1291,136 @@ Catalogues::relCat_with_previous_cat_flexion(
   const Type h) {
     const unsigned int size = previous_catalogue.size();
 
-    if (size > 0) {
-        Utility::parallelize(size, [&](const uint i) {
-            std::array<double, 6> hessian;
-            magrathea::Evolution<Photon<double, 3>> trajectory;
-            Photon<double, 3> photon;
-            unsigned int firstid(0);
-            Point kiTarget, central_position;
-            double interpRef(0);
-            const double aexp = 1. / (1. + previous_catalogue[i][7]);
-            // Initialise photon
-            // If Born approximation, then launch toward the comoving position of the
-            // source. Otherwise, launch toward the observed position
-            const double phi = previous_catalogue[i][3];
-            const double theta = previous_catalogue[i][4];
-            // Launch photon
-            photon =
-              Integrator::launch(observer[0], observer[1], observer[2], phi, theta);
-            trajectory.append(photon);
-            // Propagate photon until it reaches the scale factor or the source
-            Integrator::integrate(trajectory, "a", aexp, cosmology, octree, vobs, length, parameters.nsteps);
+    if (size == 0) return;
 
-            const unsigned int marked = trajectory.size() - 1;
-            firstid = marked - (marked > 0);
-            const double previous = trajectory[firstid].a();
-            const double next = trajectory[firstid + 1].a();
-            const double f = (next - aexp) / (next - previous);
+    Utility::parallelize(size, [&](const uint i) {
+        std::array<double, 6> hessian;
+        magrathea::Evolution<Photon<double, 3>> trajectory;
+        Photon<double, 3> photon;
+        unsigned int firstid(0);
+        Point kiTarget, central_position;
+        double interpRef(0);
+        const double aexp = 1. / (1. + previous_catalogue[i][7]);
+        // Initialise photon
+        // If Born approximation, then launch toward the comoving position of the
+        // source. Otherwise, launch toward the observed position
+        const double phi = previous_catalogue[i][3];
+        const double theta = previous_catalogue[i][4];
+        // Launch photon
+        photon =
+            Integrator::launch(observer[0], observer[1], observer[2], phi, theta);
+        trajectory.append(photon);
+        // Propagate photon until it reaches the scale factor or the source
+        Integrator::integrate(trajectory, "a", aexp, cosmology, octree, vobs, length, parameters.nsteps);
 
-            central_position[0] =
-              trajectory[firstid].x() * f + trajectory[firstid + 1].x() * (1 - f);
-            central_position[1] =
-              trajectory[firstid].y() * f + trajectory[firstid + 1].y() * (1 - f);
-            central_position[2] =
-              trajectory[firstid].z() * f + trajectory[firstid + 1].z() * (1 - f);
+        const unsigned int marked = trajectory.size() - 1;
+        firstid = marked - (marked > 0);
+        const double previous = trajectory[firstid].a();
+        const double next = trajectory[firstid + 1].a();
+        const double f = (next - aexp) / (next - previous);
 
-            const double distTarget = trajectory[firstid].chi() * f +
-                                      trajectory[firstid + 1].chi() * (1 - f);
+        central_position[0] =
+            trajectory[firstid].x() * f + trajectory[firstid + 1].x() * (1 - f);
+        central_position[1] =
+            trajectory[firstid].y() * f + trajectory[firstid + 1].y() * (1 - f);
+        central_position[2] =
+            trajectory[firstid].z() * f + trajectory[firstid + 1].z() * (1 - f);
 
-            // std::terminate();
-            //  Compute the lensing Hessian matrix
-            if (parameters.beam == "bundle") {
-                if (parameters.plane == "sachs") {
-                    kiTarget[0] = trajectory[firstid].dxdl() * f +
-                                  trajectory[firstid + 1].dxdl() * (1 - f);
-                    kiTarget[1] = trajectory[firstid].dydl() * f +
-                                  trajectory[firstid + 1].dydl() * (1 - f);
-                    kiTarget[2] = trajectory[firstid].dzdl() * f +
-                                  trajectory[firstid + 1].dzdl() * (1 - f);
-                } else if (parameters.plane == "normal") {
-                    kiTarget = central_position;
-                } else if (parameters.plane == "exact") {
-                    std::cout << "# Jacobian 'exact' not yet implemented !" << std::endl;
-                    std::cout << "# Error at file " << __FILE__ << ", line : " << __LINE__
-                              << std::endl;
-                    std::terminate();
-                } else {
-                    std::cout << "# WARNING : Wrong plane, please choose 'sachs', "
-                                 "'normal' or 'exact'"
-                              << std::endl;
-                    std::cout << "# Error at file " << __FILE__ << ", line : " << __LINE__
-                              << std::endl;
-                    std::terminate();
-                }
+        const double distTarget = trajectory[firstid].chi() * f +
+                                    trajectory[firstid + 1].chi() * (1 - f);
 
-                // Interpolation
-                if (parameters.stop_bundle == "redshift") {
-                    interpRef = trajectory[firstid].redshift() * f +
-                                trajectory[firstid + 1].redshift() * (1 - f);
-                } else if (parameters.stop_bundle == "a") {
-                    interpRef = aexp;
-                } else if ((parameters.stop_bundle == "t") ||
-                           (parameters.stop_bundle == "eta")) {
-                    interpRef = trajectory[firstid].t() * f +
-                                trajectory[firstid + 1].t() * (1 - f);
-                } else if (parameters.stop_bundle == "lambda") {
-                    interpRef = trajectory[firstid].lambda() * f +
-                                trajectory[firstid + 1].lambda() * (1 - f);
-                } else if ((parameters.stop_bundle == "r") ||
-                           (parameters.stop_bundle == "radius")) {
-                    interpRef = distTarget;
-                } else if (parameters.stop_bundle == "plane") {
-                    interpRef = kiTarget[0] * central_position[0] +
-                                kiTarget[1] * central_position[1] + kiTarget[2] * central_position[2];
-                } else {
-                    std::cout << "# WARNING : Wrong stop criterion for integration"
-                              << std::endl;
-                    std::cout << "# Error at file " << __FILE__ << ", line : " << __LINE__
-                              << std::endl;
-                    std::terminate();
-                }
-                hessian = Lensing::flexion(parameters, central_position, kiTarget, interpRef, observer, phi, theta, distTarget, cosmology, octree, vobs, length);
-            } else {
-                std::cout << "# WARNING: beam must be 'bundle' for flexion"
-                          << std::endl;
+        //  Compute the lensing Hessian matrix
+        if (parameters.beam == "bundle") {
+            if (parameters.plane == "sachs") {
+                kiTarget[0] = trajectory[firstid].dxdl() * f +
+                                trajectory[firstid + 1].dxdl() * (1 - f);
+                kiTarget[1] = trajectory[firstid].dydl() * f +
+                                trajectory[firstid + 1].dydl() * (1 - f);
+                kiTarget[2] = trajectory[firstid].dzdl() * f +
+                                trajectory[firstid + 1].dzdl() * (1 - f);
+            } else if (parameters.plane == "normal") {
+                kiTarget = central_position;
+            } else if (parameters.plane == "exact") {
+                std::cout << "# Jacobian 'exact' not yet implemented !" << std::endl;
                 std::cout << "# Error at file " << __FILE__ << ", line : " << __LINE__
-                          << std::endl;
+                            << std::endl;
+                std::terminate();
+            } else {
+                std::cout << "# WARNING : Wrong plane, please choose 'sachs', "
+                                "'normal' or 'exact'"
+                            << std::endl;
+                std::cout << "# Error at file " << __FILE__ << ", line : " << __LINE__
+                            << std::endl;
                 std::terminate();
             }
-            // When re-running a previous catalogue, only modify the distortion matrix
-            previous_catalogue[i][11] = hessian[0];
-            previous_catalogue[i][12] = hessian[1];
-            previous_catalogue[i][13] = hessian[2];
-            previous_catalogue[i][14] = hessian[3];
-            previous_catalogue[i][15] = hessian[4];
-            previous_catalogue[i][16] = hessian[5];
-            //}
-        });
 
-        // Clear the file
-        const std::string filenameError = Output::name(filename, ".txt", ".err");
-        filename = Output::name(filename, ".txt");
-
-        std::ofstream monOutput(filename, std::ios::trunc);
-        std::ofstream monOutputErr(filenameError, std::ios::trunc);
-        monOutput << std::setprecision(17);
-        monOutputErr << std::setprecision(17);
-
-        // Write an ASCII file
-        for (unsigned int i = 0; i < size; i++) {
-            const auto& row = previous_catalogue[i];
-            std::ostream& outStream = (row[11] != 42) ? monOutput : monOutputErr;
-            outStream << row[0] << " "
-                              << row[11] << " "
-                              << row[12] << " "
-                              << row[13] << " "
-                              << row[14] << " "
-                              << row[15] << " "
-                              << row[16] << "\n";
+            // Interpolation
+            if (parameters.stop_bundle == "redshift") {
+                interpRef = trajectory[firstid].redshift() * f +
+                            trajectory[firstid + 1].redshift() * (1 - f);
+            } else if (parameters.stop_bundle == "a") {
+                interpRef = aexp;
+            } else if ((parameters.stop_bundle == "t") ||
+                        (parameters.stop_bundle == "eta")) {
+                interpRef = trajectory[firstid].t() * f +
+                            trajectory[firstid + 1].t() * (1 - f);
+            } else if (parameters.stop_bundle == "lambda") {
+                interpRef = trajectory[firstid].lambda() * f +
+                            trajectory[firstid + 1].lambda() * (1 - f);
+            } else if ((parameters.stop_bundle == "r") ||
+                        (parameters.stop_bundle == "radius")) {
+                interpRef = distTarget;
+            } else if (parameters.stop_bundle == "plane") {
+                interpRef = kiTarget[0] * central_position[0] +
+                            kiTarget[1] * central_position[1] + kiTarget[2] * central_position[2];
+            } else {
+                std::cout << "# WARNING : Wrong stop criterion for integration"
+                            << std::endl;
+                std::cout << "# Error at file " << __FILE__ << ", line : " << __LINE__
+                            << std::endl;
+                std::terminate();
+            }
+            hessian = Lensing::flexion(parameters, central_position, kiTarget, interpRef, observer, phi, theta, distTarget, cosmology, octree, vobs, length);
+        } else {
+            std::cout << "# WARNING: beam must be 'bundle' for flexion"
+                        << std::endl;
+            std::cout << "# Error at file " << __FILE__ << ", line : " << __LINE__
+                        << std::endl;
+            std::terminate();
         }
-        // Close streams
-        monOutput.close();
-        monOutputErr.close();
+        // When re-running a previous catalogue, only modify the distortion matrix
+        previous_catalogue[i][11] = hessian[0];
+        previous_catalogue[i][12] = hessian[1];
+        previous_catalogue[i][13] = hessian[2];
+        previous_catalogue[i][14] = hessian[3];
+        previous_catalogue[i][15] = hessian[4];
+        previous_catalogue[i][16] = hessian[5];
+    });
+
+    // Clear the file
+    const std::string filenameError = Output::name(filename, ".txt", ".err");
+    filename = Output::name(filename, ".txt");
+
+    std::ofstream monOutput(filename, std::ios::trunc);
+    std::ofstream monOutputErr(filenameError, std::ios::trunc);
+    monOutput << std::setprecision(17);
+    monOutputErr << std::setprecision(17);
+
+    // Write an ASCII file
+    for (unsigned int i = 0; i < size; i++) {
+        const auto& row = previous_catalogue[i];
+        std::ostream& outStream = (row[11] != 42) ? monOutput : monOutputErr;
+        outStream << row[0] << " "
+                            << row[11] << " "
+                            << row[12] << " "
+                            << row[13] << " "
+                            << row[14] << " "
+                            << row[15] << " "
+                            << row[16] << "\n";
     }
+    // Close streams
+    monOutput.close();
+    monOutputErr.close();
 }
 
 void Catalogues::write_row(std::ostream& out, const std::vector<double>& row) 
