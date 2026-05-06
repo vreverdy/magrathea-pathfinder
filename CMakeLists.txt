@@ -33,23 +33,12 @@ add_definitions(
 )
 
 # Find HDF5 Library
-find_path(HDF5_INCLUDE_DIR hdf5.h 
-    PATHS 
-        /usr/include 
-        /usr/local/include 
-        ${HDF5_PATH}/include
-)
-find_library(HDF5_LIBRARY NAMES hdf5 
-    PATHS
-        /usr/include 
-        /usr/local/include  
-        ${HDF5_PATH}/lib
-)
-message(STATUS "HDF5_INCLUDE_DIR: ${HDF5_INCLUDE_DIR}")
-message(STATUS "HDF5_LIBRARY: ${HDF5_LIBRARY}")
+find_package(HDF5 REQUIRED COMPONENTS C HL)
+message(STATUS "HDF5 include dirs: ${HDF5_INCLUDE_DIRS}")
+message(STATUS "HDF5 libraries: ${HDF5_LIBRARIES}")
 
 # Check if HDF5 is found
-if(NOT HDF5_INCLUDE_DIR OR NOT HDF5_LIBRARY)
+if(NOT HDF5_INCLUDE_DIRS OR NOT HDF5_LIBRARIES)
     message(FATAL_ERROR "HDF5 library and/or include files not found at ${HDF5_PATH}. Please ensure HDF5 is installed and the path is correct.")
 endif()
 
@@ -79,10 +68,10 @@ message(STATUS "CFITSTIO_LIBRARY: ${CFITSTIO_LIBRARY}")
 
 
 # Include Directories
-include_directories(${HDF5_INCLUDE_DIR})
+include_directories(${HDF5_INCLUDE_DIRS})
 
 # Set librairies
-set(LIBS pthread z tbb ${HDF5_LIBRARY})
+set(LIBS pthread z tbb ${HDF5_LIBRARIES})
 
 # Executables
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
