@@ -40,17 +40,12 @@
 /// \tparam         Type Data type.
 /// \tparam         Dimension Number of space dimension.
 template<typename Type = double, unsigned int Dimension = 3>
-class Gravity final : public magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, Type> {
+class Gravity final : public magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, std::array<Type, Dimension>, Type, Type, Type> {
     // Setup
+    using GravityData = magrathea::AbstractContents<Gravity<Type, Dimension>, magrathea::EulerianCategory, Type, Type, std::array<Type, Dimension>, Type, std::array<Type, Dimension>, Type, Type, Type>;
+
 public:
-    using magrathea::AbstractContents<
-      Gravity<Type, Dimension>,
-      magrathea::EulerianCategory,
-      Type,
-      Type,
-      std::array<Type, Dimension>,
-      Type,
-      Type>::operator=;
+    using GravityData::operator=;
 
     // Lifecycle
     /// \name           Lifecycle
@@ -68,14 +63,7 @@ public:
       unsigned int... Values,
       class... Misc,
       class Template =
-        decltype(std::declval<magrathea::AbstractContents<
-                   Gravity<Type, Dimension>,
-                   magrathea::EulerianCategory,
-                   Type,
-                   Type,
-                   std::array<Type, Dimension>,
-                   Type,
-                   Type>>()
+        decltype(std::declval<GravityData>()
                    .template data<0, Values...>(std::declval<Misc>()...)),
       class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template rho(Misc&&... misc);
@@ -83,14 +71,7 @@ public:
       unsigned int... Values,
       class... Misc,
       class Template =
-        decltype(std::declval<const magrathea::AbstractContents<
-                   Gravity<Type, Dimension>,
-                   magrathea::EulerianCategory,
-                   Type,
-                   Type,
-                   std::array<Type, Dimension>,
-                   Type,
-                   Type>>()
+        decltype(std::declval<const GravityData>()
                    .template data<0, Values...>(std::declval<Misc>()...)),
       class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template rho(Misc&&... misc) const;
@@ -98,14 +79,7 @@ public:
       unsigned int... Values,
       class... Misc,
       class Template =
-        decltype(std::declval<magrathea::AbstractContents<
-                   Gravity<Type, Dimension>,
-                   magrathea::EulerianCategory,
-                   Type,
-                   Type,
-                   std::array<Type, Dimension>,
-                   Type,
-                   Type>>()
+        decltype(std::declval<GravityData>()
                    .template data<1, Values...>(std::declval<Misc>()...)),
       class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template phi(Misc&&... misc);
@@ -113,14 +87,7 @@ public:
       unsigned int... Values,
       class... Misc,
       class Template =
-        decltype(std::declval<const magrathea::AbstractContents<
-                   Gravity<Type, Dimension>,
-                   magrathea::EulerianCategory,
-                   Type,
-                   Type,
-                   std::array<Type, Dimension>,
-                   Type,
-                   Type>>()
+        decltype(std::declval<const GravityData>()
                    .template data<1, Values...>(std::declval<Misc>()...)),
       class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template phi(Misc&&... misc) const;
@@ -128,14 +95,7 @@ public:
       unsigned int... Values,
       class... Misc,
       class Template =
-        decltype(std::declval<magrathea::AbstractContents<
-                   Gravity<Type, Dimension>,
-                   magrathea::EulerianCategory,
-                   Type,
-                   Type,
-                   std::array<Type, Dimension>,
-                   Type,
-                   Type>>()
+        decltype(std::declval<GravityData>()
                    .template data<2, Values...>(std::declval<Misc>()...)),
       class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template dphidxyz(Misc&&... misc);
@@ -143,14 +103,7 @@ public:
       unsigned int... Values,
       class... Misc,
       class Template =
-        decltype(std::declval<const magrathea::AbstractContents<
-                   Gravity<Type, Dimension>,
-                   magrathea::EulerianCategory,
-                   Type,
-                   Type,
-                   std::array<Type, Dimension>,
-                   Type,
-                   Type>>()
+        decltype(std::declval<const GravityData>()
                    .template data<2, Values...>(std::declval<Misc>()...)),
       class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template dphidxyz(Misc&&... misc) const;
@@ -158,14 +111,7 @@ public:
       unsigned int... Values,
       class... Misc,
       class Template =
-        decltype(std::declval<magrathea::AbstractContents<
-                   Gravity<Type, Dimension>,
-                   magrathea::EulerianCategory,
-                   Type,
-                   Type,
-                   std::array<Type, Dimension>,
-                   Type,
-                   Type>>()
+        decltype(std::declval<GravityData>()
                    .template data<2, Values...>(0,
                                                 std::declval<Misc>()...)),
       class = typename std::enable_if<!std::is_void<Template>::value>::type>
@@ -174,14 +120,7 @@ public:
       unsigned int... Values,
       class... Misc,
       class Template =
-        decltype(std::declval<const magrathea::AbstractContents<
-                   Gravity<Type, Dimension>,
-                   magrathea::EulerianCategory,
-                   Type,
-                   Type,
-                   std::array<Type, Dimension>,
-                   Type,
-                   Type>>()
+        decltype(std::declval<const GravityData>()
                    .template data<2, Values...>(0,
                                                 std::declval<Misc>()...)),
       class = typename std::enable_if<!std::is_void<Template>::value>::type>
@@ -190,14 +129,7 @@ public:
       unsigned int... Values,
       class... Misc,
       class Template =
-        decltype(std::declval<magrathea::AbstractContents<
-                   Gravity<Type, Dimension>,
-                   magrathea::EulerianCategory,
-                   Type,
-                   Type,
-                   std::array<Type, Dimension>,
-                   Type,
-                   Type>>()
+        decltype(std::declval<GravityData>()
                    .template data<2, Values...>(1,
                                                 std::declval<Misc>()...)),
       class = typename std::enable_if<!std::is_void<Template>::value>::type>
@@ -206,14 +138,7 @@ public:
       unsigned int... Values,
       class... Misc,
       class Template =
-        decltype(std::declval<const magrathea::AbstractContents<
-                   Gravity<Type, Dimension>,
-                   magrathea::EulerianCategory,
-                   Type,
-                   Type,
-                   std::array<Type, Dimension>,
-                   Type,
-                   Type>>()
+        decltype(std::declval<const GravityData>()
                    .template data<2, Values...>(1,
                                                 std::declval<Misc>()...)),
       class = typename std::enable_if<!std::is_void<Template>::value>::type>
@@ -222,14 +147,7 @@ public:
       unsigned int... Values,
       class... Misc,
       class Template =
-        decltype(std::declval<magrathea::AbstractContents<
-                   Gravity<Type, Dimension>,
-                   magrathea::EulerianCategory,
-                   Type,
-                   Type,
-                   std::array<Type, Dimension>,
-                   Type,
-                   Type>>()
+        decltype(std::declval<GravityData>()
                    .template data<2, Values...>(2,
                                                 std::declval<Misc>()...)),
       class = typename std::enable_if<!std::is_void<Template>::value>::type>
@@ -238,78 +156,148 @@ public:
       unsigned int... Values,
       class... Misc,
       class Template =
-        decltype(std::declval<const magrathea::AbstractContents<
-                   Gravity<Type, Dimension>,
-                   magrathea::EulerianCategory,
-                   Type,
-                   Type,
-                   std::array<Type, Dimension>,
-                   Type,
-                   Type>>()
+        decltype(std::declval<const GravityData>()
                    .template data<2, Values...>(2,
                                                 std::declval<Misc>()...)),
       class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template dphidz(Misc&&... misc) const;
+
     template<
       unsigned int... Values,
       class... Misc,
       class Template =
-        decltype(std::declval<magrathea::AbstractContents<
-                   Gravity<Type, Dimension>,
-                   magrathea::EulerianCategory,
-                   Type,
-                   Type,
-                   std::array<Type, Dimension>,
-                   Type,
-                   Type>>()
+        decltype(std::declval<GravityData>()
                    .template data<3, Values...>(std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template psi(Misc&&... misc);
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<const GravityData>()
+                   .template data<3, Values...>(std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template psi(Misc&&... misc) const;
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<GravityData>()
+                   .template data<4, Values...>(std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dpsidxyz(Misc&&... misc);
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<const GravityData>()
+                   .template data<4, Values...>(std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dpsidxyz(Misc&&... misc) const;
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<GravityData>()
+                   .template data<4, Values...>(0,
+                                                std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dpsidx(Misc&&... misc);
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<const GravityData>()
+                   .template data<4, Values...>(0,
+                                                std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dpsidx(Misc&&... misc) const;
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<GravityData>()
+                   .template data<4, Values...>(1,
+                                                std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dpsidy(Misc&&... misc);
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<const GravityData>()
+                   .template data<4, Values...>(1,
+                                                std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dpsidy(Misc&&... misc) const;
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<GravityData>()
+                   .template data<4, Values...>(2,
+                                                std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dpsidz(Misc&&... misc);
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<const GravityData>()
+                   .template data<4, Values...>(2,
+                                                std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dpsidz(Misc&&... misc) const;
+
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<GravityData>()
+                   .template data<5, Values...>(std::declval<Misc>()...)),
       class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template a(Misc&&... misc);
     template<
       unsigned int... Values,
       class... Misc,
       class Template =
-        decltype(std::declval<const magrathea::AbstractContents<
-                   Gravity<Type, Dimension>,
-                   magrathea::EulerianCategory,
-                   Type,
-                   Type,
-                   std::array<Type, Dimension>,
-                   Type,
-                   Type>>()
-                   .template data<3, Values...>(std::declval<Misc>()...)),
+        decltype(std::declval<const GravityData>()
+                   .template data<5, Values...>(std::declval<Misc>()...)),
       class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template a(Misc&&... misc) const;
     template<
       unsigned int... Values,
       class... Misc,
       class Template =
-        decltype(std::declval<magrathea::AbstractContents<
-                   Gravity<Type, Dimension>,
-                   magrathea::EulerianCategory,
-                   Type,
-                   Type,
-                   std::array<Type, Dimension>,
-                   Type,
-                   Type>>()
-                   .template data<4, Values...>(std::declval<Misc>()...)),
+        decltype(std::declval<GravityData>()
+                   .template data<6, Values...>(std::declval<Misc>()...)),
       class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template dphidt(Misc&&... misc);
     template<
       unsigned int... Values,
       class... Misc,
       class Template =
-        decltype(std::declval<const magrathea::AbstractContents<
-                   Gravity<Type, Dimension>,
-                   magrathea::EulerianCategory,
-                   Type,
-                   Type,
-                   std::array<Type, Dimension>,
-                   Type,
-                   Type>>()
-                   .template data<4, Values...>(std::declval<Misc>()...)),
+        decltype(std::declval<const GravityData>()
+                   .template data<6, Values...>(std::declval<Misc>()...)),
       class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template dphidt(Misc&&... misc) const;
+
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<GravityData>()
+                   .template data<7, Values...>(std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dpsidt(Misc&&... misc);
+    template<
+      unsigned int... Values,
+      class... Misc,
+      class Template =
+        decltype(std::declval<const GravityData>()
+                   .template data<7, Values...>(std::declval<Misc>()...)),
+      class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dpsidt(Misc&&... misc) const;
     //@}
 
     // Test
@@ -331,13 +319,7 @@ public:
 template<typename Type, unsigned int Dimension>
 template<class... Misc>
 inline Gravity<Type, Dimension>::Gravity(Misc&&... misc)
-  : magrathea::AbstractContents<Gravity<Type, Dimension>,
-                                magrathea::EulerianCategory,
-                                Type,
-                                Type,
-                                std::array<Type, Dimension>,
-                                Type,
-                                Type>(
+  : GravityData(
       std::forward<Misc>(misc)...) {
     ;
 }
@@ -536,6 +518,166 @@ Gravity<Type, Dimension>::dphidz(Misc&&... misc) const {
     return this->template data<2, Values...>(2, std::forward<Misc>(misc)...);
 }
 
+// Access to the phi data
+/// \brief          Access to the phi data.
+/// \details        Provides an access to the phi data by forwarding
+///                 parameters to the unified base accessor member.
+/// \tparam         Values List of template values.
+/// \tparam         Misc (Miscellaneous types.)
+/// \tparam         Template (Deduced template type.)
+/// \param[in]      misc Miscellaneous arguments.
+/// \return         Forwarded result.
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::psi(Misc&&... misc) {
+    return this->template data<3, Values...>(std::forward<Misc>(misc)...);
+}
+
+// Immutable access to the phi data
+/// \brief          Immutable access to the phi data.
+/// \details        Provides an immutable access to the phi data by forwarding
+///                 parameters to the unified base accessor member.
+/// \tparam         Values List of template values.
+/// \tparam         Misc (Miscellaneous types.)
+/// \tparam         Template (Deduced template type.)
+/// \param[in]      misc Miscellaneous arguments.
+/// \return         Forwarded result.
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::psi(Misc&&... misc) const {
+    return this->template data<3, Values...>(std::forward<Misc>(misc)...);
+}
+
+// Access to the dphidxyz data
+/// \brief          Access to the dphidxyz data.
+/// \details        Provides an access to the dphidxyz data by forwarding
+///                 parameters to the unified base accessor member.
+/// \tparam         Values List of template values.
+/// \tparam         Misc (Miscellaneous types.)
+/// \tparam         Template (Deduced template type.)
+/// \param[in]      misc Miscellaneous arguments.
+/// \return         Forwarded result.
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::dpsidxyz(Misc&&... misc) {
+    return this->template data<4, Values...>(std::forward<Misc>(misc)...);
+}
+
+// Immutable access to the dphidxyz data
+/// \brief          Immutable access to the dphidxyz data.
+/// \details        Provides an immutable access to the dphidxyz data by
+///                 forwarding parameters to the unified base accessor member.
+/// \tparam         Values List of template values.
+/// \tparam         Misc (Miscellaneous types.)
+/// \tparam         Template (Deduced template type.)
+/// \param[in]      misc Miscellaneous arguments.
+/// \return         Forwarded result.
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::dpsidxyz(Misc&&... misc) const {
+    return this->template data<4, Values...>(std::forward<Misc>(misc)...);
+}
+
+// Access to the dphidx data
+/// \brief          Access to the dphidx data.
+/// \details        Provides an access to the dphidx data by forwarding
+///                 parameters to the unified base accessor member.
+/// \tparam         Values List of template values.
+/// \tparam         Misc (Miscellaneous types.)
+/// \tparam         Template (Deduced template type.)
+/// \param[in]      misc Miscellaneous arguments.
+/// \return         Forwarded result.
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::dpsidx(Misc&&... misc) {
+    return this->template data<4, Values...>(0, std::forward<Misc>(misc)...);
+}
+
+// Immutable access to the dphidx data
+/// \brief          Immutable access to the dphidx data.
+/// \details        Provides an immutable access to the dphidx data by
+///                 forwarding parameters to the unified base accessor member.
+/// \tparam         Values List of template values.
+/// \tparam         Misc (Miscellaneous types.)
+/// \tparam         Template (Deduced template type.)
+/// \param[in]      misc Miscellaneous arguments.
+/// \return         Forwarded result.
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::dpsidx(Misc&&... misc) const {
+    return this->template data<4, Values...>(0, std::forward<Misc>(misc)...);
+}
+
+// Access to the dphidy data
+/// \brief          Access to the dphidy data.
+/// \details        Provides an access to the dphidy data by forwarding
+///                 parameters to the unified base accessor member.
+/// \tparam         Values List of template values.
+/// \tparam         Misc (Miscellaneous types.)
+/// \tparam         Template (Deduced template type.)
+/// \param[in]      misc Miscellaneous arguments.
+/// \return         Forwarded result.
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::dpsidy(Misc&&... misc) {
+    return this->template data<4, Values...>(1, std::forward<Misc>(misc)...);
+}
+
+// Immutable access to the dphidy data
+/// \brief          Immutable access to the dphidy data.
+/// \details        Provides an immutable access to the dphidy data by
+///                 forwarding parameters to the unified base accessor member.
+/// \tparam         Values List of template values.
+/// \tparam         Misc (Miscellaneous types.)
+/// \tparam         Template (Deduced template type.)
+/// \param[in]      misc Miscellaneous arguments.
+/// \return         Forwarded result.
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::dpsidy(Misc&&... misc) const {
+    return this->template data<4, Values...>(1, std::forward<Misc>(misc)...);
+}
+
+// Access to the dphidz data
+/// \brief          Access to the dphidz data.
+/// \details        Provides an access to the dphidz data by forwarding
+///                 parameters to the unified base accessor member.
+/// \tparam         Values List of template values.
+/// \tparam         Misc (Miscellaneous types.)
+/// \tparam         Template (Deduced template type.)
+/// \param[in]      misc Miscellaneous arguments.
+/// \return         Forwarded result.
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::dpsidz(Misc&&... misc) {
+    return this->template data<4, Values...>(2, std::forward<Misc>(misc)...);
+}
+
+// Immutable access to the dphidz data
+/// \brief          Immutable access to the dphidz data.
+/// \details        Provides an immutable access to the dphidz data by
+///                 forwarding parameters to the unified base accessor member.
+/// \tparam         Values List of template values.
+/// \tparam         Misc (Miscellaneous types.)
+/// \tparam         Template (Deduced template type.)
+/// \param[in]      misc Miscellaneous arguments.
+/// \return         Forwarded result.
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::dpsidz(Misc&&... misc) const {
+    return this->template data<4, Values...>(2, std::forward<Misc>(misc)...);
+}
+
 // Access to the a data
 /// \brief          Access to the a data.
 /// \details        Provides an access to the a data by forwarding parameters
@@ -549,7 +691,7 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Gravity<Type, Dimension>::a(Misc&&... misc) {
-    return this->template data<3, Values...>(std::forward<Misc>(misc)...);
+    return this->template data<5, Values...>(std::forward<Misc>(misc)...);
 }
 
 // Immutable access to the a data
@@ -565,7 +707,7 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Gravity<Type, Dimension>::a(Misc&&... misc) const {
-    return this->template data<3, Values...>(std::forward<Misc>(misc)...);
+    return this->template data<5, Values...>(std::forward<Misc>(misc)...);
 }
 
 // Access to the dphidt data
@@ -581,7 +723,7 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Gravity<Type, Dimension>::dphidt(Misc&&... misc) {
-    return this->template data<4, Values...>(std::forward<Misc>(misc)...);
+    return this->template data<6, Values...>(std::forward<Misc>(misc)...);
 }
 
 // Immutable access to the dphidt data
@@ -598,7 +740,40 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Gravity<Type, Dimension>::dphidt(Misc&&... misc) const {
-    return this->template data<4, Values...>(std::forward<Misc>(misc)...);
+    return this->template data<6, Values...>(std::forward<Misc>(misc)...);
+}
+
+// Access to the dphidt data
+/// \brief          Access to the dphidt data.
+/// \details        Provides an access to the dphidt data by forwarding
+///                 parameters to the unified base accessor member.
+/// \tparam         Values List of template values.
+/// \tparam         Misc (Miscellaneous types.)
+/// \tparam         Template (Deduced template type.)
+/// \param[in]      misc Miscellaneous arguments.
+/// \return         Forwarded result.
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::dpsidt(Misc&&... misc) {
+    return this->template data<7, Values...>(std::forward<Misc>(misc)...);
+}
+
+// Immutable access to the dphidt data
+/// \brief          Immutable access to the dphidt data.
+/// \details        Provides an immutable access to the dphidt data by
+/// forwarding
+///                 parameters to the unified base accessor member.
+/// \tparam         Values List of template values.
+/// \tparam         Misc (Miscellaneous types.)
+/// \tparam         Template (Deduced template type.)
+/// \param[in]      misc Miscellaneous arguments.
+/// \return         Forwarded result.
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Gravity<Type, Dimension>::dpsidt(Misc&&... misc) const {
+    return this->template data<7, Values...>(std::forward<Misc>(misc)...);
 }
 
 // -------------------------------------------------------------------------- //

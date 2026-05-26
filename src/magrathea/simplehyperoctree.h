@@ -1013,6 +1013,7 @@ namespace magrathea {
                     std::get<1>(_container.data()[i]) = tmpvector[0];
                     if (std::abs(tmpvector.front().a() - tmpvector.back().a()) > 1e-6) { // To avoid numerical noise
                         std::get<1>(_container.data()[i]).dphidt() = (tmpvector.front().phi() - tmpvector.back().phi()) / (tmpvector.front().a() - tmpvector.back().a());
+                        std::get<1>(_container.data()[i]).dpsidt() = (tmpvector.front().psi() - tmpvector.back().psi()) / (tmpvector.front().a() - tmpvector.back().a());
                     }
                 }
             }

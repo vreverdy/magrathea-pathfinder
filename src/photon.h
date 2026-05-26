@@ -39,10 +39,11 @@
 /// \tparam         Dimension Number of space dimension.
 template<typename Type = double, unsigned int Dimension = 3>
 class Photon final
-  : public magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>> {
+  : public magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type>> {
     // Setup
+    using PhotonData = magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type>>;
 public:
-    using magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>::operator=;
+    using PhotonData::operator=;
 
     // Lifecycle
     /// \name           Lifecycle
@@ -56,121 +57,145 @@ public:
     /// \name           Data
     //@{
 public:
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template id<Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template id<Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template index(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template id<Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template id<Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template index(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template core<0, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template core<0, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template a(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template core<0, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template core<0, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template a(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template core<1, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template core<1, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template t(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template core<1, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template core<1, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template t(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template core<2, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template core<2, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template x(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template core<2, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template core<2, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template x(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template core<3, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template core<3, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template y(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template core<3, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template core<3, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template y(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template core<4, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template core<4, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template z(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template core<4, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template core<4, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template z(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template core<5, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template core<5, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template dtdl(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template core<5, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template core<5, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template dtdl(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template core<6, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template core<6, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template dxdl(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template core<6, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template core<6, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template dxdl(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template core<7, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template core<7, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template dydl(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template core<7, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template core<7, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template dydl(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template core<8, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template core<8, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template dzdl(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template core<8, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template core<8, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template dzdl(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<0, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<0, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template level(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<0, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<0, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template level(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<1, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<1, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template ah(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<1, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<1, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template ah(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<2, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<2, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template rho(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<2, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<2, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template rho(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<3, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<3, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template phi(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<3, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<3, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template phi(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<4, Values...>(0, std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<4, Values...>(0, std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template dphidx(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<4, Values...>(0, std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<4, Values...>(0, std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template dphidx(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<4, Values...>(1, std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<4, Values...>(1, std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template dphidy(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<4, Values...>(1, std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<4, Values...>(1, std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template dphidy(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<4, Values...>(2, std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<4, Values...>(2, std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template dphidz(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<4, Values...>(2, std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<4, Values...>(2, std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template dphidz(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<5, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<5, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template dphidl(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<5, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<5, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template dphidl(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<6, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<6, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template psi(Misc&&... misc);
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<6, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template psi(Misc&&... misc) const;
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<7, Values...>(0, std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dpsidx(Misc&&... misc);
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<7, Values...>(0, std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dpsidx(Misc&&... misc) const;
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<7, Values...>(1, std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dpsidy(Misc&&... misc);
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<7, Values...>(1, std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dpsidy(Misc&&... misc) const;
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<7, Values...>(2, std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dpsidz(Misc&&... misc);
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<7, Values...>(2, std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dpsidz(Misc&&... misc) const;
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<8, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dpsidl(Misc&&... misc);
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<8, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dpsidl(Misc&&... misc) const;
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<9, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template laplacian(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<6, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<9, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template laplacian(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<7, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<10, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template redshift(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<7, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<10, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template redshift(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<8, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<11, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template dsdl2(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<8, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<11, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template dsdl2(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<9, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<12, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template error(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<9, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<12, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template error(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<10, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<13, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template distance(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<10, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<13, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template distance(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<11, Values...>(0, std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<14, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template isw(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<11, Values...>(0, std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<14, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template isw(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<11, Values...>(1, std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<15, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template iswold(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<11, Values...>(1, std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<15, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template iswold(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<11, Values...>(2, std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<16, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template chi(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<11, Values...>(2, std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<16, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template chi(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<12, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<17, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template lambda(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<12, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<17, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template lambda(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<13, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<18, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template dphidt(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<13, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<18, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template dphidt(Misc&&... misc) const;
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<14, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<19, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dpsidt(Misc&&... misc);
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<19, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template dpsidt(Misc&&... misc) const;
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<20, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template s(Misc&&... misc);
-    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>>().template extra<14, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<20, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template s(Misc&&... misc) const;
 
     //@}
@@ -194,7 +219,7 @@ public:
 template<typename Type, unsigned int Dimension>
 template<class... Misc>
 inline Photon<Type, Dimension>::Photon(Misc&&... misc)
-  : magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, std::array<Type, 3>, Type, Type, Type>>(std::forward<Misc>(misc)...) {
+  : PhotonData(std::forward<Misc>(misc)...) {
     ;
 }
 // -------------------------------------------------------------------------- //
@@ -776,6 +801,166 @@ Photon<Type, Dimension>::dphidl(Misc&&... misc) const {
     return this->template extra<5, Values...>(std::forward<Misc>(misc)...);
 }
 
+// Access to the phi data
+/// \brief          Access to the phi data.
+/// \details        Provides an access to the phi data by forwarding
+///                 parameters to the unified base accessor member.
+/// \tparam         Values List of template values.
+/// \tparam         Misc (Miscellaneous types.)
+/// \tparam         Template (Deduced template type.)
+/// \param[in]      misc Miscellaneous arguments.
+/// \return         Forwarded result.
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Photon<Type, Dimension>::psi(Misc&&... misc) {
+    return this->template extra<6, Values...>(std::forward<Misc>(misc)...);
+}
+
+// Immutable access to the phi data
+/// \brief          Immutable access to the phi data.
+/// \details        Provides an immutable access to the phi data by forwarding
+///                 parameters to the unified base accessor member.
+/// \tparam         Values List of template values.
+/// \tparam         Misc (Miscellaneous types.)
+/// \tparam         Template (Deduced template type.)
+/// \param[in]      misc Miscellaneous arguments.
+/// \return         Forwarded result.
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Photon<Type, Dimension>::psi(Misc&&... misc) const {
+    return this->template extra<6, Values...>(std::forward<Misc>(misc)...);
+}
+
+// Access to the dphidx data
+/// \brief          Access to the dphidx data.
+/// \details        Provides an access to the dphidx data by forwarding
+///                 parameters to the unified base accessor member.
+/// \tparam         Values List of template values.
+/// \tparam         Misc (Miscellaneous types.)
+/// \tparam         Template (Deduced template type.)
+/// \param[in]      misc Miscellaneous arguments.
+/// \return         Forwarded result.
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Photon<Type, Dimension>::dpsidx(Misc&&... misc) {
+    return this->template extra<7, Values...>(0, std::forward<Misc>(misc)...);
+}
+
+// Immutable access to the dphidx data
+/// \brief          Immutable access to the dphidx data.
+/// \details        Provides an immutable access to the dphidx data by
+///                 forwarding parameters to the unified base accessor member.
+/// \tparam         Values List of template values.
+/// \tparam         Misc (Miscellaneous types.)
+/// \tparam         Template (Deduced template type.)
+/// \param[in]      misc Miscellaneous arguments.
+/// \return         Forwarded result.
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Photon<Type, Dimension>::dpsidx(Misc&&... misc) const {
+    return this->template extra<7, Values...>(0, std::forward<Misc>(misc)...);
+}
+
+// Access to the dphidy data
+/// \brief          Access to the dphidy data.
+/// \details        Provides an access to the dphidy data by forwarding
+///                 parameters to the unified base accessor member.
+/// \tparam         Values List of template values.
+/// \tparam         Misc (Miscellaneous types.)
+/// \tparam         Template (Deduced template type.)
+/// \param[in]      misc Miscellaneous arguments.
+/// \return         Forwarded result.
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Photon<Type, Dimension>::dpsidy(Misc&&... misc) {
+    return this->template extra<7, Values...>(1, std::forward<Misc>(misc)...);
+}
+
+// Immutable access to the dphidy data
+/// \brief          Immutable access to the dphidy data.
+/// \details        Provides an immutable access to the dphidy data by
+///                 forwarding parameters to the unified base accessor member.
+/// \tparam         Values List of template values.
+/// \tparam         Misc (Miscellaneous types.)
+/// \tparam         Template (Deduced template type.)
+/// \param[in]      misc Miscellaneous arguments.
+/// \return         Forwarded result.
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Photon<Type, Dimension>::dpsidy(Misc&&... misc) const {
+    return this->template extra<7, Values...>(1, std::forward<Misc>(misc)...);
+}
+
+// Access to the dphidz data
+/// \brief          Access to the dphidz data.
+/// \details        Provides an access to the dphidz data by forwarding
+///                 parameters to the unified base accessor member.
+/// \tparam         Values List of template values.
+/// \tparam         Misc (Miscellaneous types.)
+/// \tparam         Template (Deduced template type.)
+/// \param[in]      misc Miscellaneous arguments.
+/// \return         Forwarded result.
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Photon<Type, Dimension>::dpsidz(Misc&&... misc) {
+    return this->template extra<7, Values...>(2, std::forward<Misc>(misc)...);
+}
+
+// Immutable access to the dphidz data
+/// \brief          Immutable access to the dphidz data.
+/// \details        Provides an immutable access to the dphidz data by
+///                 forwarding parameters to the unified base accessor member.
+/// \tparam         Values List of template values.
+/// \tparam         Misc (Miscellaneous types.)
+/// \tparam         Template (Deduced template type.)
+/// \param[in]      misc Miscellaneous arguments.
+/// \return         Forwarded result.
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Photon<Type, Dimension>::dpsidz(Misc&&... misc) const {
+    return this->template extra<7, Values...>(2, std::forward<Misc>(misc)...);
+}
+
+// Access to the dphidl data
+/// \brief          Access to the dphidl data.
+/// \details        Provides an access to the dphidl data by forwarding
+///                 parameters to the unified base accessor member.
+/// \tparam         Values List of template values.
+/// \tparam         Misc (Miscellaneous types.)
+/// \tparam         Template (Deduced template type.)
+/// \param[in]      misc Miscellaneous arguments.
+/// \return         Forwarded result.
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Photon<Type, Dimension>::dpsidl(Misc&&... misc) {
+    return this->template extra<8, Values...>(std::forward<Misc>(misc)...);
+}
+
+// Immutable access to the dphidl data
+/// \brief          Immutable access to the dphidl data.
+/// \details        Provides an immutable access to the dphidl data by
+///                 forwarding parameters to the unified base accessor member.
+/// \tparam         Values List of template values.
+/// \tparam         Misc (Miscellaneous types.)
+/// \tparam         Template (Deduced template type.)
+/// \param[in]      misc Miscellaneous arguments.
+/// \return         Forwarded result.
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Photon<Type, Dimension>::dpsidl(Misc&&... misc) const {
+    return this->template extra<8, Values...>(std::forward<Misc>(misc)...);
+}
+
 // Access to the laplacian data
 /// \brief          Access to the laplacian data.
 /// \details        Provides an access to the laplacian data by forwarding
@@ -789,7 +974,7 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Photon<Type, Dimension>::laplacian(Misc&&... misc) {
-    return this->template extra<6, Values...>(std::forward<Misc>(misc)...);
+    return this->template extra<9, Values...>(std::forward<Misc>(misc)...);
 }
 
 // Immutable access to the laplacian data
@@ -805,7 +990,7 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Photon<Type, Dimension>::laplacian(Misc&&... misc) const {
-    return this->template extra<6, Values...>(std::forward<Misc>(misc)...);
+    return this->template extra<9, Values...>(std::forward<Misc>(misc)...);
 }
 
 // Access to the redshift data
@@ -821,7 +1006,7 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Photon<Type, Dimension>::redshift(Misc&&... misc) {
-    return this->template extra<7, Values...>(std::forward<Misc>(misc)...);
+    return this->template extra<10, Values...>(std::forward<Misc>(misc)...);
 }
 
 // Immutable access to the redshift data
@@ -837,7 +1022,7 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Photon<Type, Dimension>::redshift(Misc&&... misc) const {
-    return this->template extra<7, Values...>(std::forward<Misc>(misc)...);
+    return this->template extra<10, Values...>(std::forward<Misc>(misc)...);
 }
 
 // Access to the dsdl2 data
@@ -853,7 +1038,7 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Photon<Type, Dimension>::dsdl2(Misc&&... misc) {
-    return this->template extra<8, Values...>(std::forward<Misc>(misc)...);
+    return this->template extra<11, Values...>(std::forward<Misc>(misc)...);
 }
 
 // Immutable access to the dsdl2 data
@@ -869,7 +1054,7 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Photon<Type, Dimension>::dsdl2(Misc&&... misc) const {
-    return this->template extra<8, Values...>(std::forward<Misc>(misc)...);
+    return this->template extra<11, Values...>(std::forward<Misc>(misc)...);
 }
 
 // Access to the error data
@@ -885,7 +1070,7 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Photon<Type, Dimension>::error(Misc&&... misc) {
-    return this->template extra<9, Values...>(std::forward<Misc>(misc)...);
+    return this->template extra<12, Values...>(std::forward<Misc>(misc)...);
 }
 
 // Immutable access to the error data
@@ -901,7 +1086,7 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Photon<Type, Dimension>::error(Misc&&... misc) const {
-    return this->template extra<9, Values...>(std::forward<Misc>(misc)...);
+    return this->template extra<12, Values...>(std::forward<Misc>(misc)...);
 }
 
 // Access to the distance data
@@ -917,7 +1102,7 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Photon<Type, Dimension>::distance(Misc&&... misc) {
-    return this->template extra<10, Values...>(std::forward<Misc>(misc)...);
+    return this->template extra<13, Values...>(std::forward<Misc>(misc)...);
 }
 
 // Immutable access to the distance data
@@ -933,7 +1118,7 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Photon<Type, Dimension>::distance(Misc&&... misc) const {
-    return this->template extra<10, Values...>(std::forward<Misc>(misc)...);
+    return this->template extra<13, Values...>(std::forward<Misc>(misc)...);
 }
 
 // Access to the isw data
@@ -949,7 +1134,7 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Photon<Type, Dimension>::isw(Misc&&... misc) {
-    return this->template extra<11, Values...>(0, std::forward<Misc>(misc)...);
+    return this->template extra<14, Values...>(std::forward<Misc>(misc)...);
 }
 
 // Immutable access to the isw data
@@ -965,7 +1150,7 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Photon<Type, Dimension>::isw(Misc&&... misc) const {
-    return this->template extra<11, Values...>(0, std::forward<Misc>(misc)...);
+    return this->template extra<14, Values...>(std::forward<Misc>(misc)...);
 }
 
 // Access to the iswold data
@@ -981,7 +1166,7 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Photon<Type, Dimension>::iswold(Misc&&... misc) {
-    return this->template extra<11, Values...>(1, std::forward<Misc>(misc)...);
+    return this->template extra<15, Values...>(std::forward<Misc>(misc)...);
 }
 
 // Immutable access to the iswold data
@@ -997,7 +1182,7 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Photon<Type, Dimension>::iswold(Misc&&... misc) const {
-    return this->template extra<11, Values...>(1, std::forward<Misc>(misc)...);
+    return this->template extra<15, Values...>(std::forward<Misc>(misc)...);
 }
 
 // Access to the chi data
@@ -1013,7 +1198,7 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Photon<Type, Dimension>::chi(Misc&&... misc) {
-    return this->template extra<11, Values...>(2, std::forward<Misc>(misc)...);
+    return this->template extra<16, Values...>(std::forward<Misc>(misc)...);
 }
 
 // Immutable access to the chi data
@@ -1029,7 +1214,7 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Photon<Type, Dimension>::chi(Misc&&... misc) const {
-    return this->template extra<11, Values...>(2, std::forward<Misc>(misc)...);
+    return this->template extra<16, Values...>(std::forward<Misc>(misc)...);
 }
 
 // Access to the lambda data
@@ -1045,7 +1230,7 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Photon<Type, Dimension>::lambda(Misc&&... misc) {
-    return this->template extra<12, Values...>(std::forward<Misc>(misc)...);
+    return this->template extra<17, Values...>(std::forward<Misc>(misc)...);
 }
 
 // Immutable access to the lambda data
@@ -1061,7 +1246,7 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Photon<Type, Dimension>::lambda(Misc&&... misc) const {
-    return this->template extra<12, Values...>(std::forward<Misc>(misc)...);
+    return this->template extra<17, Values...>(std::forward<Misc>(misc)...);
 }
 
 // Access to the dphidt data
@@ -1077,7 +1262,7 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Photon<Type, Dimension>::dphidt(Misc&&... misc) {
-    return this->template extra<13, Values...>(std::forward<Misc>(misc)...);
+    return this->template extra<18, Values...>(std::forward<Misc>(misc)...);
 }
 
 // Immutable access to the dphidt data
@@ -1093,7 +1278,39 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Photon<Type, Dimension>::dphidt(Misc&&... misc) const {
-    return this->template extra<13, Values...>(std::forward<Misc>(misc)...);
+    return this->template extra<18, Values...>(std::forward<Misc>(misc)...);
+}
+
+// Access to the dphidt data
+/// \brief          Access to the dphidt data.
+/// \details        Provides an access to the dphidt data by forwarding
+///                 parameters to the unified base accessor member.
+/// \tparam         Values List of template values.
+/// \tparam         Misc (Miscellaneous types.)
+/// \tparam         Template (Deduced template type.)
+/// \param[in]      misc Miscellaneous arguments.
+/// \return         Forwarded result.
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Photon<Type, Dimension>::dpsidt(Misc&&... misc) {
+    return this->template extra<19, Values...>(std::forward<Misc>(misc)...);
+}
+
+// Immutable access to the dphidt data
+/// \brief          Immutable access to the dphidt data.
+/// \details        Provides an immutable access to the dphidt data by
+///                 forwarding parameters to the unified base accessor member.
+/// \tparam         Values List of template values.
+/// \tparam         Misc (Miscellaneous types.)
+/// \tparam         Template (Deduced template type.)
+/// \param[in]      misc Miscellaneous arguments.
+/// \return         Forwarded result.
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Photon<Type, Dimension>::dpsidt(Misc&&... misc) const {
+    return this->template extra<19, Values...>(std::forward<Misc>(misc)...);
 }
 
 // Access to the s data
@@ -1109,7 +1326,7 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Photon<Type, Dimension>::s(Misc&&... misc) {
-    return this->template extra<14, Values...>(std::forward<Misc>(misc)...);
+    return this->template extra<20, Values...>(std::forward<Misc>(misc)...);
 }
 
 // Immutable access to the s data
@@ -1125,7 +1342,7 @@ template<typename Type, unsigned int Dimension>
 template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Photon<Type, Dimension>::s(Misc&&... misc) const {
-    return this->template extra<14, Values...>(std::forward<Misc>(misc)...);
+    return this->template extra<20, Values...>(std::forward<Misc>(misc)...);
 }
 
 // -------------------------------------------------------------------------- //
