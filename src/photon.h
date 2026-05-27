@@ -39,9 +39,9 @@
 /// \tparam         Dimension Number of space dimension.
 template<typename Type = double, unsigned int Dimension = 3>
 class Photon final
-  : public magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type>> {
+  : public magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type>> {
     // Setup
-    using PhotonData = magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type>>;
+    using PhotonData = magrathea::AbstractStep<Photon<Type, Dimension>, unsigned int, std::array<Type, 1 + (1 + Dimension) * 2>, std::tuple<Type, Type, Type, Type, std::array<Type, Dimension>, Type, Type, std::array<Type, Dimension>, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type, Type>>;
 public:
     using PhotonData::operator=;
 
@@ -197,6 +197,10 @@ public:
     inline Template s(Misc&&... misc);
     template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<20, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
     inline Template s(Misc&&... misc) const;
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<PhotonData>().template extra<21, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template laplacianpsi(Misc&&... misc);
+    template<unsigned int... Values, class... Misc, class Template = decltype(std::declval<const PhotonData>().template extra<21, Values...>(std::declval<Misc>()...)), class = typename std::enable_if<!std::is_void<Template>::value>::type>
+    inline Template laplacianpsi(Misc&&... misc) const;
 
     //@}
 
@@ -1343,6 +1347,22 @@ template<unsigned int... Values, class... Misc, class Template, class>
 inline Template
 Photon<Type, Dimension>::s(Misc&&... misc) const {
     return this->template extra<20, Values...>(std::forward<Misc>(misc)...);
+}
+
+
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Photon<Type, Dimension>::laplacianpsi(Misc&&... misc) {
+    return this->template extra<21, Values...>(std::forward<Misc>(misc)...);
+}
+
+
+template<typename Type, unsigned int Dimension>
+template<unsigned int... Values, class... Misc, class Template, class>
+inline Template
+Photon<Type, Dimension>::laplacianpsi(Misc&&... misc) const {
+    return this->template extra<21, Values...>(std::forward<Misc>(misc)...);
 }
 
 // -------------------------------------------------------------------------- //
